@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Richman4L: A free game with a rule like Richman4Fun.
+Copyright (C) 2010-2016 Wencey Wang
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Titles>
+	<TitleRoots>
+		<TitleRoot Content="Richman" />
+		<TitleRoot Content="Poorman" />
+		<TitleRoot Content="Normalman" />
+		<TitleRoot Content="AbnormalMan"/>
+		<!--<TitleRoot Content="Tank（°ο°）Man"/>
+		<TitleRoot Content="TankMan"/>-->
+	</TitleRoots>
+	<TitleKeys>
+		<TitleKey Content="(Rain!)" />
+		<TitleKey Content="2333333" />
+		<TitleKey Content="JLL" />
+		<TitleKey Content="L" />
+		<TitleKey Content="LAN" />
+		<TitleKey Content="LCD" />
+		<TitleKey Content="LED" />
+		<TitleKey Content="LP" />
+		<TitleKey Content="LPG" />
+		<TitleKey Content="Lab" />
+		<TitleKey Content="Label" />
+		<TitleKey Content="Labour" />
+		<TitleKey Content="Lace" />
+		<TitleKey Content="Lack" />
+		<TitleKey Content="Lad" />
+		<TitleKey Content="Ladder" />
+		<TitleKey Content="Lady Lu" />
+		<TitleKey Content="Lady" />
+		<TitleKey Content="Lag" />
+		<TitleKey Content="Lair" />
+		<TitleKey Content="Lake" />
+		<TitleKey Content="Lam" />
+		<TitleKey Content="Lamb" />
+		<TitleKey Content="Lambda" />
+		<TitleKey Content="Lame" />
+		<TitleKey Content="Lamp" />
+		<TitleKey Content="Lance" />
+		<TitleKey Content="Lancet" />
+		<TitleKey Content="Land" />
+		<TitleKey Content="Lane" />
+		<TitleKey Content="Language" />
+		<TitleKey Content="Lantern" />
+		<TitleKey Content="Lap" />
+		<TitleKey Content="Lapa" />
+		<TitleKey Content="Lapel" />
+		<TitleKey Content="Lapse" />
+		<TitleKey Content="Laptop" />
+		<TitleKey Content="Larch" />
+		<TitleKey Content="Lard" />
+		<TitleKey Content="Largesse" />
+		<TitleKey Content="Lark" />
+		<TitleKey Content="Larva" />
+		<TitleKey Content="Larynx" />
+		<TitleKey Content="Laser" />
+		<TitleKey Content="Lash" />
+		<TitleKey Content="Lass" />
+		<TitleKey Content="Last" />
+		<TitleKey Content="Lasting" />
+		<TitleKey Content="Latch" />
+		<TitleKey Content="Late" />
+		<TitleKey Content="Latent" />
+		<TitleKey Content="Later" />
+		<TitleKey Content="Latest" />
+		<TitleKey Content="Latin" />
+		<TitleKey Content="Latter" />
+		<TitleKey Content="Laugh" />
+		<TitleKey Content="Launch" />
+		<TitleKey Content="Launcher" />
+		<TitleKey Content="Law" />
+		<TitleKey Content="Lay" />
+		<TitleKey Content="Layer" />
+		<TitleKey Content="Layout" />
+		<TitleKey Content="Laze" />
+		<TitleKey Content="Lead" />
+		<TitleKey Content="Leader" />
+		<TitleKey Content="Leading" />
+		<TitleKey Content="Leaf" />
+		<TitleKey Content="League" />
+		<TitleKey Content="Leak" />
+		<TitleKey Content="Lean" />
+		<TitleKey Content="Leap" />
+		<TitleKey Content="Learn" />
+		<TitleKey Content="Lease" />
+		<TitleKey Content="Least" />
+		<TitleKey Content="Leather" />
+		<TitleKey Content="Leave" />
+		<TitleKey Content="Leaven" />
+		<TitleKey Content="Leaver" />
+		<TitleKey Content="Lecture" />
+		<TitleKey Content="Led" />
+		<TitleKey Content="Ledger" />
+		<TitleKey Content="Lee" />
+		<TitleKey Content="Leech" />
+		<TitleKey Content="Leek" />
+		<TitleKey Content="Left" />
+		<TitleKey Content="Leg" />
+		<TitleKey Content="Legal" />
+		<TitleKey Content="Legend" />
+		<TitleKey Content="Legion" />
+		<TitleKey Content="Lego" />
+		<TitleKey Content="Leisure" />
+		<TitleKey Content="Leitmotif" />
+		<TitleKey Content="Lekker" />
+		<TitleKey Content="Lemma" />
+		<TitleKey Content="Lemon" />
+		<TitleKey Content="Lend" />
+		<TitleKey Content="Length" />
+		<TitleKey Content="Lens" />
+		<TitleKey Content="Leo" />
+		<TitleKey Content="Leper" />
+		<TitleKey Content="Lesbian" />
+		<TitleKey Content="Lesson" />
+		<TitleKey Content="Lesss" />
+		<TitleKey Content="Let" />
+		<TitleKey Content="Letter" />
+		<TitleKey Content="Lettuce" />
+		<TitleKey Content="Level" />
+		<TitleKey Content="Lever" />
+		<TitleKey Content="Levy" />
+		<TitleKey Content="Lexicon" />
+		<TitleKey Content="Ley" />
+		<TitleKey Content="Li" />
+		<TitleKey Content="Lib" />
+		<TitleKey Content="Liberal" />
+		<TitleKey Content="Liberate" />
+		<TitleKey Content="Library" />
+		<TitleKey Content="Lice" />
+		<TitleKey Content="Licence" />
+		<TitleKey Content="Licit" />
+		<TitleKey Content="Lick" />
+		<TitleKey Content="Lid" />
+		<TitleKey Content="Lie" />
+		<TitleKey Content="Liege" />
+		<TitleKey Content="Life" />
+		<TitleKey Content="Lift" />
+		<TitleKey Content="Ligature" />
+		<TitleKey Content="Light" />
+		<TitleKey Content="Lighten" />
+		<TitleKey Content="Lika" />
+		<TitleKey Content="Lika" />
+		<TitleKey Content="Like" />
+		<TitleKey Content="Lily" />
+		<TitleKey Content="Lim" />
+		<TitleKey Content="Lime" />
+		<TitleKey Content="Limeb" />
+		<TitleKey Content="Limitless" />
+		<TitleKey Content="Limp" />
+		<TitleKey Content="Lin" />
+		<TitleKey Content="Line" />
+		<TitleKey Content="Liner" />
+		<TitleKey Content="Linger" />
+		<TitleKey Content="Lingo" />
+		<TitleKey Content="Link" />
+		<TitleKey Content="Link" />
+		<TitleKey Content="Link" />
+		<TitleKey Content="Linq" />
+		<TitleKey Content="Lint" />
+		<TitleKey Content="Lip" />
+		<TitleKey Content="Lipid" />
+		<TitleKey Content="Liquid" />
+		<TitleKey Content="List" />
+		<TitleKey Content="List&lt;T&gt;" />
+		<TitleKey Content="Lite" />
+		<TitleKey Content="Literal" />
+		<TitleKey Content="Literature" />
+		<TitleKey Content="Litter" />
+		<TitleKey Content="Little" />
+		<TitleKey Content="Liu" />
+		<TitleKey Content="Live" />
+		<TitleKey Content="Livid" />
+		<TitleKey Content="Living" />
+		<TitleKey Content="Loacl" />
+		<TitleKey Content="Load" />
+		<TitleKey Content="Loaf" />
+		<TitleKey Content="Loafer" />
+		<TitleKey Content="Loam" />
+		<TitleKey Content="Loan" />
+		<TitleKey Content="Lob" />
+		<TitleKey Content="Lobby" />
+		<TitleKey Content="Lobe" />
+		<TitleKey Content="Lobster" />
+		<TitleKey Content="Lock" />
+		<TitleKey Content="Lodge" />
+		<TitleKey Content="Loft" />
+		<TitleKey Content="Log" />
+		<TitleKey Content="Logic" />
+		<TitleKey Content="Login" />
+		<TitleKey Content="Loin" />
+		<TitleKey Content="Lois" />
+		<TitleKey Content="Lolita" />
+		<TitleKey Content="Loll" />
+		<TitleKey Content="Lollipop" />
+		<TitleKey Content="Lollop" />
+		<TitleKey Content="Lolly" />
+		<TitleKey Content="Lonely" />
+		<TitleKey Content="Loner" />
+		<TitleKey Content="Long" />
+		<TitleKey Content="Look" />
+		<TitleKey Content="Looker" />
+		<TitleKey Content="Loom" />
+		<TitleKey Content="Loony" />
+		<TitleKey Content="Loop" />
+		<TitleKey Content="Loophole" />
+		<TitleKey Content="Loose Cannon" />
+		<TitleKey Content="Loose" />
+		<TitleKey Content="Loot" />
+		<TitleKey Content="Lop" />
+		<TitleKey Content="Loquat" />
+		<TitleKey Content="Lord" />
+		<TitleKey Content="Lorry" />
+		<TitleKey Content="Lose" />
+		<TitleKey Content="Loss" />
+		<TitleKey Content="Lost" />
+		<TitleKey Content="Lot" />
+		<TitleKey Content="Lottery" />
+		<TitleKey Content="Lou" />
+		<TitleKey Content="Loud" />
+		<TitleKey Content="Louis" />
+		<TitleKey Content="Lounge" />
+		<TitleKey Content="Louse" />
+		<TitleKey Content="Louses" />
+		<TitleKey Content="Lousy" />
+		<TitleKey Content="Lov" />
+		<TitleKey Content="Lovable" />
+		<TitleKey Content="Love" />
+		<TitleKey Content="Lover" />
+		<TitleKey Content="Low" />
+		<TitleKey Content="Loyal" />
+		<TitleKey Content="Lu" />
+		<TitleKey Content="Luck" />
+		<TitleKey Content="Lucky" />
+		<TitleKey Content="Ludic" />
+		<TitleKey Content="Luggage" />
+		<TitleKey Content="Lull" />
+		<TitleKey Content="Lumber" />
+		<TitleKey Content="Lump" />
+		<TitleKey Content="Lunch" />
+		<TitleKey Content="Lung" />
+		<TitleKey Content="Lunge" />
+		<TitleKey Content="Lurch" />
+		<TitleKey Content="Lurk" />
+		<TitleKey Content="Lurve" />
+		<TitleKey Content="Lydia" />
+		<TitleKey Content="Lyric" />
+		<TitleKey Content="Le"/>
+		<TitleKey Content="lolo" />
+	</TitleKeys>
+
+</Titles>

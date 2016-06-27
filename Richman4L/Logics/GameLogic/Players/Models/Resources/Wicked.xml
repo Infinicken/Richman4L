@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-16" ?>
+<Player Name="Wicked" Model="" Introduction="Wencey的好朋友，专业卖萌">
+  <SayingWhenGained>
+    <Saying Text=""/>
+    <Saying Text=""/>
+
+  </SayingWhenGained>
+  <SayingWhenHarmed>
+    
+  </SayingWhenHarmed>
+  <SayingWhenMeet>
+    <Saying Text=""/>
+    <Saying Player="Wencey" Text="活塞！"/>
+  
+  </SayingWhenMeet>
+</Player>
+

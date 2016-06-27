@@ -1,0 +1,23 @@
+﻿<Page
+	x:Class="WenceyWang.Richman4L.App.Pages.LoadingPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:WenceyWang.Richman4L.App.Pages"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" Foreground="{x:Null}">
+
+	<Grid>
+		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource Black}" d:LayoutOverrides="TopPosition, BottomPosition"/>
+		<Image x:Name="AboutPageUpImage" Margin="0" Stretch="UniformToFill" VerticalAlignment="Top"/>
+		<Image x:Name="AboutPageDownImage" Margin="0" Stretch="UniformToFill" VerticalAlignment="Bottom"/>
+		<Grid x:Name="MainGrid">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="546*"/>
+				<RowDefinition Height="95*"/>
+			</Grid.RowDefinitions>
+			<Grid x:Name="SayingPresentGrid" VerticalAlignment="Center" d:LayoutOverrides="LeftPosition, RightPosition" Margin="40,0,40,120"/>
+		</Grid>
+
+	</Grid>
+</Page>

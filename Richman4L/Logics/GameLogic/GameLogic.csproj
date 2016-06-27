@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0DDAAB3A-2358-4BD7-A865-E619446511BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WenceyWang.Richman4L</RootNamespace>
+    <AssemblyName>GameLogic</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile255</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\GameLogic.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\GameLogic.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Accounts\AccountItem.cs" />
+    <Compile Include="Auctions\AreaAuctionRequest.cs" />
+    <Compile Include="Auctions\CardAuctionRequest.cs" />
+    <Compile Include="Banks\BankProof.cs" />
+    <Compile Include="Banks\Banks.cs" />
+    <Compile Include="Banks\BorrowingBankProof.cs" />
+    <Compile Include="Banks\SavingBankProof.cs" />
+    <Compile Include="Buffs\AreaBuffs\AreaBuff.cs" />
+    <Compile Include="Buffs\AreaBuffs\BlockBuyAreaBuff.cs" />
+    <Compile Include="Buffs\RoadBuffs\Dog.cs" />
+    <Compile Include="Buffs\RoadBuffs\DogDeadCause.cs" />
+    <Compile Include="Buffs\RoadBuffs\Event\DogDeadEventArgs.cs" />
+    <Compile Include="Calendars\GameDate.cs" />
+    <Compile Include="Cards\CardAttribute.cs" />
+    <Compile Include="Cards\CardStates.cs" />
+    <Compile Include="Cards\CardType.cs" />
+    <Compile Include="DiceType.cs" />
+    <Compile Include="GameEnviroment\SmallGameResult.cs" />
+    <Compile Include="GameResult.cs" />
+    <Compile Include="GameRandom.cs" />
+    <Compile Include="GameSaying.cs" />
+    <Compile Include="GameStatus.cs" />
+    <Compile Include="GameTitle.cs" />
+    <Compile Include="ListItemRandomExtensions.cs" />
+    <Compile Include="Maps\AreaBuffExtensions.cs" />
+    <Compile Include="Buffs\PlayerBuffs\BlockBuyAreaPlayerBuff.cs" />
+    <Compile Include="Buffs\Buff.cs" />
+    <Compile Include="Buffs\PlayerBuffs\PlayerBuff.cs" />
+    <Compile Include="Buffs\StockBuffs\RedCardBuff.cs" />
+    <Compile Include="Buffs\RoadBuffs\RoadBuff.cs" />
+    <Compile Include="Buffs\StockBuffs\StockBuff.cs" />
+    <Compile Include="Calendars\Calendar.cs" />
+    <Compile Include="Calendars\CalendarEvent.cs" />
+    <Compile Include="Cards\Cards.cs" />
+    <Compile Include="Cards\RedCard.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameEnviroment\Environment.cs" />
+    <Compile Include="GameObject.cs" />
+    <Compile Include="GovermentControl.cs" />
+    <Compile Include="InfomationCenter\Infomation.cs" />
+    <Compile Include="Maps\Area.cs" />
+    <Compile Include="Maps\Block.cs" />
+    <Compile Include="Maps\BlockAzimuth.cs" />
+    <Compile Include="Maps\BlockAzimuthExtensions.cs" />
+    <Compile Include="Maps\Buildings\Building.cs" />
+    <Compile Include="Maps\Buildings\BuildingAccessory.cs" />
+    <Compile Include="Maps\Buildings\BuildingAttribute.cs" />
+    <Compile Include="Maps\Buildings\BuildingState.cs" />
+    <Compile Include="Maps\Buildings\BuildingGrade.cs" />
+    <Compile Include="Maps\Buildings\BuildingType.cs" />
+    <Compile Include="Maps\Buildings\Events\BuildBuildingEventArgs.cs" />
+    <Compile Include="Maps\Buildings\Events\BuildingEventArgs.cs" />
+    <Compile Include="Maps\Buildings\Events\BuildingUpgradeEventArgs.cs" />
+    <Compile Include="Maps\Buildings\DestoyReason.cs" />
+    <Compile Include="Maps\Buildings\MediumBuilding.cs" />
+    <Compile Include="Maps\Buildings\MediumSimpleBuilding.cs" />
+    <Compile Include="Maps\Buildings\Park.cs" />
+    <Compile Include="Maps\CardStore.cs" />
+    <Compile Include="Maps\Decoration.cs" />
+    <Compile Include="Maps\Hospital.cs" />
+    <Compile Include="Maps\IMapObjectView.cs" />
+    <Compile Include="Maps\Map.cs" />
+    <Compile Include="Maps\MapObject.cs" />
+    <Compile Include="Maps\MapObjectAttribute.cs" />
+    <Compile Include="Maps\MapObjectType.cs" />
+    <Compile Include="Maps\MapSize.cs" />
+    <Compile Include="Maps\Roads\CrossRoad.cs" />
+    <Compile Include="Maps\Roads\NormalRoad.cs" />
+    <Compile Include="Maps\Roads\OneWayRoad.cs" />
+    <Compile Include="Maps\Police.cs" />
+    <Compile Include="Maps\Roads\ReturnRoad.cs" />
+    <Compile Include="Maps\Roads\Road.cs" />
+    <Compile Include="Maps\Roads\AreaRoad.cs" />
+    <Compile Include="Maps\Roads\Path.cs" />
+    <Compile Include="Players\Commands\PlayerMoveCommand.cs" />
+    <Compile Include="Stats\PlayerCount.cs" />
+    <Compile Include="Maps\SmallArea.cs" />
+    <Compile Include="Maps\Buildings\SmallBuilding.cs" />
+    <Compile Include="Maps\Buildings\SmallSimpleBuilding.cs" />
+    <Compile Include="Maps\Roads\TRoad.cs" />
+    <Compile Include="Maps\Roads\WithInRoad.cs" />
+    <Compile Include="Missions\Mission.cs" />
+    <Compile Include="Missions\MissionGame.cs" />
+    <Compile Include="Newspapers\News.cs" />
+    <Compile Include="Newspapers\Newspaper.cs" />
+    <Compile Include="NormalRandomExtensions.cs" />
+    <Compile Include="Auctions\AuctionResult.cs" />
+    <Compile Include="Players\PlayerBankruptcyReason.cs" />
+    <Compile Include="Players\BuyAreaResult.cs" />
+    <Compile Include="Players\BuyStockResult.cs" />
+    <Compile Include="Players\Events\PlayerBankruptcyEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerChangeStateEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerEventArgs.cs" />
+    <Compile Include="Auctions\AuctionRequest.cs" />
+    <Compile Include="Players\Events\PlayerGetBuffEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerLostBuffEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerPayForBuildBuildingEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerPayForUpgradeBuildingEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerUpgradeBuildingEventArgs.cs" />
+    <Compile Include="Players\Models\PlayerModel.cs" />
+    <Compile Include="Players\Models\PlayerModelProxy.cs" />
+    <Compile Include="Players\Models\PlayerSaying.cs" />
+    <Compile Include="Players\MoveType.cs" />
+    <Compile Include="Players\Player.cs" />
+    <Compile Include="Players\PlayerBuffExtensions.cs" />
+    <Compile Include="Players\Events\PlayerBuyAreaEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerBuyStockEventArgs.cs" />
+    <Compile Include="Players\Commands\PlayerCommand.cs" />
+    <Compile Include="GameEnviroment\PlayerConsole.cs" />
+    <Compile Include="Players\PlayerExpression.cs" />
+    <Compile Include="Players\Events\PlayerGetFromAreaEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerMoveEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerPayForMaintainBuildingEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerPayForCrossEventArgs.cs" />
+    <Compile Include="Players\PlayerState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomEvents\RandomEvent.cs" />
+    <Compile Include="ResourceHelper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Seasons\Season.cs" />
+    <Compile Include="StartGameParameters.cs" />
+    <Compile Include="Stocks\BuyStockDelegate.cs" />
+    <Compile Include="Stocks\PriceController\NormalStockPriceController.cs" />
+    <Compile Include="Stocks\PriceController\StockPriceController.cs" />
+    <Compile Include="Stocks\Resources\StockResources.cs" />
+    <Compile Include="Stocks\SellStockDelegate.cs" />
+    <Compile Include="Stocks\Stock.cs" />
+    <Compile Include="Stocks\StockBuffExtensions.cs" />
+    <Compile Include="Stocks\StockDelistEventArgs.cs" />
+    <Compile Include="Stocks\StockDelistReason.cs" />
+    <Compile Include="Stocks\StockDelegate.cs" />
+    <Compile Include="Stocks\StockMarket.cs" />
+    <Compile Include="Stocks\StockMarketMovement.cs" />
+    <Compile Include="Stocks\StockPrice.cs" />
+    <Compile Include="Stocks\StockPriceRecording.cs" />
+    <Compile Include="Stocks\StockProof.cs" />
+    <Compile Include="Stocks\StockType.cs" />
+    <Compile Include="Stocks\StockTransactDateType.cs" />
+    <Compile Include="Weathers\Weather.cs" />
+    <Compile Include="Weathers\PrecipitationType.cs" />
+    <Compile Include="Weathers\Wind.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Polenter.SharpSerializer.PCL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8f4f20011571ee5f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpSerializer.PCL.2.18.7\lib\portable-net45+sl50+win+wpa81+wp80\Polenter.SharpSerializer.PCL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Players\Models\Resources\Index.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Players\Models\Resources\Sudiao.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Players\Models\Resources\Vincent.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Players\Models\Resources\Vivian.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Players\Models\Resources\Wencey.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Players\Models\Resources\Wicked.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GameSayingResources.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\Buildings\Resources\MediumSimpleBuilding.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\Buildings\Resources\SmallSimpleBuilding.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameTitleResources.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Maps\Buildings\Resources\Park.xml" />
+    <Content Include="Stocks\Resources\Index.xml" />
+    <Content Include="Stocks\Resources\Test.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GameTitleResources.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Maps\Buildings\Resources\Building.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="GameSayingResources.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

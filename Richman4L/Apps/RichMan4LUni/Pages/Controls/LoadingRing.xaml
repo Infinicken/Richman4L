@@ -1,0 +1,76 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="WenceyWang.RichMan4L.Apps.Pages.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:RichMan4L="WenceyWang.RichMan4L"
+	xmlns:local1="using:WenceyWang.Richman4L.App.Pages.Controls"
+	x:Class="WenceyWang.Richman4L.App.Pages.Controls.LoadingRing"
+	mc:Ignorable="d"
+	d:DesignHeight="100"
+	d:DesignWidth="100" Loaded="UserControl_Loaded">
+
+	<UserControl.Resources>
+		<local1:AngelConverter x:Key="AngelConverter"/>
+		<Storyboard x:Name="LoadingStoryBoard" AutoReverse="True" RepeatBehavior="Forever">
+			<DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(RangeBase.Value)" Storyboard.TargetName="LargeRingDownProgress">
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="180" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:3" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(RangeBase.Value)" Storyboard.TargetName="LargeRingUpProgress">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="180" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(RangeBase.Value)" Storyboard.TargetName="MiddleRingUpProgress">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="180" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(RangeBase.Value)" Storyboard.TargetName="SmallRingUpProgress">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="180" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(RangeBase.Value)" Storyboard.TargetName="MiddleRingDownProgress">
+				<EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="180" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:3.2" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(RangeBase.Value)" Storyboard.TargetName="SmallRingDownProgress">
+				<EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="180" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:3.4" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+
+	<Canvas>
+		<ProgressBar x:Name="LargeRingUpProgress" Maximum="180" Visibility="Collapsed"/>
+		<Ellipse x:Name="LargeRingUp"  Width="100" Height="100" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Tag="0" StrokeDashArray="{Binding Value, ConverterParameter=90, Converter={StaticResource AngelConverter}, ElementName=LargeRingUpProgress}">
+			<Ellipse.RenderTransform>
+				<CompositeTransform Rotation="-180"/>
+			</Ellipse.RenderTransform>
+		</Ellipse>
+		<ProgressBar x:Name="LargeRingDownProgress" Maximum="180" Visibility="Collapsed"/>
+		<Ellipse x:Name="LargeRingDown"  Width="100" Height="100" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Tag="0" StrokeDashArray="{Binding Value, ConverterParameter=90, Converter={StaticResource AngelConverter}, ElementName=LargeRingDownProgress}"/>
+		<ProgressBar x:Name="MiddleRingUpProgress" Maximum="180" Visibility="Collapsed"/>
+		<Ellipse x:Name="MiddleRingUp"  Width="78" Height="78" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Canvas.Left="11" Canvas.Top="11" Tag="0" StrokeDashArray="{Binding Value, ConverterParameter=68, Converter={StaticResource AngelConverter}, ElementName=MiddleRingUpProgress}">
+			<Ellipse.RenderTransform>
+				<CompositeTransform Rotation="-180"/>
+			</Ellipse.RenderTransform>
+		</Ellipse>
+		<ProgressBar x:Name="MiddleRingDownProgress" Maximum="180" Visibility="Collapsed"/>
+		<Ellipse x:Name="MiddleRingDown"  Width="78" Height="78" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Canvas.Left="11" Canvas.Top="11" Tag="0" StrokeDashArray="{Binding Value, ConverterParameter=68, Converter={StaticResource AngelConverter}, ElementName=MiddleRingDownProgress}"/>
+		<ProgressBar x:Name="SmallRingUpProgress" Maximum="180" Visibility="Collapsed"/>
+		<Ellipse x:Name="SmallRingUp"  Width="56" Height="56" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Canvas.Left="22" Canvas.Top="22" Tag="0" StrokeDashArray="{Binding Value, ConverterParameter=46, Converter={StaticResource AngelConverter}, ElementName=SmallRingUpProgress}">
+			<Ellipse.RenderTransform>
+				<CompositeTransform Rotation="-180"/>
+			</Ellipse.RenderTransform>
+		</Ellipse>
+		<ProgressBar x:Name="SmallRingDownProgress" Maximum="180" Visibility="Collapsed"/>
+		<Ellipse x:Name="SmallRingDown"  Width="56" Height="56" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Canvas.Left="22" Canvas.Top="22" Tag="0" StrokeDashArray="{Binding Value, ConverterParameter=46, Converter={StaticResource AngelConverter}, ElementName=SmallRingDownProgress}"/>
+	</Canvas>
+</UserControl>
