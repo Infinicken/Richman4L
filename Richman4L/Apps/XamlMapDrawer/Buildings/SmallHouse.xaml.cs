@@ -14,9 +14,11 @@ using Windows . UI . Xaml . Input;
 using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
 
+using WenceyWang . Richman4L . Maps . Buildings;
+
 namespace WenceyWang . Richman4L . App . XamlMapDrawer . Buildings
 {
-	public sealed partial class SmallHouse : MapObjectDrawer
+	public sealed partial class SmallHouse : MapObjectDrawer<SmallSimpleBuilding>
 	{
 		public SmallHouse ( )
 		{
@@ -26,9 +28,15 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer . Buildings
 
 		public override Size Size ( ) { return new Size ( 120 , 60 ); }
 
-		public override void Show ( ) { throw new NotImplementedException ( ); }
+		public override void Show ( )
+		{
+			//todo:
+		}
 
-		public override void Hide ( ) { throw new NotImplementedException ( ); }
+		public override void Hide ( )
+		{
+			//todo:
+		}
 
 	}
 }

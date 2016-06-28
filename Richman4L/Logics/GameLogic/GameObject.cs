@@ -48,6 +48,17 @@ namespace WenceyWang . Richman4L
 			GameObjectList . Add ( this );
 		}
 
+		/// <summary>
+		/// 检查这个GameObject是否已经被销毁
+		/// </summary>
+		protected void CheckDisposed ( )
+		{
+			if ( DisposedValue )
+			{
+				throw new ObjectDisposedException ( ToString ( ) );
+			}
+		}
+
 		protected bool IsSaving = false;
 
 		#region IDisposable Support

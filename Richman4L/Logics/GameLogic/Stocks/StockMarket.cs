@@ -7,10 +7,13 @@ using System . Text;
 using System . Threading . Tasks;
 using System . Xml . Linq;
 
-using WenceyWang . Richman4L . Buffs . StockBuffs ;
+using WenceyWang . Richman4L . Buffs . StockBuffs;
 
 namespace WenceyWang . Richman4L . Stocks
 {
+	/// <summary>
+	/// 表示股票市场
+	/// </summary>
 	public class StockMarket : GameObject
 	{
 
@@ -27,25 +30,22 @@ namespace WenceyWang . Richman4L . Stocks
 			get
 			{
 				return new StockPrice ( Stocks . Sum ( ( stock ) => stock . CurrentPrice . OpenPrice ) ,
-					Stocks . Sum ( ( stock ) => stock . CurrentPrice . CurrentPrice ) ,
-					Stocks . Sum ( ( stock ) => stock . CurrentPrice . TodaysHigh ) ,
-					Stocks . Sum ( ( stock ) => stock . CurrentPrice . TodaysLow ) ,
-					Stocks . Sum ( ( stock ) => stock . CurrentPrice . BuyValue ) ,
-					Stocks . Sum ( ( stock ) => stock . CurrentPrice . SellValue ) );
+										Stocks . Sum ( ( stock ) => stock . CurrentPrice . CurrentPrice ) ,
+										Stocks . Sum ( ( stock ) => stock . CurrentPrice . TodaysHigh ) ,
+										Stocks . Sum ( ( stock ) => stock . CurrentPrice . TodaysLow ) ,
+										Stocks . Sum ( ( stock ) => stock . CurrentPrice . BuyValue ) ,
+										Stocks . Sum ( ( stock ) => stock . CurrentPrice . SellValue ) );
 			}
 		}
 
 		public override void EndToday ( )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			foreach ( Stock item in Stocks )
 			{
 				item . EndToday ( );
 			}
-
 		}
 
 		public override void StartDay ( Calendars . GameDate date )
@@ -54,6 +54,7 @@ namespace WenceyWang . Richman4L . Stocks
 			{
 				throw new ObjectDisposedException ( nameof ( StockMarket ) );
 			}
+
 			if ( date == _movementChanging )
 			{
 				switch ( GameRandom . Current . Next ( 0 , 3 ) )
@@ -74,9 +75,10 @@ namespace WenceyWang . Richman4L . Stocks
 							break;
 						}
 				}
-				_movementChanging += GameRandom . Current . Next ( 20 , 30 );
 
+				_movementChanging += GameRandom . Current . Next ( 20 , 30 );
 			}
+
 			foreach ( Stock item in Stocks )
 			{
 				item . StartDay ( date );
@@ -85,22 +87,19 @@ namespace WenceyWang . Richman4L . Stocks
 
 		public event EventHandler MovementChanged;
 
-		private List < BuyStockDelegate > BuyDelegates { get; set; }
+		private List<BuyStockDelegate> BuyDelegates { get; set; }
 
-		public void BuyStock ( BuyStockDelegate @delegate ) { BuyDelegates . Add ( @delegate ) ; }
+		public void BuyStock ( BuyStockDelegate @delegate ) { BuyDelegates . Add ( @delegate ); }
 
 		/// <summary>
 		/// 加载资源
 		/// </summary>
 		/// <param name="flieName"></param>
 		public StockMarket ( string flieName )
-			: this ( ResourceHelper . LoadXmlDocument ( $"{nameof ( Stocks )}.Resources.{flieName}" ) )
-		{
-		}
+			: this ( ResourceHelper . LoadXmlDocument ( $"{nameof ( Stocks )}.Resources.{flieName}" ) ) { }
 
 		private StockMarket ( XDocument document ) : this ( )
 		{
-
 			//ToDo LoadStocks
 		}
 
@@ -109,8 +108,10 @@ namespace WenceyWang . Richman4L . Stocks
 		public override string ToString ( )
 		{
 			return $"StockMarket ";
+
 			//Todo:Compele this;
 		}
 
 	}
+
 }

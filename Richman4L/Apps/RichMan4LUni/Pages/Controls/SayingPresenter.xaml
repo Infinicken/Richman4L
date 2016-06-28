@@ -6,10 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignHeight="434"
+    d:DesignWidth="667.5">
 
-	<Grid x:Name="MainGrid" Opacity="0" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+	<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5">
 		<VisualStateManager.VisualStateGroups>
 			<VisualStateGroup x:Name="VisualStateGroup">
 				<VisualStateGroup.Transitions>
@@ -31,10 +31,6 @@
 								<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
 							</DoubleAnimationUsingKeyFrames>
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
-								<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="300"/>
-							</DoubleAnimationUsingKeyFrames>
 						</Storyboard>
 					</VisualTransition>
 					<VisualTransition From="Hide" GeneratedDuration="0:0:0.5" To="Show" GeneratedEasingFunction="{StaticResource EasingFunction}">
@@ -51,10 +47,6 @@
 									</DiscreteObjectKeyFrame.Value>
 								</DiscreteObjectKeyFrame>
 							</ObjectAnimationUsingKeyFrames>
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
-								<EasingDoubleKeyFrame KeyTime="0" Value="300"/>
-								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-							</DoubleAnimationUsingKeyFrames>
 							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
 								<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
@@ -72,17 +64,14 @@
 				<VisualState x:Name="Hide"/>
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
-		<Grid.RenderTransform>
-			<CompositeTransform TranslateY="300"/>
-		</Grid.RenderTransform>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		<TextBlock x:Name="ContentTextBlock" TextWrapping="Wrap" FontFamily="{StaticResource Font}" FontSize="21.333"/>
-		<TextBlock x:Name="PeopleTextBlock" TextWrapping="Wrap" d:LayoutOverrides="Width, LeftPosition, RightPosition" Grid.Row="1" FontFamily="{StaticResource Font}" HorizontalAlignment="Right" FontSize="18.667"/>
-		<TextBlock x:Name="BookAndAuthorOrSongTextBlock" HorizontalAlignment="Right" TextWrapping="Wrap" Grid.Row="2" FontSize="{StaticResource FontSize}" FontFamily="{StaticResource Font}"/>
+		<TextBlock x:Name="ContentTextBlock" TextWrapping="Wrap" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Foreground="{StaticResource White}" SelectionHighlightColor="{x:Null}" Text="昨晚下过雨后操场的湿气很重,篮球上的水滴也没有干过,雨水流过的泥土味道很浓厚,操场的青草香不时飘到我梦中。" LineHeight="{StaticResource LineHeight}" Margin="0"/>
+		<TextBlock x:Name="PeopleTextBlock" TextWrapping="Wrap" d:LayoutOverrides="Width, LeftPosition, RightPosition" Grid.Row="1" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Foreground="{StaticResource White}" SelectionHighlightColor="{x:Null}" TextAlignment="Right" Text="——山鲁佐德" Margin="0,4"/>
+		<TextBlock x:Name="BookAndAuthorOrSongTextBlock" TextWrapping="Wrap" Grid.Row="2" FontSize="{StaticResource FontSize}" FontFamily="{StaticResource Font}" SelectionHighlightColor="{x:Null}" Foreground="{StaticResource White}" TextAlignment="Right" Text="——Tricks of the 3D Game Programming Gurus--Advanced 3D Graphics and Rasterization by 村上春树" Margin="0,4"/>
 
 	</Grid>
 </UserControl>

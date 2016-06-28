@@ -24,24 +24,31 @@ using System . Text;
 using System . IO;
 using System . Xml . Linq;
 using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Maps
 {
 	public class Map : GameObject
 	{
-		public static Map Currnet { get; private set; }
+		[NotNull]
+		public static Map Currnet => Game . Current . Map;
 
+		[NotNull]
 		public string Name { get; set; }
 
 		public MapSize Size { get; set; }
 
+		[NotNull]
+		[ItemNotNull]
 		public List<MapObject> Objects { get; private set; }
 
+		[NotNull]
 		public Road GetRoad ( long id ) => ( Objects . Single ( ( road ) => ( ( road as Road )?.Id == id ) ) ) as Road;
 
+		[NotNull]
 		public Area GetArea ( long id ) => ( Objects . Single ( ( area ) => ( ( area as Area )?.Id == id ) ) ) as Area;
 
-		public Map ( XDocument document ) : this ( )
+		public Map ( [NotNull] XDocument document ) : this ( )
 		{
 			if ( document == null )
 			{
@@ -67,16 +74,15 @@ namespace WenceyWang . Richman4L . Maps
 			}
 		}
 
-		public Map ( Stream stream ) : this ( XDocument . Parse ( new StreamReader ( stream ) . ReadToEnd ( ) ) ) { }
+		public Map ( [NotNull] Stream stream ) : this ( XDocument . Parse ( new StreamReader ( stream ) . ReadToEnd ( ) ) ) { }
 
 		public Map ( ) : base ( )
 		{
-			Currnet = this;
 			Objects = new List<MapObject> ( );
 			//todo
 		}
 
-		public Map ( string flieName ) : this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) ) { }
+		public Map ( [NotNull] string flieName ) : this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) ) { }
 
 
 		public override void EndToday ( )
@@ -99,7 +105,6 @@ namespace WenceyWang . Richman4L . Maps
 			{
 				if ( disposing )
 				{
-					Currnet = null;
 					foreach ( MapObject item in Objects )
 					{
 						item . Dispose ( );
@@ -110,7 +115,11 @@ namespace WenceyWang . Richman4L . Maps
 			base . Dispose ( disposing );
 		}
 
-		public void RegisterView ( )
+		[CanBeNull ]
+		public event EventHandler AddMapObjectEvent ;
+
+
+		public void RegisMapDrawer ( IMapDrawer mapDrawer )
 		{
 
 		}

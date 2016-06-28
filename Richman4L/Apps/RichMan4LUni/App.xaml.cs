@@ -3,6 +3,7 @@ using System . Collections . Generic;
 using System . IO;
 using System . Linq;
 using System . Runtime . InteropServices . WindowsRuntime;
+
 using Windows . ApplicationModel;
 using Windows . ApplicationModel . Activation;
 using Windows . Foundation;
@@ -15,30 +16,30 @@ using Windows . UI . Xaml . Input;
 using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
 using Windows . UI . ViewManagement;
+
 using WenceyWang . Richman4L . App . Logic;
 
 namespace WenceyWang . Richman4L . App
 {
+
 	/// <summary>
-	/// 
+	/// Richman4L Universal
 	/// </summary>
 	sealed partial class App : Application
 	{
-		public new static App Current { get; private set; }
 
-		private GameTitle _title;
+		public new static App Current { get; private set; }
 
 		internal GameTitle Title
 		{
-			get { return _title; }
+			get { return AppSettings . Current . CurrentTitle; }
 			set
 			{
-				if ( value != _title )
+				if ( value != AppSettings . Current . CurrentTitle )
 				{
-					_title = value;
+					AppSettings . Current . CurrentTitle = value;
 					ApplicationView . GetForCurrentView ( ) . Title = value . Content;
 					TitleChanged?.Invoke ( this , new EventArgs ( ) );
-					//Todo:Set Window Title
 				}
 			}
 		}
@@ -52,25 +53,18 @@ namespace WenceyWang . Richman4L . App
 		public App ( )
 		{
 			Current = this;
-			//Microsoft . ApplicationInsights . WindowsAppInitializer . InitializeAsync (
-			//Microsoft . ApplicationInsights . WindowsCollectors . Metadata |
-			//Microsoft . ApplicationInsights . WindowsCollectors . Session );
+			Microsoft . ApplicationInsights . WindowsAppInitializer . InitializeAsync (
+				Microsoft . ApplicationInsights . WindowsCollectors . Metadata |
+				Microsoft . ApplicationInsights . WindowsCollectors . Session );
 			InitializeComponent ( );
 			Suspending += OnSuspending;
 			UnhandledException += OnUnhandledException;
 			Resuming += OnResuming;
-
 		}
 
-		private void OnResuming ( object sender , object e )
-		{
+		private void OnResuming ( object sender , object e ) { }
 
-		}
-
-		private void OnUnhandledException ( object sender , UnhandledExceptionEventArgs e )
-		{
-			e . Handled = false;
-		}
+		private void OnUnhandledException ( object sender , UnhandledExceptionEventArgs e ) { e . Handled = false; }
 
 		/// <summary>
 		/// 在应用程序由最终用户正常启动时进行调用。
@@ -79,12 +73,10 @@ namespace WenceyWang . Richman4L . App
 		/// <param name="e">有关启动请求和过程的详细信息。</param>
 		protected override void OnLaunched ( LaunchActivatedEventArgs e )
 		{
-
 #if DEBUG
 			if ( System . Diagnostics . Debugger . IsAttached )
 			{
 				DebugSettings . EnableFrameRateCounter = true;
-
 			}
 #endif
 
@@ -101,7 +93,6 @@ namespace WenceyWang . Richman4L . App
 
 				if ( e . PreviousExecutionState == ApplicationExecutionState . Terminated )
 				{
-
 					//TODO: 从之前挂起的应用程序加载状态
 				}
 
@@ -126,15 +117,12 @@ namespace WenceyWang . Richman4L . App
 			Window . Current . Activate ( );
 
 			Title = GameTitle . Defult;
-
 		}
 
 		private void RootFrame_SizeChanged ( object sender , SizeChangedEventArgs e )
 		{
 			//Todo:检查画面大小
 		}
-
-
 
 
 		/// <summary>
@@ -146,7 +134,6 @@ namespace WenceyWang . Richman4L . App
 		{
 			throw new Exception ( "Failed to load Page " + e . SourcePageType . FullName );
 		}
-
 
 
 		/// <summary>
@@ -164,6 +151,6 @@ namespace WenceyWang . Richman4L . App
 			deferral . Complete ( );
 		}
 
-
 	}
+
 }

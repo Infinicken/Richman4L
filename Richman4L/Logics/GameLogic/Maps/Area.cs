@@ -24,9 +24,10 @@ using System . Text;
 using System . Threading . Tasks;
 using System . Xml . Linq;
 
-using WenceyWang . Richman4L . Buffs . AreaBuffs ;
+using WenceyWang . Richman4L . Buffs . AreaBuffs;
 using WenceyWang . Richman4L . Maps . Buildings;
 using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Maps
 {
@@ -34,6 +35,8 @@ namespace WenceyWang . Richman4L . Maps
 	{
 		public long Id { get; private set; }
 
+		[NotNull]
+		[ItemNotNull]
 		public List<AreaBuff> Buffs { get; set; } = new List<AreaBuff> ( );
 
 		public abstract long MoneyCostWhenCrossed { get; protected set; }
@@ -52,29 +55,43 @@ namespace WenceyWang . Richman4L . Maps
 
 		public abstract long Price { get; protected set; }
 
-		public void Stay ( Players . Player player )
+		public void Stay ( [NotNull] Players . Player player )
 		{
+			CheckDisposed ( );
+
+			if ( player == null )
+			{
+				throw new ArgumentNullException ( nameof ( player ) );
+			}
+
 			Building?.Stay ( player );
 		}
 
-		public void Pass ( Players . Player player )
+		public void Pass ( [NotNull] Players . Player player )
 		{
+			CheckDisposed ( );
+
+			if ( player == null )
+			{
+				throw new ArgumentNullException ( nameof ( player ) );
+			}
+
 			Building?.Pass ( player );
 		}
+
 		public override void StartDay ( Calendars . GameDate nextDate )
 		{
 		}
 
-		public bool IsBuildingAvailable ( BuildingType buildingType ) => AvailableBuildings . Contains ( buildingType );
+		public bool IsBuildingAvailable ( [NotNull] BuildingType buildingType ) => AvailableBuildings . Contains ( buildingType );
 
+		[NotNull]
 		public abstract ReadOnlyCollection<BuildingType> AvailableBuildings { get; }
 
-		public void BuildBuildiing ( Building building )
+		public void BuildBuildiing ( [NotNull] Building building )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( $"{GetType ( ) . Name } at {X},{Y}" );
-			}
+			CheckDisposed ( );
+
 			if ( building == null )
 			{
 				throw new ArgumentNullException ( nameof ( building ) );
@@ -91,8 +108,13 @@ namespace WenceyWang . Richman4L . Maps
 			Building = building;
 		}
 
-		public Area ( XElement resource ) : base ( resource )
+		public Area ( [NotNull] XElement resource ) : base ( resource )
 		{
+			if ( resource == null )
+			{
+				throw new ArgumentNullException ( nameof ( resource ) );
+			}
+
 			try
 			{
 				Id = Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value );
@@ -102,9 +124,7 @@ namespace WenceyWang . Richman4L . Maps
 			{
 				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
 			}
-
 		}
-
 
 	}
 }

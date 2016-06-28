@@ -101,7 +101,8 @@
     <Compile Include="Maps\CardStore.cs" />
     <Compile Include="Maps\Decoration.cs" />
     <Compile Include="Maps\Hospital.cs" />
-    <Compile Include="Maps\IMapObjectView.cs" />
+    <Compile Include="Maps\IMapDrawer.cs" />
+    <Compile Include="Maps\IMapObjectDrawer.cs" />
     <Compile Include="Maps\Map.cs" />
     <Compile Include="Maps\MapObject.cs" />
     <Compile Include="Maps\MapObjectAttribute.cs" />
@@ -115,7 +116,11 @@
     <Compile Include="Maps\Roads\Road.cs" />
     <Compile Include="Maps\Roads\AreaRoad.cs" />
     <Compile Include="Maps\Roads\Path.cs" />
+    <Compile Include="Players\Commands\PlayerCommandArgument.cs" />
     <Compile Include="Players\Commands\PlayerMoveCommand.cs" />
+    <Compile Include="Players\Events\PlayerGiveCardEventArgs.cs" />
+    <Compile Include="Players\Events\PlayerReceiveCardEventArgs.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Stats\PlayerCount.cs" />
     <Compile Include="Maps\SmallArea.cs" />
     <Compile Include="Maps\Buildings\SmallBuilding.cs" />

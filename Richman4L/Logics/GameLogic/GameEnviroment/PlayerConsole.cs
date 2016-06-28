@@ -52,6 +52,9 @@ namespace WenceyWang . Richman4L . GameEnviroment
 
 		public abstract StockBuff StockBuffPicker ( Stocks . Stock stock );
 
+		public abstract void ShowDice ( DiceType diceType , int number );
+
+
 
 		public abstract ReadOnlyCollection<Cards . CardType> CardStore ( Player player , ReadOnlyCollection<Cards . CardType> canBuy );
 

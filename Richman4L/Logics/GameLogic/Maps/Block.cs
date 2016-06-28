@@ -22,6 +22,7 @@ using System . Linq;
 using System . Text;
 using System . Xml . Linq;
 using WenceyWang . Richman4L . Calendars;
+using WenceyWang . Richman4L . Properties ;
 
 namespace WenceyWang . Richman4L . Maps
 {
@@ -39,6 +40,7 @@ namespace WenceyWang . Richman4L . Maps
 		/// 表示每天能够减少的积水量
 		/// </summary>
 		public abstract int PondingDecrease { get; }
+
 
 		public bool IsWet => PondingAmount != 0;
 
@@ -62,9 +64,13 @@ namespace WenceyWang . Richman4L . Maps
 
 		}
 
-		public Block ( XElement resource ) : base ( resource )
+		public Block ([NotNull] XElement resource ) : base ( resource )
 		{
-			//hello world
+			if ( resource == null )
+			{
+				throw new ArgumentNullException ( nameof ( resource ) ) ;
+			}
+
 		}
 
 	}

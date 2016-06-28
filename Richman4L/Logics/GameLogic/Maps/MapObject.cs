@@ -24,6 +24,7 @@ using System . Threading . Tasks;
 using System . Xml . Linq;
 
 using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Maps
 {
@@ -51,8 +52,13 @@ namespace WenceyWang . Richman4L . Maps
 		/// <summary>
 		/// 要求地图元素的视图更新
 		/// </summary>
-		public void UpdateView ( ) { UpdateViewEvent?.Invoke ( this , new EventArgs ( ) ); }
+		public void UpdateView ( )
+		{
+			CheckDisposed ( );
+			UpdateViewEvent?.Invoke ( this , new EventArgs ( ) );
+		}
 
+		[NotNull]
 		public event EventHandler UpdateViewEvent;
 
 		protected override void Dispose ( bool disposing )
@@ -67,6 +73,8 @@ namespace WenceyWang . Richman4L . Maps
 			base . Dispose ( disposing );
 		}
 
+		[NotNull]
+		[ItemNotNull]
 		public static List<MapObjectType> MapObjectTypes { get; private set; } = new List<MapObjectType> ( );
 
 		public static void LoadMapObjects ( )
@@ -75,7 +83,8 @@ namespace WenceyWang . Richman4L . Maps
 			RegisMapObjectType ( nameof ( AreaRoad ) , typeof ( AreaRoad ) );
 		}
 
-		public static MapObjectType RegisMapObjectType ( XName name , Type entryType )
+		[NotNull]
+		public static MapObjectType RegisMapObjectType ( [NotNull] XName name , [NotNull] Type entryType )
 		{
 
 			#region Check Argument
@@ -112,8 +121,13 @@ namespace WenceyWang . Richman4L . Maps
 		/// 基于地图资源创建MapObject
 		/// </summary>
 		/// <param name="resource"></param>
-		public MapObject ( XElement resource ) : this ( )
+		public MapObject ( [NotNull] XElement resource ) : this ( )
 		{
+			if ( resource == null )
+			{
+				throw new ArgumentNullException ( nameof ( resource ) );
+			}
+
 			try
 			{
 				X = Convert . ToInt32 ( resource . Attribute ( nameof ( X ) ) . Value );
@@ -125,6 +139,11 @@ namespace WenceyWang . Richman4L . Maps
 			}
 		}
 
+		[NotNull]
+		public override string ToString ( )
+		{
+			return $"{GetType ( ) . Name } at {X},{Y}";
+		}
 
 		public MapObject ( ) : base ( )
 		{

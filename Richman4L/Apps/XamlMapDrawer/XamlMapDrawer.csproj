@@ -123,8 +123,8 @@
       <DependentUpon>NameShower.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roads\NormalRoad.xaml.cs">
-      <DependentUpon>NormalRoad.xaml</DependentUpon>
+    <Compile Include="Roads\NormalRoadDrawer.xaml.cs">
+      <DependentUpon>NormalRoadDrawer.xaml</DependentUpon>
     </Compile>
     <Compile Include="XamlMapDrawer.cs" />
     <EmbeddedResource Include="Properties\XamlMapDrawer.rd.xml" />
@@ -147,7 +147,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Roads\NormalRoad.xaml">
+    <Page Include="Roads\NormalRoadDrawer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

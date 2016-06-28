@@ -30,15 +30,18 @@ using WenceyWang . Richman4L . Buffs;
 using WenceyWang . Richman4L . Buffs . PlayerBuffs;
 using WenceyWang . Richman4L . Cards;
 using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Maps . Buildings;
 using WenceyWang . Richman4L . Players . Events;
 using WenceyWang . Richman4L . Players . Models;
 using WenceyWang . Richman4L . Stocks;
 using WenceyWang . Richman4L . GameEnviroment;
 using WenceyWang . Richman4L . Maps . Roads;
 using WenceyWang . Richman4L . Players . Commands;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Players
 {
+
 	//Todo:玩家拥有的区块列表
 	//Todo:重写ToString并更新Disposed之类的
 	public class Player : GameObject
@@ -47,30 +50,32 @@ namespace WenceyWang . Richman4L . Players
 		/// <summary>
 		/// 玩家的名称
 		/// </summary>
+		[NotNull]
 		public string Name => Model . Name;
 
 		/// <summary>
 		/// 玩家的模型
 		/// </summary>
+		[NotNull]
 		public PlayerModel Model { get; }
 
 		/// <summary>
 		/// 玩家使用的控制台
 		/// </summary>
+		[NotNull]
 		public PlayerConsole Console { get; private set; }
 
+		[NotNull]
 		public ReadOnlyCollection<PlayerCommand> GetAviliableCommands ( )
 		{
-			List < PlayerCommand > commands = new List < PlayerCommand > ( ) ;
-
-
-
-
-
+			List<PlayerCommand> commands = new List<PlayerCommand> ( );
 
 
 			return new ReadOnlyCollection<PlayerCommand> ( commands );
 		}
+
+		[CanBeNull]
+		public event EventHandler UpdateAviliableCommandsEvent;
 
 		#region State
 
@@ -82,9 +87,11 @@ namespace WenceyWang . Richman4L . Players
 		/// <summary>
 		/// 当前状态将会持续的时间
 		/// </summary>
+		[CanBeNull]
 		public long? StateDuration { get; protected set; }
 
 
+		[CanBeNull]
 		public long? StateStartDate { get; protected set; }
 
 		/// <summary>
@@ -101,8 +108,10 @@ namespace WenceyWang . Richman4L . Players
 
 		#region Money
 
+		[NotNull]
 		public ReadOnlyCollection<long> MoneyHistory { get; }
 
+		[NotNull]
 		private List<long> moneyHistory { get; }
 
 		public long Money
@@ -113,7 +122,7 @@ namespace WenceyWang . Richman4L . Players
 				_money = value;
 				if ( _money < 0 )
 				{
-					Bankruptcy ( PlayerBankruptcyReason . CanNotPay );//Todo:Money Not Enough?
+					Bankruptcy ( PlayerBankruptcyReason . CanNotPay ); //Todo:Money Not Enough?
 				}
 			}
 		}
@@ -125,62 +134,115 @@ namespace WenceyWang . Richman4L . Players
 
 		public bool CanPay ( long money ) => Money >= money;
 
+		[NotNull]
+		[ItemNotNull]
 		public ReadOnlyCollection<SavingBankProof> SavedMoney { get; }
 
+		[NotNull]
+		[ItemNotNull]
 		private List<SavingBankProof> savedMoney { get; }
 
+		[NotNull]
+		[ItemNotNull]
 		public ReadOnlyCollection<BorrowingBankProof> BorrowedMoney { get; }
 
+		[NotNull]
+		[ItemNotNull]
 		private List<BorrowingBankProof> borrowedMoney { get; }
 
 		#endregion
 
+		/// <summary>
+		/// 玩家所拥有的骰子的个数
+		/// </summary>
 		public int NumberOfDice { get; protected set; } = 1;
 
+		/// <summary>
+		/// 玩家的游戏点数
+		/// </summary>
 		public long GamePoint { get; set; } = 0;
 
+		/// <summary>
+		/// 玩家的卡片
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
 		public ReadOnlyCollection<Card> Cards { get; }
 
+		/// <summary>
+		/// 玩家的卡片
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
 		private List<Card> cards { get; }
 
+		/// <summary>
+		/// 玩家的股票
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
 		public Dictionary<Stock , long> Stocks { get; }
 
+		/// <summary>
+		/// 玩家的地块
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
 		public ReadOnlyCollection<Area> Areas { get; }
 
+		/// <summary>
+		/// 玩家的地块
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
 		private List<Area> areas { get; }
 
+		/// <summary>
+		/// 玩家当前的位置
+		/// </summary>
+		[NotNull]
 		public Road Position { get; private set; }
 
+		/// <summary>
+		/// 玩家前一个位置（用于确定玩家的方向）
+		/// </summary>
+		[NotNull]
 		public Road PreviousPosition { get; private set; }
 
+		/// <summary>
+		/// 玩家的增益效果
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
 		public ReadOnlyCollection<PlayerBuff> Buffs { get; }
 
+		/// <summary>
+		/// 玩家的增益效果
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
 		private List<PlayerBuff> buffs { get; }
 
 		public bool HaveMoveToday { get; protected set; }
 
-		public void GetFromSaving ( SavingBankProof proof )
+		public void GetFromSaving ( [NotNull] SavingBankProof proof )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( proof == null )
 			{
 				throw new ArgumentNullException ( nameof ( proof ) );
 			}
+
 			Money += proof . MoneyToGet;
 			savedMoney . Remove ( proof );
 		}
 
 
-
-		public void PayForBorrowing ( BorrowingBankProof proof )
+		public void PayForBorrowing ( [NotNull] BorrowingBankProof proof )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( proof == null )
 			{
 				throw new ArgumentNullException ( nameof ( proof ) );
@@ -190,28 +252,26 @@ namespace WenceyWang . Richman4L . Players
 			borrowedMoney . Remove ( proof );
 		}
 
-		public void GetBuff ( PlayerBuff buff )
+		public void GetBuff ( [NotNull] PlayerBuff buff )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( buff == null )
 			{
 				throw new ArgumentNullException ( nameof ( buff ) );
 			}
+
 			buffs . Add ( buff );
 			GetBuffEvent?.Invoke ( this , new PlayerGetBuffEventArgs ( buff ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerGetBuffEventArgs> GetBuffEvent;
 
-		public void LostBuff ( PlayerBuff buff )
+		public void LostBuff ( [NotNull] PlayerBuff buff )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( buff == null )
 			{
 				throw new ArgumentNullException ( nameof ( buff ) );
@@ -224,9 +284,11 @@ namespace WenceyWang . Richman4L . Players
 			{
 				buffs . Remove ( buff );
 			}
+
 			LostBuffEvent?.Invoke ( this , new PlayerLostBuffEventArgs ( buff ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerLostBuffEventArgs> LostBuffEvent;
 
 		#region Move
@@ -238,14 +300,13 @@ namespace WenceyWang . Richman4L . Players
 		/// <param name="diceType">使用的骰子</param>
 		public virtual void Move ( MoveType moveType , DiceType diceType )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( ( int ) moveType > NumberOfDice )
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
 			}
+
 			//Todo:Check if player can use this dice
 
 			if ( CanMove )
@@ -259,31 +320,33 @@ namespace WenceyWang . Richman4L . Players
 					PreviousPosition = Position;
 					Position = item;
 				}
+
 				Position . Stay ( this , moveType );
 				MoveEvent?.Invoke ( this , new PlayerMoveEventArgs ( route , diceResult ) );
 			}
 			else
 			{
 				MoveEvent?.Invoke ( this ,
-					new PlayerMoveEventArgs ( new Path ( ) , new ReadOnlyCollection<int> ( new List<int> ( ) ) ) );
+										new PlayerMoveEventArgs ( new Path ( ) , new ReadOnlyCollection<int> ( new List<int> ( ) ) ) );
 			}
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerMoveEventArgs> MoveEvent;
 
 		#endregion
+
+		#region BuyArea
 
 		/// <summary>
 		/// 购买某个区域
 		/// </summary>
 		/// <param name="toBuy">要购买的区域</param>
 		/// <returns></returns>
-		public BuyAreaResult BuyArea ( Area toBuy )
+		public BuyAreaResult BuyArea ( [NotNull] Area toBuy )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( toBuy == null )
 			{
 				throw new ArgumentNullException ( nameof ( toBuy ) );
@@ -334,19 +397,20 @@ namespace WenceyWang . Richman4L . Players
 			return result;
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerBuyAreaEventArgs> BuyAreaEvent;
+
+		#endregion
 
 		/// <summary>
 		/// 在指定位置建造指定类型的建筑建造建筑
 		/// </summary>
 		/// <param name="position">要建造建筑的位置</param>
 		/// <param name="buildingType">要建筑的类型</param>
-		public void BuildBuilding ( Area position , Maps . Buildings . BuildingType buildingType )
+		public void BuildBuilding ( [NotNull] Area position , [NotNull] BuildingType buildingType )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( position == null )
 			{
 				throw new ArgumentNullException ( nameof ( position ) );
@@ -359,24 +423,22 @@ namespace WenceyWang . Richman4L . Players
 			{
 				throw new ArgumentException ( $"{nameof ( position )} should owned by player." , nameof ( position ) );
 			}
-			if ( !Maps . Buildings . Building . BuildingTypes . Contains ( buildingType ) )
+			if ( !Building . BuildingTypes . Contains ( buildingType ) )
 			{
 				throw new ArgumentException ( $"{nameof ( buildingType )} have not been regis." , nameof ( buildingType ) );
 			}
 			if ( !position . IsBuildingAvailable ( buildingType ) )
 			{
 				throw new ArgumentException ( $"{nameof ( buildingType )} can not build in {nameof ( position )}." ,
-					nameof ( buildingType ) );
+											nameof ( buildingType ) );
 			}
-			Maps . Buildings . Building . Build ( position , buildingType , this );
+
+			Building . Build ( position , buildingType , this );
 		}
 
-		public BuyStockResult BuyStock ( Stock toBuy , long number )
+		public BuyStockResult BuyStock ( [NotNull] Stock toBuy , long number )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
 
 			if ( toBuy == null )
 			{
@@ -393,7 +455,6 @@ namespace WenceyWang . Richman4L . Players
 			{
 				if ( !toBuy . IsBlockBuy ( ) )
 				{
-
 					Money -= result . Money;
 					if ( result . Number == number )
 					{
@@ -425,19 +486,19 @@ namespace WenceyWang . Richman4L . Players
 			return result;
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerBuyStockEventArgs> BuyStockEvent;
 
 
 		public void ChangeState ( PlayerState state , long duration )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( duration < 1 )
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( duration ) );
 			}
+
 			PlayerState oldState = State;
 			State = state;
 			StateStartDate = Game . Current . Calendar . Today . Date;
@@ -445,6 +506,7 @@ namespace WenceyWang . Richman4L . Players
 			ChangeStateEvent?.Invoke ( this , new PlayerChangeStateEventArgs ( oldState , State , duration ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerChangeStateEventArgs> ChangeStateEvent;
 
 		#region Pay For Buildings
@@ -454,7 +516,7 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		/// <param name="building">要支付建造费用的建筑</param>
 		/// <param name="money">要支付的数额</param>
-		public void PayForBuildBuilding ( Maps . Buildings . Building building , long money )
+		public void PayForBuildBuilding ( Building building , long money )
 		{
 			if ( DisposedValue )
 			{
@@ -468,15 +530,17 @@ namespace WenceyWang . Richman4L . Players
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( money ) );
 			}
+
 			Money -= money;
 			PayForBuildBuildingEvent?.Invoke ( this , new PlayerPayForBuildBuildingEventArgs ( building , money ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerPayForBuildBuildingEventArgs> PayForBuildBuildingEvent;
 
-		public void PayForUpgradeBuiding ( Maps . Buildings . Building building , long money )
+		public void PayForUpgradeBuiding ( [NotNull] Building building , long money )
 		{
-
+			//Todo:
 		}
 
 		/// <summary>
@@ -484,12 +548,10 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		/// <param name="building">要支付维持费的建筑</param>
 		/// <param name="money">要支付的数额</param>
-		public void PayForMaintainBuilding ( Maps . Buildings . Building building , long money )
+		public void PayForMaintainBuilding ( [NotNull] Building building , long money )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( building == null )
 			{
 				throw new ArgumentNullException ( nameof ( building ) );
@@ -503,6 +565,7 @@ namespace WenceyWang . Richman4L . Players
 			PayForMaintainBuildingEvent?.Invoke ( this , new PlayerPayForMaintainBuildingEventArgs ( building , money ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerPayForMaintainBuildingEventArgs> PayForMaintainBuildingEvent;
 
 		#endregion
@@ -512,12 +575,10 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		/// <param name="area">收取过路费的区块</param>
 		/// <param name="money">支付的数额</param>
-		public void PayForCross ( Area area , long money )
+		public void PayForCross ( [NotNull] Area area , long money )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( area == null )
 			{
 				throw new ArgumentNullException ( nameof ( area ) );
@@ -532,6 +593,7 @@ namespace WenceyWang . Richman4L . Players
 			PayForCrossEvent?.Invoke ( this , new PlayerPayForCrossEventArgs ( area , money ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerPayForCrossEventArgs> PayForCrossEvent;
 
 		/// <summary>
@@ -540,12 +602,10 @@ namespace WenceyWang . Richman4L . Players
 		/// <param name="area">带来收益的区块</param>
 		/// <param name="player">带来收益的玩家，如没有，则为null</param>
 		/// <param name="money">收益的数额</param>
-		public void GetFromArea ( Area area , Player player , long money )
+		public void GetFromArea ( [NotNull] Area area , [NotNull] Player player , long money )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
+
 			if ( area == null )
 			{
 				throw new ArgumentNullException ( nameof ( area ) );
@@ -560,14 +620,12 @@ namespace WenceyWang . Richman4L . Players
 			GetFromAreaEvent?.Invoke ( this , new PlayerGetFromAreaEventArgs ( area , player , money ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerGetFromAreaEventArgs> GetFromAreaEvent;
 
 		public override void StartDay ( Calendars . GameDate nextDate )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
+			CheckDisposed ( );
 
 
 			HaveMoveToday = false;
@@ -575,19 +633,13 @@ namespace WenceyWang . Richman4L . Players
 
 		public override void EndToday ( )
 		{
-
-			#region Check Disposed
-
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
-
-			#endregion
+			CheckDisposed ( );
 
 			#region Change State
 
-			if ( State != PlayerState . Normal && StateStartDate != null && StateDuration != null )
+			if ( State != PlayerState . Normal &&
+				StateStartDate != null &&
+				StateDuration != null )
 			{
 				if ( StateStartDate + StateDuration >= Game . Current . Calendar . Today . Date + 1 )
 				{
@@ -598,31 +650,26 @@ namespace WenceyWang . Richman4L . Players
 			#endregion
 
 			moneyHistory . Add ( Money );
-
-
 		}
 
 		/// <summary>
 		/// 将某张卡片给某个玩家
 		/// </summary>
 		/// <param name="target"></param>
-		public void GiveCard ( Card card , Player target )
+		public void GiveCard ( [NotNull] Card card , [NotNull] Player target )
 		{
-
-			#region Check Disposed
-
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
-
-			#endregion
+			CheckDisposed ( );
 
 			#region Check Argument
 
 			if ( card == null )
 			{
 				throw new ArgumentNullException ( nameof ( card ) );
+			}
+
+			if ( !Cards . Contains ( card ) )
+			{
+				throw new ArgumentException ( $"this player do not have {nameof ( card )}" , nameof ( card ) );
 			}
 			if ( target == null )
 			{
@@ -635,8 +682,48 @@ namespace WenceyWang . Richman4L . Players
 
 			#endregion
 
+			cards . Remove ( card );
 
+			target . ReceiveCard ( card , this );
+
+			GiveCardEvent?.Invoke ( this , new PlayerGiveCardEventArgs ( card , target ) );
 		}
+
+		[CanBeNull]
+		public event EventHandler<PlayerGiveCardEventArgs> GiveCardEvent;
+
+		public void ReceiveCard ( [NotNull] Card card , [NotNull] Player source )
+		{
+			CheckDisposed ( );
+
+			#region Check Argument
+
+			if ( card == null )
+			{
+				throw new ArgumentNullException ( nameof ( card ) );
+			}
+
+			if ( Cards . Contains ( card ) )
+			{
+				throw new ArgumentException ( $"this player have {nameof ( card )}" , nameof ( card ) );
+			}
+			if ( source == null )
+			{
+				throw new ArgumentNullException ( nameof ( source ) );
+			}
+			if ( source == this )
+			{
+				throw new ArgumentException ( $"{nameof ( source )} can not be self" , nameof ( source ) );
+			}
+
+			#endregion
+
+			cards . Add ( card );
+			ReceiveCardEvent?.Invoke ( this , new PlayerReceiveCardEventArgs ( card , source ) );
+		}
+
+		[CanBeNull]
+		public event EventHandler<PlayerReceiveCardEventArgs> ReceiveCardEvent;
 
 		/// <summary>
 		/// 宣告破产
@@ -644,19 +731,14 @@ namespace WenceyWang . Richman4L . Players
 		/// <param name="reason">破产的原因</param>
 		public void Bankruptcy ( PlayerBankruptcyReason reason )
 		{
-			#region Check Disposed
+			CheckDisposed ( );
 
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) );
-			}
-
-			#endregion
 
 			foreach ( PlayerBuff item in Buffs )
 			{
 				item . Dispose ( );
 			}
+
 			buffs . Clear ( );
 
 			State = PlayerState . Bankrupt;
@@ -669,10 +751,11 @@ namespace WenceyWang . Richman4L . Players
 			{
 				Game . Current . GameEnviroment . PerformAuction ( new CardAuctionRequest ( item , item . PriceWhenSell * 100 ) );
 			}
-			BankruptcyEvent?.Invoke ( this , new PlayerBankruptcyEventArgs ( reason ) );
 
+			BankruptcyEvent?.Invoke ( this , new PlayerBankruptcyEventArgs ( reason ) );
 		}
 
+		[CanBeNull]
 		public event EventHandler<PlayerBankruptcyEventArgs> BankruptcyEvent;
 
 		protected override void Dispose ( bool disposing )
@@ -688,9 +771,10 @@ namespace WenceyWang . Richman4L . Players
 			}
 		}
 
+		[NotNull]
 		public override string ToString ( ) => Name;
 
-		public Player ( PlayerModel model , long startMoney ) : base ( )
+		public Player ( [NotNull] PlayerModel model , long startMoney ) : base ( )
 		{
 			if ( model == null )
 			{
@@ -700,14 +784,15 @@ namespace WenceyWang . Richman4L . Players
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( startMoney ) );
 			}
+
 			Model = model;
 			Money = startMoney;
 			buffs = new List<PlayerBuff> ( );
 			Buffs = new ReadOnlyCollection<PlayerBuff> ( buffs );
 			savedMoney = new List<SavingBankProof> ( );
 			SavedMoney = new ReadOnlyCollection<SavingBankProof> ( savedMoney );
-
 		}
 
 	}
+
 }

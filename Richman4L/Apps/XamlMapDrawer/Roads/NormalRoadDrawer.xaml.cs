@@ -14,17 +14,20 @@ using Windows . UI . Xaml . Input;
 using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
 
+using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Maps . Roads;
+
 
 namespace WenceyWang . Richman4L . App . XamlMapDrawer . Roads
 {
-	public sealed partial class NormalRoad : MapObjectDrawer
+	public sealed partial class NormalRoadDrawer : MapObjectDrawer<NormalRoad>
 	{
 
-		public NormalRoad ( ) { this . InitializeComponent ( ); }
+		public NormalRoadDrawer ( ) { this . InitializeComponent ( ); }
 
 		public override void Hide ( ) { }
 
-		public override Size Size ( ) { return new Size ( 112 , 56 ) ; }
+		public override Size Size ( ) { return new Size ( 112 , 56 ); }
 
 		public override void Show ( ) { }
 

@@ -17,7 +17,7 @@ using Windows . UI . Xaml . Navigation;
 
 namespace WenceyWang . Richman4L . App . XamlMapDrawer
 {
-	public sealed partial class NameShower : MapObjectDrawer
+	public sealed partial class NameShower : UserControl
 	{
 		public string Text
 		{
@@ -44,11 +44,11 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 			//this . DataContext = new NameShowerData ( );
 		}
 
-		public override Size Size ( ) { return new Size ( 112 , 56 ); }
+		public Size Size ( ) { return new Size ( 112 , 56 ); }
 
-		public override void Show ( ) { throw new NotImplementedException ( ); }
+		public void Show ( ) { throw new NotImplementedException ( ); }
 
-		public override void Hide ( ) { throw new NotImplementedException ( ); }
+		public void Hide ( ) { throw new NotImplementedException ( ); }
 
 	}
 }

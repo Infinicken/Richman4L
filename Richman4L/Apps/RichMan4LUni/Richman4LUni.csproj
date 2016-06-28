@@ -122,6 +122,7 @@
     <Content Include="Pages\ImageResources\SettingPageUp.png" />
     <Content Include="Pages\ImageResources\StartUpPageMiddle.png" />
     <Content Include="Pages\ImageResources\StartUpPageUp.png" />
+    <Content Include="Pages\ImageResources\LoadingPageDown.png" />
     <Content Include="ReadMe.txt" />
     <Content Include="Fonts\bgothl.ttf" />
     <Content Include="Fonts\Dynasty.ttf" />
@@ -138,6 +139,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logic\LoadingPageArgument.cs" />
+    <Compile Include="Logic\LoadingPageTaskState.cs" />
     <Compile Include="Logic\PageNavigateHelper.cs" />
     <Compile Include="Logic\AppSettings.cs" />
     <Compile Include="Logic\OcdModeHelper.cs" />

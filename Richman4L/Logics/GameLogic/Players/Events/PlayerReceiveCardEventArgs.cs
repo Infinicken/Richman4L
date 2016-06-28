@@ -18,40 +18,44 @@
 
 using System;
 using System . Collections . Generic;
-using System . Collections . ObjectModel;
 using System . Linq;
 using System . Text;
 
-namespace WenceyWang . Richman4L . GameEnviroment
+using WenceyWang . Richman4L . Cards;
+using WenceyWang . Richman4L . Properties;
+
+namespace WenceyWang . Richman4L . Players . Events
 {
-	/// <summary>
-	/// 指示游戏的环境
-	/// </summary>
-	public abstract class Environment
+
+	public class PlayerReceiveCardEventArgs : PlayerEventArgs
 	{
-		public abstract ReadOnlyCollection<int> GetDice ( int number , DiceType diceType );
+		/// <summary>
+		/// 卡片
+		/// </summary>
+		[NotNull]
+		public Card Card { get; set; }
 
-		public abstract void ShowEvent ( InfomationCenter . Event @event );
+		/// <summary>
+		/// 送出卡片的玩家
+		/// </summary>
+		[NotNull]
+		public Player Source { get; set; }
 
-		public abstract void PlayerSay ( Players . Player player , Players . Models . PlayerSaying saying );
-
-		public abstract void ShowDice ( DiceType diceType , int number ) ;
-
-
-		public abstract Auctions . AuctionResult PerformAuction ( Auctions . AuctionRequest request );
-
-
-		public abstract void ShowFlag ( bool flaged );
-
-		//public abstract 
-
-		public abstract void GameOver ( GameResult info );
-
-		public Environment ( )
+		public PlayerReceiveCardEventArgs ( [NotNull] Card card , [NotNull] Player source )
 		{
+			if ( card == null )
+			{
+				throw new ArgumentNullException ( nameof ( card ) );
+			}
+			if ( source == null )
+			{
+				throw new ArgumentNullException ( nameof ( source ) );
+			}
 
-
+			Card = card;
+			Source = source;
 		}
 
 	}
+
 }

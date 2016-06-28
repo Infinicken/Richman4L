@@ -73,11 +73,11 @@ namespace WenceyWang . Richman4L
 			return Sayings . RandomItem ( GameRandom . Current );
 		}
 
-		private static readonly object locker = new object ( );
+		private static readonly object Locker = new object ( );
 
 		public static void LoadSayings ( )
 		{
-			lock ( locker )
+			lock ( Locker )
 			{
 				Loaded = true;
 				Sayings = new List<GameSaying> ( );

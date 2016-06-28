@@ -37,6 +37,12 @@ namespace WenceyWang . Richman4L
 
 		public override string ToString ( ) => Content;
 
+		public static implicit operator GameTitle ( string text )
+		{
+			string [ ] temp = text . Split ( '4' );
+			return new GameTitle ( temp . First ( ) , temp . Last ( ) );
+		}
+
 		private GameTitle ( string titleRoot , string titleKey )
 		{
 			TitleRoot = titleRoot;

@@ -18,40 +18,18 @@
 
 using System;
 using System . Collections . Generic;
-using System . Collections . ObjectModel;
 using System . Linq;
 using System . Text;
 
-namespace WenceyWang . Richman4L . GameEnviroment
+namespace WenceyWang . Richman4L . Maps
 {
-	/// <summary>
-	/// 指示游戏的环境
-	/// </summary>
-	public abstract class Environment
+	public interface IMapObjectDrawer<T> where T : MapObject
 	{
-		public abstract ReadOnlyCollection<int> GetDice ( int number , DiceType diceType );
+		void Update ( );
 
-		public abstract void ShowEvent ( InfomationCenter . Event @event );
+		void SetTarget ( T target ) ;
 
-		public abstract void PlayerSay ( Players . Player player , Players . Models . PlayerSaying saying );
-
-		public abstract void ShowDice ( DiceType diceType , int number ) ;
-
-
-		public abstract Auctions . AuctionResult PerformAuction ( Auctions . AuctionRequest request );
-
-
-		public abstract void ShowFlag ( bool flaged );
-
-		//public abstract 
-
-		public abstract void GameOver ( GameResult info );
-
-		public Environment ( )
-		{
-
-
-		}
+		T Target { get; }
 
 	}
 }

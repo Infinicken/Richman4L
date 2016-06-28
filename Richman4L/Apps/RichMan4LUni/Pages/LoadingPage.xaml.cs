@@ -13,6 +13,8 @@ using Windows . UI . Xaml . Data;
 using Windows . UI . Xaml . Input;
 using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
+
+using WenceyWang . Richman4L . App . Logic;
 using WenceyWang . Richman4L . App . Pages . Controls;
 
 namespace WenceyWang . Richman4L . App . Pages
@@ -23,6 +25,8 @@ namespace WenceyWang . Richman4L . App . Pages
 	public sealed partial class LoadingPage : Page
 	{
 
+		public LoadingPageArgument Argument { get; private set; }
+
 		public LoadingPage ( )
 		{
 			InitializeComponent ( );
@@ -31,16 +35,14 @@ namespace WenceyWang . Richman4L . App . Pages
 
 		protected override void OnNavigatedTo ( NavigationEventArgs e )
 		{
-			if ( ( e . Parameter as Tuple < Task , Action > ) ? . Item1 == null ||
-				( ( Tuple < Task , Action > ) e . Parameter ) . Item2 == null )
+			LoadingPageArgument argument = e . Parameter as LoadingPageArgument ;
+			if ( argument != null )
 			{
-				throw new ArgumentException ( "Invalid Loading Parameter" ) ;
+				Argument = argument;
 			}
 			else
 			{
-				taskToWait = ( ( Tuple < Task , Action > ) e . Parameter ) . Item1 ;
-				
-				actionToDoNext = ( ( Tuple < Task , Action > ) e . Parameter ) . Item2 ;
+				throw new ArgumentException ( "Invalid Loading Parameter" );
 			}
 
 			base . OnNavigatedTo ( e );
@@ -53,9 +55,6 @@ namespace WenceyWang . Richman4L . App . Pages
 
 		SayingPresenter currentPrenster;
 
-		Task taskToWait;
-
-		Action actionToDoNext;
 
 
 	}

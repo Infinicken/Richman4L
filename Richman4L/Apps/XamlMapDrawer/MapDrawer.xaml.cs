@@ -14,12 +14,42 @@ using Windows . UI . Xaml . Input;
 using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
 
+using WenceyWang . Richman4L . Maps;
+
 namespace WenceyWang . Richman4L . App . XamlMapDrawer
 {
-	public sealed partial class MapDrawer : UserControl
+
+	public sealed partial class MapDrawer : UserControl, IMapDrawer
 	{
 
 		public MapDrawer ( ) { this . InitializeComponent ( ); }
 
+		public Map Map { get; private set; } = null;
+
+		public void SetMap ( Map map )
+		{
+			if ( Map != null )
+			{
+				throw new InvalidOperationException ( $"this {nameof ( MapDrawer )} have {nameof ( Map )} now." );
+			}
+			Map = map;
+			Map . RegisMapDrawer ( this );
+			Map . AddMapObjectEvent += Map_AddMapObjectEvent;
+		}
+
+		private void Map_AddMapObjectEvent ( object sender , EventArgs e )
+		{
+
+		}
+
+		public void DrawerCatched ( )
+		{
+			foreach ( MapObject mapObject in Map . Objects )
+			{
+
+			}
+		}
+
 	}
+
 }

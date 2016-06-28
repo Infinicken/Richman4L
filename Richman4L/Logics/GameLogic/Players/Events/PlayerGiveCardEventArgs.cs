@@ -21,13 +21,40 @@ using System . Collections . Generic;
 using System . Linq;
 using System . Text;
 
-namespace WenceyWang . Richman4L . Maps
-{
-	public interface IMapObjectView<T> where T : MapObject
-	{
-		void Update ( );
+using WenceyWang . Richman4L . Cards;
+using WenceyWang . Richman4L . Properties;
 
-		T Target { get; set; }
+namespace WenceyWang . Richman4L . Players . Events
+{
+	public class PlayerGiveCardEventArgs : PlayerEventArgs
+	{
+
+		/// <summary>
+		/// 卡片
+		/// </summary>
+		[NotNull]
+		public Card Card { get; set; }
+
+		/// <summary>
+		/// 获得卡片的玩家
+		/// </summary>
+		[NotNull]
+		public Player Target { get; set; }
+
+		public PlayerGiveCardEventArgs ( [NotNull]Card card , [NotNull]Player target )
+		{
+			if ( card == null )
+			{
+				throw new ArgumentNullException ( nameof ( card ) );
+			}
+			if ( target == null )
+			{
+				throw new ArgumentNullException ( nameof ( target ) );
+			}
+
+			Card = card;
+			Target = target;
+		}
 
 	}
 }

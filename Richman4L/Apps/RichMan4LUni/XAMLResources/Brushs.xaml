@@ -14,6 +14,7 @@
 	<SolidColorBrush x:Key="Pink" Color="#FFB21D62"/>
 	<SolidColorBrush x:Key="TransparentDeepRed" Color="#7F330819"/>
 	<SolidColorBrush x:Key="DarkBlue" Color="#FF091A46"/>
+	<SolidColorBrush x:Key="LightBlie" Color="#FF3BCB7C"/>
 
 
 </ResourceDictionary>

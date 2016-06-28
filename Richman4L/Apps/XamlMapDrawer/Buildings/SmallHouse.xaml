@@ -1,14 +1,15 @@
-﻿<xamlMapDrawer:MapObjectDrawer
-    x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.Buildings.SmallHouse"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WenceyWang.Richman4L.App.XamlMapDrawer.Buildings"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:xamlMapDrawer="using:WenceyWang.Richman4L.App.XamlMapDrawer"
-    mc:Ignorable="d"
-    d:DesignHeight="60"
-    d:DesignWidth="120">
+﻿<xamlMapDrawer:MapObjectDrawer x:TypeArguments="buildings:SmallSimpleBuilding"
+	x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.Buildings.SmallHouse"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:WenceyWang.Richman4L.App.XamlMapDrawer.Buildings"
+	xmlns:buildings="using:WenceyWang.Richman4L.Maps.Buildings"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:xamlMapDrawer="using:WenceyWang.Richman4L.App.XamlMapDrawer"
+	mc:Ignorable="d"
+	d:DesignHeight="60"
+	d:DesignWidth="120">
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -17,7 +18,7 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 	<Grid>
-		<Grid Margin="{StaticResource MapObjMargin}" d:LayoutOverrides="TopPosition, BottomPosition" Width="120" Height="60" d:IsHidden="True">
+		<Grid Margin="{StaticResource MapObjMargin}" d:LayoutOverrides="TopPosition, BottomPosition" Width="120" Height="60">
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -610,7 +611,7 @@
 				<Rectangle Fill="#FF5D5D5D" Margin="0" Grid.RowSpan="4" StrokeThickness="0" Grid.Column="1" Grid.Row="6"/>
 			</Grid>
 		</Grid>
-		<Grid Width="120" Height="60" HorizontalAlignment="Left" d:LayoutOverrides="Width" d:IsHidden="True">
+		<Grid Width="120" Height="60" HorizontalAlignment="Left" d:LayoutOverrides="Width" Visibility="Collapsed">
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -1024,7 +1025,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="#FF8D8D8D" Grid.Row="7" Grid.RowSpan="2" StrokeThickness="0"/>
 			</Grid>
 		</Grid>
-		<Grid Width="120" Height="60" d:IsHidden="True">
+		<Grid Width="120" Height="60" Visibility="Collapsed">
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -1554,7 +1555,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="3" Grid.RowSpan="2" StrokeThickness="0"/>
 			</Grid>
 		</Grid>
-		<Grid Width="120" Height="60" d:IsHidden="True">
+		<Grid Width="120" Height="60" Visibility="Collapsed">
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
