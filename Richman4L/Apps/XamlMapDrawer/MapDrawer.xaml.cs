@@ -15,6 +15,7 @@ using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
 
 using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . App . XamlMapDrawer
 {
@@ -22,19 +23,43 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 	public sealed partial class MapDrawer : UserControl, IMapDrawer
 	{
 
-		public MapDrawer ( ) { this . InitializeComponent ( ); }
+		[NotNull]
+		public static MapObjectDrawerType RegisMapObjectDrawer ( [NotNull]Type mapDrawerType , [NotNull] Type targetType )
+		{
+			if ( mapDrawerType == null )
+			{
+				throw new ArgumentNullException ( nameof ( mapDrawerType ) );
+			}
+			if ( targetType == null )
+			{
+				throw new ArgumentNullException ( nameof ( targetType ) );
+			}
 
-		public Map Map { get; private set; } = null;
+			MapObjectDrawerType type = new MapObjectDrawerType ( mapDrawerType , targetType ) ;
+
+			return type;
+		}
+
+		public static List<MapObjectDrawerType> MapObjectDrawerTypeList { get; }
+
+		public MapDrawer ( )
+		{
+
+			this . InitializeComponent ( );
+
+		}
+
+		public Map Target { get; private set; } = null;
 
 		public void SetMap ( Map map )
 		{
-			if ( Map != null )
+			if ( Target != null )
 			{
-				throw new InvalidOperationException ( $"this {nameof ( MapDrawer )} have {nameof ( Map )} now." );
+				throw new InvalidOperationException ( $"this {nameof ( MapDrawer )} have {nameof ( Target )} now." );
 			}
-			Map = map;
-			Map . RegisMapDrawer ( this );
-			Map . AddMapObjectEvent += Map_AddMapObjectEvent;
+			Target = map;
+			Target . RegisMapDrawer ( this );
+			Target . AddMapObjectEvent += Map_AddMapObjectEvent;
 		}
 
 		private void Map_AddMapObjectEvent ( object sender , EventArgs e )
@@ -44,7 +69,7 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 
 		public void DrawerCatched ( )
 		{
-			foreach ( MapObject mapObject in Map . Objects )
+			foreach ( MapObject mapObject in Target . Objects )
 			{
 
 			}

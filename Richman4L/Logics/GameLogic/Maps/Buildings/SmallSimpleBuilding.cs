@@ -88,10 +88,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 		public override void StartDay ( Calendars . GameDate nextDate )
 		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( $"{nameof ( SmallSimpleBuilding )} at {X},{Y}" );
-			}
+			CheckDisposed ( ) ;
+
 			if ( Game . Current . Weather . Wind . Strength >= 800 )
 			{
 				if ( Game . Current . Weather . Wind . Strength >= 950 )

@@ -40,8 +40,7 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 
 		public NameShower ( )
 		{
-			this . InitializeComponent ( );
-			//this . DataContext = new NameShowerData ( );
+			this . InitializeComponent ( );		
 		}
 
 		public Size Size ( ) { return new Size ( 112 , 56 ); }

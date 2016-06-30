@@ -1,12 +1,12 @@
-﻿<xamlMapDrawer:MapObjectDrawer x:TypeArguments="buildings:SmallSimpleBuilding"
-	x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.Buildings.SmallHouse"
+﻿<mapObjectDrawers:MapObjectDrawer 
+	x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers.Buildings.SmallHouse"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="using:WenceyWang.Richman4L.App.XamlMapDrawer.Buildings"
 	xmlns:buildings="using:WenceyWang.Richman4L.Maps.Buildings"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:xamlMapDrawer="using:WenceyWang.Richman4L.App.XamlMapDrawer"
+	xmlns:mapObjectDrawers="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers"
 	mc:Ignorable="d"
 	d:DesignHeight="60"
 	d:DesignWidth="120">
@@ -2191,4 +2191,5 @@
 		</Grid>
 
 	</Grid>
-</xamlMapDrawer:MapObjectDrawer>
+</mapObjectDrawers:MapObjectDrawer>
+

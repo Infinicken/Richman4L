@@ -5,8 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
    xmlns:Controls="using:WenceyWang.Richman4L.App.Pages.Controls"
-    xmlns:Buildings="using:WenceyWang.Richman4L.App.XamlMapDrawer.Buildings"
-    x:Class="WenceyWang.Richman4L.App.Pages.MainPage"
+	x:Class="WenceyWang.Richman4L.App.Pages.MainPage"
     mc:Ignorable="d">
 
 	<Page.Resources>

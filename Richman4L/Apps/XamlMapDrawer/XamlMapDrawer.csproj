@@ -112,29 +112,29 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buildings\SmallHouse.xaml.cs">
+    <Compile Include="MapObjectDrawerType.cs" />
+    <Compile Include="MapObjectDrawers\Buildings\SmallHouse.xaml.cs">
       <DependentUpon>SmallHouse.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapDrawer.xaml.cs">
       <DependentUpon>MapDrawer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MapObjectDrawer.cs" />
+    <Compile Include="MapObjectDrawers\MapObjectDrawer.cs" />
     <Compile Include="NameShower.xaml.cs">
       <DependentUpon>NameShower.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roads\NormalRoadDrawer.xaml.cs">
+    <Compile Include="MapObjectDrawers\Roads\NormalRoadDrawer.xaml.cs">
       <DependentUpon>NormalRoadDrawer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XamlMapDrawer.cs" />
     <EmbeddedResource Include="Properties\XamlMapDrawer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Buildings\SmallHouse.xaml">
+    <Page Include="MapObjectDrawers\Buildings\SmallHouse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GeneralDictionary.xaml">
+    <Page Include="XAMLResources\GeneralDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -147,7 +147,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Roads\NormalRoadDrawer.xaml">
+    <Page Include="MapObjectDrawers\Roads\NormalRoadDrawer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
