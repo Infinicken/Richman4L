@@ -126,8 +126,33 @@ namespace WenceyWang . Richman4L . Stocks
 
 		public void AddTradingVolume ( int sellValue )
 		{
-			
+
 		}
+
+		public void LowerTodaysLow ( decimal lowerPrice )
+		{
+			if ( lowerPrice >= CurrentPrice . TodaysLow )
+			{
+				//todo:change the "greater than"
+				throw new ArgumentException ( $"{nameof ( lowerPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysLow )}" );
+			}
+			//todo
+			//CurrentPrice . TodaysLow = lowerPrice;
+
+		}
+
+		public void HigherTodaysHigh ( decimal higherPrice )
+		{
+			if ( higherPrice <= CurrentPrice . TodaysLow )
+			{
+				throw new ArgumentException ( $"{nameof ( higherPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysHigh )}" );
+			}
+			//todo
+			//CurrentPrice . TodaysLow = higherPrice;
+
+		}
+
+
 
 		public Stock ( XElement element ) : base ( ) { }
 

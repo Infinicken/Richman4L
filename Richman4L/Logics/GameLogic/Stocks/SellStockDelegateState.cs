@@ -6,9 +6,9 @@ using System . Text;
 namespace WenceyWang . Richman4L . Stocks
 {
 	/// <summary>
-	/// 表示购买股票委托的结果
+	/// 表示出售股票委托的结果
 	/// </summary>
-	public enum BuyStockDelegateState
+	public enum SellStockDelegateState
 	{
 		/// <summary>
 		/// 委托尚未被执行。
@@ -23,12 +23,12 @@ namespace WenceyWang . Richman4L . Stocks
 		/// <summary>
 		/// 委托没有全部完成，由于交易量不够。
 		/// </summary>
-		ValueNotEnough,
+		VolumeNotEnough,
 
 		/// <summary>
 		/// 委托完全没有完成，由于股票自身原因（不交易，Buff）。
 		/// </summary>
-		StockCannotBuy,
+		StockCannotSell,
 
 		/// <summary>
 		/// 委托完全没有完成，由于价格。

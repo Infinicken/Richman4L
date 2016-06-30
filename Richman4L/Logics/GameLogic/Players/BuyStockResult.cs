@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . Players
 	{
 		public BuyStockStatusCode StatusCode { get; set; }
 
-		public long Number { get; set; }
+		public int Number { get; set; }
 
 		public long Money { get; set; }
 	}

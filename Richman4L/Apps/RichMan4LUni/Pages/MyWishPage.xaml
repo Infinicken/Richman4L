@@ -84,6 +84,10 @@
 						<Run Text="游戏中出现的人物，故事，地点，宗教均为虚构，请不要对号入座"/>
 						<Run Text="。"/>
 						<Run Text="如有雷同，不胜荣幸。"/>
+						<LineBreak/>
+						<Run/>
+						<LineBreak/>
+						<Run Text="水表在屋外，最近没网购，不需社区温暖，谢谢。"/>
 					</TextBlock>
 					<Button x:Name="OKButton" Content="好的" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}" Margin="40"/>
 				</StackPanel>

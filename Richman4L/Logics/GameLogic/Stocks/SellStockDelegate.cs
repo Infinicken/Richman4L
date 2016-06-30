@@ -12,13 +12,15 @@ namespace WenceyWang . Richman4L . Stocks
 	{
 		public int Number { get; set; }
 
-		public double Price { get; set; }
+		public decimal Price { get; set; }
 
-		public SellStockDelegate ( Players . Player player , Stock stock , int number , double price ) : base ( player , stock )
+		public SellStockDelegateState State { get; internal set; }
+
+		public SellStockDelegate ( Players . Player player , Stock stock , int number , decimal price ) : base ( player , stock )
 		{
 			Number = number;
 			Price = price;
-			
+			State = SellStockDelegateState . Waiting;
 		}
 
 	}
