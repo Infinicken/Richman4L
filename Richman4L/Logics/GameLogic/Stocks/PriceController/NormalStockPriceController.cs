@@ -104,8 +104,8 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 
 			//TodaysHigh = OpenPrice;
 			//TodaysLow = OpenPrice;
-			//BuyValue = 0;
-			//SellValue = 0;
+			//BuyVolume = 0;
+			//SellVolume = 0;
 		}
 
 		public NormalStockPriceController ( Stock target ) : base ( target ) { }

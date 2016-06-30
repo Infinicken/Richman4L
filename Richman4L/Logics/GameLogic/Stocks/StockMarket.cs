@@ -8,9 +8,11 @@ using System . Threading . Tasks;
 using System . Xml . Linq;
 
 using WenceyWang . Richman4L . Buffs . StockBuffs;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Stocks
 {
+
 	/// <summary>
 	/// 表示股票市场
 	/// </summary>
@@ -33,8 +35,8 @@ namespace WenceyWang . Richman4L . Stocks
 										Stocks . Sum ( ( stock ) => stock . CurrentPrice . CurrentPrice ) ,
 										Stocks . Sum ( ( stock ) => stock . CurrentPrice . TodaysHigh ) ,
 										Stocks . Sum ( ( stock ) => stock . CurrentPrice . TodaysLow ) ,
-										Stocks . Sum ( ( stock ) => stock . CurrentPrice . BuyValue ) ,
-										Stocks . Sum ( ( stock ) => stock . CurrentPrice . SellValue ) );
+										Stocks . Sum ( ( stock ) => stock . CurrentPrice . BuyVolume ) ,
+										Stocks . Sum ( ( stock ) => stock . CurrentPrice . SellVolume ) );
 			}
 		}
 
@@ -45,6 +47,23 @@ namespace WenceyWang . Richman4L . Stocks
 			foreach ( Stock item in Stocks )
 			{
 				item . EndToday ( );
+			}
+			
+			
+		
+
+			foreach ( BuyStockDelegate sellDelegate in SellDelegateList )
+			{
+				if ( sellDelegate . Stock . TransactToday &&
+					!sellDelegate . Stock . IsBlockSell ( ) &&
+					sellDelegate . Price >= sellDelegate . Stock . CurrentPrice . TodaysLow &&
+					sellDelegate . Price <= sellDelegate . Stock . CurrentPrice . TodaysHigh )
+				{
+					if ( IsSaving )
+					{
+
+					}
+				}
 			}
 		}
 
@@ -85,11 +104,38 @@ namespace WenceyWang . Richman4L . Stocks
 			}
 		}
 
+		[CanBeNull]
 		public event EventHandler MovementChanged;
 
-		private List<BuyStockDelegate> BuyDelegates { get; set; }
+		private List<BuyStockDelegate> BuyDelegateList { get; set; }
 
-		public void BuyStock ( BuyStockDelegate @delegate ) { BuyDelegates . Add ( @delegate ); }
+		public void BuyStock ( [NotNull] BuyStockDelegate buyDelegate )
+		{
+			CheckDisposed ( );
+
+			if ( buyDelegate == null )
+			{
+				throw new ArgumentNullException ( nameof ( buyDelegate ) );
+			}
+
+			BuyDelegateList . Add ( buyDelegate );
+		}
+
+		[NotNull]
+		private List<BuyStockDelegate> SellDelegateList { get; set; }
+
+		public void SellStock ( [NotNull] BuyStockDelegate sellDelegate )
+		{
+			CheckDisposed ( );
+
+			if ( sellDelegate == null )
+			{
+				throw new ArgumentNullException ( nameof ( sellDelegate ) );
+			}
+
+			SellDelegateList . Add ( sellDelegate );
+		}
+
 
 		/// <summary>
 		/// 加载资源
@@ -109,9 +155,10 @@ namespace WenceyWang . Richman4L . Stocks
 		{
 			return $"StockMarket ";
 
-			//Todo:Compele this;
+			//Todo:Compele this;			
 		}
 
 	}
 
 }
+

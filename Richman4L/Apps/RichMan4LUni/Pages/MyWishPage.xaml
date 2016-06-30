@@ -72,7 +72,19 @@
 			<ScrollViewer d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
 				<StackPanel>
 					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="作者想说的" FontFamily="{StaticResource Font}" FontSize="{StaticResource PageTitleFontSize}" Margin="40,40,40,0"/>
-
+					<TextBlock x:Name="textBlock" TextWrapping="Wrap" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" Margin="40,40,40,0">
+						<Run Text="我们本着尊重玩家的态度来讲述每一个故事。期间使用的人物以及地点都经过仔细考量。"/>
+						<LineBreak/>
+						<Run/>
+						<LineBreak/>
+						<Run Text="游戏中所有言论，意见，评论均为娱乐创作，不代表游戏作者意见。"/>
+						<LineBreak/>
+						<Run/>
+						<LineBreak/>
+						<Run Text="游戏中出现的人物，故事，地点，宗教均为虚构，请不要对号入座"/>
+						<Run Text="。"/>
+						<Run Text="如有雷同，不胜荣幸。"/>
+					</TextBlock>
 					<Button x:Name="OKButton" Content="好的" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}" Margin="40"/>
 				</StackPanel>
 			</ScrollViewer>

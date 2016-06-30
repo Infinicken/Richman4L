@@ -17,21 +17,21 @@ namespace WenceyWang . Richman4L .Stocks
 		/// <param name="currentPrice"></param>
 		/// <param name="todaysHigh"></param>
 		/// <param name="todaysLow"></param>
-		/// <param name="buyValue"></param>
-		/// <param name="sellValue"></param>
+		/// <param name="buyVolume"></param>
+		/// <param name="sellVolume"></param>
 		public StockPrice ( decimal openPrice ,
 			decimal currentPrice ,
 			decimal todaysHigh ,
 			decimal todaysLow ,
-			long buyValue ,
-			long sellValue )
+			long buyVolume ,
+			long sellVolume )
 		{
 			OpenPrice = openPrice ;
 			CurrentPrice = currentPrice ;
 			TodaysHigh = todaysHigh ;
 			TodaysLow = todaysLow ;
-			BuyValue = buyValue ;
-			SellValue = sellValue ;
+			BuyVolume = buyVolume ;
+			SellVolume = sellVolume ;
 		}
 
 		/// <summary>
@@ -57,17 +57,17 @@ namespace WenceyWang . Richman4L .Stocks
 		/// <summary>
 		/// 购买量
 		/// </summary>
-		public long BuyValue { get ; }
+		public long BuyVolume { get ; }
 
 		/// <summary>
 		/// 售出量
 		/// </summary>
-		public long SellValue { get ; }
+		public long SellVolume { get ; }
 
 		public bool Equals ( StockPrice other )
 		{
 			return OpenPrice == other . OpenPrice && CurrentPrice == other . CurrentPrice && TodaysHigh == other . TodaysHigh &&
-					TodaysLow == other . TodaysLow && BuyValue == other . BuyValue && SellValue == other . SellValue ;
+					TodaysLow == other . TodaysLow && BuyVolume == other . BuyVolume && SellVolume == other . SellVolume ;
 		}
 
 		public override bool Equals ( object obj )
@@ -87,8 +87,8 @@ namespace WenceyWang . Richman4L .Stocks
 				hashCode = ( hashCode * 397 ) ^ CurrentPrice . GetHashCode ( ) ;
 				hashCode = ( hashCode * 397 ) ^ TodaysHigh . GetHashCode ( ) ;
 				hashCode = ( hashCode * 397 ) ^ TodaysLow . GetHashCode ( ) ;
-				hashCode = ( hashCode * 397 ) ^ BuyValue . GetHashCode ( ) ;
-				hashCode = ( hashCode * 397 ) ^ SellValue . GetHashCode ( ) ;
+				hashCode = ( hashCode * 397 ) ^ BuyVolume . GetHashCode ( ) ;
+				hashCode = ( hashCode * 397 ) ^ SellVolume . GetHashCode ( ) ;
 				return hashCode ;
 			}
 		}

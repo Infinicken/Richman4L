@@ -33,7 +33,7 @@ namespace WenceyWang . Richman4L . App . Pages
 
 		private void LicensePage_Loaded ( object sender , RoutedEventArgs e )
 		{
-			WebView . Navigate ( new Uri ( "ms-appx-web:///License/GPL.htm" ) );
+			WebView . Navigate ( new Uri ( "ms-appx-web:///License/AGPL.htm" ) );
 			StartStoryboard . Completed += StartStoryboard_Completed;
 			StartStoryboard . Begin ( );
 		}

@@ -108,7 +108,7 @@
     </EmbeddedResource>
     <Content Include="ImageResources\WenceySignBlack.png" />
     <Content Include="ImageResources\WenceySignWhite.png" />
-    <Content Include="License\GPL.htm" />
+    <Content Include="License\AGPL.htm" />
     <Content Include="Pages\ImageResources\AboutPageDown.png" />
     <Content Include="Pages\ImageResources\AboutPageUp.png" />
     <Content Include="Pages\ImageResources\CreateGamePageDown.png" />

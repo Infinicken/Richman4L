@@ -172,6 +172,7 @@
     <Compile Include="Seasons\Season.cs" />
     <Compile Include="StartGameParameters.cs" />
     <Compile Include="Stocks\BuyStockDelegate.cs" />
+    <Compile Include="Stocks\BuyStockDelegateState.cs" />
     <Compile Include="Stocks\PriceController\NormalStockPriceController.cs" />
     <Compile Include="Stocks\PriceController\StockPriceController.cs" />
     <Compile Include="Stocks\Resources\StockResources.cs" />
