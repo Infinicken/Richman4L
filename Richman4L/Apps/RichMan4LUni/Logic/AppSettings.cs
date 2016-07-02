@@ -14,16 +14,15 @@ namespace WenceyWang . Richman4L . App . Logic
 
 		public static AppSettings Current { get; } = new AppSettings ( );
 
-		public GameTitle CurrentTitle
+		public GameTitle GameTitle
 		{
 			get
 			{
-				return ReadSettings ( nameof ( CurrentTitle ) , GameTitle . Defult );
-
+				return ReadSettings ( nameof ( GameTitle ) , GameTitle . Defult );
 			}
 			set
 			{
-				SaveSettings ( nameof ( CurrentTitle ) , value.ToString (  ) );
+				SaveSettings ( nameof ( GameTitle ) , value.ToString (  ) );
 				NotifyPropertyChanged ( );
 			}
 		}
@@ -202,11 +201,11 @@ namespace WenceyWang . Richman4L . App . Logic
 			{
 				if ( value )
 				{
-					CurrentTitle = GameTitle . GetTitle ( );
+					GameTitle = GameTitle . GetTitle ( );
 				}
 				else
 				{
-					CurrentTitle = GameTitle . Defult;
+					GameTitle = GameTitle . Defult;
 				}
 				SaveSettings ( nameof ( AllowRandomTitle ) , value );
 				NotifyPropertyChanged ( );
@@ -223,7 +222,7 @@ namespace WenceyWang . Richman4L . App . Logic
 
 		private void App_TitleChanged ( object sender , EventArgs e )
 		{
-			PropertyChanged?.Invoke ( this , new PropertyChangedEventArgs ( nameof ( CurrentTitle ) ) );
+			PropertyChanged?.Invoke ( this , new PropertyChangedEventArgs ( nameof ( GameTitle ) ) );
 		}
 
 		private void SaveSettings ( string key , object value )

@@ -36,10 +36,7 @@ namespace WenceyWang . Richman4L . App . Pages
 
 		private void MainPage_Loaded ( object sender , RoutedEventArgs e )
 		{
-			if ( AppSettings . Current . AllowRandomTitle )
-			{
-				Title . Text = App . Current . Title . Content;
-			}
+			Title . Text = AppSettings . Current . GameTitle . Content;
 			StartStoryBoard . Begin ( );
 			StartStoryBoard . Completed += StartStoryBoard_Completed;
 		}

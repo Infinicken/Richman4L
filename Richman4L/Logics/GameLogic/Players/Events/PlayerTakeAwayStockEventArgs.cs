@@ -10,9 +10,9 @@ namespace WenceyWang . Richman4L . Players . Events
 	{
 
 		[NotNull]
-		Stock Stock { get; }
+		public Stock Stock { get; }
 
-		int Number { get; }
+		public int Number { get; }
 
 		public PlayerTakeAwayStockEventArgs ( [NotNull] Stock stock , int number )
 		{

@@ -10,9 +10,9 @@ namespace WenceyWang . Richman4L . Players .Events
 	{
 
 		[NotNull]
-		StockDelegate StockDelegate { get; }
+		public StockDelegate StockDelegate { get; }
 
-		long Money { get; }
+		public long Money { get; }
 
 		public PlayerPayForStockDelegateEventArgs ( [NotNull] StockDelegate stockDelegate , long money )
 		{

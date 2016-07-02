@@ -125,13 +125,11 @@ namespace WenceyWang . Richman4L . Stocks
 
 				foreach ( SellStockDelegate deles in sellDelegates )
 				{
-					deles . Player . PayForStockDelegate ( deles , 10 );
-					//todo:set the fee
-					//should be price*(a value)
+					deles . Player . PayForStockDelegate ( deles , ( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) );
 				}
 				foreach ( BuyStockDelegate deles in buyDelegates )
 				{
-					deles . Player . PayForStockDelegate ( deles , 10 );
+					deles . Player . PayForStockDelegate ( deles , ( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) );
 				}
 
 			}

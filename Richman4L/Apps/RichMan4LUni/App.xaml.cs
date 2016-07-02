@@ -18,6 +18,7 @@ using Windows . UI . Xaml . Navigation;
 using Windows . UI . ViewManagement;
 
 using WenceyWang . Richman4L . App . Logic;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . App
 {
@@ -30,20 +31,17 @@ namespace WenceyWang . Richman4L . App
 
 		public new static App Current { get; private set; }
 
-		internal GameTitle Title
+		internal string WindowTitle
 		{
-			get { return AppSettings . Current . CurrentTitle; }
+			get { return ApplicationView . GetForCurrentView ( ) . Title; }
 			set
 			{
-				if ( value != AppSettings . Current . CurrentTitle )
-				{
-					AppSettings . Current . CurrentTitle = value;
-					ApplicationView . GetForCurrentView ( ) . Title = value . Content;
-					TitleChanged?.Invoke ( this , new EventArgs ( ) );
-				}
+				ApplicationView . GetForCurrentView ( ) . Title = value;
+				TitleChanged?.Invoke ( this , new EventArgs ( ) );
 			}
 		}
 
+		[CanBeNull]
 		public event EventHandler TitleChanged;
 
 		/// <summary>
@@ -116,7 +114,7 @@ namespace WenceyWang . Richman4L . App
 			// 确保当前窗口处于活动状态
 			Window . Current . Activate ( );
 
-			Title = GameTitle . Defult;
+			WindowTitle = "Starting";
 		}
 
 		private void RootFrame_SizeChanged ( object sender , SizeChangedEventArgs e )
