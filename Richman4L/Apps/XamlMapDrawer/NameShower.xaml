@@ -11,7 +11,7 @@
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="GeneralDictionary.xaml" />
+				<ResourceDictionary Source="XAMLResources/GeneralDictionary.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 
 		</ResourceDictionary>

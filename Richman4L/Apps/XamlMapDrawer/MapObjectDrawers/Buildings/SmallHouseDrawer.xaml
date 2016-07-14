@@ -1,11 +1,10 @@
 ﻿<mapObjectDrawers:MapObjectDrawer 
-	x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers.Buildings.SmallHouse"
+	x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers.Buildings.SmallHouseDrawer"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:buildings="using:WenceyWang.Richman4L.Maps.Buildings"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:xamlMapDrawer="using:WenceyWang.Richman4L.App.XamlMapDrawer"
 	xmlns:mapObjectDrawers="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers"
 	mc:Ignorable="d"
 	d:DesignHeight="60"
@@ -13,12 +12,12 @@
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///GeneralDictionary.xaml"/>
+				<ResourceDictionary Source="ms-appx:///XAMLResources/GeneralDictionary.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
 	<Grid>
-		<Grid Margin="{StaticResource MapObjMargin}" d:LayoutOverrides="TopPosition, BottomPosition" Width="120" Height="60">
+		<Grid Margin="{StaticResource MapObjMargin}" d:LayoutOverrides="TopPosition, BottomPosition" Width="120" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center">
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -611,7 +610,7 @@
 				<Rectangle Fill="#FF5D5D5D" Margin="0" Grid.RowSpan="4" StrokeThickness="0" Grid.Column="1" Grid.Row="6"/>
 			</Grid>
 		</Grid>
-		<Grid Width="120" Height="60" HorizontalAlignment="Left" d:LayoutOverrides="Width" Visibility="Collapsed">
+		<Grid Width="120" Height="60" HorizontalAlignment="Center" d:LayoutOverrides="Width"  Margin="{StaticResource MapObjMargin}" VerticalAlignment="Center" Visibility="Collapsed">
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -1025,537 +1024,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="#FF8D8D8D" Grid.Row="7" Grid.RowSpan="2" StrokeThickness="0"/>
 			</Grid>
 		</Grid>
-		<Grid Width="120" Height="60" Visibility="Collapsed">
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="10" Fill="Green" Grid.RowSpan="10" Width="120" Height="120" Margin="0" StrokeThickness="0"/>
-				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="#FFB29D19" Grid.Row="2" Grid.RowSpan="7" StrokeThickness="0"/>
-				<Rectangle Grid.Column="3" Fill="#FF8D8D8D" Grid.Row="8" StrokeThickness="0"/>
-				<Rectangle Grid.Column="5" Fill="#FF8D8D8D" Grid.Row="8" StrokeThickness="0"/>
-				<Rectangle Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="3" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" Grid.RowSpan="4"/>
-				<Rectangle Grid.Column="2" Fill="#FF8D8D8D" Grid.Row="4" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="-24" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
-				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
-				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="24"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="8" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateY="-60"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF727272" Grid.Row="3" Grid.RowSpan="4" StrokeThickness="0"/>
-				<Rectangle Grid.Column="8" Fill="#FF727272" Grid.Row="5" StrokeThickness="0" Grid.RowSpan="4" Grid.ColumnSpan="2"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Path Grid.ColumnSpan="3" Grid.Column="6" Data="M24,0 L36,0 L36,60 L36,72 L12,72 L12,60 L24,60 z M0,0 L24,0 L24,24 L0,24 z" Fill="#FFF1F1F1" Grid.Row="3" Grid.RowSpan="6" Stretch="Fill" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="-21" TranslateY="-39"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="3" Fill="#BF464646" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0"/>
-				<Rectangle Grid.Column="5" Fill="#BF464646" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0"/>
-				<Rectangle Grid.Column="7" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="2" Margin="0,0,6,0"/>
-
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-36"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="5" Grid.RowSpan="4" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="42" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="4" Margin="6,0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="-24" TranslateY="-36"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="#FF727272" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0"/>
-				<Rectangle Grid.Column="2" Fill="#FFD8D8D8" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
-				<Rectangle Grid.Column="4" Fill="#FFD8D8D8" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
-				<Rectangle Grid.Column="6" Fill="#FFD8D8D8" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
-				<Rectangle Grid.Column="2" Fill="#FFD8D8D8" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="7" Margin="0,6,0,0"/>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FFD8D8D8" Grid.Row="9" StrokeThickness="0"/>
-				<Path Grid.ColumnSpan="7" Grid.Column="2" Data="M48,12 L84,12 L84,24 L48,24 z M24,12 L36,12 L36,24 L24,24 z M9E-06,0 L84,0 L84,12 L12,12 L12,24 L0,24 L0,12 z" Fill="#FF7A7013" Grid.Row="6" Grid.RowSpan="2" Stretch="Fill" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="4" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="3" Margin="6,0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-48"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF8D8D8D" Grid.Row="1" Grid.RowSpan="2" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="4" Fill="#FF5F5711" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-				<Rectangle Grid.Column="4" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4" Margin="0,6,0,0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="48" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="9" StrokeThickness="0" Grid.ColumnSpan="6"/>
-				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="3" Margin="0,6,0,0"/>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF5D5D5D" Grid.Row="6" Grid.RowSpan="4" StrokeThickness="0"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-54"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Path Grid.ColumnSpan="7" Grid.Column="2" Data="M6E-06,0 L12,0 L72,0 L72,36 L72,48 L84,48 L84,84 L0,84 L0,48 L6E-06,36 L12,36 L12,12 L6E-06,12 z" Fill="#FFF1F1F1" Height="84" Grid.Row="2" Grid.RowSpan="7" Stretch="Fill" StrokeThickness="0" VerticalAlignment="Bottom"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateX="-12" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="#FF5D5D5D" Grid.Row="2" Grid.RowSpan="3" StrokeThickness="0" Margin="0,0,0,5.667"/>
-			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-				<Grid.RenderTransform>
-					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-84"/>
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-					<RowDefinition/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="3" Grid.RowSpan="2" StrokeThickness="0"/>
-			</Grid>
-		</Grid>
-		<Grid Width="120" Height="60" Visibility="Collapsed">
+		<Grid Width="120" Height="60"  Margin="{StaticResource MapObjMargin}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -2187,6 +1656,536 @@
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="#FF8D8D8D" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="2" StrokeThickness="0"/>
+			</Grid>
+		</Grid>
+		<Grid Width="120" Height="60"  Margin="{StaticResource MapObjMargin}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.ColumnSpan="10" Fill="Green" Grid.RowSpan="10" Width="120" Height="120" Margin="0" StrokeThickness="0"/>
+				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="#FFB29D19" Grid.Row="2" Grid.RowSpan="7" StrokeThickness="0"/>
+				<Rectangle Grid.Column="3" Fill="#FF8D8D8D" Grid.Row="8" StrokeThickness="0"/>
+				<Rectangle Grid.Column="5" Fill="#FF8D8D8D" Grid.Row="8" StrokeThickness="0"/>
+				<Rectangle Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="3" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" Grid.RowSpan="4"/>
+				<Rectangle Grid.Column="2" Fill="#FF8D8D8D" Grid.Row="4" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="-24" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
+				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
+				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="24"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="8" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateY="-60"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF727272" Grid.Row="3" Grid.RowSpan="4" StrokeThickness="0"/>
+				<Rectangle Grid.Column="8" Fill="#FF727272" Grid.Row="5" StrokeThickness="0" Grid.RowSpan="4" Grid.ColumnSpan="2"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Path Grid.ColumnSpan="3" Grid.Column="6" Data="M24,0 L36,0 L36,60 L36,72 L12,72 L12,60 L24,60 z M0,0 L24,0 L24,24 L0,24 z" Fill="#FFF1F1F1" Grid.Row="3" Grid.RowSpan="6" Stretch="Fill" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="-21" TranslateY="-39"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="3" Fill="#BF464646" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0"/>
+				<Rectangle Grid.Column="5" Fill="#BF464646" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0"/>
+				<Rectangle Grid.Column="7" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="2" Margin="0,0,6,0"/>
+
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-36"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="5" Grid.RowSpan="4" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="42" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="4" Margin="6,0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="-24" TranslateY="-36"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Fill="#FF727272" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0"/>
+				<Rectangle Grid.Column="2" Fill="#FFD8D8D8" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
+				<Rectangle Grid.Column="4" Fill="#FFD8D8D8" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
+				<Rectangle Grid.Column="6" Fill="#FFD8D8D8" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0"/>
+				<Rectangle Grid.Column="2" Fill="#FFD8D8D8" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="7" Margin="0,6,0,0"/>
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FFD8D8D8" Grid.Row="9" StrokeThickness="0"/>
+				<Path Grid.ColumnSpan="7" Grid.Column="2" Data="M48,12 L84,12 L84,24 L48,24 z M24,12 L36,12 L36,24 L24,24 z M9E-06,0 L84,0 L84,12 L12,12 L12,24 L0,24 L0,12 z" Fill="#FF7A7013" Grid.Row="6" Grid.RowSpan="2" Stretch="Fill" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="4" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="3" Margin="6,0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-48"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF8D8D8D" Grid.Row="1" Grid.RowSpan="2" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="4" Fill="#FF5F5711" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+				<Rectangle Grid.Column="4" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4" Margin="0,6,0,0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="48" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="9" StrokeThickness="0" Grid.ColumnSpan="6"/>
+				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="3" Margin="0,6,0,0"/>
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF5D5D5D" Grid.Row="6" Grid.RowSpan="4" StrokeThickness="0"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-54"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Path Grid.ColumnSpan="7" Grid.Column="2" Data="M6E-06,0 L12,0 L72,0 L72,36 L72,48 L84,48 L84,84 L0,84 L0,48 L6E-06,36 L12,36 L12,12 L6E-06,12 z" Fill="#FFF1F1F1" Height="84" Grid.Row="2" Grid.RowSpan="7" Stretch="Fill" StrokeThickness="0" VerticalAlignment="Bottom"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform TranslateX="-12" TranslateY="-60" SkewY="-45" ScaleX="0.5"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="#FF5D5D5D" Grid.Row="2" Grid.RowSpan="3" StrokeThickness="0" Margin="0,0,0,5.667"/>
+			</Grid>
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				<Grid.RenderTransform>
+					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-84"/>
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="3" Grid.RowSpan="2" StrokeThickness="0"/>
 			</Grid>
 		</Grid>
 

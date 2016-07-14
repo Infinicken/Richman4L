@@ -31,6 +31,7 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer . MapObjectDrawers
 	public abstract class MapObjectDrawer : UserControl
 	{
 
+
 		public abstract Size Size { get; }
 
 		public abstract void Show ( );

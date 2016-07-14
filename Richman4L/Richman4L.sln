@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{6FC8DA3E-DE22-4C74-B70C-39819C441EE0}"
 EndProject
@@ -29,6 +29,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{60471C
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMapDrawer", "Apps\XamlMapDrawer\XamlMapDrawer.csproj", "{73B80FC0-34F1-429E-86A6-8F63451E53E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterMapDrawer", "Apps\CharacterMapDrawer\CharacterMapDrawer.csproj", "{7765D69C-137E-4D84-9978-56E10527E02E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Richman4LConsole", "Apps\Richman4LConsole\Richman4LConsole.csproj", "{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,6 +118,38 @@ Global
 		{73B80FC0-34F1-429E-86A6-8F63451E53E8}.Release|x64.Build.0 = Release|x64
 		{73B80FC0-34F1-429E-86A6-8F63451E53E8}.Release|x86.ActiveCfg = Release|x86
 		{73B80FC0-34F1-429E-86A6-8F63451E53E8}.Release|x86.Build.0 = Release|x86
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|x64.Build.0 = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Debug|x86.Build.0 = Debug|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|ARM.Build.0 = Release|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|x64.ActiveCfg = Release|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|x64.Build.0 = Release|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|x86.ActiveCfg = Release|Any CPU
+		{7765D69C-137E-4D84-9978-56E10527E02E}.Release|x86.Build.0 = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|x64.Build.0 = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Debug|x86.Build.0 = Debug|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|ARM.Build.0 = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|x64.ActiveCfg = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|x64.Build.0 = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,11 +161,13 @@ Global
 		{AA65673C-8C11-41E1-85C4-CC4A7F177220} = {EA2DBB93-9010-44A6-B1E2-5F1B212A36E2}
 		{60471C83-B52D-43F1-9FCD-AC1EE25DA0B0} = {AA65673C-8C11-41E1-85C4-CC4A7F177220}
 		{73B80FC0-34F1-429E-86A6-8F63451E53E8} = {6FC8DA3E-DE22-4C74-B70C-39819C441EE0}
+		{7765D69C-137E-4D84-9978-56E10527E02E} = {6FC8DA3E-DE22-4C74-B70C-39819C441EE0}
+		{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6} = {6FC8DA3E-DE22-4C74-B70C-39819C441EE0}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://wenceywang.visualstudio.com/defaultcollection
+		SccTeamFoundationServer = https://wenceywang.visualstudio.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Logics\\GameLogic\\GameLogic.csproj
 		SccProjectTopLevelParentUniqueName1 = Richman4L.sln
@@ -147,5 +185,13 @@ Global
 		SccProjectTopLevelParentUniqueName4 = Richman4L.sln
 		SccProjectName4 = Apps/XamlMapDrawer
 		SccLocalPath4 = Apps\\XamlMapDrawer
+		SccProjectUniqueName5 = Apps\\CharacterMapDrawer\\CharacterMapDrawer.csproj
+		SccProjectTopLevelParentUniqueName5 = Richman4L.sln
+		SccProjectName5 = Apps/CharacterMapDrawer
+		SccLocalPath5 = Apps\\CharacterMapDrawer
+		SccProjectUniqueName6 = Apps\\Richman4LConsole\\Richman4LConsole.csproj
+		SccProjectTopLevelParentUniqueName6 = Richman4L.sln
+		SccProjectName6 = Apps/Richman4LConsole
+		SccLocalPath6 = Apps\\Richman4LConsole
 	EndGlobalSection
 EndGlobal

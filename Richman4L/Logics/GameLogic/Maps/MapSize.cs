@@ -39,27 +39,27 @@ namespace WenceyWang . Richman4L . Maps
 		public int Y { get; }
 
 		/// <summary>
-		/// 小地图元素尺寸
+		/// 小地图元素尺寸，1*1
 		/// </summary>
 		public static readonly MapSize Small = new MapSize ( 1 , 1 );
 
 		/// <summary>
-		/// 长条地图元素尺寸
+		/// 长条地图元素尺寸，1*2
 		/// </summary>
 		public static readonly MapSize Long = new MapSize ( 1 , 2 );
 
 		/// <summary>
-		/// 宽地图元素尺寸
+		/// 宽地图元素尺寸，2*1
 		/// </summary>
 		public static readonly MapSize Wide = new MapSize ( 2 , 1 );
 
 		/// <summary>
-		/// 中等地图元素尺寸
+		/// 中等地图元素尺寸，2*2
 		/// </summary>
 		public static readonly MapSize Medium = new MapSize ( 2 , 2 );
 
 		/// <summary>
-		/// 大地图元素尺寸
+		/// 大地图元素尺寸，4*4
 		/// </summary>
 		public static readonly MapSize Large = new MapSize ( 4 , 4 );
 

@@ -1,10 +1,7 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
+﻿using System ;
+using System . Threading . Tasks ;
 
-namespace WenceyWang . Richman4L . App . Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	public class LoadingPageArgument

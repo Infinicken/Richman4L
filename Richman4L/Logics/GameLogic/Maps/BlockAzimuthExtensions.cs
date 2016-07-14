@@ -34,18 +34,18 @@ namespace WenceyWang . Richman4L . Maps
 			}
 			if ( anotherBlock == null )
 			{
-				throw new ArgumentNullException ( nameof ( anotherBlock ) );
+				return BlockAzimuth . None;
 			}
 
 			if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . X && thisBlock . Y == anotherBlock . Y - thisBlock . Size . Y )
 			{
-				return BlockAzimuth . Up;
+				return BlockAzimuth . Down;
 			}
 			else
 			{
 				if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . X && thisBlock . Y == anotherBlock . Y + anotherBlock . Size . Y )
 				{
-					return BlockAzimuth . Down;
+					return BlockAzimuth . Up;
 				}
 				else
 				{

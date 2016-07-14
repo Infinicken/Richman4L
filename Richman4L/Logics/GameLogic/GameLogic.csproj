@@ -100,6 +100,7 @@
     <Compile Include="Maps\Buildings\Park.cs" />
     <Compile Include="Maps\CardStore.cs" />
     <Compile Include="Maps\Decoration.cs" />
+    <Compile Include="Maps\EmptyBlock.cs" />
     <Compile Include="Maps\Hospital.cs" />
     <Compile Include="Maps\IMapDrawer.cs" />
     <Compile Include="Maps\IMapObjectDrawer.cs" />
@@ -244,6 +245,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Maps\Buildings\Resources\Park.xml" />
+    <EmbeddedResource Include="Maps\Resources\Index.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maps\Resources\Test.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Stocks\Resources\Index.xml" />
     <Content Include="Stocks\Resources\Test.xml" />
   </ItemGroup>

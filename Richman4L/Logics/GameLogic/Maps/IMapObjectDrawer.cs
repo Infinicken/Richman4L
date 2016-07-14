@@ -27,6 +27,8 @@ namespace WenceyWang . Richman4L . Maps
 	{
 		void Update ( );
 
+		void StartUp ( ) ;
+
 		void SetTarget ( T target ) ;
 
 		T Target { get; }

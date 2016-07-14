@@ -21,6 +21,7 @@ using System . Xml . Linq;
 
 namespace WenceyWang . Richman4L . Maps . Roads
 {
+	[MapObject]
 	public class ReturnRoad : Road
 	{
 		private long _exitId;
@@ -65,7 +66,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 			base . Dispose ( disposing );
 		}
 
-		public override bool CanEnterFrom ( Road road ) => road == Exit ;
+		public override bool CanEnterFrom ( Road road ) => road == Exit;
 
 		public ReturnRoad ( XElement resource ) : base ( resource )
 		{

@@ -94,9 +94,6 @@ namespace WenceyWang . Richman4L . Stocks
 			}
 		}
 
-
-
-
 		public static bool operator == ( StockPrice left , StockPrice right ) { return left . Equals ( right ); }
 
 		public static bool operator != ( StockPrice left , StockPrice right ) { return !left . Equals ( right ); }

@@ -32,7 +32,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			get
 			{
-				if ( _forwardRoad == null && _forwardRoad == null )
+				if ( _forwardRoad == null && _forwardRoadId == null )
 				{
 					return null;
 				}
@@ -53,7 +53,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			get
 			{
-				if ( _backwardRoad == null && _backwardRoad == null )
+				if ( _backwardRoad == null && _backwardRoadId == null )
 				{
 					return null;
 				}

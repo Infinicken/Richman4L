@@ -31,7 +31,7 @@ namespace WenceyWang . Richman4L . Maps
 	public class Map : GameObject
 	{
 		[NotNull]
-		public static Map Currnet => Game . Current . Map;
+		public static Map Currnet { get; set; }/*=> Game . Current . Map;*/
 
 		[NotNull]
 		public string Name { get; set; }
@@ -41,6 +41,11 @@ namespace WenceyWang . Richman4L . Maps
 		[NotNull]
 		[ItemNotNull]
 		public List<MapObject> Objects { get; private set; }
+
+		/// <summary>
+		/// 地图的排水基数
+		/// </summary>
+		public int PondingDecreaseBase { get; }
 
 		[NotNull]
 		public Road GetRoad ( long id ) => ( Objects . Single ( ( road ) => ( ( road as Road )?.Id == id ) ) ) as Road;
@@ -74,10 +79,10 @@ namespace WenceyWang . Richman4L . Maps
 			}
 		}
 
-		public Map ( [NotNull] Stream stream ) : this ( XDocument . Parse ( new StreamReader ( stream ) . ReadToEnd ( ) ) ) { }
-
 		public Map ( ) : base ( )
 		{
+			//todo:the line under is a test code
+			Currnet = this;
 			Objects = new List<MapObject> ( );
 			//todo
 		}
@@ -115,8 +120,11 @@ namespace WenceyWang . Richman4L . Maps
 			base . Dispose ( disposing );
 		}
 
-		[CanBeNull ]
-		public event EventHandler AddMapObjectEvent ;
+		[CanBeNull]
+		public event EventHandler AddMapObjectEvent;
+
+		[CanBeNull]
+		public event EventHandler RemoveMapObjectEvent;
 
 
 		public void RegisMapDrawer ( IMapDrawer mapDrawer )

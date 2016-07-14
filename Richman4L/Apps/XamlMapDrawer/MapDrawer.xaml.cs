@@ -14,6 +14,7 @@ using Windows . UI . Xaml . Input;
 using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
 
+using WenceyWang . Richman4L . App . XamlMapDrawer . MapObjectDrawers;
 using WenceyWang . Richman4L . Maps;
 using WenceyWang . Richman4L . Properties;
 
@@ -35,10 +36,12 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 				throw new ArgumentNullException ( nameof ( targetType ) );
 			}
 
-			MapObjectDrawerType type = new MapObjectDrawerType ( mapDrawerType , targetType ) ;
+			MapObjectDrawerType type = new MapObjectDrawerType ( mapDrawerType , targetType );
 
 			return type;
 		}
+
+		public Size ObjectDrawerSize { get; set; }
 
 		public static List<MapObjectDrawerType> MapObjectDrawerTypeList { get; }
 
@@ -59,6 +62,22 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 			}
 			Target = map;
 			Target . RegisMapDrawer ( this );
+
+			
+
+
+
+			foreach ( MapObject mapObject in Target . Objects )
+			{
+				Type drawerType = MapObjectDrawerTypeList . FirstOrDefault ( ( drawer ) => drawer . TargetType == mapObject . GetType ( ) ) . EntryType;
+				MapObjectDrawer objectDrawer = ( MapObjectDrawer ) Activator . CreateInstance ( drawerType );
+				objectDrawer . RenderTransform = objectDrawer . Size . TransformTo ( ObjectDrawerSize );
+
+			}
+
+
+
+
 			Target . AddMapObjectEvent += Map_AddMapObjectEvent;
 		}
 

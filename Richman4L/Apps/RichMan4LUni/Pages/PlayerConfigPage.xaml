@@ -1,15 +1,15 @@
 ﻿<Page
-	x:Class="WenceyWang.Richman4L.App.Pages.PlayerConfigPage"
+	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.PlayerConfigPage"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:WenceyWang.Richman4L.App"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:Logic="using:WenceyWang.Richman4L.App.Logic"
+	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
 	mc:Ignorable="d"
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
 	<Page.Resources>
-		<Logic:AppSettings x:Key="AppSettings"/>
+		<logic:AppSettings x:Key="AppSettings"/>
 		<Thickness x:Key="FlyoutContentPanelPortraitThemeMargin">0,25.5,0,0</Thickness>
 		<Thickness x:Key="FlyoutContentPanelLandscapeThemeMargin">0,0,0,0</Thickness>
 		<x:String x:Key="Player1String">玩家1</x:String>

@@ -5,12 +5,110 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:buildings="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers.Buildings"
+    xmlns:Roads="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers.Roads"
+    xmlns:MapObjectDrawers="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers"
     x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.MapDrawer"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignHeight="600"
+    d:DesignWidth="1800">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="ms-appx:///XAMLResources/GeneralDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
 
 	<Grid x:Name="MainGrid">
-		<buildings:SmallHouse HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" Width="1800" Grid.Row="9">
+				<StackPanel.RenderTransform>
+					<CompositeTransform TranslateX="125"/>
+				</StackPanel.RenderTransform>
+				<Roads:NormalRoadDrawer HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" RenderTransformOrigin="0.5,0.5">
+					<Roads:NormalRoadDrawer.RenderTransform>
+						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143"/>
+					</Roads:NormalRoadDrawer.RenderTransform>
+				</Roads:NormalRoadDrawer>
+				<Roads:NormalRoadDrawer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+					<Roads:NormalRoadDrawer.RenderTransform>
+						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143"/>
+					</Roads:NormalRoadDrawer.RenderTransform>
+				</Roads:NormalRoadDrawer>
+				<Roads:NormalRoadDrawer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+					<Roads:NormalRoadDrawer.RenderTransform>
+						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143"/>
+					</Roads:NormalRoadDrawer.RenderTransform>
+				</Roads:NormalRoadDrawer>
+				<Roads:NormalRoadDrawer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+					<Roads:NormalRoadDrawer.RenderTransform>
+						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143"/>
+					</Roads:NormalRoadDrawer.RenderTransform>
+				</Roads:NormalRoadDrawer>
+				<Roads:NormalRoadDrawer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+					<Roads:NormalRoadDrawer.RenderTransform>
+						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143"/>
+					</Roads:NormalRoadDrawer.RenderTransform>
+				</Roads:NormalRoadDrawer>
+				<buildings:SmallHouseDrawer HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50" RenderTransformOrigin="0.5,0.5">
+					<buildings:SmallHouseDrawer.RenderTransform>
+						<CompositeTransform ScaleX="0.833333333333333" ScaleY="0.833333333333333"/>
+					</buildings:SmallHouseDrawer.RenderTransform>
+				</buildings:SmallHouseDrawer>
+				<MapObjectDrawers:SmallAreaDrawer Width="100" RenderTransformOrigin="0.5,0.5">
+					<MapObjectDrawers:SmallAreaDrawer.RenderTransform>
+						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143"/>
+					</MapObjectDrawers:SmallAreaDrawer.RenderTransform>
+				</MapObjectDrawers:SmallAreaDrawer>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Row="11" RenderTransformOrigin="0.5,0.5">
+				<StackPanel.RenderTransform>
+					<CompositeTransform TranslateX="25"/>
+				</StackPanel.RenderTransform>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Row="10" RenderTransformOrigin="0.5,0.5">
+				<StackPanel.RenderTransform>
+					<CompositeTransform TranslateX="75"/>
+				</StackPanel.RenderTransform>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+				<MapObjectDrawers:EmptyBlockDrawer Width="100" Height="50" RenderTransformOrigin="0.5,0.5"/>
+			</StackPanel>
+		</Grid>
 	</Grid>
 </UserControl>

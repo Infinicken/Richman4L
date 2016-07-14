@@ -1,13 +1,10 @@
-﻿using System;
-using System . Collections . Generic;
-using System . ComponentModel;
-using System . Linq;
-using System . Runtime . CompilerServices;
-using System . Text;
-using System . Threading . Tasks;
-using Windows . Storage;
+﻿using System ;
+using System . ComponentModel ;
+using System . Runtime . CompilerServices ;
 
-namespace WenceyWang . Richman4L . App . Logic
+using Windows . Storage ;
+
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 	public class AppSettings : INotifyPropertyChanged
 	{

@@ -25,6 +25,7 @@ namespace WenceyWang . Richman4L . Stocks
 
 
 		public decimal DelegateFeeRate { get; set; }
+
 		//todo:event
 
 		public List<StockBuff> Buffs { get; private set; } = new List<StockBuff> ( );
@@ -57,13 +58,11 @@ namespace WenceyWang . Richman4L . Stocks
 
 			foreach ( Stock stock in toProcess )
 			{
-
 				List<SellStockDelegate> sellDelegates = SellDelegateList [ stock ];
 				List<BuyStockDelegate> buyDelegates = BuyDelegateList [ stock ];
 
-				if ( !stock . TransactToday )
+				if ( stock . TransactToday )
 				{
-
 					sellDelegates . Sort ( ( x , y ) => x . Price . CompareTo ( y . Price ) );
 					buyDelegates . Sort ( ( x , y ) => y . Price . CompareTo ( x . Price ) );
 
@@ -110,6 +109,22 @@ namespace WenceyWang . Richman4L . Stocks
 							}
 						}
 					}
+
+					if ( !stock . IsBlockBuy ( ) )
+					{
+						int sellVolume = stock . CurrentPrice . BuyVolume;
+						if ( !stock . IsBlockSell ( ) )
+						{
+							sellVolume += BuyDelegateList [ stock ] . Sum ( ( dele ) => dele . Number );
+						}
+						foreach ( BuyStockDelegate dele in buyDelegates )
+						{
+							if ( dele . Price >= stock . CurrentPrice . TodaysLow )
+							{
+
+							}
+						}
+					}
 				}
 				else
 				{
@@ -125,13 +140,14 @@ namespace WenceyWang . Richman4L . Stocks
 
 				foreach ( SellStockDelegate deles in sellDelegates )
 				{
-					deles . Player . PayForStockDelegate ( deles , ( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) );
+					deles . Player . PayForStockDelegate ( deles ,
+															( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) );
 				}
 				foreach ( BuyStockDelegate deles in buyDelegates )
 				{
-					deles . Player . PayForStockDelegate ( deles , ( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) );
+					deles . Player . PayForStockDelegate ( deles ,
+															( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) );
 				}
-
 			}
 		}
 
@@ -175,6 +191,10 @@ namespace WenceyWang . Richman4L . Stocks
 		[NotNull]
 		private Dictionary<Stock , List<BuyStockDelegate>> BuyDelegateList { get; set; }
 
+		/// <summary>
+		/// 提交购买股票的委托
+		/// </summary>
+		/// <param name="buyDelegate">要提交的委托</param>
 		public void BuyStock ( [NotNull] BuyStockDelegate buyDelegate )
 		{
 			CheckDisposed ( );
@@ -194,6 +214,10 @@ namespace WenceyWang . Richman4L . Stocks
 		[NotNull]
 		private Dictionary<Stock , List<SellStockDelegate>> SellDelegateList { get; set; }
 
+		/// <summary>
+		/// 提交销售股票的委托
+		/// </summary>
+		/// <param name="sellDelegate">要提交的委托</param>
 		public void SellStock ( [NotNull] SellStockDelegate sellDelegate )
 		{
 			CheckDisposed ( );
@@ -211,15 +235,25 @@ namespace WenceyWang . Richman4L . Stocks
 		}
 
 
-		/// <summary>
-		/// 加载资源
-		/// </summary>
-		/// <param name="flieName"></param>
-		public StockMarket ( string flieName )
-			: this ( ResourceHelper . LoadXmlDocument ( $"{nameof ( Stocks )}.Resources.{flieName}" ) ) { }
-
-		private StockMarket ( XDocument document ) : this ( )
+		private StockMarket ( [NotNull]XDocument document ) : this ( )
 		{
+			if ( document == null )
+			{
+				throw new ArgumentNullException ( nameof ( document ) );
+			}
+
+			try
+			{
+				foreach ( XElement stock in document . Root . Elements ( ) )
+				{
+					Stocks . Add ( new Stock ( stock ) );
+				}
+			}
+			catch ( NullReferenceException e )
+			{
+				throw new ArgumentException ( $"{nameof ( document )} has wrong data or lack of data" , e );
+			}
+
 			//ToDo LoadStocks
 		}
 
@@ -227,7 +261,7 @@ namespace WenceyWang . Richman4L . Stocks
 
 		public override string ToString ( )
 		{
-			return $"StockMarket ";
+			return $"StockMarket with {Stocks . Count} stock";
 
 			//Todo:Compele this;			
 		}

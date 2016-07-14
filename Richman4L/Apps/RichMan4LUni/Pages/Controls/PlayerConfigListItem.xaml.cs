@@ -5,7 +5,7 @@ using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Players . Models ;
 
-namespace WenceyWang . Richman4L . App . Pages . Controls
+namespace WenceyWang . Richman4L . Apps . Uni . Pages . Controls
 {
 	public sealed partial class PlayerConfigListItem : UserControl
 	{

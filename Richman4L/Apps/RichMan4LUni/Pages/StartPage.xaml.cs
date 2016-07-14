@@ -1,31 +1,16 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . IO;
-using System . Linq;
-using System . Runtime . InteropServices . WindowsRuntime;
-using System . Text;
-using System . Threading;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+﻿using System ;
+using System . Collections . Generic ;
+using System . Threading . Tasks ;
 
-using Windows . Foundation;
-using Windows . Foundation . Collections;
-using Windows . Foundation . Metadata;
-using Windows . UI . ViewManagement;
-using Windows . UI . Xaml;
-using Windows . UI . Xaml . Controls;
-using Windows . UI . Xaml . Controls . Primitives;
-using Windows . UI . Xaml . Data;
-using Windows . UI . Xaml . Input;
-using Windows . UI . Xaml . Media;
-using Windows . UI . Xaml . Navigation;
+using Windows . Foundation . Metadata ;
+using Windows . UI . ViewManagement ;
+using Windows . UI . Xaml ;
+using Windows . UI . Xaml . Controls ;
 
-using WenceyWang . Richman4L . App . Logic;
-using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Maps ;
 
-
-namespace WenceyWang . Richman4L . App . Pages
+namespace WenceyWang . Richman4L . Apps . Uni . Pages
 {
 
 	/// <summary>

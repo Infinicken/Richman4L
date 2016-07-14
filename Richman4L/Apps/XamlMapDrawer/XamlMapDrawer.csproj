@@ -112,9 +112,15 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapObjectDrawers\EmptyBlockDrawer.xaml.cs">
+      <DependentUpon>EmptyBlockDrawer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MapObjectDrawers\SmallAreaDrawer.xaml.cs">
+      <DependentUpon>SmallAreaDrawer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MapObjectDrawerType.cs" />
-    <Compile Include="MapObjectDrawers\Buildings\SmallHouse.xaml.cs">
-      <DependentUpon>SmallHouse.xaml</DependentUpon>
+    <Compile Include="MapObjectDrawers\Buildings\SmallHouseDrawer.xaml.cs">
+      <DependentUpon>SmallHouseDrawer.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapDrawer.xaml.cs">
       <DependentUpon>MapDrawer.xaml</DependentUpon>
@@ -127,10 +133,19 @@
     <Compile Include="MapObjectDrawers\Roads\NormalRoadDrawer.xaml.cs">
       <DependentUpon>NormalRoadDrawer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SizeScaleHelper.cs" />
     <EmbeddedResource Include="Properties\XamlMapDrawer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MapObjectDrawers\Buildings\SmallHouse.xaml">
+    <Page Include="MapObjectDrawers\Buildings\SmallHouseDrawer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MapObjectDrawers\EmptyBlockDrawer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MapObjectDrawers\SmallAreaDrawer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

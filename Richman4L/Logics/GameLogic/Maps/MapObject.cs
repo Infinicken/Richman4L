@@ -19,6 +19,7 @@
 using System;
 using System . Collections . Generic;
 using System . Linq;
+using System . Reflection;
 using System . Text;
 using System . Threading . Tasks;
 using System . Xml . Linq;
@@ -73,6 +74,10 @@ namespace WenceyWang . Richman4L . Maps
 			base . Dispose ( disposing );
 		}
 
+		public static void CleanMapObjectType ( ) { MapObjectTypes = new List<MapObjectType> ( ); }
+
+		public MapObjectType Type => MapObjectTypes . Single ( type => type . EntryType == GetType ( ) );
+
 		[NotNull]
 		[ItemNotNull]
 		public static List<MapObjectType> MapObjectTypes { get; private set; } = new List<MapObjectType> ( );
@@ -80,9 +85,21 @@ namespace WenceyWang . Richman4L . Maps
 		public static void LoadMapObjects ( )
 		{
 			//Todo:Load All internal type
-			RegisMapObjectType ( nameof ( AreaRoad ) , typeof ( AreaRoad ) );
+			foreach ( Type type in Assembly . GetExecutingAssembly ( ) . GetTypes ( ) . Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
+			{
+				RegisMapObjectType ( type . Name , type );
+			}
+			;
+
 		}
 
+		/// <summary>
+		/// 注册一个MapObject类型
+		/// 这个方法应当在加载程序集的时候被调用，加载的程序集应当注册所有的MapObject
+		/// </summary>
+		/// <param name="name">用于从地图资源文件中识别的名称</param>
+		/// <param name="entryType">要注册的类型类型</param>
+		/// <returns>生成的类型</returns>
 		[NotNull]
 		public static MapObjectType RegisMapObjectType ( [NotNull] XName name , [NotNull] Type entryType )
 		{
@@ -97,10 +114,6 @@ namespace WenceyWang . Richman4L . Maps
 			{
 				throw new ArgumentNullException ( nameof ( entryType ) );
 			}
-			if ( MapObjectTypes . Any ( ( type ) => type . Name == name ) )
-			{
-				throw new ArgumentException ( $"{nameof ( name )} have been registed" );
-			}
 			if ( entryType . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) == null )
 			{
 				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( MapObjectAttribute )}" ,
@@ -109,12 +122,18 @@ namespace WenceyWang . Richman4L . Maps
 
 			#endregion
 
-			MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType );
+			if ( MapObjectTypes . Any ( ( type ) => type . Name == name ) )
+			{
+				return MapObjectTypes . Single ( ( type ) => type . Name == name );
+			}
+			else
+			{
+				MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType );
 
-			MapObjectTypes . Add ( mapObjectType );
+				MapObjectTypes . Add ( mapObjectType );
 
-			return mapObjectType;
-
+				return mapObjectType;
+			}
 		}
 
 		/// <summary>
@@ -138,6 +157,7 @@ namespace WenceyWang . Richman4L . Maps
 				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
 			}
 		}
+
 
 		[NotNull]
 		public override string ToString ( )

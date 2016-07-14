@@ -21,6 +21,7 @@ using System . Xml . Linq;
 
 namespace WenceyWang . Richman4L . Maps . Roads
 {
+	[MapObject]
 	public class WithInRoad : NormalRoad
 	{
 		private long? _inRoadId;

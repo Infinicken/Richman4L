@@ -28,12 +28,12 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 	/// <summary>
 	/// 指示建筑类型
 	/// </summary>
-	public sealed class BuildingType
+	public sealed class BuildingType : MapObjectType
 	{
 		/// <summary>
 		/// 建筑类型的名称
 		/// </summary>
-		public string Name { get; }
+		public override string Name { get; }
 
 		/// <summary>
 		/// 建筑类型的简介
@@ -48,7 +48,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		/// <summary>
 		/// 建筑的入口类型
 		/// </summary>
-		public Type EntryType { get; }
+		public override Type EntryType { get; }
 
 		/// <summary>
 		/// 建筑的初始等级
@@ -62,7 +62,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 		public override string ToString ( ) => $"{Name} sized {Size}";
 
-		internal BuildingType ( Type entryType , XElement element )
+		internal BuildingType ( Type entryType , XElement element ) : base ( element . Attribute ( nameof ( Name ) ) . Value , entryType )
 		{
 
 			EntryType = entryType;

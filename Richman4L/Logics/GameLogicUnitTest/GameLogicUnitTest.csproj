@@ -66,6 +66,14 @@
     <Compile Include="GameSayingTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Apps\CharacterMapDrawer\CharacterMapDrawer.csproj">
+      <Project>{7765D69C-137E-4D84-9978-56E10527E02E}</Project>
+      <Name>CharacterMapDrawer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Apps\Richman4LConsole\Richman4LConsole.csproj">
+      <Project>{7f57b1c2-cee0-41db-9823-15508ea2fbe6}</Project>
+      <Name>Richman4LConsole</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameLogic\GameLogic.csproj">
       <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
       <Name>GameLogic</Name>

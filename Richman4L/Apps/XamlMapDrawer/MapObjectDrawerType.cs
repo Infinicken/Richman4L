@@ -4,6 +4,7 @@ using System . Linq;
 using System . Text;
 using System . Threading . Tasks;
 
+using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . App . XamlMapDrawer

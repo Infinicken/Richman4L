@@ -1,12 +1,9 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-using Windows . UI . Xaml;
-using Windows . UI . Xaml . Data;
+﻿using System ;
 
-namespace WenceyWang . Richman4L . App . Logic
+using Windows . UI . Xaml ;
+using Windows . UI . Xaml . Data ;
+
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 	public class BooleanVisibilityConverter : IValueConverter
 	{

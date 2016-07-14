@@ -1,5 +1,5 @@
 ﻿<Application
-	x:Class="WenceyWang.Richman4L.App.App"
+	x:Class="WenceyWang.Richman4L.Apps.Uni.App"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:WenceyWang.Richman4L.App"

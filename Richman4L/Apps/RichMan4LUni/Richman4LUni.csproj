@@ -7,7 +7,7 @@
     <ProjectGuid>{EDE6C6E9-FB2A-445D-B5E9-DC3CD6CE7828}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WenceyWang.Richman4L.App</RootNamespace>
+    <RootNamespace>WenceyWang.Richman4L.Apps.Uni</RootNamespace>
     <AssemblyName>RichMan4LUni</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>

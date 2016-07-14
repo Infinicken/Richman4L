@@ -8,27 +8,11 @@ using WenceyWang . Richman4L . Properties ;
 
 namespace WenceyWang . Richman4L . App . XamlMapDrawer . MapObjectDrawers . Buildings
 {
-	public sealed partial class SmallHouse : MapObjectDrawer, IMapObjectDrawer<SmallSimpleBuilding>
+	public sealed partial class SmallHouseDrawer : MapObjectDrawer 
 	{
-
-
-
-		[CanBeNull]
-		public SmallSimpleBuilding Target { get; private set; } = null;
 
 		public override Size Size => new Size ( 120 , 60 );
 
-		public void SetTarget ( [NotNull] SmallSimpleBuilding target )
-		{
-			if ( Target == null )
-			{
-				Target = target;
-			}
-			else
-			{
-				throw new InvalidOperationException ( );
-			}
-		}
 
 		public override void Show ( )
 		{
@@ -42,7 +26,7 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer . MapObjectDrawers . Buil
 
 		public void Update ( ) { }
 
-		public SmallHouse ( )
+		public SmallHouseDrawer ( )
 		{
 			this . InitializeComponent ( );
 		}

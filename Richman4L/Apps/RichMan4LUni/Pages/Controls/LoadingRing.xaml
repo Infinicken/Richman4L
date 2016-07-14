@@ -5,14 +5,14 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:RichMan4L="WenceyWang.RichMan4L"
-	xmlns:local1="using:WenceyWang.Richman4L.App.Pages.Controls"
-	x:Class="WenceyWang.Richman4L.App.Pages.Controls.LoadingRing"
+	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.Pages.Controls"
+	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.Controls.LoadingRing"
 	mc:Ignorable="d"
 	d:DesignHeight="100"
 	d:DesignWidth="100" Loaded="UserControl_Loaded">
 
 	<UserControl.Resources>
-		<local1:AngelConverter x:Key="AngelConverter"/>
+		<controls:AngelConverter x:Key="AngelConverter"/>
 		<Storyboard x:Name="LoadingStoryBoard" AutoReverse="True" RepeatBehavior="Forever">
 			<DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(RangeBase.Value)" Storyboard.TargetName="LargeRingDownProgress">
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}"/>

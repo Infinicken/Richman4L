@@ -5,11 +5,10 @@
 	xmlns:roads="clr-namespace:WenceyWang.Richman4L.Maps.Roads;assembly=GameLogic"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:xamlMapDrawer="using:WenceyWang.Richman4L.App.XamlMapDrawer"
 	xmlns:mapObjectDrawers="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers"
 	mc:Ignorable="d"
-	d:DesignHeight="56"
-	d:DesignWidth="112">
+	d:DesignHeight="61.819"
+	d:DesignWidth="109.672">
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -17,9 +16,9 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
-	
+
 	<Grid>
-		<Grid Height="112" Width="112" Margin="0,-28" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
+		<Grid Height="112" Width="112" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" Margin="{StaticResource MapObjMargin}" UseLayoutRounding="False" d:LayoutRounding="Auto">
 			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" Background="Gray" Grid.ColumnSpan="3">
 				<Grid.RenderTransform>
 					<CompositeTransform/>

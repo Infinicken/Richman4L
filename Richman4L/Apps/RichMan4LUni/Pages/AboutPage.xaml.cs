@@ -16,26 +16,14 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . IO;
-using System . Linq;
-using System . Runtime . InteropServices . WindowsRuntime;
+using Windows . Foundation . Metadata ;
+using Windows . UI . Xaml ;
+using Windows . UI . Xaml . Controls ;
+using Windows . UI . Xaml . Navigation ;
 
-using Windows . Foundation;
-using Windows . Foundation . Collections;
-using Windows . Foundation . Metadata;
-using Windows . UI . Xaml;
-using Windows . UI . Xaml . Controls;
-using Windows . UI . Xaml . Controls . Primitives;
-using Windows . UI . Xaml . Data;
-using Windows . UI . Xaml . Input;
-using Windows . UI . Xaml . Media;
-using Windows . UI . Xaml . Navigation;
+using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-using WenceyWang . Richman4L . App . Logic;
-
-namespace WenceyWang . Richman4L . App . Pages
+namespace WenceyWang . Richman4L . Apps . Uni . Pages
 {
 
 	/// <summary>

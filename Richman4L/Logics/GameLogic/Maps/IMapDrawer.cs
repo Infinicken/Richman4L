@@ -13,5 +13,9 @@ namespace WenceyWang . Richman4L . Maps
 
 		void DrawerCatched ( );
 
+
+		void SetMap ( Map map ) ;
+
+		Map Target { get; }
 	}
 }

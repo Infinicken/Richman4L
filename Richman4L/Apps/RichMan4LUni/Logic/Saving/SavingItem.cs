@@ -16,15 +16,13 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Text;
-using System . IO;
-using System . Threading . Tasks;
-using System . Threading;
-using Windows . Storage;
+using System ;
+using System . Collections . Generic ;
+using System . Threading . Tasks ;
 
-namespace WenceyWang . Richman4L . App . Logic . Saving
+using Windows . Storage ;
+
+namespace WenceyWang . Richman4L . Apps . Uni . Logic . Saving
 {
     class SavingItem
     {

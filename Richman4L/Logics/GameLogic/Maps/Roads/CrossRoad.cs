@@ -157,5 +157,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 			}
 		}
 
+		//public override MapObjectType Type =>RegisMapObjectType()
+
 	}
 }

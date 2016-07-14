@@ -92,7 +92,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		/// <summary>
 		/// 指示建筑类型
 		/// </summary>
-		public BuildingType Type { get; private set; }
+		public new BuildingType Type { get; private set; }
 
 		/// <summary>
 		/// 指示建筑是否易于摧毁

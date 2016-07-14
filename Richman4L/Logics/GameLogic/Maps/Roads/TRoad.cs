@@ -23,6 +23,7 @@ using System . Xml . Linq;
 namespace WenceyWang . Richman4L . Maps . Roads
 {
 	// ReSharper disable once InconsistentNaming
+	[MapObject]
 	public class TRoad : Road
 	{
 		private long? _firstExitId;

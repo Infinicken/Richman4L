@@ -1,26 +1,16 @@
-﻿using System;
-using System . Collections . Generic;
-using System . IO;
-using System . Linq;
-using System . Runtime . InteropServices . WindowsRuntime;
+﻿using System ;
 
-using Windows . ApplicationModel;
-using Windows . ApplicationModel . Activation;
-using Windows . Foundation;
-using Windows . Foundation . Collections;
-using Windows . UI . Xaml;
-using Windows . UI . Xaml . Controls;
-using Windows . UI . Xaml . Controls . Primitives;
-using Windows . UI . Xaml . Data;
-using Windows . UI . Xaml . Input;
-using Windows . UI . Xaml . Media;
-using Windows . UI . Xaml . Navigation;
-using Windows . UI . ViewManagement;
+using Windows . ApplicationModel ;
+using Windows . ApplicationModel . Activation ;
+using Windows . UI . ViewManagement ;
+using Windows . UI . Xaml ;
+using Windows . UI . Xaml . Controls ;
+using Windows . UI . Xaml . Navigation ;
 
-using WenceyWang . Richman4L . App . Logic;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Apps . Uni . Pages ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . App
+namespace WenceyWang . Richman4L . Apps . Uni
 {
 
 	/// <summary>
@@ -58,6 +48,7 @@ namespace WenceyWang . Richman4L . App
 			Suspending += OnSuspending;
 			UnhandledException += OnUnhandledException;
 			Resuming += OnResuming;
+			
 		}
 
 		private void OnResuming ( object sender , object e ) { }
@@ -103,7 +94,7 @@ namespace WenceyWang . Richman4L . App
 				// 当导航堆栈尚未还原时，导航到第一页，
 				// 并通过将所需信息作为导航参数传入来配置
 				// 参数
-				rootFrame . Navigate ( typeof ( Pages . StartPage ) , e . Arguments );
+				rootFrame . Navigate ( typeof ( StartPage ) , e . Arguments );
 			}
 
 

@@ -26,9 +26,9 @@ namespace WenceyWang . Richman4L . Maps
 	public class MapObjectType
 	{
 
-		public string Name { get; }
+		public virtual string Name { get; }
 
-		public Type EntryType { get; }
+		public virtual Type EntryType { get; }
 
 		internal MapObjectType ( string name , Type entryType )
 		{
