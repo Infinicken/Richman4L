@@ -86,4 +86,5 @@ namespace WenceyWang . Richman4L
 			return Convert . ToInt32 ( x );
 		}
 	}
+
 }

@@ -16,18 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Linq ;
+using System . Text ;
+using System . Threading . Tasks ;
+using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Buffs;
-using WenceyWang . Richman4L . Buffs . StockBuffs;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Buffs ;
+using WenceyWang . Richman4L . Buffs . StockBuffs ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Stocks
+namespace WenceyWang . Richman4L .Stocks
 {
 
 	/// <summary>
@@ -39,43 +39,43 @@ namespace WenceyWang . Richman4L . Stocks
 		/// <summary>
 		/// 表示股票的名称
 		/// </summary>
-		public string Name { get; protected set; }
+		public string Name { get ; protected set ; }
 
 		/// <summary>
 		/// 表示当前的价格
 		/// </summary>
-		public StockPrice CurrentPrice { get; set; }
+		public StockPrice CurrentPrice { get ; set ; }
 
-		internal StockPrice TodayAnticipate { get; set; }
+		internal StockPrice TodayAnticipate { get ; set ; }
 
-		[NotNull]
-		public PriceController . StockPriceController PriceController { get; }
+		[ NotNull ]
+		public PriceController . StockPriceController PriceController { get ; }
 
 		/// <summary>
 		/// 股票何时交易
 		/// </summary>
-		public StockTransactDay TransactDay { get; set; }
+		public StockTransactDay TransactDay { get ; set ; }
 
 		/// <summary>
 		/// 今天是否交易
 		/// </summary>
-		public bool TransactToday { get; private set; }
+		public bool TransactToday { get ; private set ; }
 
 
-		public List<StockPrice> PriceHistory { get; set; } = new List<StockPrice> ( );
+		public List < StockPrice > PriceHistory { get ; set ; } = new List < StockPrice > ( ) ;
 
 
-		public List<StockBuff> Buffs { get; set; } = new List<StockBuff> ( );
+		public List < StockBuff > Buffs { get ; set ; } = new List < StockBuff > ( ) ;
 
 		/// <summary>
 		/// 今天的变动率
 		/// </summary>
-		public decimal ChangeNet { get; set; }
+		public decimal ChangeNet { get ; set ; }
 
 		/// <summary>
 		/// 预计明天的涨幅
 		/// </summary>
-		internal decimal NextDayChangeNet { get; set; }
+		internal decimal NextDayChangeNet { get ; set ; }
 
 
 		public override void StartDay ( Calendars . GameDate nextDate )
@@ -84,18 +84,18 @@ namespace WenceyWang . Richman4L . Stocks
 			{
 				//Todo:ChangeToUseAnotherController
 			}
-			TodayAnticipate = PriceController . GetPrice ( );
+			TodayAnticipate = PriceController . GetPrice ( ) ;
 			CurrentPrice = new StockPrice ( TodayAnticipate . OpenPrice ,
 											TodayAnticipate . OpenPrice ,
 											TodayAnticipate . OpenPrice ,
 											TodayAnticipate . OpenPrice ,
 											0 ,
-											0 );
+											0 ) ;
 		}
 
 		public override void EndToday ( )
 		{
-			ChangeNet = CurrentPrice . CurrentPrice / CurrentPrice . OpenPrice;
+			ChangeNet = CurrentPrice . CurrentPrice / CurrentPrice . OpenPrice ;
 
 			//CurrentPrice = OpenPrice * ChangeNet;
 
@@ -103,12 +103,12 @@ namespace WenceyWang . Richman4L . Stocks
 			//TodaysLow = Math . Min ( OpenPrice , CurrentPrice ) - Math . Abs ( OpenPrice - CurrentPrice ) * GameRandom . Current . Next ( 0 , 1500 ) / 1000m;
 
 			PriceHistory . Add ( new StockPrice
-			{
-				//OpenPrice = OpenPrice ,
-				//CurrentPrice = CurrentPrice ,
-				//TodaysHigh = TodaysHigh ,
-				//TodaysLow = TodaysLow
-			} );
+								{
+									//OpenPrice = OpenPrice ,
+									//CurrentPrice = CurrentPrice ,
+									//TodaysHigh = TodaysHigh ,
+									//TodaysLow = TodaysLow
+								} ) ;
 		}
 
 
@@ -118,53 +118,81 @@ namespace WenceyWang . Richman4L . Stocks
 		/// <param name="reason">退市的原因</param>
 		public void Delist ( StockDelistReason reason )
 		{
-			DelistEvent?.Invoke ( this , new EventArgs ( ) );
+			DelistEvent ? . Invoke ( this , new EventArgs ( ) ) ;
 		}
 
-		public event EventHandler DelistEvent;
+		public event EventHandler DelistEvent ;
 
 
-		public void AddTradingVolume ( int sellValue )
+		public void AddTradingVolume ( int tradingValue )
 		{
+			if ( tradingValue <= 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof ( tradingValue ) ,
+														$"{nameof ( tradingValue )} should be greater than 0" ) ;
+			}
 
+			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,
+											CurrentPrice . CurrentPrice ,
+											CurrentPrice . TodaysHigh ,
+											CurrentPrice . TodaysLow ,
+											CurrentPrice . BuyVolume + tradingValue ,
+											CurrentPrice . SellVolume + tradingValue ) ;
 		}
 
 		public void LowerTodaysLow ( decimal lowerPrice )
 		{
 			if ( lowerPrice >= CurrentPrice . TodaysLow )
 			{
-				//todo:change the "greater than"
-				throw new ArgumentException ( $"{nameof ( lowerPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysLow )}" );
+				throw new ArgumentException (
+					$"{nameof ( lowerPrice )} should less than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysLow )}" ) ;
 			}
-			//todo
-			//CurrentPrice . TodaysLow = lowerPrice;
 
+			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,
+											CurrentPrice . CurrentPrice ,
+											CurrentPrice . TodaysHigh ,
+											lowerPrice ,
+											CurrentPrice . BuyVolume ,
+											CurrentPrice . SellVolume ) ;
 		}
 
 		public void HigherTodaysHigh ( decimal higherPrice )
 		{
 			if ( higherPrice <= CurrentPrice . TodaysLow )
 			{
-				throw new ArgumentException ( $"{nameof ( higherPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysHigh )}" );
+				throw new ArgumentException (
+					$"{nameof ( higherPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysHigh )}" ) ;
 			}
-			//todo
-			//CurrentPrice . TodaysLow = higherPrice;
 
+			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,
+											CurrentPrice . CurrentPrice ,
+											higherPrice ,
+											CurrentPrice . TodaysLow ,
+											CurrentPrice . BuyVolume ,
+											CurrentPrice . SellVolume ) ;
 		}
 
+		public void AddBuff ( StockBuff buff )
+		{
+			if ( buff == null )
+			{
+				throw new ArgumentNullException ( nameof ( buff ) ) ;
+			}
 
+			Buffs . Add ( buff ) ;
+		}
 
 		public Stock ( XElement element ) : base ( ) { }
 
 		protected override void Dispose ( bool disposing )
 		{
-			if ( !DisposedValue )
+			if ( ! DisposedValue )
 			{
 				if ( disposing )
 				{
-					Game . Current?.StockMarket?.Stocks?.Remove ( this );
+					Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
 				}
-				base . Dispose ( disposing );
+				base . Dispose ( disposing ) ;
 			}
 		}
 

@@ -55,13 +55,22 @@ namespace WenceyWang . Richman4L
 
 		internal static bool Loaded = false;
 
-		public static GameTitle GetTitle ( )
+		public static GameTitle GetTitle ( bool randomTitleRoot )
 		{
 			if ( Loaded )
 			{
 				LoadTitles ( );
 			}
-			return new GameTitle ( TitleRoots . RandomItem ( GameRandom . Current ) , TitleKeys . RandomItem ( GameRandom . Current ) );
+
+			if ( randomTitleRoot )
+			{
+				return new GameTitle ( TitleRoots . RandomItem ( GameRandom . Current ) ,
+										TitleKeys . RandomItem ( GameRandom . Current ) ) ;
+			}
+			else
+			{
+				return new GameTitle ( "Richman" , TitleKeys . RandomItem ( GameRandom . Current ) ) ;
+			}
 		}
 
 		public bool Equals ( GameTitle other )

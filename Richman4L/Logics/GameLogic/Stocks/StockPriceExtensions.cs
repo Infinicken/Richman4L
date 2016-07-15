@@ -6,7 +6,7 @@ using System . Text;
 namespace WenceyWang . Richman4L . Stocks
 {
 
-	public static class StockPriceHelper
+	public static class StockPriceExtensions
 	{
 
 		public static long ToLongCelling ( this decimal price ) => Convert . ToInt64 ( decimal . Ceiling ( price ) );

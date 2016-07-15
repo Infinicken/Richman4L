@@ -69,10 +69,13 @@ namespace WenceyWang . Richman4L . Maps
 				if ( disposing )
 				{
 					Map . Currnet . Objects . Remove ( this );
+					DisposeEvent ? . Invoke ( this , new EventArgs ( ) ) ;
 				}
 			}
 			base . Dispose ( disposing );
 		}
+
+		public event EventHandler DisposeEvent ;
 
 		public static void CleanMapObjectType ( ) { MapObjectTypes = new List<MapObjectType> ( ); }
 

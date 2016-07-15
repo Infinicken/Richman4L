@@ -1,25 +1,21 @@
-﻿using System ;
+﻿using System;
 
-using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . App . CharacterMapDrawer . MapObjectDrawer . Roads
 {
-	public class NormalRoadDrawer : MapObjectDrawer<NormalRoad>
+
+	public class NormalRoadDrawer : CharacterMapObjectDrawer<NormalRoad>
 	{
 
-		public override char [ , ] CurrentView { get ; } = new char[ 1, 1 ] ;
+		public override char [ , ] CurrentView { get; } = new char [ 1 , 1 ];
 
-		public override void Update ( )
-		{
-			
-		}
+		public override void Update ( ) { }
 
 		public override void StartUp ( )
 		{
-
-
 			#region 断头路
 
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
@@ -35,7 +31,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapDrawer . MapObjectDrawer . 
 				Target . ForwardRoad == null )
 			{
 				CurrentView [ 0 , 0 ] = '╥';
-
 			}
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
 				Target . BackwardRoad == null ||
@@ -54,7 +49,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapDrawer . MapObjectDrawer . 
 
 			#endregion
 
-
 			#region 连续路
 
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
@@ -72,6 +66,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapDrawer . MapObjectDrawer . 
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 			{
 				CurrentView [ 0 , 0 ] = '═';
+
 				//左右
 			}
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
@@ -89,6 +84,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapDrawer . MapObjectDrawer . 
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
 			{
 				CurrentView [ 0 , 0 ] = '╚';
+
 				//右上
 			}
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
@@ -97,6 +93,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapDrawer . MapObjectDrawer . 
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 			{
 				CurrentView [ 0 , 0 ] = '╗';
+
 				//左下
 			}
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
@@ -105,25 +102,27 @@ namespace WenceyWang . Richman4L . App . CharacterMapDrawer . MapObjectDrawer . 
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
 			{
 				CurrentView [ 0 , 0 ] = '╔';
+
 				//右下
 			}
 
 			#endregion
-
-
 		}
+
+
 
 		public override void SetTarget ( [NotNull] NormalRoad target )
 		{
 			if ( Target == null )
 			{
 				Target = target;
-				StartUp ( );
 			}
 			else
 			{
 				throw new InvalidOperationException ( );
 			}
 		}
+
 	}
+
 }

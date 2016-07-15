@@ -23,15 +23,19 @@ using System . Linq;
 using System . Text;
 using System . IO;
 using System . Xml . Linq;
+
+using WenceyWang . Richman4L . Maps . Events;
 using WenceyWang . Richman4L . Maps . Roads;
 using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Maps
 {
+
 	public class Map : GameObject
 	{
+
 		[NotNull]
-		public static Map Currnet { get; set; }/*=> Game . Current . Map;*/
+		public static Map Currnet { get; set; } /*=> Game . Current . Map;*/
 
 		[NotNull]
 		public string Name { get; set; }
@@ -59,18 +63,24 @@ namespace WenceyWang . Richman4L . Maps
 			{
 				throw new ArgumentNullException ( nameof ( document ) );
 			}
+
 			XElement ele = document . Root;
 			if ( ele . Name != nameof ( Map ) )
 			{
 				throw new ArgumentException ( $"{nameof ( document )} do not perform a {nameof ( Map )}" );
 			}
+
 			try
 			{
 				Name = ele . Attribute ( nameof ( Name ) ) . Value;
-				Size = new MapSize ( Convert . ToInt32 ( ele . Attribute ( "SizeX" ) . Value ) , Convert . ToInt32 ( ele . Attribute ( "SizeY" )?.Value ) );
+				Size = new MapSize ( Convert . ToInt32 ( ele . Attribute ( "SizeX" ) . Value ) ,
+									Convert . ToInt32 ( ele . Attribute ( "SizeY" )?.Value ) );
 				foreach ( XElement item in ele . Element ( "MapObjects" )?.Elements ( ) )
 				{
-					Objects . Add ( Activator . CreateInstance ( MapObject . MapObjectTypes . Single ( ( type ) => type . Name == item . Name ) . EntryType , item ) as MapObject );
+					Objects . Add (
+						Activator . CreateInstance (
+							MapObject . MapObjectTypes . Single ( ( type ) => type . Name == item . Name ) . EntryType ,
+							item ) as MapObject );
 				}
 			}
 			catch ( NullReferenceException e )
@@ -84,21 +94,19 @@ namespace WenceyWang . Richman4L . Maps
 			//todo:the line under is a test code
 			Currnet = this;
 			Objects = new List<MapObject> ( );
+
 			//todo
 		}
 
-		public Map ( [NotNull] string flieName ) : this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) ) { }
-
-
-		public override void EndToday ( )
+		public Map ( [NotNull] string flieName )
+			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) )
 		{
-			throw new NotImplementedException ( );
 		}
 
-		public override void StartDay ( Calendars . GameDate nextDate )
-		{
-			throw new NotImplementedException ( );
-		}
+
+		public override void EndToday ( ) { throw new NotImplementedException ( ); }
+
+		public override void StartDay ( Calendars . GameDate nextDate ) { throw new NotImplementedException ( ); }
 
 		/// <summary>
 		/// 销毁这个Map
@@ -114,23 +122,19 @@ namespace WenceyWang . Richman4L . Maps
 					{
 						item . Dispose ( );
 					}
+
 					Objects . Clear ( );
 				}
 			}
+
 			base . Dispose ( disposing );
 		}
 
 		[CanBeNull]
-		public event EventHandler AddMapObjectEvent;
-
-		[CanBeNull]
-		public event EventHandler RemoveMapObjectEvent;
+		public event EventHandler<MapAddMapObjectEventArgs> AddMapObjectEvent;
 
 
-		public void RegisMapDrawer ( IMapDrawer mapDrawer )
-		{
-
-		}
+		public void RegisMapDrawer ( IMapDrawer mapDrawer ) { }
 
 	}
 

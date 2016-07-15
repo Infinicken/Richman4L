@@ -14,17 +14,17 @@ using Windows . UI . Xaml . Input;
 using Windows . UI . Xaml . Media;
 using Windows . UI . Xaml . Navigation;
 
-using WenceyWang . Richman4L . App . XamlMapDrawer . MapObjectDrawers;
+using WenceyWang . Richman4L . App . XamlMapDrawer . MapObjectDrawers ;
 using WenceyWang . Richman4L . Maps;
 using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . App . XamlMapDrawer
 {
 
-	public sealed partial class MapDrawer : UserControl, IMapDrawer
+	public sealed partial class XamlMapDrawer : UserControl, IMapDrawer
 	{
 
-		[NotNull]
+
 		public static MapObjectDrawerType RegisMapObjectDrawer ( [NotNull]Type mapDrawerType , [NotNull] Type targetType )
 		{
 			if ( mapDrawerType == null )
@@ -36,8 +36,15 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 				throw new ArgumentNullException ( nameof ( targetType ) );
 			}
 
-			MapObjectDrawerType type = new MapObjectDrawerType ( mapDrawerType , targetType );
+			MapObjectDrawerType type = MapObjectDrawerTypeList . Find ( typ => typ . EntryType == mapDrawerType && typ . TargetType == targetType );
 
+			if ( type != null )
+			{
+				return type;
+			}
+
+			type = new MapObjectDrawerType ( mapDrawerType , targetType );
+			MapObjectDrawerTypeList . Add ( type );
 			return type;
 		}
 
@@ -45,7 +52,7 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 
 		public static List<MapObjectDrawerType> MapObjectDrawerTypeList { get; }
 
-		public MapDrawer ( )
+		public XamlMapDrawer ( )
 		{
 
 			this . InitializeComponent ( );
@@ -58,12 +65,12 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 		{
 			if ( Target != null )
 			{
-				throw new InvalidOperationException ( $"this {nameof ( MapDrawer )} have {nameof ( Target )} now." );
+				throw new InvalidOperationException ( $"this {nameof ( XamlMapDrawer )} have {nameof ( Target )} now." );
 			}
 			Target = map;
 			Target . RegisMapDrawer ( this );
 
-			
+
 
 
 

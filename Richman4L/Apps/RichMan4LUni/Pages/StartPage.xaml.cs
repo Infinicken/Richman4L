@@ -1,14 +1,14 @@
-﻿using System ;
-using System . Collections . Generic ;
-using System . Threading . Tasks ;
+﻿using System;
+using System . Collections . Generic;
+using System . Threading . Tasks;
 
-using Windows . Foundation . Metadata ;
-using Windows . UI . ViewManagement ;
-using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
+using Windows . Foundation . Metadata;
+using Windows . UI . ViewManagement;
+using Windows . UI . Xaml;
+using Windows . UI . Xaml . Controls;
 
-using WenceyWang . Richman4L . Apps . Uni . Logic ;
-using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Apps . Uni . Logic;
+using WenceyWang . Richman4L . Maps;
 
 namespace WenceyWang . Richman4L . Apps . Uni . Pages
 {
@@ -47,10 +47,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 		{
 			Task . WaitAll ( _taskToWait . ToArray ( ) );
 
-			if ( AppSettings . Current . AllowRandomTitle )
-			{
-				AppSettings . Current . GameTitle = GameTitle . GetTitle ( );
-			}
+			GameTitleManager . GenerateNewTitle ( );
 
 			if ( AppSettings . Current . AcceptLicence )
 			{

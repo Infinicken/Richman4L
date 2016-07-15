@@ -6,7 +6,7 @@ using Windows . UI . Xaml . Media ;
 
 namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
-	static class OcdModeHelper
+	static class OcdModeExtensions
 	{
 		internal static void TurnOnOcdMode ( this Panel panel , Random random = null )
 		{

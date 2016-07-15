@@ -3,14 +3,14 @@ using System . Collections . Generic;
 using System . Linq;
 using System . Text;
 
-using WenceyWang . Richman4L . Buffs . StockBuffs;
-using WenceyWang . Richman4L . Stocks;
-using WenceyWang . Richman4L . Weathers;
+using WenceyWang . Richman4L . Buffs . StockBuffs ;
+using WenceyWang . Richman4L . Stocks ;
+using WenceyWang . Richman4L . Weathers ;
 
 namespace WenceyWang . Richman4L . Cards
 {
 	[Card]
-	public class RedCard : Card
+	public class BlackCard : Card
 	{
 
 		public override int PriceWhenBuy
@@ -46,7 +46,7 @@ namespace WenceyWang . Richman4L . Cards
 		{
 			Stock toUse = Owner . Console . StockPicker ( );
 
-			RedBuff buff = new RedBuff ( toUse , 3 );
+			BlackBuff buff = new BlackBuff ( toUse , 3 );
 		}
 	}
 }

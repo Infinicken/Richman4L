@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterMapDrawer.cs" />
-    <Compile Include="MapObjectDrawer\MapObjectDrawer.cs" />
+    <Compile Include="MapObjectDrawerType.cs" />
+    <Compile Include="MapObjectDrawer\CharacterMapObjectDrawer.cs" />
+    <Compile Include="MapObjectDrawer\ICharacterMapObjectDrawer.cs" />
     <Compile Include="MapObjectDrawer\Roads\NormalRoadDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

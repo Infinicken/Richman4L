@@ -25,7 +25,7 @@ namespace WenceyWang . Richman4L . UnitTests
 		{
 			for ( int i = 0 ; i < 1000 ; i++ )
 			{
-				Debug . WriteLine ( GameTitle . GetTitle ( ) );
+				Debug . WriteLine ( GameTitle . GetTitle (true ) );
 			}
 		}
 

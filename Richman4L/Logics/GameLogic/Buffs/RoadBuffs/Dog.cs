@@ -29,22 +29,24 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 	public class Dog : RoadBuff
 	{
 		/// <summary>
-		/// 指示狗咬经过的行人的概率的1000倍
+		/// 指示狗咬经过的行人的概率的10000倍
 		/// </summary>
-		public int BiteWalkerPossibility => 333;
+		public int BiteWalkerPossibility => 3333;
 
 		/// <summary>
-		/// 指示在此停止的人被狗咬的概率的1000倍
+		/// 指示在此停止的人被狗咬的概率的10000倍
 		/// </summary>
-		public long BiteStayerPossibility => 666;
+		public int BiteStayerPossibility => 6666;
 
 		public override void DoWhenPass ( Player player , MoveType moveType )
 		{
 			if ( moveType == MoveType . Walk )
 			{
+				if ( GameRandom . Current . InvokeEvent ( BiteWalkerPossibility ) )
+				{
+					player . ChangeState ( PlayerState . 住院 , GameRandom . Current . Next ( 1 , 4 ) ) ;
 
-				//Bite
-
+				}
 			}
 			if ( moveType == MoveType . RidingBicycle || moveType == MoveType . RidingMotorcycle || moveType == MoveType . DrivingCar )
 			{

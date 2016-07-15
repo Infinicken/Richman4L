@@ -122,8 +122,8 @@
     <Compile Include="MapObjectDrawers\Buildings\SmallHouseDrawer.xaml.cs">
       <DependentUpon>SmallHouseDrawer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MapDrawer.xaml.cs">
-      <DependentUpon>MapDrawer.xaml</DependentUpon>
+    <Compile Include="XamlMapDrawer.xaml.cs">
+      <DependentUpon>XamlMapDrawer.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapObjectDrawers\MapObjectDrawer.cs" />
     <Compile Include="NameShower.xaml.cs">
@@ -133,7 +133,7 @@
     <Compile Include="MapObjectDrawers\Roads\NormalRoadDrawer.xaml.cs">
       <DependentUpon>NormalRoadDrawer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SizeScaleHelper.cs" />
+    <Compile Include="SizeScaleExtensions.cs" />
     <EmbeddedResource Include="Properties\XamlMapDrawer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +154,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="MapDrawer.xaml">
+    <Page Include="XamlMapDrawer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

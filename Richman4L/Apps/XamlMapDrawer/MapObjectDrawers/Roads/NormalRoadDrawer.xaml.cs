@@ -132,6 +132,31 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer . MapObjectDrawers . Road
 
 		public NormalRoadDrawer ( ) { this . InitializeComponent ( ); }
 
+		#region IDisposable Support
+
+		private bool DisposedValue = false; // To detect redundant calls
+
+		private void Dispose ( bool disposing )
+		{
+			if ( !DisposedValue )
+			{
+				if ( disposing )
+				{
+
+				}
+
+				// TODO: set large fields to null.
+
+				DisposedValue = true;
+			}
+		}
+
+		~NormalRoadDrawer ( ) { Dispose ( false ); }
+
+		public void Dispose ( ) { Dispose ( true ); }
+
+		#endregion
+
 	}
 
 }

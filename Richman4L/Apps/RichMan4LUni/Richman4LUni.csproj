@@ -139,11 +139,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logic\GameTitleManager.cs" />
     <Compile Include="Logic\LoadingPageArgument.cs" />
     <Compile Include="Logic\LoadingPageTaskState.cs" />
     <Compile Include="Logic\PageNavigateHelper.cs" />
     <Compile Include="Logic\AppSettings.cs" />
-    <Compile Include="Logic\OcdModeHelper.cs" />
+    <Compile Include="Logic\OcdModeExtensions.cs" />
     <Compile Include="Logic\Saving\SavingItem.cs" />
     <Compile Include="Logic\NumberConvert.cs" />
     <Compile Include="Logic\VisibilityBooleanConverter.cs" />

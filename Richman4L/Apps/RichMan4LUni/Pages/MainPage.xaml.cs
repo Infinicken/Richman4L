@@ -22,7 +22,6 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 
 		private void MainPage_Loaded ( object sender , RoutedEventArgs e )
 		{
-			Title . Text = AppSettings . Current . GameTitle . Content;
 			StartStoryBoard . Begin ( );
 			StartStoryBoard . Completed += StartStoryBoard_Completed;
 		}

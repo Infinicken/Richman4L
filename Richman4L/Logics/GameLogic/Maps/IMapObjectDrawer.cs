@@ -23,13 +23,13 @@ using System . Text;
 
 namespace WenceyWang . Richman4L . Maps
 {
-	public interface IMapObjectDrawer<T> where T : MapObject
+	public interface IMapObjectDrawer<T>:IDisposable where T : MapObject
 	{
 		void Update ( );
 
-		void StartUp ( ) ;
+		void StartUp ( );
 
-		void SetTarget ( T target ) ;
+		void SetTarget ( T target );
 
 		T Target { get; }
 

@@ -7,7 +7,7 @@
     xmlns:buildings="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers.Buildings"
     xmlns:Roads="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers.Roads"
     xmlns:MapObjectDrawers="using:WenceyWang.Richman4L.App.XamlMapDrawer.MapObjectDrawers"
-    x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.MapDrawer"
+    x:Class="WenceyWang.Richman4L.App.XamlMapDrawer.XamlMapDrawer"
     mc:Ignorable="d"
     d:DesignHeight="600"
     d:DesignWidth="1800">

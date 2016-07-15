@@ -53,11 +53,14 @@
     <Compile Include="Buffs\RoadBuffs\Dog.cs" />
     <Compile Include="Buffs\RoadBuffs\DogDeadCause.cs" />
     <Compile Include="Buffs\RoadBuffs\Event\DogDeadEventArgs.cs" />
+    <Compile Include="Buffs\StockBuffs\BlackBuff.cs" />
     <Compile Include="Calendars\GameDate.cs" />
+    <Compile Include="Cards\BlackCard.cs" />
     <Compile Include="Cards\CardAttribute.cs" />
     <Compile Include="Cards\CardStates.cs" />
     <Compile Include="Cards\CardType.cs" />
     <Compile Include="DiceType.cs" />
+    <Compile Include="EventRandomExtensions.cs" />
     <Compile Include="GameEnviroment\SmallGameResult.cs" />
     <Compile Include="GameResult.cs" />
     <Compile Include="GameRandom.cs" />
@@ -69,7 +72,7 @@
     <Compile Include="Buffs\PlayerBuffs\BlockBuyAreaPlayerBuff.cs" />
     <Compile Include="Buffs\Buff.cs" />
     <Compile Include="Buffs\PlayerBuffs\PlayerBuff.cs" />
-    <Compile Include="Buffs\StockBuffs\RedCardBuff.cs" />
+    <Compile Include="Buffs\StockBuffs\RedBuff.cs" />
     <Compile Include="Buffs\RoadBuffs\RoadBuff.cs" />
     <Compile Include="Buffs\StockBuffs\StockBuff.cs" />
     <Compile Include="Calendars\Calendar.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Maps\CardStore.cs" />
     <Compile Include="Maps\Decoration.cs" />
     <Compile Include="Maps\EmptyBlock.cs" />
+    <Compile Include="Maps\Events\MapAddMapObjectEventArgs.cs" />
     <Compile Include="Maps\Hospital.cs" />
     <Compile Include="Maps\IMapDrawer.cs" />
     <Compile Include="Maps\IMapObjectDrawer.cs" />
@@ -192,7 +196,7 @@
     <Compile Include="Stocks\StockMarket.cs" />
     <Compile Include="Stocks\StockMarketMovement.cs" />
     <Compile Include="Stocks\StockPrice.cs" />
-    <Compile Include="Stocks\StockPriceHelper.cs" />
+    <Compile Include="Stocks\StockPriceExtensions.cs" />
     <Compile Include="Stocks\StockPriceRecording.cs" />
     <Compile Include="Stocks\StockProof.cs" />
     <Compile Include="Stocks\StockType.cs" />

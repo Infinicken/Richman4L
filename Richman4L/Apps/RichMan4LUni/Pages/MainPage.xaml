@@ -1,12 +1,14 @@
 ﻿<Page
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.MainPage"
-    mc:Ignorable="d">
+	mc:Ignorable="d">
 
 	<Page.Resources>
+		<logic:AppSettings x:Key="Settings"/>
 		<Storyboard x:Name="StartStoryBoard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
 				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}"/>
@@ -100,7 +102,7 @@
 				<RowDefinition Height="Auto"/>
 				<RowDefinition x:Name="Row" Height="20*"/>
 			</Grid.RowDefinitions>
-			<TextBlock x:Name="Title" TextWrapping="Wrap" Margin="0" FontSize="48" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontFamily="{StaticResource Font}" Foreground="{StaticResource White}">
+			<TextBlock x:Name="Title" TextWrapping="Wrap" Margin="0" FontSize="48" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontFamily="{StaticResource Font}" Foreground="{StaticResource White}" Text="{Binding GameTitle.Content, Mode=OneWay, Source={StaticResource Settings}}">
 				<Run Text="RichMan"/>
 				<Run Text="4"/>
 				<Run Text="L"/>

@@ -1,16 +1,13 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
+using System;
 
-using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Properties;
 
-namespace WenceyWang . Richman4L . App . XamlMapDrawer
+namespace WenceyWang . Richman4L . App . CharacterMapDrawer
 {
+
 	public class MapObjectDrawerType
 	{
+
 		[NotNull]
 		public Type EntryType { get; }
 
@@ -19,7 +16,6 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 
 		internal MapObjectDrawerType ( [NotNull] Type entryType , [NotNull] Type targetType )
 		{
-
 			if ( entryType == null )
 			{
 				throw new ArgumentNullException ( nameof ( entryType ) );
@@ -34,4 +30,5 @@ namespace WenceyWang . Richman4L . App . XamlMapDrawer
 		}
 
 	}
+
 }
