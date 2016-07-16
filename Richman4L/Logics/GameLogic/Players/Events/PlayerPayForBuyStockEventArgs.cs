@@ -24,7 +24,7 @@ using WenceyWang . Richman4L . Stocks;
 namespace WenceyWang . Richman4L . Players . Events
 {
 
-	public class PlayerPayForBuyStockEventArgs : PlayerEventArgs
+	public class PlayerPayForBuyStockEventArgs : PlayerPayEventArgs
 	{
 
 		[NotNull]
@@ -32,7 +32,7 @@ namespace WenceyWang . Richman4L . Players . Events
 
 		public int Number { get; }
 
-		public long Money { get; }
+		public override long Money { get; }
 
 		public PlayerPayForBuyStockEventArgs ( [NotNull] Stock stock , int number , long money )
 		{

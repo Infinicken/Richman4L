@@ -134,7 +134,7 @@ namespace WenceyWang . Richman4L . Maps
 		public event EventHandler<MapAddMapObjectEventArgs> AddMapObjectEvent;
 
 
-		public void RegisMapDrawer ( IMapDrawer mapDrawer ) { }
+		public void RegisMapRenderer ( IMapRenderer mapRenderer ) { }
 
 	}
 

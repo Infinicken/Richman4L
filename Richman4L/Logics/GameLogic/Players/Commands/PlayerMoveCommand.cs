@@ -21,21 +21,36 @@ using System . Collections . Generic;
 using System . Linq;
 using System . Text;
 
+using WenceyWang . Richman4L . Players . Commands . Arguments;
+using WenceyWang . Richman4L . Players . Commands . Arguments . DefineDomains;
+
 namespace WenceyWang . Richman4L . Players . Commands
 {
 
 	public class PlayerMoveCommand : PlayerCommand
 	{
 
-		public override void Apply ( )
+		public PlayerMoveCommand ( Player performer ) : base ( performer )
 		{
+			PlayerCommandArgumentInfo diceType = new PlayerCommandArgumentInfo (
+					"" ,
+					"" ,
+					ArgumentValueType . Dice ,
+					new DiceOwnerDefineDomains ( Performer ) );
 
+			//PlayerCommandArgumentInfo diceNumber = new PlayerCommandArgumentInfo (
+			//	"" ,
+			//	"" ,
+			//	ArgumentValueType . Integer ,
+			//	new IntegerIntervalDefineDomain ( 1 , true , Performer . NumberOfDice , true ) );
+
+			//Arguments = new List<PlayerCommandArgumentInfo> { diceType , diceNumber };
 		}
 
-		public PlayerMoveCommand ( Player owner ) : base ( owner )
-		{
+		public override List<PlayerCommandArgumentInfo> Arguments { get; }
 
-		}
+		public override void Apply ( ArgumentsContainer arguments ) {/*Performer.Move(arguments.Arguments[] */}
 
 	}
+
 }

@@ -34,6 +34,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 			StartStoryBoard . Begin ( );
 			_taskToWait = new List<Task>
 						{
+				//Todo:完善这个
 							Task . Run ( ( ) => { GameTitle . LoadTitles ( ) ; } ) ,
 							Task . Run ( ( ) => { GameSaying . LoadSayings ( ) ; } ) ,
 							Task . Run ( ( ) => { MapObject . LoadMapObjects ( ) ; } ) ,

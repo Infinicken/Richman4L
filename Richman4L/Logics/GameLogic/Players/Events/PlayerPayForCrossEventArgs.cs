@@ -23,13 +23,13 @@ using System . Text;
 
 namespace WenceyWang . Richman4L . Players . Events
 {
-	public sealed class PlayerPayForCrossEventArgs : EventArgs
+	public sealed class PlayerPayForCrossEventArgs : PlayerPayEventArgs
 	{
-		public Maps . Area Area { get; set; }
+		public Maps . Area Area { get;  }
 
-		public long Money { get; set; }
+		public override long Money { get;  }
 
-		public PlayerPayForCrossEventArgs ( Maps . Area area , long money ) : base ( )
+		public PlayerPayForCrossEventArgs ( Maps . Area area , long money )
 		{
 			Area = area;
 			Money = money;

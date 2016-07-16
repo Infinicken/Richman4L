@@ -25,7 +25,7 @@ using WenceyWang . Richman4L . Maps . Buildings;
 
 namespace WenceyWang . Richman4L . Players . Events
 {
-	public class PlayerPayForUpgradeBuildingEventArgs : PlayerEventArgs
+	public class PlayerPayForUpgradeBuildingEventArgs : PlayerPayEventArgs
 	{
 		public Building Building { get; private set; }
 
@@ -33,7 +33,7 @@ namespace WenceyWang . Richman4L . Players . Events
 
 		public BuildingGrade TargetGrade { get; }
 
-		public long Money { get; }
+		public override long Money { get; }
 
 		public PlayerPayForUpgradeBuildingEventArgs ( Building building , BuildingGrade sourceGrade , BuildingGrade targetGrade , long money )
 		{

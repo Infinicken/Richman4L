@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Logics\GameLogic\GameLogic.csproj">
+      <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
+      <Name>GameLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CharacterMapRenderer\CharacterMapRenderer.csproj">
+      <Project>{7765d69c-137e-4d84-9978-56e10527e02e}</Project>
+      <Name>CharacterMapRenderer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

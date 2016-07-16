@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.25302.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{6FC8DA3E-DE22-4C74-B70C-39819C441EE0}"
 EndProject
@@ -28,9 +28,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{60471C
 		Resources\Music\Source\StrangeMemory.mscz = Resources\Music\Source\StrangeMemory.mscz
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMapDrawer", "Apps\XamlMapDrawer\XamlMapDrawer.csproj", "{73B80FC0-34F1-429E-86A6-8F63451E53E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMapRenderer", "Apps\XamlMapRenderer\XamlMapRenderer.csproj", "{73B80FC0-34F1-429E-86A6-8F63451E53E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterMapDrawer", "Apps\CharacterMapDrawer\CharacterMapDrawer.csproj", "{7765D69C-137E-4D84-9978-56E10527E02E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterMapRenderer", "Apps\CharacterMapRenderer\CharacterMapRenderer.csproj", "{7765D69C-137E-4D84-9978-56E10527E02E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Richman4LConsole", "Apps\Richman4LConsole\Richman4LConsole.csproj", "{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}"
 EndProject
@@ -181,17 +181,17 @@ Global
 		SccProjectTopLevelParentUniqueName3 = Richman4L.sln
 		SccProjectName3 = Apps/Richman4LUni
 		SccLocalPath3 = Apps\\Richman4LUni
-		SccProjectUniqueName4 = Apps\\XamlMapDrawer\\XamlMapDrawer.csproj
+		SccProjectUniqueName4 = Apps\\Richman4LConsole\\Richman4LConsole.csproj
 		SccProjectTopLevelParentUniqueName4 = Richman4L.sln
-		SccProjectName4 = Apps/XamlMapDrawer
-		SccLocalPath4 = Apps\\XamlMapDrawer
-		SccProjectUniqueName5 = Apps\\CharacterMapDrawer\\CharacterMapDrawer.csproj
+		SccProjectName4 = Apps/Richman4LConsole
+		SccLocalPath4 = Apps\\Richman4LConsole
+		SccProjectUniqueName5 = Apps\\XamlMapRenderer\\XamlMapRenderer.csproj
 		SccProjectTopLevelParentUniqueName5 = Richman4L.sln
-		SccProjectName5 = Apps/CharacterMapDrawer
-		SccLocalPath5 = Apps\\CharacterMapDrawer
-		SccProjectUniqueName6 = Apps\\Richman4LConsole\\Richman4LConsole.csproj
+		SccProjectName5 = Apps/XamlMapRenderer
+		SccLocalPath5 = Apps\\XamlMapRenderer
+		SccProjectUniqueName6 = Apps\\CharacterMapRenderer\\CharacterMapRenderer.csproj
 		SccProjectTopLevelParentUniqueName6 = Richman4L.sln
-		SccProjectName6 = Apps/Richman4LConsole
-		SccLocalPath6 = Apps\\Richman4LConsole
+		SccProjectName6 = Apps/CharacterMapRenderer
+		SccLocalPath6 = Apps\\CharacterMapRenderer
 	EndGlobalSection
 EndGlobal

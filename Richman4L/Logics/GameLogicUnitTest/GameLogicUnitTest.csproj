@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -66,9 +67,9 @@
     <Compile Include="GameSayingTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Apps\CharacterMapDrawer\CharacterMapDrawer.csproj">
+    <ProjectReference Include="..\..\Apps\CharacterMapRenderer\CharacterMapRenderer.csproj">
       <Project>{7765D69C-137E-4D84-9978-56E10527E02E}</Project>
-      <Name>CharacterMapDrawer</Name>
+      <Name>CharacterMapRenderer</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Apps\Richman4LConsole\Richman4LConsole.csproj">
       <Project>{7f57b1c2-cee0-41db-9823-15508ea2fbe6}</Project>

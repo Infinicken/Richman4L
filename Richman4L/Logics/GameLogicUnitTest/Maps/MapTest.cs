@@ -20,7 +20,7 @@ using System;
 
 using Microsoft . VisualStudio . TestTools . UnitTesting;
 
-using WenceyWang . Richman4L . App . CharacterMapDrawer;
+using WenceyWang . Richman4L . App . CharacterMapRenderer;
 using WenceyWang . Richman4L . Maps;
 
 namespace WenceyWang . Richman4L . UnitTests . Maps
@@ -34,16 +34,16 @@ namespace WenceyWang . Richman4L . UnitTests . Maps
 		public void LoadMapTest ( )
 		{
 			MapObject . LoadMapObjects ( );
-			CharacterMapDrawer . LoadMapObjectDrawers ( ) ;
+			CharacterMapRenderer . LoadMapObjectRenderers ( ) ;
 			Map map = new Map ( "Test.xml" );
-			CharacterMapDrawer drawer = new CharacterMapDrawer ( );
-			drawer . SetMap ( map );
+			CharacterMapRenderer renderer = new CharacterMapRenderer ( );
+			renderer . SetMap ( map );
 
 			for ( int y = 0 ; y < map . Size . Y ; y++ )
 			{
 				for ( int x = 0 ; x < map . Size . X ; x++ )
 				{
-					Console . Write ( drawer . CurrentView [ x , y ] );
+					Console . Write ( renderer . CurrentView [ x , y ] );
 				}
 				Console . WriteLine ( );
 			}

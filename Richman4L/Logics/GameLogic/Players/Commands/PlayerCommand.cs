@@ -16,6 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System . Collections . Generic ;
+
+using WenceyWang . Richman4L . Players . Commands . Arguments ;
+
 namespace WenceyWang . Richman4L . Players . Commands
 {
 	/// <summary>
@@ -24,8 +28,8 @@ namespace WenceyWang . Richman4L . Players . Commands
 	public abstract class PlayerCommand
 	{
 
-		protected PlayerCommand ( Player owner ) {
-			Owner = owner ;
+		protected PlayerCommand ( Player performer ) {
+			Performer = performer ;
 		}
 
 		/// <summary>
@@ -38,15 +42,17 @@ namespace WenceyWang . Richman4L . Players . Commands
 		/// </summary>
 		public virtual string Introduction { get; }
 
+		public abstract List<PlayerCommandArgumentInfo > Arguments { get; }
+
 		/// <summary>
 		/// 指令的执行者
 		/// </summary>
-		public Player Owner { get; }
+		public Player Performer { get; }
 
 		/// <summary>
 		/// 执行这个指令
 		/// </summary>
-		public abstract void Apply ( );
+		public abstract void Apply ( ArgumentsContainer arguments );
 
 		
 	}

@@ -2,3 +2,5 @@
 /obj/
 *.user
 *.lock.json
+*.pfx
+*.StoreAssociation.xml

@@ -23,6 +23,10 @@ namespace WenceyWang . Richman4L
 	/// </summary>
 	public enum DiceType
 	{
+		/// <summary>
+		/// 硬币
+		/// </summary>
+		D2 = 2,
 
 		/// <summary>
 		/// 正四面体骰子

@@ -1,18 +1,18 @@
-using System ;
+using System;
 
-using WenceyWang . Richman4L . Properties ;
-using WenceyWang . Richman4L . Stocks ;
+using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Stocks;
 
-namespace WenceyWang . Richman4L . Players .Events
+namespace WenceyWang . Richman4L . Players . Events
 {
 
-	public class PlayerPayForStockDelegateEventArgs : PlayerEventArgs
+	public class PlayerPayForStockDelegateEventArgs : PlayerPayEventArgs
 	{
 
 		[NotNull]
 		public StockDelegate StockDelegate { get; }
 
-		public long Money { get; }
+		public override long Money { get; }
 
 		public PlayerPayForStockDelegateEventArgs ( [NotNull] StockDelegate stockDelegate , long money )
 		{

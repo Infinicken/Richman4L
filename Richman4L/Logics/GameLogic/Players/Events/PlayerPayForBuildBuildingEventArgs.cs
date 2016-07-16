@@ -21,16 +21,24 @@ using System . Collections . Generic;
 using System . Linq;
 using System . Text;
 
+using WenceyWang . Richman4L . Properties;
+
 namespace WenceyWang . Richman4L . Players . Events
 {
-	public class PlayerPayForBuildBuildingEventArgs : PlayerEventArgs
+	public class PlayerPayForBuildBuildingEventArgs : PlayerPayEventArgs
 	{
-		public Maps . Buildings . Building Building { get; private set; }
+		[NotNull]
+		public Maps . Buildings . Building Building { get; }
 
-		public long Money { get; private set; }
+		public override long Money { get; }
 
-		public PlayerPayForBuildBuildingEventArgs ( Maps . Buildings . Building building , long money ) : base ( )
+		public PlayerPayForBuildBuildingEventArgs ( [NotNull]Maps . Buildings . Building building , long money )
 		{
+			if ( building == null )
+			{
+				throw new ArgumentNullException ( nameof ( building ) );
+			}
+
 			Building = building;
 			Money = money;
 		}

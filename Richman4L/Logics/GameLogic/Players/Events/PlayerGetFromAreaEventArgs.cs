@@ -23,19 +23,20 @@ using System . Text;
 
 namespace WenceyWang . Richman4L . Players . Events
 {
-	public sealed class PlayerGetFromAreaEventArgs : EventArgs
+	public sealed class PlayerGetFromAreaEventArgs : PlayerGetEventArgs
 	{
-		public Maps . Area Area { get; private set; }
+		public Maps . Area Area { get;  }
 
-		public Player Player { get; private set; }
+		public Player Player { get;  }
 
-		public long Money { get; private set; }
+		public override  long Money { get;  }
 
-		public PlayerGetFromAreaEventArgs ( Maps . Area area , Player player , long money ) : base ( )
+		public PlayerGetFromAreaEventArgs ( Maps . Area area , Player player , long money )
 		{
 			Area = area;
 			Player = player;
 			Money = money;
 		}
 	}
+
 }

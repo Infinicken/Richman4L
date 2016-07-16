@@ -155,7 +155,11 @@ namespace WenceyWang . Richman4L . Players
 		/// <summary>
 		/// 玩家所拥有的骰子的个数
 		/// </summary>
-		public int NumberOfDice { get; protected set; } = 1;
+		//public int NumberOfDice { get; protected set; } = 1;
+
+		public List<MoveType> MoveTypeList = new List<MoveType> ( );
+
+		public List<DiceType> DiceList { get; } = new List<DiceType> ( );
 
 		/// <summary>
 		/// 玩家的游戏点数
@@ -317,9 +321,11 @@ namespace WenceyWang . Richman4L . Players
 
 			Money -= proof . MoneyToReturn;
 			borrowedMoney . Remove ( proof );
+			PayForBorrowingEvent?.Invoke ( this , new PlayerPayForBorrowingEventArgs ( proof ) );
 		}
 
-		//todo:event
+		[CanBeNull]
+		public event EventHandler<PlayerPayForBorrowingEventArgs> PayForBorrowingEvent;
 
 		public void GetBuff ( [NotNull] PlayerBuff buff )
 		{
@@ -362,6 +368,8 @@ namespace WenceyWang . Richman4L . Players
 
 		#region Move
 
+
+
 		/// <summary>
 		/// 移动
 		/// </summary>
@@ -371,7 +379,7 @@ namespace WenceyWang . Richman4L . Players
 		{
 			CheckDisposed ( );
 
-			if ( ( int ) moveType > NumberOfDice )
+			if ( !MoveTypeList . Contains ( moveType ) )
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
 			}

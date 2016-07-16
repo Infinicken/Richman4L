@@ -9,15 +9,15 @@ using WenceyWang . Richman4L . Stocks;
 namespace WenceyWang . Richman4L . Players . Events
 {
 
-	public class PlayerGetFromSellStockEventArgs : PlayerEventArgs
+	public class PlayerGetFromSellStockEventArgs : PlayerGetEventArgs
 	{
 
 		[NotNull]
-		Stock Stock { get; }
+		public Stock Stock { get; }
 
-		int Number { get; }
+		public int Number { get; }
 
-		long Money { get; }
+		public override long Money { get; }
 
 		public PlayerGetFromSellStockEventArgs ( [NotNull] Stock stock , int number , long money )
 		{
