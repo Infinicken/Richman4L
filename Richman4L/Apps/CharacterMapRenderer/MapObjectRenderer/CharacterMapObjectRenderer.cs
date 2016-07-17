@@ -9,11 +9,19 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 		where T : MapObject
 	{
 
-		public abstract char [ , ] CurrentView { get; }
+		public abstract ConsoleChar [ , ] CurrentView { get; protected set; }
+
+		public ConsoleSize Unit { get; protected set; }
+
+		public T Target { get; protected set; }
+
+		public abstract void StartUp ( );
 
 		public abstract void Update ( );
 
-		public abstract void StartUp ( );
+		public abstract void SetUnit ( ConsoleSize unit );
+
+		MapObject ICharacterMapObjectRenderer.Target => Target;
 
 		public abstract void SetTarget ( T target );
 
@@ -34,10 +42,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				throw new ArgumentException ( $"{nameof ( target )} is not {typeof ( T ) . Name}" );
 			}
 		}
-
-		MapObject ICharacterMapObjectRenderer.Target => Target;
-
-		public T Target { get; protected set; }
 
 		#region IDisposable Support
 

@@ -37,25 +37,25 @@ namespace WenceyWang . Richman4L . Maps
 				return BlockAzimuth . None;
 			}
 
-			if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . X && thisBlock . Y == anotherBlock . Y - thisBlock . Size . Y )
+			if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . Width && thisBlock . Y == anotherBlock . Y - thisBlock . Size . Height )
 			{
 				return BlockAzimuth . Down;
 			}
 			else
 			{
-				if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . X && thisBlock . Y == anotherBlock . Y + anotherBlock . Size . Y )
+				if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . Width && thisBlock . Y == anotherBlock . Y + anotherBlock . Size . Height )
 				{
 					return BlockAzimuth . Up;
 				}
 				else
 				{
-					if ( thisBlock . Y >= anotherBlock . Y && thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Y && thisBlock . X == anotherBlock . X + anotherBlock . Size . X )
+					if ( thisBlock . Y >= anotherBlock . Y && thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Height && thisBlock . X == anotherBlock . X + anotherBlock . Size . Width )
 					{
 						return BlockAzimuth . Left;
 					}
 					else
 					{
-						if ( thisBlock . Y >= anotherBlock . Y && thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Y && thisBlock . X == anotherBlock . X - thisBlock . Size . X )
+						if ( thisBlock . Y >= anotherBlock . Y && thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Height && thisBlock . X == anotherBlock . X - thisBlock . Size . Width )
 						{
 							return BlockAzimuth . Right;
 						}

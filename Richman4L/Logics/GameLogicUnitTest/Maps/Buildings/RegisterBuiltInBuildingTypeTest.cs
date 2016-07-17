@@ -16,13 +16,13 @@ namespace WenceyWang . Richman4L . UnitTests . Maps . Buildings
 					. Root );
 		}
 
-		[TestMethod]
-		public void RegisterMediumSimpleBuildingTypeTest ( )
-		{
-			Building . RegisBuildingType ( typeof ( MediumSimpleBuilding ) ,
-				ResourceHelper . LoadXmlDocument ( $"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.MediumSimpleBuilding.xml" )
-					. Root );
-		}
+		//[TestMethod]
+		//public void RegisterMediumSimpleBuildingTypeTest ( )
+		//{
+		//	Building . RegisBuildingType ( typeof ( MediumSimpleBuilding ) ,
+		//		ResourceHelper . LoadXmlDocument ( $"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.MediumSimpleBuilding.xml" )
+		//			. Root );
+		//}
 
 	}
 }

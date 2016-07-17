@@ -1,20 +1,24 @@
-using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Maps;
 
-namespace WenceyWang . Richman4L . App . CharacterMapRenderer .MapObjectRenderer
+namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer
 {
 
 	public interface ICharacterMapObjectRenderer
 	{
 
-		char [ , ] CurrentView { get ; }
+		ConsoleChar [ , ] CurrentView { get; }
 
-		void Update ( ) ;
+		void Update ( );
 
-		void StartUp ( ) ;
+		void StartUp ( );
 
-		void SetTarget ( MapObject target ) ;
+		void SetUnit ( ConsoleSize unit );
 
-		MapObject Target { get ; }
+		void SetTarget ( MapObject target );
+
+		ConsoleSize Unit { get; }
+
+		MapObject Target { get; }
 
 	}
 

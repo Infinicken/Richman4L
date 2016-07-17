@@ -28,15 +28,16 @@ namespace WenceyWang . Richman4L . Maps
 	/// </summary>
 	public struct MapSize
 	{
-		/// <summary>
-		/// 尺寸的X值
-		/// </summary>
-		public int X { get; }
 
 		/// <summary>
-		/// 尺寸的Y值
+		/// 宽度
 		/// </summary>
-		public int Y { get; }
+		public readonly int Width;
+
+		/// <summary>
+		/// 高度
+		/// </summary>
+		public readonly int Height;
 
 		/// <summary>
 		/// 小地图元素尺寸，1*1
@@ -65,12 +66,12 @@ namespace WenceyWang . Richman4L . Maps
 
 		public static bool operator == ( MapSize size1 , MapSize size2 )
 		{
-			return size1 . X == size2 . X && size1 . Y == size2 . Y;
+			return size1 . Width == size2 . Width && size1 . Height == size2 . Height;
 		}
 
 		public static bool operator != ( MapSize size1 , MapSize size2 )
 		{
-			return size1 . X != size2 . X || size1 . Y != size2 . Y;
+			return size1 . Width != size2 . Width || size1 . Height != size2 . Height;
 		}
 
 		public override bool Equals ( object obj )
@@ -84,28 +85,28 @@ namespace WenceyWang . Richman4L . Maps
 
 		public bool Equals ( MapSize other )
 		{
-			return X == other . X && Y == other . Y;
+			return Width == other . Width && Height == other . Height;
 		}
 
 		public override int GetHashCode ( )
 		{
 			unchecked
 			{
-				return ( X * 397 ) ^ Y;
+				return ( Width * 397 ) ^ Height;
 			}
 		}
 
-		public override string ToString ( ) => $"({X},{Y})";
+		public override string ToString ( ) => $"({Width},{Height})";
 
 		/// <summary>
 		/// 创建新的MapSize
 		/// </summary>
-		/// <param name="x">尺寸的X值</param>
-		/// <param name="y">尺寸的Y值</param>
-		public MapSize ( int x , int y )
+		/// <param name="width">宽度</param>
+		/// <param name="height">高度</param>
+		public MapSize ( int width , int height )
 		{
-			X = x;
-			Y = y;
+			Width = width;
+			Height = height;
 		}
 
 

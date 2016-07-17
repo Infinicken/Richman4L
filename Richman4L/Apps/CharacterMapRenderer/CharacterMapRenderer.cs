@@ -20,8 +20,8 @@ using System;
 using System . Collections . Generic;
 using System . Linq;
 
-using WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer ;
-using WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer . Roads ;
+using WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer;
+using WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer . Roads;
 using WenceyWang . Richman4L . Maps;
 using WenceyWang . Richman4L . Maps . Events;
 using WenceyWang . Richman4L . Maps . Roads;
@@ -35,10 +35,16 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 
 		public Map Target { get; private set; }
 
+		public ConsoleSize MapUnit { get; private set; } = ConsoleSize . Small;
+
 		public List<ICharacterMapObjectRenderer> MapObjectRendererList { get; set; } =
 			new List<ICharacterMapObjectRenderer> ( );
 
-		public char [ , ] CurrentView { get; private set; }
+		public int CharacterWeith { get; private set; }
+
+		public int CharacterHeight { get; private set; }
+
+		public ConsoleChar [ , ] CurrentView { get; private set; }
 
 		public void SetMap ( [NotNull] Map map )
 		{
@@ -49,24 +55,30 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 
 			Target = map;
 			Target . RegisMapRenderer ( this );
-
-			CurrentView = new char [ map . Size . X , map . Size . Y ];
-
-			for ( int y = 0 ; y < map . Size . Y ; y++ )
-			{
-				for ( int x = 0 ; x < map . Size . X ; x++ )
-				{
-					CurrentView [ x , y ] = ' ';
-				}
-			}
-
-			map . AddMapObjectEvent += Map_AddMapObjectEvent;
-
-			StartUp ( );
 		}
+
+		public void SetUnit ( ConsoleSize unit ) { MapUnit = unit; }
+
+		public void RendererCatched ( ) { }
 
 		public void StartUp ( )
 		{
+			CharacterWeith = Target . Size . Width * MapUnit . Width;
+			CharacterHeight = Target . Size . Height * MapUnit . Height;
+
+			CurrentView = new ConsoleChar [ CharacterWeith , CharacterHeight ];
+
+			for ( int y = 0 ; y < CharacterHeight ; y++ )
+			{
+				for ( int x = 0 ; x < CharacterWeith ; x++ )
+				{
+					CurrentView [ x , y ] = new ConsoleChar ( ' ' , ConsoleColor . White , ConsoleColor . DarkGreen );
+				}
+			}
+
+			Target . AddMapObjectEvent += Map_AddMapObjectEvent;
+
+
 			foreach ( MapObject mapObject in Target . Objects )
 			{
 				DrawObject ( mapObject );
@@ -75,32 +87,47 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 			Update ( );
 		}
 
-		void DrawObject ( MapObject mapObject )
+		public void Update ( )
 		{
-			MapObjectRendererType rendererType =
-					MapObjectRendererTypeList . FirstOrDefault ( typ => typ . TargetType == mapObject . GetType ( ) );
-			if ( rendererType != null )
+			foreach ( ICharacterMapObjectRenderer renderer in MapObjectRendererList )
 			{
-				ICharacterMapObjectRenderer renderer =
-					( ICharacterMapObjectRenderer ) Activator . CreateInstance ( rendererType . EntryType );
-				renderer . SetTarget ( mapObject );
-				MapObjectRendererList . Add ( renderer ) ;
-				renderer . StartUp ( );
-			}
-			else
-			{
-				string text = mapObject . Type . Name . ToUpper ( ) + " No Renderer ";
-				for ( int y = 0 ; y < mapObject . Size . Y ; y++ )
+				renderer . Update ( );
+				for ( int y = 0 ; y < renderer . Target . Size . Height * MapUnit . Height ; y++ )
 				{
-					for ( int x = 0 ; x < mapObject . Size . X ; x++ )
+					for ( int x = 0 ; x < renderer . Target . Size . Width * MapUnit . Width ; x++ )
 					{
-						CurrentView [ mapObject . X + x , mapObject . Y + y ] = text [ ( y * mapObject . Size . X + x ) % text . Length ];
+						CurrentView [ renderer . Target . X * MapUnit . Width + x , renderer . Target . Y * MapUnit . Height + y ] = renderer . CurrentView [ x , y ];
 					}
 				}
 			}
 		}
 
-		public void RendererCatched ( ) { }
+		void DrawObject ( MapObject mapObject )
+		{
+			MapObjectRendererType rendererType =
+				MapObjectRendererTypeList . FirstOrDefault ( typ => typ . TargetType == mapObject . GetType ( ) );
+			if ( rendererType != null )
+			{
+				ICharacterMapObjectRenderer renderer =
+					( ICharacterMapObjectRenderer ) Activator . CreateInstance ( rendererType . EntryType );
+				renderer . SetTarget ( mapObject );
+				MapObjectRendererList . Add ( renderer );
+				renderer . SetUnit ( MapUnit );
+				renderer . StartUp ( );
+			}
+			else
+			{
+				string text = mapObject . Type . Name . ToUpper ( ) + " No Renderer ";
+				for ( int y = 0 ; y < mapObject . Size . Height * MapUnit . Height ; y++ )
+				{
+					for ( int x = 0 ; x < mapObject . Size . Width * MapUnit . Width ; x++ )
+					{
+						CurrentView [ mapObject . X * MapUnit . Width + x , mapObject . Y * MapUnit . Height + y ] =
+							text [ ( y * mapObject . Size . Width * MapUnit . Width + x ) % text . Length ];
+					}
+				}
+			}
+		}
 
 		private void Map_AddMapObjectEvent ( object sender , MapAddMapObjectEventArgs e )
 		{
@@ -108,30 +135,16 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 			Update ( );
 		}
 
-		public void Update ( )
-		{
-			foreach ( ICharacterMapObjectRenderer renderer in MapObjectRendererList )
-			{
-				renderer . Update ( );
-				for ( int y = 0 ; y < renderer . Target . Size . Y ; y++ )
-				{
-					for ( int x = 0 ; x < renderer . Target . Size . X ; x++ )
-					{
-						CurrentView [ renderer . Target . X + x , renderer . Target . Y + y ] = renderer . CurrentView [ x , y ];
-					}
-				}
-			}
-
-		}
+		public static List<MapObjectRendererType> MapObjectRendererTypeList { get; set; } =
+			new List<MapObjectRendererType> ( );
 
 		public static void LoadMapObjectRenderers ( )
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) );
 		}
 
-		public static List<MapObjectRendererType> MapObjectRendererTypeList { get; set; } = new List<MapObjectRendererType> ( );
-
-		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType , [NotNull] Type targetType )
+		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType ,
+																	[NotNull] Type targetType )
 		{
 			if ( mapRendererType == null )
 			{
@@ -143,7 +156,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 			}
 
 			MapObjectRendererType type =
-				MapObjectRendererTypeList . FirstOrDefault ( typ => typ . EntryType == mapRendererType && typ . TargetType == targetType );
+				MapObjectRendererTypeList . FirstOrDefault (
+					typ => typ . EntryType == mapRendererType && typ . TargetType == targetType );
 
 			if ( type != null )
 			{

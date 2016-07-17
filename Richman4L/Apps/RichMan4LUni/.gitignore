@@ -4,3 +4,4 @@
 *.lock.json
 *.pfx
 *.StoreAssociation.xml
+*.vspscc

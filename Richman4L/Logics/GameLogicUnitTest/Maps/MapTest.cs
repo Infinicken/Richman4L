@@ -34,16 +34,19 @@ namespace WenceyWang . Richman4L . UnitTests . Maps
 		public void LoadMapTest ( )
 		{
 			MapObject . LoadMapObjects ( );
-			CharacterMapRenderer . LoadMapObjectRenderers ( ) ;
+			CharacterMapRenderer . LoadMapObjectRenderers ( );
 			Map map = new Map ( "Test.xml" );
 			CharacterMapRenderer renderer = new CharacterMapRenderer ( );
 			renderer . SetMap ( map );
-
-			for ( int y = 0 ; y < map . Size . Y ; y++ )
+			renderer . SetUnit ( ConsoleSize . Large );
+			renderer . StartUp ( );
+			for ( int y = 0 ; y < renderer . CharacterHeight ; y++ )
 			{
-				for ( int x = 0 ; x < map . Size . X ; x++ )
+				for ( int x = 0 ; x < renderer . CharacterWeith ; x++ )
 				{
-					Console . Write ( renderer . CurrentView [ x , y ] );
+					Console . BackgroundColor = ( System . ConsoleColor ) renderer . CurrentView [ x , y ] . BackgroundColor;
+					Console . ForegroundColor = ( System . ConsoleColor ) renderer . CurrentView [ x , y ] . ForegroundColor;
+					Console . Write ( renderer . CurrentView [ x , y ] . Character );
 				}
 				Console . WriteLine ( );
 			}
