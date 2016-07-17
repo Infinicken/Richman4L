@@ -1,4 +1,22 @@
-﻿using System;
+﻿/*
+* Richman4L: A free game with a rule like Richman4Fun.
+* Copyright (C) 2010-2016 Wencey Wang
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+using System;
 
 using WenceyWang . Richman4L . Maps;
 using WenceyWang . Richman4L . Maps . Roads;
@@ -121,28 +139,64 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up &&
 					Target . ForwardRoad == null )
 				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╨' , ConsoleColor . White , ConsoleColor . DarkGray );
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 1 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
 				}
 				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
 					Target . BackwardRoad == null ||
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down &&
 					Target . ForwardRoad == null )
 				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╥' , ConsoleColor . White , ConsoleColor . DarkGray );
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 1 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
 				}
 				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
 					Target . BackwardRoad == null ||
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left &&
 					Target . ForwardRoad == null )
 				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╡' , ConsoleColor . White , ConsoleColor . DarkGray );
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 0 ] = new ConsoleChar ( "━━┓  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 1 ] = new ConsoleChar ( "┅ ┃  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 2 ] = new ConsoleChar ( "━━┛  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
 				}
 				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
 					Target . BackwardRoad == null ||
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right &&
 					Target . ForwardRoad == null )
 				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╞' , ConsoleColor . White , ConsoleColor . DarkGray );
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 0 ] = new ConsoleChar ( "  ┏━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 1 ] = new ConsoleChar ( "  ┃ ┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 2 ] = new ConsoleChar ( "  ┗━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
 				}
 
 				#endregion
@@ -178,7 +232,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 						{
 							CurrentView [ x , y ] = new ConsoleChar ( "━┅━" [ y ] , ConsoleColor . White , ConsoleColor . DarkGray );
 						}
-
 					}
 					//左右
 				}

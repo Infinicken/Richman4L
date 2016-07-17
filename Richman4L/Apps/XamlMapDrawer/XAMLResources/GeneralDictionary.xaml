@@ -1,8 +1,0 @@
-﻿<ResourceDictionary
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="using:WenceyWang.Richman4L.App.XamlMapDrawer">
-	<CubicEase x:Key="EasingFunction" EasingMode="EaseInOut"/>
-	<Thickness x:Key="MapObjMargin">-1000</Thickness>
-	<CompositeTransform x:Key="MapObjTransform" ScaleY="0.5" SkewX="-45"/>
-</ResourceDictionary>

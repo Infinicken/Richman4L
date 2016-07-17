@@ -14,7 +14,7 @@ namespace WenceyWang . Richman4L . Apps . Console
 	{
 		static void Main ( string [ ] args )
 		{
-
+			System . Console . OutputEncoding = new UnicodeEncoding ( ) ;
 			MapObject . LoadMapObjects ( );
 			CharacterMapRenderer . LoadMapObjectRenderers ( );
 			Map map = new Map ( "Test.xml" );
@@ -33,7 +33,6 @@ namespace WenceyWang . Richman4L . Apps . Console
 					System . Console . Write ( renderer . CurrentView [ x , y ] . Character );
 				}
 			}
-
 		}
 	}
 }

@@ -72,7 +72,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			{
 				Name = element . Attribute ( nameof ( Name ) ) . Value;
 				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value;
-				Size = new MapSize ( Convert . ToInt32 ( element . Attribute ( nameof ( Size ) + nameof ( MapSize . Width ) ) . Value ) , Convert . ToInt32 ( element . Attribute ( nameof ( Size ) + nameof ( MapSize . Height ) ) . Value ) );
+				Size = new MapSize ( Convert . ToInt32 ( element . Attribute (  nameof ( MapSize . Width ) ) . Value ) , Convert . ToInt32 ( element . Attribute (  nameof ( MapSize . Height ) ) . Value ) );
 				List<BuildingGrade> grades = new List<BuildingGrade> ( );
 				Grades = new ReadOnlyCollection<BuildingGrade> ( grades );
 				foreach ( XElement grade in element . Element ( nameof ( Grades ) ) . Elements ( ) )

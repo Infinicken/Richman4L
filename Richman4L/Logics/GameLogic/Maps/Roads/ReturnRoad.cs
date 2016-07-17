@@ -24,7 +24,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 	[MapObject]
 	public class ReturnRoad : Road
 	{
-		private long _exitId;
+		private long? _exitId;
 
 		private Road _exit;
 
@@ -32,11 +32,15 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			get
 			{
-				return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId ) );
+				if ( _exit == null && _exitId == null )
+				{
+					return null;
+				}
+				return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId . Value ) );
 			}
 			private set
 			{
-				_exitId = value . Id;
+				_exitId = value?.Id;
 				_exit = value;
 			}
 		}

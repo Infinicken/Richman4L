@@ -24,18 +24,48 @@ namespace WenceyWang . Richman4L . Maps . Roads
 	[MapObject]
 	public class OneWayRoad : Road
 	{
-		private long _entranceId;
+		private long? _entranceId;
 
 		private Road _entrance;
 
-		public virtual Road Entrance { get { return _entrance ?? ( _entrance = Map . Currnet . GetRoad ( _entranceId ) ); } set { _entranceId = value . Id; _entrance = value; } }
+		public virtual Road Entrance
+		{
+			get
+			{
+				if ( _entrance == null && _entranceId == null )
+				{
+					return null;
+				}
+				return _entrance ?? ( _entrance = Map . Currnet . GetRoad ( _entranceId . Value ) );
+			}
+			set
+			{
+				_entranceId = value ?. Id ;
+				_entrance = value ;
+			}
+		}
 
 
-		private long _exitId;
+		private long? _exitId;
 
 		private Road _exit;
 
-		public virtual Road Exit { get { return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId ) ); } set { _exitId = value . Id; _exit = value; } }
+		public virtual Road Exit
+		{
+			get
+			{
+				if ( _exit == null && _exitId == null )
+				{
+					return null;
+				}
+				return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId . Value ) );
+			}
+			set
+			{
+				_exitId = value ?. Id ;
+				_exit = value ;				
+			}
+		}
 
 
 		public override bool CanEnterFrom ( Road road ) { return road == Entrance; }

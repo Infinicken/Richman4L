@@ -32,7 +32,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			get
 			{
-				if ( _inRoad == null && _inRoad == null )
+				if ( _inRoad == null && _inRoadId == null )
 				{
 					return null;
 				}

@@ -117,7 +117,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 			}
 			else
 			{
-				string text = mapObject . Type . Name . ToUpper ( ) + " No Renderer ";
+				string text = mapObject . Type . Name + " No Renderer ";
 				for ( int y = 0 ; y < mapObject . Size . Height * MapUnit . Height ; y++ )
 				{
 					for ( int x = 0 ; x < mapObject . Size . Width * MapUnit . Width ; x++ )
@@ -141,6 +141,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 		public static void LoadMapObjectRenderers ( )
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) );
+			RegisMapObjectRenderer ( typeof ( WithinRoadRenderer ) , typeof ( WithInRoad ) );
+
 		}
 
 		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType ,
