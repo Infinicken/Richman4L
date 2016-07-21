@@ -39,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\GameLogic.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Accounts\AccountItem.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Buffs\AreaBuffs\BlockBuyAreaBuff.cs" />
     <Compile Include="Buffs\RoadBuffs\Dog.cs" />
     <Compile Include="Buffs\RoadBuffs\DogDeadCause.cs" />
+    <Compile Include="Buffs\RoadBuffs\Event\DogBiteEventArgs.cs" />
     <Compile Include="Buffs\RoadBuffs\Event\DogDeadEventArgs.cs" />
     <Compile Include="Buffs\StockBuffs\BlackBuff.cs" />
     <Compile Include="Calendars\GameDate.cs" />

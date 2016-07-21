@@ -30,98 +30,139 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 		public override ConsoleChar [ , ] CurrentView { get; protected set; }
 
-		public override void Update ( ) { }
-
-		public override void StartUp ( )
+		public override void Update ( )
 		{
-			CurrentView = new ConsoleChar [ Unit . Width , Unit . Height ];
-
 			if ( Unit == ConsoleSize . Small )
 			{
 				#region 断头路
 
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up &&
-					Target . ForwardRoad == null )
+				if ( Target . ForwardRoad == null ||
+					Target . BackwardRoad == null )
 				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╨' , ConsoleColor . White , ConsoleColor . DarkGray );
+					CurrentView [ 0 , 0 ] = new ConsoleChar ( '▫' , ConsoleColor . White , ConsoleColor . DarkGray );
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down &&
-					Target . ForwardRoad == null )
+				if ( Target . ForwardRoad != null && Target . BackwardRoad == null ||
+					Target . ForwardRoad == null && Target . BackwardRoad != null )
 				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╥' , ConsoleColor . White , ConsoleColor . DarkGray );
+					Road exit = Target . ForwardRoad ?? Target . BackwardRoad;
+					switch ( Target . GetAzimuth ( exit ) )
+					{
+						case BlockAzimuth . Up:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╨' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
+						case BlockAzimuth . Down:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╥' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
+						case BlockAzimuth . Left:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╡' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
+						case BlockAzimuth . Right:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╞' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
+						default:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '▫' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
+					}
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left &&
-					Target . ForwardRoad == null )
-				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╡' , ConsoleColor . White , ConsoleColor . DarkGray );
-				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right &&
-					Target . ForwardRoad == null )
-				{
-					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╞' , ConsoleColor . White , ConsoleColor . DarkGray );
-				}
-
 				#endregion
 
 				#region 连续路
 
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
+				//else
+				//{
+				//	switch ( Target . GetAzimuth ( Target . ForwardRoad ) )
+				//	{
+				//		case BlockAzimuth . Up:
+				//			{
+				//				switch ( Target . GetAzimuth ( Target . BackwardRoad ) )
+				//				{
+				//					case BlockAzimuth . Down:
+				//						{
+
+				//							break;
+				//						}
+				//					case BlockAzimuth . Left:
+				//						{
+				//							break;
+				//						}
+				//					case BlockAzimuth . Right:
+				//						{
+				//							break;
+				//						}
+				//					default:
+				//						{
+				//							break;
+				//						}
+				//				}
+
+				//				break;
+				//			}
+				//		case BlockAzimuth . Down:
+				//			{
+				//				break;
+				//			}
+				//		case BlockAzimuth . Left:
+				//			{
+				//				break;
+				//			}
+				//		case BlockAzimuth . Right:
+				//			{
+				//				break;
+				//			}
+				//		default:
+				//			{
+				//				throw new ArgumentOutOfRangeException ( );
+				//			}
+				//	}
+				//}
+
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '║' , ConsoleColor . White , ConsoleColor . DarkGray );
 
 					//上下
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '═' , ConsoleColor . White , ConsoleColor . DarkGray );
 
 					//左右
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╝' , ConsoleColor . White , ConsoleColor . DarkGray );
 
 					//左上
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╚' , ConsoleColor . White , ConsoleColor . DarkGray );
 
 					//右上
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+					 Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╗' , ConsoleColor . White , ConsoleColor . DarkGray );
 
 					//左下
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╔' , ConsoleColor . White , ConsoleColor . DarkGray );
 
@@ -134,97 +175,93 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 			{
 				#region 断头路
 
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up &&
-					Target . ForwardRoad == null )
+				if ( Target . ForwardRoad == null &&
+					Target . BackwardRoad == null )
 				{
 					for ( int x = 0 ; x < 5 ; x++ )
 					{
-						CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 1 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+						CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+						CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+						CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 					}
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down &&
-					Target . ForwardRoad == null )
+				if ( Target . ForwardRoad != null && Target . BackwardRoad == null ||
+					Target . ForwardRoad == null && Target . BackwardRoad != null )
 				{
-					for ( int x = 0 ; x < 5 ; x++ )
+					Road exit = Target . ForwardRoad ?? Target . BackwardRoad;
+					switch ( Target . GetAzimuth ( exit ) )
 					{
-						CurrentView [ x , 1 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+						case BlockAzimuth . Up:
+							{
+								for ( int x = 0 ; x < 5 ; x++ )
+								{
+									CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 1 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 2 ] = new ConsoleChar ( ' ' , ConsoleColor . White , ConsoleColor . DarkGray );
+								}
+								break;
+							}
+						case BlockAzimuth . Down:
+							{
+								for ( int x = 0 ; x < 5 ; x++ )
+								{
+									CurrentView [ x , 0 ] = new ConsoleChar ( ' ' , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 1 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+								}
+								break;
+							}
+						case BlockAzimuth . Left:
+							{
+								for ( int x = 0 ; x < 5 ; x++ )
+								{
+									CurrentView [ x , 0 ] = new ConsoleChar ( "━━┓  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 1 ] = new ConsoleChar ( "┅ ┃  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 2 ] = new ConsoleChar ( "━━┛  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+								}
+								break;
+							}
+						case BlockAzimuth . Right:
+							{
+								for ( int x = 0 ; x < 5 ; x++ )
+								{
+									CurrentView [ x , 0 ] = new ConsoleChar ( "  ┏━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 1 ] = new ConsoleChar ( "  ┃ ┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 2 ] = new ConsoleChar ( "  ┗━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+								}
+								break;
+							}
+						default:
+							{
+								for ( int x = 0 ; x < 5 ; x++ )
+								{
+									CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+									CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+								}
+								break;
+							}
 					}
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left &&
-					Target . ForwardRoad == null )
-				{
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 0 ] = new ConsoleChar ( "━━┓  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 1 ] = new ConsoleChar ( "┅ ┃  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 2 ] = new ConsoleChar ( "━━┛  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right &&
-					Target . ForwardRoad == null )
-				{
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 0 ] = new ConsoleChar ( "  ┏━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 1 ] = new ConsoleChar ( "  ┃ ┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
-						CurrentView [ x , 2 ] = new ConsoleChar ( "  ┗━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-				}
-
 				#endregion
 
 				#region 连续路
 
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
 				{
-
 					for ( int y = 0 ; y < 3 ; y++ )
 					{
-
 						for ( int x = 0 ; x < 5 ; x++ )
 						{
 							CurrentView [ x , y ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 						}
-
 					}
 
 					//上下
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 				{
 					for ( int x = 0 ; x < 5 ; x++ )
 					{
@@ -233,108 +270,76 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							CurrentView [ x , y ] = new ConsoleChar ( "━┅━" [ y ] , ConsoleColor . White , ConsoleColor . DarkGray );
 						}
 					}
+
 					//左右
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
+					 Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 				{
 					for ( int x = 0 ; x < 5 ; x++ )
 					{
 						CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 1 ] = new ConsoleChar ( "┅┅┛ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 2 ] = new ConsoleChar ( "━━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 					}
 					//左上
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
+					 Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
 				{
 					for ( int x = 0 ; x < 5 ; x++ )
 					{
 						CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 1 ] = new ConsoleChar ( "┃ ┗┅┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 					}
 					//右上
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+					 Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 				{
 					for ( int x = 0 ; x < 5 ; x++ )
 					{
 						CurrentView [ x , 0 ] = new ConsoleChar ( "━━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 1 ] = new ConsoleChar ( "┅┅┓ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 					}
 					//左下
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down && Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
 				{
 					for ( int x = 0 ; x < 5 ; x++ )
 					{
 						CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 1 ] = new ConsoleChar ( "┃ ┏┅┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					for ( int x = 0 ; x < 5 ; x++ )
-					{
 						CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 					}
+
 					//右下
 				}
 				else
 				{
-
+					for ( int x = 0 ; x < 5 ; x++ )
+					{
+						CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+						CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+						CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+					}
 				}
 
 				#endregion
-
 			}
-
-
 		}
 
-		public override void SetUnit ( ConsoleSize unit ) { Unit = unit; }
-
-		public override void SetTarget ( [NotNull] NormalRoad target )
+		public override void StartUp ( )
 		{
-			if ( Target == null )
-			{
-				Target = target;
-			}
-			else
-			{
-				throw new InvalidOperationException ( );
-			}
+			CurrentView = new ConsoleChar [ Unit . Width , Unit . Height ];
+			Update ( );
 		}
 
 	}

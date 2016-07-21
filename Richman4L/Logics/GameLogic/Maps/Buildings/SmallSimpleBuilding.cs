@@ -57,6 +57,10 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 		public override void Stay ( Player player )
 		{
+			if ( player == null )
+			{
+				throw new ArgumentNullException ( nameof ( player ) );
+			}
 
 			if ( player != Owner )
 			{
@@ -66,11 +70,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 				}
 				else
 				{
-					if ( Owner . IsBlockGetCharge ( ) )
-					{
-
-					}
-					else
+					if ( !Owner . IsBlockGetCharge ( ) )
 					{
 						player . PayForCross ( Position , MoneyCostWhenCrossed );
 						Owner . GetFromArea ( Position , player , MoneyCostWhenCrossed );
@@ -80,15 +80,17 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			base . Stay ( player );
 		}
 
+
 		public override void Destoy ( DestroyReason reason )
 		{
 			State = BuildingState . Destroyed;
-
+			MaintenanceDegree = 0;
+			CompletedDgree = 5000;
 		}
 
 		public override void StartDay ( Calendars . GameDate nextDate )
 		{
-			CheckDisposed ( ) ;
+			CheckDisposed ( );
 
 			if ( Game . Current . Weather . Wind . Strength >= 800 )
 			{
@@ -100,6 +102,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 					}
 				}
 			}
+
 			switch ( State )
 			{
 				case BuildingState . Working:

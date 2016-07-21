@@ -57,7 +57,7 @@ namespace WenceyWang . Richman4L
 
 		public static GameTitle GetTitle ( bool randomTitleRoot )
 		{
-			if ( Loaded )
+			if ( !Loaded )
 			{
 				LoadTitles ( );
 			}
@@ -65,11 +65,11 @@ namespace WenceyWang . Richman4L
 			if ( randomTitleRoot )
 			{
 				return new GameTitle ( TitleRoots . RandomItem ( GameRandom . Current ) ,
-										TitleKeys . RandomItem ( GameRandom . Current ) ) ;
+										TitleKeys . RandomItem ( GameRandom . Current ) );
 			}
 			else
 			{
-				return new GameTitle ( "Richman" , TitleKeys . RandomItem ( GameRandom . Current ) ) ;
+				return new GameTitle ( "Richman" , TitleKeys . RandomItem ( GameRandom . Current ) );
 			}
 		}
 

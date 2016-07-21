@@ -20,21 +20,26 @@ using System;
 using System . Collections . Generic;
 using System . Xml . Linq;
 
+using WenceyWang . Richman4L . Properties;
+
 namespace WenceyWang . Richman4L . Maps . Roads
 {
 	// ReSharper disable once InconsistentNaming
 	[MapObject]
 	public class TRoad : Road
 	{
+		[CanBeNull]
 		private long? _firstExitId;
 
+		[CanBeNull]
 		private Road _firstExit;
 
+		[CanBeNull]
 		public virtual Road FirstExit
 		{
 			get
 			{
-				if ( _firstExit == null && _firstExit == null )
+				if ( _firstExit == null && _firstExitId == null )
 				{
 					return null;
 				}
@@ -47,15 +52,18 @@ namespace WenceyWang . Richman4L . Maps . Roads
 			}
 		}
 
+		[CanBeNull]
 		private long? _secondExitId;
 
+		[CanBeNull]
 		private Road _secondExit;
 
+		[CanBeNull]
 		public virtual Road SecondExit
 		{
 			get
 			{
-				if ( _secondExit == null && _secondExit == null )
+				if ( _secondExit == null && _secondExitId == null )
 				{
 					return null;
 				}
@@ -68,15 +76,18 @@ namespace WenceyWang . Richman4L . Maps . Roads
 			}
 		}
 
+		[CanBeNull]
 		private long? _thirdExitId;
 
+		[CanBeNull]
 		private Road _thirdExit;
 
+		[CanBeNull]
 		public virtual Road ThirdExit
 		{
 			get
 			{
-				if ( _thirdExit == null && _thirdExit == null )
+				if ( _thirdExit == null && _thirdExitId == null )
 				{
 					return null;
 				}
@@ -125,9 +136,9 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			try
 			{
-				_firstExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( FirstExit ) ) . Value );
-				_secondExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( SecondExit ) ) . Value );
-				_thirdExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( ThirdExit ) ) . Value );
+				_firstExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( FirstExit ) )?.Value );
+				_secondExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( SecondExit ) )?.Value );
+				_thirdExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( ThirdExit ) )?.Value );
 			}
 			catch ( NullReferenceException e )
 			{

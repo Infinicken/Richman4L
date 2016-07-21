@@ -51,11 +51,11 @@ namespace WenceyWang . Richman4L . Maps
 		/// </summary>
 		public int PondingDecreaseBase { get; }
 
-		[NotNull]
-		public Road GetRoad ( long id ) => ( Objects . Single ( ( road ) => ( ( road as Road )?.Id == id ) ) ) as Road;
+		[CanBeNull]
+		public Road GetRoad ( long id ) => ( Objects . SingleOrDefault ( ( road ) => ( ( road as Road )?.Id == id ) ) ) as Road;
 
-		[NotNull]
-		public Area GetArea ( long id ) => ( Objects . Single ( ( area ) => ( ( area as Area )?.Id == id ) ) ) as Area;
+		[CanBeNull]
+		public Area GetArea ( long id ) => ( Objects . SingleOrDefault ( ( area ) => ( ( area as Area )?.Id == id ) ) ) as Area;
 
 		public Map ( [NotNull] XDocument document ) : this ( )
 		{

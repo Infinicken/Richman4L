@@ -40,65 +40,110 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 
 		public override void DoWhenPass ( Player player , MoveType moveType )
 		{
-			if ( moveType == MoveType . Walk )
+			switch ( moveType )
 			{
-				if ( GameRandom . Current . InvokeEvent ( BiteWalkerPossibility ) )
-				{
-					player . ChangeState ( PlayerState . 住院 , GameRandom . Current . Next ( 1 , 4 ) ) ;
+				case MoveType . Walk:
+					{
+						if ( GameRandom . Current . InvokeEvent ( BiteWalkerPossibility ) )
+						{
+							Bite ( player );
+						}
+						break;
+					}
+				case MoveType . RidingBicycle:
+				case MoveType . RidingMotorcycle:
+				case MoveType . DrivingCar:
+					{
+						Kill ( player , moveType );
+					}
+					break;
+				default:
+					{
+						throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
+					}
+			}
 
-				}
-			}
-			if ( moveType == MoveType . RidingBicycle || moveType == MoveType . RidingMotorcycle || moveType == MoveType . DrivingCar )
-			{
-				Kill ( player , moveType );
-			}
 			base . DoWhenPass ( player , moveType );
 		}
 
 		public override void DoWhenStay ( Player player , MoveType moveType )
 		{
+			if ( GameRandom . Current . InvokeEvent ( BiteStayerPossibility ) )
+			{
+				Bite ( player );
+			}
 			base . DoWhenStay ( player , moveType );
 		}
 
 		public override void StartDay ( GameDate nextDate )
 		{
-			if ( Game . Current . Weather . Wind . Strength >= 800 )
+			if ( IsKilled ( Game . Current . Weather ) )
 			{
-
+				Kill ( Game . Current . Weather );
 			}
 			base . StartDay ( nextDate );
 		}
 
-		public bool IsKilled ( Weather weather )
-		{
-			return weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37;
-		}
+		public bool IsKilled ( Weather weather ) => weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37 ;
 
 		public void Bite ( Player player )
 		{
-
+			int days = GameRandom . Current . Next ( 1 , 4 );
+			player . ChangeState ( PlayerState . 住院 , days );
+			BiteEvent?.Invoke ( this , new Event . DogBiteEventArgs ( player , days ) );
+			Dispose ( );
 		}
 
+		public event EventHandler<Event . DogBiteEventArgs> BiteEvent;
 
-		public event EventHandler<Event . DogDeadEventArgs> Dead;
+		public event EventHandler<Event . DogDeadEventArgs> DeadEvent;
 
 		public void Kill ( Weather weather )
 		{
-
+			DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . BadWeather ) );
+			Kill ( );
 		}
 
 		public void Kill ( Player murderer , MoveType moveType )
 		{
+			switch ( moveType )
+			{
+				case MoveType . RidingBicycle:
+					{
+						DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . Bicycle ) );
+						break;
+					}
+				case MoveType . RidingMotorcycle:
+					{
+						DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . Motorcycle ) );
+						break;
+					}
+				case MoveType . DrivingCar:
+					{
+						DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . Car ) );
+						break;
+					}
+				default:
+					{
+						throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
+					}
+			}
+			Kill ( );
+		}
 
+		private void Kill ( )
+		{
+			Dispose ( );
 		}
 
 		protected override void Dispose ( bool disposing )
 		{
 			if ( !DisposedValue )
 			{
-
 			}
 			base . Dispose ( disposing );
 		}
+
 	}
+
 }

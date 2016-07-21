@@ -28,8 +28,10 @@ using System . Xml . Linq;
 
 namespace WenceyWang . Richman4L
 {
+
 	public class GameSaying
 	{
+
 		public string Content { get; }
 
 		public string People { get; }
@@ -52,6 +54,7 @@ namespace WenceyWang . Richman4L
 			{
 				throw new ArgumentException ( $"{nameof ( element )} do not perform a {nameof ( GameSaying )}" );
 			}
+
 			Content = element . Attribute ( nameof ( Content ) )?.Value;
 			People = element . Attribute ( nameof ( People ) )?.Value;
 			Book = element . Attribute ( nameof ( Book ) )?.Value;
@@ -90,5 +93,7 @@ namespace WenceyWang . Richman4L
 				}
 			}
 		}
+
 	}
+
 }

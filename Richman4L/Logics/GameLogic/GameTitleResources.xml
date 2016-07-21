@@ -24,6 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleRoot Content="Poorman" />
 		<TitleRoot Content="Normalman" />
 		<TitleRoot Content="Abnormalman"/>
+		<TitleRoot Content="Rationalman"/>
 		<!--<TitleRoot Content="Tank（°ο°）Man"/>
 		<TitleRoot Content="TankMan"/>-->
 	</TitleRoots>
@@ -122,6 +123,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Leitmotif" />
 		<TitleKey Content="Lekker" />
 		<TitleKey Content="Lemma" />
+		<TitleKey Content="Girl"/>
+		<TitleKey Content="Null"/>
+		<TitleKey Content="Tank"/>
 		<TitleKey Content="Lemon" />
 		<TitleKey Content="Lend" />
 		<TitleKey Content="Length" />

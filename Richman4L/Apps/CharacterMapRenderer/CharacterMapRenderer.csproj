@@ -37,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
@@ -54,6 +55,8 @@
     <Compile Include="MapObjectRenderer\CharacterMapObjectRenderer.cs" />
     <Compile Include="MapObjectRenderer\ICharacterMapObjectRenderer.cs" />
     <Compile Include="MapObjectRenderer\Roads\NormalRoadRenderer.cs" />
+    <Compile Include="MapObjectRenderer\Roads\OneWayRoadRenderer.cs" />
+    <Compile Include="MapObjectRenderer\Roads\TRoadRanderer.cs" />
     <Compile Include="MapObjectRenderer\Roads\WithinRoadRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

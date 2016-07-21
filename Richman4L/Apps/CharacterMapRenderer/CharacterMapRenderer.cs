@@ -96,7 +96,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 				{
 					for ( int x = 0 ; x < renderer . Target . Size . Width * MapUnit . Width ; x++ )
 					{
-						CurrentView [ renderer . Target . X * MapUnit . Width + x , renderer . Target . Y * MapUnit . Height + y ] = renderer . CurrentView [ x , y ];
+						CurrentView [ ( renderer . Target . X - 1 ) * MapUnit . Width + x , ( renderer . Target . Y - 1 ) * MapUnit . Height + y ] = renderer . CurrentView [ x , y ];
 					}
 				}
 			}
@@ -122,7 +122,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 				{
 					for ( int x = 0 ; x < mapObject . Size . Width * MapUnit . Width ; x++ )
 					{
-						CurrentView [ mapObject . X * MapUnit . Width + x , mapObject . Y * MapUnit . Height + y ] =
+						CurrentView [ ( mapObject . X - 1 ) * MapUnit . Width + x , ( mapObject . Y - 1 ) * MapUnit . Height + y ] =
 							text [ ( y * mapObject . Size . Width * MapUnit . Width + x ) % text . Length ];
 					}
 				}
@@ -142,7 +142,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) );
 			RegisMapObjectRenderer ( typeof ( WithinRoadRenderer ) , typeof ( WithInRoad ) );
-
+			RegisMapObjectRenderer ( typeof ( TRoadRanderer ) , typeof ( TRoad ) ) ;
 		}
 
 		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType ,

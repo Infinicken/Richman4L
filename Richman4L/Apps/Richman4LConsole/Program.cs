@@ -7,32 +7,67 @@ using System . Threading . Tasks;
 using WenceyWang . Richman4L . App . CharacterMapRenderer;
 using WenceyWang . Richman4L . Maps;
 
+using ConsoleColor = System . ConsoleColor;
 
 namespace WenceyWang . Richman4L . Apps . Console
 {
-	class Program
+
+	public static class Program
 	{
-		static void Main ( string [ ] args )
+
+		public static void Main ( string [ ] args )
 		{
-			System . Console . OutputEncoding = new UnicodeEncoding ( ) ;
+			DateTime startTime = DateTime . Now;
+			System . Console . Clear ( );
+			System . Console . OutputEncoding = new UnicodeEncoding ( );
 			MapObject . LoadMapObjects ( );
 			CharacterMapRenderer . LoadMapObjectRenderers ( );
 			Map map = new Map ( "Test.xml" );
+			DateTime loadEndTime = DateTime . Now;
 			CharacterMapRenderer renderer = new CharacterMapRenderer ( );
 			renderer . SetMap ( map );
 			renderer . SetUnit ( ConsoleSize . Large );
 			renderer . StartUp ( );
+
 			//System . Console . SetWindowSize ( renderer . CharacterWeith , renderer . CharacterHeight ) ;
+			DateTime caluEndTime = DateTime . Now;
+			ConsoleColor currentBackgroundColor = System . Console . BackgroundColor;
+			ConsoleColor currentForegroundColor = System . Console . ForegroundColor;
+			StringBuilder stringBuilder = new StringBuilder ( );
+			int outCount = 0;
+			int outBlock = 0;
 			for ( int y = 0 ; y < renderer . CharacterHeight ; y++ )
 			{
 				for ( int x = 0 ; x < renderer . CharacterWeith ; x++ )
 				{
-					System . Console . SetCursorPosition ( x , y );
-					System . Console . BackgroundColor = ( System . ConsoleColor ) renderer . CurrentView [ x , y ] . BackgroundColor;
-					System . Console . ForegroundColor = ( System . ConsoleColor ) renderer . CurrentView [ x , y ] . ForegroundColor;
-					System . Console . Write ( renderer . CurrentView [ x , y ] . Character );
+					ConsoleColor targetBackgroundColor = ( ConsoleColor ) renderer . CurrentView [ x , y ] . BackgroundColor;
+					ConsoleColor targetForegroundColor = ( ConsoleColor ) renderer . CurrentView [ x , y ] . ForegroundColor;
+					if ( currentBackgroundColor != targetBackgroundColor ||
+						currentForegroundColor != targetForegroundColor )
+					{
+						outCount++;
+						System . Console . Write ( stringBuilder . ToString ( ) );
+						stringBuilder . Clear ( );
+						System . Console . BackgroundColor = currentBackgroundColor = targetBackgroundColor;
+						System . Console . ForegroundColor = currentForegroundColor = targetForegroundColor;
+					}
+					outBlock++;
+					stringBuilder . Append ( renderer . CurrentView [ x , y ] . Character );
 				}
+				stringBuilder . AppendLine ( );
 			}
+
+			System . Console . Write ( stringBuilder . ToString ( ) );
+			System . Console . ResetColor ( );
+
+			//System . Console . WriteLine ( );
+			System . Console . WriteLine ( $"outCount:{outCount}" );
+			System . Console . WriteLine ( $"outBlock:{outBlock}" );
+			System . Console . WriteLine ( $"loadTime:{loadEndTime - startTime}" );
+			System . Console . WriteLine ( $"caluTime:{caluEndTime - loadEndTime}" );
+			System . Console . WriteLine ( $"outTime:{DateTime . Now - caluEndTime}" );
 		}
+
 	}
+
 }

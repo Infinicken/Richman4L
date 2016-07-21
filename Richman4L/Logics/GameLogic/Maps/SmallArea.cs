@@ -26,9 +26,10 @@ using WenceyWang . Richman4L . Maps . Buildings;
 
 namespace WenceyWang . Richman4L . Maps
 {
+	[MapObject]
 	public class SmallArea : Area
 	{
-		public override MapSize Size => MapSize . Small ;
+		public override MapSize Size => MapSize . Small;
 
 		public override int PondingDecrease => 100;
 
@@ -48,7 +49,7 @@ namespace WenceyWang . Richman4L . Maps
 			throw new NotImplementedException ( );
 		}
 
-		
+
 
 		private static ReadOnlyCollection<BuildingType> _availableBuilding;
 

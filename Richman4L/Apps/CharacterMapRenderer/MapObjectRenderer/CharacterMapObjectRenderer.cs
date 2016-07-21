@@ -1,6 +1,7 @@
 ﻿using System;
 
 using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer
 {
@@ -19,12 +20,21 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 		public abstract void Update ( );
 
-		public abstract void SetUnit ( ConsoleSize unit );
+		public virtual void SetUnit ( ConsoleSize unit ) { Unit = unit; }
 
 		MapObject ICharacterMapObjectRenderer.Target => Target;
 
-		public abstract void SetTarget ( T target );
-
+		public virtual void SetTarget ( [NotNull] T target )
+		{
+			if ( Target == null )
+			{
+				Target = target;
+			}
+			else
+			{
+				throw new InvalidOperationException ( );
+			}
+		}
 		public void SetTarget ( MapObject target )
 		{
 			if ( target == null )

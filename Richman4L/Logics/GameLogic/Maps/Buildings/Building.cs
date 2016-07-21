@@ -46,12 +46,12 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		public virtual Area Position { get; protected set; }
 
 		/// <summary>
-		/// 指示建筑的完成度的1000倍
+		/// 指示建筑的完成度的10000倍
 		/// </summary>
 		public int CompletedDgree { get; set; }
 
 		/// <summary>
-		/// 指示建筑的维护水平的1000倍
+		/// 指示建筑的维护水平的10000倍
 		/// </summary>
 		public int MaintenanceDegree { get; set; }
 
@@ -70,7 +70,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		public virtual BuildingGrade UpgradeTo { get; protected set; } = null;
 
 		/// <summary>
-		/// 指示建筑的升级进程的1000倍
+		/// 指示建筑的升级进程的10000倍
 		/// </summary>
 		public virtual int? UpgradeProcess { get; protected set; } = null;
 
