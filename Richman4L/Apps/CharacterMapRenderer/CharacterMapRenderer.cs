@@ -78,7 +78,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 
 			Target . AddMapObjectEvent += Map_AddMapObjectEvent;
 
-
 			foreach ( MapObject mapObject in Target . Objects )
 			{
 				DrawObject ( mapObject );
@@ -142,7 +141,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) );
 			RegisMapObjectRenderer ( typeof ( WithinRoadRenderer ) , typeof ( WithInRoad ) );
-			RegisMapObjectRenderer ( typeof ( TRoadRanderer ) , typeof ( TRoad ) ) ;
+			RegisMapObjectRenderer ( typeof ( TRoadRanderer ) , typeof ( TRoad ) );
+			RegisMapObjectRenderer ( typeof ( OneWayRoadRenderer ) , typeof ( OneWayRoad ) );
 		}
 
 		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType ,

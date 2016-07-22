@@ -1,4 +1,22 @@
-﻿using System;
+﻿/*
+* Richman4L: A free game with a rule like Richman4Fun.
+* Copyright (C) 2010-2016 Wencey Wang
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+using System;
 
 using WenceyWang . Richman4L . Maps;
 using WenceyWang . Richman4L . Properties;
@@ -10,14 +28,24 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 		where T : MapObject
 	{
 
-		public abstract ConsoleChar [ , ] CurrentView { get; protected set; }
+		public virtual ConsoleChar [ , ] CurrentView { get; protected set; }
 
 		public ConsoleSize Unit { get; protected set; }
 
 		public T Target { get; protected set; }
 
-		public abstract void StartUp ( );
-
+		public virtual void StartUp ( )
+		{
+			CurrentView = new ConsoleChar [ Unit . Width , Unit . Height ];
+			for ( int y = 0 ; y < Unit . Height ; y++ )
+			{
+				for ( int x = 0 ; x < Unit . Width ; x++ )
+				{
+					CurrentView [ x , y ] = new ConsoleChar ( ' ' , ConsoleColor . White , ConsoleColor . DarkGreen );
+				}
+			}
+			Update ( );
+		}
 		public abstract void Update ( );
 
 		public virtual void SetUnit ( ConsoleSize unit ) { Unit = unit; }

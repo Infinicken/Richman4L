@@ -1,4 +1,22 @@
-﻿using System;
+﻿/*
+* Richman4L: A free game with a rule like Richman4Fun.
+* Copyright (C) 2010-2016 Wencey Wang
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Affero General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Affero General Public License for more details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+using System;
 using System . Collections . Generic;
 using System . Linq;
 using System . Text;
@@ -13,25 +31,18 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 	public class TRoadRanderer : CharacterMapObjectRenderer<TRoad>
 	{
 
-		public override ConsoleChar [ , ] CurrentView { get; protected set; }
-
-		public override void StartUp ( )
-		{
-			CurrentView = new ConsoleChar [ Unit . Width , Unit . Height ];
-			Update ( );
-		}
 
 		public override void Update ( )
 		{
 			List<Road> exitList = new List<Road> { Target . FirstExit , Target . SecondExit , Target . ThirdExit };
-			int aviliableExitCount = exitList . Count ( road => road != null );
+			int aviliableExitCount = exitList . Count ( road => Target . GetAzimuth ( road ) != BlockAzimuth . None );
 			if ( Unit == ConsoleSize . Small )
 			{
 				switch ( aviliableExitCount )
 				{
 					case 1:
 						{
-							Road exit = exitList . Single ( road => road != null );
+							Road exit = exitList . Single ( road => Target . GetAzimuth ( road ) != BlockAzimuth . None );
 							switch ( Target . GetAzimuth ( exit ) )
 							{
 								case BlockAzimuth . Up:
@@ -65,8 +76,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 						}
 					case 2:
 						{
-							Road forwardRoad = exitList . First ( road => road != null );
-							Road backwardRoad = exitList . Last ( road => road != null );
+							Road forwardRoad = exitList . First ( road => Target . GetAzimuth ( road ) != BlockAzimuth . None );
+							Road backwardRoad = exitList . Last ( road => Target . GetAzimuth ( road ) != BlockAzimuth . None );
 							if ( Target . GetAzimuth ( forwardRoad ) == BlockAzimuth . Up &&
 								Target . GetAzimuth ( backwardRoad ) == BlockAzimuth . Down ||
 								Target . GetAzimuth ( forwardRoad ) == BlockAzimuth . Down &&
@@ -150,9 +161,20 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 			{
 				switch ( aviliableExitCount )
 				{
+					case 0:
+						{
+							for ( int x = 0 ; x < 5 ; x++ )
+							{
+								CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+								CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+								CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
+							}
+
+							break;
+						}
 					case 1:
 						{
-							Road exit = exitList . Single ( road => road != null );
+							Road exit = exitList . Single ( road => Target . GetAzimuth ( road ) != BlockAzimuth . None );
 							switch ( Target . GetAzimuth ( exit ) )
 							{
 								case BlockAzimuth . Up:
@@ -199,25 +221,15 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 										break;
 									}
-								default:
-									{
-										for ( int x = 0 ; x < 5 ; x++ )
-										{
-											CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-											CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-											CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-										}
 
-										break;
-									}
 							}
 
 							break;
 						}
 					case 2:
 						{
-							Road forwardRoad = exitList . First ( road => road != null );
-							Road backwardRoad = exitList . Last ( road => road != null );
+							Road forwardRoad = exitList . First ( road => Target . GetAzimuth ( road ) != BlockAzimuth . None );
+							Road backwardRoad = exitList . Last ( road => Target . GetAzimuth ( road ) != BlockAzimuth . None );
 							if ( Target . GetAzimuth ( forwardRoad ) == BlockAzimuth . Up &&
 								Target . GetAzimuth ( backwardRoad ) == BlockAzimuth . Down ||
 								Target . GetAzimuth ( forwardRoad ) == BlockAzimuth . Down &&
@@ -308,16 +320,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 								//右下
 							}
-							else
-							{
-								for ( int x = 0 ; x < 5 ; x++ )
-								{
-									CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-									CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-									CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-								}
-							}
-
 							break;
 						}
 					case 3:
@@ -358,27 +360,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 									CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 								}
 							}
-							else
-							{
-								for ( int x = 0 ; x < 5 ; x++ )
-								{
-									CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-									CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-									CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-								}
-							}
-
-							break;
-						}
-					default:
-						{
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
-								CurrentView [ x , 0 ] = new ConsoleChar ( "┏━━━┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-								CurrentView [ x , 1 ] = new ConsoleChar ( "┃   ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-								CurrentView [ x , 2 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
-							}
-
 							break;
 						}
 				}
