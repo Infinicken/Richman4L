@@ -71,34 +71,44 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
 				{
-					if ( Target . GetAzimuth ( Target . InRoad ) == BlockAzimuth . Left )
+					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						CurrentView [ 0 , 0 ] = new ConsoleChar ( '╢' , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					if ( Target . GetAzimuth ( Target . InRoad ) == BlockAzimuth . Right )
-					{
-						CurrentView [ 0 , 0 ] = new ConsoleChar ( '╟' , ConsoleColor . White , ConsoleColor . DarkGray );
+						case BlockAzimuth . Left:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╢' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
+						case BlockAzimuth . Right:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╟' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
 					}
 
 					//上下
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
 					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
 				{
-					if ( Target . GetAzimuth ( Target . InRoad ) == BlockAzimuth . Up )
+					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						CurrentView [ 0 , 0 ] = new ConsoleChar ( '╧' , ConsoleColor . White , ConsoleColor . DarkGray );
-					}
-					if ( Target . GetAzimuth ( Target . InRoad ) == BlockAzimuth . Right )
-					{
-						CurrentView [ 0 , 0 ] = new ConsoleChar ( '╤' , ConsoleColor . White , ConsoleColor . DarkGray );
+						case BlockAzimuth . Up:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╧' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
+						case BlockAzimuth . Right:
+							{
+								CurrentView [ 0 , 0 ] = new ConsoleChar ( '╤' , ConsoleColor . White , ConsoleColor . DarkGray );
+								break;
+							}
 					}
 
 					//左右
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
 					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
@@ -107,7 +117,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 					//左上
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
 					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
@@ -116,7 +126,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 					//右上
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
 					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
 					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
@@ -125,10 +135,10 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 					//左下
 				}
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
+					 Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+					 Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
+					 Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╔' , ConsoleColor . White , ConsoleColor . DarkGray );
 
@@ -182,7 +192,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						case BlockAzimuth . Left :
+						case BlockAzimuth . Left:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -196,8 +206,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
-						case BlockAzimuth . Right :
+							break;
+						case BlockAzimuth . Right:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -211,7 +221,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
+							break;
 					}
 					//上下
 				}
@@ -222,7 +232,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						case BlockAzimuth . Up :
+						case BlockAzimuth . Up:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ↓ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -236,8 +246,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
-						case BlockAzimuth . Down :
+							break;
+						case BlockAzimuth . Down:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -245,7 +255,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ↑ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
+							break;
 					}
 					//左右
 				}
@@ -256,7 +266,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						case BlockAzimuth . Right :
+						case BlockAzimuth . Right:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -270,8 +280,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
-						case BlockAzimuth . Down :
+							break;
+						case BlockAzimuth . Down:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -279,7 +289,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ↑ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
+							break;
 					}
 					//左上
 				}
@@ -290,7 +300,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						case BlockAzimuth . Left :
+						case BlockAzimuth . Left:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -304,8 +314,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
-						case BlockAzimuth . Down :
+							break;
+						case BlockAzimuth . Down:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -319,7 +329,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ↑ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
+							break;
 					}
 					//右上
 				}
@@ -330,7 +340,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						case BlockAzimuth . Right :
+						case BlockAzimuth . Right:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -344,8 +354,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
-						case BlockAzimuth . Up :
+							break;
+						case BlockAzimuth . Up:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ↓ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -359,7 +369,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
+							break;
 					}
 					//左下
 				}
@@ -370,7 +380,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
-						case BlockAzimuth . Left :
+						case BlockAzimuth . Left:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -384,8 +394,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
-						case BlockAzimuth . Up :
+							break;
+						case BlockAzimuth . Up:
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ↓ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
@@ -393,13 +403,12 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray );
 							}
 
-							break ;
+							break;
 					}
 					//右下
 				}
 
 				#endregion
-
 			}
 		}
 

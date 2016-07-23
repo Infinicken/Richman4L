@@ -143,6 +143,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 			RegisMapObjectRenderer ( typeof ( WithinRoadRenderer ) , typeof ( WithInRoad ) );
 			RegisMapObjectRenderer ( typeof ( TRoadRanderer ) , typeof ( TRoad ) );
 			RegisMapObjectRenderer ( typeof ( OneWayRoadRenderer ) , typeof ( OneWayRoad ) );
+			RegisMapObjectRenderer ( typeof ( AreaRoadRenderer ) , typeof ( AreaRoad ) );
+			RegisMapObjectRenderer ( typeof ( SmallAreaRenderer ) , typeof ( SmallArea ) ) ;
 		}
 
 		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType ,

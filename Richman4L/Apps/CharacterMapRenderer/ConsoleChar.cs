@@ -32,14 +32,11 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 
 		public readonly ConsoleColor BackgroundColor;
 
-		public bool Equals ( ConsoleChar other )
-		{
-			return Character == other . Character && ForegroundColor == other . ForegroundColor && BackgroundColor == other . BackgroundColor;
-		}
+		public bool Equals ( ConsoleChar other ) => Character == other . Character && ForegroundColor == other . ForegroundColor && BackgroundColor == other . BackgroundColor ;
 
 		public static implicit operator ConsoleChar ( char character )
 		{
-			return new ConsoleChar ( character , ConsoleColor . Gray , ConsoleColor . Black );
+			return new ConsoleChar ( character , ConsoleColor . Gray , ConsoleColor . Black ) ;
 		}
 
 		public override bool Equals ( object obj )
