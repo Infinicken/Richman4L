@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . B
 
 		public SmallHouseRenderer ( )
 		{
-			this . InitializeComponent ( );
+			InitializeComponent ( );
 		}
 
 	}

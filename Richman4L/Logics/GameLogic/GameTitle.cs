@@ -35,6 +35,8 @@ namespace WenceyWang . Richman4L
 
 		public string Content => $"{TitleRoot}4{TitleKey}";
 
+		public string ContentWithSpace => $"{TitleRoot} 4 {TitleKey}";
+
 		public override string ToString ( ) => Content;
 
 		public static implicit operator GameTitle ( string text )

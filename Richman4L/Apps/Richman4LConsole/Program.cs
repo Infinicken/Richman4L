@@ -17,8 +17,16 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 		public static void Main ( string [ ] args )
 		{
-			DateTime startTime = DateTime . Now;
+			GameTitle . LoadTitles ( );
 			System . Console . Clear ( );
+			FIGlet . Net . Figlet titleGenerator = new FIGlet . Net . Figlet ( );
+			GameTitle title = GameTitle . GetTitle ( true );
+			System . Console . SetCursorPosition ( 0 , 10 );
+			System . Console . WriteLine ( titleGenerator . ToAsciiArt ( title . TitleRoot ) );
+			System . Console . WriteLine ( titleGenerator . ToAsciiArt ( "4" ) );
+			System . Console . WriteLine ( titleGenerator . ToAsciiArt ( title . TitleKey ) );
+
+			DateTime startTime = DateTime . Now;
 			System . Console . OutputEncoding = new UnicodeEncoding ( );
 			MapObject . LoadMapObjects ( );
 			CharacterMapRenderer . LoadMapObjectRenderers ( );
@@ -28,6 +36,7 @@ namespace WenceyWang . Richman4L . Apps . Console
 			renderer . SetMap ( map );
 			renderer . SetUnit ( ConsoleSize . Large );
 			renderer . StartUp ( );
+			System . Console . SetCursorPosition ( 0 , 0 );
 
 			//System . Console . SetWindowSize ( renderer . CharacterWeith , renderer . CharacterHeight ) ;
 			DateTime caluEndTime = DateTime . Now;

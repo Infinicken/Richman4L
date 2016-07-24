@@ -130,7 +130,7 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . R
 			}
 		}
 
-		public NormalRoadRenderer ( ) { this . InitializeComponent ( ); }
+		public NormalRoadRenderer ( ) { InitializeComponent ( ); }
 
 		#region IDisposable Support
 

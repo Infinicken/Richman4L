@@ -11,7 +11,7 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer
 	{
 		public EmptyBlockRenderer ( )
 		{
-			this . InitializeComponent ( );
+			InitializeComponent ( );
 		}
 
 		public override Size Size => new Size ( 100 , 50 );

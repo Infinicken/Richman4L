@@ -54,8 +54,7 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer
 
 		public XamlMapRenderer ( )
 		{
-
-			this . InitializeComponent ( );
+			InitializeComponent ( );
 
 		}
 
