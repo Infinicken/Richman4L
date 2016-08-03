@@ -67,8 +67,8 @@
 			</Grid.RenderTransform>
 			<ScrollViewer d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
 				<StackPanel>
-					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="光敏性癫痫警告" FontFamily="{StaticResource Font}" FontSize="{StaticResource PageTitleFontSize}" Margin="40,40,40,0"/>
-					<TextBlock TextWrapping="Wrap" Margin="40,40,40,0" FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}" FontSize="{StaticResource FontSize}">
+					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="光敏性癫痫警告" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}"/>
+					<TextBlock TextWrapping="Wrap" Margin="{StaticResource WideMargin}" FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}" FontSize="{StaticResource FontSize}">
 						<Run Text="极小部分人可能会在看到特定视觉图像（包括可能出现在视频游戏中的闪烁效果或图案）时出现癫痫症状。甚至没有癫痫史的人也可能具有一些可在观看视频游戏时导致&#x201C;光敏性癫痫发作&#x201D;的未确诊症状。"/>
 						<LineBreak/>
 						<Run/>
@@ -98,7 +98,7 @@
 						<LineBreak/>
 						<Run Text="如果您或您的亲人有癫痫史，请在游戏前咨询医生。"/>
 					</TextBlock>
-					<Button x:Name="KnowButton" Content="了解" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}" Margin="40"/>
+					<Button x:Name="KnowButton" Content="了解" VerticalAlignment="Stretch" HorizontalAlignment="Center" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}" Margin="40"/>
 				</StackPanel>
 			</ScrollViewer>
 		</Grid>

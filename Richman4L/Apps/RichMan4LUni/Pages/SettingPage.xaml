@@ -170,8 +170,8 @@
 			</Grid.RenderTransform>
 			<ScrollViewer Margin="0" Grid.ColumnSpan="3" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
 				<StackPanel RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
-					<TextBlock x:Name="PageTitle" Margin="40,40,40,0" TextWrapping="Wrap" Text="设置" FontFamily="{StaticResource Font}" FontSize="{StaticResource PageTitleFontSize}" Height="59"/>
-					<StackPanel Margin="40,40,40,0">
+					<TextBlock x:Name="PageTitle" Margin="{StaticResource WideMargin}" TextWrapping="Wrap" Text="设置" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Height="59"/>
+					<StackPanel Margin="{StaticResource WideMargin}">
 						<TextBlock TextWrapping="Wrap" Text="声音" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}"/>
 						<ToggleSwitch Header="播放声音" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{StaticResource Font}" MinWidth="0" FontSize="18.667" Margin="0,24,0,0" OnContent="开" OffContent="关" Style="{StaticResource SettingToggleSwitch}" IsOn="{Binding PlaySound, Mode=TwoWay, Source={StaticResource Settings}}"/>
 						<StackPanel Margin="0,24,0,0" d:LayoutOverrides="TopPosition, BottomPosition">
@@ -181,11 +181,11 @@
 							<controls:SettingSlider Value="{Binding NotificationVolume, Mode=TwoWay, Source={StaticResource Settings}}" SettingName="通知音量" FontSize="{StaticResource FontSize}" Padding="0" Margin="0,20,0,0" Maximum="100"/>
 						</StackPanel>
 					</StackPanel>
-					<StackPanel Margin="40,40,40,0">
+					<StackPanel Margin="{StaticResource WideMargin}">
 						<TextBlock TextWrapping="Wrap" Text="显示" Padding="0" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" Margin="0"/>
 						<ToggleSwitch Header="强迫症模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{StaticResource Font}" MinWidth="0" FontSize="18.667" Margin="0,24,0,0" Style="{StaticResource SettingToggleSwitch}" IsOn="{Binding OcdMode, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关" OnContent="开"/>
 					</StackPanel>
-					<StackPanel Padding="0" Margin="40,40,40,0">
+					<StackPanel Padding="0" Margin="{StaticResource WideMargin}">
 						<TextBlock TextWrapping="Wrap" Text="游戏" Padding="0" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" Margin="0"/>
 						<StackPanel Margin="0,24,0,0">
 							<TextBlock Margin="0" TextWrapping="Wrap" Text="季节长度（天）" FontFamily="{StaticResource Font}" FontSize="18.667"/>
@@ -195,7 +195,7 @@
 							<controls:SettingSlider FontSize="{StaticResource FontSize}" SettingName="冬季" Value="{Binding WinterLenth, Mode=TwoWay, Source={StaticResource Settings}}" Maximum="90" Minimum="10" Margin="0,20,0,0"/>
 						</StackPanel>
 					</StackPanel>
-					<StackPanel Margin="40,40,40,0">
+					<StackPanel Margin="{StaticResource WideMargin}">
 						<TextBlock TextWrapping="Wrap" Text="杂项" Padding="0" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" Margin="0"/>
 						<ToggleSwitch Header="随机生成标题" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{StaticResource Font}" MinWidth="0" FontSize="18.667" Margin="0,24,0,0" Style="{StaticResource SettingToggleSwitch}" IsOn="{Binding AllowRandomTitle, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关" OnContent="开"/>
 						<ToggleSwitch Header="允许随机标题前缀" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{StaticResource Font}" MinWidth="0" FontSize="18.667" Margin="0,24,0,0" Style="{StaticResource SettingToggleSwitch}" IsOn="{Binding AllowRandomTitleRoot, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关" OnContent="开" Visibility="{Binding AllowRandomTitle, Converter={StaticResource BooleanVisibilityConverter}, Source={StaticResource Settings}}"/>

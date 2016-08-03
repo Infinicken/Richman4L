@@ -1,3 +1,5 @@
 /$tf/
 /BuildProcessTemplates/
 *.tfignore
+*.vssscc
+*.vspscc

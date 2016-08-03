@@ -1,5 +1,6 @@
 ﻿using System;
 using System . Collections . Generic;
+using System . Diagnostics;
 using System . Threading . Tasks;
 
 using Windows . Foundation . Metadata;
@@ -25,6 +26,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 
 		private async void Page_Loaded ( object sender , RoutedEventArgs e )
 		{
+			//Debug . WriteLine ( Windows . System . Profile . AnalyticsInfo . DeviceForm );
+			//Debug . WriteLine ( Windows . System . Profile . AnalyticsInfo . VersionInfo . DeviceFamily );
 			if ( ApiInformation . IsMethodPresent ( "Windows.UI.ViewManagement.StatusBar" , nameof ( StatusBar . HideAsync ) ) )
 			{
 				await StatusBar . GetForCurrentView ( ) . HideAsync ( );

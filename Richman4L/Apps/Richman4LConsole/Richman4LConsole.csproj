@@ -63,7 +63,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ExternalLibrary\FIGlet.Net\FIGlet.Net.csproj">
+    <ProjectReference Include="..\..\ExternalLibrary\FIGlet.Net\FIGlet.Net\FIGlet.Net.csproj">
       <Project>{a39bfbed-a59f-4c73-8c9d-f182dee951eb}</Project>
       <Name>FIGlet.Net</Name>
     </ProjectReference>

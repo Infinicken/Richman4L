@@ -86,7 +86,7 @@
 				<ColumnDefinition/>
 				<ColumnDefinition Width="40"/>
 			</Grid.ColumnDefinitions>
-			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="许可协议" FontFamily="{StaticResource Font}" FontSize="{StaticResource PageTitleFontSize}" Grid.Column="1" d:LayoutOverrides="Width, Height, TopPosition, BottomPosition" Grid.Row="1" Margin="0,0,0,-1.41"/>
+			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="许可协议" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Grid.Column="1" d:LayoutOverrides="Width, Height, TopPosition, BottomPosition" Grid.Row="1" Margin="0,0,0,-1.41"/>
 			<WebView x:Name="WebView" RequestedTheme="Dark" Grid.Column="1" d:LayoutOverrides="Width, Height, TopPosition, BottomPosition" Grid.Row="3" />
 			<Grid Grid.Column="1" d:LayoutOverrides="Width" Grid.Row="5">
 				<Grid.ColumnDefinitions>
@@ -94,8 +94,8 @@
 					<ColumnDefinition Width="12"/>
 					<ColumnDefinition Width="1*"/>
 				</Grid.ColumnDefinitions>
-				<Button x:Name="DisagreeButton" Content="不同意" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}"/>
-				<Button x:Name="AgreeButton" Content="同意" VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Stretch" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}"/>
+				<Button x:Name="DisagreeButton" Content="不同意" VerticalAlignment="Stretch" HorizontalAlignment="Center" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}"/>
+				<Button x:Name="AgreeButton" Content="同意" VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Center" Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}"/>
 			</Grid>
 		</Grid>
 

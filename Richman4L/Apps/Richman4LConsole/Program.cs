@@ -4,6 +4,7 @@ using System . Linq;
 using System . Text;
 using System . Threading . Tasks;
 
+using WenceyWang . FIGlet;
 using WenceyWang . Richman4L . App . CharacterMapRenderer;
 using WenceyWang . Richman4L . Maps;
 
@@ -19,12 +20,12 @@ namespace WenceyWang . Richman4L . Apps . Console
 		{
 			GameTitle . LoadTitles ( );
 			System . Console . Clear ( );
-			FIGlet . Net . Figlet titleGenerator = new FIGlet . Net . Figlet ( );
+
 			GameTitle title = GameTitle . GetTitle ( true );
 			System . Console . SetCursorPosition ( 0 , 10 );
-			System . Console . WriteLine ( titleGenerator . ToAsciiArt ( title . TitleRoot ) );
-			System . Console . WriteLine ( titleGenerator . ToAsciiArt ( "4" ) );
-			System . Console . WriteLine ( titleGenerator . ToAsciiArt ( title . TitleKey ) );
+			System . Console . WriteLine ( new AsciiArt ( title . TitleRoot ) );
+			System . Console . WriteLine ( new AsciiArt ( "4" ) );
+			System . Console . WriteLine ( new AsciiArt ( title . TitleKey ) );
 
 			DateTime startTime = DateTime . Now;
 			System . Console . OutputEncoding = new UnicodeEncoding ( );

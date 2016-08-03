@@ -6,4 +6,6 @@ Those libraries are got from some websites like GitHub, They are here just becau
 
 FIGlet.Net is an Ascii-Art generator.
 
-https://github.com/auriou/FIGlet
+I got it from here : https://github.com/auriou/FIGlet
+
+I have rewrite this library completely, I think I can even republish this library.

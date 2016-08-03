@@ -8,7 +8,6 @@
 	mc:Ignorable="d">
 
 	<Page.Resources>
-		<logic:AppSettings x:Key="Settings"/>
 		<Storyboard x:Name="StartStoryBoard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
 				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}"/>
@@ -55,13 +54,10 @@
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</Page.Resources>
-	<Grid>
+	<Grid x:Name="RootGrid">
 		<VisualStateManager.VisualStateGroups>
 			<VisualStateGroup x:Name="VisualStateGroup">
 				<VisualState x:Name="Mobile">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger/>
-					</VisualState.StateTriggers>
 				</VisualState>
 
 				<VisualState x:Name="Wide">
@@ -72,10 +68,7 @@
 						<Setter Target="Row.Height" Value="15*"/>
 						<Setter Target="Title.(Grid.ColumnSpan)" Value="1"/>
 					</VisualState.Setters>
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="640" MinWindowHeight="360"/>
-					</VisualState.StateTriggers>
-
+				
 				</VisualState>
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
@@ -88,7 +81,7 @@
 			</Grid.RenderTransform>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition x:Name="Col1"/>
-				<ColumnDefinition x:Name="Col2" Width="2*"/>
+				<ColumnDefinition x:Name="Col2" Width="Auto"/>
 				<ColumnDefinition x:Name="Col3"/>
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
@@ -102,16 +95,12 @@
 				<RowDefinition Height="Auto"/>
 				<RowDefinition x:Name="Row" Height="20*"/>
 			</Grid.RowDefinitions>
-			<TextBlock x:Name="Title" TextWrapping="Wrap" Margin="0" FontSize="48" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontFamily="{StaticResource Font}" Foreground="{StaticResource White}" Text="{Binding GameTitle.Content, Mode=OneWay, Source={StaticResource Settings}}">
-				<Run Text="RichMan"/>
-				<Run Text="4"/>
-				<Run Text="L"/>
-			</TextBlock>
+			<TextBlock x:Name="Title" TextWrapping="Wrap" Margin="0" FontSize="48" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontFamily="{StaticResource Font}" Foreground="{StaticResource White}" TextAlignment="Center"/>
 			<Button x:Name="NewGameButton" Content="新游戏" VerticalAlignment="Stretch" Margin="0" HorizontalAlignment="Stretch" Grid.Row="3" MinWidth="0" MinHeight="0" d:LayoutOverrides="TopPosition, BottomPosition" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}"  Padding="{StaticResource ButtonPadding}" Background="{StaticResource TransparentCran}" BorderBrush="{x:Null}" Grid.Column="1" Foreground="{StaticResource White}" Style="{StaticResource RoundedRectangleButtonStyle}"/>
 			<Button x:Name="LoadGameButton" Content="加载存档" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0" Grid.Row="5" MinWidth="0" MinHeight="0" Grid.Column="1" Padding="{StaticResource ButtonPadding}" Background="{StaticResource TransparentCran}" BorderBrush="{x:Null}" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" Style="{StaticResource RoundedRectangleButtonStyle}" Foreground="{StaticResource White}"/>
 			<Button x:Name="ListButton" Content="排行榜" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0" Grid.Row="7" MinWidth="0" MinHeight="0" Grid.Column="1" Padding="{StaticResource ButtonPadding}" Background="{StaticResource TransparentCran}" BorderBrush="{x:Null}" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" Style="{StaticResource RoundedRectangleButtonStyle}" Foreground="{StaticResource White}"/>
-			<Button x:Name="SettingButton" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,40,40" Grid.Row="7" MinWidth="0" MinHeight="0" Grid.Column="1"  Padding="{StaticResource ButtonPadding}" Background="{StaticResource TransparentCran}" BorderBrush="{x:Null}" FontFamily="{StaticResource Font}" FontSize="32" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Width="45" Height="45" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource RoundedRectangleButtonStyle}" Foreground="{StaticResource White}">
-				<SymbolIcon Symbol="Setting" Margin="1,1,0,0" RenderTransformOrigin="0.5,0.5">
+			<Button x:Name="SettingButton" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,40,40" Grid.Row="7" MinWidth="0" MinHeight="0" Grid.Column="1" Background="{StaticResource TransparentCran}" BorderBrush="{x:Null}" FontFamily="{StaticResource Font}" FontSize="32" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Width="45" Height="45" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource RoundedRectangleButtonStyle}" Foreground="{StaticResource White}">
+				<SymbolIcon Symbol="Setting" RenderTransformOrigin="0.5,0.5">
 					<SymbolIcon.RenderTransform>
 						<CompositeTransform ScaleX="1.25" ScaleY="1.25"/>
 					</SymbolIcon.RenderTransform>

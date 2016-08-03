@@ -16,11 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Windows . Foundation . Metadata ;
-using Windows . UI . Xaml . Controls ;
-using Windows . UI . Xaml . Navigation ;
+using Windows . Foundation . Metadata;
+using Windows . UI . Xaml . Controls;
+using Windows . UI . Xaml . Navigation;
 
-using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Apps . Uni . Logic;
 
 namespace WenceyWang . Richman4L . Apps . Uni . Pages
 {
@@ -72,6 +72,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 
 		private void MainPageButton_Click ( object sender , object e )
 		{
+			BackClickEventArgs args = e as BackClickEventArgs;
+			if ( args != null )
+			{
+				args . Handled = true;
+			}
 			PageNavigateHelper . Navigate ( typeof ( MainPage ) ,
 											null ,
 											"Cyan" ,

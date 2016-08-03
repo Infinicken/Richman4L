@@ -1,7 +1,8 @@
-﻿using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
+﻿using Windows . UI . Xaml;
+using Windows . UI . Xaml . Controls;
+using Windows . UI . Xaml . Media;
 
-using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Apps . Uni . Logic;
 
 namespace WenceyWang . Richman4L . Apps . Uni . Pages
 {
@@ -17,13 +18,22 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 			InitializeComponent ( );
 			Loaded += MainPage_Loaded;
 			SizeChanged += MainPage_SizeChanged;
-			;
+
 		}
+
 
 		private void MainPage_Loaded ( object sender , RoutedEventArgs e )
 		{
-			StartStoryBoard . Begin ( );
+			Title . Text = AppSettings . Current . GameTitle . ContentWithSpace;
+			if ( Windows . System . Profile . AnalyticsInfo . VersionInfo . DeviceFamily == "Windows.Mobile" )
+			{
+				RootGrid . Margin = new Thickness ( 0 , 0 , -Width * 0.25 , -Height * 0.25 );
+				RootGrid . Width = Width * 1.25;
+				RootGrid . Height = Height * 1.25;
+				RootGrid . RenderTransform = new ScaleTransform { ScaleX = 1 / 1.25 , ScaleY = 1 / 1.25 };
+			}
 			StartStoryBoard . Completed += StartStoryBoard_Completed;
+			StartStoryBoard . Begin ( );
 		}
 
 		private void StartStoryBoard_Completed ( object sender , object e )
@@ -39,17 +49,26 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 		private void AddControl ( )
 		{
 			NewGameButton . Click += NewGameButton_Click;
+			LoadGameButton . Click += LoadGameButton_Click;
 			SettingButton . Click += SettingButton_Click;
 		}
 
 		private void RemoveControl ( )
 		{
 			NewGameButton . Click -= NewGameButton_Click;
+			LoadGameButton . Click -= LoadGameButton_Click;
 			SettingButton . Click -= SettingButton_Click;
 		}
 
 		private void MainPage_SizeChanged ( object sender , SizeChangedEventArgs e )
 		{
+			//if ( Windows . System . Profile . AnalyticsInfo . VersionInfo . DeviceFamily == "Windows.Mobile" )
+			//{
+			//	RootGrid . Margin = new Thickness ( 0 , 0 , -e . NewSize . Width * 0.25 , -e . NewSize . Height * 0.25 );
+			//	RootGrid . Width = e . NewSize . Width * 1.25;
+			//	RootGrid . Height = e . NewSize . Height * 1.25;
+			//	RootGrid . RenderTransform = new ScaleTransform { ScaleX = 1 / 1.25 , ScaleY = 1 / 1.25 };
+			//}
 			if ( e . NewSize . Height < e . NewSize . Width &&
 				e . NewSize . Width >= 640 )
 			{

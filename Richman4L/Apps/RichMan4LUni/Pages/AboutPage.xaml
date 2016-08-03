@@ -81,8 +81,8 @@
 					<CompositeTransform/>
 				</ScrollViewer.RenderTransform>
 				<StackPanel x:Name="stackPanel" RenderTransformOrigin="0.5,0.5" Padding="0">
-					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="关于" FontFamily="{StaticResource Font}" FontSize="{StaticResource PageTitleFontSize}" Margin="40,40,40,0"/>
-					<StackPanel Padding="0" Margin="40,40,40,0">
+					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="关于" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}"/>
+					<StackPanel Padding="0" Margin="{StaticResource WideMargin}">
 						<TextBlock x:Name="DRText" TextWrapping="Wrap"  FontSize="68" Text="Dream Recorder" FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" TextAlignment="Center" Margin="0"/>
 						<TextBlock TextWrapping="Wrap" Text="知识 自由 美德" FontFamily="{StaticResource Font}" FontSize="{StaticResource SmallTitle}" TextAlignment="Center" Margin="0,10,0,0"/>
 						<TextBlock Margin="0,10,0,0" TextWrapping="Wrap" Text="展现美" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" TextAlignment="Center"/>
@@ -106,7 +106,7 @@
 							</Hyperlink>
 						</TextBlock>
 					</StackPanel>
-					<StackPanel Margin="40,40,40,0">
+					<StackPanel Margin="{StaticResource WideMargin}">
 						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="32" Text="这个项目"/>
 						<TextBlock TextWrapping="Wrap" Text="RichMan4L" Margin="0" FontSize="16" FontFamily="{StaticResource Font}"/>
 						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}">
@@ -121,7 +121,7 @@
 							<Run Text="这个项目的源代码可以在l4ljl.codeplex.com找到，协议是GPLv3，就这样了。"/>
 						</TextBlock>
 					</StackPanel>
-					<StackPanel Margin="40,40,40,0">
+					<StackPanel Margin="{StaticResource WideMargin}">
 						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="32" Text="感谢"/>
 						<TextBlock TextWrapping="Wrap" Text="Special Thank" Margin="0" FontSize="16" FontFamily="{StaticResource Font}"/>
 						<TextBlock TextWrapping="Wrap" Margin="0,20,0,40" FontFamily="{StaticResource Font}" FontSize="21.333">

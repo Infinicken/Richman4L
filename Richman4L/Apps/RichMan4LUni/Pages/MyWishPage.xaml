@@ -69,8 +69,8 @@
 			</Grid.RenderTransform>
 			<ScrollViewer d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
 				<StackPanel>
-					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="作者想说的" FontFamily="{StaticResource Font}" FontSize="{StaticResource PageTitleFontSize}" Margin="40,40,40,0"/>
-					<TextBlock x:Name="textBlock" TextWrapping="Wrap" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" Margin="40,40,40,0">
+					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="作者想说的" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}"/>
+					<TextBlock x:Name="textBlock" TextWrapping="Wrap" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" Margin="{StaticResource WideMargin}">
 						<Run Text="我们本着尊重玩家的态度来讲述每一个故事。期间使用的人物以及地点都经过仔细考量。"/>
 						<LineBreak/>
 						<Run/>

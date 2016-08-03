@@ -2,7 +2,7 @@
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.PlayerConfigPage"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="using:WenceyWang.Richman4L.App"
+	xmlns:local="using:WenceyWang.Richman4L.Apps.Uni"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
@@ -107,7 +107,7 @@
 				<RowDefinition Height="Auto"/>
 				<RowDefinition Height="40"/>
 			</Grid.RowDefinitions>
-			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="人物设定" FontFamily="{StaticResource Font}" FontSize="{StaticResource PageTitleFontSize}" Grid.Row="1" Grid.Column="1" Margin="0,0,0,-7" d:LayoutOverrides="LeftMargin, RightMargin"/>
+			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="人物设定" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Grid.Row="1" Grid.Column="1" Margin="0,0,0,-7" d:LayoutOverrides="LeftMargin, RightMargin"/>
 			<ScrollViewer Grid.Column="1" Grid.Row="3">
 				<StackPanel x:Name="PlayerConfigStackPanel">
 					<Grid d:LayoutOverrides="LeftMargin, RightMargin">

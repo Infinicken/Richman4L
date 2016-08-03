@@ -1,14 +1,9 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
-using System . IO;
-using System . Threading . Tasks;
-using System . Xml;
-using System . Reflection;
+﻿using System ;
+using System . IO ;
+using System . Reflection ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . FIGlet
 {
 	public static class ResourceHelper
 	{
@@ -31,8 +26,6 @@ namespace WenceyWang . Richman4L
 			StreamReader reader = new StreamReader ( stream );
 
 			XDocument doc = XDocument . Parse ( reader . ReadToEnd ( ) );
-
-			reader . Dispose ( ) ;
 
 			return doc;
 
