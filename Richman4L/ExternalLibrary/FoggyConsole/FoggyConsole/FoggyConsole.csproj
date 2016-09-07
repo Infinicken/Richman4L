@@ -124,8 +124,6 @@
     <Compile Include="Point.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Size.cs" />
-    <Compile Include="Test\ConsoleBenchmark.cs" />
-    <Compile Include="Test\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector.cs" />
   </ItemGroup>
