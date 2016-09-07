@@ -16,83 +16,60 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Xml . Linq;
+using System ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+namespace WenceyWang . Richman4L . Maps .Roads
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class OneWayRoad : Road
 	{
-		private long? _entranceId;
 
-		private Road _entrance;
+		private Road _entrance ;
+
+		private long? _entranceId ;
+
+		private Road _exit ;
+
+
+		private long? _exitId ;
 
 		public virtual Road Entrance
 		{
 			get
 			{
-				if ( _entrance == null && _entranceId == null )
+				if ( _entrance == null &&
+					_entranceId == null )
 				{
-					return null;
+					return null ;
 				}
-				return _entrance ?? ( _entrance = Map . Currnet . GetRoad ( _entranceId . Value ) );
+
+				return _entrance ?? ( _entrance = Map . Currnet . GetRoad ( _entranceId . Value ) ) ;
 			}
 			set
 			{
-				_entranceId = value ?. Id ;
+				_entranceId = value ? . Id ;
 				_entrance = value ;
 			}
 		}
-
-
-		private long? _exitId;
-
-		private Road _exit;
 
 		public virtual Road Exit
 		{
 			get
 			{
-				if ( _exit == null && _exitId == null )
+				if ( _exit == null &&
+					_exitId == null )
 				{
-					return null;
+					return null ;
 				}
-				return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId . Value ) );
+
+				return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId . Value ) ) ;
 			}
 			set
 			{
-				_exitId = value ?. Id ;
-				_exit = value ;				
-			}
-		}
-
-
-		public override bool CanEnterFrom ( Road road ) { return road == Entrance; }
-
-		public override Path Route ( Road previous , int moveCount , Path result = null )
-		{
-			if ( previous == null )
-			{
-				throw new ArgumentNullException ( nameof ( previous ) );
-			}
-			if ( !CanEnterFrom ( previous ) )
-			{
-				throw new ArgumentException ( $"无法通过{nameof ( previous )}进入此道路" , nameof ( previous ) );
-			}
-			if ( moveCount < 0 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) );
-			}
-			Path current = result ?? new Path ( );
-			current . AddRoute ( this );
-			if ( BlockMoving || moveCount == 0 )
-			{
-				return current;
-			}
-			else
-			{
-				return Exit . Route ( this , moveCount - 1 , result );
+				_exitId = value ? . Id ;
+				_exit = value ;
 			}
 		}
 
@@ -100,14 +77,45 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			try
 			{
-				_entranceId = Convert . ToInt64 ( resource . Attribute ( nameof ( Entrance ) ) . Value );
-				_exitId = Convert . ToInt64 ( resource . Attribute ( nameof ( Exit ) ) . Value );
+				_entranceId = Convert . ToInt64 ( resource . Attribute ( nameof ( Entrance ) ) . Value ) ;
+				_exitId = Convert . ToInt64 ( resource . Attribute ( nameof ( Exit ) ) . Value ) ;
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+			}
+		}
+
+
+		public override bool CanEnterFrom ( Road road ) { return road == Entrance ; }
+
+		public override Path Route ( Road previous , int moveCount , Path result = null )
+		{
+			if ( previous == null )
+			{
+				throw new ArgumentNullException ( nameof ( previous ) ) ;
+			}
+			if ( ! CanEnterFrom ( previous ) )
+			{
+				throw new ArgumentException ( $"无法通过{nameof ( previous )}进入此道路" , nameof ( previous ) ) ;
+			}
+			if ( moveCount < 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) ) ;
+			}
+
+			Path current = result ?? new Path ( ) ;
+			current . AddRoute ( this ) ;
+			if ( BlockMoving || moveCount == 0 )
+			{
+				return current ;
+			}
+			else
+			{
+				return Exit . Route ( this , moveCount - 1 , result ) ;
 			}
 		}
 
 	}
+
 }

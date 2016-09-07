@@ -9,3 +9,11 @@ FIGlet.Net is an Ascii-Art generator.
 I got it from here : https://github.com/auriou/FIGlet
 
 I have rewrite this library completely, I think I can even republish this library.
+
+## FoggyConsole
+
+FoggyConsole can draw UI in console.
+
+I got it from here : https://github.com/luto/FoggyConsole
+
+I also edit this library in many ways.

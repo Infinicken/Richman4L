@@ -1,12 +1,13 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+﻿using System ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang .Richman4L
 {
+
 	public static class GameRandom
 	{
-		public static Random Current { get; } = new Random ( );
+
+		public static Random Current { get ; } = new Random ( ) ;
+
 	}
+
 }

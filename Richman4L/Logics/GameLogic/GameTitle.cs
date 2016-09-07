@@ -16,116 +16,114 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+using System . Collections . Generic ;
+using System . Linq ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang .Richman4L
 {
+
 	public struct GameTitle
 	{
-		public static GameTitle Defult => new GameTitle ( "Richman" , "L" );
 
-		public string TitleRoot { get; }
+		public static GameTitle Defult => new GameTitle ( "Richman" , "L" ) ;
 
-		public string TitleKey { get; }
+		public string TitleRoot { get ; }
 
-		public string Content => $"{TitleRoot}4{TitleKey}";
+		public string TitleKey { get ; }
 
-		public string ContentWithSpace => $"{TitleRoot} 4 {TitleKey}";
+		public string Content => $"{TitleRoot}4{TitleKey}" ;
 
-		public override string ToString ( ) => Content;
+		public string ContentWithSpace => $"{TitleRoot} 4 {TitleKey}" ;
+
+		public override string ToString ( ) => Content ;
 
 		public static implicit operator GameTitle ( string text )
 		{
-			string [ ] temp = text . Split ( '4' );
-			return new GameTitle ( temp . First ( ) , temp . Last ( ) );
+			string [ ] temp = text . Split ( '4' ) ;
+			return new GameTitle ( temp . First ( ) , temp . Last ( ) ) ;
 		}
 
 		private GameTitle ( string titleRoot , string titleKey )
 		{
-			TitleRoot = titleRoot;
-			TitleKey = titleKey;
+			TitleRoot = titleRoot ;
+			TitleKey = titleKey ;
 		}
 
-		internal static List<string> TitleRoots;
+		internal static List < string > TitleRoots ;
 
-		internal static List<string> TitleKeys;
+		internal static List < string > TitleKeys ;
 
-		internal static bool Loaded = false;
+		internal static bool Loaded ;
 
 		public static GameTitle GetTitle ( bool randomTitleRoot )
 		{
-			if ( !Loaded )
+			if ( ! Loaded )
 			{
-				LoadTitles ( );
+				LoadTitles ( ) ;
 			}
 
 			if ( randomTitleRoot )
 			{
 				return new GameTitle ( TitleRoots . RandomItem ( GameRandom . Current ) ,
-										TitleKeys . RandomItem ( GameRandom . Current ) );
+										TitleKeys . RandomItem ( GameRandom . Current ) ) ;
 			}
 			else
 			{
-				return new GameTitle ( "Richman" , TitleKeys . RandomItem ( GameRandom . Current ) );
+				return new GameTitle ( "Richman" , TitleKeys . RandomItem ( GameRandom . Current ) ) ;
 			}
 		}
 
 		public bool Equals ( GameTitle other )
 		{
-			return string . Equals ( TitleRoot , other . TitleRoot ) && string . Equals ( TitleKey , other . TitleKey );
+			return string . Equals ( TitleRoot , other . TitleRoot ) && string . Equals ( TitleKey , other . TitleKey ) ;
 		}
 
 		public override bool Equals ( object obj )
 		{
-			if ( ReferenceEquals ( null , obj ) ) { return false; }
-			return obj is GameTitle && Equals ( ( GameTitle ) obj );
+			if ( ReferenceEquals ( null , obj ) )
+			{
+				return false ;
+			}
+
+			return obj is GameTitle && Equals ( ( GameTitle ) obj ) ;
 		}
 
 		public override int GetHashCode ( )
 		{
 			unchecked
 			{
-				return ( ( TitleRoot?.GetHashCode ( ) ?? 0 ) * 397 ) ^ ( TitleKey?.GetHashCode ( ) ?? 0 );
+				return ( ( TitleRoot ? . GetHashCode ( ) ?? 0 ) * 397 ) ^ ( TitleKey ? . GetHashCode ( ) ?? 0 ) ;
 			}
 		}
 
-		public static bool operator == ( GameTitle left , GameTitle right )
-		{
-			return left . Equals ( right );
-		}
+		public static bool operator == ( GameTitle left , GameTitle right ) { return left . Equals ( right ) ; }
 
-		public static bool operator != ( GameTitle left , GameTitle right )
-		{
-			return !left . Equals ( right );
-		}
+		public static bool operator != ( GameTitle left , GameTitle right ) { return ! left . Equals ( right ) ; }
 
-		private static readonly object locker = new object ( );
+		private static readonly object locker = new object ( ) ;
 
 		public static void LoadTitles ( )
 		{
 			lock ( locker )
 			{
-				Loaded = true;
-				TitleRoots = new List<string> ( );
-				TitleKeys = new List<string> ( );
+				Loaded = true ;
+				TitleRoots = new List < string > ( ) ;
+				TitleKeys = new List < string > ( ) ;
 
-				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{ nameof ( GameTitle )}Resources.xml" );
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameTitle )}Resources.xml" ) ;
 
 				foreach ( XElement item in doc . Root . Element ( nameof ( TitleRoots ) ) . Elements ( ) )
 				{
-					TitleRoots . Add ( item . Attribute ( "Content" ) . Value );
+					TitleRoots . Add ( item . Attribute ( "Content" ) . Value ) ;
 				}
 				foreach ( XElement item in doc . Root . Element ( nameof ( TitleKeys ) ) . Elements ( ) )
 				{
-					TitleKeys . Add ( item . Attribute ( "Content" ) . Value );
+					TitleKeys . Add ( item . Attribute ( "Content" ) . Value ) ;
 				}
 			}
-
 		}
+
 	}
+
 }

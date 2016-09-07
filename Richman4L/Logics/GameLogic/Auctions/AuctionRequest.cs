@@ -1,13 +1,10 @@
-﻿using System ;
-using System . Collections . Generic ;
-using System . Linq ;
-using System . Text ;
-using WenceyWang . Richman4L . Players ;
+﻿using WenceyWang . Richman4L . Players ;
 
 namespace WenceyWang . Richman4L .Auctions
 {
+
 	/// <summary>
-	/// 表示拍卖请求
+	///     表示拍卖请求
 	/// </summary>
 	public abstract class AuctionRequest
 	{
@@ -25,4 +22,5 @@ namespace WenceyWang . Richman4L .Auctions
 		}
 
 	}
+
 }

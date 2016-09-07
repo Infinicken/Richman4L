@@ -1,15 +1,22 @@
-﻿using System ;
+﻿using System;
 
-using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
-using Windows . UI . Xaml . Media ;
+using Windows . UI . Xaml;
+using Windows . UI . Xaml . Controls;
+using Windows . UI . Xaml . Media;
 
 namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
-	static class OcdModeExtensions
+
+	internal static class OcdModeExtensions
 	{
+
 		internal static void TurnOnOcdMode ( this Panel panel , Random random = null )
 		{
+			if ( panel == null )
+			{
+				throw new ArgumentNullException ( nameof ( panel ) );
+			}
+
 			Random rand = random ?? GameRandom . Current;
 			foreach ( UIElement item in panel . Children )
 			{
@@ -23,15 +30,16 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 
 					item . RenderTransform = new CompositeTransform
 					{
-						TranslateX = ( rand . Next ( 10 ) - 5 ) ,
-						TranslateY = ( rand . Next ( 10 ) - 5 ) ,
-						Rotation = ( ( rand . NextDouble ( ) * 10d ) - 5d ) ,
+						TranslateX = rand . Next ( 10 ) - 5 ,
+						TranslateY = rand . Next ( 10 ) - 5 ,
+						Rotation = rand . NextDoubleBetween ( -5 , 5 ) ,
+						ScaleX = rand . NextDoubleBetween ( 0.75 , 1.25 ) ,
+						ScaleY = rand . NextDoubleBetween ( 0.75 , 1.25 ) ,
 					};
-
 				}
 			}
 		}
+
 	}
 
 }
-

@@ -9,7 +9,7 @@
 	mc:Ignorable="d"
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
 	<Page.Resources>
-		<logic:AppSettings x:Key="AppSettings"/>
+		<logic:AppSettings x:Key="AppSettings" />
 		<Thickness x:Key="FlyoutContentPanelPortraitThemeMargin">0,25.5,0,0</Thickness>
 		<Thickness x:Key="FlyoutContentPanelLandscapeThemeMargin">0,0,0,0</Thickness>
 		<x:String x:Key="Player1String">玩家1</x:String>
@@ -18,25 +18,32 @@
 		<Flyout x:Key="PlayerFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}">
 			<Grid Background="{StaticResource DarkLime}" Height="324">
 				<Grid.RowDefinitions>
-					<RowDefinition Height="20"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="20"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="20"/>
-					<RowDefinition/>
-					<RowDefinition Height="20"/>
+					<RowDefinition Height="20" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="20" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="20" />
+					<RowDefinition />
+					<RowDefinition Height="20" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="20"/>
-					<ColumnDefinition Width="1*"/>
-					<ColumnDefinition Width="20"/>
-					<ColumnDefinition Width="1*"/>
-					<ColumnDefinition Width="20"/>
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="20" />
 				</Grid.ColumnDefinitions>
-				<TextBlock TextWrapping="Wrap" Text="{StaticResource Player1String}" Grid.Column="1" Grid.Row="1" FontFamily="{StaticResource Font}" FontSize="32" d:LayoutOverrides="Width, Height, LeftPosition, RightPosition, TopPosition, BottomPosition"/>
-				<TextBlock TextWrapping="Wrap" Text="{StaticResource CharacterString}" Grid.Column="1" Grid.Row="3" FontFamily="{StaticResource Font}" FontSize="21.333" d:LayoutOverrides="Height, LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,0,0,-0.333"/>
-				<TextBlock TextWrapping="Wrap" Text="{StaticResource ControllerString}" Grid.Column="3" Grid.Row="3" FontFamily="{StaticResource Font}" FontSize="21.333" d:LayoutOverrides="Width, Height, LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,0,0,-0.333"/>
-				<FlipView x:Name="flipView" Grid.Column="1" Grid.Row="5" d:LayoutOverrides="Height, LeftPosition, RightPosition"/>
+				<TextBlock TextWrapping="Wrap" Text="{StaticResource Player1String}" Grid.Column="1" Grid.Row="1"
+							FontFamily="{StaticResource Font}" FontSize="32"
+							d:LayoutOverrides="Width, Height, LeftPosition, RightPosition, TopPosition, BottomPosition" />
+				<TextBlock TextWrapping="Wrap" Text="{StaticResource CharacterString}" Grid.Column="1" Grid.Row="3"
+							FontFamily="{StaticResource Font}" FontSize="21.333"
+							d:LayoutOverrides="Height, LeftPosition, RightPosition, TopPosition, BottomPosition" Margin="0,0,0,-0.333" />
+				<TextBlock TextWrapping="Wrap" Text="{StaticResource ControllerString}" Grid.Column="3" Grid.Row="3"
+							FontFamily="{StaticResource Font}" FontSize="21.333"
+							d:LayoutOverrides="Width, Height, LeftPosition, RightPosition, TopPosition, BottomPosition"
+							Margin="0,0,0,-0.333" />
+				<FlipView x:Name="flipView" Grid.Column="1" Grid.Row="5" d:LayoutOverrides="Height, LeftPosition, RightPosition" />
 			</Grid>
 		</Flyout>
 		<x:String x:Key="Player2String">玩家2</x:String>
@@ -44,123 +51,154 @@
 		<x:String x:Key="Player4String">玩家4</x:String>
 		<Storyboard x:Name="StartStoryBoard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="MainGrid">
+				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayerConfigPageUpImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="PlayerConfigPageUpImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayerConfigPageDownImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="PlayerConfigPageDownImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Name="LeaveStoryBoard">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayerConfigPageUpImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="PlayerConfigPageUpImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayerConfigPageDownImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="PlayerConfigPageDownImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="600" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="MainGrid">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="600" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 
 	</Page.Resources>
 
 	<Grid>
-		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource Lime}" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition"/>
-		<Image x:Name="PlayerConfigPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/PlayerConfigPageUp.png" Stretch="UniformToFill" d:LayoutOverrides="TopPosition, BottomPosition" VerticalAlignment="Top"/>
-		<Image x:Name="PlayerConfigPageDownImage" Margin="0" Source="ms-appx:///Pages/ImageResources/PlayerConfigPageDown.png" Stretch="UniformToFill" d:LayoutOverrides="TopPosition, BottomPosition" VerticalAlignment="Bottom"/>
+		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource Lime}"
+					d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition" />
+		<Image x:Name="PlayerConfigPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/PlayerConfigPageUp.png"
+				Stretch="UniformToFill" d:LayoutOverrides="TopPosition, BottomPosition" VerticalAlignment="Top" />
+		<Image x:Name="PlayerConfigPageDownImage" Margin="0"
+				Source="ms-appx:///Pages/ImageResources/PlayerConfigPageDown.png" Stretch="UniformToFill"
+				d:LayoutOverrides="TopPosition, BottomPosition" VerticalAlignment="Bottom" />
 		<Grid x:Name="MainGrid" Margin="0" RenderTransformOrigin="0.5,0.5">
 			<Grid.RenderTransform>
-				<CompositeTransform/>
+				<CompositeTransform />
 			</Grid.RenderTransform>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="40"/>
-				<ColumnDefinition/>
-				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="40" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="40"/>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="40"/>
-				<RowDefinition/>
-				<RowDefinition Height="12"/>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="24"/>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="40"/>
+				<RowDefinition Height="40" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="40" />
+				<RowDefinition />
+				<RowDefinition Height="12" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="24" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="40" />
 			</Grid.RowDefinitions>
-			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="人物设定" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Grid.Row="1" Grid.Column="1" Margin="0,0,0,-7" d:LayoutOverrides="LeftMargin, RightMargin"/>
+			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="人物设定" FontFamily="{StaticResource Font}"
+						FontSize="{StaticResource LargeTitle}" Grid.Row="1" Grid.Column="1" Margin="0,0,0,-7"
+						d:LayoutOverrides="LeftMargin, RightMargin" />
 			<ScrollViewer Grid.Column="1" Grid.Row="3">
 				<StackPanel x:Name="PlayerConfigStackPanel">
 					<Grid d:LayoutOverrides="LeftMargin, RightMargin">
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="8"/>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="8"/>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="8"/>
-							<ColumnDefinition Width="32"/>
+							<ColumnDefinition />
+							<ColumnDefinition Width="8" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="8" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="8" />
+							<ColumnDefinition Width="32" />
 						</Grid.ColumnDefinitions>
-						<TextBlock TextWrapping="Wrap" FontSize="21.333" FontFamily="{StaticResource Font}" Text="玩家们" Height="27" VerticalAlignment="Bottom"/>
-						<TextBlock TextWrapping="Wrap" Grid.Column="2" FontSize="21.333" FontFamily="{StaticResource Font}" Text="{StaticResource CharacterString}" VerticalAlignment="Bottom"/>
-						<TextBlock TextWrapping="Wrap" Grid.Column="4" FontSize="21.333" FontFamily="{StaticResource Font}" Text="{StaticResource ControllerString}" VerticalAlignment="Bottom"/>
+						<TextBlock TextWrapping="Wrap" FontSize="21.333" FontFamily="{StaticResource Font}" Text="玩家们" Height="27"
+									VerticalAlignment="Bottom" />
+						<TextBlock TextWrapping="Wrap" Grid.Column="2" FontSize="21.333" FontFamily="{StaticResource Font}"
+									Text="{StaticResource CharacterString}" VerticalAlignment="Bottom" />
+						<TextBlock TextWrapping="Wrap" Grid.Column="4" FontSize="21.333" FontFamily="{StaticResource Font}"
+									Text="{StaticResource ControllerString}" VerticalAlignment="Bottom" />
 					</Grid>
 				</StackPanel>
 			</ScrollViewer>
-			<Button x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Grid.Row="5" Width="30" d:LayoutOverrides="TopPosition, BottomPosition" Click="AddButton_Click">
-				<SymbolIcon Symbol="Add" Margin="5" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+			<Button x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch"
+					Style="{StaticResource TextBlockButtonStyle}" Grid.Row="5" Width="30"
+					d:LayoutOverrides="TopPosition, BottomPosition" Click="AddButton_Click">
+				<SymbolIcon Symbol="Add" Margin="5" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"
+							VerticalAlignment="Center">
 					<SymbolIcon.RenderTransform>
-						<CompositeTransform ScaleX="1.25" ScaleY="1.25"/>
+						<CompositeTransform ScaleX="1.25" ScaleY="1.25" />
 					</SymbolIcon.RenderTransform>
 				</SymbolIcon>
 			</Button>
-			<Button x:Name="CreateGamePageButton" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" FontFamily="{StaticResource Font}" d:LayoutOverrides="TopPosition, BottomPosition" FontSize="21.333" Click="CreateGamePageButton_Click" Width="115">
+			<Button x:Name="CreateGamePageButton" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7"
+					VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" FontFamily="{StaticResource Font}"
+					d:LayoutOverrides="TopPosition, BottomPosition" FontSize="21.333" Click="CreateGamePageButton_Click" Width="115">
 				<Grid>
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="5"/>
-						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="5" />
+						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
-					<TextBlock Margin="0" TextWrapping="Wrap" Text="创建游戏" d:LayoutOverrides="Width, Height" FontFamily="{StaticResource Font}" Grid.Column="2"/>
-					<TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Text="&#xF060;" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Light"/>
+					<TextBlock Margin="0" TextWrapping="Wrap" Text="创建游戏" d:LayoutOverrides="Width, Height"
+								FontFamily="{StaticResource Font}" Grid.Column="2" />
+					<TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"
+								FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Text="&#xF060;" HorizontalAlignment="Center"
+								VerticalAlignment="Center" FontWeight="Light" />
 					<Rectangle Grid.ColumnSpan="3">
 						<Rectangle.Fill>
-							<SolidColorBrush Color="{StaticResource Transparent}"/>
+							<SolidColorBrush Color="{StaticResource Transparent}" />
 						</Rectangle.Fill>
 					</Rectangle>
 				</Grid>
 			</Button>
-			<Button x:Name="StartGameButton" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="7" VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" d:LayoutOverrides="TopPosition, BottomPosition" FontFamily="Segoe UI Symbol" FontSize="21.333" Click="StartGameButton_Click" Width="115">
+			<Button x:Name="StartGameButton" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="7"
+					VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}"
+					d:LayoutOverrides="TopPosition, BottomPosition" FontFamily="Segoe UI Symbol" FontSize="21.333"
+					Click="StartGameButton_Click" Width="115">
 				<Grid Margin="0">
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="5"/>
-						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="5" />
+						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
-					<TextBlock Margin="0" TextWrapping="Wrap" Text="开始游戏" d:LayoutOverrides="Width, Height" FontFamily="{StaticResource Font}"/>
-					<TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Text="&#xF061;" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Light"/>
+					<TextBlock Margin="0" TextWrapping="Wrap" Text="开始游戏" d:LayoutOverrides="Width, Height"
+								FontFamily="{StaticResource Font}" />
+					<TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"
+								FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Text="&#xF061;" Grid.Column="2"
+								HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Light" />
 					<Rectangle Grid.ColumnSpan="2">
 						<Rectangle.Fill>
-							<SolidColorBrush Color="{StaticResource Transparent}"/>
+							<SolidColorBrush Color="{StaticResource Transparent}" />
 						</Rectangle.Fill>
 					</Rectangle>
 				</Grid>

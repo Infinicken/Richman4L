@@ -1,6 +1,6 @@
 ﻿using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players .Commands . Arguments . DefineDomains
+namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 {
 
 	public abstract class ArgumentValueDefineDomain

@@ -16,27 +16,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer
+namespace WenceyWang . Richman4L . App . CharacterMapRenderer .MapObjectRenderer
 {
 
 	public interface ICharacterMapObjectRenderer
 	{
 
-		ConsoleChar [ , ] CurrentView { get; }
+		ConsoleChar [ , ] CurrentView { get ; }
 
-		void Update ( );
+		ConsoleSize Unit { get ; }
 
-		void StartUp ( );
+		MapObject Target { get ; }
 
-		void SetUnit ( ConsoleSize unit );
+		void Update ( ) ;
 
-		void SetTarget ( MapObject target );
+		void StartUp ( ) ;
 
-		ConsoleSize Unit { get; }
+		void SetUnit ( ConsoleSize unit ) ;
 
-		MapObject Target { get; }
+		void SetTarget ( MapObject target ) ;
 
 	}
 

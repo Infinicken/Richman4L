@@ -16,132 +16,135 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using WenceyWang . Richman4L . Calendars;
-using WenceyWang . Richman4L . Players;
-using WenceyWang . Richman4L . Weathers;
+using System ;
 
-namespace WenceyWang . Richman4L . Buffs . RoadBuffs
+using WenceyWang . Richman4L . Buffs . RoadBuffs . Event ;
+using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Weathers ;
+
+namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 {
+
 	/// <summary>
-	/// 表示道路上的狗，会咬伤步行经过的人和在此停留的玩家，会被自行车，机车和汽车碾死，会因为不好的天气状况而死。
+	///     表示道路上的狗，会咬伤步行经过的人和在此停留的玩家，会被自行车，机车和汽车碾死，会因为不好的天气状况而死。
 	/// </summary>
 	public class Dog : RoadBuff
 	{
-		/// <summary>
-		/// 指示狗咬经过的行人的概率的10000倍
-		/// </summary>
-		public int BiteWalkerPossibility => 3333;
 
 		/// <summary>
-		/// 指示在此停止的人被狗咬的概率的10000倍
+		///     指示狗咬经过的行人的概率的10000倍
 		/// </summary>
-		public int BiteStayerPossibility => 6666;
+		public int BiteWalkerPossibility => 3333 ;
+
+		/// <summary>
+		///     指示在此停止的人被狗咬的概率的10000倍
+		/// </summary>
+		public int BiteStayerPossibility => 6666 ;
 
 		public override void DoWhenPass ( Player player , MoveType moveType )
 		{
 			switch ( moveType )
 			{
-				case MoveType . Walk:
+				case MoveType . Walk :
+				{
+					if ( GameRandom . Current . InvokeEvent ( BiteWalkerPossibility ) )
 					{
-						if ( GameRandom . Current . InvokeEvent ( BiteWalkerPossibility ) )
-						{
-							Bite ( player );
-						}
-						break;
+						Bite ( player ) ;
 					}
-				case MoveType . RidingBicycle:
-				case MoveType . RidingMotorcycle:
-				case MoveType . DrivingCar:
-					{
-						Kill ( player , moveType );
-					}
-					break;
-				default:
-					{
-						throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
-					}
+					break ;
+				}
+				case MoveType . RidingBicycle :
+				case MoveType . RidingMotorcycle :
+				case MoveType . DrivingCar :
+				{
+					Kill ( player , moveType ) ;
+				}
+					break ;
+				default :
+				{
+					throw new ArgumentOutOfRangeException ( nameof ( moveType ) ) ;
+				}
 			}
 
-			base . DoWhenPass ( player , moveType );
+			base . DoWhenPass ( player , moveType ) ;
 		}
 
 		public override void DoWhenStay ( Player player , MoveType moveType )
 		{
 			if ( GameRandom . Current . InvokeEvent ( BiteStayerPossibility ) )
 			{
-				Bite ( player );
+				Bite ( player ) ;
 			}
-			base . DoWhenStay ( player , moveType );
+			base . DoWhenStay ( player , moveType ) ;
 		}
 
 		public override void StartDay ( GameDate nextDate )
 		{
 			if ( IsKilled ( Game . Current . Weather ) )
 			{
-				Kill ( Game . Current . Weather );
+				Kill ( Game . Current . Weather ) ;
 			}
-			base . StartDay ( nextDate );
+			base . StartDay ( nextDate ) ;
 		}
 
-		public bool IsKilled ( Weather weather ) => weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37 ;
+		public bool IsKilled ( Weather weather )
+			=> weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37 ;
 
 		public void Bite ( Player player )
 		{
-			int days = GameRandom . Current . Next ( 1 , 4 );
-			player . ChangeState ( PlayerState . 住院 , days );
-			BiteEvent?.Invoke ( this , new Event . DogBiteEventArgs ( player , days ) );
-			Dispose ( );
+			int days = GameRandom . Current . Next ( 1 , 4 ) ;
+			player . ChangeState ( PlayerState . 住院 , days ) ;
+			BiteEvent ? . Invoke ( this , new DogBiteEventArgs ( player , days ) ) ;
+			Dispose ( ) ;
 		}
 
-		public event EventHandler<Event . DogBiteEventArgs> BiteEvent;
+		public event EventHandler < DogBiteEventArgs > BiteEvent ;
 
-		public event EventHandler<Event . DogDeadEventArgs> DeadEvent;
+		public event EventHandler < DogDeadEventArgs > DeadEvent ;
 
 		public void Kill ( Weather weather )
 		{
-			DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . BadWeather ) );
-			Kill ( );
+			DeadEvent ? . Invoke ( this , new DogDeadEventArgs ( DogDeadCause . BadWeather ) ) ;
+			Kill ( ) ;
 		}
 
 		public void Kill ( Player murderer , MoveType moveType )
 		{
 			switch ( moveType )
 			{
-				case MoveType . RidingBicycle:
-					{
-						DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . Bicycle ) );
-						break;
-					}
-				case MoveType . RidingMotorcycle:
-					{
-						DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . Motorcycle ) );
-						break;
-					}
-				case MoveType . DrivingCar:
-					{
-						DeadEvent?.Invoke ( this , new Event . DogDeadEventArgs ( DogDeadCause . Car ) );
-						break;
-					}
-				default:
-					{
-						throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
-					}
+				case MoveType . RidingBicycle :
+				{
+					DeadEvent ? . Invoke ( this , new DogDeadEventArgs ( DogDeadCause . Bicycle ) ) ;
+					break ;
+				}
+				case MoveType . RidingMotorcycle :
+				{
+					DeadEvent ? . Invoke ( this , new DogDeadEventArgs ( DogDeadCause . Motorcycle ) ) ;
+					break ;
+				}
+				case MoveType . DrivingCar :
+				{
+					DeadEvent ? . Invoke ( this , new DogDeadEventArgs ( DogDeadCause . Car ) ) ;
+					break ;
+				}
+				default :
+				{
+					throw new ArgumentOutOfRangeException ( nameof ( moveType ) ) ;
+				}
 			}
-			Kill ( );
+
+			Kill ( ) ;
 		}
 
-		private void Kill ( )
-		{
-			Dispose ( );
-		}
+		private void Kill ( ) { Dispose ( ) ; }
 
 		protected override void Dispose ( bool disposing )
 		{
-			if ( !DisposedValue )
+			if ( ! DisposedValue )
 			{
 			}
-			base . Dispose ( disposing );
+			base . Dispose ( disposing ) ;
 		}
 
 	}

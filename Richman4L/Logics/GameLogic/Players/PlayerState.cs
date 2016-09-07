@@ -1,6 +1,4 @@
-﻿using System;
-using System . Collections . Generic;
-/*
+﻿/*
 * Richman4L: A free game with a rule like Richman4Fun.
 * Copyright (C) 2010-2016 Wencey Wang
 *
@@ -18,18 +16,20 @@ using System . Collections . Generic;
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-
-namespace WenceyWang . Richman4L . Players
+namespace WenceyWang . Richman4L .Players
 {
+
 	public enum PlayerState
 	{
-		Normal,
-		入狱,
-		住院,
+
+		Normal ,
+
+		入狱 ,
+
+		住院 ,
+
 		Bankrupt
 
 	}
+
 }

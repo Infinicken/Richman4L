@@ -16,42 +16,40 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
+using System . Collections . ObjectModel ;
 
-namespace WenceyWang . Richman4L . GameEnviroment
+using WenceyWang . Richman4L . Auctions ;
+using WenceyWang . Richman4L . InfomationCenter ;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . Models ;
+
+namespace WenceyWang . Richman4L .GameEnviroment
 {
+
 	/// <summary>
-	/// 指示游戏的环境
+	///     指示游戏的环境
 	/// </summary>
 	public abstract class Environment
 	{
-		public abstract ReadOnlyCollection<int> GetDice ( int number , DiceType diceType );
 
-		public abstract void ShowEvent ( InfomationCenter . Event @event );
+		public abstract ReadOnlyCollection < int > GetDice ( int number , DiceType diceType ) ;
 
-		public abstract void PlayerSay ( Players . Player player , Players . Models . PlayerSaying saying );
+		public abstract void ShowEvent ( Event @event ) ;
+
+		public abstract void PlayerSay ( Player player , PlayerSaying saying ) ;
 
 		public abstract void ShowDice ( DiceType diceType , int number ) ;
 
 
-		public abstract Auctions . AuctionResult PerformAuction ( Auctions . AuctionRequest request );
+		public abstract AuctionResult PerformAuction ( AuctionRequest request ) ;
 
 
-		public abstract void ShowFlag ( bool flaged );
+		public abstract void ShowFlag ( bool flaged ) ;
 
 		//public abstract 
 
-		public abstract void GameOver ( GameResult info );
-
-		public Environment ( )
-		{
-
-
-		}
+		public abstract void GameOver ( GameResult info ) ;
 
 	}
+
 }

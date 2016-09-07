@@ -16,80 +16,74 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . IO;
-using System . Threading;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang .Richman4L
 {
 
 	public class GameSaying
 	{
 
-		public string Content { get; }
+		public string Content { get ; }
 
-		public string People { get; }
+		public string People { get ; }
 
-		public string Book { get; }
+		public string Book { get ; }
 
-		public string Author { get; }
+		public string Author { get ; }
 
-		public string Song { get; }
-
-		public override string ToString ( ) => Content;
+		public string Song { get ; }
 
 		private GameSaying ( XElement element )
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) );
+				throw new ArgumentNullException ( nameof ( element ) ) ;
 			}
 			if ( element . Name != nameof ( GameSaying ) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} do not perform a {nameof ( GameSaying )}" );
+				throw new ArgumentException ( $"{nameof ( element )} do not perform a {nameof ( GameSaying )}" ) ;
 			}
 
-			Content = element . Attribute ( nameof ( Content ) )?.Value;
-			People = element . Attribute ( nameof ( People ) )?.Value;
-			Book = element . Attribute ( nameof ( Book ) )?.Value;
-			Author = element . Attribute ( nameof ( Author ) )?.Value;
-			Song = element . Attribute ( nameof ( Song ) )?.Value;
+			Content = element . Attribute ( nameof ( Content ) ) ? . Value ;
+			People = element . Attribute ( nameof ( People ) ) ? . Value ;
+			Book = element . Attribute ( nameof ( Book ) ) ? . Value ;
+			Author = element . Attribute ( nameof ( Author ) ) ? . Value ;
+			Song = element . Attribute ( nameof ( Song ) ) ? . Value ;
 		}
 
-		internal static List<GameSaying> Sayings;
+		internal static List < GameSaying > Sayings ;
 
-		internal static bool Loaded = false;
+		internal static bool Loaded ;
+
+		private static readonly object Locker = new object ( ) ;
+
+		public override string ToString ( ) => Content ;
 
 
 		public static GameSaying GetSaying ( )
 		{
-			if ( !Loaded )
+			if ( ! Loaded )
 			{
-				LoadSayings ( );
+				LoadSayings ( ) ;
 			}
-			return Sayings . RandomItem ( GameRandom . Current );
+			return Sayings . RandomItem ( GameRandom . Current ) ;
 		}
-
-		private static readonly object Locker = new object ( );
 
 		public static void LoadSayings ( )
 		{
 			lock ( Locker )
 			{
-				Loaded = true;
-				Sayings = new List<GameSaying> ( );
+				Loaded = true ;
+				Sayings = new List < GameSaying > ( ) ;
 
-				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameSaying )}Resources.xml" );
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameSaying )}Resources.xml" ) ;
 
 				foreach ( XElement item in doc . Root . Elements ( ) )
 				{
-					Sayings . Add ( new GameSaying ( item ) );
+					Sayings . Add ( new GameSaying ( item ) ) ;
 				}
 			}
 		}

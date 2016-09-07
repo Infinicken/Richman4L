@@ -16,35 +16,42 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-using WenceyWang . Richman4L . GameEnviroment;
+using System ;
+using System . Collections . Generic ;
 
-namespace WenceyWang . Richman4L
+using WenceyWang . Richman4L . GameEnviroment ;
+using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Players . Models ;
+
+using Environment = WenceyWang . Richman4L . GameEnviroment . Environment ;
+
+namespace WenceyWang .Richman4L
 {
+
 	public class StartGameParameters
 	{
-		public long SpringLenth { get; set; }
 
-		public long SummerLenth { get; set; }
+		public long SpringLenth { get ; set ; }
 
-		public long AutumnLenth { get; set; }
+		public long SummerLenth { get ; set ; }
 
-		public long WinterLenth { get; set; }
+		public long AutumnLenth { get ; set ; }
 
-		public long StartMoney { get; set; }
+		public long WinterLenth { get ; set ; }
 
-		public long GameTime { get; set; }
+		public long StartMoney { get ; set ; }
 
-		public Maps . Map Map { get; set; }
+		public long GameTime { get ; set ; }
 
-		public List<Tuple<Players . Models . PlayerModelProxy , PlayerConsole>> PlayerConfig { get; set; } = new List<Tuple<Players . Models . PlayerModelProxy , PlayerConsole>> ( );
+		public Map Map { get ; set ; }
 
-		public long ConditionsToWin { get; set; }
+		public List < Tuple < PlayerModelProxy , PlayerConsole > > PlayerConfig { get ; set ; } =
+			new List < Tuple < PlayerModelProxy , PlayerConsole > > ( ) ;
 
-		public GameEnviroment . Environment Enviroment { get; set; }
+		public long ConditionsToWin { get ; set ; }
+
+		public Environment Enviroment { get ; set ; }
+
 	}
+
 }

@@ -16,115 +16,125 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Collections . ObjectModel ;
+using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Buffs . AreaBuffs;
-using WenceyWang . Richman4L . Maps . Buildings;
-using WenceyWang . Richman4L . Maps . Roads;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Buffs . AreaBuffs ;
+using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Maps . Buildings ;
+using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	public abstract class Area : Block
 	{
-		public long Id { get; private set; }
 
-		[NotNull]
-		[ItemNotNull]
-		public List<AreaBuff> Buffs { get; set; } = new List<AreaBuff> ( );
+		private AreaRoad _position ;
 
-		public abstract long MoneyCostWhenCrossed { get; protected set; }
+		private long _positionId ;
 
-		public abstract double BuildingResistance { get; protected set; }
+		public long Id { get ; }
 
-		private long _positionId;
+		[ NotNull ]
+		[ ItemNotNull ]
+		public List < AreaBuff > Buffs { get ; set ; } = new List < AreaBuff > ( ) ;
 
-		private AreaRoad _position;
+		public abstract long MoneyCostWhenCrossed { get ; protected set ; }
 
-		public AreaRoad Position { get { return _position ?? ( _position = ( AreaRoad ) Map . Currnet . GetRoad ( _positionId ) ); } set { _positionId = value . Id; _position = value; } }
+		public abstract double BuildingResistance { get ; protected set ; }
 
-		public Players . Player Owner { get; set; }
-
-		public Building Building { get; private set; }
-
-		public abstract long Price { get; protected set; }
-
-		public void Stay ( [NotNull] Players . Player player )
+		public AreaRoad Position
 		{
-			CheckDisposed ( );
-
-			if ( player == null )
+			get { return _position ?? ( _position = ( AreaRoad ) Map . Currnet . GetRoad ( _positionId ) ) ; }
+			set
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				_positionId = value . Id ;
+				_position = value ;
 			}
-
-			Building?.Stay ( player );
 		}
 
-		public void Pass ( [NotNull] Players . Player player )
-		{
-			CheckDisposed ( );
+		public Player Owner { get ; set ; }
 
-			if ( player == null )
-			{
-				throw new ArgumentNullException ( nameof ( player ) );
-			}
+		public Building Building { get ; private set ; }
 
-			Building?.Pass ( player );
-		}
+		public abstract long Price { get ; protected set ; }
 
-		public override void StartDay ( Calendars . GameDate nextDate )
-		{
-		}
+		[ NotNull ]
+		public abstract ReadOnlyCollection < BuildingType > AvailableBuildings { get ; }
 
-		public bool IsBuildingAvailable ( [NotNull] BuildingType buildingType ) => AvailableBuildings . Contains ( buildingType );
-
-		[NotNull]
-		public abstract ReadOnlyCollection<BuildingType> AvailableBuildings { get; }
-
-		public void BuildBuildiing ( [NotNull] Building building )
-		{
-			CheckDisposed ( );
-
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof ( building ) );
-			}
-
-			if ( !IsBuildingAvailable ( building . Type ) )
-			{
-				throw new ArgumentException ( $"{nameof ( building )} is not vaild for this area" , nameof ( building ) );
-			}
-			if ( Building != null )
-			{
-				throw new InvalidOperationException ( "this area have building" );
-			}
-			Building = building;
-		}
-
-		public Area ( [NotNull] XElement resource ) : base ( resource )
+		public Area ( [ NotNull ] XElement resource ) : base ( resource )
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) );
+				throw new ArgumentNullException ( nameof ( resource ) ) ;
 			}
 
 			try
 			{
-				Id = Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value );
-				_positionId = Convert . ToInt64 ( resource . Attribute ( nameof ( Position ) ) . Value );
+				Id = Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value ) ;
+				_positionId = Convert . ToInt64 ( resource . Attribute ( nameof ( Position ) ) . Value ) ;
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
 			}
 		}
 
+		public void Stay ( [ NotNull ] Player player )
+		{
+			CheckDisposed ( ) ;
+
+			if ( player == null )
+			{
+				throw new ArgumentNullException ( nameof ( player ) ) ;
+			}
+
+			Building ? . Stay ( player ) ;
+		}
+
+		public void Pass ( [ NotNull ] Player player )
+		{
+			CheckDisposed ( ) ;
+
+			if ( player == null )
+			{
+				throw new ArgumentNullException ( nameof ( player ) ) ;
+			}
+
+			Building ? . Pass ( player ) ;
+		}
+
+		public override void StartDay ( GameDate nextDate ) { }
+
+		public bool IsBuildingAvailable ( [ NotNull ] BuildingType buildingType )
+			=> AvailableBuildings . Contains ( buildingType ) ;
+
+		public void BuildBuildiing ( [ NotNull ] Building building )
+		{
+			CheckDisposed ( ) ;
+
+			if ( building == null )
+			{
+				throw new ArgumentNullException ( nameof ( building ) ) ;
+			}
+
+			if ( ! IsBuildingAvailable ( building . Type ) )
+			{
+				throw new ArgumentException ( $"{nameof ( building )} is not vaild for this area" , nameof ( building ) ) ;
+			}
+			if ( Building != null )
+			{
+				throw new InvalidOperationException ( "this area have building" ) ;
+			}
+
+			Building = building ;
+		}
+
 	}
+
 }

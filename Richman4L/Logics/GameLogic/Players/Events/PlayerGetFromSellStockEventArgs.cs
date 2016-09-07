@@ -1,34 +1,31 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+﻿using System ;
 
-using WenceyWang . Richman4L . Properties;
-using WenceyWang . Richman4L . Stocks;
+using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
 
 	public class PlayerGetFromSellStockEventArgs : PlayerGetEventArgs
 	{
 
-		[NotNull]
-		public Stock Stock { get; }
+		[ NotNull ]
+		public Stock Stock { get ; }
 
-		public int Number { get; }
+		public int Number { get ; }
 
-		public override long Money { get; }
+		public override long Money { get ; }
 
-		public PlayerGetFromSellStockEventArgs ( [NotNull] Stock stock , int number , long money )
+		public PlayerGetFromSellStockEventArgs ( [ NotNull ] Stock stock , int number , long money )
 		{
 			if ( stock == null )
 			{
-				throw new ArgumentNullException ( nameof ( stock ) );
+				throw new ArgumentNullException ( nameof ( stock ) ) ;
 			}
 
-			Stock = stock;
-			Number = number;
-			Money = money;
+			Stock = stock ;
+			Number = number ;
+			Money = money ;
 		}
 
 	}

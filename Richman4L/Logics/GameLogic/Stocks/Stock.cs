@@ -19,45 +19,44 @@
 using System ;
 using System . Collections . Generic ;
 using System . Linq ;
-using System . Text ;
-using System . Threading . Tasks ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Buffs ;
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
+using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Stocks . PriceController ;
 
 namespace WenceyWang . Richman4L .Stocks
 {
 
 	/// <summary>
-	/// 表示股票
+	///     表示股票
 	/// </summary>
 	public class Stock : GameObject
 	{
 
 		/// <summary>
-		/// 表示股票的名称
+		///     表示股票的名称
 		/// </summary>
 		public string Name { get ; protected set ; }
 
 		/// <summary>
-		/// 表示当前的价格
+		///     表示当前的价格
 		/// </summary>
 		public StockPrice CurrentPrice { get ; set ; }
 
 		internal StockPrice TodayAnticipate { get ; set ; }
 
 		[ NotNull ]
-		public PriceController . StockPriceController PriceController { get ; }
+		public StockPriceController PriceController { get ; }
 
 		/// <summary>
-		/// 股票何时交易
+		///     股票何时交易
 		/// </summary>
 		public StockTransactDay TransactDay { get ; set ; }
 
 		/// <summary>
-		/// 今天是否交易
+		///     今天是否交易
 		/// </summary>
 		public bool TransactToday { get ; private set ; }
 
@@ -68,19 +67,21 @@ namespace WenceyWang . Richman4L .Stocks
 		public List < StockBuff > Buffs { get ; set ; } = new List < StockBuff > ( ) ;
 
 		/// <summary>
-		/// 今天的变动率
+		///     今天的变动率
 		/// </summary>
 		public decimal ChangeNet { get ; set ; }
 
 		/// <summary>
-		/// 预计明天的涨幅
+		///     预计明天的涨幅
 		/// </summary>
 		internal decimal NextDayChangeNet { get ; set ; }
 
+		public Stock ( XElement element ) { }
 
-		public override void StartDay ( Calendars . GameDate nextDate )
+
+		public override void StartDay ( GameDate nextDate )
 		{
-			if ( Buffs . Any ( ( buff ) => ( buff is RedBuff ) ) )
+			if ( Buffs . Any ( buff => buff is RedBuff ) )
 			{
 				//Todo:ChangeToUseAnotherController
 			}
@@ -102,24 +103,15 @@ namespace WenceyWang . Richman4L .Stocks
 			//TodaysHigh = Math . Max ( OpenPrice , CurrentPrice ) + Math . Abs ( OpenPrice - CurrentPrice ) * GameRandom . Current . Next ( 0 , 1500 ) / 1000m;
 			//TodaysLow = Math . Min ( OpenPrice , CurrentPrice ) - Math . Abs ( OpenPrice - CurrentPrice ) * GameRandom . Current . Next ( 0 , 1500 ) / 1000m;
 
-			PriceHistory . Add ( new StockPrice
-								{
-									//OpenPrice = OpenPrice ,
-									//CurrentPrice = CurrentPrice ,
-									//TodaysHigh = TodaysHigh ,
-									//TodaysLow = TodaysLow
-								} ) ;
+			PriceHistory . Add ( new StockPrice ( ) ) ;
 		}
 
 
 		/// <summary>
-		/// 使这个股票退市
+		///     使这个股票退市
 		/// </summary>
 		/// <param name="reason">退市的原因</param>
-		public void Delist ( StockDelistReason reason )
-		{
-			DelistEvent ? . Invoke ( this , new EventArgs ( ) ) ;
-		}
+		public void Delist ( StockDelistReason reason ) { DelistEvent ? . Invoke ( this , EventArgs . Empty ) ; }
 
 		public event EventHandler DelistEvent ;
 
@@ -181,8 +173,6 @@ namespace WenceyWang . Richman4L .Stocks
 
 			Buffs . Add ( buff ) ;
 		}
-
-		public Stock ( XElement element ) : base ( ) { }
 
 		protected override void Dispose ( bool disposing )
 		{

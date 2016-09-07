@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsciiArt.cs" />
+    <Compile Include="CharacterWidth.cs" />
     <Compile Include="FigletFont.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

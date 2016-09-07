@@ -16,21 +16,16 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
-using WenceyWang . Richman4L . Players;
-using WenceyWang . Richman4L . Players . Models;
+using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Accounts
+namespace WenceyWang . Richman4L .Accounts
 {
+
 	public class AccountItem
 	{
-		public virtual Player Player { get; set; }
 
+		public virtual Player Player { get ; set ; }
 
 	}
+
 }

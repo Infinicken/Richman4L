@@ -1,36 +1,38 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+﻿using System ;
 
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Stocks
+namespace WenceyWang . Richman4L .Stocks
 {
+
 	/// <summary>
-	/// 为股票委托提供基类
+	///     为股票委托提供基类
 	/// </summary>
 	public abstract class StockDelegate
 	{
-		[NotNull]
-		public Players . Player Player { get; }
 
-		[NotNull]
-		public Stock Stock { get; }
+		[ NotNull ]
+		public Player Player { get ; }
 
-		public StockDelegate ( [NotNull] Players . Player player , [NotNull]Stock stock )
+		[ NotNull ]
+		public Stock Stock { get ; }
+
+		public StockDelegate ( [ NotNull ] Player player , [ NotNull ] Stock stock )
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 			if ( stock == null )
 			{
-				throw new ArgumentNullException ( nameof ( stock ) );
+				throw new ArgumentNullException ( nameof ( stock ) ) ;
 			}
 
-			Player = player;
-			Stock = stock;
+			Player = player ;
+			Stock = stock ;
 		}
+
 	}
+
 }

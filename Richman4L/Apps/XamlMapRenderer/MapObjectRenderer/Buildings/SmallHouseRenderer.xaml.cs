@@ -1,17 +1,14 @@
-﻿using System ;
+﻿using Windows . Foundation ;
 
-using Windows . Foundation ;
-
-using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Maps . Buildings ;
-using WenceyWang . Richman4L . Properties ;
-
-namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . Buildings
+namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Buildings
 {
-	public sealed partial class SmallHouseRenderer : MapObjectRenderer 
+
+	public sealed partial class SmallHouseRenderer : MapObjectRenderer
 	{
 
-		public override Size Size => new Size ( 120 , 60 );
+		public override Size Size => new Size ( 120 , 60 ) ;
+
+		public SmallHouseRenderer ( ) { InitializeComponent ( ) ; }
 
 
 		public override void Show ( )
@@ -26,10 +23,6 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . B
 
 		public void Update ( ) { }
 
-		public SmallHouseRenderer ( )
-		{
-			InitializeComponent ( );
-		}
-
 	}
+
 }

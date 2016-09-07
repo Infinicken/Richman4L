@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25302.0
+VisualStudioVersion = 15.0.25618.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{6FC8DA3E-DE22-4C74-B70C-39819C441EE0}"
 EndProject
@@ -33,6 +33,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterMapRenderer", "Apps\CharacterMapRenderer\CharacterMapRenderer.csproj", "{7765D69C-137E-4D84-9978-56E10527E02E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Richman4LConsole", "Apps\Richman4LConsole\Richman4LConsole.csproj", "{7F57B1C2-CEE0-41DB-9823-15508EA2FBE6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376} = {232E460F-DAE6-4578-B3E4-7CC3444DB376}
+		{A39BFBED-A59F-4C73-8C9D-F182DEE951EB} = {A39BFBED-A59F-4C73-8C9D-F182DEE951EB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingTypeDesigner", "Tools\BuildingTypeDesigner\BuildingTypeDesigner.csproj", "{38A9075E-B827-4D8B-BD53-DA9F3FBCDC5F}"
 EndProject
@@ -43,6 +47,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIGlet.Net", "ExternalLibrary\FIGlet.Net\FIGlet.Net\FIGlet.Net.csproj", "{A39BFBED-A59F-4C73-8C9D-F182DEE951EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIGlet.NetUnitTest", "ExternalLibrary\FIGlet.Net\FIGlet.NetUnitTest\FIGlet.NetUnitTest.csproj", "{4A92DAE7-1C9D-42A5-AEF2-9851A74AD384}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FoggyConsole", "FoggyConsole", "{080232B8-957F-4593-9778-EBC02A546F76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoggyConsole", "ExternalLibrary\FoggyConsole\FoggyConsole\FoggyConsole.csproj", "{232E460F-DAE6-4578-B3E4-7CC3444DB376}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Richman4LWeb", "Apps\Richman4LWeb\Richman4LWeb.csproj", "{10205FEE-6020-4237-94EC-B68C0CD682C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -208,6 +218,38 @@ Global
 		{4A92DAE7-1C9D-42A5-AEF2-9851A74AD384}.Release|x64.Build.0 = Release|Any CPU
 		{4A92DAE7-1C9D-42A5-AEF2-9851A74AD384}.Release|x86.ActiveCfg = Release|Any CPU
 		{4A92DAE7-1C9D-42A5-AEF2-9851A74AD384}.Release|x86.Build.0 = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|ARM.Build.0 = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|x64.Build.0 = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Debug|x86.Build.0 = Debug|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|ARM.ActiveCfg = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|ARM.Build.0 = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|x64.ActiveCfg = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|x64.Build.0 = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|x86.ActiveCfg = Release|Any CPU
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376}.Release|x86.Build.0 = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|ARM.Build.0 = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|x64.Build.0 = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Debug|x86.Build.0 = Debug|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|ARM.Build.0 = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|x64.ActiveCfg = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|x64.Build.0 = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{10205FEE-6020-4237-94EC-B68C0CD682C3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -225,9 +267,12 @@ Global
 		{2C764781-1AEA-4659-A132-E29AD990F260} = {24D195B5-C88C-4D45-BDAC-69ED39EE014C}
 		{A39BFBED-A59F-4C73-8C9D-F182DEE951EB} = {2C764781-1AEA-4659-A132-E29AD990F260}
 		{4A92DAE7-1C9D-42A5-AEF2-9851A74AD384} = {2C764781-1AEA-4659-A132-E29AD990F260}
+		{080232B8-957F-4593-9778-EBC02A546F76} = {24D195B5-C88C-4D45-BDAC-69ED39EE014C}
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376} = {080232B8-957F-4593-9778-EBC02A546F76}
+		{10205FEE-6020-4237-94EC-B68C0CD682C3} = {6FC8DA3E-DE22-4C74-B70C-39819C441EE0}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://wenceywang.visualstudio.com/
 		SccLocalPath0 = .
@@ -267,5 +312,13 @@ Global
 		SccProjectTopLevelParentUniqueName9 = Richman4L.sln
 		SccProjectName9 = ExternalLibrary/FIGlet.Net/FIGlet.NetUnitTest
 		SccLocalPath9 = ExternalLibrary\\FIGlet.Net\\FIGlet.NetUnitTest
+		SccProjectUniqueName10 = ExternalLibrary\\FoggyConsole\\FoggyConsole\\FoggyConsole.csproj
+		SccProjectTopLevelParentUniqueName10 = Richman4L.sln
+		SccProjectName10 = ExternalLibrary/FoggyConsole/FoggyConsole
+		SccLocalPath10 = ExternalLibrary\\FoggyConsole\\FoggyConsole
+		SccProjectUniqueName11 = Apps\\Richman4LWeb\\Richman4LWeb.csproj
+		SccProjectTopLevelParentUniqueName11 = Richman4L.sln
+		SccProjectName11 = Apps/Richman4LWeb
+		SccLocalPath11 = Apps\\Richman4LWeb
 	EndGlobalSection
 EndGlobal

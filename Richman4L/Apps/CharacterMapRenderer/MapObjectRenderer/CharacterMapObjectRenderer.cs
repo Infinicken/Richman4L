@@ -16,78 +16,81 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
+using System ;
 
-using WenceyWang . Richman4L . Maps;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer
+namespace WenceyWang . Richman4L . App . CharacterMapRenderer .MapObjectRenderer
 {
 
-	public abstract class CharacterMapObjectRenderer<T> : ICharacterMapObjectRenderer, IMapObjectRenderer<T>
+	public abstract class CharacterMapObjectRenderer < T > : ICharacterMapObjectRenderer , IMapObjectRenderer < T >
 		where T : MapObject
 	{
 
-		public virtual ConsoleChar [ , ] CurrentView { get; protected set; }
+		public virtual ConsoleChar [ , ] CurrentView { get ; protected set ; }
 
-		public ConsoleSize Unit { get; protected set; }
-
-		public T Target { get; protected set; }
+		public ConsoleSize Unit { get ; protected set ; }
 
 		public virtual void StartUp ( )
 		{
-			CurrentView = new ConsoleChar [ Unit . Width , Unit . Height ];
+			CurrentView = new ConsoleChar[ Unit . Width, Unit . Height ] ;
 			for ( int y = 0 ; y < Unit . Height ; y++ )
 			{
 				for ( int x = 0 ; x < Unit . Width ; x++ )
 				{
-					CurrentView [ x , y ] = new ConsoleChar ( ' ' , ConsoleColor . White , ConsoleColor . DarkGreen );
+					CurrentView [ x , y ] = new ConsoleChar ( ' ' , ConsoleColor . White , ConsoleColor . DarkGreen ) ;
 				}
 			}
-			Update ( );
+
+			Update ( ) ;
 		}
-		public abstract void Update ( );
 
-		public virtual void SetUnit ( ConsoleSize unit ) { Unit = unit; }
+		public abstract void Update ( ) ;
 
-		MapObject ICharacterMapObjectRenderer.Target => Target;
+		public virtual void SetUnit ( ConsoleSize unit ) { Unit = unit ; }
 
-		public virtual void SetTarget ( [NotNull] T target )
-		{
-			if ( Target == null )
-			{
-				Target = target;
-			}
-			else
-			{
-				throw new InvalidOperationException ( );
-			}
-		}
+		MapObject ICharacterMapObjectRenderer . Target => Target ;
+
 		public void SetTarget ( MapObject target )
 		{
 			if ( target == null )
 			{
-				throw new ArgumentNullException ( nameof ( target ) );
+				throw new ArgumentNullException ( nameof ( target ) ) ;
 			}
 
-			T targetArgument = target as T;
+			T targetArgument = target as T ;
 			if ( targetArgument != null )
 			{
-				SetTarget ( targetArgument );
+				SetTarget ( targetArgument ) ;
 			}
 			else
 			{
-				throw new ArgumentException ( $"{nameof ( target )} is not {typeof ( T ) . Name}" );
+				throw new ArgumentException ( $"{nameof ( target )} is not {typeof ( T ) . Name}" ) ;
+			}
+		}
+
+		public T Target { get ; protected set ; }
+
+		public virtual void SetTarget ( [ NotNull ] T target )
+		{
+			if ( Target == null )
+			{
+				Target = target ;
+			}
+			else
+			{
+				throw new InvalidOperationException ( ) ;
 			}
 		}
 
 		#region IDisposable Support
 
-		private bool disposedValue = false; // To detect redundant calls
+		private bool disposedValue ; // To detect redundant calls
 
 		protected virtual void Dispose ( bool disposing )
 		{
-			if ( !disposedValue )
+			if ( ! disposedValue )
 			{
 				if ( disposing )
 				{
@@ -97,7 +100,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
 				// TODO: set large fields to null.
 
-				disposedValue = true;
+				disposedValue = true ;
 			}
 		}
 
@@ -111,7 +114,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 		public void Dispose ( )
 		{
 			// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-			Dispose ( true );
+			Dispose ( true ) ;
 
 			// TODO: uncomment the following line if the finalizer is overridden above.
 			// GC.SuppressFinalize(this);

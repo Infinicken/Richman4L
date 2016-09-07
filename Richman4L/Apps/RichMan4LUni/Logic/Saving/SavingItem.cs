@@ -21,55 +21,57 @@ using System . Collections . Generic ;
 using System . Threading . Tasks ;
 
 using Windows . Storage ;
+using Windows . Storage . Search ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Logic . Saving
+namespace WenceyWang . Richman4L . Apps . Uni . Logic .Saving
 {
-    class SavingItem
-    {
-        public string Name { get; set; }
 
-        public string Map { get; set; }
+	internal class SavingItem
+	{
 
-        public DateTime Date { get; set; }
+		public string Name { get ; set ; }
 
-        public StorageFile File { get; set; }
+		public string Map { get ; set ; }
 
-        public async void Delete ( )
-        {
-            await File . DeleteAsync ( );
-        }
+		public DateTime Date { get ; set ; }
 
-        public async static Task<List<SavingItem>> GetSaving ( )
-        {
-            List<SavingItem> list = new List<SavingItem> ( );
+		public StorageFile File { get ; set ; }
 
-            IReadOnlyList < StorageFile > fileList = await ApplicationData . Current . RoamingFolder . GetFilesAsync ( Windows . Storage . Search . CommonFileQuery . OrderByDate );
+		public SavingItem ( StorageFile file )
+		{
+			string [ ] fileName = file . Name . Split ( "_" . ToCharArray ( ) ) ;
 
-            foreach ( StorageFile item in fileList )
-            {
-                if ( item . FileType == "r4lsav" )
-                {
-                    list . Add ( new SavingItem ( item ) );
-                }
-            }
+			Name = fileName [ 0 ] ;
 
-            list . Sort ( );
+			Map = fileName [ 1 ] ;
 
-            return list;
-        }
+			Date = DateTime . Parse ( fileName [ 2 ] ) ;
 
-        public SavingItem ( StorageFile file )
-        {
-            string [ ] fileName = file . Name . Split ( ( "_" ) . ToCharArray ( ) );
+			File = file ;
+		}
 
-            Name = fileName [ 0 ];
+		public async void Delete ( ) { await File . DeleteAsync ( ) ; }
 
-            Map = fileName [ 1 ];
+		public static async Task < List < SavingItem > > GetSaving ( )
+		{
+			List < SavingItem > list = new List < SavingItem > ( ) ;
 
-            Date = DateTime . Parse ( fileName [ 2 ] );
+			IReadOnlyList < StorageFile > fileList =
+				await ApplicationData . Current . RoamingFolder . GetFilesAsync ( CommonFileQuery . OrderByDate ) ;
 
-            File = file;
-        }
+			foreach ( StorageFile item in fileList )
+			{
+				if ( item . FileType == "r4lsav" )
+				{
+					list . Add ( new SavingItem ( item ) ) ;
+				}
+			}
 
-    }
+			list . Sort ( ) ;
+
+			return list ;
+		}
+
+	}
+
 }

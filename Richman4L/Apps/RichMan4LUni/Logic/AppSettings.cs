@@ -13,7 +13,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		public static AppSettings Current { get ; } = new AppSettings ( ) ;
 
 		/// <summary>
-		/// 游戏的标题
+		///     游戏的标题
 		/// </summary>
 		public GameTitle GameTitle
 		{
@@ -26,7 +26,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		}
 
 		/// <summary>
-		/// 指示是否同意协议
+		///     指示是否同意协议
 		/// </summary>
 		public bool AcceptLicence
 		{
@@ -39,7 +39,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		}
 
 		/// <summary>
-		/// 指示强迫症模式是否开启
+		///     指示强迫症模式是否开启
 		/// </summary>
 		public bool OcdMode
 		{
@@ -51,64 +51,21 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			}
 		}
 
-		#region Sound
-
 		/// <summary>
-		/// 指示是否播放声音
+		///     指示Comic Sans模式是否开启
 		/// </summary>
-		public bool PlaySound
+		public bool ComicSansMode
 		{
-			get { return ReadSettings ( nameof ( PlaySound ) , false ) ; }
+			get { return ReadSettings ( nameof ( ComicSansMode ) , false ) ; }
 			set
 			{
-				SaveSettings ( nameof ( PlaySound ) , value ) ;
+				SaveSettings ( nameof ( ComicSansMode ) , value ) ;
 				NotifyPropertyChanged ( ) ;
 			}
 		}
 
 		/// <summary>
-		/// 音乐音量
-		/// </summary>
-		public int MusicVolume
-		{
-			get { return ReadSettings ( nameof ( MusicVolume ) , 60 ) ; }
-			set
-			{
-				SaveSettings ( nameof ( MusicVolume ) , value ) ;
-				NotifyPropertyChanged ( ) ;
-			}
-		}
-
-		/// <summary>
-		/// 效果音量
-		/// </summary>
-		public int EffectVolume
-		{
-			get { return ReadSettings ( nameof ( EffectVolume ) , 10 ) ; }
-			set
-			{
-				SaveSettings ( nameof ( EffectVolume ) , value ) ;
-				NotifyPropertyChanged ( ) ;
-			}
-		}
-
-		/// <summary>
-		/// 通知音量
-		/// </summary>
-		public int NotificationVolume
-		{
-			get { return ReadSettings ( nameof ( NotificationVolume ) , 30 ) ; }
-			set
-			{
-				SaveSettings ( nameof ( NotificationVolume ) , value ) ;
-				NotifyPropertyChanged ( ) ;
-			}
-		}
-
-		#endregion
-
-		/// <summary>
-		/// 春季的长度
+		///     春季的长度
 		/// </summary>
 		public int SpringLenth
 		{
@@ -121,7 +78,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		}
 
 		/// <summary>
-		/// 夏季的长度
+		///     夏季的长度
 		/// </summary>
 		public int SummerLenth
 		{
@@ -134,7 +91,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		}
 
 		/// <summary>
-		/// 秋季的长度
+		///     秋季的长度
 		/// </summary>
 		public int AutumnLenth
 		{
@@ -147,7 +104,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		}
 
 		/// <summary>
-		/// 冬季的长度
+		///     冬季的长度
 		/// </summary>
 		public int WinterLenth
 		{
@@ -160,7 +117,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		}
 
 		/// <summary>
-		/// 是否允许随机生成标题
+		///     是否允许随机生成标题
 		/// </summary>
 		public bool AllowRandomTitle
 		{
@@ -168,13 +125,13 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			set
 			{
 				SaveSettings ( nameof ( AllowRandomTitle ) , value ) ;
-				GameTitleManager . GenerateNewTitle ( );
+				GameTitleManager . GenerateNewTitle ( ) ;
 				NotifyPropertyChanged ( ) ;
 			}
 		}
 
 		/// <summary>
-		/// 是否允许随机生成标题前半部分
+		///     是否允许随机生成标题前半部分
 		/// </summary>
 		public bool AllowRandomTitleRoot
 		{
@@ -182,7 +139,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			set
 			{
 				SaveSettings ( nameof ( AllowRandomTitleRoot ) , value ) ;
-				GameTitleManager . GenerateNewTitle ( );
+				GameTitleManager . GenerateNewTitle ( ) ;
 				NotifyPropertyChanged ( ) ;
 			}
 		}
@@ -194,6 +151,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			App . Current . TitleChanged += App_TitleChanged ;
 			RoamingSettings = ApplicationData . Current . RoamingSettings ;
 		}
+
+		public event PropertyChangedEventHandler PropertyChanged ;
 
 		private void App_TitleChanged ( object sender , EventArgs e )
 		{
@@ -216,13 +175,66 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			return default ( T ) ;
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged ;
-
 		protected void NotifyPropertyChanged ( [ CallerMemberName ] string propName = "" )
 		{
 			PropertyChanged ? . Invoke ( this , new PropertyChangedEventArgs ( propName ) ) ;
 		}
 
+		#region Sound
+
+		/// <summary>
+		///     指示是否播放声音
+		/// </summary>
+		public bool PlaySound
+		{
+			get { return ReadSettings ( nameof ( PlaySound ) , false ) ; }
+			set
+			{
+				SaveSettings ( nameof ( PlaySound ) , value ) ;
+				NotifyPropertyChanged ( ) ;
+			}
+		}
+
+		/// <summary>
+		///     音乐音量
+		/// </summary>
+		public int MusicVolume
+		{
+			get { return ReadSettings ( nameof ( MusicVolume ) , 60 ) ; }
+			set
+			{
+				SaveSettings ( nameof ( MusicVolume ) , value ) ;
+				NotifyPropertyChanged ( ) ;
+			}
+		}
+
+		/// <summary>
+		///     效果音量
+		/// </summary>
+		public int EffectVolume
+		{
+			get { return ReadSettings ( nameof ( EffectVolume ) , 10 ) ; }
+			set
+			{
+				SaveSettings ( nameof ( EffectVolume ) , value ) ;
+				NotifyPropertyChanged ( ) ;
+			}
+		}
+
+		/// <summary>
+		///     通知音量
+		/// </summary>
+		public int NotificationVolume
+		{
+			get { return ReadSettings ( nameof ( NotificationVolume ) , 30 ) ; }
+			set
+			{
+				SaveSettings ( nameof ( NotificationVolume ) , value ) ;
+				NotifyPropertyChanged ( ) ;
+			}
+		}
+
+		#endregion
 	}
 
 }

@@ -16,29 +16,23 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Calendars ;
+
+namespace WenceyWang . Richman4L .Maps
 {
+
 	/// <summary>
-	/// 表示地图上的装饰
+	///     表示地图上的装饰
 	/// </summary>
 	public abstract class Decoration : Block
 	{
-		public override void StartDay ( Calendars . GameDate nextDate )
-		{
 
-		}
+		public Decoration ( XElement saving ) : base ( saving ) { }
 
-		public Decoration ( XElement saving ) : base ( saving )
-		{
-
-		}
+		public override void StartDay ( GameDate nextDate ) { }
 
 	}
+
 }

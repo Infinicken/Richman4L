@@ -1,59 +1,48 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+﻿using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L . Buffs
+namespace WenceyWang . Richman4L .Buffs
 {
+
 	public abstract class Buff : GameObject
 	{
-		public virtual string Name { get; }
 
-		public virtual string Introduction { get; }
+		public virtual string Name { get ; }
 
-		protected Calendars . GameDate StartDate { get; set; }
+		public virtual string Introduction { get ; }
 
-		public int Duration { get;  }
+		protected GameDate StartDate { get ; set ; }
 
-		public override void StartDay ( Calendars . GameDate nextDate )
+		public int Duration { get ; }
+
+		public Buff ( ) { }
+
+		public Buff ( int duration ) : this ( Game . Current . Calendar . Today , duration ) { }
+
+		public Buff ( GameDate startDate , int duration )
 		{
-
+			StartDate = startDate ;
+			Duration = duration ;
 		}
+
+		public override void StartDay ( GameDate nextDate ) { }
 
 		public override void EndToday ( )
 		{
 			if ( Game . Current . Calendar . Today == StartDate + Duration )
 			{
-				Dispose ( );
+				Dispose ( ) ;
 			}
 		}
 
 		protected override void Dispose ( bool disposing )
 		{
-			if ( !DisposedValue )
+			if ( ! DisposedValue )
 			{
-				Game . Current . GameBuffs . Remove ( this );
+				Game . Current . GameBuffs . Remove ( this ) ;
 			}
-			base . Dispose ( disposing );
-		}
-
-		public Buff ( ) : base ( )
-		{
-
-		}
-
-		public Buff ( int duration ) : this ( Game . Current . Calendar . Today , duration )
-		{
-
-		}
-
-		public Buff ( Calendars . GameDate startDate , int duration )
-		{
-			StartDate = startDate;
-			Duration = duration;
+			base . Dispose ( disposing ) ;
 		}
 
 	}
+
 }

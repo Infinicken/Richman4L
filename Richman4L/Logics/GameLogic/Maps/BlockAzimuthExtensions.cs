@@ -16,13 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	public static class BlockAzimuthExtensions
 	{
 
@@ -30,42 +28,53 @@ namespace WenceyWang . Richman4L . Maps
 		{
 			if ( thisBlock == null )
 			{
-				throw new ArgumentNullException ( nameof ( thisBlock ) );
-			}
-			if ( anotherBlock == null )
-			{
-				return BlockAzimuth . None;
+				throw new ArgumentNullException ( nameof ( thisBlock ) ) ;
 			}
 
-			if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . Width && thisBlock . Y == anotherBlock . Y - thisBlock . Size . Height )
+			if ( anotherBlock == null )
 			{
-				return BlockAzimuth . Down;
+				return BlockAzimuth . None ;
+			}
+
+			if ( thisBlock . X >= anotherBlock . X &&
+				thisBlock . X < anotherBlock . X + anotherBlock . Size . Width &&
+				thisBlock . Y == anotherBlock . Y - thisBlock . Size . Height )
+			{
+				return BlockAzimuth . Down ;
 			}
 			else
 			{
-				if ( thisBlock . X >= anotherBlock . X && thisBlock . X < anotherBlock . X + anotherBlock . Size . Width && thisBlock . Y == anotherBlock . Y + anotherBlock . Size . Height )
+				if ( thisBlock . X >= anotherBlock . X &&
+					thisBlock . X < anotherBlock . X + anotherBlock . Size . Width &&
+					thisBlock . Y == anotherBlock . Y + anotherBlock . Size . Height )
 				{
-					return BlockAzimuth . Up;
+					return BlockAzimuth . Up ;
 				}
 				else
 				{
-					if ( thisBlock . Y >= anotherBlock . Y && thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Height && thisBlock . X == anotherBlock . X + anotherBlock . Size . Width )
+					if ( thisBlock . Y >= anotherBlock . Y &&
+						thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Height &&
+						thisBlock . X == anotherBlock . X + anotherBlock . Size . Width )
 					{
-						return BlockAzimuth . Left;
+						return BlockAzimuth . Left ;
 					}
 					else
 					{
-						if ( thisBlock . Y >= anotherBlock . Y && thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Height && thisBlock . X == anotherBlock . X - thisBlock . Size . Width )
+						if ( thisBlock . Y >= anotherBlock . Y &&
+							thisBlock . Y < anotherBlock . Y + anotherBlock . Size . Height &&
+							thisBlock . X == anotherBlock . X - thisBlock . Size . Width )
 						{
-							return BlockAzimuth . Right;
+							return BlockAzimuth . Right ;
 						}
 						else
 						{
-							return BlockAzimuth . None;
+							return BlockAzimuth . None ;
 						}
 					}
 				}
 			}
 		}
+
 	}
+
 }

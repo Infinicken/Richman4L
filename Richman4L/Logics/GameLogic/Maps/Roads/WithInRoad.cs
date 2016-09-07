@@ -16,72 +16,77 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Xml . Linq;
+using System ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+namespace WenceyWang . Richman4L . Maps .Roads
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class WithInRoad : NormalRoad
 	{
-		private long? _inRoadId;
 
-		private Road _inRoad;
+		private Road _inRoad ;
+
+		private long? _inRoadId ;
 
 		public virtual Road InRoad
 		{
 			get
 			{
-				if ( _inRoad == null && _inRoadId == null )
+				if ( _inRoad == null &&
+					_inRoadId == null )
 				{
-					return null;
+					return null ;
 				}
-				return _inRoad ?? ( _inRoad = Map . Currnet . GetRoad ( _inRoadId . Value ) );
+
+				return _inRoad ?? ( _inRoad = Map . Currnet . GetRoad ( _inRoadId . Value ) ) ;
 			}
 			protected set
 			{
-				_inRoadId = value?.Id;
-				_inRoad = value;
+				_inRoadId = value ? . Id ;
+				_inRoad = value ;
 			}
+		}
+
+		public WithInRoad ( XElement resource ) : base ( resource )
+		{
+			_inRoadId = Convert . ToInt64 ( resource . Attribute ( nameof ( InRoad ) ) ? . Value ) ;
 		}
 
 		public override Path Route ( Road previous , int moveCount , Path result = null )
 		{
 			if ( previous == InRoad )
 			{
-				Path current = result ?? new Path ( );
-				current . AddRoute ( this );
+				Path current = result ?? new Path ( ) ;
+				current . AddRoute ( this ) ;
 				if ( BlockMoving || moveCount == 0 )
 				{
-					return current;
+					return current ;
 				}
+
 				switch ( GameRandom . Current . Next ( 0 , 2 ) )
 				{
-					case 0:
-						{
-							return ForwardRoad . Route ( this , moveCount - 1 , result );
-
-						}
-					case 1:
-						{
-							return BackwardRoad . Route ( this , moveCount - 1 , result );
-						}
-					default:
-						{
-							throw new NotImplementedException ( );
-						}
+					case 0 :
+					{
+						return ForwardRoad . Route ( this , moveCount - 1 , result ) ;
+					}
+					case 1 :
+					{
+						return BackwardRoad . Route ( this , moveCount - 1 , result ) ;
+					}
+					default :
+					{
+						throw new NotImplementedException ( ) ;
+					}
 				}
 			}
 			else
 			{
-				return base . Route ( previous , moveCount , result );
+				return base . Route ( previous , moveCount , result ) ;
 			}
 		}
 
-		public WithInRoad ( XElement resource ) : base ( resource )
-		{
-			_inRoadId = Convert . ToInt64 ( resource . Attribute ( nameof ( InRoad ) )?.Value );
-		}
-
 	}
+
 }

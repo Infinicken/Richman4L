@@ -10,23 +10,28 @@
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="10"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="10"/>
-			<RowDefinition/>
-			<RowDefinition Height="10"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="10"/>
+			<RowDefinition Height="10" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="10" />
+			<RowDefinition />
+			<RowDefinition Height="10" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="10" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="1*"/>
-			<ColumnDefinition Width="1*"/>
-			<ColumnDefinition Width="10"/>
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="10" />
 		</Grid.ColumnDefinitions>
-		<Image x:Name="ImageImage" Margin="10,0" Grid.Row="1" Grid.RowSpan="5"/>
-		<TextBlock x:Name="TitleTextBlock" Grid.Column="1" Margin="10,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" FontFamily="{StaticResource Font}" FontSize="16"/>
-		<TextBlock x:Name="TextTextBlock" Grid.Column="1" Margin="10,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" FontFamily="{StaticResource Font}"/>
-		<Button x:Name="UseButton" Content="使用" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="5" VerticalAlignment="Stretch" Template="{StaticResource ButtonControlTemplate}" MinWidth="0" MinHeight="35" FontFamily="{StaticResource Font}" FontSize="18.667" BorderBrush="{x:Null}" Background="#CCFF5050" Click="UseButton_Click"/>
+		<Image x:Name="ImageImage" Margin="10,0" Grid.Row="1" Grid.RowSpan="5" />
+		<TextBlock x:Name="TitleTextBlock" Grid.Column="1" Margin="10,0,0,0" Grid.Row="1" TextWrapping="Wrap"
+					Text="TextBlock" FontFamily="{StaticResource Font}" FontSize="16" />
+		<TextBlock x:Name="TextTextBlock" Grid.Column="1" Margin="10,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock"
+					FontFamily="{StaticResource Font}" />
+		<Button x:Name="UseButton" Content="使用" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="5"
+				VerticalAlignment="Stretch" Template="{StaticResource ButtonControlTemplate}" MinWidth="0" MinHeight="35"
+				FontFamily="{StaticResource Font}" FontSize="18.667" BorderBrush="{x:Null}" Background="#CCFF5050"
+				Click="UseButton_Click" />
 
 	</Grid>
 </UserControl>

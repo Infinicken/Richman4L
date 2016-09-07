@@ -16,27 +16,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public sealed class PlayerGetFromAreaEventArgs : PlayerGetEventArgs
 	{
-		public Maps . Area Area { get;  }
 
-		public Player Player { get;  }
+		public Area Area { get ; }
 
-		public override  long Money { get;  }
+		public Player Player { get ; }
 
-		public PlayerGetFromAreaEventArgs ( Maps . Area area , Player player , long money )
+		public override long Money { get ; }
+
+		public PlayerGetFromAreaEventArgs ( Area area , Player player , long money )
 		{
-			Area = area;
-			Player = player;
-			Money = money;
+			Area = area ;
+			Player = player ;
+			Money = money ;
 		}
+
 	}
 
 }

@@ -16,28 +16,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-using WenceyWang . Richman4L . Calendars;
+using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Maps .Buildings
 {
-	[Building]
+
+	[ Building ]
 	public class MediumSimpleBuilding : MediumBuilding
 	{
 
-		public override void EndToday ( ) { throw new NotImplementedException ( ); }
+		public override bool EasyToDestroy { get ; }
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ); }
+		public override long MaintenanceFee { get ; }
 
-		public override bool EasyToDestroy { get; }
+		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
-		public override long MaintenanceFee { get; }
+		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
 
-		public override void Destoy ( DestroyReason reason ) { throw new NotImplementedException ( ); }
+		public override void Destoy ( DestroyReason reason ) { throw new NotImplementedException ( ) ; }
 
 	}
+
 }

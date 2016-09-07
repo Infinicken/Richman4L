@@ -16,75 +16,70 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Collections;
-using System . Reflection;
-using System . Xml . Linq;
-using System . Xml . Serialization;
-using System . Runtime . Serialization;
-using System . Runtime;
-using System . Threading . Tasks;
+using System ;
+using System . Collections . Generic ;
 
-namespace WenceyWang . Richman4L
+using WenceyWang . Richman4L . Calendars ;
+
+namespace WenceyWang .Richman4L
 {
+
 	public abstract class GameObject : IDisposable
 	{
 
+		protected bool IsSaving = false ;
+
 		//Todo:如果没有别的用，删除这个。
-		public static List<GameObject> GameObjectList { get; private set; } = new List<GameObject> ( );
+		public static List < GameObject > GameObjectList { get ; } = new List < GameObject > ( ) ;
 
-		public long Index { get; set; }
-
-		public abstract void EndToday ( );
-
-		public abstract void StartDay ( Calendars . GameDate nextDate );
+		public long Index { get ; set ; }
 
 		public GameObject ( )
 		{
-			Index = GetHashCode ( );
-			GameObjectList . Add ( this );
+			Index = GetHashCode ( ) ;
+			GameObjectList . Add ( this ) ;
 		}
 
+		public abstract void EndToday ( ) ;
+
+		public abstract void StartDay ( GameDate nextDate ) ;
+
 		/// <summary>
-		/// 检查这个GameObject是否已经被销毁
+		///     检查这个GameObject是否已经被销毁
 		/// </summary>
 		protected void CheckDisposed ( )
 		{
 			if ( DisposedValue )
 			{
-				throw new ObjectDisposedException ( ToString ( ) );
+				throw new ObjectDisposedException ( ToString ( ) ) ;
 			}
 		}
 
-		protected bool IsSaving = false;
-
 		#region IDisposable Support
 
-		protected bool DisposedValue = false; // To detect redundant calls
+		protected bool DisposedValue ; // To detect redundant calls
 
 		protected virtual void Dispose ( bool disposing )
 		{
-			if ( !DisposedValue )
+			if ( ! DisposedValue )
 			{
 				if ( disposing )
 				{
-					GameObjectList . Remove ( this );
+					GameObjectList . Remove ( this ) ;
 				}
 
 
 				// TODO: set large fields to null.
 
-				DisposedValue = true;
+				DisposedValue = true ;
 			}
 		}
 
-		~GameObject ( ) { Dispose ( false ); }
+		~GameObject ( ) { Dispose ( false ) ; }
 
-		public void Dispose ( ) { Dispose ( true ); }
+		public void Dispose ( ) { Dispose ( true ) ; }
 
 		#endregion
 	}
+
 }

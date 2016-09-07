@@ -16,77 +16,83 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Collections . ObjectModel ;
+using System . Linq ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Maps .Buildings
 {
+
 	/// <summary>
-	/// 指示建筑类型
+	///     指示建筑类型
 	/// </summary>
 	public sealed class BuildingType : MapObjectType
 	{
-		/// <summary>
-		/// 建筑类型的名称
-		/// </summary>
-		public override string Name { get; }
 
 		/// <summary>
-		/// 建筑类型的简介
+		///     建筑类型的名称
 		/// </summary>
-		public string Introduction { get; }
+		public override string Name { get ; }
 
 		/// <summary>
-		/// 建筑的尺寸
+		///     建筑类型的简介
 		/// </summary>
-		public MapSize Size { get; }
+		public string Introduction { get ; }
 
 		/// <summary>
-		/// 建筑的入口类型
+		///     建筑的尺寸
 		/// </summary>
-		public override Type EntryType { get; }
+		public MapSize Size { get ; }
 
 		/// <summary>
-		/// 建筑的初始等级
+		///     建筑的入口类型
 		/// </summary>
-		public BuildingGrade EntryGrade { get; }
+		public override Type EntryType { get ; }
 
 		/// <summary>
-		/// 建筑的等级
+		///     建筑的初始等级
 		/// </summary>
-		public ReadOnlyCollection<BuildingGrade> Grades { get; }
+		public BuildingGrade EntryGrade { get ; }
 
-		public override string ToString ( ) => $"{Name} sized {Size}";
+		/// <summary>
+		///     建筑的等级
+		/// </summary>
+		public ReadOnlyCollection < BuildingGrade > Grades { get ; }
 
-		internal BuildingType ( Type entryType , XElement element ) : base ( element . Attribute ( nameof ( Name ) ) . Value , entryType )
+		internal BuildingType ( Type entryType , XElement element )
+			: base ( element . Attribute ( nameof ( Name ) ) . Value , entryType )
 		{
-
-			EntryType = entryType;
+			EntryType = entryType ;
 
 			#region Load XML
+
 			try
 			{
-				Name = element . Attribute ( nameof ( Name ) ) . Value;
-				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value;
-				Size = new MapSize ( Convert . ToInt32 ( element . Attribute (  nameof ( MapSize . Width ) ) . Value ) , Convert . ToInt32 ( element . Attribute (  nameof ( MapSize . Height ) ) . Value ) );
-				List<BuildingGrade> grades = new List<BuildingGrade> ( );
-				Grades = new ReadOnlyCollection<BuildingGrade> ( grades );
+				Name = element . Attribute ( nameof ( Name ) ) . Value ;
+				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value ;
+				Size = new MapSize ( Convert . ToInt32 ( element . Attribute ( nameof ( MapSize . Width ) ) . Value ) ,
+									Convert . ToInt32 ( element . Attribute ( nameof ( MapSize . Height ) ) . Value ) ) ;
+				List < BuildingGrade > grades = new List < BuildingGrade > ( ) ;
+				Grades = new ReadOnlyCollection < BuildingGrade > ( grades ) ;
 				foreach ( XElement grade in element . Element ( nameof ( Grades ) ) . Elements ( ) )
 				{
-					grades . Add ( new BuildingGrade ( grade , this ) );
+					grades . Add ( new BuildingGrade ( grade , this ) ) ;
 				}
-				EntryGrade = Grades . Single ( ( grade ) => grade . Id == 1 );
+
+				EntryGrade = Grades . Single ( grade => grade . Id == 1 ) ;
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} has wrong data or lack of data" , e );
+				throw new ArgumentException ( $"{nameof ( element )} has wrong data or lack of data" , e ) ;
 			}
 
 			#endregion
 		}
+
+		public override string ToString ( ) => $"{Name} sized {Size}" ;
+
 	}
+
 }

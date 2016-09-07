@@ -16,15 +16,15 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public class PlayerEventArgs : EventArgs
 	{
+
 		//public Player Player { get; set; }
 	}
+
 }

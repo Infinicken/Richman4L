@@ -16,46 +16,45 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
+using System . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	public static class AreaBuffExtensions
 	{
+
 		public static bool IsBlockBuild ( this Area area )
 		{
 			if ( area == null )
 			{
-				throw new ArgumentNullException ( nameof ( area ) );
+				throw new ArgumentNullException ( nameof ( area ) ) ;
 			}
 
-			return area . Buffs . Any ( ( item ) => item . BlockBuild );
+			return area . Buffs . Any ( item => item . BlockBuild ) ;
 		}
 
 		public static bool IsBlockBuy ( this Area area )
 		{
 			if ( area == null )
 			{
-				throw new ArgumentNullException ( nameof ( area ) );
+				throw new ArgumentNullException ( nameof ( area ) ) ;
 			}
 
-			return area . Buffs . Any ( ( item ) => item . BlockBuy );
+			return area . Buffs . Any ( item => item . BlockBuy ) ;
 		}
 
 		public static bool IsBlockCharge ( this Area area )
 		{
 			if ( area == null )
 			{
-				throw new ArgumentNullException ( nameof ( area ) );
+				throw new ArgumentNullException ( nameof ( area ) ) ;
 			}
 
-			return area . Buffs . Any ( ( item ) => item . BlockCharge );
+			return area . Buffs . Any ( item => item . BlockCharge ) ;
 		}
 
-
-
 	}
+
 }

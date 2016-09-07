@@ -1,18 +1,21 @@
-﻿using WenceyWang . Richman4L . Players;
+﻿using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Stats
+namespace WenceyWang . Richman4L .Stats
 {
+
 	public class PlayerCount
 	{
-		public Player Player { get; }
 
-		public long Count { get; internal set; }
+		public Player Player { get ; }
+
+		public long Count { get ; internal set ; }
 
 		public PlayerCount ( Player player )
 		{
-			Player = player;
-			Count = 1;
+			Player = player ;
+			Count = 1 ;
 		}
 
 	}
+
 }

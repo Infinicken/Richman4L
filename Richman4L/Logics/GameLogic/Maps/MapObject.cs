@@ -16,161 +16,158 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Reflection;
-using System . Text;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Linq ;
+using System . Reflection ;
+using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Maps . Roads;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	/// <summary>
-	/// 代表地图上的元素
+	///     代表地图上的元素
 	/// </summary>
 	public abstract class MapObject : GameObject
 	{
 
 		/// <summary>
-		/// 元素的起始X值
+		///     元素的起始X值
 		/// </summary>
-		public virtual int X { get; protected set; }
+		public virtual int X { get ; protected set ; }
 
 		/// <summary>
-		/// 元素的起始Y值
+		///     元素的起始Y值
 		/// </summary>
-		public virtual int Y { get; protected set; }
+		public virtual int Y { get ; protected set ; }
 
 		/// <summary>
-		/// 元素的尺寸
+		///     元素的尺寸
 		/// </summary>
-		public abstract MapSize Size { get; }
+		public abstract MapSize Size { get ; }
+
+		public MapObjectType Type => MapObjectTypes . Single ( type => type . EntryType == GetType ( ) ) ;
+
+		[ NotNull ]
+		[ ItemNotNull ]
+		public static List < MapObjectType > MapObjectTypes { get ; private set ; } = new List < MapObjectType > ( ) ;
 
 		/// <summary>
-		/// 要求地图元素的视图更新
-		/// </summary>
-		public void UpdateView ( )
-		{
-			CheckDisposed ( );
-			UpdateViewEvent?.Invoke ( this , new EventArgs ( ) );
-		}
-
-		[NotNull]
-		public event EventHandler UpdateViewEvent;
-
-		protected override void Dispose ( bool disposing )
-		{
-			if ( !DisposedValue )
-			{
-				if ( disposing )
-				{
-					Map . Currnet . Objects . Remove ( this );
-					DisposeEvent ? . Invoke ( this , new EventArgs ( ) ) ;
-				}
-			}
-			base . Dispose ( disposing );
-		}
-
-		public event EventHandler DisposeEvent ;
-
-		public static void CleanMapObjectType ( ) { MapObjectTypes = new List<MapObjectType> ( ); }
-
-		public MapObjectType Type => MapObjectTypes . Single ( type => type . EntryType == GetType ( ) );
-
-		[NotNull]
-		[ItemNotNull]
-		public static List<MapObjectType> MapObjectTypes { get; private set; } = new List<MapObjectType> ( );
-
-		public static void LoadMapObjects ( )
-		{
-			//Todo:Load All internal type
-			foreach ( Type type in Assembly . GetExecutingAssembly ( ) . GetTypes ( ) . Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
-			{
-				RegisMapObjectType ( type . Name , type );
-			}
-			;
-
-		}
-
-		/// <summary>
-		/// 注册一个MapObject类型
-		/// 这个方法应当在加载程序集的时候被调用，加载的程序集应当注册所有的MapObject
-		/// </summary>
-		/// <param name="name">用于从地图资源文件中识别的名称</param>
-		/// <param name="entryType">要注册的类型类型</param>
-		/// <returns>生成的类型</returns>
-		[NotNull]
-		public static MapObjectType RegisMapObjectType ( [NotNull] XName name , [NotNull] Type entryType )
-		{
-
-			#region Check Argument
-
-			if ( name == null )
-			{
-				throw new ArgumentNullException ( nameof ( name ) );
-			}
-			if ( entryType == null )
-			{
-				throw new ArgumentNullException ( nameof ( entryType ) );
-			}
-			if ( entryType . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) == null )
-			{
-				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( MapObjectAttribute )}" ,
-					nameof ( entryType ) );
-			}
-
-			#endregion
-
-			if ( MapObjectTypes . Any ( ( type ) => type . Name == name ) )
-			{
-				return MapObjectTypes . Single ( ( type ) => type . Name == name );
-			}
-			else
-			{
-				MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType );
-
-				MapObjectTypes . Add ( mapObjectType );
-
-				return mapObjectType;
-			}
-		}
-
-		/// <summary>
-		/// 基于地图资源创建MapObject
+		///     基于地图资源创建MapObject
 		/// </summary>
 		/// <param name="resource"></param>
-		public MapObject ( [NotNull] XElement resource ) : this ( )
+		public MapObject ( [ NotNull ] XElement resource ) : this ( )
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) );
+				throw new ArgumentNullException ( nameof ( resource ) ) ;
 			}
 
 			try
 			{
-				X = Convert . ToInt32 ( resource . Attribute ( nameof ( X ) ) . Value );
-				Y = Convert . ToInt32 ( resource . Attribute ( nameof ( Y ) ) . Value );
+				X = Convert . ToInt32 ( resource . Attribute ( nameof ( X ) ) . Value ) ;
+				Y = Convert . ToInt32 ( resource . Attribute ( nameof ( Y ) ) . Value ) ;
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+			}
+		}
+
+		public MapObject ( ) { }
+
+		/// <summary>
+		///     要求地图元素的视图更新
+		/// </summary>
+		public void UpdateView ( )
+		{
+			CheckDisposed ( ) ;
+			UpdateViewEvent ? . Invoke ( this , EventArgs . Empty ) ;
+		}
+
+		[ NotNull ]
+		public event EventHandler UpdateViewEvent ;
+
+		protected override void Dispose ( bool disposing )
+		{
+			if ( ! DisposedValue )
+			{
+				if ( disposing )
+				{
+					Map . Currnet . Objects . Remove ( this ) ;
+					DisposeEvent ? . Invoke ( this , EventArgs . Empty ) ;
+				}
+			}
+			base . Dispose ( disposing ) ;
+		}
+
+		public event EventHandler DisposeEvent ;
+
+		public static void CleanMapObjectType ( ) { MapObjectTypes = new List < MapObjectType > ( ) ; }
+
+		public static void LoadMapObjects ( )
+		{
+			//Todo:Load All internal type
+			foreach (
+				Type type in
+					Assembly . GetExecutingAssembly ( ) .
+								GetTypes ( ) .
+								Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
+			{
+				RegisMapObjectType ( type . Name , type ) ;
+			}
+
+			;
+		}
+
+		/// <summary>
+		///     注册一个MapObject类型
+		///     这个方法应当在加载程序集的时候被调用，加载的程序集应当注册所有的MapObject
+		/// </summary>
+		/// <param name="name">用于从地图资源文件中识别的名称</param>
+		/// <param name="entryType">要注册的类型类型</param>
+		/// <returns>生成的类型</returns>
+		[ NotNull ]
+		public static MapObjectType RegisMapObjectType ( [ NotNull ] XName name , [ NotNull ] Type entryType )
+		{
+			#region Check Argument
+
+			if ( name == null )
+			{
+				throw new ArgumentNullException ( nameof ( name ) ) ;
+			}
+			if ( entryType == null )
+			{
+				throw new ArgumentNullException ( nameof ( entryType ) ) ;
+			}
+			if ( entryType . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) == null )
+			{
+				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( MapObjectAttribute )}" ,
+											nameof ( entryType ) ) ;
+			}
+
+			#endregion
+
+			if ( MapObjectTypes . Any ( type => type . Name == name ) )
+			{
+				return MapObjectTypes . Single ( type => type . Name == name ) ;
+			}
+			else
+			{
+				MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType ) ;
+
+				MapObjectTypes . Add ( mapObjectType ) ;
+
+				return mapObjectType ;
 			}
 		}
 
 
-		[NotNull]
-		public override string ToString ( )
-		{
-			return $"{GetType ( ) . Name } at {X},{Y}";
-		}
+		[ NotNull ]
+		public override string ToString ( ) { return $"{GetType ( ) . Name} at {X},{Y}" ; }
 
-		public MapObject ( ) : base ( )
-		{
-
-		}
 	}
+
 }

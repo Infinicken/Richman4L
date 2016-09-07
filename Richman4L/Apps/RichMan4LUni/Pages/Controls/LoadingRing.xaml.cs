@@ -8,39 +8,32 @@ using Windows . UI . Xaml . Media ;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace WenceyWang . Richman4L . Apps . Uni . Pages . Controls
+namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 {
+
 	public sealed partial class LoadingRing : UserControl
 	{
-		public LoadingRing ( )
-		{
-			InitializeComponent ( );
-		}
 
-		private void UserControl_Loaded ( object sender , RoutedEventArgs e )
-		{
-			LoadingStoryBoard . Begin ( );
-		}
-
-		Brush foreGround = new SolidColorBrush ( Color . FromArgb ( 255 , 255 , 255 , 255 ) );
+		private Brush foreGround = new SolidColorBrush ( Color . FromArgb ( 255 , 255 , 255 , 255 ) ) ;
 
 		public Brush ForeGround
 		{
-			get
-			{
-				return foreGround;
-			}
+			get { return foreGround ; }
 			set
 			{
-				LargeRingUp . Stroke = value;
-				LargeRingDown . Stroke = value;
-				MiddleRingUp . Stroke = value;
-				MiddleRingDown . Stroke = value;
-				SmallRingUp . Stroke = value;
-				SmallRingDown . Stroke = value;
-				foreGround = value;
+				LargeRingUp . Stroke = value ;
+				LargeRingDown . Stroke = value ;
+				MiddleRingUp . Stroke = value ;
+				MiddleRingDown . Stroke = value ;
+				SmallRingUp . Stroke = value ;
+				SmallRingDown . Stroke = value ;
+				foreGround = value ;
 			}
 		}
+
+		public LoadingRing ( ) { InitializeComponent ( ) ; }
+
+		private void UserControl_Loaded ( object sender , RoutedEventArgs e ) { LoadingStoryBoard . Begin ( ) ; }
 
 	}
 
@@ -48,29 +41,29 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages . Controls
 	//68
 	//46
 	/// <summary>
-	/// 角度转换器
+	///     角度转换器
 	/// </summary>
-	class AngelConverter : IValueConverter
+	internal class AngelConverter : IValueConverter
 	{
-		object IValueConverter.Convert ( object value , Type targetType , object parameter , string language )
+
+		object IValueConverter . Convert ( object value , Type targetType , object parameter , string language )
 		{
+			double lenth = Convert . ToDouble ( parameter ) * Math . PI * Convert . ToDouble ( value ) / 360 / 10 ;
 
-			double lenth = Convert . ToDouble ( parameter ) * Math . PI * Convert . ToDouble ( value ) / 360 / 10;
+			DoubleCollection collection = new DoubleCollection ( ) ;
 
-			DoubleCollection collection = new DoubleCollection ( );
+			collection . Add ( lenth ) ;
 
-			collection . Add ( lenth );
+			collection . Add ( double . MaxValue ) ;
 
-			collection . Add ( double . MaxValue );
-
-			return collection;
+			return collection ;
 		}
 
-		object IValueConverter.ConvertBack ( object value , Type targetType , object parameter , string language )
+		object IValueConverter . ConvertBack ( object value , Type targetType , object parameter , string language )
 		{
-			throw new NotImplementedException ( );
+			throw new NotImplementedException ( ) ;
 		}
+
 	}
 
 }
-

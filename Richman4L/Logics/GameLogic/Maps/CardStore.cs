@@ -16,40 +16,34 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
-using WenceyWang . Richman4L . Maps . Roads;
-using WenceyWang . Richman4L . Players;
+using System . Collections . Generic ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Cards ;
+using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . Players ;
+
+namespace WenceyWang . Richman4L .Maps
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class CardStore : NormalRoad
 	{
+
+		public CardStore ( XElement resource ) : base ( resource ) { }
 
 
 		public override void Stay ( Player player , MoveType moveType )
 		{
 			//Todo:MakeEnviromentBuyCard
-			List<Cards . CardType> cardCanBuy = new List<Cards . CardType> ( );
+			List < CardType > cardCanBuy = new List < CardType > ( ) ;
 
 
-			base . Stay ( player , moveType );
-
+			base . Stay ( player , moveType ) ;
 		}
 
-		protected override void Dispose ( bool disposing )
-		{
-			base . Dispose ( disposing );
-		}
+		protected override void Dispose ( bool disposing ) { base . Dispose ( disposing ) ; }
 
-		public CardStore ( XElement resource ) : base ( resource )
-		{
-
-		}
 	}
+
 }

@@ -16,28 +16,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using WenceyWang . Richman4L . Maps . Buildings ;
 
-using WenceyWang . Richman4L . Maps . Buildings;
-
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public class PlayerUpgradeBuildingEventArgs : PlayerEventArgs
 	{
-		public Building Building { get; private set; }
 
-		public BuildingGrade SourceGrade { get; }
+		public Building Building { get ; private set ; }
 
-		public BuildingGrade TargetGrade { get; }
+		public BuildingGrade SourceGrade { get ; }
+
+		public BuildingGrade TargetGrade { get ; }
 
 		public PlayerUpgradeBuildingEventArgs ( Building building , BuildingGrade sourceGrade , BuildingGrade targetGrade )
 		{
-			Building = building;
-			SourceGrade = sourceGrade;
-			TargetGrade = targetGrade;
+			Building = building ;
+			SourceGrade = sourceGrade ;
+			TargetGrade = targetGrade ;
 		}
+
 	}
+
 }

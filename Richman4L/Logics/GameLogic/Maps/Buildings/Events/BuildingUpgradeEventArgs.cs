@@ -16,20 +16,22 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-
-namespace WenceyWang . Richman4L . Maps . Buildings . Events
+namespace WenceyWang . Richman4L . Maps . Buildings .Events
 {
+
 	public class BuildingUpgradeEventArgs : BuildingEventArgs
 	{
-		public BuildingGrade SourceGrade { get; }
 
-		public BuildingGrade TargetGrade { get; }
+		public BuildingGrade SourceGrade { get ; }
+
+		public BuildingGrade TargetGrade { get ; }
 
 		public BuildingUpgradeEventArgs ( BuildingGrade sourceGrade , BuildingGrade targetGrade )
 		{
-			SourceGrade = sourceGrade;
+			SourceGrade = sourceGrade ;
 			TargetGrade = targetGrade ;
 		}
+
 	}
+
 }

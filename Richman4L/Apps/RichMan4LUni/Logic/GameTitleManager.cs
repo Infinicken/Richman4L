@@ -1,30 +1,23 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-
-namespace WenceyWang . Richman4L . Apps . Uni . Logic
+﻿namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
+
 	public static class GameTitleManager
 	{
 
 		public static void GenerateNewTitle ( )
 		{
-
 			if ( AppSettings . Current . AllowRandomTitle )
 			{
-				AppSettings . Current . GameTitle = GameTitle . GetTitle ( AppSettings . Current . AllowRandomTitleRoot );
+				AppSettings . Current . GameTitle = GameTitle . GetTitle ( AppSettings . Current . AllowRandomTitleRoot ) ;
 			}
 			else
 			{
-				AppSettings . Current . GameTitle = GameTitle . Defult;
+				AppSettings . Current . GameTitle = GameTitle . Defult ;
 			}
 
-			App . Current . WindowTitle = AppSettings . Current . GameTitle . Content;
-
+			App . Current . WindowTitle = AppSettings . Current . GameTitle . Content ;
 		}
 
-
 	}
+
 }

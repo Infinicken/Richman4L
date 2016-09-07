@@ -16,66 +16,72 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using Windows . Foundation . Metadata;
-using Windows . UI . Xaml . Controls;
-using Windows . UI . Xaml . Navigation;
+using Windows . Foundation . Metadata ;
+using Windows . Phone . UI . Input ;
+using Windows . UI . Xaml . Controls ;
+using Windows . UI . Xaml . Navigation ;
 
-using WenceyWang . Richman4L . Apps . Uni . Logic;
+using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Pages
+namespace WenceyWang . Richman4L . Apps . Uni .Pages
 {
 
 	/// <summary>
-	/// 设置页
+	///     设置页
 	/// </summary>
 	public sealed partial class SettingPage : Page
 	{
 
-		public SettingPage ( )
-		{
-			InitializeComponent ( );
-			StartStoryBoard . Completed += StartStoryBoard_Completed;
-		}
+		public SettingPage ( ) { InitializeComponent ( ) ; }
 
 		protected override void OnNavigatedTo ( NavigationEventArgs e )
 		{
-			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" , nameof ( Windows . Phone . UI . Input . HardwareButtons . BackPressed ) ) )
+			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
+													nameof ( HardwareButtons . BackPressed ) ) )
 			{
-				Windows . Phone . UI . Input . HardwareButtons . BackPressed += MainPageButton_Click;
+				HardwareButtons . BackPressed += MainPageButton_Click ;
 			}
 		}
 
-		private void Page_Loaded ( object sender , object e ) { StartStoryBoard . Begin ( ); }
-
-		private void StartStoryBoard_Completed ( object sender , object e )
+		private void Page_Loaded ( object sender , object e )
 		{
 			if ( AppSettings . Current . OcdMode )
 			{
-				MainGrid . TurnOnOcdMode ( );
+				MainGrid . TurnOnOcdMode ( ) ;
 			}
-			StartStoryBoard . Completed -= StartStoryBoard_Completed;
-			AddControl ( );
+			if ( AppSettings . Current . ComicSansMode )
+			{
+				MainGrid . TurnOnComicSansMode ( ) ;
+			}
+			StartStoryBoard . Completed += StartStoryBoard_Completed ;
+			StartStoryBoard . Begin ( ) ;
+		}
+
+		private void StartStoryBoard_Completed ( object sender , object e )
+		{
+			StartStoryBoard . Completed -= StartStoryBoard_Completed ;
+			AddControl ( ) ;
 		}
 
 		private void RemoveControl ( )
 		{
-			MainPageButton . Click -= MainPageButton_Click;
-			AboutPageButton . Click += AboutPageButton_Click;
+			MainPageButton . Click -= MainPageButton_Click ;
+			AboutPageButton . Click += AboutPageButton_Click ;
 		}
 
 		private void AddControl ( )
 		{
-			MainPageButton . Click += MainPageButton_Click;
-			AboutPageButton . Click += AboutPageButton_Click;
+			MainPageButton . Click += MainPageButton_Click ;
+			AboutPageButton . Click += AboutPageButton_Click ;
 		}
 
 
 		private void MainPageButton_Click ( object sender , object e )
 		{
-			BackClickEventArgs args = e as BackClickEventArgs;
+			BackClickEventArgs args = e as BackClickEventArgs ;
 			if ( args != null )
 			{
-				args . Handled = true;
+				args . Handled = true ;
 			}
 			PageNavigateHelper . Navigate ( typeof ( MainPage ) ,
 											null ,
@@ -84,7 +90,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 											BackGroundRect ,
 											Frame ,
 											RemoveControl ,
-											AddControl );
+											AddControl ) ;
 		}
 
 		private void AboutPageButton_Click ( object sender , object e )
@@ -96,7 +102,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 											BackGroundRect ,
 											Frame ,
 											RemoveControl ,
-											AddControl );
+											AddControl ) ;
 		}
 
 	}

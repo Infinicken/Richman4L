@@ -16,32 +16,28 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
-using WenceyWang . Richman4L . Maps . Roads;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Maps . Roads ;
+
+namespace WenceyWang . Richman4L .Maps
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class Police : ReturnRoad
 	{
 
-		public static Police Current { get; set; }
+		public static Police Current { get ; set ; }
+
+		public Police ( XElement resource ) : base ( resource ) { Current = this ; }
 
 
 		protected override void Dispose ( bool disposing )
 		{
-			Current = null;
-			base . Dispose ( disposing );
-		}
-
-		public Police ( XElement resource ) : base ( resource )
-		{
-			Current = this;
+			Current = null ;
+			base . Dispose ( disposing ) ;
 		}
 
 	}
+
 }

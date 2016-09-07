@@ -1,19 +1,46 @@
 ﻿using System ;
-using System . Collections . Generic ;
-using System . Globalization ;
-using System . Linq ;
-using System . Text ;
+
+using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Seasons ;
 
 namespace WenceyWang . Richman4L .Weathers
 {
+
 	//Todo:完成天气模型
 	/// <summary>
-	/// 表示天气，它会影响场景的样式，建造，玩家的移动，随机事件等。
+	///     表示天气，它会影响场景的样式，建造，玩家的移动，随机事件等。
 	/// </summary>
 	public class Weather
 	{
 
 		public bool BlockMoving => Wind . Strength >= 950 ;
+
+		public bool BlockBuilding => Wind . Strength >= 900 ;
+
+		public double BlockBuildBuildingPersent { get ; }
+
+		/// <summary>
+		///     指示降水类型
+		/// </summary>
+		public PrecipitationType PrecipitationType { get ; private set ; }
+
+		/// <summary>
+		///     指示阳光的强度,取值[0,1000]
+		/// </summary>
+		public int SunshineStrength { get ; private set ; }
+
+		/// <summary>
+		///     指示降水量
+		/// </summary>
+		public int Precipitation { get ; private set ; }
+
+
+		public Wind Wind { get ; private set ; }
+
+		/// <summary>
+		///     代表温度（℃）(非常冷(-10~0)，冷(0，10)，舒适(10~25)，温暖(25~30)，热(30-35)，非常热(35-40))
+		/// </summary>
+		public double Temperature { get ; set ; }
 
 		public int MoveReduceDistance ( int moveCount )
 		{
@@ -27,8 +54,6 @@ namespace WenceyWang . Richman4L .Weathers
 			}
 		}
 
-		public bool BlockBuilding => Wind . Strength >= 900 ;
-
 		public long BuildAddMoney ( long price )
 		{
 			if ( Wind . Strength > 600 )
@@ -41,44 +66,19 @@ namespace WenceyWang . Richman4L .Weathers
 			}
 		}
 
-		public double BlockBuildBuildingPersent { get ; }
-
-		/// <summary>
-		/// 指示降水类型
-		/// </summary>
-		public PrecipitationType PrecipitationType { get ; private set ; }
-
-		/// <summary>
-		/// 指示阳光的强度,取值[0,1000]
-		/// </summary>
-		public int SunshineStrength { get ; private set ; }
-
-		/// <summary>
-		/// 指示降水量
-		/// </summary>
-		public int Precipitation { get ; private set ; }
-
-
-		public Wind Wind { get ; private set ; }
-
-		/// <summary>
-		/// 代表温度（℃）(非常冷(-10~0)，冷(0，10)，舒适(10~25)，温暖(25~30)，热(30-35)，非常热(35-40))
-		/// </summary>
-		public double Temperature { get ; set ; }
-
 		public Weather Clone ( )
 		{
 			return new Weather
-			{
-				Precipitation = Precipitation ,
-				PrecipitationType = PrecipitationType ,
-				SunshineStrength = SunshineStrength ,
-				Temperature = Temperature ,
-				Wind = Wind
-			} ;
+					{
+						Precipitation = Precipitation ,
+						PrecipitationType = PrecipitationType ,
+						SunshineStrength = SunshineStrength ,
+						Temperature = Temperature ,
+						Wind = Wind
+					} ;
 		}
 
-		public static Weather Random ( Calendars . GameDate date )
+		public static Weather Random ( GameDate date )
 		{
 			Weather weather = new Weather ( ) ;
 
@@ -90,7 +90,7 @@ namespace WenceyWang . Richman4L .Weathers
 
 			switch ( date . Season )
 			{
-				case Seasons . Season . Spring :
+				case Season . Spring :
 				{
 					if ( GameRandom . Current . Next ( 2 ) == 1 ) //和煦的，南风，升温
 					{
@@ -187,7 +187,7 @@ namespace WenceyWang . Richman4L .Weathers
 
 					break ;
 				}
-				case Seasons . Season . Summer :
+				case Season . Summer :
 				{
 					if ( GameRandom . Current . Next ( 2 ) == 1 )
 					{
@@ -197,11 +197,11 @@ namespace WenceyWang . Richman4L .Weathers
 					}
 					break ;
 				}
-				case Seasons . Season . Autumn :
+				case Season . Autumn :
 				{
 					break ;
 				}
-				case Seasons . Season . Winter :
+				case Season . Winter :
 				{
 					break ;
 				}
@@ -210,15 +210,17 @@ namespace WenceyWang . Richman4L .Weathers
 					throw new NotImplementedException ( ) ;
 				}
 			}
+
 			weather . Wind = new Wind { Angle = windAngle , Strength = windStrength } ;
 			return weather ;
 		}
 
 
-		public static Weather GetWeather ( Calendars . GameDate date )
+		public static Weather GetWeather ( GameDate date )
 		{
 			return Game . Current . Calendar . WeatherList [ date . Date ] ;
 		}
 
 	}
+
 }

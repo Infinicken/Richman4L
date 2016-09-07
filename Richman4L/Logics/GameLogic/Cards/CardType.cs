@@ -1,26 +1,27 @@
-﻿using System;
-using System . Xml . Linq;
+﻿using System ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Cards
+namespace WenceyWang . Richman4L .Cards
 {
+
 	public sealed class CardType
 	{
-		public string Name { get; }
 
-		public string Introduction { get; }
+		public string Name { get ; }
 
-		public Type EntryType { get; }
+		public string Introduction { get ; }
+
+		public Type EntryType { get ; }
 
 		internal CardType ( Type entryType , XElement element )
 		{
-			EntryType = entryType;
+			EntryType = entryType ;
 
 			#region Load XML
-
-
 
 			#endregion
 		}
 
 	}
+
 }

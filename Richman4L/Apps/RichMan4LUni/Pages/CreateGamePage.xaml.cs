@@ -17,6 +17,7 @@
 */
 
 using Windows . Foundation . Metadata ;
+using Windows . Phone . UI . Input ;
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Media . Imaging ;
@@ -24,46 +25,49 @@ using Windows . UI . Xaml . Navigation ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Pages
+namespace WenceyWang . Richman4L . Apps . Uni .Pages
 {
 
 	/// <summary>
-	/// 创建游戏页面
+	///     创建游戏页面
 	/// </summary>
 	public sealed partial class CreateGamePage : Page
 	{
 
-		public StartGameParameters Parameters { get; set; }
+		/// <summary>
+		/// </summary>
+		public StartGameParameters Parameters { get ; set ; }
 
-		public CreateGamePage ( ) { InitializeComponent ( ); }
+		public CreateGamePage ( ) { InitializeComponent ( ) ; }
 
 		protected override void OnNavigatedTo ( NavigationEventArgs e )
 		{
-			Parameters = ( e . Parameter as StartGameParameters ) ?? new StartGameParameters ( );
-			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" , nameof ( Windows . Phone . UI . Input . HardwareButtons . BackPressed ) ) )
+			Parameters = e . Parameter as StartGameParameters ?? new StartGameParameters ( ) ;
+			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
+													nameof ( HardwareButtons . BackPressed ) ) )
 			{
-				Windows . Phone . UI . Input . HardwareButtons . BackPressed += MainPageButton_Click;
+				HardwareButtons . BackPressed += MainPageButton_Click ;
 			}
 		}
 
 		private void Page_Loaded ( object sender , RoutedEventArgs e )
 		{
-			Image map = new Image { Source = new BitmapImage ( ) };
+			Image map = new Image { Source = new BitmapImage ( ) } ;
 
-			GameMapView . Items . Add ( map );
+			GameMapView . Items . Add ( map ) ;
 
 
-			StartStoryBoard . Begin ( );
-			StartStoryBoard . Completed += StartStoryBoard_Completed;
+			StartStoryBoard . Begin ( ) ;
+			StartStoryBoard . Completed += StartStoryBoard_Completed ;
 		}
 
 		private void StartStoryBoard_Completed ( object sender , object e )
 		{
 			if ( AppSettings . Current . OcdMode )
 			{
-				MainGrid . TurnOnOcdMode ( );
+				MainGrid . TurnOnOcdMode ( ) ;
 			}
-			StartStoryBoard . Completed -= StartStoryBoard_Completed;
+			StartStoryBoard . Completed -= StartStoryBoard_Completed ;
 		}
 
 		private void ConditionsToWinList_SelectionChanged ( object sender , object e )
@@ -72,15 +76,15 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 				ConditionsToWinList != null &&
 				Parameters != null )
 			{
-				ConditionsToWinButton . Content = ConditionsToWinList?.SelectedItem;
+				ConditionsToWinButton . Content = ConditionsToWinList ? . SelectedItem ;
 				if ( ConditionsToWinList . SelectedItem as string != "资产最多" )
 				{
 					Parameters . ConditionsToWin =
-						new NumberConverter ( ) . ConvertBack ( ConditionsToWinList . SelectedItem?.ToString ( ) );
+						new NumberConverter ( ) . ConvertBack ( ConditionsToWinList . SelectedItem ? . ToString ( ) ) ;
 				}
 				else
 				{
-					Parameters . ConditionsToWin = long . MaxValue;
+					Parameters . ConditionsToWin = long . MaxValue ;
 				}
 			}
 		}
@@ -91,9 +95,9 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 				MoneyStartList != null &&
 				Parameters != null )
 			{
-				MoneyStartButton . Content = MoneyStartList?.SelectedItem;
+				MoneyStartButton . Content = MoneyStartList ? . SelectedItem ;
 				Parameters . StartMoney =
-					new NumberConverter ( ) . ConvertBack ( MoneyStartList . SelectedItem?.ToString ( ) );
+					new NumberConverter ( ) . ConvertBack ( MoneyStartList . SelectedItem ? . ToString ( ) ) ;
 			}
 		}
 
@@ -103,34 +107,34 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 				GameTimeList != null &&
 				Parameters != null )
 			{
-				GameTimeButton . Content = GameTimeList?.SelectedItem;
-				switch ( GameTimeList?.SelectedItem as string )
+				GameTimeButton . Content = GameTimeList ? . SelectedItem ;
+				switch ( GameTimeList ? . SelectedItem as string )
 				{
-					case "无限":
-						{
-							Parameters . GameTime = long . MaxValue;
-							break;
-						}
-					case "50周":
-						{
-							Parameters . GameTime = 50 * 7;
-							break;
-						}
-					case "25周":
-						{
-							Parameters . GameTime = 25 * 7;
-							break;
-						}
-					case "15周":
-						{
-							Parameters . GameTime = 15 * 7;
-							break;
-						}
-					case "5周":
-						{
-							Parameters . GameTime = 5 * 7;
-							break;
-						}
+					case "无限" :
+					{
+						Parameters . GameTime = long . MaxValue ;
+						break ;
+					}
+					case "50周" :
+					{
+						Parameters . GameTime = 50 * 7 ;
+						break ;
+					}
+					case "25周" :
+					{
+						Parameters . GameTime = 25 * 7 ;
+						break ;
+					}
+					case "15周" :
+					{
+						Parameters . GameTime = 15 * 7 ;
+						break ;
+					}
+					case "5周" :
+					{
+						Parameters . GameTime = 5 * 7 ;
+						break ;
+					}
 				}
 			}
 		}
@@ -144,7 +148,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 											BackGroundRect ,
 											Frame ,
 											RemoveControl ,
-											AddControl );
+											AddControl ) ;
 		}
 
 		private void PlayerConfigPageButton_Click ( object sender , RoutedEventArgs e )
@@ -156,19 +160,19 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages
 											BackGroundRect ,
 											Frame ,
 											RemoveControl ,
-											AddControl );
+											AddControl ) ;
 		}
 
 		private void RemoveControl ( )
 		{
-			MainPageButton . Click -= MainPageButton_Click;
-			PlayerConfigPageButton . Click -= PlayerConfigPageButton_Click;
+			MainPageButton . Click -= MainPageButton_Click ;
+			PlayerConfigPageButton . Click -= PlayerConfigPageButton_Click ;
 		}
 
 		private void AddControl ( )
 		{
-			MainPageButton . Click += MainPageButton_Click;
-			PlayerConfigPageButton . Click += PlayerConfigPageButton_Click;
+			MainPageButton . Click += MainPageButton_Click ;
+			PlayerConfigPageButton . Click += PlayerConfigPageButton_Click ;
 		}
 
 	}

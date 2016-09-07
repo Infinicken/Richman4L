@@ -45,6 +45,10 @@
       <HintPath>..\..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NLog.4.3.6\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,17 +59,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SettingItemAttribute.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="SettingCategory.cs" />
+    <Compile Include="ConsoleArguments.cs" />
+    <Compile Include="ProgramExitCode.cs" />
+    <Compile Include="FileNameConst.cs" />
+    <Compile Include="LanguageResources.cs" />
+    <Compile Include="MainPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="MainPage.xml" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ExternalLibrary\FIGlet.Net\FIGlet.Net\FIGlet.Net.csproj">
       <Project>{a39bfbed-a59f-4c73-8c9d-f182dee951eb}</Project>
       <Name>FIGlet.Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ExternalLibrary\FoggyConsole\FoggyConsole\FoggyConsole.csproj">
+      <Project>{232e460f-dae6-4578-b3e4-7cc3444db376}</Project>
+      <Name>FoggyConsole</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Logics\GameLogic\GameLogic.csproj">
       <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
@@ -75,6 +98,10 @@
       <Project>{7765d69c-137e-4d84-9978-56e10527e02e}</Project>
       <Name>CharacterMapRenderer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="License\AGPL.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

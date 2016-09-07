@@ -1,81 +1,185 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
+﻿/*
+* Richman4L: A free game with a rule like Richman4Fun.
+* Copyright (C) 2010-2016 Wencey Wang
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-using WenceyWang . FIGlet;
-using WenceyWang . Richman4L . App . CharacterMapRenderer;
-using WenceyWang . Richman4L . Maps;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
 
-using ConsoleColor = System . ConsoleColor;
+using CommandLine;
 
-namespace WenceyWang . Richman4L . Apps . Console
+using FoggyConsole;
+using FoggyConsole.Controls;
+
+using NLog;
+
+using WenceyWang.FIGlet;
+
+namespace WenceyWang.Richman4L.Apps.Console
 {
 
 	public static class Program
 	{
 
-		public static void Main ( string [ ] args )
+		private static Logger Logger { get; } = LogManager.GetCurrentClassLogger();
+
+		public static Application CurrentApplication { get; set; }
+
+		public static Settings CurrentSetting { get; set; }
+
+		public static void Main(string[] args)
 		{
-			GameTitle . LoadTitles ( );
-			System . Console . Clear ( );
+			System.Console.CancelKeyPress += Console_CancelKeyPress;
 
-			GameTitle title = GameTitle . GetTitle ( true );
-			System . Console . SetCursorPosition ( 0 , 10 );
-			System . Console . WriteLine ( new AsciiArt ( title . TitleRoot ) );
-			System . Console . WriteLine ( new AsciiArt ( "4" ) );
-			System . Console . WriteLine ( new AsciiArt ( title . TitleKey ) );
+			ConsoleArguments arguments = new ConsoleArguments();
 
-			DateTime startTime = DateTime . Now;
-			System . Console . OutputEncoding = new UnicodeEncoding ( );
-			MapObject . LoadMapObjects ( );
-			CharacterMapRenderer . LoadMapObjectRenderers ( );
-			Map map = new Map ( "Test.xml" );
-			DateTime loadEndTime = DateTime . Now;
-			CharacterMapRenderer renderer = new CharacterMapRenderer ( );
-			renderer . SetMap ( map );
-			renderer . SetUnit ( ConsoleSize . Large );
-			renderer . StartUp ( );
-			System . Console . SetCursorPosition ( 0 , 0 );
+			Parser.Default.ParseArguments(args, arguments);
 
-			//System . Console . SetWindowSize ( renderer . CharacterWeith , renderer . CharacterHeight ) ;
-			DateTime caluEndTime = DateTime . Now;
-			ConsoleColor currentBackgroundColor = System . Console . BackgroundColor;
-			ConsoleColor currentForegroundColor = System . Console . ForegroundColor;
-			StringBuilder stringBuilder = new StringBuilder ( );
-			int outCount = 0;
-			int outBlock = 0;
-			for ( int y = 0 ; y < renderer . CharacterHeight ; y++ )
+			if (!arguments.NoLogo)
 			{
-				for ( int x = 0 ; x < renderer . CharacterWeith ; x++ )
-				{
-					ConsoleColor targetBackgroundColor = ( ConsoleColor ) renderer . CurrentView [ x , y ] . BackgroundColor;
-					ConsoleColor targetForegroundColor = ( ConsoleColor ) renderer . CurrentView [ x , y ] . ForegroundColor;
-					if ( currentBackgroundColor != targetBackgroundColor ||
-						currentForegroundColor != targetForegroundColor )
-					{
-						outCount++;
-						System . Console . Write ( stringBuilder . ToString ( ) );
-						stringBuilder . Clear ( );
-						System . Console . BackgroundColor = currentBackgroundColor = targetBackgroundColor;
-						System . Console . ForegroundColor = currentForegroundColor = targetForegroundColor;
-					}
-					outBlock++;
-					stringBuilder . Append ( renderer . CurrentView [ x , y ] . Character );
-				}
-				stringBuilder . AppendLine ( );
+				ShowLogo();
+				ShowCopyRight();
 			}
 
-			System . Console . Write ( stringBuilder . ToString ( ) );
-			System . Console . ResetColor ( );
+			if (!File.Exists(FileNameConst.LicenseFile))
+			{
+				System.Console.WriteLine(@"License file not found");
+				Logger.Info("License file not found, will generate it.");
+				GenerateNewLicenseFile();
+				Exit(ProgramExitCode.LicenseNotAccepted);
+			}
+			else
+			{
+				FileStream licenseFile = File.OpenRead(FileNameConst.LicenseFile);
+				StreamReader reader = new StreamReader(licenseFile);
+				Logger.Info("License file found, reading it.");
+				string licenseFileContent = reader.ReadToEnd();
+				reader.Close();
+				if (!licenseFileContent.EndsWith("I accept this License."))
+				{
+					Logger.Info("License check error.");
+					System.Console.WriteLine(@"You should read the License.txt and accept it before use this program.");
+					Exit(ProgramExitCode.LicenseNotAccepted);
+				}
+				else
+				{
+					Logger.Info("License check pass.");
+				}
+			}
 
-			//System . Console . WriteLine ( );
-			System . Console . WriteLine ( $"outCount:{outCount}" );
-			System . Console . WriteLine ( $"outBlock:{outBlock}" );
-			System . Console . WriteLine ( $"loadTime:{loadEndTime - startTime}" );
-			System . Console . WriteLine ( $"caluTime:{caluEndTime - loadEndTime}" );
-			System . Console . WriteLine ( $"outTime:{DateTime . Now - caluEndTime}" );
+			if (!File.Exists(FileNameConst.SettingFile) ||
+				arguments.Setup)
+			{
+				System.Console.WriteLine(@"Setting file not found");
+				Logger.Info("Setting file not found, will generate it.");
+				CurrentSetting = Settings.GenerateNew();
+			}
+			else
+			{
+				FileStream settingFile = File.OpenRead(FileNameConst.SettingFile);
+				Logger.Info("Setting file found, loading it.");
+				CurrentSetting = Settings.Load(settingFile);
+			}
+
+			List<Task> startUpTasks = new List<Task>();
+
+			startUpTasks.Add(Task.Run(() =>
+									{
+										Logger.Debug("Loading titles.");
+										GameTitle.LoadTitles();
+										Logger.Debug("Loading titles complete.");
+									}));
+
+			startUpTasks.Add(Task.Run(() =>
+									{
+										Logger.Debug("Loading sayings.");
+										GameSaying.LoadSayings();
+										Logger.Debug("Loading sayings complete.");
+									}));
+
+			Task.WaitAll(startUpTasks.ToArray());
+
+			System.Console.Clear();
+
+	//		Panel applicationRoot = new Panel ( ) ;
+	//		applicationRoot . Name = nameof ( applicationRoot ) ;
+	//		applicationRoot . Width = CurrentSetting . ConsoleWidth ;
+	//		applicationRoot . Height = CurrentSetting . ConsoleHeight ;
+	//		applicationRoot . Add ( new MainPage ( ) . Container ) ;
+
+
+			CurrentApplication.Run();
+		}
+
+		private static void Exit(ProgramExitCode code)
+		{
+			string config = CurrentSetting.Save();
+			FileStream settingFile = File.OpenWrite(FileNameConst.SettingFile);
+
+			ShowExit();
+			Environment.Exit((int)ProgramExitCode.LicenseNotAccepted);
+		}
+
+		private static void ShowExit()
+		{
+			Logger.Info("Exiting");
+			System.Console.WriteLine();
+			System.Console.WriteLine(@"Exiting...");
+			System.Console.WriteLine();
+		}
+
+		private static void CreateConfigFile() { }
+
+
+		private static void GenerateNewLicenseFile()
+		{
+			FileStream licenseFile = File.Open("License.txt", FileMode.Create);
+			StreamWriter writer = new StreamWriter(licenseFile);
+			writer.WriteLine(GetLicense());
+			writer.WriteLine();
+			writer.WriteLine("To accept this license, you should write \"I accept this License.\" at the end of this file.");
+			writer.Close();
+		}
+
+		private static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e) { }
+
+		public static void ShowLogo()
+		{
+			System.Console.WriteLine(new AsciiArt(GameTitle.Defult.ContentWithSpace));
+		}
+
+		public static void ShowCopyRight()
+		{
+			System.Console.WriteLine(@"Richman4L Copyright (C) 2010 - 2016 Wencey Wang");
+			System.Console.WriteLine(@"This program comes with ABSOLUTELY NO WARRANTY.");
+			System.Console.WriteLine(
+				@"This is free software, and you are welcome to redistribute it under certain conditions; read License.txt for ditails.");
+		}
+
+		public static string GetLicense()
+		{
+			Assembly assembly = Assembly.GetExecutingAssembly();
+			Stream stream = assembly.GetManifestResourceStream(typeof(Program).Namespace + @".License.AGPL.txt");
+			StreamReader reader = new StreamReader(stream);
+			string license = reader.ReadToEnd();
+			reader.Close();
+			return license;
 		}
 
 	}

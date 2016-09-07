@@ -16,26 +16,25 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public class PlayerChangeStateEventArgs : PlayerEventArgs
 	{
-		public PlayerState OldState { get; set; }
 
-		public PlayerState NewState { get; set; }
+		public PlayerState OldState { get ; set ; }
 
-		public long Duration { get; set; }
+		public PlayerState NewState { get ; set ; }
+
+		public long Duration { get ; set ; }
 
 		public PlayerChangeStateEventArgs ( PlayerState oldState , PlayerState newState , long duration )
 		{
-			OldState = oldState;
-			NewState = newState;
-			Duration = duration;
+			OldState = oldState ;
+			NewState = newState ;
+			Duration = duration ;
 		}
+
 	}
+
 }

@@ -3,41 +3,41 @@
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Pages . Controls
+namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 {
 
 	/// <summary>
-	/// 显示游戏格言
+	///     显示游戏格言
 	/// </summary>
 	public sealed partial class SayingPresenter : UserControl
 	{
 
-		private DispatcherTimer Timer { get; }
+		private GameSaying saying ;
 
-		private GameSaying saying;
+		private DispatcherTimer Timer { get ; }
 
 		public GameSaying Saying
 		{
-			get { return saying; }
+			get { return saying ; }
 			set
 			{
 				if ( value == null )
 				{
-					throw new ArgumentNullException ( nameof ( value ) );
+					throw new ArgumentNullException ( nameof ( value ) ) ;
 				}
 
 				saying = value ;
 
-				ContentTextBlock . Text = Saying . Content;
+				ContentTextBlock . Text = Saying . Content ;
 
 				if ( Saying . People == null )
 				{
 					PeopleTextBlock . Visibility = Visibility . Collapsed ;
-					PeopleTextBlock . Text = string . Empty;
+					PeopleTextBlock . Text = string . Empty ;
 				}
 				else
 				{
-					PeopleTextBlock . Visibility = Visibility .Visible ;
+					PeopleTextBlock . Visibility = Visibility . Visible ;
 					PeopleTextBlock . Text = $"——{Saying . People}" ;
 				}
 
@@ -46,63 +46,63 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages . Controls
 					if ( Saying . Book == null )
 					{
 						BookAndAuthorOrSongTextBlock . Visibility = Visibility . Collapsed ;
-						BookAndAuthorOrSongTextBlock . Text = string . Empty;
+						BookAndAuthorOrSongTextBlock . Text = string . Empty ;
 					}
 					else
 					{
-						BookAndAuthorOrSongTextBlock . Visibility = Visibility . Visible;
+						BookAndAuthorOrSongTextBlock . Visibility = Visibility . Visible ;
 						if ( Saying . Author == null )
 						{
 							BookAndAuthorOrSongTextBlock . Text = $"—{Saying . Book}" ;
 						}
 						else
 						{
-							BookAndAuthorOrSongTextBlock . Text = $"—{ Saying . Book } by { Saying . Author }" ;
+							BookAndAuthorOrSongTextBlock . Text = $"—{Saying . Book} by {Saying . Author}" ;
 						}
 					}
 				}
 				else
 				{
-					BookAndAuthorOrSongTextBlock . Visibility = Visibility . Visible;
+					BookAndAuthorOrSongTextBlock . Visibility = Visibility . Visible ;
 					BookAndAuthorOrSongTextBlock . Text = $"——{Saying . Song}" ;
 				}
 			}
 		}
-		
+
 		public SayingPresenter ( )
 		{
-			Timer = new DispatcherTimer ( );
-			InitializeComponent ( );
-			Loaded += SayingPresenter_Loaded;
+			Timer = new DispatcherTimer ( ) ;
+			InitializeComponent ( ) ;
+			Loaded += SayingPresenter_Loaded ;
 		}
 
 		public void ShowSaying ( )
 		{
-			VisualStateManager . GoToState ( this , nameof ( Show ) , true );
-			Timer . Start ( );
+			VisualStateManager . GoToState ( this , nameof ( Show ) , true ) ;
+			Timer . Start ( ) ;
 		}
 
-		public event EventHandler ShowOverEvent;
+		public event EventHandler ShowOverEvent ;
 
 		private void SayingPresenter_Loaded ( object sender , RoutedEventArgs e )
 		{
-			VisualStateManager . GoToState ( this , nameof ( Hide ) , false );
+			VisualStateManager . GoToState ( this , nameof ( Hide ) , false ) ;
 
 
+			Timer . Interval = TimeSpan . FromSeconds ( Saying . Content . Length * 0.1 + 1.5 ) ;
 
-			Timer . Interval = TimeSpan . FromSeconds ( Saying . Content . Length * 0.1 + 1.5 );
-
-			Timer . Tick += Timer_Tick;
+			Timer . Tick += Timer_Tick ;
 		}
 
 
 		private void Timer_Tick ( object sender , object e )
 		{
-			Timer . Stop ( );
-			VisualStateManager . GoToState ( this , nameof ( Hide ) , true );
-			Timer . Tick -= Timer_Tick;
-			ShowOverEvent?.Invoke ( this , new EventArgs ( ) );
+			Timer . Stop ( ) ;
+			VisualStateManager . GoToState ( this , nameof ( Hide ) , true ) ;
+			Timer . Tick -= Timer_Tick ;
+			ShowOverEvent ? . Invoke ( this , EventArgs . Empty ) ;
 		}
+
 	}
 
 }

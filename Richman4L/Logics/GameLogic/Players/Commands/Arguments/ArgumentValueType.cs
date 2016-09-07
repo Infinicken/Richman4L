@@ -1,32 +1,32 @@
-namespace WenceyWang . Richman4L . Players . Commands . Arguments 
+namespace WenceyWang . Richman4L . Players . Commands .Arguments
 {
 
 	public enum ArgumentValueType
 	{
 
-		Integer,
+		Integer ,
 
-		Float,
+		Float ,
 
-		Stock,
+		Stock ,
 
-		Dice,
+		Dice ,
 
-		Area,
+		Area ,
 
-		Road,
+		Road ,
 
-		Player,
+		Player ,
 
-		Buff,
+		Buff ,
 
-		Building,
+		Building ,
 
-		Date,
+		Date ,
 
-		BuildingGrade,
+		BuildingGrade ,
 
-		Card,
+		Card
 
 	}
 

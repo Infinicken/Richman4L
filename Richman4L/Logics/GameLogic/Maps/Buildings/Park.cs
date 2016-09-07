@@ -16,12 +16,12 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace WenceyWang .Richman4L.Maps.Buildings
+namespace WenceyWang . Richman4L . Maps .Buildings
 {
+
 	public class Park
 	{
 
-		
-
 	}
+
 }

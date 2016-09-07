@@ -110,6 +110,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Fonts\Fonts.xml" />
     <Content Include="Fonts\LeviReBrushed.ttf" />
     <EmbeddedResource Include="GameResources\Maps\Index.xml">
       <SubType>Designer</SubType>
@@ -120,6 +121,9 @@
     <Content Include="ImageResources\WenceySignBlack.png" />
     <Content Include="ImageResources\WenceySignWhite.png" />
     <Content Include="License\AGPL.htm" />
+    <Content Include="Fonts\ComicSansChinese1.ttf" />
+    <Content Include="Fonts\ComicSansChinese2.ttf" />
+    <Content Include="Fonts\ComicSansChinese3.ttf" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Pages\ImageResources\AboutPageDown.png" />
     <Content Include="Pages\ImageResources\AboutPageUp.png" />
@@ -151,6 +155,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fonts\Fonts.cs" />
+    <Compile Include="Logic\ComicSansModeExtensions.cs" />
     <Compile Include="Logic\GameTitleManager.cs" />
     <Compile Include="Logic\LoadingPageArgument.cs" />
     <Compile Include="Logic\LoadingPageTaskState.cs" />
@@ -325,6 +331,16 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="XAMLResources\RightArrowTextBlockButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="XAMLResources\LeftArrowTextBlockButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="XAMLResources\ListBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -346,6 +362,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="XAMLResources\Thickness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="XAMLResources\ToggleSwitchTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

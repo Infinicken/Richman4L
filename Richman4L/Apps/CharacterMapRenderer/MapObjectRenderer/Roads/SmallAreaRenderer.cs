@@ -1,13 +1,9 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+﻿using WenceyWang . Richman4L . Maps ;
 
-using WenceyWang . Richman4L . Maps;
-
-namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer . Roads
+namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer .Roads
 {
-	public class SmallAreaRenderer : CharacterMapObjectRenderer<SmallArea>
+
+	public class SmallAreaRenderer : CharacterMapObjectRenderer < SmallArea >
 	{
 
 		public override void Update ( )

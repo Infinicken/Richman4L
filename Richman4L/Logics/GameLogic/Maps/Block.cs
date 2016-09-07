@@ -16,62 +16,54 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
-using WenceyWang . Richman4L . Calendars;
+using System ;
+using System . Xml . Linq ;
+
+using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	/// <summary>
-	/// 表示区块，区块会计算积水
+	///     表示区块，区块会计算积水
 	/// </summary>
 	public abstract class Block : MapObject
 	{
-		/// <summary>
-		/// 表示当前区块的积水量
-		/// </summary>
-		public virtual int PondingAmount { get; set; }
 
 		/// <summary>
-		/// 表示每天能够减少的积水量
+		///     表示当前区块的积水量
 		/// </summary>
-		public abstract int PondingDecrease { get; }
+		public virtual int PondingAmount { get ; set ; }
+
+		/// <summary>
+		///     表示每天能够减少的积水量
+		/// </summary>
+		public abstract int PondingDecrease { get ; }
 
 
-		public bool IsWet => PondingAmount != 0;
+		public bool IsWet => PondingAmount != 0 ;
 
-		public bool IsFrozen => IceThickness != 0;
+		public bool IsFrozen => IceThickness != 0 ;
 
-		public int IceThickness { get; protected set; }
+		public int IceThickness { get ; protected set ; }
 
-		public bool IsBearSnow => SnowThickness != 0;
+		public bool IsBearSnow => SnowThickness != 0 ;
 
-		public int SnowThickness { get; protected set; }
+		public int SnowThickness { get ; protected set ; }
 
-		public override void StartDay ( GameDate nextDate )
-		{
-
-		}
-
-		public override void EndToday ( )
-		{
-			PondingAmount += Game . Current . Weather . Precipitation;
-			
-
-		}
-
-		public Block ([NotNull] XElement resource ) : base ( resource )
+		public Block ( [ NotNull ] XElement resource ) : base ( resource )
 		{
 			if ( resource == null )
 			{
 				throw new ArgumentNullException ( nameof ( resource ) ) ;
 			}
-
 		}
 
+		public override void StartDay ( GameDate nextDate ) { }
+
+		public override void EndToday ( ) { PondingAmount += Game . Current . Weather . Precipitation ; }
+
 	}
+
 }

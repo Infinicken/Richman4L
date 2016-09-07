@@ -16,31 +16,33 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Maps . Buildings ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public class PlayerPayForBuildBuildingEventArgs : PlayerPayEventArgs
 	{
-		[NotNull]
-		public Maps . Buildings . Building Building { get; }
 
-		public override long Money { get; }
+		[ NotNull ]
+		public Building Building { get ; }
 
-		public PlayerPayForBuildBuildingEventArgs ( [NotNull]Maps . Buildings . Building building , long money )
+		public override long Money { get ; }
+
+		public PlayerPayForBuildBuildingEventArgs ( [ NotNull ] Building building , long money )
 		{
 			if ( building == null )
 			{
-				throw new ArgumentNullException ( nameof ( building ) );
+				throw new ArgumentNullException ( nameof ( building ) ) ;
 			}
 
-			Building = building;
-			Money = money;
+			Building = building ;
+			Money = money ;
 		}
+
 	}
+
 }

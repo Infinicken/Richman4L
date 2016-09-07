@@ -1,39 +1,39 @@
-﻿using System;
+﻿using System ;
 
-using Windows . Foundation;
+using Windows . Foundation ;
 
-using WenceyWang . Richman4L . Maps;
-using WenceyWang . Richman4L . Maps . Roads;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . Roads
+namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Roads
 {
 
-	public sealed partial class NormalRoadRenderer : MapObjectRenderer, IMapObjectRenderer<NormalRoad>
+	public sealed partial class NormalRoadRenderer : MapObjectRenderer , IMapObjectRenderer < NormalRoad >
 	{
 
-		public override Size Size => new Size ( 112 , 56 );
+		public override Size Size => new Size ( 112 , 56 ) ;
 
-		[CanBeNull]
-		public NormalRoad Target { get; private set; }
+		public NormalRoadRenderer ( ) { InitializeComponent ( ) ; }
 
-		public void SetTarget ( [NotNull] NormalRoad target )
+		[ CanBeNull ]
+		public NormalRoad Target { get ; private set ; }
+
+		public void SetTarget ( [ NotNull ] NormalRoad target )
 		{
 			if ( Target == null )
 			{
-				Target = target;
-				StartUp ( );
+				Target = target ;
+				StartUp ( ) ;
 			}
 			else
 			{
-				throw new InvalidOperationException ( );
+				throw new InvalidOperationException ( ) ;
 			}
 		}
 
 		public void StartUp ( )
 		{
-
-
 			#region 断头路
 
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
@@ -41,32 +41,27 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . R
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up &&
 				Target . ForwardRoad == null )
 			{
-
 			}
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
 				Target . BackwardRoad == null ||
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down &&
 				Target . ForwardRoad == null )
 			{
-
 			}
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
 				Target . BackwardRoad == null ||
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left &&
 				Target . ForwardRoad == null )
 			{
-
 			}
 			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
 				Target . BackwardRoad == null ||
 				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right &&
 				Target . ForwardRoad == null )
 			{
-
 			}
 
 			#endregion
-
 
 			#region 连续路
 
@@ -114,49 +109,43 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . R
 			}
 
 			#endregion
+		}
 
-
+		public void Update ( )
+		{
+			if ( Target == null )
+			{
+				throw new InvalidOperationException ( ) ;
+			}
 		}
 
 		public override void Hide ( ) { }
 
 		public override void Show ( ) { }
 
-		public void Update ( )
-		{
-			if ( Target == null )
-			{
-				throw new InvalidOperationException ( );
-			}
-		}
-
-		public NormalRoadRenderer ( ) { InitializeComponent ( ); }
-
 		#region IDisposable Support
 
-		private bool DisposedValue = false; // To detect redundant calls
+		private bool DisposedValue ; // To detect redundant calls
 
 		private void Dispose ( bool disposing )
 		{
-			if ( !DisposedValue )
+			if ( ! DisposedValue )
 			{
 				if ( disposing )
 				{
-
 				}
 
 				// TODO: set large fields to null.
 
-				DisposedValue = true;
+				DisposedValue = true ;
 			}
 		}
 
-		~NormalRoadRenderer ( ) { Dispose ( false ); }
+		~NormalRoadRenderer ( ) { Dispose ( false ) ; }
 
-		public void Dispose ( ) { Dispose ( true ); }
+		public void Dispose ( ) { Dispose ( true ) ; }
 
 		#endregion
-
 	}
 
 }

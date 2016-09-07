@@ -16,21 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Maps .Buildings
 {
+
 	public abstract class SmallBuilding : Building
 	{
 
-		public override int X { get { return Position . X; } protected set { } }
+		public override int X { get { return Position . X ; } protected set { } }
 
-		public override int Y { get { return Position . Y; } protected set { } }
+		public override int Y { get { return Position . Y ; } protected set { } }
 
-		public override MapSize Size => MapSize . Small;
+		public override MapSize Size => MapSize . Small ;
 
 	}
+
 }

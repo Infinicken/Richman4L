@@ -1,14 +1,13 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+﻿using System . Collections . Generic ;
 
-namespace WenceyWang . Richman4L . Players . Commands . Arguments
+namespace WenceyWang . Richman4L . Players . Commands .Arguments
 {
+
 	public class ArgumentsContainer
 	{
 
-		public List<object> Arguments;
+		public List < object > Arguments ;
 
 	}
+
 }

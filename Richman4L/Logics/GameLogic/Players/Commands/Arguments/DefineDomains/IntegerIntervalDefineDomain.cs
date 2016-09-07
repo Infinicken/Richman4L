@@ -2,7 +2,7 @@ using System ;
 
 using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players. Commands . Arguments . DefineDomains
+namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 {
 
 	public class IntegerIntervalDefineDomain : ArgumentValueDefineDomain
@@ -16,6 +16,14 @@ namespace WenceyWang . Richman4L . Players. Commands . Arguments . DefineDomains
 		public long RightEndpoint { get ; }
 
 		public bool IsRightClosed { get ; }
+
+		public IntegerIntervalDefineDomain ( long leftEndpoint , bool isLeftClosed , long rightEndpoint , bool isRightClosed )
+		{
+			LeftEndpoint = leftEndpoint ;
+			IsLeftClosed = isLeftClosed ;
+			RightEndpoint = rightEndpoint ;
+			IsRightClosed = isRightClosed ;
+		}
 
 
 		public override bool IsValid ( [ NotNull ] object value )
@@ -51,14 +59,6 @@ namespace WenceyWang . Richman4L . Players. Commands . Arguments . DefineDomains
 			{
 				return false ;
 			}
-		}
-
-		public IntegerIntervalDefineDomain ( long leftEndpoint , bool isLeftClosed , long rightEndpoint , bool isRightClosed )
-		{			
-			LeftEndpoint = leftEndpoint ;
-			IsLeftClosed = isLeftClosed ;
-			RightEndpoint = rightEndpoint ;
-			IsRightClosed = isRightClosed ;
 		}
 
 	}

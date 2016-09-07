@@ -16,21 +16,24 @@
 	</UserControl.Resources>
 
 	<Grid>
-		<Grid Margin="{StaticResource MapObjMargin}" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-			<Rectangle Fill="Green"  Margin="{StaticResource MapObjMargin}"
+		<Grid Margin="{StaticResource MapObjMargin}" Width="100" Height="100" HorizontalAlignment="Center"
+			VerticalAlignment="Center">
+			<Rectangle Fill="Green" Margin="{StaticResource MapObjMargin}"
 						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="100" Height="100">
 				<Rectangle.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Rectangle.RenderTransform>
 			</Rectangle>
 			<Rectangle Fill="White" Opacity="0.8" Margin="{StaticResource MapObjMargin}"
-						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="100" Height="100" d:IsHidden="True">
+						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="100" Height="100"
+						d:IsHidden="True">
 				<Rectangle.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Rectangle.RenderTransform>
 			</Rectangle>
 			<Rectangle Fill="#FF0080FF" Opacity="0.2" Margin="{StaticResource MapObjMargin}"
-						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="100" Height="100" d:IsHidden="True">
+						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="100" Height="100"
+						d:IsHidden="True">
 				<Rectangle.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Rectangle.RenderTransform>

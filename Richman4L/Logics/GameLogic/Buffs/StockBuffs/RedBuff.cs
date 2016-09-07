@@ -1,17 +1,15 @@
-﻿namespace WenceyWang . Richman4L . Buffs . StockBuffs
+﻿using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Stocks ;
+
+namespace WenceyWang . Richman4L . Buffs .StockBuffs
 {
+
 	public class RedBuff : StockBuff
 	{
-		public override void StartDay ( Calendars . GameDate nextDate )
-		{
 
-			base . StartDay ( nextDate );
-		}
+		public RedBuff ( Stock target , int duration ) : base ( target , duration ) { }
 
-		public RedBuff ( Stocks . Stock target , int duration ) : base ( target , duration )
-		{
-
-		}
+		public override void StartDay ( GameDate nextDate ) { base . StartDay ( nextDate ) ; }
 
 	}
 

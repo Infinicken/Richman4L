@@ -16,24 +16,23 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-using WenceyWang . Richman4L . Players;
+using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings . Events
+namespace WenceyWang . Richman4L . Maps . Buildings .Events
 {
+
 	public class BuildBuildingEventArgs : BuildingEventArgs
 	{
-		public Building Building { get; }
 
-		public Area Position { get; }
+		public Building Building { get ; }
 
-		public BuildingType Type { get; }
+		public Area Position { get ; }
 
-		public Player Player { get; }
+		public BuildingType Type { get ; }
+
+		public Player Player { get ; }
 
 		public BuildBuildingEventArgs ( Building building , Area position , BuildingType buildingType , Player player )
 		{
@@ -41,28 +40,29 @@ namespace WenceyWang . Richman4L . Maps . Buildings . Events
 
 			if ( building == null )
 			{
-				throw new ArgumentNullException ( nameof ( building ) );
+				throw new ArgumentNullException ( nameof ( building ) ) ;
 			}
 			if ( position == null )
 			{
-				throw new ArgumentNullException ( nameof ( position ) );
+				throw new ArgumentNullException ( nameof ( position ) ) ;
 			}
 			if ( buildingType == null )
 			{
-				throw new ArgumentNullException ( nameof ( buildingType ) );
+				throw new ArgumentNullException ( nameof ( buildingType ) ) ;
 			}
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 
 			#endregion
 
-			Building = building;
-			Position = position;
-			Type = buildingType;
-			Player = player;
+			Building = building ;
+			Position = position ;
+			Type = buildingType ;
+			Player = player ;
 		}
 
 	}
+
 }

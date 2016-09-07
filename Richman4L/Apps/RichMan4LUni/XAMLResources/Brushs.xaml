@@ -1,20 +1,20 @@
 ﻿<ResourceDictionary
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:WenceyWang.Richman4L.Apps.Uni">
-	<SolidColorBrush x:Key="Cyan" Color="#FF00AAAA"/>
-	<SolidColorBrush x:Key="TransparentCran" Color="#33006464"/>
-	<SolidColorBrush x:Key="Lime" Color="#FF5cA210"/>
-	<SolidColorBrush x:Key="DarkLime" Color="#FF609C18"/>
-	<SolidColorBrush x:Key="Black" Color="#FF000000"/>
-	<SolidColorBrush x:Key="DeepRed" Color="#FF490C23"/>
-	<SolidColorBrush x:Key="Blue" Color="#FF003A82"/>
-	<SolidColorBrush x:Key="Purple" Color="#FF260048"/>
-	<SolidColorBrush x:Key="White" Color="#FFFFFFFF"/>
-	<SolidColorBrush x:Key="Pink" Color="#FFB21D62"/>
-	<SolidColorBrush x:Key="TransparentDeepRed" Color="#7F330819"/>
-	<SolidColorBrush x:Key="DarkBlue" Color="#FF091A46"/>
-	<SolidColorBrush x:Key="LightBlie" Color="#FF3BCB7C"/>
+	<SolidColorBrush x:Key="Cyan" Color="#FF00AAAA" />
+	<SolidColorBrush x:Key="TransparentCran" Color="#33006464" />
+	<SolidColorBrush x:Key="Lime" Color="#FF5cA210" />
+	<SolidColorBrush x:Key="DarkLime" Color="#FF609C18" />
+	<SolidColorBrush x:Key="Black" Color="#FF000000" />
+	<SolidColorBrush x:Key="DeepRed" Color="#FF490C23" />
+	<SolidColorBrush x:Key="Blue" Color="#FF003A82" />
+	<SolidColorBrush x:Key="Purple" Color="#FF260048" />
+	<SolidColorBrush x:Key="White" Color="#FFFFFFFF" />
+	<SolidColorBrush x:Key="Pink" Color="#FFB21D62" />
+	<SolidColorBrush x:Key="TransparentDeepRed" Color="#7F330819" />
+	<SolidColorBrush x:Key="DarkBlue" Color="#FF091A46" />
+	<SolidColorBrush x:Key="LightBlie" Color="#FF3BCB7C" />
 	<Color x:Key="Transparent">#01FFFFFF</Color>
 
 

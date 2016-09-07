@@ -3,19 +3,21 @@
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Data ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Logic
+namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
+
 	public class BooleanVisibilityConverter : IValueConverter
 	{
+
 		public object Convert ( object value , Type targetType , object parameter , string language )
 		{
 			if ( ( bool ) value )
 			{
-				return Visibility . Visible;
+				return Visibility . Visible ;
 			}
 			else
 			{
-				return Visibility . Collapsed;
+				return Visibility . Collapsed ;
 			}
 		}
 
@@ -23,12 +25,14 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 		{
 			if ( ( Visibility ) value == Visibility . Visible )
 			{
-				return true;
+				return true ;
 			}
 			else
 			{
-				return false;
+				return false ;
 			}
 		}
+
 	}
+
 }

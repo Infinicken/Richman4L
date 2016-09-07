@@ -16,45 +16,44 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-using WenceyWang . Richman4L . Cards;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Cards ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public class PlayerGiveCardEventArgs : PlayerEventArgs
 	{
 
 		/// <summary>
-		/// 卡片
+		///     卡片
 		/// </summary>
-		[NotNull]
-		public Card Card { get; set; }
+		[ NotNull ]
+		public Card Card { get ; set ; }
 
 		/// <summary>
-		/// 获得卡片的玩家
+		///     获得卡片的玩家
 		/// </summary>
-		[NotNull]
-		public Player Target { get; set; }
+		[ NotNull ]
+		public Player Target { get ; set ; }
 
-		public PlayerGiveCardEventArgs ( [NotNull]Card card , [NotNull]Player target )
+		public PlayerGiveCardEventArgs ( [ NotNull ] Card card , [ NotNull ] Player target )
 		{
 			if ( card == null )
 			{
-				throw new ArgumentNullException ( nameof ( card ) );
+				throw new ArgumentNullException ( nameof ( card ) ) ;
 			}
 			if ( target == null )
 			{
-				throw new ArgumentNullException ( nameof ( target ) );
+				throw new ArgumentNullException ( nameof ( target ) ) ;
 			}
 
-			Card = card;
-			Target = target;
+			Card = card ;
+			Target = target ;
 		}
 
 	}
+
 }

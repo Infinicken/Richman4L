@@ -16,32 +16,48 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Xml . Linq;
+using System ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+namespace WenceyWang . Richman4L . Maps .Roads
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class ReturnRoad : Road
 	{
-		private long? _exitId;
 
-		private Road _exit;
+		private Road _exit ;
+
+		private long? _exitId ;
 
 		public Road Exit
 		{
 			get
 			{
-				if ( _exit == null && _exitId == null )
+				if ( _exit == null &&
+					_exitId == null )
 				{
-					return null;
+					return null ;
 				}
-				return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId . Value ) );
+
+				return _exit ?? ( _exit = Map . Currnet . GetRoad ( _exitId . Value ) ) ;
 			}
 			private set
 			{
-				_exitId = value?.Id;
-				_exit = value;
+				_exitId = value ? . Id ;
+				_exit = value ;
+			}
+		}
+
+		public ReturnRoad ( XElement resource ) : base ( resource )
+		{
+			try
+			{
+				_exitId = Convert . ToInt64 ( resource . Attribute ( nameof ( Exit ) ) . Value ) ;
+			}
+			catch ( NullReferenceException e )
+			{
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
 			}
 		}
 
@@ -49,39 +65,30 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			if ( previous == null )
 			{
-				throw new ArgumentNullException ( nameof ( previous ) );
+				throw new ArgumentNullException ( nameof ( previous ) ) ;
 			}
-			if ( !CanEnterFrom ( previous ) )
+			if ( ! CanEnterFrom ( previous ) )
 			{
-				throw new ArgumentException ( @"无法通过previous进入此道路" , nameof ( previous ) );
+				throw new ArgumentException ( @"无法通过previous进入此道路" , nameof ( previous ) ) ;
 			}
 			if ( moveCount < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) );
+				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) ) ;
 			}
-			Path current = result ?? new Path ( );
-			current . AddRoute ( this );
-			return Exit . Route ( this , moveCount - 1 , current );
+
+			Path current = result ?? new Path ( ) ;
+			current . AddRoute ( this ) ;
+			return Exit . Route ( this , moveCount - 1 , current ) ;
 		}
 
 		protected override void Dispose ( bool disposing )
 		{
-			Exit = null;
-			base . Dispose ( disposing );
+			Exit = null ;
+			base . Dispose ( disposing ) ;
 		}
 
-		public override bool CanEnterFrom ( Road road ) => road == Exit;
+		public override bool CanEnterFrom ( Road road ) => road == Exit ;
 
-		public ReturnRoad ( XElement resource ) : base ( resource )
-		{
-			try
-			{
-				_exitId = Convert . ToInt64 ( resource . Attribute ( nameof ( Exit ) ) . Value );
-			}
-			catch ( NullReferenceException e )
-			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
-			}
-		}
 	}
+
 }

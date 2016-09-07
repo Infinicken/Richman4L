@@ -16,19 +16,22 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
-    public enum BlockAzimuth
-    {
-        None,
-        Up,
-        Down,
-        Left,
-        Right
-    }
+
+	public enum BlockAzimuth
+	{
+
+		None ,
+
+		Up ,
+
+		Down ,
+
+		Left ,
+
+		Right
+
+	}
+
 }

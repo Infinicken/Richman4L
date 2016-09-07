@@ -18,13 +18,18 @@
 
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
+
 	public enum DestroyReason
 	{
-		Weather,
-		RandomEvent,
-		Card,
+
+		Weather ,
+
+		RandomEvent ,
+
+		Card ,
+
 		PlayerBuff
-	
 
 	}
+
 }

@@ -16,37 +16,35 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Players
+namespace WenceyWang . Richman4L .Players
 {
+
 	/// <summary>
-	/// 指示玩家的移动类型
+	///     指示玩家的移动类型
 	/// </summary>
 	public enum MoveType
 	{
-		/// <summary>
-		/// 步行，使用一颗骰子
-		/// </summary>
-		Walk = 1,
 
 		/// <summary>
-		/// 骑自行车，使用两颗骰子
+		///     步行，使用一颗骰子
 		/// </summary>
-		RidingBicycle = 2,
+		Walk = 1 ,
 
 		/// <summary>
-		/// 骑机车，使用三颗骰子
+		///     骑自行车，使用两颗骰子
 		/// </summary>
-		RidingMotorcycle=3,
+		RidingBicycle = 2 ,
 
 		/// <summary>
-		/// 驾驶汽车，使用四颗骰子
+		///     骑机车，使用三颗骰子
 		/// </summary>
-		DrivingCar = 4,
+		RidingMotorcycle = 3 ,
+
+		/// <summary>
+		///     驾驶汽车，使用四颗骰子
+		/// </summary>
+		DrivingCar = 4
 
 	}
+
 }

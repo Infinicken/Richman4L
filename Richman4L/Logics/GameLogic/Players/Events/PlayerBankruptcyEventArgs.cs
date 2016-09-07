@@ -16,21 +16,16 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public class PlayerBankruptcyEventArgs : PlayerEventArgs
 	{
 
-		public PlayerBankruptcyReason Reason { get; }
+		public PlayerBankruptcyReason Reason { get ; }
 
-		public PlayerBankruptcyEventArgs ( PlayerBankruptcyReason reason )
-		{
-			Reason = reason;
-		}
+		public PlayerBankruptcyEventArgs ( PlayerBankruptcyReason reason ) { Reason = reason ; }
+
 	}
+
 }

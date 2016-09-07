@@ -92,9 +92,10 @@
 										Storyboard.TargetName="HeightGrid" d:IsOptimized="True" />
 					</Storyboard>
 				</VisualState>
-				<VisualState x:Name="HideState" >
+				<VisualState x:Name="HideState">
 					<Storyboard>
-						<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="HeightGrid" d:IsOptimized="True"/>
+						<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)"
+										Storyboard.TargetName="HeightGrid" d:IsOptimized="True" />
 					</Storyboard>
 				</VisualState>
 			</VisualStateGroup>
@@ -115,4 +116,4 @@
 		</Grid>
 
 	</Grid>
-</UserControl> 
+</UserControl>

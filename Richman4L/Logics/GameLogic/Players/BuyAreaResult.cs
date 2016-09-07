@@ -16,32 +16,38 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
+using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Players
+namespace WenceyWang . Richman4L .Players
 {
+
 	public class BuyAreaResult
 	{
-		public Maps . Area Area { get; set; }
 
-		public long Money { get; set; }
+		public Area Area { get ; set ; }
 
-		public BuyAreaStatusCode StatusCode { get; set; }
+		public long Money { get ; set ; }
+
+		public BuyAreaStatusCode StatusCode { get ; set ; }
+
 	}
 
 	/// <summary>
-	/// 表示Player购买区域的结果
+	///     表示Player购买区域的结果
 	/// </summary>
 	public enum BuyAreaStatusCode
 	{
-		Success,
-		MoneyNotEnough,
-		PlayerDebuff,
-		AreaDebuff,
+
+		Success ,
+
+		MoneyNotEnough ,
+
+		PlayerDebuff ,
+
+		AreaDebuff ,
+
 		NotBuyable
+
 	}
+
 }

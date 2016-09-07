@@ -16,20 +16,16 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public sealed class PlayerBuyAreaEventArgs : PlayerEventArgs
 	{
-		public BuyAreaResult Result { get; set; }
 
-		public PlayerBuyAreaEventArgs ( BuyAreaResult result )
-		{
-			Result = result;
-		}
+		public BuyAreaResult Result { get ; set ; }
+
+		public PlayerBuyAreaEventArgs ( BuyAreaResult result ) { Result = result ; }
+
 	}
+
 }

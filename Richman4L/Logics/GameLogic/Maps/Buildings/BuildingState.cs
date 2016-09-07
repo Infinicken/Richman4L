@@ -16,67 +16,65 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Maps .Buildings
 {
+
 	/// <summary>
-	/// 指示建筑的状态
+	///     指示建筑的状态
 	/// </summary>
 	public enum BuildingState
 	{
-		/// <summary>
-		/// 建筑正常工作
-		/// </summary>
-		Working,
 
 		/// <summary>
-		/// 建筑正在安装附件
+		///     建筑正常工作
 		/// </summary>
-		InstallingAccessory,
+		Working ,
 
 		/// <summary>
-		/// 建筑正在被建造
+		///     建筑正在安装附件
 		/// </summary>
-		Building,
+		InstallingAccessory ,
 
 		/// <summary>
-		/// 建筑正在被升级
+		///     建筑正在被建造
 		/// </summary>
-		Updating,
+		Building ,
 
 		/// <summary>
-		/// 建筑被关闭
+		///     建筑正在被升级
 		/// </summary>
-		Closed,
+		Updating ,
 
 		/// <summary>
-		/// 建筑被摧毁
+		///     建筑被关闭
 		/// </summary>
-		Destroyed,
+		Closed ,
 
 		/// <summary>
-		/// 建筑正在从不维护的状态恢复
+		///     建筑被摧毁
 		/// </summary>
-		Restoreing,
+		Destroyed ,
 
 		/// <summary>
-		/// 建筑正在从被摧毁的状态恢复
+		///     建筑正在从不维护的状态恢复
 		/// </summary>
-		Recovering,
+		Restoreing ,
 
 		/// <summary>
-		/// 建筑由于天气原因无法工作
+		///     建筑正在从被摧毁的状态恢复
 		/// </summary>
-		WeatherAffect,
+		Recovering ,
 
 		/// <summary>
-		/// 建筑由于所在区块的原因无法工作
+		///     建筑由于天气原因无法工作
 		/// </summary>
-		AreaAffect,
+		WeatherAffect ,
+
+		/// <summary>
+		///     建筑由于所在区块的原因无法工作
+		/// </summary>
+		AreaAffect
 
 	}
+
 }

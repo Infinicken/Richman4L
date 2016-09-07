@@ -16,29 +16,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	/// <summary>
-	/// 空的地块
+	///     空的地块
 	/// </summary>
-	[MapObject]
+	[ MapObject ]
 	public class EmptyBlock : Block
 	{
 
-		public EmptyBlock ( XElement resource ) : base ( resource )
-		{
+		public override MapSize Size => MapSize . Small ;
 
-		}
+		public override int PondingDecrease => Map . Currnet . PondingDecreaseBase ;
 
-		public override MapSize Size => MapSize . Small;
-
-		public override int PondingDecrease => Map . Currnet . PondingDecreaseBase;
+		public EmptyBlock ( XElement resource ) : base ( resource ) { }
 
 	}
+
 }

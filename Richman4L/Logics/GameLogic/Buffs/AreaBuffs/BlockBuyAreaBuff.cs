@@ -1,12 +1,15 @@
-﻿namespace WenceyWang . Richman4L . Buffs . AreaBuffs
+﻿using WenceyWang . Richman4L . Maps ;
+
+namespace WenceyWang . Richman4L . Buffs .AreaBuffs
 {
+
 	public class BlockBuyAreaBuff : AreaBuff
 	{
+
 		public override bool BlockBuy => true ;
 
-		public BlockBuyAreaBuff ( Maps . Area target ) : base ( target )
-		{
+		public BlockBuyAreaBuff ( Area target ) : base ( target ) { }
 
-		}
 	}
+
 }

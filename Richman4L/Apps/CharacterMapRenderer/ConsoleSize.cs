@@ -1,29 +1,24 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . App . CharacterMapRenderer
+﻿namespace WenceyWang . Richman4L . App .CharacterMapRenderer
 {
+
 	public struct ConsoleSize
 	{
-		/// <summary>
-		/// 横向字符数
-		/// </summary>
-		public readonly int Width;
 
 		/// <summary>
-		/// 纵向字符数
+		///     横向字符数
 		/// </summary>
-		public readonly int Height;
+		public readonly int Width ;
+
+		/// <summary>
+		///     纵向字符数
+		/// </summary>
+		public readonly int Height ;
 
 		public static readonly ConsoleSize Small = new ConsoleSize ( 1 , 1 ) ;
 
-		public static readonly ConsoleSize Large = new ConsoleSize ( 5 , 3 );
+		public static readonly ConsoleSize Large = new ConsoleSize ( 5 , 3 ) ;
 
-		public bool Equals ( ConsoleSize other ) {
-			return Width == other . Width && Height == other . Height ;
-		}
+		public bool Equals ( ConsoleSize other ) { return Width == other . Width && Height == other . Height ; }
 
 		public override bool Equals ( object obj )
 		{
@@ -54,4 +49,5 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer
 		}
 
 	}
+
 }

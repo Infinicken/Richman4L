@@ -16,23 +16,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using WenceyWang . Richman4L . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public sealed class PlayerPayForMaintainBuildingEventArgs : PlayerPayEventArgs
 	{
-		public Maps . Buildings . Building Building { get; private set; }
 
-		public override long Money { get; }
+		public Building Building { get ; private set ; }
 
-		public PlayerPayForMaintainBuildingEventArgs ( Maps . Buildings . Building building , long money )
+		public override long Money { get ; }
+
+		public PlayerPayForMaintainBuildingEventArgs ( Building building , long money )
 		{
-			Building = building;
-			Money = money;
+			Building = building ;
+			Money = money ;
 		}
+
 	}
+
 }

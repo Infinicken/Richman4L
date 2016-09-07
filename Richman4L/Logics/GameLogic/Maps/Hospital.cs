@@ -16,30 +16,27 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Xml . Linq;
-using System . Text;
-using WenceyWang . Richman4L . Maps . Roads;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Maps . Roads ;
+
+namespace WenceyWang . Richman4L .Maps
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class Hospital : ReturnRoad
 	{
-		public static Hospital Current { get; set; }
+
+		public static Hospital Current { get ; set ; }
+
+		public Hospital ( XElement resource ) : base ( resource ) { Current = this ; }
 
 		protected override void Dispose ( bool disposing )
 		{
-			Current = null;
-			base . Dispose ( disposing );
-		}
-
-		public Hospital ( XElement resource ) : base ( resource )
-		{
-			Current = this;
+			Current = null ;
+			base . Dispose ( disposing ) ;
 		}
 
 	}
+
 }

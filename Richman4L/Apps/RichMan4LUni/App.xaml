@@ -6,34 +6,39 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	RequestedTheme="Dark" >
+	RequestedTheme="Dark">
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="XAMLResources/Brushs.xaml"/>
-				<ResourceDictionary Source="XAMLResources\TextBlockButtonStyle.xaml"/>
-				<ResourceDictionary Source="XAMLResources\EasingFunction.xaml"/>
-				<ResourceDictionary Source="XAMLResources\Fonts.xaml"/>
-				<ResourceDictionary Source="XAMLResources\Thickness.xaml"/>
-				<ResourceDictionary Source="XAMLResources\RoundedRectangleButtonStyle.xaml"/>
-				<ResourceDictionary Source="XAMLResources\SettingToggleSwitchStyle.xaml"/>
-				<ResourceDictionary Source="XAMLResources\ListBoxStyle.xaml"/>
+				<ResourceDictionary Source="XAMLResources/Brushs.xaml" />
+				<ResourceDictionary Source="XAMLResources\TextBlockButtonStyle.xaml" />
+				<ResourceDictionary Source="XAMLResources\LeftArrowTextBlockButtonStyle.xaml" />
+				<ResourceDictionary Source="XAMLResources\RightArrowTextBlockButtonStyle.xaml" />
+				<ResourceDictionary Source="XAMLResources\EasingFunction.xaml" />
+				<ResourceDictionary Source="XAMLResources\Fonts.xaml" />
+				<ResourceDictionary Source="XAMLResources\Thickness.xaml" />
+				<ResourceDictionary Source="XAMLResources\RoundedRectangleButtonStyle.xaml" />
+				<ResourceDictionary Source="XAMLResources\ToggleSwitchTemplate.xaml" />
+				<ResourceDictionary Source="XAMLResources\SettingToggleSwitchStyle.xaml" />
+				<ResourceDictionary Source="XAMLResources\ListBoxStyle.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<Style x:Key="FlyoutPresenterStyle" TargetType="FlyoutPresenter">
-				<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-				<Setter Property="VerticalContentAlignment" Value="Stretch"/>
-				<Setter Property="IsTabStop" Value="True"/>
-				<Setter Property="Padding" Value="0"/>
-				<Setter Property="ScrollViewer.HorizontalScrollMode" Value="Auto"/>
-				<Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto"/>
-				<Setter Property="ScrollViewer.ZoomMode" Value="Disabled"/>
+				<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+				<Setter Property="VerticalContentAlignment" Value="Stretch" />
+				<Setter Property="IsTabStop" Value="True" />
+				<Setter Property="Padding" Value="0" />
+				<Setter Property="ScrollViewer.HorizontalScrollMode" Value="Auto" />
+				<Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto" />
+				<Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="FlyoutPresenter">
-							<Border x:Name="Background" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" FlowDirection="LeftToRight">
+							<Border x:Name="Background" BorderBrush="{TemplateBinding BorderBrush}"
+									BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+									FlowDirection="LeftToRight">
 								<VisualStateManager.VisualStateGroups>
 									<VisualStateGroup x:Name="OrientationStates">
-										<VisualState x:Name="Portrait"/>
+										<VisualState x:Name="Portrait" />
 										<VisualState x:Name="Landscape">
 											<Storyboard>
 												<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="ScrollViewer">
@@ -43,17 +48,26 @@
 										</VisualState>
 									</VisualStateGroup>
 								</VisualStateManager.VisualStateGroups>
-								<ScrollViewer x:Name="ScrollViewer" AutomationProperties.AccessibilityView="Raw" FlowDirection="{TemplateBinding FlowDirection}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+								<ScrollViewer x:Name="ScrollViewer" AutomationProperties.AccessibilityView="Raw"
+											FlowDirection="{TemplateBinding FlowDirection}"
+											HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+											HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+											VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+											VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
+											ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
 									<!--Margin="{ThemeResource FlyoutContentPanelPortraitThemeMargin}"-->
-									<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+									<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+													ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}"
+													HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+													VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 								</ScrollViewer>
 							</Border>
 						</ControlTemplate>
 					</Setter.Value>
 				</Setter>
-				<Setter Property="FontFamily" Value="Global User Interface"/>
-				<Setter Property="Height" Value="Auto"/>
-				<Setter Property="Margin" Value="0"/>
+				<Setter Property="FontFamily" Value="Global User Interface" />
+				<Setter Property="Height" Value="Auto" />
+				<Setter Property="Margin" Value="0" />
 			</Style>
 		</ResourceDictionary>
 	</Application.Resources>

@@ -20,24 +20,21 @@ using System;
 using System . Collections . Generic;
 using System . Collections . ObjectModel;
 using System . Linq;
-using System . Text;
-using System . Xml . Linq;
-using System . Runtime . Serialization;
 
 using WenceyWang . Richman4L . Auctions;
 using WenceyWang . Richman4L . Banks;
-using WenceyWang . Richman4L . Buffs;
 using WenceyWang . Richman4L . Buffs . PlayerBuffs;
+using WenceyWang . Richman4L . Calendars;
 using WenceyWang . Richman4L . Cards;
+using WenceyWang . Richman4L . GameEnviroment;
 using WenceyWang . Richman4L . Maps;
 using WenceyWang . Richman4L . Maps . Buildings;
-using WenceyWang . Richman4L . Players . Events;
-using WenceyWang . Richman4L . Players . Models;
-using WenceyWang . Richman4L . Stocks;
-using WenceyWang . Richman4L . GameEnviroment;
 using WenceyWang . Richman4L . Maps . Roads;
 using WenceyWang . Richman4L . Players . Commands;
+using WenceyWang . Richman4L . Players . Events;
+using WenceyWang . Richman4L . Players . Models;
 using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Stocks;
 
 namespace WenceyWang . Richman4L . Players
 {
@@ -47,45 +44,109 @@ namespace WenceyWang . Richman4L . Players
 	public class Player : GameObject
 	{
 
+		private long _money;
+
 		/// <summary>
-		/// 玩家的名称
+		///     玩家所拥有的骰子的个数
+		/// </summary>
+		//public int NumberOfDice { get; protected set; } = 1;
+		public List<MoveType> MoveTypeList = new List<MoveType> ( );
+
+		/// <summary>
+		///     玩家的名称
 		/// </summary>
 		[NotNull]
 		public string Name => Model . Name;
 
 		/// <summary>
-		/// 玩家的模型
+		///     玩家的模型
 		/// </summary>
 		[NotNull]
 		public PlayerModel Model { get; }
 
 		/// <summary>
-		/// 玩家使用的控制台
+		///     玩家使用的控制台
 		/// </summary>
 		[NotNull]
 		public PlayerConsole Console { get; private set; }
 
-		[NotNull]
-		public ReadOnlyCollection<PlayerCommand> GetAviliableCommands ( )
-		{
-			List<PlayerCommand> commands = new List<PlayerCommand> ( );
-
-
-			return new ReadOnlyCollection<PlayerCommand> ( commands );
-		}
-
-		[CanBeNull]
-		public event EventHandler UpdateAviliableCommandsEvent;
-
-		#region State
+		public List<DiceType> DiceList { get; } = new List<DiceType> ( );
 
 		/// <summary>
-		/// 玩家的状态
+		///     玩家的游戏点数
+		/// </summary>
+		public long GamePoint { get; set; } = 0;
+
+		/// <summary>
+		///     玩家的卡片
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
+		public ReadOnlyCollection<Card> Cards { get; }
+
+		/// <summary>
+		///     玩家的卡片
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
+		private List<Card> cards { get; }
+
+		/// <summary>
+		///     玩家的股票
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
+		public Dictionary<Stock , int> Stocks { get; }
+
+		/// <summary>
+		///     玩家的地块
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
+		public ReadOnlyCollection<Area> Areas { get; }
+
+		/// <summary>
+		///     玩家的地块
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
+		private List<Area> areas { get; }
+
+		/// <summary>
+		///     玩家当前的位置
+		/// </summary>
+		[NotNull]
+		public Road Position { get; private set; }
+
+		/// <summary>
+		///     玩家前一个位置（用于确定玩家的方向）
+		/// </summary>
+		[NotNull]
+		public Road PreviousPosition { get; private set; }
+
+		/// <summary>
+		///     玩家的增益效果
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
+		public ReadOnlyCollection<PlayerBuff> Buffs { get; }
+
+		/// <summary>
+		///     玩家的增益效果
+		/// </summary>
+		[NotNull]
+		[ItemNotNull]
+		private List<PlayerBuff> buffs { get; }
+
+		public bool HaveMoveToday { get; protected set; }
+
+		/// <summary>
+		///     玩家的状态
 		/// </summary>
 		public PlayerState State { get; protected set; }
 
 		/// <summary>
-		/// 当前状态将会持续的时间
+		///     当前状态将会持续的时间
 		/// </summary>
 		[CanBeNull]
 		public long? StateDuration { get; protected set; }
@@ -95,18 +156,14 @@ namespace WenceyWang . Richman4L . Players
 		public long? StateStartDate { get; protected set; }
 
 		/// <summary>
-		/// 指示玩家能否获得收益
+		///     指示玩家能否获得收益
 		/// </summary>
 		public bool CanGetCharge => State == PlayerState . Normal && this . IsBlockGetCharge ( );
 
 		/// <summary>
-		/// 指示玩家当前是否能移动
+		///     指示玩家当前是否能移动
 		/// </summary>
 		public bool CanMove => !HaveMoveToday && State == PlayerState . Normal && this . IsBlockMoving ( );
-
-		#endregion
-
-		#region Money
 
 		[NotNull]
 		public ReadOnlyCollection<long> MoneyHistory { get; }
@@ -127,12 +184,8 @@ namespace WenceyWang . Richman4L . Players
 			}
 		}
 
-		private long _money;
-
-		public long PropertiesInMoney => Money + SavedMoney . Sum ( ( proof ) => proof . MoneyToGet ) -
-										BorrowedMoney . Sum ( ( proof ) => proof . MoneyToReturn );
-
-		public bool CanPay ( long money ) => Money >= money;
+		public long PropertiesInMoney => Money + SavedMoney . Sum ( proof => proof . MoneyToGet ) -
+										BorrowedMoney . Sum ( proof => proof . MoneyToReturn );
 
 		[NotNull]
 		[ItemNotNull]
@@ -150,84 +203,36 @@ namespace WenceyWang . Richman4L . Players
 		[ItemNotNull]
 		private List<BorrowingBankProof> borrowedMoney { get; }
 
-		#endregion
+		public Player ( [NotNull] PlayerModel model , long startMoney )
+		{
+			if ( model == null )
+			{
+				throw new ArgumentNullException ( nameof ( model ) );
+			}
+			if ( startMoney < 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof ( startMoney ) );
+			}
 
-		/// <summary>
-		/// 玩家所拥有的骰子的个数
-		/// </summary>
-		//public int NumberOfDice { get; protected set; } = 1;
+			Model = model;
+			Money = startMoney;
+			buffs = new List<PlayerBuff> ( );
+			Buffs = new ReadOnlyCollection<PlayerBuff> ( buffs );
+			savedMoney = new List<SavingBankProof> ( );
+			SavedMoney = new ReadOnlyCollection<SavingBankProof> ( savedMoney );
+		}
 
-		public List<MoveType> MoveTypeList = new List<MoveType> ( );
-
-		public List<DiceType> DiceList { get; } = new List<DiceType> ( );
-
-		/// <summary>
-		/// 玩家的游戏点数
-		/// </summary>
-		public long GamePoint { get; set; } = 0;
-
-		/// <summary>
-		/// 玩家的卡片
-		/// </summary>
 		[NotNull]
-		[ItemNotNull]
-		public ReadOnlyCollection<Card> Cards { get; }
+		public ReadOnlyCollection<PlayerCommand> GetAviliableCommands ( )
+		{
+			List<PlayerCommand> commands = new List<PlayerCommand> ( );
 
-		/// <summary>
-		/// 玩家的卡片
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		private List<Card> cards { get; }
 
-		/// <summary>
-		/// 玩家的股票
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		public Dictionary<Stock , int> Stocks { get; }
+			return new ReadOnlyCollection<PlayerCommand> ( commands );
+		}
 
-		/// <summary>
-		/// 玩家的地块
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		public ReadOnlyCollection<Area> Areas { get; }
-
-		/// <summary>
-		/// 玩家的地块
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		private List<Area> areas { get; }
-
-		/// <summary>
-		/// 玩家当前的位置
-		/// </summary>
-		[NotNull]
-		public Road Position { get; private set; }
-
-		/// <summary>
-		/// 玩家前一个位置（用于确定玩家的方向）
-		/// </summary>
-		[NotNull]
-		public Road PreviousPosition { get; private set; }
-
-		/// <summary>
-		/// 玩家的增益效果
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		public ReadOnlyCollection<PlayerBuff> Buffs { get; }
-
-		/// <summary>
-		/// 玩家的增益效果
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		private List<PlayerBuff> buffs { get; }
-
-		public bool HaveMoveToday { get; protected set; }
+		[CanBeNull]
+		public event EventHandler UpdateAviliableCommandsEvent;
 
 		public void GetFromSaving ( [NotNull] SavingBankProof proof )
 		{
@@ -243,8 +248,7 @@ namespace WenceyWang . Richman4L . Players
 		}
 
 		/// <summary>
-		/// 
-		/// this only operate money, NOT STOCK
+		///     this only operate money, NOT STOCK
 		/// </summary>
 		/// <param name="stock"></param>
 		/// <param name="number"></param>
@@ -286,8 +290,7 @@ namespace WenceyWang . Richman4L . Players
 
 
 		/// <summary>
-		/// 
-		/// this operate 
+		///     this operate
 		/// </summary>
 		/// <param name="stock"></param>
 		/// <param name="number"></param>
@@ -366,121 +369,8 @@ namespace WenceyWang . Richman4L . Players
 		[CanBeNull]
 		public event EventHandler<PlayerLostBuffEventArgs> LostBuffEvent;
 
-		#region Move
-
-
-
 		/// <summary>
-		/// 移动
-		/// </summary>
-		/// <param name="moveType">移动类型</param>
-		/// <param name="diceType">使用的骰子</param>
-		public virtual void Move ( MoveType moveType , DiceType diceType )
-		{
-			CheckDisposed ( );
-
-			if ( !MoveTypeList . Contains ( moveType ) )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
-			}
-
-			//Todo:Check if player can use this dice
-
-			if ( CanMove )
-			{
-				HaveMoveToday = true;
-				ReadOnlyCollection<int> diceResult = Game . Current . GameEnviroment . GetDice ( ( int ) moveType , diceType );
-				Path route = Position . Route ( PreviousPosition , diceResult . Sum ( ) );
-				foreach ( Road item in route . Route )
-				{
-					Position . Pass ( this , moveType );
-					PreviousPosition = Position;
-					Position = item;
-				}
-
-				Position . Stay ( this , moveType );
-				MoveEvent?.Invoke ( this , new PlayerMoveEventArgs ( route , diceResult ) );
-			}
-			else
-			{
-				MoveEvent?.Invoke ( this ,
-										new PlayerMoveEventArgs ( new Path ( ) , new ReadOnlyCollection<int> ( new List<int> ( ) ) ) );
-			}
-		}
-
-		[CanBeNull]
-		public event EventHandler<PlayerMoveEventArgs> MoveEvent;
-
-		#endregion
-
-		#region BuyArea
-
-		/// <summary>
-		/// 购买某个区域
-		/// </summary>
-		/// <param name="toBuy">要购买的区域</param>
-		/// <returns></returns>
-		public BuyAreaResult BuyArea ( [NotNull] Area toBuy )
-		{
-			CheckDisposed ( );
-
-			if ( toBuy == null )
-			{
-				throw new ArgumentNullException ( nameof ( toBuy ) );
-			}
-
-
-			BuyAreaResult result = new BuyAreaResult
-			{
-				Area = null ,
-				Money = 0 ,
-			};
-
-
-			if ( !toBuy . IsBlockBuy ( ) )
-			{
-				if ( !this . IsBlockBuyArea ( ) )
-				{
-					if ( toBuy . Owner == null )
-					{
-						if ( Money >= toBuy . Price )
-						{
-							Money -= toBuy . Price;
-							result . Area = toBuy;
-							toBuy . Owner = this;
-							result . StatusCode = BuyAreaStatusCode . Success;
-							result . Money = toBuy . Price;
-						}
-						else
-						{
-							result . StatusCode = BuyAreaStatusCode . MoneyNotEnough;
-						}
-					}
-					else
-					{
-						result . StatusCode = BuyAreaStatusCode . NotBuyable;
-					}
-				}
-				else
-				{
-					result . StatusCode = BuyAreaStatusCode . PlayerDebuff;
-				}
-			}
-			else
-			{
-				result . StatusCode = BuyAreaStatusCode . AreaDebuff;
-			}
-			BuyAreaEvent?.Invoke ( this , new PlayerBuyAreaEventArgs ( result ) );
-			return result;
-		}
-
-		[CanBeNull]
-		public event EventHandler<PlayerBuyAreaEventArgs> BuyAreaEvent;
-
-		#endregion
-
-		/// <summary>
-		/// 在指定位置建造指定类型的建筑建造建筑
+		///     在指定位置建造指定类型的建筑建造建筑
 		/// </summary>
 		/// <param name="position">要建造建筑的位置</param>
 		/// <param name="buildingType">要建筑的类型</param>
@@ -650,69 +540,8 @@ namespace WenceyWang . Richman4L . Players
 		[CanBeNull]
 		public event EventHandler<PlayerChangeStateEventArgs> ChangeStateEvent;
 
-		#region Pay For Buildings
-
 		/// <summary>
-		/// 支付建造建筑所需的费用
-		/// </summary>
-		/// <param name="building">要支付建造费用的建筑</param>
-		/// <param name="money">要支付的数额</param>
-		public void PayForBuildBuilding ( Building building , long money )
-		{
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( $"{nameof ( Player )}" );
-			}
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof ( building ) );
-			}
-			if ( money < 0 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( money ) );
-			}
-
-			Money -= money;
-			PayForBuildBuildingEvent?.Invoke ( this , new PlayerPayForBuildBuildingEventArgs ( building , money ) );
-		}
-
-		[CanBeNull]
-		public event EventHandler<PlayerPayForBuildBuildingEventArgs> PayForBuildBuildingEvent;
-
-		public void PayForUpgradeBuiding ( [NotNull] Building building , long money )
-		{
-			//Todo:
-		}
-
-		/// <summary>
-		/// 支付建筑的维持费
-		/// </summary>
-		/// <param name="building">要支付维持费的建筑</param>
-		/// <param name="money">要支付的数额</param>
-		public void PayForMaintainBuilding ( [NotNull] Building building , long money )
-		{
-			CheckDisposed ( );
-
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof ( building ) );
-			}
-			if ( money < 0 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( money ) );
-			}
-
-			Money -= money;
-			PayForMaintainBuildingEvent?.Invoke ( this , new PlayerPayForMaintainBuildingEventArgs ( building , money ) );
-		}
-
-		[CanBeNull]
-		public event EventHandler<PlayerPayForMaintainBuildingEventArgs> PayForMaintainBuildingEvent;
-
-		#endregion
-
-		/// <summary>
-		/// 支付过路费
+		///     支付过路费
 		/// </summary>
 		/// <param name="area">收取过路费的区块</param>
 		/// <param name="money">支付的数额</param>
@@ -738,7 +567,7 @@ namespace WenceyWang . Richman4L . Players
 		public event EventHandler<PlayerPayForCrossEventArgs> PayForCrossEvent;
 
 		/// <summary>
-		/// 从区块获得收益
+		///     从区块获得收益
 		/// </summary>
 		/// <param name="area">带来收益的区块</param>
 		/// <param name="player">带来收益的玩家，如没有，则为null</param>
@@ -764,7 +593,7 @@ namespace WenceyWang . Richman4L . Players
 		[CanBeNull]
 		public event EventHandler<PlayerGetFromAreaEventArgs> GetFromAreaEvent;
 
-		public override void StartDay ( Calendars . GameDate nextDate )
+		public override void StartDay ( GameDate nextDate )
 		{
 			CheckDisposed ( );
 
@@ -794,7 +623,7 @@ namespace WenceyWang . Richman4L . Players
 		}
 
 		/// <summary>
-		/// 将某张卡片给某个玩家
+		///     将某张卡片给某个玩家
 		/// </summary>
 		/// <param name="target"></param>
 		public void GiveCard ( [NotNull] Card card , [NotNull] Player target )
@@ -867,7 +696,7 @@ namespace WenceyWang . Richman4L . Players
 		public event EventHandler<PlayerReceiveCardEventArgs> ReceiveCardEvent;
 
 		/// <summary>
-		/// 宣告破产
+		///     宣告破产
 		/// </summary>
 		/// <param name="reason">破产的原因</param>
 		public void Bankruptcy ( PlayerBankruptcyReason reason )
@@ -914,24 +743,167 @@ namespace WenceyWang . Richman4L . Players
 		[NotNull]
 		public override string ToString ( ) => Name;
 
-		public Player ( [NotNull] PlayerModel model , long startMoney ) : base ( )
+		public bool CanPay ( long money ) => Money >= money;
+
+		/// <summary>
+		///     移动
+		/// </summary>
+		/// <param name="moveType">移动类型</param>
+		/// <param name="diceType">使用的骰子</param>
+		public virtual void Move ( MoveType moveType , DiceType diceType )
 		{
-			if ( model == null )
+			CheckDisposed ( );
+
+			if ( !MoveTypeList . Contains ( moveType ) )
 			{
-				throw new ArgumentNullException ( nameof ( model ) );
-			}
-			if ( startMoney < 0 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( startMoney ) );
+				throw new ArgumentOutOfRangeException ( nameof ( moveType ) );
 			}
 
-			Model = model;
-			Money = startMoney;
-			buffs = new List<PlayerBuff> ( );
-			Buffs = new ReadOnlyCollection<PlayerBuff> ( buffs );
-			savedMoney = new List<SavingBankProof> ( );
-			SavedMoney = new ReadOnlyCollection<SavingBankProof> ( savedMoney );
+			//Todo:Check if player can use this dice
+
+			if ( CanMove )
+			{
+				HaveMoveToday = true;
+				ReadOnlyCollection<int> diceResult = Game . Current . GameEnviroment . GetDice ( ( int ) moveType , diceType );
+				Path route = Position . Route ( PreviousPosition , diceResult . Sum ( ) );
+				foreach ( Road item in route . Route )
+				{
+					Position . Pass ( this , moveType );
+					PreviousPosition = Position;
+					Position = item;
+				}
+
+				Position . Stay ( this , moveType );
+				MoveEvent?.Invoke ( this , new PlayerMoveEventArgs ( route , diceResult ) );
+			}
+			else
+			{
+				MoveEvent?.Invoke ( this ,
+										new PlayerMoveEventArgs ( new Path ( ) , new ReadOnlyCollection<int> ( new List<int> ( ) ) ) );
+			}
 		}
+
+		[CanBeNull]
+		public event EventHandler<PlayerMoveEventArgs> MoveEvent;
+
+		/// <summary>
+		///     购买某个区域
+		/// </summary>
+		/// <param name="toBuy">要购买的区域</param>
+		/// <returns></returns>
+		public BuyAreaResult BuyArea ( [NotNull] Area toBuy )
+		{
+			CheckDisposed ( );
+
+			if ( toBuy == null )
+			{
+				throw new ArgumentNullException ( nameof ( toBuy ) );
+			}
+
+
+			BuyAreaResult result = new BuyAreaResult
+			{
+				Area = null ,
+				Money = 0
+			};
+
+
+			if ( !toBuy . IsBlockBuy ( ) )
+			{
+				if ( !this . IsBlockBuyArea ( ) )
+				{
+					if ( toBuy . Owner == null )
+					{
+						if ( Money >= toBuy . Price )
+						{
+							Money -= toBuy . Price;
+							result . Area = toBuy;
+							toBuy . Owner = this;
+							result . StatusCode = BuyAreaStatusCode . Success;
+							result . Money = toBuy . Price;
+						}
+						else
+						{
+							result . StatusCode = BuyAreaStatusCode . MoneyNotEnough;
+						}
+					}
+					else
+					{
+						result . StatusCode = BuyAreaStatusCode . NotBuyable;
+					}
+				}
+				else
+				{
+					result . StatusCode = BuyAreaStatusCode . PlayerDebuff;
+				}
+			}
+			else
+			{
+				result . StatusCode = BuyAreaStatusCode . AreaDebuff;
+			}
+			BuyAreaEvent?.Invoke ( this , new PlayerBuyAreaEventArgs ( result ) );
+			return result;
+		}
+
+		[CanBeNull]
+		public event EventHandler<PlayerBuyAreaEventArgs> BuyAreaEvent;
+
+		/// <summary>
+		///     支付建造建筑所需的费用
+		/// </summary>
+		/// <param name="building">要支付建造费用的建筑</param>
+		/// <param name="money">要支付的数额</param>
+		public void PayForBuildBuilding ( Building building , long money )
+		{
+			if ( DisposedValue )
+			{
+				throw new ObjectDisposedException ( $"{nameof ( Player )}" );
+			}
+			if ( building == null )
+			{
+				throw new ArgumentNullException ( nameof ( building ) );
+			}
+			if ( money < 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof ( money ) );
+			}
+
+			Money -= money;
+			PayForBuildBuildingEvent?.Invoke ( this , new PlayerPayForBuildBuildingEventArgs ( building , money ) );
+		}
+
+		[CanBeNull]
+		public event EventHandler<PlayerPayForBuildBuildingEventArgs> PayForBuildBuildingEvent;
+
+		public void PayForUpgradeBuiding ( [NotNull] Building building , long money )
+		{
+			//Todo:
+		}
+
+		/// <summary>
+		///     支付建筑的维持费
+		/// </summary>
+		/// <param name="building">要支付维持费的建筑</param>
+		/// <param name="money">要支付的数额</param>
+		public void PayForMaintainBuilding ( [NotNull] Building building , long money )
+		{
+			CheckDisposed ( );
+
+			if ( building == null )
+			{
+				throw new ArgumentNullException ( nameof ( building ) );
+			}
+			if ( money < 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof ( money ) );
+			}
+
+			Money -= money;
+			PayForMaintainBuildingEvent?.Invoke ( this , new PlayerPayForMaintainBuildingEventArgs ( building , money ) );
+		}
+
+		[CanBeNull]
+		public event EventHandler<PlayerPayForMaintainBuildingEventArgs> PayForMaintainBuildingEvent;
 
 	}
 

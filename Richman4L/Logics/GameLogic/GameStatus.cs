@@ -1,27 +1,27 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L
+﻿namespace WenceyWang .Richman4L
 {
+
 	/// <summary>
-	/// 指示游戏的状态
+	///     指示游戏的状态
 	/// </summary>
 	public enum GameStatus
 	{
 
 		/// <summary>
-		/// 游戏还没开始
+		///     游戏还没开始
 		/// </summary>
-		NotStart,
+		NotStart ,
+
 		/// <summary>
-		/// 游戏正在进行
+		///     游戏正在进行
 		/// </summary>
-		Playing,
+		Playing ,
+
 		/// <summary>
-		/// 游戏已经结束
+		///     游戏已经结束
 		/// </summary>
-		Over,
+		Over
+
 	}
+
 }

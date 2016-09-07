@@ -16,129 +16,106 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+namespace WenceyWang . Richman4L . Maps .Roads
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class CrossRoad : Road
 	{
-		private long? _firstExitId;
 
-		private Road _firstExit;
+		private Road _firstExit ;
+
+		private long? _firstExitId ;
+
+		private Road _forthExit ;
+
+		private long? _forthExitId ;
+
+		private Road _secondExit ;
+
+		private long? _secondExitId ;
+
+		private Road _thirdExit ;
+
+		private long? _thirdExitId ;
 
 		public virtual Road FirstExit
 		{
 			get
 			{
-				if ( _firstExit == null && _firstExit == null )
+				if ( _firstExit == null &&
+					_firstExit == null )
 				{
-					return null;
+					return null ;
 				}
-				return _firstExit ?? ( _firstExit = Map . Currnet . GetRoad ( _firstExitId . Value ) );
+
+				return _firstExit ?? ( _firstExit = Map . Currnet . GetRoad ( _firstExitId . Value ) ) ;
 			}
 			protected set
 			{
-				_firstExitId = value?.Id;
-				_firstExit = value;
+				_firstExitId = value ? . Id ;
+				_firstExit = value ;
 			}
 		}
-
-		private long? _secondExitId;
-
-		private Road _secondExit;
 
 		public virtual Road SecondExit
 		{
 			get
 			{
-				if ( _secondExit == null && _secondExit == null )
+				if ( _secondExit == null &&
+					_secondExit == null )
 				{
-					return null;
+					return null ;
 				}
-				return _secondExit ?? ( _secondExit = Map . Currnet . GetRoad ( _secondExitId . Value ) );
+
+				return _secondExit ?? ( _secondExit = Map . Currnet . GetRoad ( _secondExitId . Value ) ) ;
 			}
 			protected set
 			{
-				_secondExitId = value?.Id;
-				_secondExit = value;
+				_secondExitId = value ? . Id ;
+				_secondExit = value ;
 			}
 		}
-
-		private long? _thirdExitId;
-
-		private Road _thirdExit;
 
 		public virtual Road ThirdExit
 		{
 			get
 			{
-				if ( _thirdExit == null && _thirdExit == null )
+				if ( _thirdExit == null &&
+					_thirdExit == null )
 				{
-					return null;
+					return null ;
 				}
-				return _thirdExit ?? ( _thirdExit = Map . Currnet . GetRoad ( _thirdExitId . Value ) );
+
+				return _thirdExit ?? ( _thirdExit = Map . Currnet . GetRoad ( _thirdExitId . Value ) ) ;
 			}
 			protected set
 			{
-				_thirdExitId = value?.Id;
-				_thirdExit = value;
+				_thirdExitId = value ? . Id ;
+				_thirdExit = value ;
 			}
 		}
-
-		private long? _forthExitId;
-
-		private Road _forthExit;
 
 		public virtual Road ForthExit
 		{
 			get
 			{
-				if ( _forthExit == null && _forthExit == null )
+				if ( _forthExit == null &&
+					_forthExit == null )
 				{
-					return null;
+					return null ;
 				}
-				return _forthExit ?? ( _forthExit = Map . Currnet . GetRoad ( _forthExitId . Value ) );
+
+				return _forthExit ?? ( _forthExit = Map . Currnet . GetRoad ( _forthExitId . Value ) ) ;
 			}
 			protected set
 			{
-				_forthExitId = value?.Id;
-				_forthExit = value;
-			}
-		}
-
-
-		public override bool CanEnterFrom ( Road road ) => road == FirstExit || road == SecondExit || road == ThirdExit || road == ForthExit;
-
-		public override Path Route ( Road previous , int moveCount , Path result = null )
-		{
-			if ( previous == null )
-			{
-				throw new ArgumentNullException ( nameof ( previous ) );
-			}
-			if ( !CanEnterFrom ( previous ) )
-			{
-				throw new ArgumentException ( @"无法通过previous进入此道路" , nameof ( previous ) );
-			}
-			if ( moveCount < 0 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) );
-			}
-			Path current = result ?? new Path ( );
-			current . AddRoute ( this );
-			if ( !BlockMoving && moveCount != 0 )
-			{
-				List<Road> roadAvailable = new List<Road> { FirstExit , SecondExit , ThirdExit , ForthExit };
-				roadAvailable . Remove ( previous );
-				roadAvailable . RemoveAll ( ( road ) => null == road );
-				roadAvailable . RemoveAll ( ( road ) => !road . CanEnterFrom ( this ) );
-				return roadAvailable . RandomItem ( ) . Route ( this , moveCount - 1 , result );
-			}
-			else
-			{
-				return current;
+				_forthExitId = value ? . Id ;
+				_forthExit = value ;
 			}
 		}
 
@@ -146,18 +123,54 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		{
 			try
 			{
-				_firstExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( FirstExit ) ) . Value );
-				_secondExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( SecondExit ) ) . Value );
-				_thirdExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( ThirdExit ) ) . Value );
-				_forthExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( ForthExit ) ) . Value );
+				_firstExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( FirstExit ) ) . Value ) ;
+				_secondExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( SecondExit ) ) . Value ) ;
+				_thirdExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( ThirdExit ) ) . Value ) ;
+				_forthExitId = Convert . ToInt64 ( resource . Attribute ( nameof ( ForthExit ) ) . Value ) ;
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+			}
+		}
+
+
+		public override bool CanEnterFrom ( Road road )
+			=> road == FirstExit || road == SecondExit || road == ThirdExit || road == ForthExit ;
+
+		public override Path Route ( Road previous , int moveCount , Path result = null )
+		{
+			if ( previous == null )
+			{
+				throw new ArgumentNullException ( nameof ( previous ) ) ;
+			}
+			if ( ! CanEnterFrom ( previous ) )
+			{
+				throw new ArgumentException ( @"无法通过previous进入此道路" , nameof ( previous ) ) ;
+			}
+			if ( moveCount < 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) ) ;
+			}
+
+			Path current = result ?? new Path ( ) ;
+			current . AddRoute ( this ) ;
+			if ( ! BlockMoving &&
+				moveCount != 0 )
+			{
+				List < Road > roadAvailable = new List < Road > { FirstExit , SecondExit , ThirdExit , ForthExit } ;
+				roadAvailable . Remove ( previous ) ;
+				roadAvailable . RemoveAll ( road => null == road ) ;
+				roadAvailable . RemoveAll ( road => ! road . CanEnterFrom ( this ) ) ;
+				return roadAvailable . RandomItem ( ) . Route ( this , moveCount - 1 , result ) ;
+			}
+			else
+			{
+				return current ;
 			}
 		}
 
 		//public override MapObjectType Type =>RegisMapObjectType()
-
 	}
+
 }

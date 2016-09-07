@@ -1,33 +1,32 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Seasons
+﻿namespace WenceyWang . Richman4L .Seasons
 {
+
 	/// <summary>
-	/// 指示季节
+	///     指示季节
 	/// </summary>
 	public enum Season
 	{
-		/// <summary>
-		/// 春季
-		/// </summary>
-		Spring,
 
 		/// <summary>
-		/// 夏季
+		///     春季
 		/// </summary>
-		Summer,
+		Spring ,
 
 		/// <summary>
-		/// 秋季
+		///     夏季
 		/// </summary>
-		Autumn,
+		Summer ,
 
 		/// <summary>
-		/// 冬季
+		///     秋季
+		/// </summary>
+		Autumn ,
+
+		/// <summary>
+		///     冬季
 		/// </summary>
 		Winter
+
 	}
+
 }

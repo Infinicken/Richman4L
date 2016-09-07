@@ -6,23 +6,19 @@ using Windows . UI . Xaml . Media ;
 using Windows . UI . Xaml . Media . Animation ;
 using Windows . UI . Xaml . Shapes ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Logic
+namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
-	class BlankNavigationTransitionInfo : NavigationTransitionInfo
+
+	internal class BlankNavigationTransitionInfo : NavigationTransitionInfo
 	{
-
-		public BlankNavigationTransitionInfo ( )
-		{
-
-		}
-
 
 	}
 
 	public static class PageNavigateHelper
 	{
+
 		/// <summary>
-		/// 导航到指定的页
+		///     导航到指定的页
 		/// </summary>
 		/// <param name="targetPageType">要导航到的页</param>
 		/// <param name="parameter">要传递的参数</param>
@@ -32,29 +28,44 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 		/// <param name="frame">当前的Frame</param>
 		/// <param name="removeControls">移除当前页面控制的方法</param>
 		/// <param name="addControls">为当前页面添加控制的方法</param>
-		public static void Navigate ( Type targetPageType , object parameter , string color , Storyboard leaveStoryBoard , Rectangle backGroundRect , Frame frame , Action removeControls = null , Action addControls = null )
+		public static void Navigate ( Type targetPageType ,
+									object parameter ,
+									string color ,
+									Storyboard leaveStoryBoard ,
+									Rectangle backGroundRect ,
+									Frame frame ,
+									Action removeControls = null ,
+									Action addControls = null )
 		{
 			if ( leaveStoryBoard . GetCurrentState ( ) == ClockState . Stopped )
 			{
-				ColorAnimationUsingKeyFrames ca = new ColorAnimationUsingKeyFrames ( );
-				Storyboard . SetTargetName ( ca , "BackGroundRect" );
-				Storyboard . SetTargetProperty ( ca , "(Shape.Fill).(SolidColorBrush.Color)" );
-				ca . KeyFrames . Add ( new EasingColorKeyFrame { KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 0.5 ) ) , Value = ( backGroundRect . Fill as SolidColorBrush ) . Color , EasingFunction = Application . Current . Resources [ "EasingFunction" ] as CubicEase } );
-				ca . KeyFrames . Add ( new EasingColorKeyFrame { KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 1 ) ) , Value = ( Application . Current . Resources [ color ] as SolidColorBrush ) . Color , EasingFunction = Application . Current . Resources [ "EasingFunction" ] as CubicEase } );
-				leaveStoryBoard . Children . Add ( ca );
+				ColorAnimationUsingKeyFrames ca = new ColorAnimationUsingKeyFrames ( ) ;
+				Storyboard . SetTargetName ( ca , "BackGroundRect" ) ;
+				Storyboard . SetTargetProperty ( ca , "(Shape.Fill).(SolidColorBrush.Color)" ) ;
+				ca . KeyFrames . Add ( new EasingColorKeyFrame
+										{
+											KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 0.5 ) ) ,
+											Value = ( backGroundRect . Fill as SolidColorBrush ) . Color ,
+											EasingFunction = Application . Current . Resources [ "EasingFunction" ] as CubicEase
+										} ) ;
+				ca . KeyFrames . Add ( new EasingColorKeyFrame
+										{
+											KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 1 ) ) ,
+											Value = ( Application . Current . Resources [ color ] as SolidColorBrush ) . Color ,
+											EasingFunction = Application . Current . Resources [ "EasingFunction" ] as CubicEase
+										} ) ;
+				leaveStoryBoard . Children . Add ( ca ) ;
 				leaveStoryBoard . Completed += ( obj , ev ) =>
-				{
-					frame . Navigate ( targetPageType , parameter , new BlankNavigationTransitionInfo ( ) );
-					leaveStoryBoard . Stop ( );
-					leaveStoryBoard . Children . Remove ( ca );
-					addControls?.Invoke ( );
-				};
-				removeControls?.Invoke ( );
-				leaveStoryBoard . Begin ( );
+												{
+													frame . Navigate ( targetPageType , parameter , new BlankNavigationTransitionInfo ( ) ) ;
+													leaveStoryBoard . Stop ( ) ;
+													leaveStoryBoard . Children . Remove ( ca ) ;
+													addControls ? . Invoke ( ) ;
+												} ;
+				removeControls ? . Invoke ( ) ;
+				leaveStoryBoard . Begin ( ) ;
 			}
 		}
-
-
 
 	}
 

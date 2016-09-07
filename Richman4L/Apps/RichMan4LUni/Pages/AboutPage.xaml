@@ -9,40 +9,48 @@
 	<Page.Resources>
 		<Storyboard x:Name="StartStoryBoard">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="600" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="MainGrid">
+				<EasingDoubleKeyFrame KeyTime="0" Value="600" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AboutPageUpImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="AboutPageUpImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AboutPageDownImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="AboutPageDownImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Name="LeaveStoryBoard">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AboutPageUpImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="AboutPageUpImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="AboutPageDownImage">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+											Storyboard.TargetName="AboutPageDownImage">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="MainGrid">
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="600" EasingFunction="{StaticResource EasingFunction}"/>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="MainGrid">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="600" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</Page.Resources>
@@ -52,104 +60,109 @@
 			<VisualStateGroup x:Name="VisualStateGroup">
 				<VisualState x:Name="Mobile">
 					<VisualState.StateTriggers>
-						<AdaptiveTrigger/>
+						<AdaptiveTrigger />
 					</VisualState.StateTriggers>
 				</VisualState>
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
-		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource Blue}" Grid.RowSpan="3" Grid.ColumnSpan="3" Margin="0,0,0,-1.333" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"/>
-		<Image x:Name="AboutPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/AboutPageUp.png" Stretch="UniformToFill" VerticalAlignment="Top"/>
-		<Image x:Name="AboutPageDownImage" Margin="0" Source="ms-appx:///Pages/ImageResources/AboutPageDown.png" Stretch="UniformToFill" VerticalAlignment="Bottom"/>
+		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource Blue}" Grid.RowSpan="3" Grid.ColumnSpan="3"
+					Margin="0,0,0,-1.333" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" />
+		<Image x:Name="AboutPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/AboutPageUp.png"
+				Stretch="UniformToFill" VerticalAlignment="Top" />
+		<Image x:Name="AboutPageDownImage" Margin="0" Source="ms-appx:///Pages/ImageResources/AboutPageDown.png"
+				Stretch="UniformToFill" VerticalAlignment="Bottom" />
 
-		<Grid x:Name="MainGrid" Grid.ColumnSpan="3" d:LayoutOverrides="LeftPosition, RightPosition" RenderTransformOrigin="0.5,0.5">
+		<Grid x:Name="MainGrid" Grid.ColumnSpan="3" d:LayoutOverrides="LeftPosition, RightPosition"
+			RenderTransformOrigin="0.5,0.5">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="40"/>
-				<ColumnDefinition/>
-				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="40" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition Height="8"/>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="40"/>
+				<RowDefinition />
+				<RowDefinition Height="8" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="40" />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform/>
+				<CompositeTransform />
 			</Grid.RenderTransform>
 			<ScrollViewer RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
 				<ScrollViewer.RenderTransform>
-					<CompositeTransform/>
+					<CompositeTransform />
 				</ScrollViewer.RenderTransform>
-				<StackPanel x:Name="stackPanel" RenderTransformOrigin="0.5,0.5" Padding="0">
-					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="关于" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}"/>
+				<StackPanel RenderTransformOrigin="0.5,0.5" Padding="0" Margin="0,0,0,40">
+					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="关于" FontFamily="{StaticResource Font}"
+								FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}" />
 					<StackPanel Padding="0" Margin="{StaticResource WideMargin}">
-						<TextBlock x:Name="DRText" TextWrapping="Wrap"  FontSize="68" Text="Dream Recorder" FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" TextAlignment="Center" Margin="0"/>
-						<TextBlock TextWrapping="Wrap" Text="知识 自由 美德" FontFamily="{StaticResource Font}" FontSize="{StaticResource SmallTitle}" TextAlignment="Center" Margin="0,10,0,0"/>
-						<TextBlock Margin="0,10,0,0" TextWrapping="Wrap" Text="展现美" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" TextAlignment="Center"/>
+						<TextBlock x:Name="DRText" TextWrapping="Wrap" FontSize="68" Text="Dream Recorder"
+									FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" TextAlignment="Center" Margin="0" />
+						<TextBlock TextWrapping="Wrap" Text="知识 自由 美德" FontFamily="{StaticResource Font}"
+									FontSize="{StaticResource SmallTitle}" TextAlignment="Center" Margin="0,10,0,0" />
+						<TextBlock Margin="0,10,0,0" TextWrapping="Wrap" Text="展现美" FontFamily="{StaticResource Font}"
+									FontSize="{StaticResource ExtraSmallTitle}" TextAlignment="Center" />
 					</StackPanel>
 					<StackPanel Margin="40,80,40,0" Padding="0">
-						<TextBlock TextWrapping="Wrap" Text="Wencey Wang" FontSize="{StaticResource SmallTitle}" Margin="0" FontFamily="{StaticResource Font}"/>
-						<TextBlock TextWrapping="Wrap" Text="衡自超" Margin="0" FontSize="{StaticResource SmallFontSize}" FontFamily="{StaticResource Font}"/>
-						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontSize="{StaticResource FontSize}" FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}">
-							<Run Text="写程序的，玩电脑的，拍照片的，弹琴玩，想发展成全能，胡写小文章，玩微博勾搭妹子，自以为怀着伟大梦想其实是妄想，高喊着微软人类希望的人类耻辱。"/>
+						<TextBlock TextWrapping="Wrap" Text="Wencey Wang" FontSize="{StaticResource SmallTitle}" Margin="0"
+									FontFamily="{StaticResource Font}" />
+						<TextBlock TextWrapping="Wrap" Text="衡自超" Margin="0" FontSize="{StaticResource SmallFontSize}"
+									FontFamily="{StaticResource Font}" />
+						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontSize="{StaticResource FontSize}"
+									FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}">
+							<Run Text="写程序的，玩电脑的，拍照片的，弹琴玩，想发展成全能，胡写小文章，玩微博勾搭妹子，自以为怀着伟大梦想其实是妄想，高喊着微软人类希望的人类耻辱。" />
 						</TextBlock>
 						<TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontFamily="{StaticResource Font}" FontSize="21.333">
-							<Run Text="勾搭我："/>
-							<Hyperlink NavigateUri="mailto:hengzichao@163.com">
-								<Run Text="hengzichao@163.com" FontStyle="Italic"/>
+							<Run Text="勾搭我：" />
+							<Hyperlink NavigateUri="mailto:wencey@outlook.com">
+								<Run Text="wencey@outlook.com" FontStyle="Italic" />
 							</Hyperlink>
 						</TextBlock>
 						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="21.333">
-							<Run Text="来微博勾搭我："/>
+							<Run Text="来微博勾搭我：" />
 							<Hyperlink NavigateUri="http://weibo.com/hengzichao">
-								<Run Text="@38d285a8d928ad60" FontStyle="Italic"/>
+								<Run Text="@38d285a8d928ad60" FontStyle="Italic" />
 							</Hyperlink>
 						</TextBlock>
 					</StackPanel>
 					<StackPanel Margin="{StaticResource WideMargin}">
-						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="32" Text="这个项目"/>
-						<TextBlock TextWrapping="Wrap" Text="RichMan4L" Margin="0" FontSize="16" FontFamily="{StaticResource Font}"/>
-						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}">
-							<Run Text="没什么好说的其实，就是一个项目，希望能够送给她的礼物，一个简单的小游戏，伴随着破灭的梦想和幻灭之后的失望。或许迎接我的就会是新的世界，阳光明媚，鸟语花香，但是只会有我自己。"/>
-							<LineBreak/>
-							<Run Text="每个人的看似无私付出都其实有限度的，当然，这个例子很多，我也不想再举，而随着年龄的增长很多东西变了而且完全变了。毕竟你其实不理解我的，和一个难以相互理解的人即使在一起也对双方没有什么好处，我的想法图样图森破了，我应该找到一个至少能理解我的人，可能根本就不会有，那就算了，我或许注定是要孤独的，而孤独可能也正是对我的洗礼。"/>
-							<LineBreak/>
-							<Run Text="是啊，这是个悲惨的世界，比我想象的更加悲惨。"/>
-							<LineBreak/>
-							<Run Text="所以笑着写这个东西，谢谢你看到这里，其实也没什么用，希望你玩的高兴，至于这个项目的名字啊什么的都不要在意了。"/>
-							<LineBreak/>
-							<Run Text="这个项目的源代码可以在l4ljl.codeplex.com找到，协议是GPLv3，就这样了。"/>
+						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
+									FontSize="{StaticResource SmallTitle}" Text="这个项目" />
+						<TextBlock TextWrapping="Wrap" Text="RichMan4L" Margin="0" FontSize="{StaticResource SmallFontSize}"
+									FontFamily="{StaticResource Font}" />
+						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontFamily="{StaticResource Font}"
+									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}">
+							<Run Text="没什么好说的其实，就是一个项目，希望能够送给她的礼物，一个简单的小游戏，伴随着破灭的梦想和幻灭之后的失望。或许迎接我的就会是新的世界，阳光明媚，鸟语花香，但是只会有我自己。" />
+							<LineBreak />
+							<Run
+								Text="每个人的看似无私付出都其实有限度的，当然，这个例子很多，我也不想再举，而随着年龄的增长很多东西变了而且完全变了。毕竟你其实不理解我的，和一个难以相互理解的人即使在一起也对双方没有什么好处，我的想法图样图森破了，我应该找到一个至少能理解我的人，可能根本就不会有，那就算了，我或许注定是要孤独的，而孤独可能也正是对我的洗礼。" />
+							<LineBreak />
+							<Run Text="是啊，这是个悲惨的世界，比我想象的更加悲惨。" />
+							<LineBreak />
+							<Run Text="所以笑着写这个东西，谢谢你看到这里，其实也没什么用，希望你玩的高兴，至于这个项目的名字啊什么的都不要在意了。" />
+							<LineBreak />
+							<Run Text="这个项目的源代码可以在l4ljl.codeplex.com找到，协议是GPLv3，就这样了。" />
 						</TextBlock>
 					</StackPanel>
 					<StackPanel Margin="{StaticResource WideMargin}">
-						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="32" Text="感谢"/>
-						<TextBlock TextWrapping="Wrap" Text="Special Thank" Margin="0" FontSize="16" FontFamily="{StaticResource Font}"/>
-						<TextBlock TextWrapping="Wrap" Margin="0,20,0,40" FontFamily="{StaticResource Font}" FontSize="21.333">
-							<Run Text="先是感谢Senty Font，字体非常漂亮，为这个项目增色不少。"/>
-							<LineBreak/>
-							<Run Text="然后是CodePlex。这个项目寄存在上面。"/>
-							<LineBreak/>
-							<Run Text="就这样吧，真的没了。"/>
+						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
+									FontSize="{StaticResource SmallTitle}" Text="感谢" />
+						<TextBlock TextWrapping="Wrap" Text="Special Thank" Margin="0" FontSize="{StaticResource SmallFontSize}"
+									FontFamily="{StaticResource Font}" />
+						<TextBlock TextWrapping="Wrap" Margin="0,20,0,40" FontFamily="{StaticResource Font}"
+									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}">
+							<Run Text="先是感谢Senty Font，字体非常漂亮，为这个项目增色不少。" />
+							<LineBreak />
+							<Run Text="然后是CodePlex。这个项目寄存在上面。" />
+							<LineBreak />
+							<Run Text="就这样吧，真的没了。" />
 						</TextBlock>
 					</StackPanel>
 				</StackPanel>
 			</ScrollViewer>
-			<Button x:Name="SettingPageButton" HorizontalAlignment="Left" Margin="0" Grid.Row="2" VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" FontFamily="{StaticResource Font}" FontSize="21.333" Click="SettingPageButton_Click" d:LayoutOverrides="HorizontalAlignment" Grid.Column="1">
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="5"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
-					<TextBlock Margin="0" TextWrapping="Wrap" Text="设置" d:LayoutOverrides="Width, Height" FontFamily="{StaticResource Font}" Grid.Column="2"/>
-					<TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Text="&#xF060;" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Light"/>
-					<Rectangle Grid.ColumnSpan="3">
-						<Rectangle.Fill>
-							<SolidColorBrush Color="{StaticResource Transparent}"/>
-						</Rectangle.Fill>
-					</Rectangle>
-				</Grid>
-			</Button>
+			<Button x:Name="SettingPageButton" HorizontalAlignment="Left" Margin="0" Grid.Row="2" VerticalAlignment="Stretch"
+					Style="{StaticResource LeftArrowTextBlockButtonStyle}" FontFamily="{StaticResource Font}" FontSize="21.333"
+					Click="SettingPageButton_Click" d:LayoutOverrides="HorizontalAlignment" Grid.Column="1" Content="设置" />
 		</Grid>
 
 	</Grid>

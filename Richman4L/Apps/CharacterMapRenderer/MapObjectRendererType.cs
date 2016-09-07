@@ -1,32 +1,32 @@
-using System;
+using System ;
 
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . App . CharacterMapRenderer
+namespace WenceyWang . Richman4L . App .CharacterMapRenderer
 {
 
 	public class MapObjectRendererType
 	{
 
-		[NotNull]
-		public Type EntryType { get; }
+		[ NotNull ]
+		public Type EntryType { get ; }
 
-		[NotNull]
-		public Type TargetType { get; }
+		[ NotNull ]
+		public Type TargetType { get ; }
 
-		internal MapObjectRendererType ( [NotNull] Type entryType , [NotNull] Type targetType )
+		internal MapObjectRendererType ( [ NotNull ] Type entryType , [ NotNull ] Type targetType )
 		{
 			if ( entryType == null )
 			{
-				throw new ArgumentNullException ( nameof ( entryType ) );
+				throw new ArgumentNullException ( nameof ( entryType ) ) ;
 			}
 			if ( targetType == null )
 			{
-				throw new ArgumentNullException ( nameof ( targetType ) );
+				throw new ArgumentNullException ( nameof ( targetType ) ) ;
 			}
 
-			EntryType = entryType;
-			TargetType = targetType;
+			EntryType = entryType ;
+			TargetType = targetType ;
 		}
 
 	}

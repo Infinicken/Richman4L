@@ -16,24 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System ;
-using System . Collections . Generic ;
-using System . Linq ;
-using System . Text ;
-using WenceyWang . Richman4L . Buffs ;
 using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
 
 namespace WenceyWang . Richman4L . Players .Events
 {
+
 	public class PlayerLostBuffEventArgs : PlayerEventArgs
 	{
 
 		public PlayerBuff Buff { get ; }
 
-		public PlayerLostBuffEventArgs ( PlayerBuff buff )
-		{
-			Buff = buff ;
-		}
+		public PlayerLostBuffEventArgs ( PlayerBuff buff ) { Buff = buff ; }
 
 	}
+
 }

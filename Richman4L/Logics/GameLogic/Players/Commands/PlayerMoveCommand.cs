@@ -16,27 +16,26 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System . Collections . Generic ;
 
-using WenceyWang . Richman4L . Players . Commands . Arguments;
-using WenceyWang . Richman4L . Players . Commands . Arguments . DefineDomains;
+using WenceyWang . Richman4L . Players . Commands . Arguments ;
+using WenceyWang . Richman4L . Players . Commands . Arguments . DefineDomains ;
 
-namespace WenceyWang . Richman4L . Players . Commands
+namespace WenceyWang . Richman4L . Players .Commands
 {
 
 	public class PlayerMoveCommand : PlayerCommand
 	{
 
+		public override List < PlayerCommandArgumentInfo > Arguments { get ; }
+
 		public PlayerMoveCommand ( Player performer ) : base ( performer )
 		{
 			PlayerCommandArgumentInfo diceType = new PlayerCommandArgumentInfo (
-					"" ,
-					"" ,
-					ArgumentValueType . Dice ,
-					new DiceOwnerDefineDomains ( Performer ) );
+				"" ,
+				"" ,
+				ArgumentValueType . Dice ,
+				new DiceOwnerDefineDomains ( Performer ) ) ;
 
 			//PlayerCommandArgumentInfo diceNumber = new PlayerCommandArgumentInfo (
 			//	"" ,
@@ -47,9 +46,10 @@ namespace WenceyWang . Richman4L . Players . Commands
 			//Arguments = new List<PlayerCommandArgumentInfo> { diceType , diceNumber };
 		}
 
-		public override List<PlayerCommandArgumentInfo> Arguments { get; }
-
-		public override void Apply ( ArgumentsContainer arguments ) {/*Performer.Move(arguments.Arguments[] */}
+		public override void Apply ( ArgumentsContainer arguments )
+		{
+/*Performer.Move(arguments.Arguments[] */
+		}
 
 	}
 

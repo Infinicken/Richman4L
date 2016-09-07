@@ -20,40 +20,39 @@ using System . Collections . Generic ;
 
 using WenceyWang . Richman4L . Players . Commands . Arguments ;
 
-namespace WenceyWang . Richman4L . Players . Commands
+namespace WenceyWang . Richman4L . Players .Commands
 {
+
 	/// <summary>
-	/// 指示玩家可以采取的指令
+	///     指示玩家可以采取的指令
 	/// </summary>
 	public abstract class PlayerCommand
 	{
 
-		protected PlayerCommand ( Player performer ) {
-			Performer = performer ;
-		}
+		/// <summary>
+		///     指令的名称
+		/// </summary>
+		public virtual string Name { get ; }
 
 		/// <summary>
-		/// 指令的名称
+		///     指令的详细介绍
 		/// </summary>
-		public virtual string Name { get; }
+		public virtual string Introduction { get ; }
+
+		public abstract List < PlayerCommandArgumentInfo > Arguments { get ; }
 
 		/// <summary>
-		/// 指令的详细介绍
+		///     指令的执行者
 		/// </summary>
-		public virtual string Introduction { get; }
+		public Player Performer { get ; }
 
-		public abstract List<PlayerCommandArgumentInfo > Arguments { get; }
+		protected PlayerCommand ( Player performer ) { Performer = performer ; }
 
 		/// <summary>
-		/// 指令的执行者
+		///     执行这个指令
 		/// </summary>
-		public Player Performer { get; }
+		public abstract void Apply ( ArgumentsContainer arguments ) ;
 
-		/// <summary>
-		/// 执行这个指令
-		/// </summary>
-		public abstract void Apply ( ArgumentsContainer arguments );
-
-		
 	}
+
 }

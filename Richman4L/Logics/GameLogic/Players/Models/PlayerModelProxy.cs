@@ -1,66 +1,67 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Threading . Tasks;
-using System . Xml . Linq;
+﻿using System ;
+using System . Collections . Generic ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Players . Models
+namespace WenceyWang . Richman4L . Players .Models
 {
+
 	public class PlayerModelProxy
 	{
-		public string FileName { get; set; }
 
-		public string Name { get; set; }
+		private PlayerModel _model ;
 
-		public string Introduction { get; set; }
+		public string FileName { get ; set ; }
 
-		public Uri Image { get; set; }
+		public string Name { get ; set ; }
 
-		private PlayerModel _model;
+		public string Introduction { get ; set ; }
 
-		public PlayerModel Model => _model ?? ( _model = new PlayerModel ( FileName ) );
+		public Uri Image { get ; set ; }
+
+		public PlayerModel Model => _model ?? ( _model = new PlayerModel ( FileName ) ) ;
 
 
 		public PlayerModelProxy ( XElement element )
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) );
+				throw new ArgumentNullException ( nameof ( element ) ) ;
 			}
-			Name = element . Attribute ( nameof ( Name ) )?.Value;
-			FileName = element . Attribute ( nameof ( FileName ) )?.Value;
-			Image = new Uri ( element . Attribute ( nameof ( Image ) )?.Value ?? "" );
+
+			Name = element . Attribute ( nameof ( Name ) ) ? . Value ;
+			FileName = element . Attribute ( nameof ( FileName ) ) ? . Value ;
+			Image = new Uri ( element . Attribute ( nameof ( Image ) ) ? . Value ?? "" ) ;
 		}
 
-		private static List<PlayerModelProxy> _playerModels;
+		private static List < PlayerModelProxy > _playerModels ;
 
-		public static List<PlayerModelProxy> GetPlayerModels ( )
+		public static List < PlayerModelProxy > GetPlayerModels ( )
 		{
 			if ( null == _playerModels )
 			{
-				LoadPlayerModels ( );
+				LoadPlayerModels ( ) ;
 			}
 
-			return _playerModels;
-
+			return _playerModels ;
 		}
 
 		public static void LoadPlayerModels ( )
 		{
-			_playerModels = new List<PlayerModelProxy> ( );
+			_playerModels = new List < PlayerModelProxy > ( ) ;
 
-			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(Players)}.{nameof(Models)}.Resources.Index.xml" );
+			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( Players )}.{nameof ( Models )}.Resources.Index.xml" ) ;
 
 			if ( doc . Root == null )
 			{
-				throw new NullReferenceException ( "Document file have no root" );
+				throw new NullReferenceException ( "Document file have no root" ) ;
 			}
+
 			foreach ( XElement item in doc . Root . Elements ( ) )
 			{
-				_playerModels . Add ( new PlayerModelProxy ( item ) );
+				_playerModels . Add ( new PlayerModelProxy ( item ) ) ;
 			}
 		}
 
 	}
+
 }
-
-

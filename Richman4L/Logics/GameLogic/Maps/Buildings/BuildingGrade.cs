@@ -16,151 +16,154 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Collections . ObjectModel ;
+using System . Linq ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Maps .Buildings
 {
+
 	/// <summary>
-	/// 指示建筑等级
+	///     指示建筑等级
 	/// </summary>
 	public sealed class BuildingGrade
 	{
-		/// <summary>
-		/// 建筑等级在建筑类型中的Id
-		/// </summary>
-		public int Id { get; }
+
+		private ReadOnlyCollection < BuildingGrade > _canUpgradeToCache ;
 
 		/// <summary>
-		/// 隶属于的建筑类型
+		///     建筑等级在建筑类型中的Id
 		/// </summary>
-		public BuildingType BelongTo { get; }
+		public int Id { get ; }
 
 		/// <summary>
-		/// 建筑等级的等级
+		///     隶属于的建筑类型
 		/// </summary>
-		public int Grade { get; }
+		public BuildingType BelongTo { get ; }
 
 		/// <summary>
-		/// 建筑等级的名称
+		///     建筑等级的等级
 		/// </summary>
-		public string Name { get; }
+		public int Grade { get ; }
 
 		/// <summary>
-		/// 建筑等级的名称
+		///     建筑等级的名称
 		/// </summary>
-		public string Introduction { get; }
+		public string Name { get ; }
 
 		/// <summary>
-		/// 从关闭状态切换到工作状态所需的时间
+		///     建筑等级的名称
 		/// </summary>
-		public long RecoverTime { get; }
+		public string Introduction { get ; }
 
 		/// <summary>
-		/// 开始升级所需的资金
+		///     从关闭状态切换到工作状态所需的时间
 		/// </summary>
-		public long StartUpgradeMoney { get; }
+		public long RecoverTime { get ; }
 
 		/// <summary>
-		/// 升级过程每天所需的资金
+		///     开始升级所需的资金
 		/// </summary>
-		public long NormalUpgradeMoney { get; }
+		public long StartUpgradeMoney { get ; }
 
 		/// <summary>
-		/// 升级过程所需的时间（天）
+		///     升级过程每天所需的资金
 		/// </summary>
-		public int UpgradeTime { get; }
+		public long NormalUpgradeMoney { get ; }
 
 		/// <summary>
-		/// 维持建筑运作每天所需的维护费
+		///     升级过程所需的时间（天）
 		/// </summary>
-		public long MaintenanceFee { get; }
-
-		private List<long> CanUpdateToId { get; }
-
-		private List<BuildingGrade> GetCanUpgradeTo => BelongTo . Grades . Where ( ( grade ) => CanUpdateToId . Contains ( grade . Id ) ) . ToList ( );
-
-		private ReadOnlyCollection<BuildingGrade> _canUpgradeToCache;
+		public int UpgradeTime { get ; }
 
 		/// <summary>
-		/// 指示能升级到的建筑等级
+		///     维持建筑运作每天所需的维护费
 		/// </summary>
-		public ReadOnlyCollection<BuildingGrade> CanUpgradeTo => _canUpgradeToCache ?? ( _canUpgradeToCache = new ReadOnlyCollection<BuildingGrade> ( GetCanUpgradeTo ) );
+		public long MaintenanceFee { get ; }
 
-		public ReadOnlyCollection<BuildingAccessory> Accessories { get; }
+		private List < long > CanUpdateToId { get ; }
 
-		public override string ToString ( ) => $"{Name}({Id}) in {BelongTo . Name}";
+		private List < BuildingGrade > GetCanUpgradeTo
+			=> BelongTo . Grades . Where ( grade => CanUpdateToId . Contains ( grade . Id ) ) . ToList ( ) ;
+
+		/// <summary>
+		///     指示能升级到的建筑等级
+		/// </summary>
+		public ReadOnlyCollection < BuildingGrade > CanUpgradeTo
+			=> _canUpgradeToCache ?? ( _canUpgradeToCache = new ReadOnlyCollection < BuildingGrade > ( GetCanUpgradeTo ) ) ;
+
+		public ReadOnlyCollection < BuildingAccessory > Accessories { get ; }
 
 		internal BuildingGrade ( XElement element , BuildingType belongTo )
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) );
+				throw new ArgumentNullException ( nameof ( element ) ) ;
 			}
 			if ( element . Name != nameof ( BuildingGrade ) )
 			{
 				throw new ArgumentException ( $"{nameof ( element )} do not perform a {nameof ( BuildingGrade )}" ,
-					nameof ( element ) );
+											nameof ( element ) ) ;
 			}
 			if ( belongTo == null )
 			{
-				throw new ArgumentNullException ( nameof ( belongTo ) );
+				throw new ArgumentNullException ( nameof ( belongTo ) ) ;
 			}
-			BelongTo = belongTo;
+
+			BelongTo = belongTo ;
 			try
 			{
-				Id = Convert . ToInt32 ( element . Attribute ( nameof ( Id ) ) . Value );
-				Grade = Convert . ToInt32 ( element . Attribute ( nameof ( Grade ) ) . Value );
-				Name = element . Attribute ( nameof ( Name ) ) . Value;
-				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value;
-				RecoverTime = Convert . ToInt64 ( element . Attribute ( nameof ( RecoverTime ) ) . Value );
-				StartUpgradeMoney = Convert . ToInt64 ( element . Attribute ( nameof ( StartUpgradeMoney ) ) . Value );
-				NormalUpgradeMoney = Convert . ToInt64 ( element . Attribute ( nameof ( NormalUpgradeMoney ) ) . Value );
-				UpgradeTime = Convert . ToInt32 ( element . Attribute ( nameof ( UpgradeTime ) ) . Value );
-				MaintenanceFee = Convert . ToInt64 ( element . Attribute ( nameof ( MaintenanceFee ) ) . Value );
-				List<BuildingAccessory> accessories = new List<BuildingAccessory> ( );
-				Accessories = new ReadOnlyCollection<BuildingAccessory> ( accessories );
+				Id = Convert . ToInt32 ( element . Attribute ( nameof ( Id ) ) . Value ) ;
+				Grade = Convert . ToInt32 ( element . Attribute ( nameof ( Grade ) ) . Value ) ;
+				Name = element . Attribute ( nameof ( Name ) ) . Value ;
+				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value ;
+				RecoverTime = Convert . ToInt64 ( element . Attribute ( nameof ( RecoverTime ) ) . Value ) ;
+				StartUpgradeMoney = Convert . ToInt64 ( element . Attribute ( nameof ( StartUpgradeMoney ) ) . Value ) ;
+				NormalUpgradeMoney = Convert . ToInt64 ( element . Attribute ( nameof ( NormalUpgradeMoney ) ) . Value ) ;
+				UpgradeTime = Convert . ToInt32 ( element . Attribute ( nameof ( UpgradeTime ) ) . Value ) ;
+				MaintenanceFee = Convert . ToInt64 ( element . Attribute ( nameof ( MaintenanceFee ) ) . Value ) ;
+				List < BuildingAccessory > accessories = new List < BuildingAccessory > ( ) ;
+				Accessories = new ReadOnlyCollection < BuildingAccessory > ( accessories ) ;
 				foreach ( XElement accessory in element . Element ( nameof ( Accessories ) ) . Elements ( ) )
 				{
 					if ( accessory . Name == nameof ( BuildingAccessory ) )
 					{
-						accessories . Add ( new BuildingAccessory ( accessory , this ) );
+						accessories . Add ( new BuildingAccessory ( accessory , this ) ) ;
 					}
 					else
 					{
-						throw new ArgumentException ( $"{nameof ( element )} has wrong data" , nameof ( element ) );
+						throw new ArgumentException ( $"{nameof ( element )} has wrong data" , nameof ( element ) ) ;
 					}
-
 				}
-				CanUpdateToId = new List<long> ( );
+
+				CanUpdateToId = new List < long > ( ) ;
 				foreach ( XElement grade in element . Element ( nameof ( CanUpgradeTo ) ) . Elements ( ) )
 				{
 					if ( grade . Name == nameof ( BuildingGrade ) )
 					{
-						CanUpdateToId . Add ( Convert . ToInt64 ( grade . Attribute ( nameof ( Id ) ) . Value ) );
+						CanUpdateToId . Add ( Convert . ToInt64 ( grade . Attribute ( nameof ( Id ) ) . Value ) ) ;
 					}
 					else
 					{
-						throw new ArgumentException ( $"{nameof ( element )} has wrong data" , nameof ( element ) );
+						throw new ArgumentException ( $"{nameof ( element )} has wrong data" , nameof ( element ) ) ;
 					}
-
 				}
-
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} has wrong data or lack of data" , e );
-			}
-			if ( belongTo . Grades . Any ( ( grade ) => grade . Id == Id ) )
-			{
-				throw new ArgumentException ( $"{nameof ( element )} has wrong {nameof ( Id )}" , nameof ( element ) );
+				throw new ArgumentException ( $"{nameof ( element )} has wrong data or lack of data" , e ) ;
 			}
 
+			if ( belongTo . Grades . Any ( grade => grade . Id == Id ) )
+			{
+				throw new ArgumentException ( $"{nameof ( element )} has wrong {nameof ( Id )}" , nameof ( element ) ) ;
+			}
 		}
+
+		public override string ToString ( ) => $"{Name}({Id}) in {BelongTo . Name}" ;
+
 	}
 
 }

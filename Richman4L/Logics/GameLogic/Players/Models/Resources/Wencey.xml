@@ -1,22 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-16" ?>
-<Player Name="Wencey" Introduction="不是这个游戏的作者" Model="http://tp2.sinaimg.cn/1614891181/180/5722522103/1">
-  <SayingWhenGained>
-    <Saying Text="人类的希望!"/>
-    <Saying Text="Gist!"/>
-    <Saying Text=";-)"/>
-    <Saying Text="然并卵"/>
-  </SayingWhenGained>
-  <SayingWhenHarmed>
-    <Saying Text="人类的耻辱"/>
-    <Saying Text="挺好。"/>
-    <Saying Text="WTF" Expression="😞"/>
-    <Saying Text="呵呵。"/>
-  </SayingWhenHarmed>
-  <SayingWhenMeet>
-    <Saying Player="Vivian" Text="…" Expression="😐"/>
-    <Saying Player="Wicked" Text="萌萌哒！" Expression="😄"/>
-    <Saying Player="Sudiao" Text="Hih!" />
-    <Saying Text=""/>
-  </SayingWhenMeet>
-</Player>
+﻿<?xml version="1.0" encoding="utf-16"?>
 
+<Player Name="Wencey" Introduction="不是这个游戏的作者" Model="http://tp2.sinaimg.cn/1614891181/180/5722522103/1">
+	<SayingWhenGained>
+		<Saying Text="人类的希望!" />
+		<Saying Text="Gist!" />
+		<Saying Text=";-)" />
+		<Saying Text="然并卵" />
+	</SayingWhenGained>
+	<SayingWhenHarmed>
+		<Saying Text="人类的耻辱" />
+		<Saying Text="挺好。" />
+		<Saying Text="WTF" Expression="😞" />
+		<Saying Text="呵呵。" />
+	</SayingWhenHarmed>
+	<SayingWhenMeet>
+		<Saying Player="Vivian" Text="…" Expression="😐" />
+		<Saying Player="Wicked" Text="萌萌哒！" Expression="😄" />
+		<Saying Player="Sudiao" Text="Hih!" />
+		<Saying Text="" />
+	</SayingWhenMeet>
+</Player>

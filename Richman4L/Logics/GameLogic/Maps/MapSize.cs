@@ -16,99 +16,93 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	/// <summary>
-	/// 指示地图或地图元素的尺寸
+	///     指示地图或地图元素的尺寸
 	/// </summary>
 	public struct MapSize
 	{
 
 		/// <summary>
-		/// 宽度
+		///     宽度
 		/// </summary>
-		public readonly int Width;
+		public readonly int Width ;
 
 		/// <summary>
-		/// 高度
+		///     高度
 		/// </summary>
-		public readonly int Height;
+		public readonly int Height ;
 
 		/// <summary>
-		/// 小地图元素尺寸，1*1
+		///     小地图元素尺寸，1*1
 		/// </summary>
-		public static readonly MapSize Small = new MapSize ( 1 , 1 );
+		public static readonly MapSize Small = new MapSize ( 1 , 1 ) ;
 
 		/// <summary>
-		/// 长条地图元素尺寸，1*2
+		///     长条地图元素尺寸，1*2
 		/// </summary>
-		public static readonly MapSize Long = new MapSize ( 1 , 2 );
+		public static readonly MapSize Long = new MapSize ( 1 , 2 ) ;
 
 		/// <summary>
-		/// 宽地图元素尺寸，2*1
+		///     宽地图元素尺寸，2*1
 		/// </summary>
-		public static readonly MapSize Wide = new MapSize ( 2 , 1 );
+		public static readonly MapSize Wide = new MapSize ( 2 , 1 ) ;
 
 		/// <summary>
-		/// 中等地图元素尺寸，2*2
+		///     中等地图元素尺寸，2*2
 		/// </summary>
-		public static readonly MapSize Medium = new MapSize ( 2 , 2 );
+		public static readonly MapSize Medium = new MapSize ( 2 , 2 ) ;
 
 		/// <summary>
-		/// 大地图元素尺寸，4*4
+		///     大地图元素尺寸，4*4
 		/// </summary>
-		public static readonly MapSize Large = new MapSize ( 4 , 4 );
+		public static readonly MapSize Large = new MapSize ( 4 , 4 ) ;
 
 		public static bool operator == ( MapSize size1 , MapSize size2 )
 		{
-			return size1 . Width == size2 . Width && size1 . Height == size2 . Height;
+			return size1 . Width == size2 . Width && size1 . Height == size2 . Height ;
 		}
 
 		public static bool operator != ( MapSize size1 , MapSize size2 )
 		{
-			return size1 . Width != size2 . Width || size1 . Height != size2 . Height;
+			return size1 . Width != size2 . Width || size1 . Height != size2 . Height ;
 		}
 
 		public override bool Equals ( object obj )
 		{
-			if ( !( obj is MapSize ) )
+			if ( ! ( obj is MapSize ) )
 			{
-				return false;
+				return false ;
 			}
-			return this == ( MapSize ) obj;
+
+			return this == ( MapSize ) obj ;
 		}
 
-		public bool Equals ( MapSize other )
-		{
-			return Width == other . Width && Height == other . Height;
-		}
+		public bool Equals ( MapSize other ) { return Width == other . Width && Height == other . Height ; }
 
 		public override int GetHashCode ( )
 		{
 			unchecked
 			{
-				return ( Width * 397 ) ^ Height;
+				return ( Width * 397 ) ^ Height ;
 			}
 		}
 
-		public override string ToString ( ) => $"({Width},{Height})";
+		public override string ToString ( ) => $"({Width},{Height})" ;
 
 		/// <summary>
-		/// 创建新的MapSize
+		///     创建新的MapSize
 		/// </summary>
 		/// <param name="width">宽度</param>
 		/// <param name="height">高度</param>
 		public MapSize ( int width , int height )
 		{
-			Width = width;
-			Height = height;
+			Width = width ;
+			Height = height ;
 		}
 
-
 	}
+
 }

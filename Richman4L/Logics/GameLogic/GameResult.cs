@@ -1,22 +1,21 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+﻿using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang .Richman4L
 {
+
 	/// <summary>
-	/// 表示已经结束的游戏的信息
+	///     表示已经结束的游戏的信息
 	/// </summary>
 	public sealed class GameResult
 	{
-		/// <summary>
-		/// 指示游戏的胜利者
-		/// </summary>
-		public Players . Player Winer { get; }
 
+		/// <summary>
+		///     指示游戏的胜利者
+		/// </summary>
+		public Player Winer { get ; }
 
 
 		//Todo:添加其他信息
 	}
+
 }

@@ -1,64 +1,51 @@
-﻿using System;
+﻿using System ;
 
-using Windows . Foundation;
+using Windows . Foundation ;
 
-using WenceyWang . Richman4L . Maps;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer
+namespace WenceyWang . Richman4L . App . XamlMapRenderer .MapObjectRenderer
 {
-	public sealed partial class EmptyBlockRenderer : MapObjectRenderer, IMapObjectRenderer<EmptyBlock>
+
+	public sealed partial class EmptyBlockRenderer : MapObjectRenderer , IMapObjectRenderer < EmptyBlock >
 	{
-		public EmptyBlockRenderer ( )
-		{
-			InitializeComponent ( );
-		}
 
-		public override Size Size => new Size ( 100 , 50 );
+		public override Size Size => new Size ( 100 , 50 ) ;
+
+		public EmptyBlockRenderer ( ) { InitializeComponent ( ) ; }
 
 
-		public EmptyBlock Target { get; private set; } = null;
+		public EmptyBlock Target { get ; private set ; }
 
-		public override void Hide ( )
-		{
+		public void StartUp ( ) { }
 
-		}
-
-		public void StartUp ( )
-		{
-
-
-		}
-
-		public void SetTarget ( [NotNull]EmptyBlock target )
+		public void SetTarget ( [ NotNull ] EmptyBlock target )
 		{
 			if ( Target == null )
 			{
-				Target = target;
-				StartUp ( );
+				Target = target ;
+				StartUp ( ) ;
 			}
 			else
 			{
-				throw new InvalidOperationException ( );
+				throw new InvalidOperationException ( ) ;
 			}
 		}
 
-		public override void Show ( )
-		{
-			throw new NotImplementedException ( );
-		}
+		public void Update ( ) { throw new NotImplementedException ( ) ; }
 
-		public void Update ( )
-		{
-			throw new NotImplementedException ( );
-		}
+		public override void Hide ( ) { }
+
+		public override void Show ( ) { throw new NotImplementedException ( ) ; }
 
 		#region IDisposable Support
-		private bool disposedValue = false; // 要检测冗余调用
 
-		void Dispose ( bool disposing )
+		private bool disposedValue ; // 要检测冗余调用
+
+		private void Dispose ( bool disposing )
 		{
-			if ( !disposedValue )
+			if ( ! disposedValue )
 			{
 				if ( disposing )
 				{
@@ -68,7 +55,7 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer
 				// TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
 				// TODO: 将大型字段设置为 null。
 
-				disposedValue = true;
+				disposedValue = true ;
 			}
 		}
 
@@ -82,13 +69,13 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer
 		public void Dispose ( )
 		{
 			// 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-			Dispose ( true );
+			Dispose ( true ) ;
+
 			// TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
 			// GC.SuppressFinalize(this);
 		}
+
 		#endregion
-
-
-
 	}
+
 }

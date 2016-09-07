@@ -16,54 +16,56 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Xml . Linq;
-using WenceyWang . Richman4L . Players;
+using System ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+using WenceyWang . Richman4L . Players ;
+
+namespace WenceyWang . Richman4L . Maps .Roads
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class AreaRoad : NormalRoad
 	{
-		private long _areaId;
 
-		private Area _area;
+		private Area _area ;
+
+		private long _areaId ;
 
 		public Area Area
 		{
-			get
-			{
-				return _area ?? ( _area = Map . Currnet . GetArea ( _areaId ) );
-
-			}
+			get { return _area ?? ( _area = Map . Currnet . GetArea ( _areaId ) ) ; }
 			set
 			{
-				_areaId = value . Id;
-				_area = value;
+				_areaId = value . Id ;
+				_area = value ;
+			}
+		}
+
+		public AreaRoad ( XElement resource ) : base ( resource )
+		{
+			try
+			{
+				_areaId = Convert . ToInt64 ( resource . Attribute ( nameof ( Area ) ) . Value ) ;
+			}
+			catch ( NullReferenceException e )
+			{
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
 			}
 		}
 
 		public override void Stay ( Player player , MoveType moveType )
 		{
-			Area?.Stay ( player );
-			base . Stay ( player , moveType );
+			Area ? . Stay ( player ) ;
+			base . Stay ( player , moveType ) ;
 		}
 
 		public override void Pass ( Player player , MoveType moveType )
 		{
-			Area?.Pass ( player );
-			base . Pass ( player , moveType );
+			Area ? . Pass ( player ) ;
+			base . Pass ( player , moveType ) ;
 		}
-		public AreaRoad ( XElement resource ) : base ( resource )
-		{
-			try
-			{
-				_areaId = Convert . ToInt64 ( resource . Attribute ( nameof ( Area ) ) . Value );
-			}
-			catch ( NullReferenceException e )
-			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
-			}
-		}
+
 	}
+
 }

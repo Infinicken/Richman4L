@@ -12,32 +12,41 @@
 	</Page.Resources>
 
 	<Grid>
-		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource LightBlie}" d:LayoutOverrides="TopPosition, BottomPosition"/>
-		<Image x:Name="LoadingPageDownImage" Margin="0" Source="ImageResources/LoadingPageDown.png" HorizontalAlignment="Right"/>
+		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource LightBlie}" d:LayoutOverrides="TopPosition, BottomPosition" />
+		<Image x:Name="LoadingPageDownImage" Margin="0" Source="ImageResources/LoadingPageDown.png"
+				HorizontalAlignment="Right" />
 		<Grid x:Name="MainGrid">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="40"/>
-				<ColumnDefinition/>
-				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="40" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="9*"/>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="4"/>
-				<RowDefinition Height="2*"/>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="40"/>
+				<RowDefinition Height="9*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="4" />
+				<RowDefinition Height="2*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="40" />
 			</Grid.RowDefinitions>
-			<Grid x:Name="SayingPresentGrid" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,-100,0,6" Grid.Column="1" Grid.RowSpan="5">
-				<controls:SayingPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+			<Grid x:Name="SayingPresentGrid" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,-100,0,6" Grid.Column="1"
+				Grid.RowSpan="5">
+				<controls:SayingPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
 			</Grid>
-			<TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="正在加载：" d:LayoutOverrides="Height, LeftPosition, RightPosition" Foreground="{StaticResource White}" SelectionHighlightColor="{x:Null}" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" Margin="0,0.333,0,-1"/>
+			<TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="正在加载："
+						d:LayoutOverrides="Height, LeftPosition, RightPosition" Foreground="{StaticResource White}"
+						SelectionHighlightColor="{x:Null}" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}"
+						Margin="0,0.333,0,-1" />
 			<StackPanel Grid.Column="1" Grid.Row="3">
-				<TextBlock TextWrapping="Wrap" Text="地图...OK" d:LayoutOverrides="Width, LeftPosition, RightPosition" Foreground="{StaticResource White}" SelectionHighlightColor="{x:Null}" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" Margin="0,4"/>
+				<TextBlock TextWrapping="Wrap" Text="地图...OK" d:LayoutOverrides="Width, LeftPosition, RightPosition"
+							Foreground="{StaticResource White}" SelectionHighlightColor="{x:Null}" FontFamily="{StaticResource Font}"
+							FontSize="{StaticResource FontSize}" Margin="0,4" />
 			</StackPanel>
-			<ProgressBar Grid.Column="1" Height="0" VerticalAlignment="Bottom" Value="50" d:LayoutOverrides="LeftPosition, RightPosition" RenderTransformOrigin="0.5,0.5" Grid.Row="4" Foreground="#FF033213">
+			<ProgressBar Grid.Column="1" Height="0" VerticalAlignment="Bottom" Value="50"
+						d:LayoutOverrides="LeftPosition, RightPosition" RenderTransformOrigin="0.5,0.5" Grid.Row="4"
+						Foreground="#FF033213">
 				<ProgressBar.RenderTransform>
-					<CompositeTransform ScaleY="-1"/>
+					<CompositeTransform ScaleY="-1" />
 				</ProgressBar.RenderTransform>
 			</ProgressBar>
 		</Grid>

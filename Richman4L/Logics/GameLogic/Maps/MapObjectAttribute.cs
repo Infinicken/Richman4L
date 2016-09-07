@@ -16,11 +16,12 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
+using System ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
-	[AttributeUsage ( AttributeTargets . Class , Inherited = true , AllowMultiple = false )]
+
+	[ AttributeUsage ( AttributeTargets . Class ) ]
 	public sealed class MapObjectAttribute : Attribute
 	{
 

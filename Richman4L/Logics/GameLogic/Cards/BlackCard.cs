@@ -1,52 +1,38 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+﻿using System ;
 
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Stocks ;
 using WenceyWang . Richman4L . Weathers ;
 
-namespace WenceyWang . Richman4L . Cards
+namespace WenceyWang . Richman4L .Cards
 {
-	[Card]
+
+	[ Card ]
 	public class BlackCard : Card
 	{
 
 		public override int PriceWhenBuy
 		{
-			get
-			{
-				throw new NotImplementedException ( );
-			}
-
-			set
-			{
-				throw new NotImplementedException ( );
-			}
+			get { throw new NotImplementedException ( ) ; }
+			set { throw new NotImplementedException ( ) ; }
 		}
 
 		public override int PriceWhenSell
 		{
-			get
-			{
-				throw new NotImplementedException ( );
-			}
-
-			set
-			{
-				throw new NotImplementedException ( );
-			}
+			get { throw new NotImplementedException ( ) ; }
+			set { throw new NotImplementedException ( ) ; }
 		}
 
 
-		public override bool CanUse ( Weather weather ) { throw new NotImplementedException ( ); }
+		public override bool CanUse ( Weather weather ) { throw new NotImplementedException ( ) ; }
 
 		public override void Use ( )
 		{
-			Stock toUse = Owner . Console . StockPicker ( );
+			Stock toUse = Owner . Console . StockPicker ( ) ;
 
-			BlackBuff buff = new BlackBuff ( toUse , 3 );
+			BlackBuff buff = new BlackBuff ( toUse , 3 ) ;
 		}
+
 	}
+
 }

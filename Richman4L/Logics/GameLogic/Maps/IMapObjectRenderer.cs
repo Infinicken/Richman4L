@@ -16,22 +16,22 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
-	public interface IMapObjectRenderer<T>:IDisposable where T : MapObject
+
+	public interface IMapObjectRenderer < T > : IDisposable where T : MapObject
 	{
-		void Update ( );
 
-		void StartUp ( );
+		T Target { get ; }
 
-		void SetTarget ( T target );
+		void Update ( ) ;
 
-		T Target { get; }
+		void StartUp ( ) ;
+
+		void SetTarget ( T target ) ;
 
 	}
+
 }

@@ -16,58 +16,56 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . Xml . Linq;
-using WenceyWang . Richman4L . Maps . Buildings;
+using System ;
+using System . Collections . Generic ;
+using System . Collections . ObjectModel ;
+using System . Linq ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Maps . Buildings ;
+
+namespace WenceyWang . Richman4L .Maps
 {
-	[MapObject]
+
+	[ MapObject ]
 	public class SmallArea : Area
 	{
-		public override MapSize Size => MapSize . Small;
 
-		public override int PondingDecrease => 100;
+		public override MapSize Size => MapSize . Small ;
 
-		public override long MoneyCostWhenCrossed { get; protected set; }
+		public override int PondingDecrease => 100 ;
 
-		public override double BuildingResistance { get; protected set; }
+		public override long MoneyCostWhenCrossed { get ; protected set ; }
 
-		public override long Price { get; protected set; }
+		public override double BuildingResistance { get ; protected set ; }
 
-		public SmallArea ( XElement resource ) : base ( resource )
-		{
+		public override long Price { get ; protected set ; }
 
-		}
-
-		public override void EndToday ( )
-		{
-			throw new NotImplementedException ( );
-		}
-
-
-
-		private static ReadOnlyCollection<BuildingType> _availableBuilding;
-
-		public override ReadOnlyCollection<BuildingType> AvailableBuildings
+		public override ReadOnlyCollection < BuildingType > AvailableBuildings
 		{
 			get
 			{
 				if ( Building == null )
 				{
-					return _availableBuilding ?? ( _availableBuilding = new ReadOnlyCollection<BuildingType> ( Building . BuildingTypes . Where ( ( type ) => type . Size == MapSize . Small ) . ToList ( ) ) );
+					return _availableBuilding ??
+							( _availableBuilding =
+							new ReadOnlyCollection < BuildingType > (
+								Building . BuildingTypes . Where ( type => type . Size == MapSize . Small ) . ToList ( ) ) ) ;
 				}
 				else
 				{
-					return new ReadOnlyCollection<BuildingType> ( new List<BuildingType> ( ) );
+					return new ReadOnlyCollection < BuildingType > ( new List < BuildingType > ( ) ) ;
 				}
 			}
 		}
 
+		public SmallArea ( XElement resource ) : base ( resource ) { }
+
+
+		private static ReadOnlyCollection < BuildingType > _availableBuilding ;
+
+		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
 	}
+
 }

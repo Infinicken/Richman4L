@@ -16,19 +16,17 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
+using System ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
+
 	public class MapObjectType
 	{
 
-		public virtual string Name { get; }
+		public virtual string Name { get ; }
 
-		public virtual Type EntryType { get; }
+		public virtual Type EntryType { get ; }
 
 		internal MapObjectType ( string name , Type entryType )
 		{
@@ -36,18 +34,19 @@ namespace WenceyWang . Richman4L . Maps
 
 			if ( name == null )
 			{
-				throw new ArgumentNullException ( nameof ( name ) );
+				throw new ArgumentNullException ( nameof ( name ) ) ;
 			}
 			if ( entryType == null )
 			{
-				throw new ArgumentNullException ( nameof ( entryType ) );
+				throw new ArgumentNullException ( nameof ( entryType ) ) ;
 			}
 
 			#endregion
 
-			Name = name;
-			EntryType = entryType;
+			Name = name ;
+			EntryType = entryType ;
 		}
 
 	}
+
 }

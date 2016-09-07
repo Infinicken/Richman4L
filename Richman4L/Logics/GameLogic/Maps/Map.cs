@@ -16,100 +16,96 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Collections . ObjectModel;
-using System . Linq;
-using System . Text;
-using System . IO;
-using System . Xml . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . Linq ;
+using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Maps . Events;
-using WenceyWang . Richman4L . Maps . Roads;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Maps . Events ;
+using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
 
 	public class Map : GameObject
 	{
 
-		[NotNull]
-		public static Map Currnet { get; set; } /*=> Game . Current . Map;*/
+		[ NotNull ]
+		public static Map Currnet { get ; set ; } /*=> Game . Current . Map;*/
 
-		[NotNull]
-		public string Name { get; set; }
+		[ NotNull ]
+		public string Name { get ; set ; }
 
-		public MapSize Size { get; set; }
+		public MapSize Size { get ; set ; }
 
-		[NotNull]
-		[ItemNotNull]
-		public List<MapObject> Objects { get; private set; }
+		[ NotNull ]
+		[ ItemNotNull ]
+		public List < MapObject > Objects { get ; }
 
 		/// <summary>
-		/// 地图的排水基数
+		///     地图的排水基数
 		/// </summary>
-		public int PondingDecreaseBase { get; }
+		public int PondingDecreaseBase { get ; }
 
-		[CanBeNull]
-		public Road GetRoad ( long id ) => ( Objects . SingleOrDefault ( ( road ) => ( ( road as Road )?.Id == id ) ) ) as Road;
-
-		[CanBeNull]
-		public Area GetArea ( long id ) => ( Objects . SingleOrDefault ( ( area ) => ( ( area as Area )?.Id == id ) ) ) as Area;
-
-		public Map ( [NotNull] XDocument document ) : this ( )
+		public Map ( [ NotNull ] XDocument document ) : this ( )
 		{
 			if ( document == null )
 			{
-				throw new ArgumentNullException ( nameof ( document ) );
+				throw new ArgumentNullException ( nameof ( document ) ) ;
 			}
 
-			XElement ele = document . Root;
+			XElement ele = document . Root ;
 			if ( ele . Name != nameof ( Map ) )
 			{
-				throw new ArgumentException ( $"{nameof ( document )} do not perform a {nameof ( Map )}" );
+				throw new ArgumentException ( $"{nameof ( document )} do not perform a {nameof ( Map )}" ) ;
 			}
 
 			try
 			{
-				Name = ele . Attribute ( nameof ( Name ) ) . Value;
+				Name = ele . Attribute ( nameof ( Name ) ) . Value ;
 				Size = new MapSize ( Convert . ToInt32 ( ele . Attribute ( "SizeX" ) . Value ) ,
-									Convert . ToInt32 ( ele . Attribute ( "SizeY" )?.Value ) );
-				foreach ( XElement item in ele . Element ( "MapObjects" )?.Elements ( ) )
+									Convert . ToInt32 ( ele . Attribute ( "SizeY" ) ? . Value ) ) ;
+				foreach ( XElement item in ele . Element ( "MapObjects" ) ? . Elements ( ) )
 				{
 					Objects . Add (
 						Activator . CreateInstance (
-							MapObject . MapObjectTypes . Single ( ( type ) => type . Name == item . Name ) . EntryType ,
-							item ) as MapObject );
+							MapObject . MapObjectTypes . Single ( type => type . Name == item . Name ) . EntryType ,
+							item ) as MapObject ) ;
 				}
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"Can not parse {nameof ( document )}" , e );
+				throw new ArgumentException ( $"Can not parse {nameof ( document )}" , e ) ;
 			}
 		}
 
-		public Map ( ) : base ( )
+		public Map ( )
 		{
 			//todo:the line under is a test code
-			Currnet = this;
-			Objects = new List<MapObject> ( );
+			Currnet = this ;
+			Objects = new List < MapObject > ( ) ;
 
 			//todo
 		}
 
-		public Map ( [NotNull] string flieName )
-			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) )
-		{
-		}
+		public Map ( [ NotNull ] string flieName )
+			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) ) { }
+
+		[ CanBeNull ]
+		public Road GetRoad ( long id ) => Objects . SingleOrDefault ( road => ( road as Road ) ? . Id == id ) as Road ;
+
+		[ CanBeNull ]
+		public Area GetArea ( long id ) => Objects . SingleOrDefault ( area => ( area as Area ) ? . Id == id ) as Area ;
 
 
-		public override void EndToday ( ) { throw new NotImplementedException ( ); }
+		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
-		public override void StartDay ( Calendars . GameDate nextDate ) { throw new NotImplementedException ( ); }
+		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
 
 		/// <summary>
-		/// 销毁这个Map
+		///     销毁这个Map
 		/// </summary>
 		/// <param name="disposing"></param>
 		protected override void Dispose ( bool disposing )
@@ -120,18 +116,18 @@ namespace WenceyWang . Richman4L . Maps
 				{
 					foreach ( MapObject item in Objects )
 					{
-						item . Dispose ( );
+						item . Dispose ( ) ;
 					}
 
-					Objects . Clear ( );
+					Objects . Clear ( ) ;
 				}
 			}
 
-			base . Dispose ( disposing );
+			base . Dispose ( disposing ) ;
 		}
 
-		[CanBeNull]
-		public event EventHandler<MapAddMapObjectEventArgs> AddMapObjectEvent;
+		[ CanBeNull ]
+		public event EventHandler < MapAddMapObjectEventArgs > AddMapObjectEvent ;
 
 
 		public void RegisMapRenderer ( IMapRenderer mapRenderer ) { }

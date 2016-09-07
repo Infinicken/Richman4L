@@ -2,7 +2,7 @@
 
 using WenceyWang . Richman4L . Players . Commands . Arguments . DefineDomains ;
 
-namespace WenceyWang . Richman4L . Players . Commands . Arguments
+namespace WenceyWang . Richman4L . Players . Commands .Arguments
 {
 
 	public class PlayerCommandArgumentInfo
@@ -16,7 +16,10 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments
 
 		public ArgumentValueDefineDomain DefineDomain { get ; }
 
-		public PlayerCommandArgumentInfo ( string name , string introduction , ArgumentValueType valueType , ArgumentValueDefineDomain defineDomain )
+		public PlayerCommandArgumentInfo ( string name ,
+											string introduction ,
+											ArgumentValueType valueType ,
+											ArgumentValueDefineDomain defineDomain )
 		{
 			if ( name == null )
 			{

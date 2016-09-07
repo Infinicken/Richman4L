@@ -1,19 +1,21 @@
-﻿using System;
-using WenceyWang . Richman4L . Maps . Buildings;
-using Microsoft . VisualStudio . TestTools . UnitTesting;
+﻿using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
-namespace WenceyWang . Richman4L . UnitTests . Maps . Buildings
+using WenceyWang . Richman4L . Maps . Buildings ;
+
+namespace WenceyWang . Richman4L . UnitTests . Maps .Buildings
 {
-	[TestClass]
+
+	[ TestClass ]
 	public class RegisterBuiltInBuildingTypeTest
 	{
 
-		[TestMethod]
+		[ TestMethod ]
 		public void RegisterSmallSimpleBuildingTypeTest ( )
 		{
 			Building . RegisBuildingType ( typeof ( SmallSimpleBuilding ) ,
-				ResourceHelper . LoadXmlDocument ( $"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.SmallSimpleBuilding.xml" )
-					. Root );
+											ResourceHelper . LoadXmlDocument (
+												$"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.SmallSimpleBuilding.xml" )
+															. Root ) ;
 		}
 
 		//[TestMethod]
@@ -23,6 +25,6 @@ namespace WenceyWang . Richman4L . UnitTests . Maps . Buildings
 		//		ResourceHelper . LoadXmlDocument ( $"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.MediumSimpleBuilding.xml" )
 		//			. Root );
 		//}
-
 	}
+
 }

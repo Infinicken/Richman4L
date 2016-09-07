@@ -16,30 +16,31 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
-
-namespace WenceyWang . Richman4L . Players
+namespace WenceyWang . Richman4L .Players
 {
+
 	public class BuyStockResult
 	{
-		public BuyStockStatusCode StatusCode { get; set; }
 
-		public int Number { get; set; }
+		public BuyStockStatusCode StatusCode { get ; set ; }
 
-		public long Money { get; set; }
+		public int Number { get ; set ; }
+
+		public long Money { get ; set ; }
+
 	}
 
 	public enum BuyStockStatusCode
 	{
-		Success,
-		MoneyNotEnough,
-		PlayerDebuff,
-		StockDebuff
-	}
 
+		Success ,
+
+		MoneyNotEnough ,
+
+		PlayerDebuff ,
+
+		StockDebuff
+
+	}
 
 }

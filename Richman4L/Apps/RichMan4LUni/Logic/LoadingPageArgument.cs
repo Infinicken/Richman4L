@@ -1,14 +1,15 @@
 ﻿using System ;
 using System . Threading . Tasks ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Logic
+namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
 
 	public class LoadingPageArgument
 	{
-		public Task TaskToWait { get; }
 
-		public Action ToDoNext { get; }
+		public Task TaskToWait { get ; }
+
+		public Action ToDoNext { get ; }
 
 		public LoadingPageArgument ( Task taskToWait , Action toDoNext )
 		{
@@ -20,10 +21,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			{
 				throw new ArgumentNullException ( nameof ( toDoNext ) ) ;
 			}
-			
+
 			TaskToWait = taskToWait ;
 			ToDoNext = toDoNext ;
 		}
 
 	}
+
 }

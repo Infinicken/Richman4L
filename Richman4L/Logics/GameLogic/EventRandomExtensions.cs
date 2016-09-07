@@ -10,11 +10,12 @@ namespace WenceyWang .Richman4L
 		{
 			if ( random == null )
 			{
-				throw new ArgumentNullException ( nameof ( random ) );
+				throw new ArgumentNullException ( nameof ( random ) ) ;
 			}
-			if ( possibility <= 0 || possibility > 10000 )
+			if ( possibility <= 0 ||
+				possibility > 10000 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( possibility ) );
+				throw new ArgumentOutOfRangeException ( nameof ( possibility ) ) ;
 			}
 
 			return random . Next ( 10000 ) <= possibility ;

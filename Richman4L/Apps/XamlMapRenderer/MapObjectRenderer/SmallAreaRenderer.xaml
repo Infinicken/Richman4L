@@ -17,7 +17,8 @@
 	</UserControl.Resources>
 
 	<Grid>
-		<Grid Margin="{StaticResource MapObjMargin}" Width="112" Height="112" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<Grid Margin="{StaticResource MapObjMargin}" Width="112" Height="112" HorizontalAlignment="Center"
+			VerticalAlignment="Center">
 			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
@@ -71,7 +72,8 @@
 					</TextBlock.RenderTransform>
 				</TextBlock>
 			</Grid>
-			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True" Visibility="Collapsed">
+			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+				Visibility="Collapsed">
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Grid.RenderTransform>
@@ -102,7 +104,8 @@
 					</TextBlock.RenderTransform>
 				</TextBlock>
 			</Grid>
-			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True" Visibility="Collapsed">
+			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+				Visibility="Collapsed">
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Grid.RenderTransform>
@@ -133,7 +136,8 @@
 					</TextBlock.RenderTransform>
 				</TextBlock>
 			</Grid>
-			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True" Visibility="Collapsed">
+			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+				Visibility="Collapsed">
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Grid.RenderTransform>

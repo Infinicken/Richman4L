@@ -16,18 +16,18 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
+using System ;
 
-namespace WenceyWang . Richman4L . InfomationCenter
+namespace WenceyWang . Richman4L .InfomationCenter
 {
+
 	public class Event
 	{
-		public string Text { get; set; }
 
-		public DateTime Date { get; set; }
+		public string Text { get ; set ; }
+
+		public DateTime Date { get ; set ; }
+
 	}
+
 }
