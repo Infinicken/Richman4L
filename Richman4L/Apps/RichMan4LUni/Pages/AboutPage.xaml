@@ -5,50 +5,50 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" >
 	<Page.Resources>
-		<Storyboard x:Name="StartStoryBoard">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+		<Storyboard x:Name="StartStoryBoard" >
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="600" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="AboutPageUpImage">
+											Storyboard.TargetName="AboutPageUpImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="AboutPageDownImage">
+											Storyboard.TargetName="AboutPageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-		<Storyboard x:Name="LeaveStoryBoard">
+		<Storyboard x:Name="LeaveStoryBoard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="AboutPageUpImage">
+											Storyboard.TargetName="AboutPageUpImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="AboutPageDownImage">
+											Storyboard.TargetName="AboutPageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="600" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
@@ -57,8 +57,8 @@
 
 	<Grid>
 		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup x:Name="VisualStateGroup">
-				<VisualState x:Name="Mobile">
+			<VisualStateGroup x:Name="VisualStateGroup" >
+				<VisualState x:Name="Mobile" >
 					<VisualState.StateTriggers>
 						<AdaptiveTrigger />
 					</VisualState.StateTriggers>
@@ -73,7 +73,7 @@
 				Stretch="UniformToFill" VerticalAlignment="Bottom" />
 
 		<Grid x:Name="MainGrid" Grid.ColumnSpan="3" d:LayoutOverrides="LeftPosition, RightPosition"
-			RenderTransformOrigin="0.5,0.5">
+			RenderTransformOrigin="0.5,0.5" >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="40" />
 				<ColumnDefinition />
@@ -88,14 +88,14 @@
 			<Grid.RenderTransform>
 				<CompositeTransform />
 			</Grid.RenderTransform>
-			<ScrollViewer RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
+			<ScrollViewer RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" >
 				<ScrollViewer.RenderTransform>
 					<CompositeTransform />
 				</ScrollViewer.RenderTransform>
-				<StackPanel RenderTransformOrigin="0.5,0.5" Padding="0" Margin="0,0,0,40">
+				<StackPanel RenderTransformOrigin="0.5,0.5" Padding="0" Margin="0,0,0,40" >
 					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="关于" FontFamily="{StaticResource Font}"
 								FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}" />
-					<StackPanel Padding="0" Margin="{StaticResource WideMargin}">
+					<StackPanel Padding="0" Margin="{StaticResource WideMargin}" >
 						<TextBlock x:Name="DRText" TextWrapping="Wrap" FontSize="68" Text="Dream Recorder"
 									FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" TextAlignment="Center" Margin="0" />
 						<TextBlock TextWrapping="Wrap" Text="知识 自由 美德" FontFamily="{StaticResource Font}"
@@ -103,35 +103,35 @@
 						<TextBlock Margin="0,10,0,0" TextWrapping="Wrap" Text="展现美" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource ExtraSmallTitle}" TextAlignment="Center" />
 					</StackPanel>
-					<StackPanel Margin="40,80,40,0" Padding="0">
+					<StackPanel Margin="40,80,40,0" Padding="0" >
 						<TextBlock TextWrapping="Wrap" Text="Wencey Wang" FontSize="{StaticResource SmallTitle}" Margin="0"
 									FontFamily="{StaticResource Font}" />
 						<TextBlock TextWrapping="Wrap" Text="衡自超" Margin="0" FontSize="{StaticResource SmallFontSize}"
 									FontFamily="{StaticResource Font}" />
 						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontSize="{StaticResource FontSize}"
-									FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}">
+									FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}" >
 							<Run Text="写程序的，玩电脑的，拍照片的，弹琴玩，想发展成全能，胡写小文章，玩微博勾搭妹子，自以为怀着伟大梦想其实是妄想，高喊着微软人类希望的人类耻辱。" />
 						</TextBlock>
-						<TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontFamily="{StaticResource Font}" FontSize="21.333">
+						<TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontFamily="{StaticResource Font}" FontSize="21.333" >
 							<Run Text="勾搭我：" />
-							<Hyperlink NavigateUri="mailto:wencey@outlook.com">
+							<Hyperlink NavigateUri="mailto:wencey@outlook.com" >
 								<Run Text="wencey@outlook.com" FontStyle="Italic" />
 							</Hyperlink>
 						</TextBlock>
-						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="21.333">
+						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="21.333" >
 							<Run Text="来微博勾搭我：" />
-							<Hyperlink NavigateUri="http://weibo.com/hengzichao">
+							<Hyperlink NavigateUri="http://weibo.com/hengzichao" >
 								<Run Text="@38d285a8d928ad60" FontStyle="Italic" />
 							</Hyperlink>
 						</TextBlock>
 					</StackPanel>
-					<StackPanel Margin="{StaticResource WideMargin}">
+					<StackPanel Margin="{StaticResource WideMargin}" >
 						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource SmallTitle}" Text="这个项目" />
 						<TextBlock TextWrapping="Wrap" Text="RichMan4L" Margin="0" FontSize="{StaticResource SmallFontSize}"
 									FontFamily="{StaticResource Font}" />
 						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}">
+									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" >
 							<Run Text="没什么好说的其实，就是一个项目，希望能够送给她的礼物，一个简单的小游戏，伴随着破灭的梦想和幻灭之后的失望。或许迎接我的就会是新的世界，阳光明媚，鸟语花香，但是只会有我自己。" />
 							<LineBreak />
 							<Run
@@ -144,13 +144,13 @@
 							<Run Text="这个项目的源代码可以在l4ljl.codeplex.com找到，协议是GPLv3，就这样了。" />
 						</TextBlock>
 					</StackPanel>
-					<StackPanel Margin="{StaticResource WideMargin}">
+					<StackPanel Margin="{StaticResource WideMargin}" >
 						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource SmallTitle}" Text="感谢" />
 						<TextBlock TextWrapping="Wrap" Text="Special Thank" Margin="0" FontSize="{StaticResource SmallFontSize}"
 									FontFamily="{StaticResource Font}" />
 						<TextBlock TextWrapping="Wrap" Margin="0,20,0,40" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}">
+									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" >
 							<Run Text="先是感谢Senty Font，字体非常漂亮，为这个项目增色不少。" />
 							<LineBreak />
 							<Run Text="然后是CodePlex。这个项目寄存在上面。" />

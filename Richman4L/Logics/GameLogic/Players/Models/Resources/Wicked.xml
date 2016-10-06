@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 
-<Player Name="Wicked" Model="" Introduction="Wencey的好朋友，专业卖萌">
+<Player Name="Wicked" Model="" Introduction="Wencey的好朋友，专业卖萌" >
 	<SayingWhenGained>
 		<Saying Text="" />
 		<Saying Text="" />

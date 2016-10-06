@@ -5,69 +5,69 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.MainPage"
-	mc:Ignorable="d" Height="Auto" Width="Auto">
+	mc:Ignorable="d" Height="Auto" Width="Auto" >
 
 	<Page.Resources>
-		<Storyboard x:Name="StartStoryBoard">
+		<Storyboard x:Name="StartStoryBoard" >
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="MainPageDownImage">
+											Storyboard.TargetName="MainPageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="MainPageUpImage">
+											Storyboard.TargetName="MainPageUpImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainGrid">
-				<DiscreteObjectKeyFrame KeyTime="0">
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
 			</ObjectAnimationUsingKeyFrames>
 		</Storyboard>
-		<Storyboard x:Name="LeaveStoryBoard">
+		<Storyboard x:Name="LeaveStoryBoard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="MainPageDownImage">
+											Storyboard.TargetName="MainPageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="MainPageUpImage">
+											Storyboard.TargetName="MainPageUpImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="640" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</Page.Resources>
-	<Grid x:Name="RootGrid">
+	<Grid x:Name="RootGrid" >
 		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup x:Name="VisualStateGroup">
+			<VisualStateGroup x:Name="VisualStateGroup" >
 				<VisualState x:Name="Narrow" />
 
-				<VisualState x:Name="Wide">
+				<VisualState x:Name="Wide" >
 					<VisualState.Setters>
 						<Setter Target="Col1.Width" Value="3*" />
 						<!--
@@ -90,7 +90,7 @@
 		<Image x:Name="MainPageDownImage" Source="ms-appx:///Pages/ImageResources/MainPageDown.png"
 				d:LayoutOverrides="LeftMargin, RightMargin" Stretch="UniformToFill" VerticalAlignment="Bottom"
 				HorizontalAlignment="Left" RenderTransformOrigin="0,1" />
-		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5">
+		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 			<Grid.RenderTransform>
 				<CompositeTransform />
 			</Grid.RenderTransform>
@@ -111,12 +111,14 @@
 				<RowDefinition x:Name="Row" Height="20*" />
 			</Grid.RowDefinitions>
 			<TextBlock x:Name="Title" TextWrapping="Wrap" Margin="0" FontSize="{StaticResource LargeTitle}" Grid.Row="1"
-						VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontFamily="{StaticResource Font}"
+						VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center"
+						FontFamily="{StaticResource Font}"
 						Foreground="{StaticResource White}" TextAlignment="Center" Text="Richman 4 L" />
 			<Button x:Name="NewGameButton" Content="新游戏" VerticalAlignment="Stretch" Margin="0" HorizontalAlignment="Stretch"
 					Grid.Row="3" MinWidth="0" MinHeight="0" d:LayoutOverrides="TopPosition, BottomPosition"
 					FontFamily="{StaticResource Font}" FontSize="{StaticResource BigFontSize}"
-					Padding="{StaticResource ButtonPadding}" Background="{StaticResource TransparentCran}" BorderBrush="{x:Null}"
+					Padding="{StaticResource ButtonPadding}" Background="{StaticResource TransparentCran}"
+					BorderBrush="{x:Null}"
 					Grid.Column="1" Foreground="{StaticResource White}" Style="{StaticResource RoundedRectangleButtonStyle}" />
 			<Button x:Name="LoadGameButton" Content="加载存档" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"
 					Grid.Row="5" MinWidth="0" MinHeight="0" Grid.Column="1" Padding="{StaticResource ButtonPadding}"
@@ -133,8 +135,8 @@
 					BorderBrush="{x:Null}" FontFamily="{StaticResource Font}" FontSize="32"
 					d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Width="45" Height="45"
 					Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource RoundedRectangleButtonStyle}"
-					Foreground="{StaticResource White}">
-				<SymbolIcon Symbol="Setting" RenderTransformOrigin="0.5,0.5">
+					Foreground="{StaticResource White}" >
+				<SymbolIcon Symbol="Setting" RenderTransformOrigin="0.5,0.5" >
 					<SymbolIcon.RenderTransform>
 						<CompositeTransform ScaleX="1.25" ScaleY="1.25" />
 					</SymbolIcon.RenderTransform>

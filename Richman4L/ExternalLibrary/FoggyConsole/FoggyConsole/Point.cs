@@ -24,6 +24,8 @@ namespace FoggyConsole
 		/// <param name="offsetY"> The offset in the y dimension </param>
 		public Point Offset ( int offsetX , int offsetY ) => new Point ( X + offsetX , Y + offsetY ) ;
 
+		public Point Offset ( Vector vector ) => new Point ( X + vector . X , Y + vector . Y ) ;
+
 		/// <summary>
 		///     Operator Point + Vector
 		/// </summary>

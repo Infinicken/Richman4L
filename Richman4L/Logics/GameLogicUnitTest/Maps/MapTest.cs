@@ -62,8 +62,8 @@ namespace WenceyWang . Richman4L . UnitTests .Maps
 				{
 					ConsoleColor targetBackgroundColor = ( ConsoleColor ) renderer . CurrentView [ x , y ] . BackgroundColor ;
 					ConsoleColor targetForegroundColor = ( ConsoleColor ) renderer . CurrentView [ x , y ] . ForegroundColor ;
-					if ( currentBackgroundColor != targetBackgroundColor ||
-						currentForegroundColor != targetForegroundColor )
+					if ( ( currentBackgroundColor != targetBackgroundColor ) ||
+						( currentForegroundColor != targetForegroundColor ) )
 					{
 						outCount++ ;
 						Console . Write ( stringBuilder . ToString ( ) ) ;

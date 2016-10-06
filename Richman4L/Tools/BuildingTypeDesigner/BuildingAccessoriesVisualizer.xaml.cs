@@ -21,7 +21,6 @@ namespace BuildingTypeDesigner
 
 		public BuildingAccessoriesVisualizer ( ) { InitializeComponent ( ) ; }
 
-
 		public static readonly DependencyProperty SourceProperty =
 			DependencyProperty . Register ( nameof ( Source ) ,
 											typeof ( BuildingAccessory ) ,

@@ -73,7 +73,7 @@ namespace WenceyWang . Richman4L . Players .Models
 			IEnumerable < PlayerSaying > tempSayingWhenHarmed =
 				from p in modelNode . Element ( nameof ( SayingWhenGained ) ) . Elements ( )
 				select new PlayerSaying
-					( p ) ;
+							( p ) ;
 
 			SayingWhenHarmed . AddRange ( tempSayingWhenHarmed ) ;
 
@@ -94,10 +94,8 @@ namespace WenceyWang . Richman4L . Players .Models
 				{
 					return temp [ GameRandom . Current . Next ( 0 , temp . Count ) ] ;
 				}
-				else
-				{
-					harmed = null ;
-				}
+
+				harmed = null ;
 			}
 		}
 
@@ -112,10 +110,8 @@ namespace WenceyWang . Richman4L . Players .Models
 				{
 					return temp [ GameRandom . Current . Next ( 0 , temp . Count ) ] ;
 				}
-				else
-				{
-					gained = null ;
-				}
+
+				gained = null ;
 			}
 		}
 
@@ -130,15 +126,13 @@ namespace WenceyWang . Richman4L . Players .Models
 				{
 					return temp [ GameRandom . Current . Next ( 0 , temp . Count ) ] ;
 				}
-				else
-				{
-					if ( player == null )
-					{
-						throw new InvalidOperationException ( $"{nameof ( PlayerModel )} have no saying " ) ;
-					}
 
-					player = null ;
+				if ( player == null )
+				{
+					throw new InvalidOperationException ( $"{nameof ( PlayerModel )} have no saying " ) ;
 				}
+
+				player = null ;
 			}
 		}
 

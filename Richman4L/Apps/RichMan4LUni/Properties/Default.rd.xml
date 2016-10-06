@@ -14,7 +14,7 @@
     Using the Namespace directive to apply reflection policy to all the types in a particular namespace
     <Namespace Name="DataClasses.ViewModels" Seralize="All" />
 -->
-<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata" >
 	<Application>
 		<!--
       An Assembly element with Name="*Application*" applies to all assemblies in

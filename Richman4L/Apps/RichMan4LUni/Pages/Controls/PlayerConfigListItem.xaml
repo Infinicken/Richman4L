@@ -6,10 +6,10 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 	d:DesignHeight="300"
-	d:DesignWidth="400">
+	d:DesignWidth="400" >
 	<UserControl.Resources>
-		<Flyout x:Key="PlayerModelNameFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}">
-			<Grid Background="{StaticResource DarkLime}">
+		<Flyout x:Key="PlayerModelNameFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
+			<Grid Background="{StaticResource DarkLime}" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="20" />
 					<RowDefinition Height="Auto" />
@@ -28,8 +28,8 @@
 						Grid.Column="1" Grid.Row="3" FontFamily="{StaticResource Font}" />
 			</Grid>
 		</Flyout>
-		<Flyout x:Key="ControllerFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}">
-			<Grid Background="{StaticResource DarkLime}">
+		<Flyout x:Key="ControllerFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
+			<Grid Background="{StaticResource DarkLime}" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="20" />
 					<RowDefinition Height="Auto" />
@@ -68,9 +68,9 @@
 				FontFamily="{StaticResource Font}" FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 				Style="{StaticResource TextBlockButtonStyle}" Flyout="{StaticResource ControllerFlyout}" />
 		<Button x:Name="DeleteButton" Grid.Column="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-				d:LayoutOverrides="Width" Style="{StaticResource TextBlockButtonStyle}">
+				d:LayoutOverrides="Width" Style="{StaticResource TextBlockButtonStyle}" >
 			<SymbolIcon Symbol="Delete" Margin="7,7,5,5" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"
-						VerticalAlignment="Center">
+						VerticalAlignment="Center" >
 				<SymbolIcon.RenderTransform>
 					<CompositeTransform ScaleX="1.25" ScaleY="1.25" />
 				</SymbolIcon.RenderTransform>

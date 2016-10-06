@@ -64,10 +64,10 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 				#region 连续路
 
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
+				if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -82,13 +82,11 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							break ;
 						}
 					}
-
-					//上下
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -103,44 +101,34 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							break ;
 						}
 					}
-
-					//左右
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╝' , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-
-					//左上
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╚' , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-
-					//右上
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╗' , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-
-					//左下
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 				{
 					CurrentView [ 0 , 0 ] = new ConsoleChar ( '╔' , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-
-					//右下
 				}
 
 				#endregion
@@ -182,10 +170,10 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 				#region 连续路
 
-				if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
+				if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -220,13 +208,11 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 							break ;
 					}
-
-					//上下
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -255,13 +241,11 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 							break ;
 					}
-
-					//左右
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -290,13 +274,11 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 							break ;
 					}
-
-					//左上
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -331,13 +313,11 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 							break ;
 					}
-
-					//右上
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -372,13 +352,11 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 							break ;
 					}
-
-					//左下
 				}
-				else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-						Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-						Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 				{
 					switch ( Target . GetAzimuth ( Target . InRoad ) )
 					{
@@ -407,8 +385,6 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 
 							break ;
 					}
-
-					//右下
 				}
 
 				#endregion

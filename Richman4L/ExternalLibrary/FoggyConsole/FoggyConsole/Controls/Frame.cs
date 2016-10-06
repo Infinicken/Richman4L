@@ -1,5 +1,4 @@
 ﻿using System;
-using System . Collections . Generic;
 
 using FoggyConsole . Controls . Renderers;
 
@@ -11,20 +10,17 @@ namespace FoggyConsole . Controls
 
 		public override bool CanFocus => false;
 
+		public Page CurrentPage { get; private set; }
+
+		public override Control Content { get { return CurrentPage; } set { throw new InvalidOperationException ( ); } }
+
+		public Frame ( IControlRenderer renderer = null ) : base ( renderer ?? new FrameRanderer ( ) ) { }
+
 		public override void Measure ( Size availableSize ) { CurrentPage . Measure ( availableSize ); }
 
 		public override void Arrange ( Rectangle finalRect ) { CurrentPage . Arrange ( new Rectangle ( Size ) ); }
 
 		protected override void RequestMeasure ( ) { Measure ( Size ); }
-
-		public Page CurrentPage { get; private set; } = null;
-
-		public override Control Content
-		{
-			get { return CurrentPage; }
-
-			set { throw new InvalidOperationException ( ); }
-		}
 
 
 		public void NavigateTo ( Page page )
@@ -41,10 +37,6 @@ namespace FoggyConsole . Controls
 				Measure ( Size );
 			}
 		}
-
-		public Frame ( IControlRenderer renderer ) : base ( renderer ) { }
-
-
 
 	}
 

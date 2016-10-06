@@ -4,22 +4,19 @@ namespace FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws an <code>Playground</code>
 	/// </summary>
-	public class PlaygroundRenderer : ControlRenderer < Playground >
+	public class PlayGroundRenderer : ControlRenderer < PlayGround >
 	{
 
 		/// <summary>
 		/// </summary>
 		/// <param name="control"></param>
-		public PlaygroundRenderer ( Playground control )
-			: base ( control ) { }
+		public PlayGroundRenderer ( PlayGround control ) { }
 
 		/// <summary>
 		///     Draws all characters within the given playground
 		/// </summary>
 		public override void Draw ( )
 		{
-			base . Draw ( ) ;
-
 			for ( int y = 0 ; y < Control . Height ; y++ )
 			{
 				for ( int x = 0 ; x < Control . Width ; x++ )

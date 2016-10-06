@@ -49,18 +49,15 @@ namespace WenceyWang . Richman4L .Maps
 				{
 					return _availableBuilding ??
 							( _availableBuilding =
-							new ReadOnlyCollection < BuildingType > (
-								Building . BuildingTypes . Where ( type => type . Size == MapSize . Small ) . ToList ( ) ) ) ;
+								new ReadOnlyCollection < BuildingType > (
+									Building . BuildingTypes . Where ( type => type . Size == MapSize . Small ) . ToList ( ) ) ) ;
 				}
-				else
-				{
-					return new ReadOnlyCollection < BuildingType > ( new List < BuildingType > ( ) ) ;
-				}
+
+				return new ReadOnlyCollection < BuildingType > ( new List < BuildingType > ( ) ) ;
 			}
 		}
 
 		public SmallArea ( XElement resource ) : base ( resource ) { }
-
 
 		private static ReadOnlyCollection < BuildingType > _availableBuilding ;
 

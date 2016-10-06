@@ -37,8 +37,6 @@ namespace WenceyWang . Richman4L .Stocks
 			if ( DisposedValue )
 			{
 				Stock . DelistEvent -= Stock_DelistEvent ;
-
-				//Todo:Remove this from owner
 			}
 			base . Dispose ( disposing ) ;
 		}

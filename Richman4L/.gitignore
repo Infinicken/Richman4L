@@ -5,3 +5,5 @@
 /Performance/
 /packages.exe
 /packages.rar
+*.sln.DotSettings
+*.sln.DotSettings.user

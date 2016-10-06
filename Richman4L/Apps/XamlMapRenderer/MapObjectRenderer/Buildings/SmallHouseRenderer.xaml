@@ -8,7 +8,7 @@
 	xmlns:mapObjectRenderers="using:WenceyWang.Richman4L.App.XamlMapRenderer.MapObjectRenderer"
 	mc:Ignorable="d"
 	d:DesignHeight="60"
-	d:DesignWidth="120">
+	d:DesignWidth="120" >
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -18,9 +18,9 @@
 	</UserControl.Resources>
 	<Grid>
 		<Grid Margin="{StaticResource MapObjMargin}" d:LayoutOverrides="TopPosition, BottomPosition" Width="120" Height="60"
-			HorizontalAlignment="Center" VerticalAlignment="Center">
+			HorizontalAlignment="Center" VerticalAlignment="Center" >
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				RenderTransform="{StaticResource MapObjTransform}">
+				RenderTransform="{StaticResource MapObjTransform}" >
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition />
@@ -52,7 +52,7 @@
 				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="#FFB29D19" Grid.Row="1" Grid.RowSpan="7" StrokeThickness="0" />
 				<Rectangle Grid.Column="4" Fill="#FF8D8D8D" Grid.Row="7" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="18" TranslateY="-78" />
 				</Grid.RenderTransform>
@@ -82,7 +82,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.Column="8" Fill="#FF727272" Grid.Row="7" Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" />
 				</Grid.RenderTransform>
@@ -113,7 +113,7 @@
 				<Rectangle Fill="#FFD8D8D8" Grid.Column="1" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -145,7 +145,7 @@
 							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-54" />
 				</Grid.RenderTransform>
@@ -178,7 +178,7 @@
 					d:LayoutOverrides="VerticalAlignment" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="-12" />
 				</Grid.RenderTransform>
@@ -209,7 +209,7 @@
 				<Rectangle Fill="#FFB9B9B9" Grid.RowSpan="2" Grid.Column="2" Grid.Row="8" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-48" />
 				</Grid.RenderTransform>
@@ -240,7 +240,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="7" d:LayoutOverrides="VerticalAlignment"
 							Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-12" TranslateY="-48" />
 				</Grid.RenderTransform>
@@ -269,13 +269,13 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Fill="#FF8B6E0D" Grid.Column="4" RenderTransformOrigin="0.5,0.5"
-							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0">
+							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
 			</Grid>
-			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-18" TranslateY="-42" />
 				</Grid.RenderTransform>
@@ -304,14 +304,14 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Fill="#FFECECEC" Margin="0" Grid.Column="3" RenderTransformOrigin="0.5,0.5"
-							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0">
+							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
 				<Rectangle Fill="#FFECECEC" Grid.Column="5" RenderTransformOrigin="0.5,0.5"
 							d:LayoutOverrides="TopPosition, BottomPosition" Grid.ColumnSpan="3" Grid.Row="8" Grid.RowSpan="2"
-							StrokeThickness="0">
+							StrokeThickness="0" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
@@ -320,7 +320,7 @@
 				<Rectangle Grid.ColumnSpan="6" Fill="#FFD8D8D8" Grid.Column="2" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
-				Margin="{StaticResource MapObjMargin}">
+				Margin="{StaticResource MapObjMargin}" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="36" />
 				</Grid.RenderTransform>
@@ -351,7 +351,7 @@
 				<Rectangle Fill="#FFB9B9B9" Grid.RowSpan="2" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12" />
 				</Grid.RenderTransform>
@@ -385,7 +385,7 @@
 							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="36" />
 				</Grid.RenderTransform>
@@ -420,7 +420,7 @@
 				<Rectangle Grid.Column="7" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="2" Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
-				Margin="{StaticResource MapObjMargin}">
+				Margin="{StaticResource MapObjMargin}" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="42" />
 				</Grid.RenderTransform>
@@ -451,7 +451,7 @@
 				<Rectangle Grid.ColumnSpan="5" Fill="#BF464646" Grid.Row="8" Grid.Column="3" Margin="6,0,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="48" />
 				</Grid.RenderTransform>
@@ -480,10 +480,11 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Path Grid.ColumnSpan="8" Grid.Column="1"
-					Data="M24,0 L48,0 L48,48 L96,48 L96,60 L96,72 L96,84 L0,84 L0,72 L84,72 L84,60 L24,60 L24,48 z" Fill="#FF5D5D5D"
+					Data="M24,0 L48,0 L48,48 L96,48 L96,60 L96,72 L96,84 L0,84 L0,72 L84,72 L84,60 L24,60 L24,48 z"
+					Fill="#FF5D5D5D"
 					Grid.Row="3" Grid.RowSpan="7" Stretch="Fill" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-24" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -515,7 +516,7 @@
 							d:LayoutOverrides="TopPosition, BottomPosition" />
 				<Rectangle Grid.ColumnSpan="2" Fill="#FF727272" Grid.Column="7" Grid.Row="9" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-9" TranslateY="-51" />
 				</Grid.RenderTransform>
@@ -545,7 +546,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.Column="8" Fill="#BF464646" Grid.Row="8" Width="6" StrokeThickness="0" Margin="0,0,6,0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-12" TranslateY="-48" />
 				</Grid.RenderTransform>
@@ -577,7 +578,7 @@
 					Grid.Row="3" Grid.RowSpan="5" Stretch="Fill" StrokeThickness="0" UseLayoutRounding="False" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
-				UseLayoutRounding="False" d:LayoutRounding="Auto">
+				UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-84" />
 				</Grid.RenderTransform>
@@ -608,7 +609,7 @@
 				<Rectangle Grid.ColumnSpan="2" Fill="#FF8D8D8D" Grid.RowSpan="2" Grid.Column="7" Grid.Row="5" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
-				Margin="{StaticResource MapObjMargin}">
+				Margin="{StaticResource MapObjMargin}" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="-24" />
 				</Grid.RenderTransform>
@@ -640,9 +641,9 @@
 			</Grid>
 		</Grid>
 		<Grid Width="120" Height="60" HorizontalAlignment="Center" d:LayoutOverrides="Width"
-			Margin="{StaticResource MapObjMargin}" VerticalAlignment="Center" Visibility="Collapsed">
+			Margin="{StaticResource MapObjMargin}" VerticalAlignment="Center" Visibility="Collapsed" >
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5"
-				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition />
@@ -677,7 +678,7 @@
 				<Rectangle Grid.Column="8" Fill="#FF8D8D8D" Grid.Row="4" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12" />
 				</Grid.RenderTransform>
@@ -712,7 +713,7 @@
 				<Rectangle Grid.Column="8" Fill="#FFF1F1F1" Grid.Row="1" StrokeThickness="0" Grid.RowSpan="2" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-18" TranslateY="-42" />
 				</Grid.RenderTransform>
@@ -747,7 +748,7 @@
 				<Rectangle Grid.Column="5" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4" Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-54" />
 				</Grid.RenderTransform>
@@ -777,14 +778,14 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="7" Grid.Column="2" Fill="#FFF1F1F1" Grid.RowSpan="6" StrokeThickness="0" Grid.Row="2" />
 				<Rectangle Grid.ColumnSpan="5" Grid.Column="4" Fill="#FFF1F1F1" StrokeThickness="0" RenderTransformOrigin="0.5,0.5"
-							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="1">
+							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="1" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
-				Margin="0,-30">
+				Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-21" TranslateY="-39" />
 				</Grid.RenderTransform>
@@ -815,7 +816,7 @@
 				<Rectangle Grid.ColumnSpan="5" Fill="#BF464646" Grid.Row="8" Grid.Column="3" Margin="6,0,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-24" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -844,11 +845,12 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Path Grid.ColumnSpan="8" Grid.Column="1"
-					Data="M24,0 L48,0 L48,48 L96,48 L96,60 L96,72 L96,84 L0,84 L0,72 L84,72 L84,60 L24,60 L24,48 z" Fill="#FF5D5D5D"
+					Data="M24,0 L48,0 L48,48 L96,48 L96,60 L96,72 L96,84 L0,84 L0,72 L84,72 L84,60 L24,60 L24,48 z"
+					Fill="#FF5D5D5D"
 					Grid.Row="3" Grid.RowSpan="7" Stretch="Fill" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -880,7 +882,7 @@
 				<Rectangle Fill="#FF727272" Margin="0,0,0,6" StrokeThickness="0" Grid.Column="2" Grid.Row="3" Grid.RowSpan="3" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -911,7 +913,7 @@
 				<Rectangle Grid.Column="5" Fill="#FF8D8D8D" Grid.Row="8" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"
 							Grid.ColumnSpan="4" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="6" TranslateY="-66" />
 				</Grid.RenderTransform>
@@ -942,7 +944,7 @@
 				<Rectangle Grid.Column="8" Fill="#FFB9B9B9" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" />
 				<Rectangle Grid.Column="8" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-6" TranslateY="-54" />
 				</Grid.RenderTransform>
@@ -974,7 +976,7 @@
 				<Rectangle Grid.Column="8" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="42" />
 				</Grid.RenderTransform>
@@ -1005,7 +1007,7 @@
 				<Rectangle Grid.Column="7" Fill="#BF464646" Margin="0,0,6,0" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="2" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="48" />
 				</Grid.RenderTransform>
@@ -1044,7 +1046,7 @@
 					Fill="#FF7A7013" Grid.Row="6" Grid.RowSpan="2" Stretch="Fill" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-84" />
 				</Grid.RenderTransform>
@@ -1076,9 +1078,9 @@
 			</Grid>
 		</Grid>
 		<Grid Width="120" Height="60" Margin="{StaticResource MapObjMargin}" HorizontalAlignment="Center"
-			VerticalAlignment="Center" Visibility="Collapsed">
+			VerticalAlignment="Center" Visibility="Collapsed" >
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5"
-				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition />
@@ -1111,7 +1113,7 @@
 				<Rectangle Grid.Column="7" Fill="#FF8D8D8D" Grid.Row="5" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12" />
 				</Grid.RenderTransform>
@@ -1141,7 +1143,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="3" Grid.Column="5" Fill="#FF8D8D8D" Grid.Row="1" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -1170,7 +1172,7 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Fill="#FFECECEC" Margin="0" Grid.Column="3" RenderTransformOrigin="0.5,0.5"
-							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0">
+							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
@@ -1178,14 +1180,14 @@
 				<Rectangle Grid.ColumnSpan="5" Fill="#FF7A7013" Grid.RowSpan="2" Grid.Column="3" Grid.Row="6" StrokeThickness="0" />
 				<Rectangle Fill="#FFD8D8D8" Grid.Column="5" RenderTransformOrigin="0.5,0.5"
 							d:LayoutOverrides="TopPosition, BottomPosition" Grid.ColumnSpan="3" Grid.Row="8" Grid.RowSpan="2"
-							StrokeThickness="0">
+							StrokeThickness="0" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12" />
 				</Grid.RenderTransform>
@@ -1218,7 +1220,7 @@
 				<Rectangle Grid.ColumnSpan="3" Grid.Column="1" Fill="#FFF1F1F1" Grid.Row="8" StrokeThickness="0" />
 				<Rectangle Grid.Column="1" Fill="#FFF1F1F1" Grid.Row="4" Grid.RowSpan="4" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-15" TranslateY="-45" />
 				</Grid.RenderTransform>
@@ -1248,7 +1250,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="3" Grid.Column="4" Fill="#BF464646" Margin="6,0" Grid.Row="8" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-18" TranslateY="-42" />
 				</Grid.RenderTransform>
@@ -1279,7 +1281,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="#FF5F5711" Grid.Row="6" Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-48" />
 				</Grid.RenderTransform>
@@ -1310,7 +1312,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF8D8D8D" Grid.Row="7" d:LayoutOverrides="VerticalAlignment"
 							Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-18" TranslateY="-42" />
 				</Grid.RenderTransform>
@@ -1341,7 +1343,7 @@
 				<Rectangle Grid.Column="5" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="3" Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -1371,7 +1373,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="6" Fill="#FFD8D8D8" Grid.Column="2" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="48" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -1404,7 +1406,7 @@
 				<Rectangle Grid.ColumnSpan="2" Fill="#FF727272" Grid.Column="7" Grid.Row="9" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
-				Margin="0,-30">
+				Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-24" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -1436,7 +1438,7 @@
 				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="9" StrokeThickness="0" Grid.ColumnSpan="6" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-54" />
 				</Grid.RenderTransform>
@@ -1465,14 +1467,15 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Fill="#FFF1F1F1" StrokeThickness="0" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Grid.Row="2"
-							d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin, TopPosition, BottomPosition" Grid.ColumnSpan="4">
+							d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin, TopPosition, BottomPosition"
+							Grid.ColumnSpan="4" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="24" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -1502,7 +1505,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF727272" Grid.Row="3" Grid.RowSpan="3" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="12" TranslateY="-72" />
 				</Grid.RenderTransform>
@@ -1534,7 +1537,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="#FF5D5D5D" Grid.Row="3" Grid.RowSpan="3" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-54" />
 				</Grid.RenderTransform>
@@ -1564,20 +1567,20 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="7" Grid.Column="1" Fill="#FFF1F1F1" Grid.Row="3" Grid.RowSpan="5" StrokeThickness="0" />
 				<Rectangle Grid.ColumnSpan="4" Fill="#FFF1F1F1" StrokeThickness="0" Grid.Column="1" RenderTransformOrigin="0.5,0.5"
-							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8">
+							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
 				<Rectangle Fill="#FFF1F1F1" StrokeThickness="0" Grid.Column="7" RenderTransformOrigin="0.5,0.5" Grid.Row="2"
-							d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin, TopPosition, BottomPosition">
+							d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin, TopPosition, BottomPosition" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="-6" />
 				</Grid.RenderTransform>
@@ -1608,7 +1611,7 @@
 				<Rectangle Grid.Column="1" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="2" Margin="6,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -1639,7 +1642,7 @@
 				<Rectangle Grid.Column="1" Fill="#FFD8D8D8" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
 				<Rectangle Grid.Column="1" Fill="#FF7A7013" Grid.Row="6" Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-21" TranslateY="-39" />
 				</Grid.RenderTransform>
@@ -1669,7 +1672,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="#BF464646" Margin="6,0" Grid.Row="8" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-24" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -1701,7 +1704,7 @@
 				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="#FF5F5711" Grid.Row="6" Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-84" />
 				</Grid.RenderTransform>
@@ -1734,9 +1737,9 @@
 			</Grid>
 		</Grid>
 		<Grid Width="120" Height="60" Margin="{StaticResource MapObjMargin}" HorizontalAlignment="Center"
-			VerticalAlignment="Center" Visibility="Collapsed">
+			VerticalAlignment="Center" Visibility="Collapsed" >
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5"
-				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto">
+				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition />
@@ -1770,7 +1773,7 @@
 							Grid.RowSpan="4" />
 				<Rectangle Grid.Column="2" Fill="#FF8D8D8D" Grid.Row="4" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-24" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -1802,7 +1805,7 @@
 				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -1834,7 +1837,7 @@
 				<Rectangle Grid.Column="1" Fill="#FF5F5711" Grid.Row="7" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="24" />
 				</Grid.RenderTransform>
@@ -1864,7 +1867,7 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.Column="1" Fill="#FFB9B9B9" Grid.Row="8" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateY="-60" />
 				</Grid.RenderTransform>
@@ -1896,7 +1899,7 @@
 				<Rectangle Grid.Column="8" Fill="#FF727272" Grid.Row="5" StrokeThickness="0" Grid.RowSpan="4" Grid.ColumnSpan="2" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12" />
 				</Grid.RenderTransform>
@@ -1925,10 +1928,11 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Path Grid.ColumnSpan="3" Grid.Column="6"
-					Data="M24,0 L36,0 L36,60 L36,72 L12,72 L12,60 L24,60 z M0,0 L24,0 L24,24 L0,24 z" Fill="#FFF1F1F1" Grid.Row="3"
+					Data="M24,0 L36,0 L36,60 L36,72 L12,72 L12,60 L24,60 z M0,0 L24,0 L24,24 L0,24 z" Fill="#FFF1F1F1"
+					Grid.Row="3"
 					Grid.RowSpan="6" Stretch="Fill" StrokeThickness="0" />
 			</Grid>
-			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5">
+			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-21" TranslateY="-39" />
 				</Grid.RenderTransform>
@@ -1962,7 +1966,7 @@
 
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -1993,7 +1997,7 @@
 				<Rectangle Grid.Column="1" Fill="#FF8D8D8D" Grid.Row="5" Grid.RowSpan="4" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="42" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -2024,7 +2028,7 @@
 				<Rectangle Grid.Column="1" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="4" Margin="6,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-24" TranslateY="-36" />
 				</Grid.RenderTransform>
@@ -2063,7 +2067,7 @@
 					Fill="#FF7A7013" Grid.Row="6" Grid.RowSpan="2" Stretch="Fill" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -2094,7 +2098,7 @@
 				<Rectangle Grid.Column="4" Fill="#BF464646" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="3" Margin="6,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-48" />
 				</Grid.RenderTransform>
@@ -2125,7 +2129,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF8D8D8D" Grid.Row="1" Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="36" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -2157,7 +2161,7 @@
 				<Rectangle Grid.Column="4" Fill="#FFB9B9B9" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4" Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="48" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -2191,7 +2195,7 @@
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="#FF5D5D5D" Grid.Row="6" Grid.RowSpan="4" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-54" />
 				</Grid.RenderTransform>
@@ -2225,7 +2229,7 @@
 					VerticalAlignment="Bottom" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform TranslateX="-12" TranslateY="-60" SkewY="-45" ScaleX="0.5" />
 				</Grid.RenderTransform>
@@ -2257,7 +2261,7 @@
 							Margin="0,0,0,5.667" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
-				d:LayoutRounding="Auto">
+				d:LayoutRounding="Auto" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-84" />
 				</Grid.RenderTransform>

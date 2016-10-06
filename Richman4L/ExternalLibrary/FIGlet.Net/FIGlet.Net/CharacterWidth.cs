@@ -1,15 +1,15 @@
 ﻿namespace WenceyWang .FIGlet
 {
 
-    public enum CharacterWidth
-    {
+	public enum CharacterWidth
+	{
 
-        Full ,
+		Full ,
 
-        Fitted ,
+		Fitted ,
 
-        Smush
+		Smush
 
-    }
+	}
 
 }

@@ -17,7 +17,6 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 
 using System ;
 
-using FoggyConsole . Controls . Events ;
 using FoggyConsole . Controls . Renderers ;
 
 namespace FoggyConsole .Controls
@@ -47,6 +46,8 @@ namespace FoggyConsole .Controls
 			}
 		}
 
+		public override bool CanFocus => false ;
+
 		/// <summary>
 		///     Creates a new <code>Label</code>
 		/// </summary>
@@ -59,16 +60,8 @@ namespace FoggyConsole .Controls
 		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public Label ( string text = "" , IControlRenderer renderer = null )
-			: base ( text , renderer )
-		{
-			if ( renderer == null )
-			{
-				Renderer = new LabelRenderer ( this ) ;
-			}
-		}
-
-	    public override bool CanFocus => false ;
+		public Label ( IControlRenderer renderer = null )
+			: base ( renderer ?? new LabelRenderer ( ) ) { }
 
 	}
 

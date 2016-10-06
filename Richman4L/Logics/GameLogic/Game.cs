@@ -16,84 +16,84 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections . Generic;
-using System . IO;
-using System . Linq;
+using System ;
+using System . Collections . Generic ;
+using System . IO ;
+using System . Linq ;
 
-using Polenter . Serialization;
+using Polenter . Serialization ;
 
-using WenceyWang . Richman4L . Buffs;
-using WenceyWang . Richman4L . Calendars;
-using WenceyWang . Richman4L . GameEnviroment;
-using WenceyWang . Richman4L . Maps;
-using WenceyWang . Richman4L . Players;
-using WenceyWang . Richman4L . Players . Events;
-using WenceyWang . Richman4L . Players . Models;
-using WenceyWang . Richman4L . Stocks;
-using WenceyWang . Richman4L . Weathers;
+using WenceyWang . Richman4L . Buffs ;
+using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . GameEnviroment ;
+using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . Events ;
+using WenceyWang . Richman4L . Players . Models ;
+using WenceyWang . Richman4L . Stocks ;
+using WenceyWang . Richman4L . Weathers ;
 
-using Environment = WenceyWang . Richman4L . GameEnviroment . Environment;
+using Environment = WenceyWang . Richman4L . GameEnviroment . Environment ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang .Richman4L
 {
 
 	public class Game : IDisposable
 	{
 
-		public GameStatus Status { get; set; }
+		public GameStatus Status { get ; set ; }
 
 		#region Enviroment
 
-		public Environment GameEnviroment { get; set; }
+		public Environment GameEnviroment { get ; set ; }
 
 		#endregion
 
-		public static Game Current { get; private set; }
+		public static Game Current { get ; private set ; }
 
 		/// <summary>
 		///     指示当前的玩家上下文
 		/// </summary>
-		public Player CurrentPlayer { get; private set; }
+		public Player CurrentPlayer { get ; private set ; }
 
 		/// <summary>
 		///     指示游戏是否开始
 		/// </summary>
-		public bool IsStarted { get; set; } = false;
+		public bool IsStarted { get ; set ; } = false ;
 
 		/// <summary>
 		///     游戏的日历
 		/// </summary>
-		public Calendar Calendar { get; private set; }
+		public Calendar Calendar { get ; private set ; }
 
 		/// <summary>
 		///     今天的天气
 		/// </summary>
-		public Weather Weather { get; set; }
+		public Weather Weather { get ; set ; }
 
 		/// <summary>
 		///     当前游戏的地图
 		/// </summary>
-		public Map Map { get; private set; }
+		public Map Map { get ; private set ; }
 
 		/// <summary>
 		///     政府对经济的态度
 		/// </summary>
-		public GovermentControl GovermentControl { get; set; }
+		public GovermentControl GovermentControl { get ; set ; }
 
 
-		internal GameDate GovermentControlChanging { get; set; }
+		internal GameDate GovermentControlChanging { get ; set ; }
 
 
-		public List<Buff> GameBuffs { get; private set; } = new List<Buff> ( );
+		public List < Buff > GameBuffs { get ; private set ; } = new List < Buff > ( ) ;
 
 
-		public List<Player> GamePlayers { get; private set; } = new List<Player> ( );
+		public List < Player > GamePlayers { get ; private set ; } = new List < Player > ( ) ;
 
-		public List<Player> AllPlayers { get; set; }
+		public List < Player > AllPlayers { get ; set ; }
 
 
-		public StockMarket StockMarket { get; set; }
+		public StockMarket StockMarket { get ; set ; }
 
 		/// <summary>
 		///     切换到下一个玩家的上下文
@@ -102,12 +102,12 @@ namespace WenceyWang . Richman4L
 		{
 			if ( GamePlayers . IndexOf ( CurrentPlayer ) + 1 < GamePlayers . Count )
 			{
-				CurrentPlayer = GamePlayers [ GamePlayers . IndexOf ( CurrentPlayer ) + 1 ];
+				CurrentPlayer = GamePlayers [ GamePlayers . IndexOf ( CurrentPlayer ) + 1 ] ;
 			}
 			else
 			{
-				NextDay ( );
-				CurrentPlayer = GamePlayers . First ( );
+				NextDay ( ) ;
+				CurrentPlayer = GamePlayers . First ( ) ;
 			}
 		}
 
@@ -117,27 +117,27 @@ namespace WenceyWang . Richman4L
 
 			foreach ( Buff buff in GameBuffs )
 			{
-				buff . EndToday ( );
+				buff . EndToday ( ) ;
 			}
 
 			foreach ( Player player in GamePlayers )
 			{
-				player . EndToday ( );
+				player . EndToday ( ) ;
 			}
 
-			Map . EndToday ( );
+			Map . EndToday ( ) ;
 
-			StockMarket . EndToday ( );
+			StockMarket . EndToday ( ) ;
 
-			Calendar . EndToday ( );
+			Calendar . EndToday ( ) ;
 
 			#endregion
 
 			#region Start Next Day
 
-			Weather = Weather . Random ( Calendar . Today + 1 );
+			Weather = Weather . Random ( Calendar . Today + 1 ) ;
 
-			Calendar . StartDay ( Calendar . Today + 1 );
+			Calendar . StartDay ( Calendar . Today + 1 ) ;
 
 			#region ChangeGovermentControl
 
@@ -145,60 +145,60 @@ namespace WenceyWang . Richman4L
 			{
 				switch ( GameRandom . Current . Next ( 1 , 3 ) )
 				{
-					case 1:
-						{
-							GovermentControl = GovermentControl . Negative;
-							break;
-						}
-					case 2:
-						{
-							GovermentControl = GovermentControl . Positive;
-							break;
-						}
-					default:
-						{
-							break;
-						}
+					case 1 :
+					{
+						GovermentControl = GovermentControl . Negative ;
+						break ;
+					}
+					case 2 :
+					{
+						GovermentControl = GovermentControl . Positive ;
+						break ;
+					}
+					default :
+					{
+						break ;
+					}
 				}
 
-				GovermentControlChanging = Calendar . Today + GameRandom . Current . Next ( 30 , 51 );
+				GovermentControlChanging = Calendar . Today + GameRandom . Current . Next ( 30 , 51 ) ;
 			}
 
 			#endregion
 
-			StockMarket . StartDay ( Calendar . Today );
+			StockMarket . StartDay ( Calendar . Today ) ;
 
 			foreach ( Buff buff in GameBuffs )
 			{
-				buff . StartDay ( Calendar . Today );
+				buff . StartDay ( Calendar . Today ) ;
 			}
 
 			foreach ( Player player in GamePlayers )
 			{
-				player . StartDay ( Calendar . Today );
+				player . StartDay ( Calendar . Today ) ;
 			}
 
-			Map . StartDay ( Calendar . Today );
+			Map . StartDay ( Calendar . Today ) ;
 
 			#endregion
 
 			if ( GamePlayers . Any ( player => player . PropertiesInMoney >= ConditionsToWin ) )
 			{
-				GameResult info = new GameResult ( );
-				GameEnviroment . GameOver ( info );
+				GameResult info = new GameResult ( ) ;
+				GameEnviroment . GameOver ( info ) ;
 			}
 		}
 
 		#region Starting
 
-		public long StartMoney { get; private set; }
+		public long StartMoney { get ; private set ; }
 
 		/// <summary>
 		///     游戏可以持续的时间（天）
 		/// </summary>
-		public long GameLenth { get; private set; }
+		public long GameLenth { get ; private set ; }
 
-		public long ConditionsToWin { get; private set; }
+		public long ConditionsToWin { get ; private set ; }
 
 		#endregion
 
@@ -206,43 +206,40 @@ namespace WenceyWang . Richman4L
 
 		public virtual void Start ( StartGameParameters parameters )
 		{
-			Calendar = new Calendar ( );
+			Calendar = new Calendar ( ) ;
 
-			GameEnviroment = parameters . Enviroment;
+			GameEnviroment = parameters . Enviroment ;
 
-			StartMoney = parameters . StartMoney;
+			StartMoney = parameters . StartMoney ;
 
-			GameLenth = parameters . GameTime;
+			GameLenth = parameters . GameTime ;
 
-			foreach ( Tuple<PlayerModelProxy , PlayerConsole> item in parameters . PlayerConfig )
+			foreach ( Tuple < PlayerModelProxy , PlayerConsole > item in parameters . PlayerConfig )
 			{
-
-				{
-					Player player = new Player ( item . Item1 . Model , StartMoney );
-					player . GetFromAreaEvent += OnPlayerGetFromArea;
-					player . PayForMaintainBuildingEvent += OnPlayerPayForMaintainBuilding;
-					player . PayForCrossEvent += OnPlayerPayForCross;
-					player . MoveEvent += OnPlayerMove;
-					player . BankruptcyEvent += OnPlayerBankruptcy;
-					GamePlayers . Add ( player );
-					break;
-				}
+				Player player = new Player ( item . Item1 . Model , StartMoney ) ;
+				player . GetFromAreaEvent += OnPlayerGetFromArea ;
+				player . PayForMaintainBuildingEvent += OnPlayerPayForMaintainBuilding ;
+				player . PayForCrossEvent += OnPlayerPayForCross ;
+				player . MoveEvent += OnPlayerMove ;
+				player . BankruptcyEvent += OnPlayerBankruptcy ;
+				GamePlayers . Add ( player ) ;
+				break ;
 			}
 
-			Calendar = new Calendar ( );
+			Calendar = new Calendar ( ) ;
 
-			Map = parameters . Map;
+			Map = parameters . Map ;
 
-			StockMarket = new StockMarket ( );
+			StockMarket = new StockMarket ( ) ;
 
-			ConditionsToWin = parameters . ConditionsToWin;
+			ConditionsToWin = parameters . ConditionsToWin ;
 
-			Status = GameStatus . Playing;
+			Status = GameStatus . Playing ;
 		}
 
 		private void OnPlayerBankruptcy ( object sender , PlayerBankruptcyEventArgs e ) { }
 
-		private void OnPlayerMove ( object sender , PlayerMoveEventArgs e ) { throw new NotImplementedException ( ); }
+		private void OnPlayerMove ( object sender , PlayerMoveEventArgs e ) { throw new NotImplementedException ( ) ; }
 
 		private void OnPlayerPayForCross ( object sender , PlayerPayForCrossEventArgs e ) { }
 
@@ -254,11 +251,11 @@ namespace WenceyWang . Richman4L
 		{
 			if ( Current != null )
 			{
-				throw new InvalidOperationException ( "已存在当前游戏" );
+				throw new InvalidOperationException ( "已存在当前游戏" ) ;
 			}
 
-			Status = GameStatus . NotStart;
-			Current = this;
+			Status = GameStatus . NotStart ;
+			Current = this ;
 		}
 
 		/// <summary>
@@ -269,13 +266,13 @@ namespace WenceyWang . Richman4L
 		{
 			if ( stream == null )
 			{
-				throw new ArgumentNullException ( nameof ( stream ) );
+				throw new ArgumentNullException ( nameof ( stream ) ) ;
 			}
 
 			SharpSerializer serialier =
-				new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } );
+				new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
 
-			serialier . Serialize ( this , stream );
+			serialier . Serialize ( this , stream ) ;
 		}
 
 		/// <summary>
@@ -287,60 +284,60 @@ namespace WenceyWang . Richman4L
 		{
 			if ( stream == null )
 			{
-				throw new ArgumentNullException ( nameof ( stream ) );
+				throw new ArgumentNullException ( nameof ( stream ) ) ;
 			}
 
 			SharpSerializer serialier =
-				new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } );
-			return Current = serialier . Deserialize ( stream ) as Game;
+				new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
+			return Current = serialier . Deserialize ( stream ) as Game ;
 		}
 
 		#endregion
 
 		#region IDisposable Support
 
-		protected bool DisposedValue; // To detect redundant calls
+		protected bool DisposedValue ; // To detect redundant calls
 
 
 		protected virtual void Dispose ( bool disposing )
 		{
-			if ( !DisposedValue )
+			if ( ! DisposedValue )
 			{
 				if ( disposing )
 				{
-					Current = null;
+					Current = null ;
 					foreach ( Buff item in GameBuffs )
 					{
-						item . Dispose ( );
+						item . Dispose ( ) ;
 					}
 
-					Calendar . Dispose ( );
+					Calendar . Dispose ( ) ;
 					foreach ( Player item in GamePlayers )
 					{
-						item . Dispose ( );
+						item . Dispose ( ) ;
 					}
 
-					Map . Dispose ( );
+					Map . Dispose ( ) ;
 
-					GameObject . GameObjectList . Clear ( );
+					GameObject . GameObjectList . Clear ( ) ;
 
 					// TODO: dispose managed state (managed objects).
 				}
 
-				CurrentPlayer = null;
-				GameEnviroment = null;
-				GameBuffs . Clear ( );
-				GameBuffs = null;
-				GamePlayers . Clear ( );
-				GamePlayers = null;
+				CurrentPlayer = null ;
+				GameEnviroment = null ;
+				GameBuffs . Clear ( ) ;
+				GameBuffs = null ;
+				GamePlayers . Clear ( ) ;
+				GamePlayers = null ;
 
-				Map = null;
+				Map = null ;
 
 				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
 				// TODO: set large fields to null.
 
-				DisposedValue = true;
-				GC . Collect ( );
+				DisposedValue = true ;
+				GC . Collect ( ) ;
 			}
 		}
 
@@ -351,7 +348,7 @@ namespace WenceyWang . Richman4L
 		// }
 
 		// This code added to correctly implement the disposable pattern.
-		public void Dispose ( ) { Dispose ( true ); }
+		public void Dispose ( ) { Dispose ( true ) ; }
 
 		#endregion
 	}

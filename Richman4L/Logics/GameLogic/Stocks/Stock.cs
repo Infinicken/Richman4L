@@ -137,7 +137,7 @@ namespace WenceyWang . Richman4L .Stocks
 			if ( lowerPrice >= CurrentPrice . TodaysLow )
 			{
 				throw new ArgumentException (
-					$"{nameof ( lowerPrice )} should less than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysLow )}" ) ;
+						$"{nameof ( lowerPrice )} should less than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysLow )}" ) ;
 			}
 
 			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,
@@ -153,7 +153,7 @@ namespace WenceyWang . Richman4L .Stocks
 			if ( higherPrice <= CurrentPrice . TodaysLow )
 			{
 				throw new ArgumentException (
-					$"{nameof ( higherPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysHigh )}" ) ;
+						$"{nameof ( higherPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysHigh )}" ) ;
 			}
 
 			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,

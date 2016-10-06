@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 
-<Player Name="Wencey" Model="">
+<Player Name="Wencey" Model="" >
 	<SayingWhenGained>
 		<Saying Text="人类的希望!" />
 		<Saying Text="Gist!" />

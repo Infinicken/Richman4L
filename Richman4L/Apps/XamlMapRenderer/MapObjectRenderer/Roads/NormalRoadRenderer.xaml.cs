@@ -36,28 +36,28 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Ro
 		{
 			#region 断头路
 
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-				Target . BackwardRoad == null ||
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up &&
-				Target . ForwardRoad == null )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+					( Target . BackwardRoad == null ) ) ||
+				( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) &&
+				( Target . ForwardRoad == null ) ) )
 			{
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-				Target . BackwardRoad == null ||
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down &&
-				Target . ForwardRoad == null )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+					( Target . BackwardRoad == null ) ) ||
+				( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) &&
+				( Target . ForwardRoad == null ) ) )
 			{
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-				Target . BackwardRoad == null ||
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left &&
-				Target . ForwardRoad == null )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+					( Target . BackwardRoad == null ) ) ||
+				( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) &&
+				( Target . ForwardRoad == null ) ) )
 			{
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-				Target . BackwardRoad == null ||
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right &&
-				Target . ForwardRoad == null )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+					( Target . BackwardRoad == null ) ) ||
+				( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) &&
+				( Target . ForwardRoad == null ) ) )
 			{
 			}
 
@@ -65,45 +65,45 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Ro
 
 			#region 连续路
 
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-				Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) )
 			{
 				//上下
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
-				Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) ||
+				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 			{
 				//左右
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-				Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 			{
 				//左上
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-				Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 			{
 				//右上
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-				Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 			{
 				//左下
 			}
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-				Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 			{
 				//右下
 			}

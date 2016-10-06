@@ -1,22 +1,21 @@
-using System;
-using System . Collections . Generic;
-using System . Diagnostics;
+using System ;
+using System . Collections . Generic ;
 
-using Windows . UI . Xaml;
-using Windows . UI . Xaml . Controls;
-using Windows . UI . Xaml . Media;
+using Windows . UI . Xaml ;
+using Windows . UI . Xaml . Controls ;
+using Windows . UI . Xaml . Media ;
 
-using Microsoft . CSharp . RuntimeBinder;
+using Microsoft . CSharp . RuntimeBinder ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Logic
+namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
 
 	internal static class ComicSansModeExtensions
 	{
 
-		internal static List<FontFamily> EnglishFonts;
+		internal static List < FontFamily > EnglishFonts ;
 
-		internal static List<FontFamily> NatureFonts;
+		internal static List < FontFamily > NatureFonts ;
 
 
 		internal static void LoadComicSansModeFont ( )
@@ -25,7 +24,6 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			{
 				lock ( NatureFonts )
 				{
-
 				}
 			}
 		}
@@ -34,35 +32,30 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 		{
 			if ( panel == null )
 			{
-				throw new ArgumentNullException ( nameof ( panel ) );
+				throw new ArgumentNullException ( nameof ( panel ) ) ;
 			}
 
-			random = random ?? new Random ( );
+			random = random ?? new Random ( ) ;
 
 
 			foreach ( UIElement item in panel . Children )
 			{
-
-
-
-
 				if ( item is Panel )
 				{
-					( item as Panel ) . TurnOnComicSansMode ( random );
+					( item as Panel ) . TurnOnComicSansMode ( random ) ;
 				}
 				else
 				{
-					( ( item as ContentControl )?.Content as Panel )?.TurnOnComicSansMode ( random );
+					( ( item as ContentControl ) ? . Content as Panel ) ? . TurnOnComicSansMode ( random ) ;
 					try
 					{
-						dynamic control = item;
+						dynamic control = item ;
 					}
 					catch ( RuntimeBinderException )
 					{
 					}
 				}
 			}
-
 		}
 
 	}

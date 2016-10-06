@@ -47,8 +47,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _firstExit == null &&
-					_firstExit == null )
+				if ( ( _firstExit == null ) &&
+					( _firstExit == null ) )
 				{
 					return null ;
 				}
@@ -66,8 +66,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _secondExit == null &&
-					_secondExit == null )
+				if ( ( _secondExit == null ) &&
+					( _secondExit == null ) )
 				{
 					return null ;
 				}
@@ -85,8 +85,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _thirdExit == null &&
-					_thirdExit == null )
+				if ( ( _thirdExit == null ) &&
+					( _thirdExit == null ) )
 				{
 					return null ;
 				}
@@ -104,8 +104,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _forthExit == null &&
-					_forthExit == null )
+				if ( ( _forthExit == null ) &&
+					( _forthExit == null ) )
 				{
 					return null ;
 				}
@@ -136,7 +136,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 
 		public override bool CanEnterFrom ( Road road )
-			=> road == FirstExit || road == SecondExit || road == ThirdExit || road == ForthExit ;
+			=> ( road == FirstExit ) || ( road == SecondExit ) || ( road == ThirdExit ) || ( road == ForthExit ) ;
 
 		public override Path Route ( Road previous , int moveCount , Path result = null )
 		{
@@ -156,7 +156,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			Path current = result ?? new Path ( ) ;
 			current . AddRoute ( this ) ;
 			if ( ! BlockMoving &&
-				moveCount != 0 )
+				( moveCount != 0 ) )
 			{
 				List < Road > roadAvailable = new List < Road > { FirstExit , SecondExit , ThirdExit , ForthExit } ;
 				roadAvailable . Remove ( previous ) ;
@@ -164,10 +164,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 				roadAvailable . RemoveAll ( road => ! road . CanEnterFrom ( this ) ) ;
 				return roadAvailable . RandomItem ( ) . Route ( this , moveCount - 1 , result ) ;
 			}
-			else
-			{
-				return current ;
-			}
+
+			return current ;
 		}
 
 		//public override MapObjectType Type =>RegisMapObjectType()

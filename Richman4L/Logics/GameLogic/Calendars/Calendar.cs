@@ -17,7 +17,6 @@ namespace WenceyWang . Richman4L .Calendars
 
 		public GameDate Today { get ; set ; }
 
-
 		public Calendar ( )
 		{
 			Today = new GameDate ( 1 ) ;
@@ -70,8 +69,6 @@ namespace WenceyWang . Richman4L .Calendars
 			if ( date > Today )
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( date ) , $"{nameof ( date )} is later than today" ) ;
-
-				//todo:完善这个错误信息
 			}
 
 			return EventList [ date . Date - 1 ] ;

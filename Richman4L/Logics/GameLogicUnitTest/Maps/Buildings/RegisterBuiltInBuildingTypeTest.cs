@@ -14,7 +14,7 @@ namespace WenceyWang . Richman4L . UnitTests . Maps .Buildings
 		{
 			Building . RegisBuildingType ( typeof ( SmallSimpleBuilding ) ,
 											ResourceHelper . LoadXmlDocument (
-												$"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.SmallSimpleBuilding.xml" )
+																$"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.SmallSimpleBuilding.xml" )
 															. Root ) ;
 		}
 

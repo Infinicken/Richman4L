@@ -47,8 +47,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _firstExit == null &&
-					_firstExitId == null )
+				if ( ( _firstExit == null ) &&
+					( _firstExitId == null ) )
 				{
 					return null ;
 				}
@@ -67,8 +67,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _secondExit == null &&
-					_secondExitId == null )
+				if ( ( _secondExit == null ) &&
+					( _secondExitId == null ) )
 				{
 					return null ;
 				}
@@ -87,8 +87,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _thirdExit == null &&
-					_thirdExitId == null )
+				if ( ( _thirdExit == null ) &&
+					( _thirdExitId == null ) )
 				{
 					return null ;
 				}
@@ -133,21 +133,20 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 			Path current = result ?? new Path ( ) ;
 			current . AddRoute ( this ) ;
-			if ( BlockMoving || moveCount == 0 )
+			if ( BlockMoving || ( moveCount == 0 ) )
 			{
 				return current ;
 			}
-			else
-			{
-				List < Road > roadAvailable = new List < Road > { FirstExit , SecondExit , ThirdExit } ;
-				roadAvailable . Remove ( previous ) ;
-				roadAvailable . RemoveAll ( road => null == road ) ;
-				roadAvailable . RemoveAll ( road => ! road . CanEnterFrom ( this ) ) ;
-				return roadAvailable . RandomItem ( ) . Route ( this , moveCount - 1 , result ) ;
-			}
+
+			List < Road > roadAvailable = new List < Road > { FirstExit , SecondExit , ThirdExit } ;
+			roadAvailable . Remove ( previous ) ;
+			roadAvailable . RemoveAll ( road => null == road ) ;
+			roadAvailable . RemoveAll ( road => ! road . CanEnterFrom ( this ) ) ;
+			return roadAvailable . RandomItem ( ) . Route ( this , moveCount - 1 , result ) ;
 		}
 
-		public override bool CanEnterFrom ( Road road ) => road == FirstExit || road == SecondExit || road == ThirdExit ;
+		public override bool CanEnterFrom ( Road road )
+			=> ( road == FirstExit ) || ( road == SecondExit ) || ( road == ThirdExit ) ;
 
 	}
 

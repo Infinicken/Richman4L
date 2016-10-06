@@ -72,9 +72,9 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void ConditionsToWinList_SelectionChanged ( object sender , object e )
 		{
-			if ( ConditionsToWinButton != null &&
-				ConditionsToWinList != null &&
-				Parameters != null )
+			if ( ( ConditionsToWinButton != null ) &&
+				( ConditionsToWinList != null ) &&
+				( Parameters != null ) )
 			{
 				ConditionsToWinButton . Content = ConditionsToWinList ? . SelectedItem ;
 				if ( ConditionsToWinList . SelectedItem as string != "资产最多" )
@@ -91,9 +91,9 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void MoneyStartList_SelectionChanged ( object sender , object e )
 		{
-			if ( MoneyStartButton != null &&
-				MoneyStartList != null &&
-				Parameters != null )
+			if ( ( MoneyStartButton != null ) &&
+				( MoneyStartList != null ) &&
+				( Parameters != null ) )
 			{
 				MoneyStartButton . Content = MoneyStartList ? . SelectedItem ;
 				Parameters . StartMoney =
@@ -103,9 +103,9 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void GameTimeList_SelectionChanged ( object sender , object e )
 		{
-			if ( GameTimeButton != null &&
-				GameTimeList != null &&
-				Parameters != null )
+			if ( ( GameTimeButton != null ) &&
+				( GameTimeList != null ) &&
+				( Parameters != null ) )
 			{
 				GameTimeButton . Content = GameTimeList ? . SelectedItem ;
 				switch ( GameTimeList ? . SelectedItem as string )

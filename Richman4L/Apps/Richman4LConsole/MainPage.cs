@@ -1,6 +1,4 @@
-﻿using System . Collections . Generic ;
-
-using FoggyConsole . Controls ;
+﻿using FoggyConsole . Controls ;
 
 namespace WenceyWang . Richman4L . Apps .Console
 {
@@ -8,9 +6,7 @@ namespace WenceyWang . Richman4L . Apps .Console
 	public class MainPage : Page
 	{
 
-
-	    public override Control Content { get ; set ; }
-
+		public override Control Content { get ; set ; }
 
 	}
 

@@ -28,5 +28,4 @@ namespace FoggyConsole . Controls .Events
 	//	ContentChanged
 
 	//}
-
 }

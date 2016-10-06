@@ -15,12 +15,11 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System;
+using System ;
 
-using FoggyConsole . Controls . Events;
-using FoggyConsole . Controls . Renderers;
+using FoggyConsole . Controls . Renderers ;
 
-namespace FoggyConsole . Controls
+namespace FoggyConsole .Controls
 {
 
 	/// <summary>
@@ -29,30 +28,77 @@ namespace FoggyConsole . Controls
 	public class Progressbar : Control
 	{
 
-		private int _value;
+		private int _maxValue = 100 ;
+
+		private int _minValue ;
+
+		private int _value ;
+
+		public int SmallChange { get ; set ; }
+
+		public int LargeChange { get ; set ; }
+
+
+		public int MinValue
+		{
+			get { return _minValue ; }
+			set
+			{
+				if ( value > MaxValue )
+				{
+					throw new ArgumentOutOfRangeException ( nameof ( value ) ) ;
+				}
+
+				if ( value != _minValue )
+				{
+					Draw ( ) ;
+					_minValue = value ;
+				}
+			}
+		}
+
+		public int MaxValue
+		{
+			get { return _maxValue ; }
+			set
+			{
+				if ( value > MaxValue )
+				{
+					throw new ArgumentOutOfRangeException ( nameof ( value ) ) ;
+				}
+
+				if ( value != _minValue )
+				{
+					Draw ( ) ;
+					_maxValue = value ;
+				}
+			}
+		}
 
 		/// <summary>
 		///     The progress which is shown, 0 is no progress, 100 is finished
 		/// </summary>
 		public int Value
 		{
-			get { return _value; }
+			get { return _value ; }
 			set
 			{
-				if ( value < 0 ||
-					value > 100 )
+				if ( ( value < MinValue ) ||
+					( value > MaxValue ) )
 				{
-					throw new ArgumentOutOfRangeException ( nameof ( value ) );
+					throw new ArgumentOutOfRangeException ( nameof ( value ) ) ;
 				}
 
 				if ( _value != value )
 				{
-					ValueChanged?.Invoke ( this , EventArgs . Empty );
-					Draw ( );
-					_value = value;
+					ValueChanged ? . Invoke ( this , EventArgs . Empty ) ;
+					Draw ( ) ;
+					_value = value ;
 				}
 			}
 		}
+
+		public override bool CanFocus => false ;
 
 		/// <summary>
 		///     Creates a new Progressbar
@@ -65,29 +111,26 @@ namespace FoggyConsole . Controls
 		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public Progressbar ( ControlRenderer<Progressbar> renderer = null )
+		public Progressbar ( ControlRenderer < Progressbar > renderer = null )
 			: base ( renderer )
 		{
 			if ( renderer == null )
 			{
-				Renderer = new ProgressBarRenderer ( this );
+				Renderer = new ProgressBarRenderer ( this ) ;
 			}
-			Height = 1;
+			Height = 1 ;
 		}
+
 
 		/// <summary>
 		///     Fired if the Value-Property has changed
 		/// </summary>
-		public event EventHandler ValueChanged;
+		public event EventHandler ValueChanged ;
 
 		/// <summary>
 		///     Fires the ValueChanged-event and requests an redraw
 		/// </summary>
-		private void OnValueChanged ( )
-		{
-		}
-
-		public override bool CanFocus => false;
+		private void OnValueChanged ( ) { }
 
 	}
 

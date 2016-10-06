@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.25618.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{6FC8DA3E-DE22-4C74-B70C-39819C441EE0}"
 EndProject
@@ -53,6 +53,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoggyConsole", "ExternalLibrary\FoggyConsole\FoggyConsole\FoggyConsole.csproj", "{232E460F-DAE6-4578-B3E4-7CC3444DB376}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Richman4LWeb", "Apps\Richman4LWeb\Richman4LWeb.csproj", "{10205FEE-6020-4237-94EC-B68C0CD682C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB5CE489-12A8-451F-B1F9-6CC91B676173}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

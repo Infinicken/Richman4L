@@ -16,15 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System . Collections . Generic;
-
-namespace WenceyWang . Richman4L . Apps . Uni . Fonts
+namespace WenceyWang . Richman4L . Apps . Uni .Fonts
 {
 
 	public class Fonts
 	{
-
-
 
 	}
 

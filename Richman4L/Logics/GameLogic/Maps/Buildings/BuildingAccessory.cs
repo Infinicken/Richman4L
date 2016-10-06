@@ -54,7 +54,6 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		/// </summary>
 		public int InstallTime { get ; }
 
-
 		internal BuildingAccessory ( XElement element , BuildingGrade belongTo )
 		{
 			if ( element == null )

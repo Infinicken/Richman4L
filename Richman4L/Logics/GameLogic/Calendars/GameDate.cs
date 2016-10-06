@@ -105,7 +105,7 @@ namespace WenceyWang . Richman4L .Calendars
 
 		public override bool Equals ( object obj )
 		{
-			return obj != null && obj is GameDate && ( ( GameDate ) obj ) . Date == Date ;
+			return ( obj != null ) && obj is GameDate && ( ( ( GameDate ) obj ) . Date == Date ) ;
 		}
 
 		public override int GetHashCode ( ) { return Date . GetHashCode ( ) ; }

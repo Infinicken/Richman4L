@@ -15,12 +15,11 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System;
+using System ;
 
-using FoggyConsole . Controls;
-using FoggyConsole . Controls . Events;
+using FoggyConsole . Controls ;
 
-using NLog;
+using NLog ;
 
 namespace FoggyConsole
 {
@@ -34,26 +33,26 @@ namespace FoggyConsole
 	public class Application
 	{
 
-		private FocusManager _focusManager;
+		private FocusManager _focusManager ;
 
 		/// <summary>
 		///     Enables some debugging options, such as drawing panels with background and displaying pressed keys
 		/// </summary>
-		public bool DebugMode { get; set; } = false;
+		public bool DebugMode { get ; set ; } = false ;
 
-		public bool DebugLog { get; set; } = false;
+		public bool DebugLog { get ; set ; } = false ;
 
 		/// <summary>
 		///     The root of the Control-Tree
 		/// </summary>
-		public Frame ViewRoot { get; }
+		public Frame ViewRoot { get ; }
 
-		private static Logger Logger { get; } = LogManager . GetCurrentClassLogger ( );
+		private static Logger Logger { get ; } = LogManager . GetCurrentClassLogger ( ) ;
 
 		/// <summary>
 		///     Used as the boundary for the ViewRoot if the terminal-size can't determined
 		/// </summary>
-		public static Size StandardRootBoundary { get; } = new Size ( 80 , 24 );
+		public static Size StandardRootBoundary { get ; } = new Size ( 80 , 24 ) ;
 
 
 		/// <summary>
@@ -61,24 +60,24 @@ namespace FoggyConsole
 		/// </summary>
 		public FocusManager FocusManager
 		{
-			get { return _focusManager; }
+			get { return _focusManager ; }
 			set
 			{
 				if ( IsRunning )
 				{
-					throw new InvalidOperationException ( "The FocusManager can't be changed once the Application has been started." );
+					throw new InvalidOperationException ( "The FocusManager can't be changed once the Application has been started." ) ;
 				}
 
-				_focusManager = value;
+				_focusManager = value ;
 			}
 		}
 
 		/// <summary>
 		///     The name of this application
 		/// </summary>
-		public string Name { get; set; }
+		public string Name { get ; set ; }
 
-		public bool IsRunning { get; set; }
+		public bool IsRunning { get ; set ; }
 
 		public Size WindowSize
 		{
@@ -87,15 +86,14 @@ namespace FoggyConsole
 				// Size dedection will work on windows and on most unix-systems
 				// mono uses the same values for Window- and Buffer-Properties,
 				// so it doesn't matter which values are used.
-				return new Size ( Console . WindowWidth , Console . WindowHeight );
+				return new Size ( Console . WindowWidth , Console . WindowHeight ) ;
 			}
 			set
 			{
-				Console . SetWindowSize ( value . Width , value . Height );
-				ViewRoot . Size = value;
+				Console . SetWindowSize ( value . Width , value . Height ) ;
+				ViewRoot . Size = value ;
 			}
 		}
-
 
 
 		/// <summary>
@@ -108,14 +106,14 @@ namespace FoggyConsole
 		{
 			if ( viewRoot == null )
 			{
-				throw new ArgumentNullException ( nameof ( viewRoot ) );
+				throw new ArgumentNullException ( nameof ( viewRoot ) ) ;
 			}
 			if ( viewRoot . Container != null )
 			{
-				throw new ArgumentException ( "The root-container can't have the Container-Property set." , nameof ( viewRoot ) );
+				throw new ArgumentException ( "The root-container can't have the Container-Property set." , nameof ( viewRoot ) ) ;
 			}
 
-			ViewRoot = viewRoot;
+			ViewRoot = viewRoot ;
 		}
 
 		/// <summary>
@@ -123,18 +121,18 @@ namespace FoggyConsole
 		/// </summary>
 		public void Run ( )
 		{
-			Console . CursorVisible = false;
-			Console . Title = Name;
-			Console . Clear ( );
+			Console . CursorVisible = false ;
+			Console . Title = Name ;
+			Console . Clear ( ) ;
 
-			ViewRoot . Measure ( WindowSize );
-			ViewRoot . Arrange ( new Rectangle ( WindowSize ) );
-			ViewRoot . Draw ( );
+			ViewRoot . Measure ( WindowSize ) ;
+			ViewRoot . Arrange ( new Rectangle ( WindowSize ) ) ;
+			ViewRoot . Draw ( ) ;
 
-			KeyWatcher . KeyPressed += KeyWatcherOnKeyPressed;
-			KeyWatcher . Start ( );
+			KeyWatcher . KeyPressed += KeyWatcherOnKeyPressed ;
+			KeyWatcher . Start ( ) ;
 
-			IsRunning = true;
+			IsRunning = true ;
 		}
 
 		/// <summary>
@@ -142,40 +140,39 @@ namespace FoggyConsole
 		/// </summary>
 		public void Stop ( )
 		{
-			KeyWatcher . KeyPressed -= KeyWatcherOnKeyPressed;
-			KeyWatcher . Stop ( );
-			IsRunning = false;
+			KeyWatcher . KeyPressed -= KeyWatcherOnKeyPressed ;
+			KeyWatcher . Stop ( ) ;
+			IsRunning = false ;
 		}
 
 
 		private void KeyWatcherOnKeyPressed ( object sender , KeyPressedEventArgs eventArgs )
 		{
-
 			if ( DebugLog )
 			{
-				Logger . Debug ( $"Key pressed: {eventArgs . KeyInfo . Key}" );
+				Logger . Debug ( $"Key pressed: {eventArgs . KeyInfo . Key}" ) ;
 			}
 
-			Control currentControl = FocusManager?.FocusedControl;
+			Control currentControl = FocusManager ? . FocusedControl ;
 			while ( currentControl != ViewRoot )
 			{
-				currentControl?.KeyPressed ( eventArgs );
-				if ( !eventArgs . Handled )
+				currentControl ? . KeyPressed ( eventArgs ) ;
+				if ( ! eventArgs . Handled )
 				{
-					currentControl = currentControl?.Container;
+					currentControl = currentControl ? . Container ;
 				}
 				else
 				{
-					return;
+					return ;
 				}
 			}
 
 			if ( FocusManager != null )
 			{
-				FocusManager . HandleKeyInput ( eventArgs );
+				FocusManager . HandleKeyInput ( eventArgs ) ;
 				if ( DebugLog )
 				{
-					Logger . Debug ( $"Focused: {FocusManager . FocusedControl . Name}" );
+					Logger . Debug ( $"Focused: {FocusManager . FocusedControl . Name}" ) ;
 				}
 			}
 		}

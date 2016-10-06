@@ -18,7 +18,7 @@
 
 		public static readonly ConsoleSize Large = new ConsoleSize ( 5 , 3 ) ;
 
-		public bool Equals ( ConsoleSize other ) { return Width == other . Width && Height == other . Height ; }
+		public bool Equals ( ConsoleSize other ) { return ( Width == other . Width ) && ( Height == other . Height ) ; }
 
 		public override bool Equals ( object obj )
 		{

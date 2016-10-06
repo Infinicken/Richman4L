@@ -1,28 +1,19 @@
 ﻿using System . Web . Mvc ;
 
-namespace WenceyWang . Richman4L . Apps . Web . Controllers
+namespace WenceyWang . Richman4L . Apps . Web .Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index ( )
-        {
-            return View ( );
-        }
 
-        public ActionResult About ( )
-        {
-            ViewBag . Message = "Your application description page.";
-            
-            return View ( );
-        }
+	public class HomeController : Controller
+	{
 
-        public ActionResult Contact ( )
-        {
-            ViewBag . Message = "Your contact page.";
+		public ActionResult Index ( ) { return View ( ) ; }
 
-            return View ( );
-        }
+		public ActionResult About ( ) { return View ( ) ; }
 
-        
-    }
+		public ActionResult Contact ( ) { return View ( ) ; }
+
+		public ActionResult Download ( ) { return View ( ) ; }
+
+	}
+
 }

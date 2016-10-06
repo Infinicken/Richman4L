@@ -8,7 +8,7 @@
 	xmlns:mapObjectRenderers="using:WenceyWang.Richman4L.App.XamlMapRenderer.MapObjectRenderer"
 	mc:Ignorable="d"
 	d:DesignHeight="61.819"
-	d:DesignWidth="109.672">
+	d:DesignWidth="109.672" >
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -19,8 +19,8 @@
 
 	<Grid>
 		<Grid Height="112" Width="112" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}"
-			Margin="{StaticResource MapObjMargin}" UseLayoutRounding="False" d:LayoutRounding="Auto">
-			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" Background="Gray" Grid.ColumnSpan="3">
+			Margin="{StaticResource MapObjMargin}" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" Background="Gray" Grid.ColumnSpan="3" >
 				<Grid.RenderTransform>
 					<CompositeTransform />
 				</Grid.RenderTransform>
@@ -46,13 +46,13 @@
 			</Grid>
 		</Grid>
 		<Rectangle Fill="White" Opacity="0.8" Height="112" Width="112" Margin="0,-28" RenderTransformOrigin="0.5,0.5"
-					Visibility="Collapsed" UseLayoutRounding="False" d:LayoutRounding="Auto">
+					Visibility="Collapsed" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 			<Rectangle.RenderTransform>
 				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-0.5" />
 			</Rectangle.RenderTransform>
 		</Rectangle>
 		<Rectangle Fill="#FF0080FF" Opacity="0.2" Margin="0,-28" Width="112" Height="112" RenderTransformOrigin="0.5,0.5"
-					Visibility="Collapsed" UseLayoutRounding="False" d:LayoutRounding="Auto">
+					Visibility="Collapsed" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 			<Rectangle.RenderTransform>
 				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-5" />
 			</Rectangle.RenderTransform>

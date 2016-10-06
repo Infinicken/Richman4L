@@ -4,57 +4,60 @@ namespace FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a textbox
 	/// </summary>
-	public class TextboxRenderer : TextualBaseRenderer < Textbox >
+	public class TextBoxRenderer : ControlRenderer < TextBox >
 	{
-
-		/// <summary>
-		/// </summary>
-		/// <param name="control"></param>
-		public TextboxRenderer ( Textbox control )
-			: base ( control , "{1}" , 0 ) { }
 
 		/// <summary>
 		///     Draws the textbox given in the Control-Property
 		/// </summary>
 		public override void Draw ( )
 		{
-			base . Draw ( ) ;
-			string text = null ;
-
-			//if ( ! Control . PasswordMode )
-			//{
-			//	text = Control . Text ;
-			//}
-			//else
-			//{
-			//	text = new string ( Control . PasswordChar , Control . Text . Length ) ;
-			//}
-            //Todo:Compelete the PasswordBox and it's renderer
-			text = text . PadRight ( Control . Width ) ;
-
-			base . Draw ( Control . ForegroundColor , Control . BackgroundColor , text ) ;
+			ConsoleArea result ;
 
 			if ( Control . IsFocused )
 			{
-				char cc ;
-				if ( Control . CursorPosition < Control . Text . Length )
-				{
-					//if ( Control . PasswordMode )
-					//{
-					//	cc = Control . PasswordChar ;
-					//}
-					//else
-					//{
-					//	cc = Control . Text [ Control . CursorPosition ] ;
-					//}
-				}
-				else
-				{
-					cc = ' ' ;
-				}
+				result = new ConsoleArea ( Control . ActualSize , Control . ActualForegroundColor ) ;
 
-				//FogConsole . Write ( Boundary . Left + Control . CursorPosition , Boundary . Top , cc , Boundary , Control . BackgroundColor , Control . ForegroundColor );
+				for ( int y = 0 ; ( y < Control . ActualHeight ) && ( y * Control . ActualHeight < Control . Text . Length ) ; y++ )
+				{
+					for ( int x = 0 ; x < Control . ActualWidth ; x++ )
+					{
+						if ( x + y * Control . ActualWidth < Control . Text . Length )
+						{
+							result [ x , y ] = new ConsoleChar ( Control . Text [ x * y ] ,
+																Control . ActualForegroundColor ,
+																Control . ActualBackgroundColor ) ;
+						}
+						else
+						{
+							break ;
+						}
+					}
+				}
 			}
+			else
+			{
+				result = new ConsoleArea ( Control . ActualSize , Control . ActualBackgroundColor ) ;
+
+				for ( int y = 0 ; ( y < Control . ActualHeight ) && ( y * Control . ActualHeight < Control . Text . Length ) ; y++ )
+				{
+					for ( int x = 0 ; x < Control . ActualWidth ; x++ )
+					{
+						if ( x + y * Control . ActualWidth < Control . Text . Length )
+						{
+							result [ x , y ] = new ConsoleChar ( Control . Text [ x * y ] ,
+																Control . ActualForegroundColor ,
+																Control . ActualBackgroundColor ) ;
+						}
+						else
+						{
+							break ;
+						}
+					}
+				}
+			}
+
+			FogConsole . Draw ( Control . RenderPoint , result ) ;
 		}
 
 	}

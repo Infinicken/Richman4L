@@ -13,10 +13,7 @@ namespace WenceyWang . Richman4L .UnitTests
 	{
 
 		[ TestMethod ]
-		public void LoadSayingTest ( )
-		{
-			GameSaying . LoadSayings ( ) ;
-		}
+		public void LoadSayingTest ( ) { GameSaying . LoadSayings ( ) ; }
 
 		[ TestMethod ]
 		public void GetSayingTest ( )
@@ -44,15 +41,11 @@ namespace WenceyWang . Richman4L .UnitTests
 											return string . CompareOrdinal ( x . Attribute ( "Content" ) . ToString ( ) ,
 																			y . Attribute ( "Content" ) . ToString ( ) ) ;
 										}
-										else
-										{
-											return lenthDiff ;
-										}
+
+										return lenthDiff ;
 									}
-									else
-									{
-										return contentLenthDiff ;
-									}
+
+									return contentLenthDiff ;
 								} ) ;
 			string lastSaying = "" ;
 			foreach ( XElement saying in sayingList )

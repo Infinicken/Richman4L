@@ -7,48 +7,48 @@
 	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.Pages.Controls"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.SettingPage"
 	mc:Ignorable="d" Loaded="Page_Loaded" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="Auto"
-	Height="Auto">
+	Height="Auto" >
 	<Page.Resources>
 		<logic:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
 		<logic:AppSettings x:Key="Settings" />
 		<SolidColorBrush x:Key="SliderBorderThemeBrush" Color="Transparent" />
-		<Thickness x:Key="SliderBorderThemeThickness">0</Thickness>
-		<FontFamily x:Key="ContentControlThemeFontFamily">Segoe WP</FontFamily>
-		<x:Double x:Key="ControlContentThemeFontSize">12</x:Double>
-		<x:Double x:Key="SliderOutsideTickBarThemeHeight">5</x:Double>
-		<x:Double x:Key="SliderTrackThemeHeight">9</x:Double>
+		<Thickness x:Key="SliderBorderThemeThickness" >0</Thickness>
+		<FontFamily x:Key="ContentControlThemeFontFamily" >Segoe WP</FontFamily>
+		<x:Double x:Key="ControlContentThemeFontSize" >12</x:Double>
+		<x:Double x:Key="SliderOutsideTickBarThemeHeight" >5</x:Double>
+		<x:Double x:Key="SliderTrackThemeHeight" >9</x:Double>
 		<SolidColorBrush x:Key="SliderDisabledBorderThemeBrush" Color="Transparent" />
-		<Storyboard x:Name="StartStoryBoard">
+		<Storyboard x:Name="StartStoryBoard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="SettingPageUpImage">
+											Storyboard.TargetName="SettingPageUpImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="600" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-		<Storyboard x:Name="LeaveStoryBoard">
+		<Storyboard x:Name="LeaveStoryBoard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="SettingPageUpImage">
+											Storyboard.TargetName="SettingPageUpImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="600" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
@@ -62,7 +62,7 @@
 
 		<Image x:Name="SettingPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/SettingPageUp.png"
 				Stretch="UniformToFill" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Top" />
-		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="2">
+		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="2" >
 			<Grid.RowDefinitions>
 				<RowDefinition />
 				<RowDefinition Height="8" />
@@ -77,78 +77,92 @@
 			<Grid.RenderTransform>
 				<CompositeTransform />
 			</Grid.RenderTransform>
-			<ScrollViewer d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.ColumnSpan="3">
-				<StackPanel RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Margin="0,0,0,40">
+			<ScrollViewer d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.ColumnSpan="3" >
+				<StackPanel RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Margin="0,0,0,40" >
 					<TextBlock x:Name="PageTitle" Margin="{StaticResource WideMargin}" TextWrapping="Wrap" Text="设置"
 								FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" />
-					<StackPanel Margin="{StaticResource WideMargin}">
+					<StackPanel Margin="{StaticResource WideMargin}" >
 						<TextBlock TextWrapping="Wrap" Text="声音" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource SmallTitle}" />
 						<ToggleSwitch Header="播放声音" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}" Margin="0,24,0,0"
+									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}"
+									Margin="0,24,0,0"
 									OnContent="开" OffContent="关" Style="{StaticResource SettingToggleSwitch}"
 									IsOn="{Binding PlaySound, Mode=TwoWay, Source={StaticResource Settings}}" />
-						<StackPanel Margin="0,24,0,0" d:LayoutOverrides="TopPosition, BottomPosition">
+						<StackPanel Margin="0,24,0,0" d:LayoutOverrides="TopPosition, BottomPosition" >
 							<TextBlock Margin="0" TextWrapping="Wrap" Text="音量" FontFamily="{StaticResource Font}"
 										FontSize="{StaticResource ExtraSmallTitle}" />
 							<controls:SettingSlider SettingName="音乐音量"
 													Value="{Binding MusicVolume, Mode=TwoWay, Source={StaticResource Settings}}"
-													FontSize="{StaticResource FontSize}" Maximum="100" Margin="0,24,0,0" FontFamily="{StaticResource Font}" />
+													FontSize="{StaticResource FontSize}" Maximum="100" Margin="0,24,0,0"
+													FontFamily="{StaticResource Font}" />
 							<controls:SettingSlider Value="{Binding EffectVolume, Mode=TwoWay, Source={StaticResource Settings}}"
 													SettingName="效果音量" Margin="0,24,0,0" FontSize="{StaticResource FontSize}" Maximum="100"
 													FontFamily="{StaticResource Font}" />
 							<controls:SettingSlider Value="{Binding NotificationVolume, Mode=TwoWay, Source={StaticResource Settings}}"
-													SettingName="通知音量" FontSize="{StaticResource FontSize}" Padding="0" Margin="0,24,0,0" Maximum="100"
+													SettingName="通知音量" FontSize="{StaticResource FontSize}" Padding="0" Margin="0,24,0,0"
+													Maximum="100"
 													FontFamily="{StaticResource Font}" />
 						</StackPanel>
 					</StackPanel>
-					<StackPanel Margin="{StaticResource WideMargin}">
+					<StackPanel Margin="{StaticResource WideMargin}" >
 						<TextBlock TextWrapping="Wrap" Text="显示" Padding="0" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource SmallTitle}" Margin="0" />
 						<ToggleSwitch Header="强迫症模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}" Margin="0,24,0,0"
+									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}"
+									Margin="0,24,0,0"
 									Style="{StaticResource SettingToggleSwitch}"
-									IsOn="{Binding OcdMode, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关" OnContent="开" />
+									IsOn="{Binding OcdMode, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关"
+									OnContent="开" />
 						<ToggleSwitch Header="Comic Sans 模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}" Margin="0,24,0,0"
+									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}"
+									Margin="0,24,0,0"
 									Style="{StaticResource SettingToggleSwitch}"
-									IsOn="{Binding ComicSansMode, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关" OnContent="开" />
+									IsOn="{Binding ComicSansMode, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关"
+									OnContent="开" />
 					</StackPanel>
-					<StackPanel Padding="0" Margin="{StaticResource WideMargin}">
+					<StackPanel Padding="0" Margin="{StaticResource WideMargin}" >
 						<TextBlock TextWrapping="Wrap" Text="游戏" Padding="0" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource SmallTitle}" Margin="0" />
-						<StackPanel Margin="0,24,0,0">
+						<StackPanel Margin="0,24,0,0" >
 							<TextBlock Margin="0" TextWrapping="Wrap" Text="季节长度（天）" FontFamily="{StaticResource Font}"
 										FontSize="{StaticResource ExtraSmallTitle}" />
 							<controls:SettingSlider FontSize="{StaticResource FontSize}" SettingName="春季"
-													Value="{Binding SpringLenth, Mode=TwoWay, Source={StaticResource Settings}}" Maximum="90" Minimum="10"
+													Value="{Binding SpringLenth, Mode=TwoWay, Source={StaticResource Settings}}"
+													Maximum="90" Minimum="10"
 													Margin="0,24,0,0" FontFamily="{StaticResource Font}" />
 							<controls:SettingSlider FontSize="{StaticResource FontSize}" SettingName="夏季"
-													Value="{Binding SummerLenth, Mode=TwoWay, Source={StaticResource Settings}}" Maximum="90" Minimum="10"
+													Value="{Binding SummerLenth, Mode=TwoWay, Source={StaticResource Settings}}"
+													Maximum="90" Minimum="10"
 													Margin="0,24,0,0" FontFamily="{StaticResource Font}" />
 							<controls:SettingSlider FontSize="{StaticResource FontSize}" SettingName="秋季"
-													Value="{Binding AutumnLenth, Mode=TwoWay, Source={StaticResource Settings}}" Maximum="90" Minimum="10"
+													Value="{Binding AutumnLenth, Mode=TwoWay, Source={StaticResource Settings}}"
+													Maximum="90" Minimum="10"
 													Margin="0,24,0,0" FontFamily="{StaticResource Font}" />
 							<controls:SettingSlider FontSize="{StaticResource FontSize}" SettingName="冬季"
-													Value="{Binding WinterLenth, Mode=TwoWay, Source={StaticResource Settings}}" Maximum="90" Minimum="10"
+													Value="{Binding WinterLenth, Mode=TwoWay, Source={StaticResource Settings}}"
+													Maximum="90" Minimum="10"
 													Margin="0,24,0,0" FontFamily="{StaticResource Font}" />
 						</StackPanel>
 					</StackPanel>
-					<StackPanel Margin="{StaticResource WideMargin}">
+					<StackPanel Margin="{StaticResource WideMargin}" >
 						<TextBlock TextWrapping="Wrap" Text="杂项" Padding="0" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource SmallTitle}" Margin="0" />
 						<ToggleSwitch Header="随机生成标题" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}" Margin="0,24,0,0"
+									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}"
+									Margin="0,24,0,0"
 									Style="{StaticResource SettingToggleSwitch}"
-									IsOn="{Binding AllowRandomTitle, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关" OnContent="开" />
+									IsOn="{Binding AllowRandomTitle, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关"
+									OnContent="开" />
 						<ToggleSwitch Header="允许随机标题前缀" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}" Margin="0,24,0,0"
+									FontFamily="{StaticResource Font}" MinWidth="0" FontSize="{StaticResource FontSize}"
+									Margin="0,24,0,0"
 									Style="{StaticResource SettingToggleSwitch}"
 									IsOn="{Binding AllowRandomTitleRoot, Mode=TwoWay, Source={StaticResource Settings}}" OffContent="关"
 									OnContent="开"
 									Visibility="{Binding AllowRandomTitle, Converter={StaticResource BooleanVisibilityConverter}, Source={StaticResource Settings}}" />
 						<Grid Margin="0,10,0,0"
-							Visibility="{Binding AllowRandomTitle, Converter={StaticResource BooleanVisibilityConverter}, Source={StaticResource Settings}}">
+							Visibility="{Binding AllowRandomTitle, Converter={StaticResource BooleanVisibilityConverter}, Source={StaticResource Settings}}" >
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto" />
 								<ColumnDefinition />
@@ -156,7 +170,8 @@
 							<TextBlock TextWrapping="Wrap" Text="当前标题：" FontFamily="{StaticResource Font}"
 										FontSize="{StaticResource FontSize}" d:LayoutOverrides="LeftPosition, RightPosition" />
 							<TextBlock x:Name="CurrentTitleTextBlock" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Column="1"
-										FontFamily="{StaticResource Font}" FontSize="{StaticResource SmallFontSize}" VerticalAlignment="Center"
+										FontFamily="{StaticResource Font}" FontSize="{StaticResource SmallFontSize}"
+										VerticalAlignment="Center"
 										Text="{Binding GameTitle, Source={StaticResource Settings}}" />
 						</Grid>
 					</StackPanel>

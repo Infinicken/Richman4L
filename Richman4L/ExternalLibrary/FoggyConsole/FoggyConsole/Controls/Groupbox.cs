@@ -15,73 +15,84 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System;
+using System ;
 using System . Collections . Generic ;
-using System . Linq;
 
-using FoggyConsole . Controls . Events;
-using FoggyConsole . Controls . Renderers;
+using FoggyConsole . Controls . Renderers ;
 
-namespace FoggyConsole . Controls
+namespace FoggyConsole .Controls
 {
 
-    /// <summary>
-    ///     A <code>Container</code> which has a border.
-    /// </summary>
-    public class Groupbox : ItemsControl 
-    {
+	/// <summary>
+	///     A <code>Container</code> which has a border.
+	/// </summary>
+	public class Groupbox : ItemsControl
+	{
 
-        private string _header;
+		private LineStyle _boarderStyle = LineStyle . SingleLinesSet ;
 
-        /// <summary>
-        ///     A description of the contents inside this Groupbox for the user
-        /// </summary>
-        public string Header
-        {
-            get { return _header; }
-            set
-            {
-                if ( value == null )
-                {
-                    throw new ArgumentNullException ( );
-                }
-                if ( value . Any ( c => c == '\n' || c == '\r' ) )
-                {
-                    throw new ArgumentException ( $"{nameof ( Header )} can't contain linefeeds or carriage returns." );
-                }
 
-                if ( _header != value )
-                {
-                    _header = value;
-                    Draw ( );
-                }
-            }
-        }
+		private string _header = string . Empty ;
 
-        /// <summary>
-        ///     Creates a new <code>Groupbox</code>
-        /// </summary>
-        /// <param name="renderer">
-        ///     The <code>ControlRenderer</code> to use. If null a new instance of <code>GroupboxRenderer</code>
-        ///     will be used.
-        /// </param>
-        /// <exception cref="ArgumentException">
-        ///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
-        ///     Control assigned
-        /// </exception>
-        public Groupbox ( ControlRenderer<Groupbox> renderer = null ) : base ( renderer )
-        {
-            if ( renderer == null )
-            {
-                Renderer = new GroupboxRenderer ( this );
-            }
-            Header = string . Empty;
-        }
+		public LineStyle BoarderStyle
+		{
+			get { return _boarderStyle ; }
+			set
+			{
+				if ( _boarderStyle != value )
+				{
+					_boarderStyle = value ;
+					Draw ( ) ;
+				}
+			}
+		}
 
-        public override bool CanFocus => false;
 
-	    public override IList < Control > Items { get ; }
+		/// <summary>
+		///     A description of the contents inside this Groupbox for the user
+		/// </summary>
+		public string Header
+		{
+			get { return _header ; }
+			set
+			{
+				if ( value . Contains ( Environment . NewLine ) )
+				{
+					throw new ArgumentException ( $"{nameof ( Header )} can't contain linefeeds or carriage returns." ) ;
+				}
 
-    }
+				if ( _header != value )
+				{
+					_header = value ;
+					Draw ( ) ;
+				}
+			}
+		}
+
+		public override bool CanFocus => false ;
+
+		public override IList < Control > Items { get ; }
+
+		/// <summary>
+		///     Creates a new <code>Groupbox</code>
+		/// </summary>
+		/// <param name="renderer">
+		///     The <code>ControlRenderer</code> to use. If null a new instance of <code>GroupBoxRenderer</code>
+		///     will be used.
+		/// </param>
+		/// <exception cref="ArgumentException">
+		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Control assigned
+		/// </exception>
+		public Groupbox ( GroupBoxRenderer renderer = null ) : base ( renderer )
+		{
+			if ( renderer == null )
+			{
+				Renderer = new GroupBoxRenderer ( this ) ;
+			}
+			Header = string . Empty ;
+		}
+
+	}
 
 }

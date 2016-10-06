@@ -1,56 +1,58 @@
-﻿using System;
-using System . Reflection;
-using System . Xml . Linq;
+﻿using System ;
+using System . Reflection ;
+using System . Xml . Linq ;
 
-namespace FoggyConsole . Controls
+namespace FoggyConsole .Controls
 {
 
-    public abstract class Page : ContentControl
-    {
-        public override bool CanFocus => false ;
+	public abstract class Page : ContentControl
+	{
 
-        protected Page ( ) : base ( null ) { }
+		public override bool CanFocus => false ;
 
-        protected Page ( XElement page ) : this ( )
-        {
-            if ( page == null )
-            {
-                throw new ArgumentNullException ( nameof ( page ) );
-            }
+		protected Page ( ) : base ( null ) { }
 
-            foreach ( XElement control in page . Elements ( ) )
-            {
+		protected Page ( XElement page ) : this ( )
+		{
+			if ( page == null )
+			{
+				throw new ArgumentNullException ( nameof ( page ) ) ;
+			}
 
-            }
-        }
+			foreach ( XElement control in page . Elements ( ) )
+			{
+			}
+		}
 
-        public Control CrateControle ( XElement control )
-        {
-            Type controlType = Type . GetType ( typeof ( Page ) . Namespace + "." + control . Name );
-            if ( controlType == null )
-            {
-                throw new ArgumentException ( );
-            }
+		public Control CrateControle ( XElement control )
+		{
+			Type controlType = Type . GetType ( typeof ( Page ) . Namespace + "." + control . Name ) ;
+			if ( controlType == null )
+			{
+				throw new ArgumentException ( ) ;
+			}
 
-            Control currentControl = ( Control ) Activator . CreateInstance ( controlType );
-            foreach ( XAttribute attribute in control . Attributes ( ) )
-            {
-                PropertyInfo property = controlType . GetProperty ( attribute . Name . LocalName );
-                property . SetValue ( currentControl , Convert . ChangeType ( attribute . Value , property . PropertyType ) );
-            }
+			Control currentControl = ( Control ) Activator . CreateInstance ( controlType ) ;
+			foreach ( XAttribute attribute in control . Attributes ( ) )
+			{
+				PropertyInfo property = controlType . GetProperty ( attribute . Name . LocalName ) ;
+				property . SetValue ( currentControl , Convert . ChangeType ( attribute . Value , property . PropertyType ) ) ;
+			}
 
-            Container container = currentControl as Container;
-            if ( container != null )
-            {
-                foreach ( XElement child in control . Elements ( ) )
-                {
-                    Control childControl = CrateControle ( child );
-                    //	container . AddChild ( childControl );
-                }
-            }
+			Container container = currentControl as Container ;
+			if ( container != null )
+			{
+				foreach ( XElement child in control . Elements ( ) )
+				{
+					Control childControl = CrateControle ( child ) ;
 
-            return currentControl;
-        }
-    }
+					//	container . AddChild ( childControl );
+				}
+			}
+
+			return currentControl ;
+		}
+
+	}
 
 }

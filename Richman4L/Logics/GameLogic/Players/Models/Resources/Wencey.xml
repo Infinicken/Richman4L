@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 
-<Player Name="Wencey" Introduction="不是这个游戏的作者" Model="http://tp2.sinaimg.cn/1614891181/180/5722522103/1">
+<Player Name="Wencey" Introduction="不是这个游戏的作者" Model="http://tp2.sinaimg.cn/1614891181/180/5722522103/1" >
 	<SayingWhenGained>
 		<Saying Text="人类的希望!" />
 		<Saying Text="Gist!" />

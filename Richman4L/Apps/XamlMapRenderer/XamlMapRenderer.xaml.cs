@@ -68,7 +68,8 @@ namespace WenceyWang . Richman4L . App .XamlMapRenderer
 			}
 
 			MapObjectRendererType type =
-				MapObjectRendererTypeList . Find ( typ => typ . EntryType == mapRendererType && typ . TargetType == targetType ) ;
+				MapObjectRendererTypeList . Find (
+					typ => ( typ . EntryType == mapRendererType ) && ( typ . TargetType == targetType ) ) ;
 
 			if ( type != null )
 			{

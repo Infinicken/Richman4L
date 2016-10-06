@@ -30,8 +30,8 @@ namespace WenceyWang . Richman4L . App .CharacterMapRenderer
 
 		public bool Equals ( ConsoleChar other )
 			=>
-				Character == other . Character && ForegroundColor == other . ForegroundColor &&
-				BackgroundColor == other . BackgroundColor ;
+			( Character == other . Character ) && ( ForegroundColor == other . ForegroundColor ) &&
+			( BackgroundColor == other . BackgroundColor ) ;
 
 		public static implicit operator ConsoleChar ( char character )
 		{

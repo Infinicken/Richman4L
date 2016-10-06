@@ -112,9 +112,9 @@ namespace WenceyWang . Richman4L .Maps
 			//Todo:Load All internal type
 			foreach (
 				Type type in
-					Assembly . GetExecutingAssembly ( ) .
-								GetTypes ( ) .
-								Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
+				Assembly . GetExecutingAssembly ( ) .
+							GetTypes ( ) .
+							Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
 			{
 				RegisMapObjectType ( type . Name , type ) ;
 			}
@@ -154,14 +154,12 @@ namespace WenceyWang . Richman4L .Maps
 			{
 				return MapObjectTypes . Single ( type => type . Name == name ) ;
 			}
-			else
-			{
-				MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType ) ;
 
-				MapObjectTypes . Add ( mapObjectType ) ;
+			MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType ) ;
 
-				return mapObjectType ;
-			}
+			MapObjectTypes . Add ( mapObjectType ) ;
+
+			return mapObjectType ;
 		}
 
 

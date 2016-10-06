@@ -1,20 +1,13 @@
-using System;
+using System ;
 
-namespace FoggyConsole . Controls . Renderers
+namespace FoggyConsole . Controls .Renderers
 {
 
 	/// <summary>
 	///     Draws a <code>Label</code>-Control
 	/// </summary>
-	public class LabelRenderer : TextualBaseRenderer<Label>
+	public class LabelRenderer : ControlRenderer < Label >
 	{
-
-		/// <summary>
-		///     Creates a new <code>LabelRenderer</code>
-		/// </summary>
-		/// <param name="control"></param>
-		public LabelRenderer ( Label control )
-			: base ( control , "{1}" , 0 ) { }
 
 		/// <summary>
 		///     Draws the <code>Label</code> given in the Control-Property.
@@ -23,37 +16,47 @@ namespace FoggyConsole . Controls . Renderers
 		/// <exception cref="InvalidOperationException">Is thrown if the CalculateBoundary-Method hasn't been called.</exception>
 		public override void Draw ( )
 		{
-			base . Draw ( );
+			ConsoleArea result = new ConsoleArea ( Control . ActualSize , Control . ActualBackgroundColor ) ;
 
-			string text = Control . Text;
-			if ( text . Length > Control . RenderArea . Width )
+			switch ( Control . Align )
 			{
-				text = text . Substring ( 0 , Control . RenderArea. Width );
-			}
-			else
-			{
-				switch ( Control . Align )
+				case ContentAlign . Left :
 				{
-					case ContentAlign . Left:
-						{
-							text = text . PadRight ( Control . RenderArea. Width );
-							break;
-						}
-					case ContentAlign . Center:
-						{
-							string fillStr = new string ( ' ' , ( Control . RenderArea. Width - text . Length ) / 2 );
-							text = fillStr + text + fillStr;
-							break;
-						}
-					case ContentAlign . Right:
-						{
-							text = text . PadLeft ( Control . RenderArea. Width );
-							break;
-						}
+					for ( int x = 0 ; ( x < Control . ActualWidth ) && ( x < Control . Text . Length ) ; x++ )
+					{
+						result [ x , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
+															Control . ActualForegroundColor ,
+															Control . ActualBackgroundColor ) ;
+					}
+
+					break ;
+				}
+				case ContentAlign . Center :
+				{
+					int startPosition = ( Control . RenderArea . Width - Control . Text . Length ) / 2 ;
+					for ( int x = 0 ; ( x < Control . ActualWidth ) && ( x < Control . Text . Length ) ; x++ )
+					{
+						result [ x + startPosition , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
+																			Control . ActualForegroundColor ,
+																			Control . ActualBackgroundColor ) ;
+					}
+
+					break ;
+				}
+				case ContentAlign . Right :
+				{
+					for ( int x = 0 ; ( x < Control . ActualWidth ) && ( x < Control . Text . Length ) ; x++ )
+					{
+						result [ Control . ActualWidth - 1 - x , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
+																						Control . ActualForegroundColor ,
+																						Control . ActualBackgroundColor ) ;
+					}
+
+					break ;
 				}
 			}
 
-			base . Draw ( Control . ForegroundColor , Control . BackgroundColor , text );
+			FogConsole . Draw ( Control . RenderPoint , result ) ;
 		}
 
 	}

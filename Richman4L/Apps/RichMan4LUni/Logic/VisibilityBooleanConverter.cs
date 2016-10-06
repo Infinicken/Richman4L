@@ -15,10 +15,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			{
 				return Visibility . Visible ;
 			}
-			else
-			{
-				return Visibility . Collapsed ;
-			}
+
+			return Visibility . Collapsed ;
 		}
 
 		public object ConvertBack ( object value , Type targetType , object parameter , string language )
@@ -27,10 +25,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			{
 				return true ;
 			}
-			else
-			{
-				return false ;
-			}
+
+			return false ;
 		}
 
 	}

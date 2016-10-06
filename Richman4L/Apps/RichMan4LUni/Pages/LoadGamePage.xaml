@@ -4,9 +4,9 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" Loaded="Page_Loaded">
+	mc:Ignorable="d" Loaded="Page_Loaded" >
 
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="40" />
 			<ColumnDefinition />
@@ -30,7 +30,7 @@
 		<StackPanel Grid.Column="1" Grid.Row="5" />
 		<Button x:Name="MainPageButton" Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="6"
 				VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" FontFamily="{StaticResource Font}"
-				FontSize="21.333" Click="MainPageButton_Click" d:LayoutOverrides="HorizontalAlignment">
+				FontSize="21.333" Click="MainPageButton_Click" d:LayoutOverrides="HorizontalAlignment" >
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
@@ -42,7 +42,7 @@
 				<TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"
 							FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Text="&#xF060;" HorizontalAlignment="Center"
 							VerticalAlignment="Center" FontWeight="Light" />
-				<Rectangle Grid.ColumnSpan="3">
+				<Rectangle Grid.ColumnSpan="3" >
 					<Rectangle.Fill>
 						<SolidColorBrush Color="{StaticResource Transparent}" />
 					</Rectangle.Fill>
@@ -51,8 +51,8 @@
 		</Button>
 		<Button x:Name="StartGameButton" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Grid.Row="6"
 				VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" FontFamily="Segoe UI Symbol"
-				FontSize="21.333" d:LayoutOverrides="HorizontalAlignment" Click="StartGameButton_Click">
-			<Grid Margin="0">
+				FontSize="21.333" d:LayoutOverrides="HorizontalAlignment" Click="StartGameButton_Click" >
+			<Grid Margin="0" >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="5" />
@@ -63,7 +63,7 @@
 				<TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"
 							FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Text="&#xF061;" Grid.Column="2"
 							HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Light" />
-				<Rectangle Grid.ColumnSpan="2">
+				<Rectangle Grid.ColumnSpan="2" >
 					<Rectangle.Fill>
 						<SolidColorBrush Color="{StaticResource Transparent}" />
 					</Rectangle.Fill>

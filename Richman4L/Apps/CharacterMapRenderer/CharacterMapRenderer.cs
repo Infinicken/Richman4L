@@ -163,7 +163,7 @@ namespace WenceyWang . Richman4L . App .CharacterMapRenderer
 
 			MapObjectRendererType type =
 				MapObjectRendererTypeList . FirstOrDefault (
-					typ => typ . EntryType == mapRendererType && typ . TargetType == targetType ) ;
+					typ => ( typ . EntryType == mapRendererType ) && ( typ . TargetType == targetType ) ) ;
 
 			if ( type != null )
 			{

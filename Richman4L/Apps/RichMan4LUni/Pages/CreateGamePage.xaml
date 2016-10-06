@@ -6,14 +6,14 @@
 	xmlns:GameClassLibrary="using:WenceyWang.Richman4L"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.CreateGamePage"
 	mc:Ignorable="d"
-	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" Height="Auto" Width="Auto">
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" Height="Auto" Width="Auto" >
 	<Page.Resources>
-		<x:String x:Key="ConditionsToWinString">获胜条件</x:String>
-		<x:Double x:Key="FlyoutThemeMinHeight">43</x:Double>
-		<Thickness x:Key="FlyoutContentPanelPortraitThemeMargin">0,25.5,0,0</Thickness>
-		<Thickness x:Key="FlyoutContentPanelLandscapeThemeMargin">0,0,0,0</Thickness>
-		<Flyout x:Key="ConditionsToWinFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}">
-			<Grid Background="{StaticResource DarkLime}">
+		<x:String x:Key="ConditionsToWinString" >获胜条件</x:String>
+		<x:Double x:Key="FlyoutThemeMinHeight" >43</x:Double>
+		<Thickness x:Key="FlyoutContentPanelPortraitThemeMargin" >0,25.5,0,0</Thickness>
+		<Thickness x:Key="FlyoutContentPanelLandscapeThemeMargin" >0,0,0,0</Thickness>
+		<Flyout x:Key="ConditionsToWinFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
+			<Grid Background="{StaticResource DarkLime}" >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="20" />
 					<ColumnDefinition />
@@ -32,7 +32,7 @@
 				<ListBox x:Name="ConditionsToWinList" Margin="0" Grid.Column="1" Grid.Row="3" Background="#33FFFFFF"
 						d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Foreground="White"
 						FontFamily="{StaticResource Font}" FontSize="18.667" SelectedIndex="0" BorderBrush="{x:Null}"
-						SelectionChanged="ConditionsToWinList_SelectionChanged" Loaded="ConditionsToWinList_SelectionChanged">
+						SelectionChanged="ConditionsToWinList_SelectionChanged" Loaded="ConditionsToWinList_SelectionChanged" >
 					<x:String>资产最多</x:String>
 					<x:String>$500,000</x:String>
 					<x:String>$1,000,000</x:String>
@@ -40,9 +40,9 @@
 				</ListBox>
 			</Grid>
 		</Flyout>
-		<x:String x:Key="MoneyStartString">起始资金</x:String>
-		<Flyout x:Key="MoneyStartFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}">
-			<Grid Background="{StaticResource DarkLime}">
+		<x:String x:Key="MoneyStartString" >起始资金</x:String>
+		<Flyout x:Key="MoneyStartFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
+			<Grid Background="{StaticResource DarkLime}" >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="20" />
 					<ColumnDefinition />
@@ -61,16 +61,16 @@
 				<ListBox x:Name="MoneyStartList" Margin="0" Grid.Column="1" Grid.Row="3" Background="#33FFFFFF"
 						d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Foreground="White"
 						FontFamily="{StaticResource Font}" FontSize="18.667" SelectedIndex="0"
-						SelectionChanged="MoneyStartList_SelectionChanged" Loaded="MoneyStartList_SelectionChanged">
+						SelectionChanged="MoneyStartList_SelectionChanged" Loaded="MoneyStartList_SelectionChanged" >
 					<x:String>$200,000</x:String>
 					<x:String>$100,000</x:String>
 					<x:String>$50,000</x:String>
 				</ListBox>
 			</Grid>
 		</Flyout>
-		<x:String x:Key="GameTimeString">游戏时间</x:String>
-		<Flyout x:Key="GameTimeFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}">
-			<Grid Background="{StaticResource DarkLime}">
+		<x:String x:Key="GameTimeString" >游戏时间</x:String>
+		<Flyout x:Key="GameTimeFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
+			<Grid Background="{StaticResource DarkLime}" >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="20" />
 					<ColumnDefinition />
@@ -89,7 +89,7 @@
 				<ListBox x:Name="GameTimeList" Margin="0" Grid.Column="1" Grid.Row="3" Background="#33FFFFFF"
 						d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Foreground="White"
 						FontFamily="{StaticResource Font}" FontSize="18.667" SelectedIndex="0"
-						SelectionChanged="GameTimeList_SelectionChanged" Loaded="GameTimeList_SelectionChanged">
+						SelectionChanged="GameTimeList_SelectionChanged" Loaded="GameTimeList_SelectionChanged" >
 					<x:String>无限</x:String>
 					<x:String>50周</x:String>
 					<x:String>25周</x:String>
@@ -98,62 +98,62 @@
 				</ListBox>
 			</Grid>
 		</Flyout>
-		<x:String x:Key="GameMapString">地图</x:String>
-		<Storyboard x:Name="StartStoryBoard">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+		<x:String x:Key="GameMapString" >地图</x:String>
+		<Storyboard x:Name="StartStoryBoard" >
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="CreateGamePageDownImage">
+											Storyboard.TargetName="CreateGamePageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
-											Storyboard.TargetName="CreateGamePageDownImage">
-				<DiscreteObjectKeyFrame KeyTime="0">
+											Storyboard.TargetName="CreateGamePageDownImage" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:0.5">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
 			</ObjectAnimationUsingKeyFrames>
 		</Storyboard>
-		<Storyboard x:Name="LeaveStoryBoard">
+		<Storyboard x:Name="LeaveStoryBoard" >
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid">
+				Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="640" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-											Storyboard.TargetName="CreateGamePageDownImage">
+											Storyboard.TargetName="CreateGamePageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
-											Storyboard.TargetName="CreateGamePageDownImage">
-				<DiscreteObjectKeyFrame KeyTime="0">
+											Storyboard.TargetName="CreateGamePageDownImage" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:0.5">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
 					</DiscreteObjectKeyFrame.Value>
@@ -164,9 +164,9 @@
 
 	<Grid>
 		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup x:Name="VisualStateGroup">
+			<VisualStateGroup x:Name="VisualStateGroup" >
 				<VisualState x:Name="Mobile" />
-				<VisualState x:Name="Wide">
+				<VisualState x:Name="Wide" >
 					<VisualState.Setters>
 						<Setter Target="InfoGrid.(Grid.ColumnSpan)" Value="1" />
 						<Setter Target="MapGrid.(Grid.Row)" Value="1" />
@@ -188,7 +188,7 @@
 						<AdaptiveTrigger MinWindowWidth="640" />
 					</VisualState.StateTriggers>
 				</VisualState>
-				<VisualState x:Name="Large">
+				<VisualState x:Name="Large" >
 					<VisualState.Setters>
 						<Setter Target="InfoGrid.(Grid.ColumnSpan)" Value="1" />
 						<Setter Target="MapGrid.(Grid.Row)" Value="3" />
@@ -216,7 +216,7 @@
 		<Image x:Name="CreateGamePageDownImage" Margin="0" Source="ms-appx:///Pages/ImageResources/CreateGamePageDown.png"
 				Stretch="UniformToFill" VerticalAlignment="Bottom" />
 
-		<Grid x:Name="MainGrid" Margin="0" RenderTransformOrigin="0.5,0.5">
+		<Grid x:Name="MainGrid" Margin="0" RenderTransformOrigin="0.5,0.5" >
 			<Grid.RenderTransform>
 				<CompositeTransform />
 			</Grid.RenderTransform>
@@ -241,7 +241,7 @@
 			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="创建游戏" FontFamily="{StaticResource Font}"
 						FontSize="{StaticResource LargeTitle}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
 			<Grid x:Name="InfoGrid" Grid.Column="1" Grid.Row="3" d:LayoutOverrides="LeftPosition, RightPosition"
-				Grid.ColumnSpan="3">
+				Grid.ColumnSpan="3" >
 				<Grid.RowDefinitions>
 					<RowDefinition x:Name="Row6" Height="0" />
 					<RowDefinition Height="Auto" />
@@ -281,7 +281,7 @@
 						Flyout="{StaticResource GameTimeFlyout}" Loaded="GameTimeList_SelectionChanged" Grid.Row="5" />
 			</Grid>
 			<Grid x:Name="MapGrid" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"
-				d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+				d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
 					<RowDefinition Height="8" />
@@ -293,17 +293,19 @@
 							FontSize="{StaticResource BigFontSize}"
 							d:LayoutOverrides="Height, LeftPosition, RightPosition, TopPosition, BottomPosition"
 							Text="{StaticResource GameMapString}" />
-				<Grid d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.Row="2" Grid.RowSpan="3">
+				<Grid d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.Row="2" Grid.RowSpan="3" >
 					<FlipView x:Name="GameMapView" Margin="0" d:LayoutOverrides="LeftPosition, RightPosition" />
 				</Grid>
 				<TextBlock x:Name="GameMapText" TextWrapping="Wrap" FontFamily="{StaticResource Font}"
 							FontSize="{StaticResource BigFontSize}" Text="{StaticResource GameMapString}"
-							d:LayoutOverrides="Height, LeftPosition, RightPosition, TopPosition, BottomPosition" TextAlignment="Center"
+							d:LayoutOverrides="Height, LeftPosition, RightPosition, TopPosition, BottomPosition"
+							TextAlignment="Center"
 							Grid.Row="3" />
 			</Grid>
 			<Button x:Name="MainPageButton" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Stretch"
 					Style="{StaticResource LeftArrowTextBlockButtonStyle}" FontFamily="{StaticResource Font}"
-					d:LayoutOverrides="TopPosition, BottomPosition" FontSize="{StaticResource FontSize}" Click="MainPageButton_Click"
+					d:LayoutOverrides="TopPosition, BottomPosition" FontSize="{StaticResource FontSize}"
+					Click="MainPageButton_Click"
 					Content="主界面" />
 			<Button x:Name="PlayerConfigPageButton" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="7"
 					VerticalAlignment="Stretch" Style="{StaticResource RightArrowTextBlockButtonStyle}"

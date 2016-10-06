@@ -48,8 +48,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			}
 
 			//Todo:加入对是否收费的判断
-			if ( State == BuildingState . Working &&
-				player != Owner )
+			if ( ( State == BuildingState . Working ) &&
+				( player != Owner ) )
 			{
 			}
 			base . Pass ( player ) ;

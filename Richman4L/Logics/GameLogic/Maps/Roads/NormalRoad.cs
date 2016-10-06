@@ -38,8 +38,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _forwardRoad == null &&
-					_forwardRoadId == null )
+				if ( ( _forwardRoad == null ) &&
+					( _forwardRoadId == null ) )
 				{
 					return null ;
 				}
@@ -57,8 +57,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( _backwardRoad == null &&
-					_backwardRoadId == null )
+				if ( ( _backwardRoad == null ) &&
+					( _backwardRoadId == null ) )
 				{
 					return null ;
 				}
@@ -103,35 +103,27 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 			Path current = result ?? new Path ( ) ;
 			current . AddRoute ( this ) ;
-			if ( BlockMoving || moveCount == 0 )
+			if ( BlockMoving || ( moveCount == 0 ) )
 			{
 				return current ;
 			}
-			else
+
+			if ( BackwardRoad == previous )
 			{
-				if ( BackwardRoad == previous )
+				if ( ForwardRoad . CanEnterFrom ( this ) )
 				{
-					if ( ForwardRoad . CanEnterFrom ( this ) )
-					{
-						return ForwardRoad . Route ( this , moveCount - 1 , current ) ;
-					}
-					else
-					{
-						return BackwardRoad . Route ( this , moveCount - 1 , current ) ;
-					}
+					return ForwardRoad . Route ( this , moveCount - 1 , current ) ;
 				}
-				else
-				{
-					if ( BackwardRoad . CanEnterFrom ( this ) )
-					{
-						return BackwardRoad . Route ( this , moveCount - 1 , current ) ;
-					}
-					else
-					{
-						return ForwardRoad . Route ( this , moveCount - 1 , current ) ;
-					}
-				}
+
+				return BackwardRoad . Route ( this , moveCount - 1 , current ) ;
 			}
+
+			if ( BackwardRoad . CanEnterFrom ( this ) )
+			{
+				return BackwardRoad . Route ( this , moveCount - 1 , current ) ;
+			}
+
+			return ForwardRoad . Route ( this , moveCount - 1 , current ) ;
 		}
 
 		protected override void Dispose ( bool disposing )
@@ -141,7 +133,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			base . Dispose ( disposing ) ;
 		}
 
-		public override bool CanEnterFrom ( Road road ) => road == ForwardRoad || road == BackwardRoad ;
+		public override bool CanEnterFrom ( Road road ) => ( road == ForwardRoad ) || ( road == BackwardRoad ) ;
 
 	}
 

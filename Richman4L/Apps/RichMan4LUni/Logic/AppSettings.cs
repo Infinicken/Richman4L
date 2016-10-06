@@ -172,7 +172,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 				return defaultValue ;
 			}
 
-			return default ( T ) ;
+			return default( T ) ;
 		}
 
 		protected void NotifyPropertyChanged ( [ CallerMemberName ] string propName = "" )

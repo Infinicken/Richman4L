@@ -7,7 +7,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 	d:DesignHeight="56"
-	d:DesignWidth="112">
+	d:DesignWidth="112" >
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -16,37 +16,37 @@
 
 		</ResourceDictionary>
 	</UserControl.Resources>
-	<Grid x:Name="HeightGrid" RenderTransformOrigin="0.5,0.5">
+	<Grid x:Name="HeightGrid" RenderTransformOrigin="0.5,0.5" >
 		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup x:Name="VisualStateGroup">
+			<VisualStateGroup x:Name="VisualStateGroup" >
 				<VisualStateGroup.Transitions>
 					<VisualTransition From="ShowState" GeneratedDuration="0" To="HideState"
-									GeneratedEasingFunction="{StaticResource EasingFunction}">
-						<Storyboard x:Name="HideStoryboard">
+									GeneratedEasingFunction="{StaticResource EasingFunction}" >
+						<Storyboard x:Name="HideStoryboard" >
 							<DoubleAnimationUsingKeyFrames
 								Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
-								Storyboard.TargetName="MainGrid">
+								Storyboard.TargetName="MainGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="1" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2" />
 							</DoubleAnimationUsingKeyFrames>
 							<DoubleAnimationUsingKeyFrames
 								Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
-								Storyboard.TargetName="MainGrid">
+								Storyboard.TargetName="MainGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="1" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2" />
 							</DoubleAnimationUsingKeyFrames>
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="1" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
 							</DoubleAnimationUsingKeyFrames>
 							<DoubleAnimationUsingKeyFrames
 								Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-								Storyboard.TargetName="HeightGrid">
+								Storyboard.TargetName="HeightGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="0" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="28" />
 							</DoubleAnimationUsingKeyFrames>
 							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-															Storyboard.TargetName="HeightGrid">
+															Storyboard.TargetName="HeightGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="1" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
 							</DoubleAnimationUsingKeyFrames>
@@ -54,45 +54,45 @@
 
 					</VisualTransition>
 					<VisualTransition From="HideState" GeneratedDuration="0" To="ShowState"
-									GeneratedEasingFunction="{StaticResource EasingFunction}">
-						<Storyboard x:Name="ShowStoryboard">
+									GeneratedEasingFunction="{StaticResource EasingFunction}" >
+						<Storyboard x:Name="ShowStoryboard" >
 							<DoubleAnimationUsingKeyFrames
 								Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
-								Storyboard.TargetName="MainGrid">
+								Storyboard.TargetName="MainGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="0.2" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
 							</DoubleAnimationUsingKeyFrames>
 							<DoubleAnimationUsingKeyFrames
 								Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
-								Storyboard.TargetName="MainGrid">
+								Storyboard.TargetName="MainGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="0.2" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
 							</DoubleAnimationUsingKeyFrames>
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="0" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
 							</DoubleAnimationUsingKeyFrames>
 							<DoubleAnimationUsingKeyFrames
 								Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-								Storyboard.TargetName="HeightGrid">
+								Storyboard.TargetName="HeightGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="28" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
 							</DoubleAnimationUsingKeyFrames>
 							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
-															Storyboard.TargetName="HeightGrid">
+															Storyboard.TargetName="HeightGrid" >
 								<EasingDoubleKeyFrame KeyTime="0" Value="0" />
 								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
 							</DoubleAnimationUsingKeyFrames>
 						</Storyboard>
 					</VisualTransition>
 				</VisualStateGroup.Transitions>
-				<VisualState x:Name="ShowState">
+				<VisualState x:Name="ShowState" >
 					<Storyboard>
 						<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)"
 										Storyboard.TargetName="HeightGrid" d:IsOptimized="True" />
 					</Storyboard>
 				</VisualState>
-				<VisualState x:Name="HideState">
+				<VisualState x:Name="HideState" >
 					<Storyboard>
 						<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)"
 										Storyboard.TargetName="HeightGrid" d:IsOptimized="True" />
@@ -104,8 +104,8 @@
 			<CompositeTransform />
 		</Grid.RenderTransform>
 		<Grid x:Name="TransformGrid" Width="112" Height="112" Margin="{StaticResource MapObjMargin}"
-			RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}">
-			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5">
+			RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}" >
+			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform />
 				</Grid.RenderTransform>

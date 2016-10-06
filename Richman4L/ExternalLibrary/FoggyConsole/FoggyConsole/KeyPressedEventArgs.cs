@@ -11,7 +11,7 @@ namespace FoggyConsole
 
 		public bool Handled { get ; set ; }
 
-	    /// <summary>
+		/// <summary>
 		///     The key which was pressed
 		/// </summary>
 		public ConsoleKeyInfo KeyInfo { get ; private set ; }

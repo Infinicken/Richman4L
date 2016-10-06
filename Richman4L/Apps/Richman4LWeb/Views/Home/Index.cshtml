@@ -1,31 +1,42 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+	ViewBag . Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+	<h1>@(nameof ( WenceyWang . Richman4L ))</h1>
+	<p class="lead">Richman4L is a small game similar to Richman4Fun.</p>
+	<p>
+		<a href="@(Url.Action( "Download" ))" class="btn btn-primary btn-lg">Download &raquo;</a>
+	</p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+	<div class="col-md-4">
+		<h2>Develop with us</h2>
+		<p>
+			Like this project? Want to help this project better? No more wait!
+		</p>
+		<p>
+			<a class="btn btn-default" href="https://github.com/Infinicken/Richman4L">Github Repo &raquo;</a>
+		</p>
+	</div>
+	<div class="col-md-4">
+		<h2>Richman4L as Library</h2>
+		<p>
+			Richman4L is also a lib that can help you to build more richman game.
+			You can easyly crate a game run on every where.
+		</p>
+		<p>
+			<a class="btn btn-default" href="@(Url.Action( "Download" ))">Download &raquo;</a>
+		</p>
+	</div>
+	<div class="col-md-4">
+		<h2>Want something else?</h2>
+		<p>
+			Just send me an email!
+		</p>
+		<p>
+			<a class="btn btn-default" href="@(Url.Action( "Contact" ))">Contact &raquo;</a>
+		</p>
+	</div>
 </div>

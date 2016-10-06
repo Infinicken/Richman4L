@@ -10,7 +10,7 @@
 	x:Class="WenceyWang.Richman4L.App.XamlMapRenderer.XamlMapRenderer"
 	mc:Ignorable="d"
 	d:DesignHeight="600"
-	d:DesignWidth="1800">
+	d:DesignWidth="1800" >
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -19,7 +19,7 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 
-	<Grid x:Name="MainGrid">
+	<Grid x:Name="MainGrid" >
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition />
@@ -35,53 +35,53 @@
 				<RowDefinition />
 				<RowDefinition />
 			</Grid.RowDefinitions>
-			<StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" Width="1800" Grid.Row="9">
+			<StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" Width="1800" Grid.Row="9" >
 				<StackPanel.RenderTransform>
 					<CompositeTransform TranslateX="125" />
 				</StackPanel.RenderTransform>
 				<Roads:NormalRoadRenderer HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50"
-										RenderTransformOrigin="0.5,0.5">
+										RenderTransformOrigin="0.5,0.5" >
 					<Roads:NormalRoadRenderer.RenderTransform>
 						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143" />
 					</Roads:NormalRoadRenderer.RenderTransform>
 				</Roads:NormalRoadRenderer>
 				<Roads:NormalRoadRenderer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"
-										RenderTransformOrigin="0.5,0.5">
+										RenderTransformOrigin="0.5,0.5" >
 					<Roads:NormalRoadRenderer.RenderTransform>
 						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143" />
 					</Roads:NormalRoadRenderer.RenderTransform>
 				</Roads:NormalRoadRenderer>
 				<Roads:NormalRoadRenderer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"
-										RenderTransformOrigin="0.5,0.5">
+										RenderTransformOrigin="0.5,0.5" >
 					<Roads:NormalRoadRenderer.RenderTransform>
 						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143" />
 					</Roads:NormalRoadRenderer.RenderTransform>
 				</Roads:NormalRoadRenderer>
 				<Roads:NormalRoadRenderer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"
-										RenderTransformOrigin="0.5,0.5">
+										RenderTransformOrigin="0.5,0.5" >
 					<Roads:NormalRoadRenderer.RenderTransform>
 						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143" />
 					</Roads:NormalRoadRenderer.RenderTransform>
 				</Roads:NormalRoadRenderer>
 				<Roads:NormalRoadRenderer Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"
-										RenderTransformOrigin="0.5,0.5">
+										RenderTransformOrigin="0.5,0.5" >
 					<Roads:NormalRoadRenderer.RenderTransform>
 						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143" />
 					</Roads:NormalRoadRenderer.RenderTransform>
 				</Roads:NormalRoadRenderer>
 				<buildings:SmallHouseRenderer HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="50"
-											RenderTransformOrigin="0.5,0.5">
+											RenderTransformOrigin="0.5,0.5" >
 					<buildings:SmallHouseRenderer.RenderTransform>
 						<CompositeTransform ScaleX="0.833333333333333" ScaleY="0.833333333333333" />
 					</buildings:SmallHouseRenderer.RenderTransform>
 				</buildings:SmallHouseRenderer>
-				<mapObjectRenderers:SmallAreaRenderer Width="100" RenderTransformOrigin="0.5,0.5">
+				<mapObjectRenderers:SmallAreaRenderer Width="100" RenderTransformOrigin="0.5,0.5" >
 					<mapObjectRenderers:SmallAreaRenderer.RenderTransform>
 						<CompositeTransform ScaleX="0.892857142857143" ScaleY="0.892857142857143" />
 					</mapObjectRenderers:SmallAreaRenderer.RenderTransform>
 				</mapObjectRenderers:SmallAreaRenderer>
 			</StackPanel>
-			<StackPanel Orientation="Horizontal" Grid.Row="11" RenderTransformOrigin="0.5,0.5">
+			<StackPanel Orientation="Horizontal" Grid.Row="11" RenderTransformOrigin="0.5,0.5" >
 				<StackPanel.RenderTransform>
 					<CompositeTransform TranslateX="25" />
 				</StackPanel.RenderTransform>
@@ -98,7 +98,7 @@
 				<mapObjectRenderers:EmptyBlockRenderer Width="100" Height="50" RenderTransformOrigin="0.5,0.5" />
 				<mapObjectRenderers:EmptyBlockRenderer Width="100" Height="50" RenderTransformOrigin="0.5,0.5" />
 			</StackPanel>
-			<StackPanel Orientation="Horizontal" Grid.Row="10" RenderTransformOrigin="0.5,0.5">
+			<StackPanel Orientation="Horizontal" Grid.Row="10" RenderTransformOrigin="0.5,0.5" >
 				<StackPanel.RenderTransform>
 					<CompositeTransform TranslateX="75" />
 				</StackPanel.RenderTransform>

@@ -15,16 +15,11 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System;
-using System . Collections;
-using System . Collections . Generic;
-using System . Diagnostics;
-using System . Linq;
+using System . Collections . Generic ;
 
-using FoggyConsole . Controls . Events;
-using FoggyConsole . Controls . Renderers;
+using FoggyConsole . Controls . Renderers ;
 
-namespace FoggyConsole . Controls
+namespace FoggyConsole .Controls
 {
 
 	/// <summary>
@@ -33,56 +28,51 @@ namespace FoggyConsole . Controls
 	public abstract class Container : Control
 	{
 
-	    public abstract IList<Control> Chrildren { get; }
+		public abstract IList < Control > Chrildren { get ; }
 
-		public List<Control> GetAllItem ( )
+		public Container ( IControlRenderer renderer = null ) : base ( renderer ) { }
+
+		public List < Control > GetAllItem ( )
 		{
-			List<Control> controlList = new List<Control> ( );
+			List < Control > controlList = new List < Control > ( ) ;
 
 			foreach ( Control control in Chrildren )
 			{
-				Container container = control as Container;
+				Container container = control as Container ;
 				if ( container != null )
 				{
-					controlList . AddRange ( container . GetAllItem ( ) );
+					controlList . AddRange ( container . GetAllItem ( ) ) ;
 				}
 				else
 				{
-					controlList . Add ( control );
+					controlList . Add ( control ) ;
 				}
 			}
 
-			return controlList;
+			return controlList ;
 		}
-
-		public Container ( IControlRenderer renderer = null ) : base ( renderer ) { }
 
 	}
 
 	public abstract class ContentControl : Container
 	{
 
-		public abstract Control Content { get; set; }
+		public abstract Control Content { get ; set ; }
 
-	    public override IList<Control> Chrildren => new List<Control> { Content };
+		public override IList < Control > Chrildren => new List < Control > { Content } ;
 
-		public ContentControl ( IControlRenderer renderer ) : base ( renderer )
-		{
-
-		}
+		protected ContentControl ( IControlRenderer renderer ) : base ( renderer ) { }
 
 	}
 
 	public abstract class ItemsControl : Container
 	{
-		public abstract IList<Control> Items { get; }
 
-	    public override IList<Control> Chrildren => Items;
+		public abstract IList < Control > Items { get ; }
 
-		protected ItemsControl ( IControlRenderer renderer ) : base ( renderer )
-		{
+		public override IList < Control > Chrildren => Items ;
 
-		}
+		protected ItemsControl ( IControlRenderer renderer ) : base ( renderer ) { }
 
 	}
 

@@ -48,10 +48,8 @@ namespace WenceyWang . Richman4L .Weathers
 			{
 				return Convert . ToInt32 ( Math . Floor ( moveCount * ( Convert . ToDouble ( Wind . Strength - 600 ) / 350d ) ) ) ;
 			}
-			else
-			{
-				return 0 ;
-			}
+
+			return 0 ;
 		}
 
 		public long BuildAddMoney ( long price )
@@ -60,10 +58,8 @@ namespace WenceyWang . Richman4L .Weathers
 			{
 				return Convert . ToInt64 ( Convert . ToDouble ( price ) * Convert . ToDouble ( Wind . Strength - 600 ) / 300d ) ;
 			}
-			else
-			{
-				return 0 ;
-			}
+
+			return 0 ;
 		}
 
 		public Weather Clone ( )
@@ -190,9 +186,6 @@ namespace WenceyWang . Richman4L .Weathers
 				case Season . Summer :
 				{
 					if ( GameRandom . Current . Next ( 2 ) == 1 )
-					{
-					}
-					else
 					{
 					}
 					break ;

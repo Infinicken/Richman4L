@@ -32,10 +32,8 @@ namespace WenceyWang . Richman4L .Banks
 				{
 					return Convert . ToInt64 ( MoneySaved * ( 1 + InterestRate ) ) ;
 				}
-				else
-				{
-					return MoneySaved ;
-				}
+
+				return MoneySaved ;
 			}
 		}
 

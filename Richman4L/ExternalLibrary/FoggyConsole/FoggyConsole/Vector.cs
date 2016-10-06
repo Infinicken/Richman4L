@@ -37,6 +37,17 @@ namespace FoggyConsole
 			Y = y ;
 		}
 
+		public Vector ( Point point )
+		{
+			X = point . X ;
+			Y = point . Y ;
+		}
+
+		public Vector ( Size size )
+		{
+			X = size . Width ;
+			Y = size . Height ;
+		}
 
 		/// <summary>
 		///     CrossProduct - Returns the cross product: vector1.X*vector2.Y - vector1.Y*vector2.X

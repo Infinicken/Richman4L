@@ -6,7 +6,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	RequestedTheme="Dark">
+	RequestedTheme="Dark" >
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -22,7 +22,7 @@
 				<ResourceDictionary Source="XAMLResources\SettingToggleSwitchStyle.xaml" />
 				<ResourceDictionary Source="XAMLResources\ListBoxStyle.xaml" />
 			</ResourceDictionary.MergedDictionaries>
-			<Style x:Key="FlyoutPresenterStyle" TargetType="FlyoutPresenter">
+			<Style x:Key="FlyoutPresenterStyle" TargetType="FlyoutPresenter" >
 				<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 				<Setter Property="VerticalContentAlignment" Value="Stretch" />
 				<Setter Property="IsTabStop" Value="True" />
@@ -30,18 +30,18 @@
 				<Setter Property="ScrollViewer.HorizontalScrollMode" Value="Auto" />
 				<Setter Property="ScrollViewer.VerticalScrollMode" Value="Auto" />
 				<Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
-				<Setter Property="Template">
+				<Setter Property="Template" >
 					<Setter.Value>
-						<ControlTemplate TargetType="FlyoutPresenter">
+						<ControlTemplate TargetType="FlyoutPresenter" >
 							<Border x:Name="Background" BorderBrush="{TemplateBinding BorderBrush}"
 									BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
-									FlowDirection="LeftToRight">
+									FlowDirection="LeftToRight" >
 								<VisualStateManager.VisualStateGroups>
-									<VisualStateGroup x:Name="OrientationStates">
+									<VisualStateGroup x:Name="OrientationStates" >
 										<VisualState x:Name="Portrait" />
-										<VisualState x:Name="Landscape">
+										<VisualState x:Name="Landscape" >
 											<Storyboard>
-												<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="ScrollViewer">
+												<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="ScrollViewer" >
 													<!--<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource FlyoutContentPanelLandscapeThemeMargin}"/>-->
 												</ObjectAnimationUsingKeyFrames>
 											</Storyboard>
@@ -54,11 +54,13 @@
 											HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
 											VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
 											VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
-											ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+											ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}" >
 									<!--Margin="{ThemeResource FlyoutContentPanelPortraitThemeMargin}"-->
 									<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
-													ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}"
-													HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+													ContentTransitions="{TemplateBinding ContentTransitions}"
+													Content="{TemplateBinding Content}"
+													HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+													Margin="{TemplateBinding Padding}"
 													VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 								</ScrollViewer>
 							</Border>

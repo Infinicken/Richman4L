@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="using:WenceyWang.Richman4L.Apps.Uni">
+	xmlns:local="using:WenceyWang.Richman4L.Apps.Uni" >
 	<SolidColorBrush x:Key="Cyan" Color="#FF00AAAA" />
 	<SolidColorBrush x:Key="TransparentCran" Color="#33006464" />
 	<SolidColorBrush x:Key="Lime" Color="#FF5cA210" />
@@ -15,7 +15,7 @@
 	<SolidColorBrush x:Key="TransparentDeepRed" Color="#7F330819" />
 	<SolidColorBrush x:Key="DarkBlue" Color="#FF091A46" />
 	<SolidColorBrush x:Key="LightBlie" Color="#FF3BCB7C" />
-	<Color x:Key="Transparent">#01FFFFFF</Color>
+	<Color x:Key="Transparent" >#01FFFFFF</Color>
 
 
 </ResourceDictionary>

@@ -32,10 +32,10 @@ namespace WenceyWang . Richman4L . Players .Commands
 		public PlayerMoveCommand ( Player performer ) : base ( performer )
 		{
 			PlayerCommandArgumentInfo diceType = new PlayerCommandArgumentInfo (
-				"" ,
-				"" ,
-				ArgumentValueType . Dice ,
-				new DiceOwnerDefineDomains ( Performer ) ) ;
+													"" ,
+													"" ,
+													ArgumentValueType . Dice ,
+													new DiceOwnerDefineDomains ( Performer ) ) ;
 
 			//PlayerCommandArgumentInfo diceNumber = new PlayerCommandArgumentInfo (
 			//	"" ,

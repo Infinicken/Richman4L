@@ -13,7 +13,6 @@ namespace WenceyWang . Richman4L . Players .Models
 
 		public string Player { get ; }
 
-
 		public PlayerSaying ( XElement element )
 		{
 			if ( element == null )

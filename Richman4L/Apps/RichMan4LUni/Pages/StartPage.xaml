@@ -5,57 +5,57 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" >
 	<Page.Resources>
-		<Storyboard x:Name="StartStoryBoard">
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="DRText">
-				<DiscreteObjectKeyFrame KeyTime="0">
+		<Storyboard x:Name="StartStoryBoard" >
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="DRText" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:5">
+				<DiscreteObjectKeyFrame KeyTime="0:0:5" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:6">
+				<DiscreteObjectKeyFrame KeyTime="0:0:6" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:8">
+				<DiscreteObjectKeyFrame KeyTime="0:0:8" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:9">
+				<DiscreteObjectKeyFrame KeyTime="0:0:9" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
 			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DRText">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DRText" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:8" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:9" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="WenceyText">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="WenceyText" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:4" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="WenceyText">
-				<DiscreteObjectKeyFrame KeyTime="0:0:4">
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="WenceyText" >
+				<DiscreteObjectKeyFrame KeyTime="0:0:4" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:5">
+				<DiscreteObjectKeyFrame KeyTime="0:0:5" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
 					</DiscreteObjectKeyFrame.Value>
@@ -67,10 +67,11 @@
 
 	<Grid>
 		<Rectangle x:Name="BackGroundRect" Fill="Black" />
-		<Grid x:Name="StartGrid">
+		<Grid x:Name="StartGrid" >
 			<TextBlock x:Name="WenceyText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Wencey Wang Present"
 						VerticalAlignment="Center" Foreground="{StaticResource White}"
-						FontFamily="ms-appx:/Fonts/LeviReBrushed.ttf#LeviReBrushed" FontSize="64" TextAlignment="Center" Margin="20,0" />
+						FontFamily="ms-appx:/Fonts/LeviReBrushed.ttf#LeviReBrushed" FontSize="64" TextAlignment="Center"
+						Margin="20,0" />
 			<TextBlock x:Name="DRText" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"
 						TextAlignment="Right" FontSize="74.667" Text="Dream Recorder"
 						FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" Foreground="White" Margin="20,0" />

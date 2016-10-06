@@ -8,7 +8,6 @@ namespace WenceyWang . Richman4L .Stocks
 
 		public StockDelistReason Reason { get ; set ; }
 
-
 		public StockDelistEventArgs ( StockDelistReason reason ) { Reason = reason ; }
 
 	}
