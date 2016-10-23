@@ -1,9 +1,9 @@
 ﻿using System ;
 using System . Security ;
 
-using FoggyConsole . Controls . Renderers ;
+using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole .Controls
 {
 
 	public class PasswordBox : Control

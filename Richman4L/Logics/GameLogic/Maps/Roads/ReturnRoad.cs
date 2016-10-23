@@ -81,12 +81,6 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			return Exit . Route ( this , moveCount - 1 , current ) ;
 		}
 
-		protected override void Dispose ( bool disposing )
-		{
-			Exit = null ;
-			base . Dispose ( disposing ) ;
-		}
-
 		public override bool CanEnterFrom ( Road road ) => road == Exit ;
 
 	}

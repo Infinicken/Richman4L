@@ -18,7 +18,7 @@
 using System ;
 using System . Text ;
 
-namespace FoggyConsole
+namespace WenceyWang .FoggyConsole
 {
 
 	/// <summary>

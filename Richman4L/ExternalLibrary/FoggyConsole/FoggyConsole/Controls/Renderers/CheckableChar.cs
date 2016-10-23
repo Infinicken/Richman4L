@@ -1,6 +1,6 @@
 using System ;
 
-namespace FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
 	public struct CheckableChar : IEquatable < CheckableChar >

@@ -16,15 +16,15 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System ;
-using System . Collections . Generic ;
-using System . Linq ;
-using System . Reflection ;
-using System . Xml . Linq ;
+using System;
+using System . Collections . Generic;
+using System . Linq;
+using System . Reflection;
+using System . Xml . Linq;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Properties;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	/// <summary>
@@ -36,43 +36,43 @@ namespace WenceyWang . Richman4L .Maps
 		/// <summary>
 		///     元素的起始X值
 		/// </summary>
-		public virtual int X { get ; protected set ; }
+		public virtual int X { get; protected set; }
 
 		/// <summary>
 		///     元素的起始Y值
 		/// </summary>
-		public virtual int Y { get ; protected set ; }
+		public virtual int Y { get; protected set; }
 
 		/// <summary>
 		///     元素的尺寸
 		/// </summary>
-		public abstract MapSize Size { get ; }
+		public abstract MapSize Size { get; }
 
-		public MapObjectType Type => MapObjectTypes . Single ( type => type . EntryType == GetType ( ) ) ;
+		public MapObjectType Type => MapObjectTypes . Single ( type => type . EntryType == GetType ( ) );
 
-		[ NotNull ]
-		[ ItemNotNull ]
-		public static List < MapObjectType > MapObjectTypes { get ; private set ; } = new List < MapObjectType > ( ) ;
+		[NotNull]
+		[ItemNotNull]
+		public static List<MapObjectType> MapObjectTypes { get; private set; } = new List<MapObjectType> ( );
 
 		/// <summary>
 		///     基于地图资源创建MapObject
 		/// </summary>
 		/// <param name="resource"></param>
-		public MapObject ( [ NotNull ] XElement resource ) : this ( )
+		public MapObject ( [NotNull] XElement resource ) : this ( )
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) ) ;
+				throw new ArgumentNullException ( nameof ( resource ) );
 			}
 
 			try
 			{
-				X = Convert . ToInt32 ( resource . Attribute ( nameof ( X ) ) . Value ) ;
-				Y = Convert . ToInt32 ( resource . Attribute ( nameof ( Y ) ) . Value ) ;
+				X = Convert . ToInt32 ( resource . Attribute ( nameof ( X ) ) . Value );
+				Y = Convert . ToInt32 ( resource . Attribute ( nameof ( Y ) ) . Value );
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
 			}
 		}
 
@@ -83,40 +83,39 @@ namespace WenceyWang . Richman4L .Maps
 		/// </summary>
 		public void UpdateView ( )
 		{
-			CheckDisposed ( ) ;
-			UpdateViewEvent ? . Invoke ( this , EventArgs . Empty ) ;
+			CheckDisposed ( );
+			UpdateViewEvent?.Invoke ( this , EventArgs . Empty );
 		}
 
-		[ NotNull ]
-		public event EventHandler UpdateViewEvent ;
+		[NotNull]
+		public event EventHandler UpdateViewEvent;
 
-		protected override void Dispose ( bool disposing )
-		{
-			if ( ! DisposedValue )
-			{
-				if ( disposing )
-				{
-					Map . Currnet . Objects . Remove ( this ) ;
-					DisposeEvent ? . Invoke ( this , EventArgs . Empty ) ;
-				}
-			}
-			base . Dispose ( disposing ) ;
-		}
+		//protected override void Dispose ( bool disposing )
+		//{
+		//	if ( !DisposedValue )
+		//	{
+		//		if ( disposing )
+		//		{
+		//			Map . Currnet . Objects . Remove ( this );
+		//			DisposeEvent?.Invoke ( this , EventArgs . Empty );
+		//		}
+		//	}
+		//	base . Dispose ( disposing );
+		//}
 
-		public event EventHandler DisposeEvent ;
+		public event EventHandler DisposeEvent;
 
-		public static void CleanMapObjectType ( ) { MapObjectTypes = new List < MapObjectType > ( ) ; }
+		public static void CleanMapObjectType ( ) { MapObjectTypes = new List<MapObjectType> ( ); }
 
 		public static void LoadMapObjects ( )
 		{
 			//Todo:Load All internal type
 			foreach (
-				Type type in
-				Assembly . GetExecutingAssembly ( ) .
-							GetTypes ( ) .
-							Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
+				TypeInfo type in
+				typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+														Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
 			{
-				RegisMapObjectType ( type . Name , type ) ;
+				RegisMapObjectType ( type . Name , type . AsType ( ) );
 			}
 
 			;
@@ -129,42 +128,42 @@ namespace WenceyWang . Richman4L .Maps
 		/// <param name="name">用于从地图资源文件中识别的名称</param>
 		/// <param name="entryType">要注册的类型类型</param>
 		/// <returns>生成的类型</returns>
-		[ NotNull ]
-		public static MapObjectType RegisMapObjectType ( [ NotNull ] XName name , [ NotNull ] Type entryType )
+		[NotNull]
+		public static MapObjectType RegisMapObjectType ( [NotNull] XName name , [NotNull] Type entryType )
 		{
 			#region Check Argument
 
 			if ( name == null )
 			{
-				throw new ArgumentNullException ( nameof ( name ) ) ;
+				throw new ArgumentNullException ( nameof ( name ) );
 			}
 			if ( entryType == null )
 			{
-				throw new ArgumentNullException ( nameof ( entryType ) ) ;
+				throw new ArgumentNullException ( nameof ( entryType ) );
 			}
-			if ( entryType . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) == null )
+			if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) == null )
 			{
 				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( MapObjectAttribute )}" ,
-											nameof ( entryType ) ) ;
+											nameof ( entryType ) );
 			}
 
 			#endregion
 
 			if ( MapObjectTypes . Any ( type => type . Name == name ) )
 			{
-				return MapObjectTypes . Single ( type => type . Name == name ) ;
+				return MapObjectTypes . Single ( type => type . Name == name );
 			}
 
-			MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType ) ;
+			MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType );
 
-			MapObjectTypes . Add ( mapObjectType ) ;
+			MapObjectTypes . Add ( mapObjectType );
 
-			return mapObjectType ;
+			return mapObjectType;
 		}
 
 
-		[ NotNull ]
-		public override string ToString ( ) { return $"{GetType ( ) . Name} at {X},{Y}" ; }
+		[NotNull]
+		public override string ToString ( ) { return $"{GetType ( ) . Name} at {X},{Y}"; }
 
 	}
 

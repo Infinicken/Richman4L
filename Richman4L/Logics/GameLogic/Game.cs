@@ -21,8 +21,6 @@ using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
 
-using Polenter . Serialization ;
-
 using WenceyWang . Richman4L . Buffs ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . GameEnviroment ;
@@ -33,19 +31,17 @@ using WenceyWang . Richman4L . Players . Models ;
 using WenceyWang . Richman4L . Stocks ;
 using WenceyWang . Richman4L . Weathers ;
 
-using Environment = WenceyWang . Richman4L . GameEnviroment . Environment ;
-
 namespace WenceyWang .Richman4L
 {
 
-	public class Game : IDisposable
+	public class Game
 	{
 
 		public GameStatus Status { get ; set ; }
 
 		#region Enviroment
 
-		public Environment GameEnviroment { get ; set ; }
+		public GameEnviroment . Environment GameEnviroment { get ; set ; }
 
 		#endregion
 
@@ -87,11 +83,7 @@ namespace WenceyWang .Richman4L
 
 		public List < Buff > GameBuffs { get ; private set ; } = new List < Buff > ( ) ;
 
-
 		public List < Player > GamePlayers { get ; private set ; } = new List < Player > ( ) ;
-
-		public List < Player > AllPlayers { get ; set ; }
-
 
 		public StockMarket StockMarket { get ; set ; }
 
@@ -269,10 +261,11 @@ namespace WenceyWang .Richman4L
 				throw new ArgumentNullException ( nameof ( stream ) ) ;
 			}
 
-			SharpSerializer serialier =
-				new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
+			//SharpSerializer serialier =
+			//	new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
 
-			serialier . Serialize ( this , stream ) ;
+			//serialier . Serialize ( this , stream ) ;
+			throw new NotImplementedException ( ) ;
 		}
 
 		/// <summary>
@@ -287,70 +280,14 @@ namespace WenceyWang .Richman4L
 				throw new ArgumentNullException ( nameof ( stream ) ) ;
 			}
 
-			SharpSerializer serialier =
-				new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
-			return Current = serialier . Deserialize ( stream ) as Game ;
+			//SharpSerializer serialier =
+			//	new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
+			//return Current = serialier . Deserialize ( stream ) as Game ;
+			throw new NotImplementedException ( ) ;
 		}
 
 		#endregion
 
-		#region IDisposable Support
-
-		protected bool DisposedValue ; // To detect redundant calls
-
-
-		protected virtual void Dispose ( bool disposing )
-		{
-			if ( ! DisposedValue )
-			{
-				if ( disposing )
-				{
-					Current = null ;
-					foreach ( Buff item in GameBuffs )
-					{
-						item . Dispose ( ) ;
-					}
-
-					Calendar . Dispose ( ) ;
-					foreach ( Player item in GamePlayers )
-					{
-						item . Dispose ( ) ;
-					}
-
-					Map . Dispose ( ) ;
-
-					GameObject . GameObjectList . Clear ( ) ;
-
-					// TODO: dispose managed state (managed objects).
-				}
-
-				CurrentPlayer = null ;
-				GameEnviroment = null ;
-				GameBuffs . Clear ( ) ;
-				GameBuffs = null ;
-				GamePlayers . Clear ( ) ;
-				GamePlayers = null ;
-
-				Map = null ;
-
-				// TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-				// TODO: set large fields to null.
-
-				DisposedValue = true ;
-				GC . Collect ( ) ;
-			}
-		}
-
-		// TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-		// ~Game() {
-		//   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-		//   Dispose(false);
-		// }
-
-		// This code added to correctly implement the disposable pattern.
-		public void Dispose ( ) { Dispose ( true ) ; }
-
-		#endregion
 	}
 
 }

@@ -7,7 +7,7 @@
     <ProjectGuid>{232E460F-DAE6-4578-B3E4-7CC3444DB376}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FoggyConsole</RootNamespace>
+    <RootNamespace>WenceyWang.FoggyConsole</RootNamespace>
     <AssemblyName>FoggyConsole</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -85,6 +85,10 @@
     <Compile Include="ConsoleAreaExtensions.cs" />
     <Compile Include="ContentAlign.cs" />
     <Compile Include="Controls\Button.cs" />
+    <Compile Include="Controls\FIGletLabel.cs" />
+    <Compile Include="Controls\PageRanderer.cs" />
+    <Compile Include="Controls\RelativePanel.cs" />
+    <Compile Include="Controls\Renderers\FIGletLabelRenderer.cs" />
     <Compile Include="Controls\Frame.cs" />
     <Compile Include="Controls\Renderers\FrameRanderer.cs" />
     <Compile Include="Controls\Renderers\GridRanderer.cs" />
@@ -129,6 +133,7 @@
     <Compile Include="KeyPressedEventArgs.cs" />
     <Compile Include="KeyWatcher.cs" />
     <Compile Include="Point.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

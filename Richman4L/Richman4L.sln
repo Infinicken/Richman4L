@@ -41,6 +41,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingTypeDesigner", "Tools\BuildingTypeDesigner\BuildingTypeDesigner.csproj", "{38A9075E-B827-4D8B-BD53-DA9F3FBCDC5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalLibrary", "ExternalLibrary", "{24D195B5-C88C-4D45-BDAC-69ED39EE014C}"
+	ProjectSection(SolutionItems) = preProject
+		ExternalLibrary\readme.md = ExternalLibrary\readme.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FIGlet.Net", "FIGlet.Net", "{2C764781-1AEA-4659-A132-E29AD990F260}"
 EndProject

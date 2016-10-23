@@ -17,9 +17,9 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 
 using System . Collections . Generic ;
 
-using FoggyConsole . Controls . Renderers ;
+using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole .Controls
 {
 
 	/// <summary>
@@ -34,8 +34,7 @@ namespace FoggyConsole .Controls
 
 		public List < Control > GetAllItem ( )
 		{
-			List < Control > controlList = new List < Control > ( ) ;
-
+			List < Control > controlList = new List < Control > { this } ;
 			foreach ( Control control in Chrildren )
 			{
 				Container container = control as Container ;
@@ -52,6 +51,12 @@ namespace FoggyConsole .Controls
 			return controlList ;
 		}
 
+		public virtual void AddChild ( Control control )
+		{
+			Chrildren . Add ( control ) ;
+			control . Container = this ;
+		}
+
 	}
 
 	public abstract class ContentControl : Container
@@ -60,6 +65,7 @@ namespace FoggyConsole .Controls
 		public abstract Control Content { get ; set ; }
 
 		public override IList < Control > Chrildren => new List < Control > { Content } ;
+
 
 		protected ContentControl ( IControlRenderer renderer ) : base ( renderer ) { }
 

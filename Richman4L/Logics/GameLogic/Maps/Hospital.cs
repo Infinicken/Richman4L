@@ -27,16 +27,10 @@ namespace WenceyWang . Richman4L .Maps
 	public class Hospital : ReturnRoad
 	{
 
-		public static Hospital Current { get ; set ; }
 
-		public Hospital ( XElement resource ) : base ( resource ) { Current = this ; }
+		public Hospital ( XElement resource ) : base ( resource ) {}
 
-		protected override void Dispose ( bool disposing )
-		{
-			Current = null ;
-			base . Dispose ( disposing ) ;
-		}
-
+		
 	}
 
 }

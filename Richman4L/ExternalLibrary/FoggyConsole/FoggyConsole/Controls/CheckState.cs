@@ -1,4 +1,4 @@
-namespace FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole .Controls
 {
 
 	/// <summary>
@@ -8,6 +8,12 @@ namespace FoggyConsole .Controls
 	{
 
 		/// <summary>
+		///     The checkbox is in an indeterminate state,
+		///     can be used to force to user to actively select one state
+		/// </summary>
+		Indeterminate ,
+
+		/// <summary>
 		///     The checkbox is checked
 		/// </summary>
 		Checked ,
@@ -15,13 +21,7 @@ namespace FoggyConsole .Controls
 		/// <summary>
 		///     The checkbox is unchecked
 		/// </summary>
-		Unchecked ,
-
-		/// <summary>
-		///     The checkbox is in an indeterminate state,
-		///     can be used to force to user to actively select one state
-		/// </summary>
-		Indeterminate
+		Unchecked
 
 	}
 

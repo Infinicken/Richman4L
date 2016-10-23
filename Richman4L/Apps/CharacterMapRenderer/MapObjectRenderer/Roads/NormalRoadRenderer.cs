@@ -74,55 +74,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				#endregion
 
 				#region 连续路
-
-				//else
-				//{
-				//	switch ( Target . GetAzimuth ( Target . ForwardRoad ) )
-				//	{
-				//		case BlockAzimuth . Up:
-				//			{
-				//				switch ( Target . GetAzimuth ( Target . BackwardRoad ) )
-				//				{
-				//					case BlockAzimuth . Down:
-				//						{
-
-				//							break;
-				//						}
-				//					case BlockAzimuth . Left:
-				//						{
-				//							break;
-				//						}
-				//					case BlockAzimuth . Right:
-				//						{
-				//							break;
-				//						}
-				//					default:
-				//						{
-				//							break;
-				//						}
-				//				}
-
-				//				break;
-				//			}
-				//		case BlockAzimuth . Down:
-				//			{
-				//				break;
-				//			}
-				//		case BlockAzimuth . Left:
-				//			{
-				//				break;
-				//			}
-				//		case BlockAzimuth . Right:
-				//			{
-				//				break;
-				//			}
-				//		default:
-				//			{
-				//				throw new ArgumentOutOfRangeException ( );
-				//			}
-				//	}
-				//}
-
+			
 				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
 							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
 						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&

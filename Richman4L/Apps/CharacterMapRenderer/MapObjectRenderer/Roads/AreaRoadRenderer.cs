@@ -92,13 +92,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "  ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -109,13 +103,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "┃ ┋  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┃ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -135,13 +123,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "━┛ ┗━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "┅┅┅┅┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -172,13 +154,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "┅┅┛  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -209,13 +185,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┛ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "  ┗┅┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -226,13 +196,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┗" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "┃ ┗┅┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┗┓ ┏━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -251,13 +215,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "┅┅┓  " [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -266,14 +224,8 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 						{
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
-								CurrentView [ x , 0 ] = new ConsoleChar ( "━┛ ┗┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
+								CurrentView [ x , 0 ] = new ConsoleChar ( "━┛ ┗┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;					
 								CurrentView [ x , 1 ] = new ConsoleChar ( "┅┅┓ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 
@@ -293,13 +245,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
 								CurrentView [ x , 0 ] = new ConsoleChar ( "━━━━━" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 1 ] = new ConsoleChar ( "  ┏┅┅" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-							}
-							for ( int x = 0 ; x < 5 ; x++ )
-							{
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┏" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}
 

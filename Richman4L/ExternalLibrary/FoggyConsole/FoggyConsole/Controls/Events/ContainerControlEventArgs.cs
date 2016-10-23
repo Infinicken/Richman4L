@@ -1,6 +1,6 @@
 ﻿using System ;
 
-namespace FoggyConsole . Controls .Events
+namespace WenceyWang . FoggyConsole . Controls .Events
 {
 
 	/// <summary>

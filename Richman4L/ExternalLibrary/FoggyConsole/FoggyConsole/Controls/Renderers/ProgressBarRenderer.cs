@@ -1,4 +1,4 @@
-﻿namespace FoggyConsole . Controls .Renderers
+﻿namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
 	/// <summary>

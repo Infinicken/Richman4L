@@ -1,6 +1,6 @@
-using FoggyConsole . Controls ;
+using WenceyWang . FoggyConsole . Controls ;
 
-namespace FoggyConsole
+namespace WenceyWang .FoggyConsole
 {
 
 	/// <summary>

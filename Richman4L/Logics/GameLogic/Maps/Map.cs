@@ -104,27 +104,27 @@ namespace WenceyWang . Richman4L .Maps
 
 		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
 
-		/// <summary>
-		///     销毁这个Map
-		/// </summary>
-		/// <param name="disposing"></param>
-		protected override void Dispose ( bool disposing )
-		{
-			if ( DisposedValue )
-			{
-				if ( disposing )
-				{
-					foreach ( MapObject item in Objects )
-					{
-						item . Dispose ( ) ;
-					}
+		///// <summary>
+		/////     销毁这个Map
+		///// </summary>
+		///// <param name="disposing"></param>
+		//protected override void Dispose ( bool disposing )
+		//{
+		//	if ( DisposedValue )
+		//	{
+		//		if ( disposing )
+		//		{
+		//			foreach ( MapObject item in Objects )
+		//			{
+		//				item . Dispose ( ) ;
+		//			}
 
-					Objects . Clear ( ) ;
-				}
-			}
+		//			Objects . Clear ( ) ;
+		//		}
+		//	}
 
-			base . Dispose ( disposing ) ;
-		}
+		//	base . Dispose ( disposing ) ;
+		//}
 
 		[ CanBeNull ]
 		public event EventHandler < MapAddMapObjectEventArgs > AddMapObjectEvent ;

@@ -1,6 +1,6 @@
 ﻿using System ;
 
-namespace FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
 	/// <summary>
@@ -16,34 +16,47 @@ namespace FoggyConsole . Controls .Renderers
 		/// <exception cref="InvalidOperationException">Is thrown if the CalculateBoundary-Method hasn't been called.</exception>
 		public override void Draw ( )
 		{
-			ConsoleArea result = new ConsoleArea ( Control . ActualSize , Control . ActualBackgroundColor ) ;
+			ConsoleColor foregroundColor ;
+			ConsoleColor backgroundColor ;
 
+			if ( Control . IsFocused )
+			{
+				foregroundColor = Control . ActualBackgroundColor ;
+				backgroundColor = Control . ActualForegroundColor ;
+			}
+			else
+			{
+				foregroundColor = Control . ActualForegroundColor ;
+				backgroundColor = Control . ActualBackgroundColor ;
+			}
+
+			ConsoleArea result = new ConsoleArea ( Control . ActualSize , backgroundColor ) ;
 			if ( Control . ActualHeight == 1 )
 			{
-				result [ 0 , 0 ] = new ConsoleChar ( '[' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
+				result [ 0 , 0 ] = new ConsoleChar ( '[' , foregroundColor , backgroundColor ) ;
 				result [ Control . ActualWidth - 1 , 0 ] = new ConsoleChar ( ']' ,
-																			Control . ActualForegroundColor ,
-																			Control . ActualBackgroundColor ) ;
+																			foregroundColor ,
+																			backgroundColor ) ;
 				int startPosition = ( Control . RenderArea . Width - Control . Text . Length ) / 2 + 1 ;
 				for ( int x = 0 ; ( x < Control . ActualWidth - 2 ) && ( x < Control . Text . Length ) ; x++ )
 				{
 					result [ x + startPosition , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
-																		Control . ActualForegroundColor ,
-																		Control . ActualBackgroundColor ) ;
+																		foregroundColor ,
+																		backgroundColor ) ;
 				}
 			}
 			else
 			{
-				result [ 0 , 0 ] = new ConsoleChar ( '┌' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
+				result [ 0 , 0 ] = new ConsoleChar ( '┌' , foregroundColor , backgroundColor ) ;
 				result [ Control . ActualWidth - 1 , 0 ] = new ConsoleChar ( '┐' ,
-																			Control . ActualForegroundColor ,
-																			Control . ActualBackgroundColor ) ;
+																			foregroundColor ,
+																			backgroundColor ) ;
 				result [ 0 , Control . ActualHeight - 1 ] = new ConsoleChar ( '└' ,
-																			Control . ActualForegroundColor ,
-																			Control . ActualBackgroundColor ) ;
+																			foregroundColor ,
+																			backgroundColor ) ;
 				result [ Control . ActualWidth - 1 , Control . ActualHeight - 1 ] = new ConsoleChar ( '┘' ,
-																									Control . ActualForegroundColor ,
-																									Control . ActualBackgroundColor ) ;
+																									foregroundColor ,
+																									backgroundColor ) ;
 
 				string [ ] lines = Control . Text . Split ( Environment . NewLine . ToCharArray ( ) ) ;
 
@@ -56,8 +69,8 @@ namespace FoggyConsole . Controls .Renderers
 					for ( int x = 0 ; ( x < Control . ActualWidth - 2 ) && ( x < lines [ y ] . Length ) ; x++ )
 					{
 						result [ x + startPosition , 0 ] = new ConsoleChar ( lines [ y ] [ x ] ,
-																			Control . ActualForegroundColor ,
-																			Control . ActualBackgroundColor ) ;
+																			foregroundColor ,
+																			backgroundColor ) ;
 					}
 				}
 			}

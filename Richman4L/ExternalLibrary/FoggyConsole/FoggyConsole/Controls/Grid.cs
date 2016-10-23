@@ -1,8 +1,8 @@
 ﻿using System . Collections . Generic ;
 
-using FoggyConsole . Controls . Renderers ;
+using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole .Controls
 {
 
 	public class Grid : ItemsControl

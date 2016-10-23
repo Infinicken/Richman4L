@@ -1,4 +1,4 @@
-namespace FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
 	/// <summary>
@@ -8,7 +8,13 @@ namespace FoggyConsole . Controls .Renderers
 	public class CanvasRenderer : ControlRenderer < Canvas >
 	{
 
-		public override void Draw ( ) { }
+		public override void Draw ( )
+		{
+			foreach ( Control control in Control . Items )
+			{
+				control . Draw ( );
+			}
+		}
 
 	}
 

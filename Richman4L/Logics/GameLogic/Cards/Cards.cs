@@ -16,35 +16,36 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System ;
-using System . Collections . Generic ;
-using System . Linq ;
-using System . Xml . Linq ;
+using System;
+using System . Collections . Generic;
+using System . Linq;
+using System . Reflection;
+using System . Xml . Linq;
 
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Weathers ;
+using WenceyWang . Richman4L . Players;
+using WenceyWang . Richman4L . Weathers;
 
-namespace WenceyWang . Richman4L .Cards
+namespace WenceyWang . Richman4L . Cards
 {
 
 	public abstract class Card
 	{
 
-		public CardStatus Status { get ; protected set ; }
+		public CardStatus Status { get; protected set; }
 
-		public Player Owner { get ; private set ; }
+		public Player Owner { get; private set; }
 
-		public CardType Type { get ; private set ; }
+		public CardType Type { get; private set; }
 
-		public abstract int PriceWhenBuy { get ; set ; }
+		public abstract int PriceWhenBuy { get; set; }
 
-		public abstract int PriceWhenSell { get ; set ; }
+		public abstract int PriceWhenSell { get; set; }
 
-		public static List < CardType > CardTypeList { get ; } = new List < CardType > ( ) ;
+		public static List<CardType> CardTypeList { get; } = new List<CardType> ( );
 
-		public abstract bool CanUse ( Weather weather ) ;
+		public abstract bool CanUse ( Weather weather );
 
-		public abstract void Use ( ) ;
+		public abstract void Use ( );
 
 		public static Card CrateCard ( CardType cardType )
 		{
@@ -52,18 +53,18 @@ namespace WenceyWang . Richman4L .Cards
 
 			if ( cardType == null )
 			{
-				throw new ArgumentNullException ( nameof ( cardType ) ) ;
+				throw new ArgumentNullException ( nameof ( cardType ) );
 			}
-			if ( ! CardTypeList . Contains ( cardType ) )
+			if ( !CardTypeList . Contains ( cardType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( cardType )} have not being registered" , nameof ( cardType ) ) ;
+				throw new ArgumentException ( $"{nameof ( cardType )} have not being registered" , nameof ( cardType ) );
 			}
 
 			#endregion
 
-			Card card = ( Card ) Activator . CreateInstance ( cardType . EntryType ) ;
+			Card card = ( Card ) Activator . CreateInstance ( cardType . EntryType );
 
-			return card ;
+			return card;
 		}
 
 		public static void LoadCards ( )
@@ -77,34 +78,34 @@ namespace WenceyWang . Richman4L .Cards
 
 			if ( cardType == null )
 			{
-				throw new ArgumentNullException ( nameof ( cardType ) ) ;
+				throw new ArgumentNullException ( nameof ( cardType ) );
 			}
-			if ( ! typeof ( Card ) . IsAssignableFrom ( cardType ) )
+			if ( !typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( cardType . GetTypeInfo ( ) ) )
 			{
 				throw new ArgumentException ( $"{nameof ( cardType )} should assignable from {nameof ( Card )}" ,
-											nameof ( cardType ) ) ;
+											nameof ( cardType ) );
 			}
-			if ( cardType . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
+			if ( cardType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
 			{
 				throw new ArgumentException ( $"{nameof ( cardType )} should have atribute {nameof ( CardAttribute )}" ,
-											nameof ( cardType ) ) ;
+											nameof ( cardType ) );
 			}
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof ( element ) );
 			}
 			if ( element . Name != nameof ( cardType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
+				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) );
 			}
 			if ( CardTypeList . Any ( type => type . EntryType == cardType ) )
 			{
-				throw new InvalidOperationException ( $"{nameof ( cardType )} have regised" ) ;
+				throw new InvalidOperationException ( $"{nameof ( cardType )} have regised" );
 			}
 
 			#endregion
 
-			CardTypeList . Add ( new CardType ( cardType , element ) ) ;
+			CardTypeList . Add ( new CardType ( cardType , element ) );
 		}
 
 		public static void BuyCard ( CardType type , Player player ) { }

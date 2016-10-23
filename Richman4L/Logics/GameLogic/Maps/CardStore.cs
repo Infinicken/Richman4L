@@ -42,7 +42,6 @@ namespace WenceyWang . Richman4L .Maps
 			base . Stay ( player , moveType ) ;
 		}
 
-		protected override void Dispose ( bool disposing ) { base . Dispose ( disposing ) ; }
 
 	}
 

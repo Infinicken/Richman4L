@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fonts\ResourceHelper.cs" />
+    <Compile Include="ResourceHelper.cs" />
     <Compile Include="SettingItemAttribute.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingCategory.cs" />
@@ -66,9 +68,10 @@
     <Compile Include="ProgramExitCode.cs" />
     <Compile Include="FileNameConst.cs" />
     <Compile Include="LanguageResources.cs" />
-    <Compile Include="MainPage.cs" />
+    <Compile Include="Pages\MainPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\StartPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,6 +79,8 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Fonts\graffiti.flf" />
+    <EmbeddedResource Include="Fonts\invita.flf" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

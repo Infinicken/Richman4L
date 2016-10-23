@@ -7,7 +7,7 @@ using System . Text ;
 namespace WenceyWang .FIGlet
 {
 
-	public class FigletFont
+	public class FIGletFont
 	{
 
 		public string Signature { get ; private set ; }
@@ -34,11 +34,11 @@ namespace WenceyWang .FIGlet
 
 		public string Commit { get ; private set ; }
 
-		public static FigletFont Defult
+		public static FIGletFont Defult
 		{
 			get
 			{
-				FigletFont defult = null ;
+				FIGletFont defult = null ;
 
 				lock ( DefultFont )
 				{
@@ -46,9 +46,9 @@ namespace WenceyWang .FIGlet
 					if ( defult == null )
 					{
 						Stream stream = Assembly . GetExecutingAssembly ( ) .
-													GetManifestResourceStream ( typeof ( FigletFont ) . Namespace + "." +
+													GetManifestResourceStream ( typeof ( FIGletFont ) . Namespace + "." +
 																				@"Fonts.standard.flf" ) ;
-						defult = new FigletFont ( stream ) ;
+						defult = new FIGletFont ( stream ) ;
 						stream ? . Close ( ) ;
 						DefultFont . SetTarget ( defult ) ;
 					}
@@ -57,7 +57,7 @@ namespace WenceyWang .FIGlet
 			}
 		}
 
-		public FigletFont ( Stream fontStream )
+		public FIGletFont ( Stream fontStream )
 		{
 			using ( StreamReader reader = new StreamReader ( fontStream ) )
 			{
@@ -129,7 +129,7 @@ namespace WenceyWang .FIGlet
 
 		private static readonly object Locker = new object ( ) ;
 
-		private static readonly WeakReference < FigletFont > DefultFont = new WeakReference < FigletFont > ( null ) ;
+		private static readonly WeakReference < FIGletFont > DefultFont = new WeakReference < FIGletFont > ( null ) ;
 
 		public string GetCharacter ( char sourceChar , int line )
 		{
@@ -147,24 +147,24 @@ namespace WenceyWang .FIGlet
 			return Lines [ Convert . ToByte ( sourceChar ) ] [ line ] ;
 		}
 
-		//CodeTagCount = configArray . GetIntValue ( 8 );
-		//FullLayout = configArray . GetIntValue ( 7 );
-		//PrintDirection = configArray . GetIntValue ( 6 );
-		//CommentLines = configArray . GetIntValue ( 5 );
-		//OldLayout = configArray . GetIntValue ( 4 );
-		//MaxLength = configArray . GetIntValue ( 3 );
-		//BaseLine = configArray . GetIntValue ( 2 );
-		//Height = configArray . GetIntValue ( 1 );
-		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
-		//	{
-		//	if ( Signature == "flf2a" )
-		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
-		//	string [ ] configArray = configString . Split ( ' ' );
-		//	string configString = Lines . First ( );
-		//	Lines = fontLines;
-		//{
-
 		//private void LoadLines ( List<string> fontLines )
+		//{
+		//	Lines = fontLines;
+		//	string configString = Lines . First ( );
+		//	string [ ] configArray = configString . Split ( ' ' );
+		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
+		//	if ( Signature == "flf2a" )
+		//	{
+		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
+		//Height = configArray . GetIntValue ( 1 );
+		//BaseLine = configArray . GetIntValue ( 2 );
+		//MaxLength = configArray . GetIntValue ( 3 );
+		//OldLayout = configArray . GetIntValue ( 4 );
+		//CommentLines = configArray . GetIntValue ( 5 );
+		//PrintDirection = configArray . GetIntValue ( 6 );
+		//FullLayout = configArray . GetIntValue ( 7 );
+
+		//CodeTagCount = configArray . GetIntValue ( 8 );
 		//	}
 		//}
 

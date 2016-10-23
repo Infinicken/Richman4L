@@ -1,4 +1,4 @@
-﻿namespace FoggyConsole
+﻿namespace WenceyWang .FoggyConsole
 {
 
 	public static class ConsoleAreaExtensions

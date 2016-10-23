@@ -1,18 +1,19 @@
-﻿using WenceyWang . Richman4L . Calendars ;
+﻿using System;
+using WenceyWang . Richman4L . Calendars;
 
-namespace WenceyWang . Richman4L .Buffs
+namespace WenceyWang . Richman4L . Buffs
 {
 
 	public abstract class Buff : GameObject
 	{
 
-		public virtual string Name { get ; }
+		public virtual string Name { get; }
 
-		public virtual string Introduction { get ; }
+		public virtual string Introduction { get; }
 
-		protected GameDate StartDate { get ; set ; }
+		protected GameDate StartDate { get; set; }
 
-		public int Duration { get ; }
+		public int Duration { get; }
 
 		public Buff ( ) { }
 
@@ -20,9 +21,11 @@ namespace WenceyWang . Richman4L .Buffs
 
 		public Buff ( GameDate startDate , int duration )
 		{
-			StartDate = startDate ;
-			Duration = duration ;
+			StartDate = startDate;
+			Duration = duration;
 		}
+
+		public event EventHandler MaturityEvent;
 
 		public override void StartDay ( GameDate nextDate ) { }
 
@@ -30,17 +33,14 @@ namespace WenceyWang . Richman4L .Buffs
 		{
 			if ( Game . Current . Calendar . Today == StartDate + Duration )
 			{
-				Dispose ( ) ;
+				Maturity ( );
 			}
 		}
 
-		protected override void Dispose ( bool disposing )
+		public virtual void Maturity ( )
 		{
-			if ( ! DisposedValue )
-			{
-				Game . Current . GameBuffs . Remove ( this ) ;
-			}
-			base . Dispose ( disposing ) ;
+			Game . Current . GameBuffs . Remove ( this );
+			MaturityEvent?.Invoke ( this , EventArgs . Empty );
 		}
 
 	}

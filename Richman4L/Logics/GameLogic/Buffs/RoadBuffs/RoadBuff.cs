@@ -1,7 +1,7 @@
-﻿using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Players ;
+﻿using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Players;
 
-namespace WenceyWang . Richman4L . Buffs .RoadBuffs
+namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 {
 
 	/// <summary>
@@ -10,13 +10,19 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 	public class RoadBuff : Buff
 	{
 
-		public Road Target { get ; set ; }
+		public Road Target { get; set; }
 
-		public virtual bool BlockMoving { get ; }
+		public virtual bool BlockMoving { get; }
 
 		public virtual void DoWhenStay ( Player player , MoveType moveType ) { }
 
 		public virtual void DoWhenPass ( Player player , MoveType moveType ) { }
+
+		public override void Maturity ( )
+		{
+			Target?.Buffs?.Remove ( this );
+			base . Maturity ( );
+		}
 
 	}
 

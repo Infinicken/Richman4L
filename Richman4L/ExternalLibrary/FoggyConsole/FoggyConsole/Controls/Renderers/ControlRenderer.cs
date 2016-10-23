@@ -17,7 +17,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 
 using System ;
 
-namespace FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
 	/// <summary>

@@ -1,6 +1,6 @@
 ﻿using System ;
 
-namespace FoggyConsole
+namespace WenceyWang .FoggyConsole
 {
 
 	/// <summary>

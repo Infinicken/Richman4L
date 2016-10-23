@@ -19,10 +19,10 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using FoggyConsole . Controls . Events ;
-using FoggyConsole . Controls . Renderers ;
+using WenceyWang . FoggyConsole . Controls . Events ;
+using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole .Controls
 {
 
 	/// <summary>

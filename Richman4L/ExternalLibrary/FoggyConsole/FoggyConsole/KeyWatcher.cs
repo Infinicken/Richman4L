@@ -18,7 +18,7 @@
 using System ;
 using System . Threading ;
 
-namespace FoggyConsole
+namespace WenceyWang .FoggyConsole
 {
 
 	/// <summary>

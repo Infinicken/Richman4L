@@ -24,20 +24,16 @@ using WenceyWang . Richman4L . Calendars ;
 namespace WenceyWang .Richman4L
 {
 
-	public abstract class GameObject : IDisposable
+	public abstract class GameObject 
 	{
 
 		protected bool IsSaving = false ;
-
-		//Todo:如果没有别的用，删除这个。
-		public static List < GameObject > GameObjectList { get ; } = new List < GameObject > ( ) ;
 
 		public long Index { get ; set ; }
 
 		public GameObject ( )
 		{
 			Index = GetHashCode ( ) ;
-			GameObjectList . Add ( this ) ;
 		}
 
 		public abstract void EndToday ( ) ;
@@ -49,37 +45,36 @@ namespace WenceyWang .Richman4L
 		/// </summary>
 		protected void CheckDisposed ( )
 		{
-			if ( DisposedValue )
+			//if ( DisposedValue )
 			{
 				throw new ObjectDisposedException ( ToString ( ) ) ;
 			}
 		}
 
-		#region IDisposable Support
+		//#region IDisposable Support
 
-		protected bool DisposedValue ; // To detect redundant calls
+		//protected bool DisposedValue ; // To detect redundant calls
 
-		protected virtual void Dispose ( bool disposing )
-		{
-			if ( ! DisposedValue )
-			{
-				if ( disposing )
-				{
-					GameObjectList . Remove ( this ) ;
-				}
+		//protected virtual void Dispose ( bool disposing )
+		//{
+		//	if ( ! DisposedValue )
+		//	{
+		//		if ( disposing )
+		//		{
+		//		}
 
 
-				// TODO: set large fields to null.
+		//		// TODO: set large fields to null.
 
-				DisposedValue = true ;
-			}
-		}
+		//		DisposedValue = true ;
+		//	}
+		//}
 
-		~GameObject ( ) { Dispose ( false ) ; }
+		//~GameObject ( ) { Dispose ( false ) ; }
 
-		public void Dispose ( ) { Dispose ( true ) ; }
+		//public void Dispose ( ) { Dispose ( true ) ; }
 
-		#endregion
+		//#endregion
 	}
 
 }

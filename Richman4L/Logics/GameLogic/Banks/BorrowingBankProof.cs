@@ -10,6 +10,7 @@ namespace WenceyWang . Richman4L .Banks
 	/// </summary>
 	public class BorrowingBankProof : BankProof
 	{
+		
 
 		/// <summary>
 		///     借出的款项数目
@@ -31,7 +32,6 @@ namespace WenceyWang . Richman4L .Banks
 			if ( nextDate >= EndDate )
 			{
 				Owner . PayForBorrowing ( this ) ;
-				Dispose ( ) ;
 			}
 		}
 

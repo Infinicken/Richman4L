@@ -1,6 +1,6 @@
-﻿using WenceyWang . Richman4L . Maps ;
+﻿using WenceyWang . Richman4L . Maps;
 
-namespace WenceyWang . Richman4L . Buffs .AreaBuffs
+namespace WenceyWang . Richman4L . Buffs . AreaBuffs
 {
 
 	/// <summary>
@@ -9,15 +9,21 @@ namespace WenceyWang . Richman4L . Buffs .AreaBuffs
 	public class AreaBuff : Buff
 	{
 
-		public Area Target { get ; set ; }
+		public Area Target { get; }
 
-		public virtual bool BlockBuy => false ;
+		public virtual bool BlockBuy => false;
 
-		public virtual bool BlockBuild => false ;
+		public virtual bool BlockBuild => false;
 
-		public virtual bool BlockCharge => false ;
+		public virtual bool BlockCharge => false;
 
-		public AreaBuff ( Area target ) { Target = target ; }
+		public AreaBuff ( Area target ) { Target = target; }
+
+		public override void Maturity ( )
+		{
+			Target?.Buffs?.Remove ( this );
+			base . Maturity ( );
+		}
 
 	}
 

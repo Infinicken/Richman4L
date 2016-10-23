@@ -15,7 +15,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-namespace FoggyConsole
+namespace WenceyWang .FoggyConsole
 {
 
 	/// <summary>
@@ -25,9 +25,10 @@ namespace FoggyConsole
 	{
 
 		/// <summary>
-		///     Content on the right side
+		///     Content on the left side
 		/// </summary>
-		Right ,
+		Left ,
+
 
 		/// <summary>
 		///     Content in the middle
@@ -35,9 +36,9 @@ namespace FoggyConsole
 		Center ,
 
 		/// <summary>
-		///     Content on the left side
+		///     Content on the right side
 		/// </summary>
-		Left
+		Right
 
 	}
 

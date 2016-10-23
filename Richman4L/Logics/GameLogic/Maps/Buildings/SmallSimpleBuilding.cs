@@ -16,35 +16,33 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System ;
+using System;
 
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Calendars;
+using WenceyWang . Richman4L . Players;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
-	[ Building ]
+	[Building]
 	public class SmallSimpleBuilding : SmallBuilding
 	{
 
-		public long MoneyCostWhenCrossed { get ; }
+		public long MoneyCostWhenCrossed { get; }
 
 
-		public override bool EasyToDestroy => true ;
+		public override bool EasyToDestroy => true;
 
 		//Todo:完善价格机制
-		public override long MaintenanceFee => Grade . MaintenanceFee ;
+		public override long MaintenanceFee => Grade . MaintenanceFee;
 
 		public override void Pass ( Player player )
 		{
+			CheckDisposed ( );
+
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
-			}
-			if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( $"{nameof ( SmallSimpleBuilding )} at ({X},{Y})" ) ;
+				throw new ArgumentNullException ( nameof ( player ) );
 			}
 
 			//Todo:加入对是否收费的判断
@@ -52,14 +50,15 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 				( player != Owner ) )
 			{
 			}
-			base . Pass ( player ) ;
+			base . Pass ( player );
 		}
 
 		public override void Stay ( Player player )
 		{
+			CheckDisposed ( );
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof ( player ) );
 			}
 
 			if ( player != Owner )
@@ -69,27 +68,27 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 				}
 				else
 				{
-					if ( ! Owner . IsBlockGetCharge ( ) )
+					if ( !Owner . IsBlockGetCharge ( ) )
 					{
-						player . PayForCross ( Position , MoneyCostWhenCrossed ) ;
-						Owner . GetFromArea ( Position , player , MoneyCostWhenCrossed ) ;
+						player . PayForCross ( Position , MoneyCostWhenCrossed );
+						Owner . GetFromArea ( Position , player , MoneyCostWhenCrossed );
 					}
 				}
 			}
-			base . Stay ( player ) ;
+			base . Stay ( player );
 		}
 
 
 		public override void Destoy ( DestroyReason reason )
 		{
-			State = BuildingState . Destroyed ;
-			MaintenanceDegree = 0 ;
-			CompletedDgree = 5000 ;
+			State = BuildingState . Destroyed;
+			MaintenanceDegree = 0;
+			CompletedDgree = 5000;
 		}
 
 		public override void StartDay ( GameDate nextDate )
 		{
-			CheckDisposed ( ) ;
+			CheckDisposed ( );
 
 			if ( Game . Current . Weather . Wind . Strength >= 800 )
 			{
@@ -97,32 +96,32 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 				{
 					if ( Game . Current . Weather . Wind . Strength - 950 >= GameRandom . Current . Next ( 51 ) )
 					{
-						Destoy ( DestroyReason . Weather ) ;
+						Destoy ( DestroyReason . Weather );
 					}
 				}
 			}
 
 			switch ( State )
 			{
-				case BuildingState . Working :
-				{
-					Owner ? . PayForMaintainBuilding ( this , MaintenanceFee ) ;
-					break ;
-				}
-				case BuildingState . Closed :
-				{
-					break ;
-				}
-				case BuildingState . Destroyed :
-				{
-					break ;
-				}
+				case BuildingState . Working:
+					{
+						Owner?.PayForMaintainBuilding ( this , MaintenanceFee );
+						break;
+					}
+				case BuildingState . Closed:
+					{
+						break;
+					}
+				case BuildingState . Destroyed:
+					{
+						break;
+					}
 			}
 		}
 
 		public override void EndToday ( ) { }
 
-		public override string ToString ( ) { return $"{nameof ( SmallSimpleBuilding )} in {Grade} at ({X},{Y})" ; }
+		public override string ToString ( ) { return $"{nameof ( SmallSimpleBuilding )} in {Grade} at ({X},{Y})"; }
 
 	}
 

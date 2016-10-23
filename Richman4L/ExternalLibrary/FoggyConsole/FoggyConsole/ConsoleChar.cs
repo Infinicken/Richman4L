@@ -18,7 +18,7 @@
 
 using System ;
 
-namespace FoggyConsole
+namespace WenceyWang .FoggyConsole
 {
 
 	public struct ConsoleChar

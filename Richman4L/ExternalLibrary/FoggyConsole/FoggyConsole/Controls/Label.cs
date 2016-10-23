@@ -15,11 +15,12 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System ;
+using System;
+using System . Diagnostics . Contracts;
 
-using FoggyConsole . Controls . Renderers ;
+using WenceyWang . FoggyConsole . Controls . Renderers;
 
-namespace FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -28,25 +29,40 @@ namespace FoggyConsole .Controls
 	public class Label : TextualBase
 	{
 
-		private ContentAlign _align ;
+		private ContentAlign _align;
 
 		/// <summary>
 		///     The align of the text
 		/// </summary>
 		public ContentAlign Align
 		{
-			get { return _align ; }
+			get { return _align; }
 			set
 			{
 				if ( _align != value )
 				{
-					_align = value ;
-					Draw ( ) ;
+					_align = value;
+					Draw ( );
 				}
 			}
 		}
 
-		public override bool CanFocus => false ;
+		public override Size Size
+		{
+			get
+			{
+				if ( base . Size == new Size ( 0 , 0 ) )
+				{
+					return new Size ( Text . Length , 1 );
+				}
+
+				return base . Size;
+			}
+
+			set { base . Size = value; }
+		}
+
+		public override bool CanFocus => false;
 
 		/// <summary>
 		///     Creates a new <code>Label</code>

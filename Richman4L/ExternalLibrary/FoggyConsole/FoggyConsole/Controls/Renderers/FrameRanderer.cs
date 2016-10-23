@@ -1,12 +1,15 @@
-﻿using System ;
-
-namespace FoggyConsole . Controls .Renderers
+﻿namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	public class FrameRanderer : ControlRenderer<Frame>
 	{
 
-		public override void Draw ( ) { throw new NotImplementedException ( ); }
+		public override void Draw ( )
+		{
+			ConsoleArea result = new ConsoleArea ( Control . Size , Control . ActualBackgroundColor );
+			FogConsole . Draw ( Control . RenderPoint , result );
+			Control . Content?.Draw ( );
+		}
 
 	}
 

@@ -44,6 +44,11 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 
 		public override void DoWhenPass ( Player player , MoveType moveType )
 		{
+			if ( player == null )
+			{
+				throw new ArgumentNullException ( nameof ( player ) ) ;
+			}
+
 			switch ( moveType )
 			{
 				case MoveType . Walk :
@@ -96,7 +101,7 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 			int days = GameRandom . Current . Next ( 1 , 4 ) ;
 			player . ChangeState ( PlayerState . 住院 , days ) ;
 			BiteEvent ? . Invoke ( this , new DogBiteEventArgs ( player , days ) ) ;
-			Dispose ( ) ;
+			Maturity ( ) ;
 		}
 
 		public event EventHandler < DogBiteEventArgs > BiteEvent ;
@@ -137,15 +142,7 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 			Kill ( ) ;
 		}
 
-		private void Kill ( ) { Dispose ( ) ; }
-
-		protected override void Dispose ( bool disposing )
-		{
-			if ( ! DisposedValue )
-			{
-			}
-			base . Dispose ( disposing ) ;
-		}
+		private void Kill ( ) { Maturity ( ) ; }
 
 	}
 

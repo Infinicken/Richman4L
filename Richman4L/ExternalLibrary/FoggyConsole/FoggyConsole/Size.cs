@@ -18,7 +18,7 @@
 
 using System . Globalization ;
 
-namespace FoggyConsole
+namespace WenceyWang .FoggyConsole
 {
 
 	public struct Size

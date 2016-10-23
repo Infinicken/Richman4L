@@ -27,7 +27,7 @@ namespace FIGlet .NetUnitTest
 				foreach ( CharacterWidth characterWidth in values )
 				{
 					watch . Start ( ) ;
-					AsciiArt result = new AsciiArt ( str , FigletFont . Defult , characterWidth ) ;
+					AsciiArt result = new AsciiArt ( str , FIGletFont . Defult , characterWidth ) ;
 					watch . Stop ( ) ;
 					Console . WriteLine ( result ) ;
 				}
@@ -47,7 +47,7 @@ namespace FIGlet .NetUnitTest
 			{
 				Console . WriteLine ( Enum . GetName ( typeof ( CharacterWidth ) , characterWidth ) ) ;
 				watch . Start ( ) ;
-				AsciiArt result = new AsciiArt ( "Type Something" , FigletFont . Defult , characterWidth ) ;
+				AsciiArt result = new AsciiArt ( "Type Something" , FIGletFont . Defult , characterWidth ) ;
 				watch . Stop ( ) ;
 				Console . WriteLine ( result ) ;
 				Console . WriteLine ( ) ;

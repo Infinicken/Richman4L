@@ -15,11 +15,11 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System ;
+using System;
 
-using FoggyConsole . Controls . Renderers ;
+using WenceyWang . FoggyConsole . Controls . Renderers;
 
-namespace FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -29,37 +29,26 @@ namespace FoggyConsole .Controls
 	public abstract class TextualBase : Control
 	{
 
-		private string _text = string . Empty ;
+		private string _text = string . Empty;
 
 		/// <summary>
 		///     Gets or sets the text which is drawn onto this Control.
 		/// </summary>
 		public string Text
 		{
-			get { return _text ; }
+			get { return _text; }
 			set
 			{
 				if ( value == null )
 				{
-					throw new ArgumentNullException ( nameof ( value ) ) ;
+					throw new ArgumentNullException ( nameof ( value ) );
 				}
 
 				if ( _text != value )
 				{
-					// if the width is zero the control will always take as much width
-					// as needed to draw the full text, so the text-lenght directly affects the size
-					if ( ( Width == 0 ) &&
-						( _text . Length != value . Length ) )
-					{
-						_text = value ;
-						RequestMeasure ( ) ;
-					}
-					else
-					{
-						_text = value ;
-						Draw ( ) ;
-					}
-					TextChanged ? . Invoke ( this , EventArgs . Empty ) ;
+					_text = value;
+					RequestMeasure ( );
+					TextChanged?.Invoke ( this , EventArgs . Empty );
 				}
 			}
 		}
@@ -67,7 +56,7 @@ namespace FoggyConsole .Controls
 		protected TextualBase ( IControlRenderer renderer )
 			: base ( renderer ) { }
 
-		public event EventHandler TextChanged ;
+		public event EventHandler TextChanged;
 
 	}
 

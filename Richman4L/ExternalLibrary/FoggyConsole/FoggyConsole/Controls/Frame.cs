@@ -1,12 +1,20 @@
 ﻿using System;
 
-using FoggyConsole . Controls . Renderers;
+using WenceyWang . FoggyConsole . Controls . Renderers;
 
-namespace FoggyConsole . Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	public class Frame : ContentControl
 	{
+		public override Size Size
+		{
+			get { return Application . Current . WindowSize; }
+			set
+			{
+				Application . Current . WindowSize = value;
+			}
+		}
 
 		public override bool CanFocus => false;
 
@@ -16,12 +24,18 @@ namespace FoggyConsole . Controls
 
 		public Frame ( IControlRenderer renderer = null ) : base ( renderer ?? new FrameRanderer ( ) ) { }
 
-		public override void Measure ( Size availableSize ) { CurrentPage . Measure ( availableSize ); }
+		public override void Measure ( Size availableSize ) { CurrentPage?.Measure ( availableSize ); }
 
-		public override void Arrange ( Rectangle finalRect ) { CurrentPage . Arrange ( new Rectangle ( Size ) ); }
+		public override void Arrange ( Rectangle finalRect ) { CurrentPage?.Arrange ( new Rectangle ( Size ) ); }
 
-		protected override void RequestMeasure ( ) { Measure ( Size ); }
+		protected override void RequestMeasure ( )
+		{
+			Measure ( Size );
+			Arrange ( new Rectangle ( Size ) );
+			Draw ( );
+		}
 
+		protected override void RequestRedraw ( ) { Draw ( ); }
 
 		public void NavigateTo ( Page page )
 		{
@@ -34,7 +48,10 @@ namespace FoggyConsole . Controls
 			{
 				CurrentPage = page;
 				CurrentPage . Container = this;
+				CurrentPage . OnNavigateTo ( );
 				Measure ( Size );
+				Arrange ( new Rectangle ( Size ) );
+				Draw ( );
 			}
 		}
 
