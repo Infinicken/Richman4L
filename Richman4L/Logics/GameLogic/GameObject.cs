@@ -17,24 +17,22 @@
 */
 
 using System ;
-using System . Collections . Generic ;
+using System . Collections ;
+using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
 namespace WenceyWang .Richman4L
 {
 
-	public abstract class GameObject 
+	public abstract class GameObject
 	{
 
 		protected bool IsSaving = false ;
 
 		public long Index { get ; set ; }
 
-		public GameObject ( )
-		{
-			Index = GetHashCode ( ) ;
-		}
+		public GameObject ( ) { Index = GetHashCode ( ) ; }
 
 		public abstract void EndToday ( ) ;
 
@@ -51,14 +49,15 @@ namespace WenceyWang .Richman4L
 			}
 		}
 
-		//#region IDisposable Support
+		//	{
+		//	if ( ! DisposedValue )
+		//{
+
+		//protected virtual void Dispose ( bool disposing )
 
 		//protected bool DisposedValue ; // To detect redundant calls
 
-		//protected virtual void Dispose ( bool disposing )
-		//{
-		//	if ( ! DisposedValue )
-		//	{
+		//#region IDisposable Support
 		//		if ( disposing )
 		//		{
 		//		}

@@ -1,11 +1,17 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
+using System . Reflection ;
 
 using Windows . Foundation ;
 using Windows . UI . Xaml . Controls ;
 
+using WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer ;
+using WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer . Roads ;
 using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Maps . Events ;
+using WenceyWang . Richman4L . Maps . Roads ;
 using WenceyWang . Richman4L . Properties ;
 
 namespace WenceyWang . Richman4L . App .XamlMapRenderer
@@ -14,9 +20,10 @@ namespace WenceyWang . Richman4L . App .XamlMapRenderer
 	public sealed partial class XamlMapRenderer : UserControl , IMapRenderer
 	{
 
-		public Size ObjectRendererSize { get ; set ; }
+		public Size ObjectRendererSize { get ; set ; } = new Size ( 72 , 36 ) ;
 
-		public static List < MapObjectRendererType > MapObjectRendererTypeList { get ; }
+		public static List < MapObjectRendererType > MapObjectRendererTypeList { get ; } =
+			new List < MapObjectRendererType > ( ) ;
 
 		public XamlMapRenderer ( ) { InitializeComponent ( ) ; }
 
@@ -32,28 +39,72 @@ namespace WenceyWang . Richman4L . App .XamlMapRenderer
 			Target = map ;
 			Target . RegisMapRenderer ( this ) ;
 
-
-			foreach ( MapObject mapObject in Target . Objects )
-			{
-				Type rendererType =
-					MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType == mapObject . GetType ( ) ) .
-												EntryType ;
-				MapObjectRenderer . MapObjectRenderer objectRenderer =
-					( MapObjectRenderer . MapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
-				objectRenderer . RenderTransform = objectRenderer . Size . TransformTo ( ObjectRendererSize ) ;
-			}
+			Height = ObjectRendererSize . Height * Target . Size . Height ;
+			Width = ObjectRendererSize . Width * Target . Size . Width * 1.5 ;
 
 
 			Target . AddMapObjectEvent += Map_AddMapObjectEvent ;
+			Target . RemoveMapObjectEvent += Map_RemoveMapObjectEvent ;
 		}
 
 		public void RendererCatched ( )
 		{
-			foreach ( MapObject mapObject in Target . Objects )
+			List < MapObject > mapObjects = new List < MapObject > ( ) ;
+
+			for ( int y = 0 ; y < Target . Size . Height ; y++ )
 			{
+				for ( int x = 0 ; x < Target . Size . Width ; x++ )
+				{
+					MapObject mapObject = Target [ x , y ] ;
+					if ( mapObjects . Contains ( mapObject ) )
+					{
+					}
+					else
+					{
+						Type rendererType =
+							MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
+														EntryType ??
+							MapObjectRendererTypeList . FirstOrDefault (
+															renderer =>
+																renderer . TargetType . GetTypeInfo ( ) .
+																			IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? . EntryType ;
+						MapObjectRenderer . MapObjectRenderer objectRenderer =
+							( MapObjectRenderer . MapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
+						objectRenderer . RenderTransform =
+							objectRenderer . Size . TransformTo ( new Size ( ObjectRendererSize . Width * mapObject . Size . Width ,
+																			ObjectRendererSize . Height * mapObject . Size . Height ) ) ;
+
+						objectRenderer . Width = objectRenderer . Size . Width * mapObject . Size . Width ;
+						objectRenderer . Height = objectRenderer . Size . Width * mapObject . Size . Height ;
+
+						MainCanvas . Children . Add ( objectRenderer ) ;
+
+
+						Canvas . SetLeft ( objectRenderer ,
+											ObjectRendererSize . Width * 0.25 + mapObject . X * ObjectRendererSize . Width +
+											( Target . Size . Width - mapObject . Y ) * ObjectRendererSize . Width * 0.5 ) ;
+						Canvas . SetTop ( objectRenderer , mapObject . Y * ObjectRendererSize . Height ) ;
+
+						( ( IMapObjectRenderer ) objectRenderer ) . SetTarget ( mapObject ) ;
+						( ( IMapObjectRenderer ) objectRenderer ) . StartUp ( ) ;
+
+						objectRenderer . Show ( ) ;
+						mapObjects . Add ( mapObject ) ;
+					}
+				}
 			}
 		}
 
+		private void Map_RemoveMapObjectEvent ( object sender , MapRemoveMapObjectEventArgs e ) { }
+
+		public static void RegisDefult ( )
+		{
+			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) ) ;
+			RegisMapObjectRenderer ( typeof ( SmallAreaRenderer ) , typeof ( SmallArea ) ) ;
+
+			RegisMapObjectRenderer ( typeof ( EmptyBlockRenderer ) , typeof ( EmptyBlock ) ) ;
+			RegisMapObjectRenderer ( typeof ( NameShower ) , typeof ( MapObject ) ) ;
+		}
 
 		public static MapObjectRendererType RegisMapObjectRenderer ( [ NotNull ] Type mapRendererType ,
 																	[ NotNull ] Type targetType )
@@ -78,10 +129,16 @@ namespace WenceyWang . Richman4L . App .XamlMapRenderer
 
 			type = new MapObjectRendererType ( mapRendererType , targetType ) ;
 			MapObjectRendererTypeList . Add ( type ) ;
+			MapObjectRendererTypeList . Sort (
+				( x , y ) =>
+					y . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) -
+					x . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) ) ;
+
 			return type ;
 		}
 
-		private void Map_AddMapObjectEvent ( object sender , EventArgs e ) { }
+
+		private void Map_AddMapObjectEvent ( object sender , MapAddMapObjectEventArgs e ) { }
 
 	}
 

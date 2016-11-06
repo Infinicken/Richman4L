@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L .Maps
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L .Maps
 {
 
 	/// <summary>

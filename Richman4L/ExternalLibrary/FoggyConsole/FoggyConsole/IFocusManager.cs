@@ -1,3 +1,7 @@
+using System ;
+using System . Collections ;
+using System . Linq ;
+
 using WenceyWang . FoggyConsole . Controls ;
 
 namespace WenceyWang .FoggyConsole

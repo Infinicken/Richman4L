@@ -17,6 +17,8 @@
 */
 
 using System ;
+using System . Collections ;
+using System . Linq ;
 using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
@@ -59,6 +61,8 @@ namespace WenceyWang . Richman4L .Maps
 				throw new ArgumentNullException ( nameof ( resource ) ) ;
 			}
 		}
+
+		protected Block ( ) { }
 
 		public override void StartDay ( GameDate nextDate ) { }
 

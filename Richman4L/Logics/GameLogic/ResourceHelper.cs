@@ -1,9 +1,11 @@
-﻿using System;
-using System . IO;
-using System . Reflection;
-using System . Xml . Linq;
+﻿using System ;
+using System . Collections ;
+using System . IO ;
+using System . Linq ;
+using System . Reflection ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang .Richman4L
 {
 
 	public static class ResourceHelper
@@ -13,25 +15,25 @@ namespace WenceyWang . Richman4L
 		{
 			if ( fileName == null )
 			{
-				throw new ArgumentNullException ( nameof ( fileName ) );
+				throw new ArgumentNullException ( nameof ( fileName ) ) ;
 			}
 
-			Assembly assembly = typeof ( Game ) . GetTypeInfo ( ) . Assembly;
+			Assembly assembly = typeof ( Game ) . GetTypeInfo ( ) . Assembly ;
 
-			Stream stream = assembly . GetManifestResourceStream ( typeof ( Game ) . Namespace + "." + fileName );
+			Stream stream = assembly . GetManifestResourceStream ( typeof ( Game ) . Namespace + "." + fileName ) ;
 
 			if ( stream == null )
 			{
-				throw new ArgumentException ( @"File not found" , nameof ( fileName ) );
+				throw new ArgumentException ( @"File not found" , nameof ( fileName ) ) ;
 			}
 
-			StreamReader reader = new StreamReader ( stream );
+			StreamReader reader = new StreamReader ( stream ) ;
 
-			XDocument doc = XDocument . Parse ( reader . ReadToEnd ( ) );
+			XDocument doc = XDocument . Parse ( reader . ReadToEnd ( ) ) ;
 
-			reader . Dispose ( );
+			reader . Dispose ( ) ;
 
-			return doc;
+			return doc ;
 		}
 
 	}

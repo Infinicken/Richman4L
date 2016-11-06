@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 using System . Reflection ;
 using System . Resources ;
 using System . Runtime . CompilerServices ;
@@ -13,7 +15,7 @@ using System . Runtime . CompilerServices ;
 [ assembly : AssemblyCompany ( "Wencey Wang" ) ]
 [ assembly : AssemblyProduct ( "Wencey Wang Richman4L" ) ]
 [ assembly : AssemblyCopyright ( "Wencey Wang © 2016" ) ]
-[ assembly : AssemblyTrademark ( "" ) ]
+[ assembly : AssemblyTrademark ( "Richman4L" ) ]
 [ assembly : AssemblyCulture ( "" ) ]
 [ assembly : CLSCompliant ( true ) ]
 [ assembly : NeutralResourcesLanguage ( "" ) ]

@@ -1,5 +1,7 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
+using System . Linq ;
 using System . Threading . Tasks ;
 
 using Windows . Foundation . Metadata ;
@@ -7,6 +9,7 @@ using Windows . UI . ViewManagement ;
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 
+using WenceyWang . Richman4L . App . XamlMapRenderer ;
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Players . Models ;
@@ -41,7 +44,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 							Task . Run ( ( ) => { GameTitle . LoadTitles ( ) ; } ) ,
 							Task . Run ( ( ) => { GameSaying . LoadSayings ( ) ; } ) ,
 							Task . Run ( ( ) => { MapObject . LoadMapObjects ( ) ; } ) ,
-							Task . Run ( ( ) => { PlayerModelProxy . LoadPlayerModels ( ) ; } )
+							Task . Run ( ( ) => { PlayerModelProxy . LoadPlayerModels ( ) ; } ) ,
+							Task . Run ( ( ) => { XamlMapRenderer . RegisDefult ( ) ; } )
 
 							//Task . Run ( ( ) => { Maps . MapProxy . LoadMaps ( ) ; } ) ,
 						} ;

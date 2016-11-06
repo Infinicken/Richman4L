@@ -16,6 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System ;
+using System . Collections ;
+using System . Linq ;
+
 using Windows . Foundation . Metadata ;
 using Windows . Phone . UI . Input ;
 using Windows . UI . Xaml . Controls ;

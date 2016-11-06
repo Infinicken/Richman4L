@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleRoot Content="Abnormalman" />
 		<TitleRoot Content="Rationalman" />
 		<!--<TitleRoot Content="Tank（°ο°）Man"/>-->
-		<TitleRoot Content="TankMan"/>
+		<TitleRoot Content="TankMan" />
 	</TitleRoots>
 	<TitleKeys>
 		<TitleKey Content="(Rain!)" />

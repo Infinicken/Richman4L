@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L .Missions
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L .Missions
 {
 
 	public class MissionGame : Game

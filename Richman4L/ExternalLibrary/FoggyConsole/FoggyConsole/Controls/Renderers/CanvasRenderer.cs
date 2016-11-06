@@ -1,3 +1,7 @@
+using System ;
+using System . Collections ;
+using System . Linq ;
+
 namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
@@ -12,7 +16,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 		{
 			foreach ( Control control in Control . Items )
 			{
-				control . Draw ( );
+				control . Draw ( ) ;
 			}
 		}
 

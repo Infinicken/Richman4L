@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
@@ -10,7 +12,6 @@ namespace WenceyWang . Richman4L .Banks
 	/// </summary>
 	public class BorrowingBankProof : BankProof
 	{
-		
 
 		/// <summary>
 		///     借出的款项数目

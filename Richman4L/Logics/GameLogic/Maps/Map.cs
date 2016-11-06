@@ -17,6 +17,7 @@
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -43,6 +44,19 @@ namespace WenceyWang . Richman4L .Maps
 		[ NotNull ]
 		[ ItemNotNull ]
 		public List < MapObject > Objects { get ; }
+
+		public Block this [ int x , int y ]
+		{
+			get
+			{
+				return
+					( Block ) Objects . FirstOrDefault ( mapobject => mapobject is Block &&
+																	( ( mapobject . X == x ) ||
+																	( ( mapobject . X < x ) && ( mapobject . X + mapobject . Size . Width - 1 >= x ) ) ) &&
+																	( ( mapobject . Y == y ) ||
+																	( ( mapobject . Y < y ) && ( mapobject . Y + mapobject . Size . Height - 1 >= y ) ) ) ) ;
+			}
+		}
 
 		/// <summary>
 		///     地图的排水基数
@@ -79,6 +93,17 @@ namespace WenceyWang . Richman4L .Maps
 			{
 				throw new ArgumentException ( $"Can not parse {nameof ( document )}" , e ) ;
 			}
+
+			for ( int y = 0 ; y < Size . Height ; y++ )
+			{
+				for ( int x = 0 ; x < Size . Width ; x++ )
+				{
+					if ( this [ x , y ] == null )
+					{
+						Objects . Add ( new EmptyBlock ( x , y ) ) ;
+					}
+				}
+			}
 		}
 
 		public Map ( )
@@ -91,7 +116,9 @@ namespace WenceyWang . Richman4L .Maps
 		}
 
 		public Map ( [ NotNull ] string flieName )
-			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) ) { }
+			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) )
+		{
+		}
 
 		[ CanBeNull ]
 		public Road GetRoad ( long id ) => Objects . SingleOrDefault ( road => ( road as Road ) ? . Id == id ) as Road ;
@@ -129,6 +156,8 @@ namespace WenceyWang . Richman4L .Maps
 		[ CanBeNull ]
 		public event EventHandler < MapAddMapObjectEventArgs > AddMapObjectEvent ;
 
+		[ CanBeNull ]
+		public event EventHandler < MapRemoveMapObjectEventArgs > RemoveMapObjectEvent ;
 
 		public void RegisMapRenderer ( IMapRenderer mapRenderer ) { }
 

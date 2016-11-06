@@ -17,20 +17,35 @@
 */
 
 using System ;
+using System . Collections ;
+using System . Linq ;
 
 namespace WenceyWang . Richman4L .Maps
 {
 
-	public interface IMapObjectRenderer < T > : IDisposable where T : MapObject
+	public interface IMapObjectRenderer < T > : IMapObjectRenderer where T : MapObject
 	{
 
-		T Target { get ; }
+		new T Target { get ; }
+
+		//void Update ( );
+
+		//void StartUp ( );
+
+		void SetTarget ( T target ) ;
+
+	}
+
+	public interface IMapObjectRenderer
+	{
+
+		MapObject Target { get ; }
 
 		void Update ( ) ;
 
 		void StartUp ( ) ;
 
-		void SetTarget ( T target ) ;
+		void SetTarget ( MapObject target ) ;
 
 	}
 

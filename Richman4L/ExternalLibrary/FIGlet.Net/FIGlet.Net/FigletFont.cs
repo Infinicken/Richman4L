@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . IO ;
 using System . Linq ;
 using System . Reflection ;
@@ -147,24 +148,24 @@ namespace WenceyWang .FIGlet
 			return Lines [ Convert . ToByte ( sourceChar ) ] [ line ] ;
 		}
 
-		//private void LoadLines ( List<string> fontLines )
-		//{
-		//	Lines = fontLines;
-		//	string configString = Lines . First ( );
-		//	string [ ] configArray = configString . Split ( ' ' );
-		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
-		//	if ( Signature == "flf2a" )
-		//	{
-		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
-		//Height = configArray . GetIntValue ( 1 );
-		//BaseLine = configArray . GetIntValue ( 2 );
-		//MaxLength = configArray . GetIntValue ( 3 );
-		//OldLayout = configArray . GetIntValue ( 4 );
-		//CommentLines = configArray . GetIntValue ( 5 );
-		//PrintDirection = configArray . GetIntValue ( 6 );
-		//FullLayout = configArray . GetIntValue ( 7 );
-
 		//CodeTagCount = configArray . GetIntValue ( 8 );
+		//FullLayout = configArray . GetIntValue ( 7 );
+		//PrintDirection = configArray . GetIntValue ( 6 );
+		//CommentLines = configArray . GetIntValue ( 5 );
+		//OldLayout = configArray . GetIntValue ( 4 );
+		//MaxLength = configArray . GetIntValue ( 3 );
+		//BaseLine = configArray . GetIntValue ( 2 );
+		//Height = configArray . GetIntValue ( 1 );
+		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
+		//	{
+		//	if ( Signature == "flf2a" )
+		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
+		//	string [ ] configArray = configString . Split ( ' ' );
+		//	string configString = Lines . First ( );
+		//	Lines = fontLines;
+		//{
+
+		//private void LoadLines ( List<string> fontLines )
 		//	}
 		//}
 

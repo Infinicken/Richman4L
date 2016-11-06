@@ -1,4 +1,6 @@
-﻿using System . Linq ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
@@ -77,13 +79,18 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 
 		private void PlayerConfigListItem_Loaded ( object sender , RoutedEventArgs e )
 		{
-			foreach ( PlayerModelProxy item in  PlayerModelProxy . GetPlayerModels ( ) )
+			if ( PlayerModelNameList == null )
+			{
+				throw new InvalidOperationException ( ) ;
+			}
+
+			foreach ( PlayerModelProxy item in PlayerModelProxy . GetPlayerModels ( ) )
 			{
 				PlayerModelNameList . Items . Add ( item . Name ) ;
 			}
 
-			PlayerModelNameList . SelectedIndex = 0 ;
-			ControllerList . SelectedIndex = 0 ;
+			PlayerModelNameList . SelectedIndex = - 1 ;
+			ControllerList . SelectedIndex = - 1 ;
 		}
 
 		private void PlayerModelNameList_SelectionChanged ( object sender , SelectionChangedEventArgs e )

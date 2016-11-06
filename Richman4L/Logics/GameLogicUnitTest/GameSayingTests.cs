@@ -1,7 +1,6 @@
 ﻿using System ;
-using System . Collections . Generic ;
+using System . Collections ;
 using System . Linq ;
-using System . Xml . Linq ;
 
 using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
@@ -27,33 +26,32 @@ namespace WenceyWang . Richman4L .UnitTests
 		[ TestMethod ]
 		public void SortSayingTest ( )
 		{
-			XDocument doc = ResourceHelper . LoadXmlDocument ( @"GameSayingResources.xml" ) ;
-			List < XElement > sayingList = doc . Root . Elements ( ) . ToList ( ) ;
-			sayingList . Sort ( ( x , y ) =>
-								{
-									int contentLenthDiff = x . Attribute ( "Content" ) . ToString ( ) . Length -
-															y . Attribute ( "Content" ) . ToString ( ) . Length ;
-									if ( contentLenthDiff == 0 )
-									{
-										int lenthDiff = x . ToString ( ) . Length - y . ToString ( ) . Length ;
-										if ( lenthDiff == 0 )
+			GameSaying . LoadSayings ( ) ;
+			GameSaying . Sayings . Sort ( ( x , y ) =>
 										{
-											return string . CompareOrdinal ( x . Attribute ( "Content" ) . ToString ( ) ,
-																			y . Attribute ( "Content" ) . ToString ( ) ) ;
-										}
+											int contentLenthDiff = x . Content . Length -
+																	y . Content . Length ;
+											if ( contentLenthDiff == 0 )
+											{
+												int lenthDiff = x . ToXElement ( ) . ToString ( ) . Length - y . ToXElement ( ) . ToString ( ) . Length ;
+												if ( lenthDiff == 0 )
+												{
+													return string . CompareOrdinal ( x . Content ,
+																					y . Content ) ;
+												}
 
-										return lenthDiff ;
-									}
+												return lenthDiff ;
+											}
 
-									return contentLenthDiff ;
-								} ) ;
+											return contentLenthDiff ;
+										} ) ;
 			string lastSaying = "" ;
-			foreach ( XElement saying in sayingList )
+			foreach ( GameSaying saying in GameSaying . Sayings )
 			{
-				if ( saying . Attribute ( "Content" ) . ToString ( ) != lastSaying )
+				if ( saying . Content != lastSaying )
 				{
-					Console . WriteLine ( saying ) ;
-					lastSaying = saying . Attribute ( "Content" ) . ToString ( ) ;
+					Console . WriteLine ( saying . ToXElement ( ) ) ;
+					lastSaying = saying . Content ;
 				}
 			}
 		}

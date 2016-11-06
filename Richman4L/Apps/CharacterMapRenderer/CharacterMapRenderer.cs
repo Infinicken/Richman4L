@@ -17,6 +17,7 @@
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -99,8 +100,8 @@ namespace WenceyWang . Richman4L . App .CharacterMapRenderer
 					for ( int x = 0 ; x < renderer . Target . Size . Width * MapUnit . Width ; x++ )
 					{
 						CurrentView [
-							( renderer . Target . X - 1 ) * MapUnit . Width + x ,
-							( renderer . Target . Y - 1 ) * MapUnit . Height + y ] = renderer . CurrentView [ x , y ] ;
+							renderer . Target . X * MapUnit . Width + x ,
+							renderer . Target . Y * MapUnit . Height + y ] = renderer . CurrentView [ x , y ] ;
 					}
 				}
 			}
@@ -126,7 +127,7 @@ namespace WenceyWang . Richman4L . App .CharacterMapRenderer
 				{
 					for ( int x = 0 ; x < mapObject . Size . Width * MapUnit . Width ; x++ )
 					{
-						CurrentView [ ( mapObject . X - 1 ) * MapUnit . Width + x , ( mapObject . Y - 1 ) * MapUnit . Height + y ] =
+						CurrentView [ mapObject . X * MapUnit . Width + x , mapObject . Y * MapUnit . Height + y ] =
 							text [ ( y * mapObject . Size . Width * MapUnit . Width + x ) % text . Length ] ;
 					}
 				}

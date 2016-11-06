@@ -1,4 +1,8 @@
-﻿using WenceyWang . Richman4L . Players ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Properties ;
 
 namespace WenceyWang . Richman4L .Stocks

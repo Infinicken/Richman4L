@@ -2,3 +2,4 @@
 /obj/
 *.vspscc
 *.lock.json
+*.user

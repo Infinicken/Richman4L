@@ -1,4 +1,8 @@
-﻿using Windows . Foundation ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+using Windows . Foundation ;
 
 namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Buildings
 {

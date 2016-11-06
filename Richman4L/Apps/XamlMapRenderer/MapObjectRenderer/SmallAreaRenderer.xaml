@@ -11,7 +11,7 @@
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///XAMLResources/GeneralDictionary.xaml" />
+				<ResourceDictionary Source="../XAMLResources/GeneralDictionary.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
@@ -73,7 +73,7 @@
 					</TextBlock.RenderTransform>
 				</TextBlock>
 			</Grid>
-			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
 				Visibility="Collapsed" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
@@ -106,7 +106,7 @@
 					</TextBlock.RenderTransform>
 				</TextBlock>
 			</Grid>
-			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
 				Visibility="Collapsed" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
@@ -139,7 +139,7 @@
 					</TextBlock.RenderTransform>
 				</TextBlock>
 			</Grid>
-			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+			<Grid RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
 				Visibility="Collapsed" >
 				<Grid.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
@@ -175,13 +175,15 @@
 				</TextBlock>
 			</Grid>
 			<Rectangle Fill="White" Opacity="0.8" Height="112" Width="112" Margin="{StaticResource MapObjMargin}"
-						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True" >
+						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+						Visibility="Collapsed" >
 				<Rectangle.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Rectangle.RenderTransform>
 			</Rectangle>
 			<Rectangle Fill="#FF0080FF" Opacity="0.2" Margin="{StaticResource MapObjMargin}" Width="112" Height="112"
-						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True" >
+						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True"
+						Visibility="Collapsed" >
 				<Rectangle.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Rectangle.RenderTransform>

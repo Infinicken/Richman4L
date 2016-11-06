@@ -1,4 +1,7 @@
-﻿using System . Web . Optimization ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+using System . Web . Optimization ;
 
 namespace WenceyWang . Richman4L . Apps .Web
 {

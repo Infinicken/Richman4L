@@ -17,7 +17,9 @@
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
+using System . Linq ;
 using System . Xml . Linq ;
 
 namespace WenceyWang .Richman4L
@@ -31,6 +33,8 @@ namespace WenceyWang .Richman4L
 		public string People { get ; }
 
 		public string Book { get ; }
+
+		public Guid Guid { get ; }
 
 		public string Author { get ; }
 
@@ -52,6 +56,18 @@ namespace WenceyWang .Richman4L
 			Book = element . Attribute ( nameof ( Book ) ) ? . Value ;
 			Author = element . Attribute ( nameof ( Author ) ) ? . Value ;
 			Song = element . Attribute ( nameof ( Song ) ) ? . Value ;
+#if DEBUG
+			if ( element . Attribute ( nameof ( Guid ) ) ? . Value == null )
+			{
+				Guid = Guid . NewGuid ( ) ;
+			}
+			else
+			{
+#endif
+				Guid = Guid . Parse ( element . Attribute ( nameof ( Guid ) ) ? . Value ) ;
+#if DEBUG
+			}
+#endif
 		}
 
 		internal static List < GameSaying > Sayings ;
@@ -62,6 +78,28 @@ namespace WenceyWang .Richman4L
 
 		public override string ToString ( ) => Content ;
 
+		public XElement ToXElement ( )
+		{
+			XElement result = new XElement ( nameof ( GameSaying ) ) ;
+
+			result . SetAttributeValue ( nameof ( Content ) , Content ) ;
+			result . SetAttributeValue ( nameof ( People ) , People ) ;
+			result . SetAttributeValue ( nameof ( Book ) , Book ) ;
+			result . SetAttributeValue ( nameof ( Author ) , Author ) ;
+			result . SetAttributeValue ( nameof ( Song ) , Song ) ;
+			result . SetAttributeValue ( nameof ( Guid ) , Guid . ToString ( ) ) ;
+
+			return result ;
+		}
+
+		public static GameSaying GetSaying ( Guid guid )
+		{
+			if ( ! Loaded )
+			{
+				LoadSayings ( ) ;
+			}
+			return Sayings . FirstOrDefault ( saying => saying . Guid == guid ) ;
+		}
 
 		public static GameSaying GetSaying ( )
 		{

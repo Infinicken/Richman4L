@@ -1,5 +1,7 @@
 ﻿using System ;
+using System . Collections ;
 using System . ComponentModel ;
+using System . Linq ;
 using System . Text ;
 
 namespace WenceyWang . Richman4L . Apps .Console

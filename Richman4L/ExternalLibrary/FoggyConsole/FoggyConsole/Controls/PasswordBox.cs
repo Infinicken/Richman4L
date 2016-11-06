@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 using System . Security ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;

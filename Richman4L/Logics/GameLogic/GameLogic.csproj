@@ -108,6 +108,7 @@
     <Compile Include="Maps\Decoration.cs" />
     <Compile Include="Maps\EmptyBlock.cs" />
     <Compile Include="Maps\Events\MapAddMapObjectEventArgs.cs" />
+    <Compile Include="Maps\Events\MapRemoveMapObjectEventArgs.cs" />
     <Compile Include="Maps\Hospital.cs" />
     <Compile Include="Maps\IMapRenderer.cs" />
     <Compile Include="Maps\IMapObjectRenderer.cs" />
@@ -188,14 +189,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomEvents\RandomEvent.cs" />
     <Compile Include="ResourceHelper.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <DependentUpon>Resources.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Seasons\Season.cs" />
     <Compile Include="StartGameParameters.cs" />
     <Compile Include="Stocks\BuyStockDelegate.cs" />
+    <Compile Include="Stocks\PriceController\NormalStockPriceControllerConfig.cs" />
     <Compile Include="Stocks\SellStockDelegateState.cs" />
     <Compile Include="Stocks\BuyStockDelegateState.cs" />
     <Compile Include="Stocks\PriceController\NormalStockPriceController.cs" />
@@ -215,15 +212,10 @@
     <Compile Include="Stocks\StockProof.cs" />
     <Compile Include="Stocks\StockType.cs" />
     <Compile Include="Stocks\StockTransactDateType.cs" />
+    <Compile Include="TypeExtensions.cs" />
     <Compile Include="Weathers\Weather.cs" />
     <Compile Include="Weathers\PrecipitationType.cs" />
     <Compile Include="Weathers\Wind.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Players\Models\Resources\Index.xml" />

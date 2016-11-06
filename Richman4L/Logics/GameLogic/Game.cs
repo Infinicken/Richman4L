@@ -17,6 +17,7 @@
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
@@ -31,6 +32,8 @@ using WenceyWang . Richman4L . Players . Models ;
 using WenceyWang . Richman4L . Stocks ;
 using WenceyWang . Richman4L . Weathers ;
 
+using Environment = WenceyWang . Richman4L . GameEnviroment . Environment ;
+
 namespace WenceyWang .Richman4L
 {
 
@@ -41,7 +44,7 @@ namespace WenceyWang .Richman4L
 
 		#region Enviroment
 
-		public GameEnviroment . Environment GameEnviroment { get ; set ; }
+		public Environment GameEnviroment { get ; set ; }
 
 		#endregion
 
@@ -81,9 +84,9 @@ namespace WenceyWang .Richman4L
 		internal GameDate GovermentControlChanging { get ; set ; }
 
 
-		public List < Buff > GameBuffs { get ; private set ; } = new List < Buff > ( ) ;
+		public List < Buff > GameBuffs { get ; } = new List < Buff > ( ) ;
 
-		public List < Player > GamePlayers { get ; private set ; } = new List < Player > ( ) ;
+		public List < Player > GamePlayers { get ; } = new List < Player > ( ) ;
 
 		public StockMarket StockMarket { get ; set ; }
 
@@ -287,7 +290,6 @@ namespace WenceyWang .Richman4L
 		}
 
 		#endregion
-
 	}
 
 }

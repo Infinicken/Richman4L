@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . FoggyConsole . Controls .Renderers
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
 	public class StackPanelRanderer : ControlRenderer < StackPanel >

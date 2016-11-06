@@ -16,6 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System ;
+using System . Collections ;
+using System . Linq ;
 using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Maps . Roads ;
@@ -27,10 +30,8 @@ namespace WenceyWang . Richman4L .Maps
 	public class Hospital : ReturnRoad
 	{
 
+		public Hospital ( XElement resource ) : base ( resource ) { }
 
-		public Hospital ( XElement resource ) : base ( resource ) {}
-
-		
 	}
 
 }

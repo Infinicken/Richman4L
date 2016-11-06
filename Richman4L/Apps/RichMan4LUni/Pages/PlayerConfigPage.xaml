@@ -120,6 +120,7 @@
 				<RowDefinition Height="40" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="40" />
+				<RowDefinition Height="Auto" />
 				<RowDefinition />
 				<RowDefinition Height="12" />
 				<RowDefinition Height="Auto" />
@@ -130,29 +131,28 @@
 			<TextBlock x:Name="Title" TextWrapping="Wrap" Text="人物设定" FontFamily="{StaticResource Font}"
 						FontSize="{StaticResource LargeTitle}" Grid.Row="1" Grid.Column="1" Margin="0,0,0,-7"
 						d:LayoutOverrides="LeftMargin, RightMargin" />
-			<ScrollViewer Grid.Column="1" Grid.Row="3" >
-				<StackPanel x:Name="PlayerConfigStackPanel" >
-					<Grid d:LayoutOverrides="LeftMargin, RightMargin" >
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition />
-							<ColumnDefinition Width="8" />
-							<ColumnDefinition />
-							<ColumnDefinition Width="8" />
-							<ColumnDefinition />
-							<ColumnDefinition Width="8" />
-							<ColumnDefinition Width="32" />
-						</Grid.ColumnDefinitions>
-						<TextBlock TextWrapping="Wrap" FontSize="21.333" FontFamily="{StaticResource Font}" Text="玩家们" Height="27"
-									VerticalAlignment="Bottom" />
-						<TextBlock TextWrapping="Wrap" Grid.Column="2" FontSize="21.333" FontFamily="{StaticResource Font}"
-									Text="{StaticResource CharacterString}" VerticalAlignment="Bottom" />
-						<TextBlock TextWrapping="Wrap" Grid.Column="4" FontSize="21.333" FontFamily="{StaticResource Font}"
-									Text="{StaticResource ControllerString}" VerticalAlignment="Bottom" />
-					</Grid>
-				</StackPanel>
+			<Grid d:LayoutOverrides="Width, Height, TopPosition, BottomPosition" Grid.Row="3" Grid.Column="1" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition Width="8" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="8" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="8" />
+					<ColumnDefinition Width="32" />
+				</Grid.ColumnDefinitions>
+				<TextBlock TextWrapping="Wrap" FontSize="21.333" FontFamily="{StaticResource Font}" Text="玩家们" Height="27"
+							VerticalAlignment="Bottom" />
+				<TextBlock TextWrapping="Wrap" Grid.Column="2" FontSize="21.333" FontFamily="{StaticResource Font}"
+							Text="{StaticResource CharacterString}" VerticalAlignment="Bottom" />
+				<TextBlock TextWrapping="Wrap" Grid.Column="4" FontSize="21.333" FontFamily="{StaticResource Font}"
+							Text="{StaticResource ControllerString}" VerticalAlignment="Bottom" />
+			</Grid>
+			<ScrollViewer Grid.Column="1" Grid.Row="4" >
+				<StackPanel x:Name="PlayerConfigStackPanel" Margin="0,0,12,0" />
 			</ScrollViewer>
 			<Button x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch"
-					Style="{StaticResource TextBlockButtonStyle}" Grid.Row="5" Width="30"
+					Style="{StaticResource TextBlockButtonStyle}" Grid.Row="6" Width="30"
 					d:LayoutOverrides="TopPosition, BottomPosition" Click="AddButton_Click" >
 				<SymbolIcon Symbol="Add" Margin="5" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"
 							VerticalAlignment="Center" >
@@ -161,7 +161,7 @@
 					</SymbolIcon.RenderTransform>
 				</SymbolIcon>
 			</Button>
-			<Button x:Name="CreateGamePageButton" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="7"
+			<Button x:Name="CreateGamePageButton" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="8"
 					VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" FontFamily="{StaticResource Font}"
 					d:LayoutOverrides="TopPosition, BottomPosition" FontSize="21.333" Click="CreateGamePageButton_Click"
 					Width="115" >
@@ -183,7 +183,7 @@
 					</Rectangle>
 				</Grid>
 			</Button>
-			<Button x:Name="StartGameButton" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="7"
+			<Button x:Name="StartGameButton" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="8"
 					VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}"
 					d:LayoutOverrides="TopPosition, BottomPosition" FontFamily="Segoe UI Symbol" FontSize="21.333"
 					Click="StartGameButton_Click" Width="115" >

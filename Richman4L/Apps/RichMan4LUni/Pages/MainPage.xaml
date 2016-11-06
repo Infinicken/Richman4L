@@ -4,6 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
+	xmlns:XamlMapRenderer="using:WenceyWang.Richman4L.App.XamlMapRenderer"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.MainPage"
 	mc:Ignorable="d" Height="Auto" Width="Auto" >
 
@@ -79,6 +80,13 @@
 						<Setter Target="SettingButton.(Grid.Row)" Value="5" />
 						<Setter Target="SettingButton.(Grid.RowSpan)" Value="4" />
 						<Setter Target="SettingButton.(Grid.Column)" Value="2" />
+						<Setter Target="MainPageDownImage.(Image.Stretch)" Value="None" />
+						<Setter Target="MainPageDownImage.(FrameworkElement.Margin)" >
+							<Setter.Value>
+								<Thickness>0</Thickness>
+							</Setter.Value>
+						</Setter>
+						<Setter Target="MainPageUpImage.(Image.Stretch)" Value="None" />
 					</VisualState.Setters>
 				</VisualState>
 			</VisualStateGroup>
@@ -87,8 +95,8 @@
 		<Image x:Name="MainPageUpImage" Source="ms-appx:///Pages/ImageResources/MainPageUp.png"
 				d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition"
 				Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="1,0" />
-		<Image x:Name="MainPageDownImage" Source="ms-appx:///Pages/ImageResources/MainPageDown.png"
-				d:LayoutOverrides="LeftMargin, RightMargin" Stretch="UniformToFill" VerticalAlignment="Bottom"
+		<Image x:Name="MainPageDownImage" Source="ms-appx:///Pages/ImageResources/MainPageDown.png" Stretch="UniformToFill"
+				VerticalAlignment="Bottom"
 				HorizontalAlignment="Left" RenderTransformOrigin="0,1" />
 		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 			<Grid.RenderTransform>

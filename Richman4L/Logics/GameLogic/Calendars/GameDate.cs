@@ -1,4 +1,8 @@
-﻿using WenceyWang . Richman4L . Seasons ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+using WenceyWang . Richman4L . Seasons ;
 
 namespace WenceyWang . Richman4L .Calendars
 {

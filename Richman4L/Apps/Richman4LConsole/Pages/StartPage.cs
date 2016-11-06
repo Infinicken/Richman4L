@@ -1,79 +1,77 @@
-﻿using System;
-using System . Threading;
-using System . Threading . Tasks;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+using System . Threading ;
+using System . Threading . Tasks ;
 
-using WenceyWang . FoggyConsole;
-using WenceyWang . FoggyConsole . Controls;
-using WenceyWang . Richman4L . Apps . Console . Fonts;
+using WenceyWang . FoggyConsole ;
+using WenceyWang . FoggyConsole . Controls ;
+using WenceyWang . Richman4L . Apps . Console . Fonts ;
 
-namespace WenceyWang . Richman4L . Apps . Console . Pages
+namespace WenceyWang . Richman4L . Apps . Console .Pages
 {
+
 	public sealed class StartPage : Page
 	{
 
-		public FIGletLabel Label { get; set; }
+		public FIGletLabel Label { get ; set ; }
 
-		public void UpdatePosition ( )
+		public StartPage ( )
 		{
+			Label = new FIGletLabel ( ) ;
+
+			Canvas canvas = new Canvas ( ) ;
+
+			canvas . AddChild ( Label ) ;
+
+			Content = canvas ;
 		}
 
-		public StartPage ( ) : base ( )
-		{
-			Label = new FIGletLabel ( );
+		public void UpdatePosition ( ) { }
 
-			Canvas canvas = new Canvas ( );
+		public override void OnNavigateTo ( ) { ShowAnimate ( ) ; }
 
-			canvas . AddChild ( Label );
-
-			Content = canvas;
-
-		}
-		public override void OnNavigateTo ( ) { ShowAnimate ( ); }
-
-		void ShowAnimate ( )
+		private void ShowAnimate ( )
 		{
 			Task animateTask = Task . Run ( ( ) =>
-						 {
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) );
-							 Label . Font = FontsHelper . LoadFont ( "invita" );
-							 Label . ForegroundColor = ConsoleColor . Gray;
-							 Label . BackgroundColor = ConsoleColor . Black;
-							 Label . Text = "Wencey Wang Present";
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) );
-							 Label . ForegroundColor = ConsoleColor . White;
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 2 ) );
-							 Label . ForegroundColor = ConsoleColor . Gray;
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) );
-							 Label . ForegroundColor = ConsoleColor . Black;
-							 Label . Text = "Dream Recorder";
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) );
-							 Label . ForegroundColor = ConsoleColor . Gray;
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) );
-							 Label . ForegroundColor = ConsoleColor . White;
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 2 ) );
-							 Label . ForegroundColor = ConsoleColor . Gray;
-							 Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) );
-							 Label . ForegroundColor = ConsoleColor . Black;
-
-						 } );
+											{
+												Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) ) ;
+												Label . Font = FontsHelper . LoadFont ( "invita" ) ;
+												Label . ForegroundColor = ConsoleColor . Gray ;
+												Label . BackgroundColor = ConsoleColor . Black ;
+												Label . Text = "Wencey Wang Present" ;
+												Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) ) ;
+												Label . ForegroundColor = ConsoleColor . White ;
+												Thread . Sleep ( TimeSpan . FromSeconds ( 2 ) ) ;
+												Label . ForegroundColor = ConsoleColor . Gray ;
+												Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) ) ;
+												Label . ForegroundColor = ConsoleColor . Black ;
+												Label . Text = "Dream Recorder" ;
+												Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) ) ;
+												Label . ForegroundColor = ConsoleColor . Gray ;
+												Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) ) ;
+												Label . ForegroundColor = ConsoleColor . White ;
+												Thread . Sleep ( TimeSpan . FromSeconds ( 2 ) ) ;
+												Label . ForegroundColor = ConsoleColor . Gray ;
+												Thread . Sleep ( TimeSpan . FromSeconds ( 0.5 ) ) ;
+												Label . ForegroundColor = ConsoleColor . Black ;
+											} ) ;
 
 			animateTask . Wait ( ) ;
 
-			Frame . NavigateTo ( new MainPage ( ) );
+			Frame . NavigateTo ( new MainPage ( ) ) ;
 		}
 
-		public override void Arrange ( Rectangle finalRect )
-		{
-			base . Arrange ( finalRect );
-		}
+		public override void Arrange ( Rectangle finalRect ) { base . Arrange ( finalRect ) ; }
 
 		public override void Measure ( Size availableSize )
 		{
-			base . Measure ( availableSize );
+			base . Measure ( availableSize ) ;
 
 			( ( Canvas ) Content ) [ Label ] = new Point ( ( availableSize . Width - Label . Width ) / 2 ,
-									( availableSize . Height - Label . Height ) / 2 );
-
+															( availableSize . Height - Label . Height ) / 2 ) ;
 		}
+
 	}
+
 }

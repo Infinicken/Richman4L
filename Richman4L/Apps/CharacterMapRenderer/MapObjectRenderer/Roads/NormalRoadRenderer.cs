@@ -16,6 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System ;
+using System . Collections ;
+using System . Linq ;
+
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Maps . Roads ;
 
@@ -74,7 +78,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 				#endregion
 
 				#region 连续路
-			
+
 				else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
 							( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
 						( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&

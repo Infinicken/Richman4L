@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L . Players .Events
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L . Players .Events
 {
 
 	public class PlayerGetEventArgs : PlayerEventArgs

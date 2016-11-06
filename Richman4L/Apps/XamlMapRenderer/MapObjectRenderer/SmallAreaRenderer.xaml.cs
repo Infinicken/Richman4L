@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using Windows . Foundation ;
 
@@ -36,7 +38,10 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer .MapObjectRenderer
 
 		public override void Hide ( ) { throw new NotImplementedException ( ) ; }
 
-		public override void Show ( ) { throw new NotImplementedException ( ) ; }
+		public override void Show ( )
+		{
+			//throw new NotImplementedException ( );
+		}
 
 		#region IDisposable Support
 

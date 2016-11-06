@@ -1,21 +1,24 @@
-﻿using System;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
-using WenceyWang . FIGlet;
-using WenceyWang . FoggyConsole . Controls . Renderers;
+using WenceyWang . FIGlet ;
+using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole . Controls
+namespace WenceyWang . FoggyConsole .Controls
 {
 
 	// ReSharper disable once InconsistentNaming
 	public class FIGletLabel : TextualBase
 	{
-		private ContentAlign _align;
 
-		private CharacterWidth _characterWidth;
+		private ContentAlign _align ;
 
-		private FIGletFont _font;
+		private AsciiArt _asciiArt ;
 
-		private AsciiArt _asciiArt;
+		private CharacterWidth _characterWidth ;
+
+		private FIGletFont _font ;
 
 		public AsciiArt AsciiArt
 		{
@@ -23,11 +26,11 @@ namespace WenceyWang . FoggyConsole . Controls
 			{
 				if ( _asciiArt == null )
 				{
-					UpdateText ( );
+					UpdateText ( ) ;
 				}
-				return _asciiArt;
+				return _asciiArt ;
 			}
-			private set { _asciiArt = value; }
+			private set { _asciiArt = value ; }
 		}
 
 		/// <summary>
@@ -35,50 +38,41 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public ContentAlign Align
 		{
-			get { return _align; }
+			get { return _align ; }
 			set
 			{
 				if ( _align != value )
 				{
-					_align = value;
-					RequestRedraw ( );
+					_align = value ;
+					RequestRedraw ( ) ;
 				}
 			}
 		}
 
 		public CharacterWidth CharacterWidth
 		{
-			get { return _characterWidth; }
+			get { return _characterWidth ; }
 			set
 			{
 				if ( _characterWidth != value )
 				{
-					_characterWidth = value;
-					RequestMeasure ( );
+					_characterWidth = value ;
+					RequestMeasure ( ) ;
 				}
 			}
 		}
 
 		public FIGletFont Font
 		{
-			get
-			{
-				return _font;
-			}
+			get { return _font ; }
 			set
 			{
 				if ( _font != value )
 				{
-					_font = value;
-					RequestMeasure ( );
+					_font = value ;
+					RequestMeasure ( ) ;
 				}
 			}
-		}
-
-		public override void Measure ( Size availableSize )
-		{
-			UpdateText ( );
-			base . Measure ( availableSize );
 		}
 
 		public string [ ] ActualText
@@ -87,15 +81,10 @@ namespace WenceyWang . FoggyConsole . Controls
 			{
 				if ( AsciiArt == null )
 				{
-					UpdateText ( );
+					UpdateText ( ) ;
 				}
-				return AsciiArt . Result;
+				return AsciiArt . Result ;
 			}
-		}
-
-		private void UpdateText ( )
-		{
-			AsciiArt = new AsciiArt ( Text , Font , _characterWidth );
 		}
 
 		public override Size Size
@@ -104,14 +93,15 @@ namespace WenceyWang . FoggyConsole . Controls
 			{
 				if ( base . Size == new Size ( 0 , 0 ) )
 				{
-					return new Size ( AsciiArt . Width , AsciiArt . Height );
+					return new Size ( AsciiArt . Width , AsciiArt . Height ) ;
 				}
-				return base . Size;
+
+				return base . Size ;
 			}
-			set { base . Size = value; }
+			set { base . Size = value ; }
 		}
 
-		public override bool CanFocus => false;
+		public override bool CanFocus => false ;
 
 		/// <summary>
 		///     Creates a new <code>Label</code>
@@ -126,12 +116,18 @@ namespace WenceyWang . FoggyConsole . Controls
 		///     Control assigned
 		/// </exception>
 		public FIGletLabel ( IControlRenderer renderer = null )
-			: base ( renderer ?? new FIGletLabelRenderer ( ) )
+			: base ( renderer ?? new FIGletLabelRenderer ( ) ) { TextChanged += FIGletLabel_TextChanged ; }
+
+		public override void Measure ( Size availableSize )
 		{
-			TextChanged += FIGletLabel_TextChanged;
+			UpdateText ( ) ;
+			base . Measure ( availableSize ) ;
 		}
 
-		private void FIGletLabel_TextChanged ( object sender , EventArgs e ) { UpdateText ( ); }
+		private void UpdateText ( ) { AsciiArt = new AsciiArt ( Text , Font , _characterWidth ) ; }
+
+		private void FIGletLabel_TextChanged ( object sender , EventArgs e ) { UpdateText ( ) ; }
+
 	}
 
 }

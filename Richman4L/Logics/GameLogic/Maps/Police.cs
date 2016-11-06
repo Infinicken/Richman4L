@@ -16,19 +16,21 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System . Xml . Linq;
+using System ;
+using System . Collections ;
+using System . Linq ;
+using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Maps . Roads ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L .Maps
 {
 
-	[MapObject]
+	[ MapObject ]
 	public class Police : ReturnRoad
 	{
 
 		public Police ( XElement resource ) : base ( resource ) { }
-
 
 	}
 

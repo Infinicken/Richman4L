@@ -15,11 +15,13 @@ You should have received a copy of the GNU Lesser General Public License
 along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System;
+using System ;
+using System . Collections ;
+using System . Linq ;
 
-using WenceyWang . FoggyConsole . Controls . Renderers;
+using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole . Controls
+namespace WenceyWang . FoggyConsole .Controls
 {
 
 	/// <summary>
@@ -29,26 +31,26 @@ namespace WenceyWang . FoggyConsole . Controls
 	public abstract class TextualBase : Control
 	{
 
-		private string _text = string . Empty;
+		private string _text = string . Empty ;
 
 		/// <summary>
 		///     Gets or sets the text which is drawn onto this Control.
 		/// </summary>
 		public string Text
 		{
-			get { return _text; }
+			get { return _text ; }
 			set
 			{
 				if ( value == null )
 				{
-					throw new ArgumentNullException ( nameof ( value ) );
+					throw new ArgumentNullException ( nameof ( value ) ) ;
 				}
 
 				if ( _text != value )
 				{
-					_text = value;
-					RequestMeasure ( );
-					TextChanged?.Invoke ( this , EventArgs . Empty );
+					_text = value ;
+					RequestMeasure ( ) ;
+					TextChanged ? . Invoke ( this , EventArgs . Empty ) ;
 				}
 			}
 		}
@@ -56,7 +58,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		protected TextualBase ( IControlRenderer renderer )
 			: base ( renderer ) { }
 
-		public event EventHandler TextChanged;
+		public event EventHandler TextChanged ;
 
 	}
 

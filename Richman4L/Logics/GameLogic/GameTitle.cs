@@ -16,7 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System ;
+using System . Collections ;
 using System . Collections . Generic ;
+using System . Diagnostics ;
 using System . Linq ;
 using System . Xml . Linq ;
 
@@ -99,11 +102,11 @@ namespace WenceyWang .Richman4L
 
 		public static bool operator != ( GameTitle left , GameTitle right ) { return ! left . Equals ( right ) ; }
 
-		private static readonly object locker = new object ( ) ;
+		private static readonly object Locker = new object ( ) ;
 
 		public static void LoadTitles ( )
 		{
-			lock ( locker )
+			lock ( Locker )
 			{
 				Loaded = true ;
 				TitleRoots = new List < string > ( ) ;
@@ -111,10 +114,15 @@ namespace WenceyWang .Richman4L
 
 				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameTitle )}Resources.xml" ) ;
 
+				Debug . Assert ( doc . Root != null , "doc . Root != null" ) ;
+
+				// ReSharper disable once PossibleNullReferenceException
 				foreach ( XElement item in doc . Root . Element ( nameof ( TitleRoots ) ) . Elements ( ) )
 				{
 					TitleRoots . Add ( item . Attribute ( "Content" ) . Value ) ;
 				}
+
+				// ReSharper disable once PossibleNullReferenceException
 				foreach ( XElement item in doc . Root . Element ( nameof ( TitleKeys ) ) . Elements ( ) )
 				{
 					TitleKeys . Add ( item . Attribute ( "Content" ) . Value ) ;

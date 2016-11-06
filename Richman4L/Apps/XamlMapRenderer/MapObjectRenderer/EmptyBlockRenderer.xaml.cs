@@ -1,6 +1,9 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using Windows . Foundation ;
+using Windows . UI . Xaml ;
 
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Properties ;
@@ -15,8 +18,17 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer .MapObjectRenderer
 
 		public EmptyBlockRenderer ( ) { InitializeComponent ( ) ; }
 
+		public static readonly DependencyProperty TargetProperty =
+			DependencyProperty . Register ( nameof ( Target ) ,
+											typeof ( EmptyBlock ) ,
+											typeof ( EmptyBlockRenderer ) ,
+											new PropertyMetadata ( null ) ) ;
 
-		public EmptyBlock Target { get ; private set ; }
+		public EmptyBlock Target
+		{
+			get { return ( EmptyBlock ) GetValue ( TargetProperty ) ; }
+			private set { SetValue ( TargetProperty , value ) ; }
+		}
 
 		public void StartUp ( ) { }
 
@@ -33,49 +45,12 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer .MapObjectRenderer
 			}
 		}
 
-		public void Update ( ) { throw new NotImplementedException ( ) ; }
+		public void Update ( ) { }
 
 		public override void Hide ( ) { }
 
-		public override void Show ( ) { throw new NotImplementedException ( ) ; }
+		public override void Show ( ) { }
 
-		#region IDisposable Support
-
-		private bool disposedValue ; // 要检测冗余调用
-
-		private void Dispose ( bool disposing )
-		{
-			if ( ! disposedValue )
-			{
-				if ( disposing )
-				{
-					// TODO: 释放托管状态(托管对象)。
-				}
-
-				// TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
-				// TODO: 将大型字段设置为 null。
-
-				disposedValue = true ;
-			}
-		}
-
-		// TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-		// ~EmptyBlockRenderer() {
-		//   // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-		//   Dispose(false);
-		// }
-
-		// 添加此代码以正确实现可处置模式。
-		public void Dispose ( )
-		{
-			// 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
-			Dispose ( true ) ;
-
-			// TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
-			// GC.SuppressFinalize(this);
-		}
-
-		#endregion
 	}
 
 }

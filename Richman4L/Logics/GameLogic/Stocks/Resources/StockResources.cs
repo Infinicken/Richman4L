@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L . Stocks .Resources
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L . Stocks .Resources
 {
 
 	public class StockResources

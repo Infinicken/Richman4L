@@ -1,60 +1,64 @@
-﻿using WenceyWang . FoggyConsole;
-using System;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
-using WenceyWang . FIGlet;
-using WenceyWang . FoggyConsole . Controls;
-using WenceyWang . Richman4L . Apps . Console . Fonts;
+using WenceyWang . FoggyConsole ;
+using WenceyWang . FoggyConsole . Controls ;
+using WenceyWang . Richman4L . Apps . Console . Fonts ;
 
-namespace WenceyWang . Richman4L . Apps . Console . Pages
+namespace WenceyWang . Richman4L . Apps . Console .Pages
 {
 
 	public class MainPage : Page
 	{
 
-		private Canvas _content;
+		private Canvas ContentCanvas { get ; } = new Canvas ( ) ;
 
-		public override Control Content
+		public FIGletLabel GameTitleLabel { get ; } = new FIGletLabel ( ) ;
+
+		public Button NewGameButton { get ; private set ; } = new Button ( ) ;
+
+		public Button LoadGameButton { get ; set ; } = new Button ( ) ;
+
+		public Button SettingButton { get ; set ; } = new Button ( ) ;
+
+
+		public string CurrentGameTitle
 		{
-			get
-			{
-				return base . Content;
-			}
-			set { base . Content = value; }
+			get { return GameTitleLabel . Text ; }
+			private set { GameTitleLabel . Text = value ; }
 		}
 
-		public void UpdateContent ( )
+		public MainPage ( )
 		{
-			Canvas canvas = new Canvas ( );
-
 			FIGletLabel fLabel = new FIGletLabel
+								{
+									Text = "Richman4L" ,
+									Font = FontsHelper . LoadFont ( "graffiti" ) ,
+									ForegroundColor = ConsoleColor . Yellow ,
+									BackgroundColor = ConsoleColor . DarkGreen
+								} ;
+		}
+
+
+		public void UpdateContent ( ) { }
+
+		public override void OnNavigateTo ( )
+		{
+			if ( Program . CurrentSetting . AllowRandomTitle )
 			{
-				Text = "Richman4L" ,
-				Font = FontsHelper . LoadFont ( "graffiti" ) ,
-				ForegroundColor = ConsoleColor . Yellow ,
-				BackgroundColor = ConsoleColor . DarkGreen
-			};
-
-			canvas . AddChild ( fLabel );
-			canvas [ fLabel ] = new Point ( 0 , 0 );
-
+				CurrentGameTitle = GameTitle . GetTitle ( Program . CurrentSetting . AllowRandomTitleRoot ) . Content ;
+			}
+			else
+			{
+				CurrentGameTitle = GameTitle . Defult . Content ;
+			}
 		}
 
-		public MainPage ( ) : base ( )
-		{
+		public override void Arrange ( Rectangle finalRect ) { base . Arrange ( finalRect ) ; }
 
+		public override void Measure ( Size availableSize ) { base . Measure ( availableSize ) ; }
 
-		}
-
-		public override void Arrange ( Rectangle finalRect )
-		{
-			base . Arrange ( finalRect );
-		}
-
-		public override void Measure ( Size availableSize )
-		{
-
-			base . Measure ( availableSize );
-		}
 	}
 
 }

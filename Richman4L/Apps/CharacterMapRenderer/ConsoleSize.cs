@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L . App .CharacterMapRenderer
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L . App .CharacterMapRenderer
 {
 
 	public struct ConsoleSize

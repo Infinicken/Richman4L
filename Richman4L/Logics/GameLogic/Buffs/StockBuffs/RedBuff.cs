@@ -1,4 +1,8 @@
-﻿using WenceyWang . Richman4L . Calendars ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Stocks ;
 
 namespace WenceyWang . Richman4L . Buffs .StockBuffs

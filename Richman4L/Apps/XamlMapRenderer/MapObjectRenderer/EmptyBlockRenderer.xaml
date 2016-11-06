@@ -5,12 +5,12 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:mapObjectRenderers="using:WenceyWang.Richman4L.App.XamlMapRenderer.MapObjectRenderer"
-	mc:Ignorable="d" Height="47.333" Width="100.667" >
+	mc:Ignorable="d" Height="41.5" Width="70.5" >
 
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///XAMLResources/GeneralDictionary.xaml" />
+				<ResourceDictionary Source="../XAMLResources/GeneralDictionary.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
@@ -27,16 +27,14 @@
 			</Rectangle>
 			<Rectangle Fill="White" Opacity="0.8" Margin="{StaticResource MapObjMargin}"
 						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="100"
-						Height="100"
-						d:IsHidden="True" >
+						Height="100" Visibility="Collapsed" >
 				<Rectangle.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Rectangle.RenderTransform>
 			</Rectangle>
 			<Rectangle Fill="#FF0080FF" Opacity="0.2" Margin="{StaticResource MapObjMargin}"
 						RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="100"
-						Height="100"
-						d:IsHidden="True" >
+						Height="100" Visibility="Collapsed" >
 				<Rectangle.RenderTransform>
 					<CompositeTransform SkewX="-45" ScaleY="0.5" />
 				</Rectangle.RenderTransform>

@@ -1,4 +1,7 @@
-﻿using System . Reflection ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+using System . Reflection ;
 using System . Runtime . InteropServices ;
 
 // Les informations générales relatives à un assembly dépendent de 

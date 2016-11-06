@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
@@ -7,6 +9,8 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 
 	public class NormalStockPriceController : StockPriceController
 	{
+
+		private NormalStockPriceControllerConfig Config ;
 
 		internal GameDate MovementChanging { get ; set ; } = Game . Current . Calendar . Today ;
 
@@ -49,14 +53,14 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Convert . ToDouble ( Properties . Resources . StockMovementMax ) * 0.4 ) ;
+											Config . StockMovementMax * 0.4 ) ;
 					break ;
 				}
 				case StockPriceMovement . Fall :
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Convert . ToDouble ( Properties . Resources . StockMovementMin ) * 0.4 ) ;
+											Config . StockMovementMin * 0.4 ) ;
 					break ;
 				}
 			}
@@ -66,14 +70,14 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Convert . ToDouble ( Properties . Resources . StockMarketMovementMax ) * 0.4 ) ;
+											Config . StockMarketMovementMax * 0.4 ) ;
 					break ;
 				}
 				case StockPriceMovement . Fall :
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Convert . ToDouble ( Properties . Resources . StockMarketMovementMin ) * 0.4 ) ;
+											Config . StockMarketMovementMin * 0.4 ) ;
 					break ;
 				}
 			}
@@ -83,14 +87,14 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Convert . ToDouble ( Properties . Resources . StockMarketMovementMax ) * 0.2 ) ;
+											Config . StockMarketMovementMax * 0.2 ) ;
 					break ;
 				}
 				case GovermentControl . Negative :
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Convert . ToDouble ( Properties . Resources . StockMarketMovementMin ) * 0.2 ) ;
+											Config . StockMarketMovementMin * 0.2 ) ;
 					break ;
 				}
 				default :
@@ -115,6 +119,7 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 				//NextDayChangeNet = ( ( AnticipatePrice - CurrentPrice ) * GameRandom . Current . Next ( 700 , 1300 ) / 1000m ) / ( MovementChanging - nextDate ) / CurrentPrice;
 			}
 
+			//Todo
 			//if ( CurrentPrice <= 0 )
 			{
 			}

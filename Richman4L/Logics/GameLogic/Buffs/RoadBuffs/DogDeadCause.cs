@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L . Buffs .RoadBuffs
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 {
 
 	public enum DogDeadCause

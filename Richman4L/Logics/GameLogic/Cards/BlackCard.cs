@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Stocks ;

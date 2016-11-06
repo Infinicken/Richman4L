@@ -134,7 +134,7 @@
       <DependentUpon>XamlMapRenderer.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapObjectRenderer\MapObjectRenderer.cs" />
-    <Compile Include="NameShower.xaml.cs">
+    <Compile Include="MapObjectRenderer\NameShower.xaml.cs">
       <DependentUpon>NameShower.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,7 +166,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NameShower.xaml">
+    <Page Include="MapObjectRenderer\NameShower.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

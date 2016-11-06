@@ -1,4 +1,8 @@
-﻿using Microsoft . VisualStudio . TestTools . UnitTesting ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
 

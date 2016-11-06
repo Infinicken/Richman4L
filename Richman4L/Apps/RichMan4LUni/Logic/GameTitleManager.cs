@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L . Apps . Uni .Logic
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
 
 	public static class GameTitleManager

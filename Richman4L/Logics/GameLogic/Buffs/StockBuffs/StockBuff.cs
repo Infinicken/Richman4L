@@ -1,9 +1,11 @@
-﻿using System;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars;
-using WenceyWang . Richman4L . Stocks;
+using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L . Buffs . StockBuffs
+namespace WenceyWang . Richman4L . Buffs .StockBuffs
 {
 
 	/// <summary>
@@ -12,38 +14,38 @@ namespace WenceyWang . Richman4L . Buffs . StockBuffs
 	public class StockBuff : Buff
 	{
 
-		private Stock _target;
+		private Stock _target ;
 
 		public Stock Target
 		{
-			get { return _target; }
+			get { return _target ; }
 			private set
 			{
 				if ( value == null )
 				{
-					throw new ArgumentNullException ( nameof ( value ) );
+					throw new ArgumentNullException ( nameof ( value ) ) ;
 				}
 
 				if ( _target == null )
 				{
-					_target = value;
-					_target . AddBuff ( this );
+					_target = value ;
+					_target . AddBuff ( this ) ;
 				}
 				else
 				{
-					throw new InvalidOperationException ( $"Can not reset {nameof ( Target )}" );
+					throw new InvalidOperationException ( $"Can not reset {nameof ( Target )}" ) ;
 				}
 			}
 		}
 
-		public virtual bool BlockBuy { get; }
+		public virtual bool BlockBuy { get ; }
 
-		public virtual bool BlockSell { get; }
+		public virtual bool BlockSell { get ; }
 
 		/// <summary>
 		///     表示对股票价格的影响
 		/// </summary>
-		public virtual double ImpactOnPrices { get; }
+		public virtual double ImpactOnPrices { get ; }
 
 		public StockBuff ( Stock target , int duration ) : this ( target , Game . Current . Calendar . Today , duration ) { }
 
@@ -55,13 +57,13 @@ namespace WenceyWang . Richman4L . Buffs . StockBuffs
 		/// <param name="duration">效果持续的时间</param>
 		public StockBuff ( Stock target , GameDate startDate , int duration ) : base ( startDate , duration )
 		{
-			Target = target;
+			Target = target ;
 		}
 
 		public override void Maturity ( )
 		{
-			Target?.Buffs?.Remove ( this );
-			base . Maturity ( );
+			Target ? . Buffs ? . Remove ( this ) ;
+			base . Maturity ( ) ;
 		}
 
 	}

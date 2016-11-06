@@ -1,4 +1,8 @@
-﻿namespace WenceyWang .FoggyConsole
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang .FoggyConsole
 {
 
 	public static class ConsoleAreaExtensions

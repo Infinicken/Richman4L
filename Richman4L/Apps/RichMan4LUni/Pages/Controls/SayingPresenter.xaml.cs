@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
@@ -12,13 +14,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 	public sealed partial class SayingPresenter : UserControl
 	{
 
-		private GameSaying saying ;
-
 		private DispatcherTimer Timer { get ; }
 
 		public GameSaying Saying
 		{
-			get { return saying ; }
+			get { return ( GameSaying ) GetValue ( SayingProperty ) ; }
 			set
 			{
 				if ( value == null )
@@ -26,7 +26,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 					throw new ArgumentNullException ( nameof ( value ) ) ;
 				}
 
-				saying = value ;
+				SetValue ( SayingProperty , value ) ;
 
 				ContentTextBlock . Text = Saying . Content ;
 
@@ -76,6 +76,12 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 			Loaded += SayingPresenter_Loaded ;
 		}
 
+		public static readonly DependencyProperty SayingProperty =
+			DependencyProperty . Register ( nameof ( Saying ) ,
+											typeof ( GameSaying ) ,
+											typeof ( SayingPresenter ) ,
+											new PropertyMetadata ( default( GameSaying ) ) ) ;
+
 		public void ShowSaying ( )
 		{
 			VisualStateManager . GoToState ( this , nameof ( Show ) , true ) ;
@@ -93,7 +99,6 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 
 			Timer . Tick += Timer_Tick ;
 		}
-
 
 		private void Timer_Tick ( object sender , object e )
 		{

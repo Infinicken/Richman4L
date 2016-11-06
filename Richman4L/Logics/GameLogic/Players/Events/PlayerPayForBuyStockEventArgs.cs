@@ -17,6 +17,8 @@
 */
 
 using System ;
+using System . Collections ;
+using System . Linq ;
 
 using WenceyWang . Richman4L . Properties ;
 using WenceyWang . Richman4L . Stocks ;

@@ -1,4 +1,6 @@
 ﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
 using Windows . Foundation ;
 
@@ -42,22 +44,22 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Ro
 				( Target . ForwardRoad == null ) ) )
 			{
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
-					( Target . BackwardRoad == null ) ) ||
-				( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) &&
-				( Target . ForwardRoad == null ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+						( Target . BackwardRoad == null ) ) ||
+					( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) &&
+					( Target . ForwardRoad == null ) ) )
 			{
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
-					( Target . BackwardRoad == null ) ) ||
-				( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) &&
-				( Target . ForwardRoad == null ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+						( Target . BackwardRoad == null ) ) ||
+					( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) &&
+					( Target . ForwardRoad == null ) ) )
 			{
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
-					( Target . BackwardRoad == null ) ) ||
-				( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) &&
-				( Target . ForwardRoad == null ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+						( Target . BackwardRoad == null ) ) ||
+					( ( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) &&
+					( Target . ForwardRoad == null ) ) )
 			{
 			}
 
@@ -65,45 +67,45 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Ro
 
 			#region 连续路
 
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
-					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
-				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
-				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) )
 			{
 				//上下
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
-					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) ||
-				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
-				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 			{
 				//左右
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
-					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
-				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
-				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 			{
 				//左上
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
-					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
-				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
-				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 			{
 				//右上
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
-					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
-				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
-				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left ) ) )
 			{
 				//左下
 			}
-			if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
-					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
-				( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
-				( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
+			else if ( ( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right ) &&
+						( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ) ) ||
+					( ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down ) &&
+					( Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ) ) )
 			{
 				//右下
 			}
@@ -123,29 +125,6 @@ namespace WenceyWang . Richman4L . App . XamlMapRenderer . MapObjectRenderer .Ro
 
 		public override void Show ( ) { }
 
-		#region IDisposable Support
-
-		private bool DisposedValue ; // To detect redundant calls
-
-		private void Dispose ( bool disposing )
-		{
-			if ( ! DisposedValue )
-			{
-				if ( disposing )
-				{
-				}
-
-				// TODO: set large fields to null.
-
-				DisposedValue = true ;
-			}
-		}
-
-		~NormalRoadRenderer ( ) { Dispose ( false ) ; }
-
-		public void Dispose ( ) { Dispose ( true ) ; }
-
-		#endregion
 	}
 
 }

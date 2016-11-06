@@ -17,6 +17,8 @@
 */
 
 using System ;
+using System . Collections ;
+using System . Linq ;
 
 using Windows . UI . Xaml . Data ;
 

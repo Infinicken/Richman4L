@@ -16,6 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System ;
+using System . Collections ;
+using System . Linq ;
 using System . Xml . Linq ;
 
 namespace WenceyWang . Richman4L .Maps
@@ -25,7 +28,7 @@ namespace WenceyWang . Richman4L .Maps
 	///     空的地块
 	/// </summary>
 	[ MapObject ]
-	public class EmptyBlock : Block
+	public sealed class EmptyBlock : Block
 	{
 
 		public override MapSize Size => MapSize . Small ;
@@ -33,6 +36,12 @@ namespace WenceyWang . Richman4L .Maps
 		public override int PondingDecrease => Map . Currnet . PondingDecreaseBase ;
 
 		public EmptyBlock ( XElement resource ) : base ( resource ) { }
+
+		public EmptyBlock ( int x , int y )
+		{
+			X = x ;
+			Y = y ;
+		}
 
 	}
 

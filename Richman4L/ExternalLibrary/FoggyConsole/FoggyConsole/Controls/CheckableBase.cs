@@ -16,6 +16,8 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
+using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Events ;
 using WenceyWang . FoggyConsole . Controls . Renderers ;

@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L . Apps .Console
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L . Apps .Console
 {
 
 	public static class FileNameConst

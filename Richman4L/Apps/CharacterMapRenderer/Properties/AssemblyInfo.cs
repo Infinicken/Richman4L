@@ -1,4 +1,7 @@
-﻿using System . Reflection ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+using System . Reflection ;
 using System . Resources ;
 
 // 有关程序集的一般信息由以下

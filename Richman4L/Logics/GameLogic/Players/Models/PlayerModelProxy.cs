@@ -1,5 +1,7 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
+using System . Linq ;
 using System . Xml . Linq ;
 
 namespace WenceyWang . Richman4L . Players .Models

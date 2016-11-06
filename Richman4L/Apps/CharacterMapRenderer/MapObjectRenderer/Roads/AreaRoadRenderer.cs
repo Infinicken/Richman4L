@@ -1,4 +1,8 @@
-﻿using WenceyWang . Richman4L . Maps ;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Maps . Roads ;
 
 namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRenderer .Roads
@@ -224,7 +228,7 @@ namespace WenceyWang . Richman4L . App . CharacterMapRenderer . MapObjectRendere
 						{
 							for ( int x = 0 ; x < 5 ; x++ )
 							{
-								CurrentView [ x , 0 ] = new ConsoleChar ( "━┛ ┗┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;					
+								CurrentView [ x , 0 ] = new ConsoleChar ( "━┛ ┗┓" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 								CurrentView [ x , 1 ] = new ConsoleChar ( "┅┅┓ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 								CurrentView [ x , 2 ] = new ConsoleChar ( "┓ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 							}

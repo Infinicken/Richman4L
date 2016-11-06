@@ -1,4 +1,8 @@
-﻿namespace WenceyWang . Richman4L .Newspapers
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+
+namespace WenceyWang . Richman4L .Newspapers
 {
 
 	public class News
