@@ -15,7 +15,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 
 		public string CurrentLoading { get ; set ; }
 
-		public List < string > PassedLoading { get ; } = new List < string > ( ) ;
+		public List <string> PassedLoading { get ; } = new List <string> ( ) ;
 
 		public int Progress { get ; set ; }
 
@@ -27,8 +27,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			CurrentLoading = currentLoading ;
 		}
 
-		[ NotifyPropertyChangedInvocator ]
-		protected virtual void OnPropertyChanged ( [ CallerMemberName ] string propertyName = null )
+		[NotifyPropertyChangedInvocator]
+		protected virtual void OnPropertyChanged ( [CallerMemberName] string propertyName = null )
 		{
 			PropertyChanged ? . Invoke ( this , new PropertyChangedEventArgs ( propertyName ) ) ;
 		}

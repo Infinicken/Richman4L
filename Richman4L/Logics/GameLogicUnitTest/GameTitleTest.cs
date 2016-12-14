@@ -9,15 +9,15 @@ using Microsoft . VisualStudio . TestTools . UnitTesting ;
 namespace WenceyWang . Richman4L .UnitTests
 {
 
-	[ TestClass ]
+	[TestClass]
 	public class GameTitleTest
 	{
 
-		[ TestMethod ]
+		[TestMethod]
 		public void LoadTitleTest ( ) { GameTitle . LoadTitles ( ) ; }
 
-		[ TestMethod ]
-		[ Timeout ( 1000 ) ]
+		[TestMethod]
+		[Timeout ( 1000 )]
 		public void GetTitleTest ( )
 		{
 			for ( int i = 0 ; i < 1000 ; i++ )
@@ -26,11 +26,11 @@ namespace WenceyWang . Richman4L .UnitTests
 			}
 		}
 
-		[ TestMethod ]
+		[TestMethod]
 		public void SortTitleTest ( )
 		{
 			XDocument doc = ResourceHelper . LoadXmlDocument ( @"GameTitleResources.xml" ) ;
-			List < XElement > a = doc . Root . Element ( "TitleKeys" ) . Elements ( ) . ToList ( ) ;
+			List <XElement> a = doc . Root . Element ( "TitleKeys" ) . Elements ( ) . ToList ( ) ;
 			a . Sort ( ( x , y ) => string . CompareOrdinal ( x . ToString ( ) , y . ToString ( ) ) ) ;
 			foreach ( XElement variable in a )
 			{

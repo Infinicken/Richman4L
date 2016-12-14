@@ -23,7 +23,7 @@ using System . Text ;
 
 using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
-using WenceyWang . Richman4L . App . CharacterMapRenderer ;
+using WenceyWang . Richman4L . Apps . CharacterMapRenderers ;
 using WenceyWang . Richman4L . Maps ;
 
 using ConsoleColor = System . ConsoleColor ;
@@ -31,11 +31,11 @@ using ConsoleColor = System . ConsoleColor ;
 namespace WenceyWang . Richman4L . UnitTests .Maps
 {
 
-	[ TestClass ]
+	[TestClass]
 	public class MapTest
 	{
 
-		[ TestMethod ]
+		[TestMethod]
 		public void LoadMapTest ( )
 		{
 			DateTime startTime = DateTime . Now ;

@@ -19,38 +19,37 @@ namespace WenceyWang . Richman4L .Stocks
 
 		private GameDate _movementChanging = Game . Current . Calendar . Today ;
 
-		public List < Stock > Stocks { get ; } = new List < Stock > ( ) ;
+		public List <Stock> Stocks { get ; } = new List <Stock> ( ) ;
 
 		public StockPriceMovement Movement { get ; internal set ; }
-
 
 		public decimal DelegateFeeRate { get ; set ; }
 
 		//todo:event
 
-		public List < StockBuff > Buffs { get ; private set ; } = new List < StockBuff > ( ) ;
+		public List <StockBuff> Buffs { get ; private set ; } = new List <StockBuff> ( ) ;
 
 		public StockPrice SynthesizePrice
 		{
 			get
 			{
-				return new StockPrice ( Stocks . Sum ( stock => stock . CurrentPrice . OpenPrice ) ,
-										Stocks . Sum ( stock => stock . CurrentPrice . CurrentPrice ) ,
-										Stocks . Sum ( stock => stock . CurrentPrice . TodaysHigh ) ,
-										Stocks . Sum ( stock => stock . CurrentPrice . TodaysLow ) ,
-										Stocks . Sum ( stock => stock . CurrentPrice . BuyVolume ) ,
-										Stocks . Sum ( stock => stock . CurrentPrice . SellVolume ) ) ;
+				return new StockPrice ( Stocks . Sum ( stock => stock . Price . OpenPrice ) ,
+										Stocks . Sum ( stock => stock . Price . CurrentPrice ) ,
+										Stocks . Sum ( stock => stock . Price . TodaysHigh ) ,
+										Stocks . Sum ( stock => stock . Price . TodaysLow ) ,
+										Stocks . Sum ( stock => stock . Price . BuyVolume ) ,
+										Stocks . Sum ( stock => stock . Price . SellVolume ) ) ;
 			}
 		}
 
-		[ NotNull ]
-		private Dictionary < Stock , List < BuyStockDelegate > > BuyDelegateList { get ; set ; }
+		[NotNull]
+		private Dictionary <Stock , List <BuyStockDelegate>> BuyDelegateList { get ; set ; }
 
-		[ NotNull ]
-		private Dictionary < Stock , List < SellStockDelegate > > SellDelegateList { get ; set ; }
+		[NotNull]
+		private Dictionary <Stock , List <SellStockDelegate>> SellDelegateList { get ; set ; }
 
 
-		private StockMarket ( [ NotNull ] XDocument document ) : this ( )
+		private StockMarket ( [NotNull] XDocument document ) : this ( )
 		{
 			if ( document == null )
 			{
@@ -76,19 +75,17 @@ namespace WenceyWang . Richman4L .Stocks
 
 		public override void EndToday ( )
 		{
-			CheckDisposed ( ) ;
-
 			foreach ( Stock item in Stocks )
 			{
 				item . EndToday ( ) ;
 			}
 
-			List < Stock > toProcess = BuyDelegateList . Keys . Union ( SellDelegateList . Keys ) . ToList ( ) ;
+			List <Stock> toProcess = BuyDelegateList . Keys . Union ( SellDelegateList . Keys ) . ToList ( ) ;
 
 			foreach ( Stock stock in toProcess )
 			{
-				List < SellStockDelegate > sellDelegates = SellDelegateList [ stock ] ;
-				List < BuyStockDelegate > buyDelegates = BuyDelegateList [ stock ] ;
+				List <SellStockDelegate> sellDelegates = SellDelegateList [ stock ] ;
+				List <BuyStockDelegate> buyDelegates = BuyDelegateList [ stock ] ;
 
 				if ( stock . TransactToday )
 				{
@@ -96,40 +93,43 @@ namespace WenceyWang . Richman4L .Stocks
 					buyDelegates . Sort ( ( x , y ) => y . Price . CompareTo ( x . Price ) ) ;
 
 					decimal minSellPrice = sellDelegates . Min ( dele => dele . Price ) ;
-					if ( minSellPrice < stock . CurrentPrice . TodaysLow )
+					if ( minSellPrice < stock . Price . TodaysLow )
 					{
 						stock . LowerTodaysLow ( sellDelegates . Min ( dele => dele . Price ) ) ;
 					}
 
 					decimal maxBuyPrice = buyDelegates . Max ( dele => dele . Price ) ;
-					if ( maxBuyPrice > stock . CurrentPrice . TodaysHigh )
+					if ( maxBuyPrice > stock . Price . TodaysHigh )
 					{
 						stock . HigherTodaysHigh ( maxBuyPrice ) ;
 					}
 
 					if ( ! stock . IsBlockSell ( ) )
 					{
-						int buyVolume = stock . CurrentPrice . BuyVolume ;
+						int buyVolume = stock . Price . BuyVolume ;
+
 						if ( ! stock . IsBlockBuy ( ) )
 						{
-							buyVolume += BuyDelegateList [ stock ] . Sum ( dele => dele . Number ) ;
+							buyVolume +=
+								BuyDelegateList [ stock ] . Where ( dele => dele . Price > minSellPrice ) . Sum ( dele => dele . Number ) ;
 						}
+
 						foreach ( SellStockDelegate dele in sellDelegates )
 						{
-							if ( dele . Price <= stock . CurrentPrice . TodaysHigh )
+							if ( dele . Price <= stock . Price . TodaysHigh )
 							{
 								if ( buyVolume > dele . Number )
 								{
 									buyVolume -= dele . Number ;
 									dele . Player . TakeAwayStock ( stock , dele . Number ) ;
-									dele . Player . GetFromSellStock ( stock , dele . Number , dele . Number * dele . Price . ToLongFloor ( ) ) ;
 									dele . State = SellStockDelegateState . Completed ;
 								}
 								else
 								{
+									buyVolume -= buyVolume ;
 									dele . Player . TakeAwayStock ( stock , buyVolume ) ;
-									dele . Player . GetFromSellStock ( stock , buyVolume , buyVolume * dele . Price . ToLongFloor ( ) ) ;
 									dele . State = SellStockDelegateState . VolumeNotEnough ;
+									break ;
 								}
 							}
 							else
@@ -141,15 +141,33 @@ namespace WenceyWang . Richman4L .Stocks
 
 					if ( ! stock . IsBlockBuy ( ) )
 					{
-						int sellVolume = stock . CurrentPrice . BuyVolume ;
+						int sellVolume = stock . Price . BuyVolume ;
 						if ( ! stock . IsBlockSell ( ) )
 						{
 							sellVolume += BuyDelegateList [ stock ] . Sum ( dele => dele . Number ) ;
 						}
 						foreach ( BuyStockDelegate dele in buyDelegates )
 						{
-							if ( dele . Price >= stock . CurrentPrice . TodaysLow )
+							if ( dele . Price >= stock . Price . TodaysLow )
 							{
+								if ( sellVolume > dele . Number )
+								{
+									sellVolume -= dele . Number ;
+
+									//todo
+									//dele . Player . PayForBuyStock ( stock , dele . Number , dele . Number * dele . Price . ToLongFloor ( ) ) ;
+
+									dele . State = BuyStockDelegateState . Completed ;
+								}
+								else
+								{
+									sellVolume -= sellVolume ;
+
+									//dele . Player . PayForBuyStock ( stock , sellVolume , sellVolume * dele . Price . ToLongFloor ( ) ) ;
+									dele . Player . ReceiveStock ( stock , sellVolume ) ;
+									dele . State = BuyStockDelegateState . ValueNotEnough ;
+									break ;
+								}
 							}
 						}
 					}
@@ -168,21 +186,20 @@ namespace WenceyWang . Richman4L .Stocks
 
 				foreach ( SellStockDelegate deles in sellDelegates )
 				{
-					deles . Player . PayForStockDelegate ( deles ,
-															( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) ) ;
+					//todo
+					//deles . Player . PayForStockDelegate ( deles ,
+					//( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) ) ;
 				}
 				foreach ( BuyStockDelegate deles in buyDelegates )
 				{
-					deles . Player . PayForStockDelegate ( deles ,
-															( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) ) ;
+					//deles . Player . PayForStockDelegate ( deles ,
+					//( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) ) ;
 				}
 			}
 		}
 
 		public override void StartDay ( GameDate date )
 		{
-			CheckDisposed ( ) ;
-
 			if ( date == _movementChanging )
 			{
 				switch ( GameRandom . Current . Next ( 0 , 3 ) )
@@ -217,10 +234,8 @@ namespace WenceyWang . Richman4L .Stocks
 		///     提交购买股票的委托
 		/// </summary>
 		/// <param name="buyDelegate">要提交的委托</param>
-		public void BuyStock ( [ NotNull ] BuyStockDelegate buyDelegate )
+		public void BuyStock ( [NotNull] BuyStockDelegate buyDelegate )
 		{
-			CheckDisposed ( ) ;
-
 			if ( buyDelegate == null )
 			{
 				throw new ArgumentNullException ( nameof ( buyDelegate ) ) ;
@@ -228,7 +243,7 @@ namespace WenceyWang . Richman4L .Stocks
 
 			if ( ! BuyDelegateList . ContainsKey ( buyDelegate . Stock ) )
 			{
-				BuyDelegateList . Add ( buyDelegate . Stock , new List < BuyStockDelegate > ( ) ) ;
+				BuyDelegateList . Add ( buyDelegate . Stock , new List <BuyStockDelegate> ( ) ) ;
 			}
 			BuyDelegateList [ buyDelegate . Stock ] . Add ( buyDelegate ) ;
 		}
@@ -237,10 +252,8 @@ namespace WenceyWang . Richman4L .Stocks
 		///     提交销售股票的委托
 		/// </summary>
 		/// <param name="sellDelegate">要提交的委托</param>
-		public void SellStock ( [ NotNull ] SellStockDelegate sellDelegate )
+		public void SellStock ( [NotNull] SellStockDelegate sellDelegate )
 		{
-			CheckDisposed ( ) ;
-
 			if ( sellDelegate == null )
 			{
 				throw new ArgumentNullException ( nameof ( sellDelegate ) ) ;
@@ -248,7 +261,7 @@ namespace WenceyWang . Richman4L .Stocks
 
 			if ( ! SellDelegateList . ContainsKey ( sellDelegate . Stock ) )
 			{
-				SellDelegateList . Add ( sellDelegate . Stock , new List < SellStockDelegate > ( ) ) ;
+				SellDelegateList . Add ( sellDelegate . Stock , new List <SellStockDelegate> ( ) ) ;
 			}
 			SellDelegateList [ sellDelegate . Stock ] . Add ( sellDelegate ) ;
 		}

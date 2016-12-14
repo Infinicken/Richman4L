@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a textbox
 	/// </summary>
-	public class TextBoxRenderer : ControlRenderer < TextBox >
+	public class TextBoxRenderer : ControlRenderer <TextBox>
 	{
 
 		/// <summary>

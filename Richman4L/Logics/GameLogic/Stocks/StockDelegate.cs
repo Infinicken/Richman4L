@@ -14,13 +14,13 @@ namespace WenceyWang . Richman4L .Stocks
 	public abstract class StockDelegate
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public Player Player { get ; }
 
-		[ NotNull ]
+		[NotNull]
 		public Stock Stock { get ; }
 
-		public StockDelegate ( [ NotNull ] Player player , [ NotNull ] Stock stock )
+		public StockDelegate ( [NotNull] Player player , [NotNull] Stock stock )
 		{
 			if ( player == null )
 			{

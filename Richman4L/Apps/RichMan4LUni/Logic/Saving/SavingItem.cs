@@ -54,11 +54,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic .Saving
 
 		public async void Delete ( ) { await File . DeleteAsync ( ) ; }
 
-		public static async Task < List < SavingItem > > GetSaving ( )
+		public static async Task <List <SavingItem>> GetSaving ( )
 		{
-			List < SavingItem > list = new List < SavingItem > ( ) ;
+			List <SavingItem> list = new List <SavingItem> ( ) ;
 
-			IReadOnlyList < StorageFile > fileList =
+			IReadOnlyList <StorageFile> fileList =
 				await ApplicationData . Current . RoamingFolder . GetFilesAsync ( CommonFileQuery . OrderByDate ) ;
 
 			foreach ( StorageFile item in fileList )

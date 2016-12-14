@@ -24,13 +24,13 @@ using System . Xml . Linq ;
 namespace WenceyWang . Richman4L . Maps .Roads
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class ReturnRoad : Road
 	{
 
 		private Road _exit ;
 
-		private long? _exitId ;
+		private long ? _exitId ;
 
 		public Road Exit
 		{

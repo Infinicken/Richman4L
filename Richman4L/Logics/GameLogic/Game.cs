@@ -19,6 +19,7 @@
 using System ;
 using System . Collections ;
 using System . Collections . Generic ;
+using System . Collections . ObjectModel ;
 using System . IO ;
 using System . Linq ;
 
@@ -40,18 +41,22 @@ namespace WenceyWang .Richman4L
 	public class Game
 	{
 
+		private List <Guid> previousGameId { get ; }
+
+		public ReadOnlyCollection <Guid> PreviousGameId { get ; }
+
+		public Guid GameId { get ; private set ; }
+
 		public GameStatus Status { get ; set ; }
 
-		#region Enviroment
+		public WinningCondition WinningCondition { get ; set ; }
 
 		public Environment GameEnviroment { get ; set ; }
-
-		#endregion
 
 		public static Game Current { get ; private set ; }
 
 		/// <summary>
-		///     指示当前的玩家上下文
+		///     指示当前的上下文玩家
 		/// </summary>
 		public Player CurrentPlayer { get ; private set ; }
 
@@ -84,9 +89,9 @@ namespace WenceyWang .Richman4L
 		internal GameDate GovermentControlChanging { get ; set ; }
 
 
-		public List < Buff > GameBuffs { get ; } = new List < Buff > ( ) ;
+		public List <Buff> GameBuffs { get ; } = new List <Buff> ( ) ;
 
-		public List < Player > GamePlayers { get ; } = new List < Player > ( ) ;
+		public List <Player> GamePlayers { get ; } = new List <Player> ( ) ;
 
 		public StockMarket StockMarket { get ; set ; }
 
@@ -127,6 +132,12 @@ namespace WenceyWang .Richman4L
 			Calendar . EndToday ( ) ;
 
 			#endregion
+
+			if ( GamePlayers . Any ( player => WinningCondition . IsWin ( player ) ) )
+			{
+				GameResult info = new GameResult ( ) ;
+				GameEnviroment . GameOver ( info ) ;
+			}
 
 			#region Start Next Day
 
@@ -176,12 +187,6 @@ namespace WenceyWang .Richman4L
 			Map . StartDay ( Calendar . Today ) ;
 
 			#endregion
-
-			if ( GamePlayers . Any ( player => player . PropertiesInMoney >= ConditionsToWin ) )
-			{
-				GameResult info = new GameResult ( ) ;
-				GameEnviroment . GameOver ( info ) ;
-			}
 		}
 
 		#region Starting
@@ -192,8 +197,6 @@ namespace WenceyWang .Richman4L
 		///     游戏可以持续的时间（天）
 		/// </summary>
 		public long GameLenth { get ; private set ; }
-
-		public long ConditionsToWin { get ; private set ; }
 
 		#endregion
 
@@ -209,12 +212,10 @@ namespace WenceyWang .Richman4L
 
 			GameLenth = parameters . GameTime ;
 
-			foreach ( Tuple < PlayerModelProxy , PlayerConsole > item in parameters . PlayerConfig )
+			foreach ( Tuple <PlayerModelProxy , PlayerConsole> item in parameters . PlayerConfig )
 			{
 				Player player = new Player ( item . Item1 . Model , StartMoney ) ;
-				player . GetFromAreaEvent += OnPlayerGetFromArea ;
 				player . PayForMaintainBuildingEvent += OnPlayerPayForMaintainBuilding ;
-				player . PayForCrossEvent += OnPlayerPayForCross ;
 				player . MoveEvent += OnPlayerMove ;
 				player . BankruptcyEvent += OnPlayerBankruptcy ;
 				GamePlayers . Add ( player ) ;
@@ -227,7 +228,7 @@ namespace WenceyWang .Richman4L
 
 			StockMarket = new StockMarket ( ) ;
 
-			ConditionsToWin = parameters . ConditionsToWin ;
+			WinningCondition = parameters . WinningCondition ;
 
 			Status = GameStatus . Playing ;
 		}

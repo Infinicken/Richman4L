@@ -13,19 +13,19 @@ namespace WenceyWang . Richman4L .Calendars
 	public class Calendar : GameObject
 	{
 
-		public ReadOnlyCollection < Weather > WeatherList { get ; }
+		public ReadOnlyCollection <Weather> WeatherList { get ; }
 
-		private List < Weather > weatherList { get ; }
+		private List <Weather> weatherList { get ; }
 
 		public GameDate Today { get ; set ; }
 
 		public Calendar ( )
 		{
 			Today = new GameDate ( 1 ) ;
-			eventList = new List < ReadOnlyCollection < CalendarEvent > > ( ) ;
-			EventList = new ReadOnlyCollection < ReadOnlyCollection < CalendarEvent > > ( eventList ) ;
-			weatherList = new List < Weather > ( ) ;
-			WeatherList = new ReadOnlyCollection < Weather > ( weatherList ) ;
+			eventList = new List <ReadOnlyCollection <CalendarEvent>> ( ) ;
+			EventList = new ReadOnlyCollection <ReadOnlyCollection <CalendarEvent>> ( eventList ) ;
+			weatherList = new List <Weather> ( ) ;
+			WeatherList = new ReadOnlyCollection <Weather> ( weatherList ) ;
 		}
 
 		public void PostEvent ( string text ) { todayEventList . Add ( new CalendarEvent ( text ) ) ; }
@@ -45,8 +45,8 @@ namespace WenceyWang . Richman4L .Calendars
 			}
 
 			Today += 1 ;
-			todayEventList = new List < CalendarEvent > ( ) ;
-			TodayEventList = new ReadOnlyCollection < CalendarEvent > ( todayEventList ) ;
+			todayEventList = new List <CalendarEvent> ( ) ;
+			TodayEventList = new ReadOnlyCollection <CalendarEvent> ( todayEventList ) ;
 			eventList . Add ( TodayEventList ) ;
 		}
 
@@ -58,15 +58,15 @@ namespace WenceyWang . Richman4L .Calendars
 
 		#region Events
 
-		public ReadOnlyCollection < CalendarEvent > TodayEventList { get ; private set ; }
+		public ReadOnlyCollection <CalendarEvent> TodayEventList { get ; private set ; }
 
-		private List < CalendarEvent > todayEventList { get ; set ; }
+		private List <CalendarEvent> todayEventList { get ; set ; }
 
-		public ReadOnlyCollection < ReadOnlyCollection < CalendarEvent > > EventList { get ; }
+		public ReadOnlyCollection <ReadOnlyCollection <CalendarEvent>> EventList { get ; }
 
-		private List < ReadOnlyCollection < CalendarEvent > > eventList { get ; }
+		private List <ReadOnlyCollection <CalendarEvent>> eventList { get ; }
 
-		public ReadOnlyCollection < CalendarEvent > GetEvents ( GameDate date )
+		public ReadOnlyCollection <CalendarEvent> GetEvents ( GameDate date )
 		{
 			if ( date > Today )
 			{

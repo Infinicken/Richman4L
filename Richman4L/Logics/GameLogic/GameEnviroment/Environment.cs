@@ -35,7 +35,7 @@ namespace WenceyWang . Richman4L .GameEnviroment
 	public abstract class Environment
 	{
 
-		public abstract ReadOnlyCollection < int > GetDice ( int number , DiceType diceType ) ;
+		public abstract ReadOnlyCollection <int> GetDice ( int number , DiceType diceType ) ;
 
 		public abstract void ShowEvent ( Event @event ) ;
 

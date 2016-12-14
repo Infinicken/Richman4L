@@ -10,10 +10,10 @@ namespace WenceyWang . Richman4L . Maps .Events
 	public class MapAddMapObjectEventArgs : EventArgs
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public MapObject NewObject { get ; }
 
-		public MapAddMapObjectEventArgs ( [ NotNull ] MapObject newObject )
+		public MapAddMapObjectEventArgs ( [NotNull] MapObject newObject )
 		{
 			if ( newObject == null )
 			{

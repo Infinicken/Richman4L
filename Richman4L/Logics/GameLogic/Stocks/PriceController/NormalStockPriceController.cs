@@ -10,13 +10,15 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 	public class NormalStockPriceController : StockPriceController
 	{
 
-		private NormalStockPriceControllerConfig Config ;
+		private NormalStockPriceControllerConfig Config { get ; } = NormalStockPriceControllerConfig . Default ;
 
 		internal GameDate MovementChanging { get ; set ; } = Game . Current . Calendar . Today ;
 
 		internal decimal AnticipatePrice { get ; set ; }
 
 		internal StockPriceMovement Movement { get ; set ; }
+
+		private StockPrice TodayPrice { get ; set ; }
 
 		public NormalStockPriceController ( Stock target ) : base ( target ) { }
 
@@ -52,15 +54,17 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 				case StockPriceMovement . Rise :
 				{
 					times +=
-						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Config . StockMovementMax * 0.4 ) ;
+						Convert . ToDecimal (
+							GameRandom . Current . NextDoubleBetween ( 0 , Config . StockMovementMax ) *
+							Config . StockMovementPower ) ;
 					break ;
 				}
 				case StockPriceMovement . Fall :
 				{
 					times +=
-						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Config . StockMovementMin * 0.4 ) ;
+						Convert . ToDecimal (
+							GameRandom . Current . NextDoubleBetween ( Config . StockMovementMin , 0 ) *
+							Config . StockMovementPower ) ;
 					break ;
 				}
 			}
@@ -69,15 +73,18 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 				case StockPriceMovement . Rise :
 				{
 					times +=
-						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Config . StockMarketMovementMax * 0.4 ) ;
+						Convert . ToDecimal ( GameRandom . Current . NextDoubleBetween ( 0 ,
+																						Config . StockMarketMovementMax *
+																						Config .
+																							StockMarketMovementPower ) ) ;
 					break ;
 				}
 				case StockPriceMovement . Fall :
 				{
 					times +=
-						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Config . StockMarketMovementMin * 0.4 ) ;
+						Convert . ToDecimal ( GameRandom . Current . NextDoubleBetween (
+																Config . StockMarketMovementMin ,
+																0 ) * Config . StockMarketMovementPower ) ;
 					break ;
 				}
 			}
@@ -86,23 +93,25 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 				case GovermentControl . Positive :
 				{
 					times +=
-						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Config . StockMarketMovementMax * 0.2 ) ;
+						Convert . ToDecimal ( GameRandom . Current . NextDoubleBetween ( 0 ,
+																						Config . StockMarketMovementMax ) *
+											Config . GovermentControlPower ) ;
 					break ;
 				}
 				case GovermentControl . Negative :
 				{
 					times +=
-						Convert . ToDecimal ( GameRandom . Current . NextDouble ( ) *
-											Config . StockMarketMovementMin * 0.2 ) ;
+						Convert . ToDecimal ( GameRandom . Current . NextDoubleBetween (
+																Config . StockMarketMovementMin ,
+																0 ) * Config . GovermentControlPower ) ;
 					break ;
 				}
 				default :
 					throw new ArgumentOutOfRangeException ( ) ;
 			}
 
-			//AnticipatePrice = CurrentPrice * times;
-			MovementChanging += GameRandom . Current . Next ( 15 , 30 ) ;
+			AnticipatePrice = Target . Price . CurrentPrice * times ;
+			MovementChanging += GameRandom . Current . Next ( Config . MovementMinLenth , Config . MovementMaxLenth ) ;
 		}
 
 
@@ -110,27 +119,34 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 
 		public override void StartDay ( GameDate nextDate )
 		{
+			if ( nextDate == MovementChanging )
 			{
-				if ( nextDate == MovementChanging )
-				{
-					ChangeMovement ( ) ;
-				}
-
-				//NextDayChangeNet = ( ( AnticipatePrice - CurrentPrice ) * GameRandom . Current . Next ( 700 , 1300 ) / 1000m ) / ( MovementChanging - nextDate ) / CurrentPrice;
+				ChangeMovement ( ) ;
 			}
 
-			//Todo
-			//if ( CurrentPrice <= 0 )
-			{
-			}
+			decimal currentPrice = Target . Price . CurrentPrice ;
 
-			//TodaysHigh = OpenPrice;
-			//TodaysLow = OpenPrice;
-			//BuyVolume = 0;
-			//SellVolume = 0;
+			decimal closePrice = ( AnticipatePrice - Target . Price . CurrentPrice ) *
+								( decimal )
+								GameRandom . Current . NextDoubleBetween ( 1 - Config . WaveTimeBase ,
+																			1 - Config . WaveTimeBase ) /
+								( MovementChanging - nextDate ) ;
+
+			decimal openPrice = currentPrice +
+								( closePrice - currentPrice ) *
+								( decimal )
+								GameRandom . Current . NextDoubleBetween ( - Config . StockOpenPricePower ,
+																			Config . StockOpenPricePower ) ;
+
+			decimal todaysHigh = Math . Max ( closePrice , openPrice ) *
+								( decimal ) GameRandom . Current . NextDoubleBetween ( 1 , Config . MaxPricePower ) ;
+			decimal todayMin = Math . Min ( closePrice , openPrice ) *
+								( decimal ) GameRandom . Current . NextDoubleBetween ( Config . MinPricePower , 1 ) ;
+
+			TodayPrice = new StockPrice ( openPrice , closePrice , todaysHigh , todayMin , 0 , 0 ) ;
 		}
 
-		public override StockPrice GetPrice ( ) { return new StockPrice ( ) ; }
+		public override StockPrice GetPrice ( ) { return TodayPrice ; }
 
 	}
 

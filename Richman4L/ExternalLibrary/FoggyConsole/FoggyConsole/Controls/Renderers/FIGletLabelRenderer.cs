@@ -5,7 +5,7 @@ using System . Linq ;
 namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
-	public class FIGletLabelRenderer : ControlRenderer < FIGletLabel >
+	public class FIGletLabelRenderer : ControlRenderer <FIGletLabel>
 	{
 
 		public override void Draw ( )

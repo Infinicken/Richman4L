@@ -21,7 +21,6 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
-using System . Net ;
 using System . Reflection ;
 using System . Threading . Tasks ;
 
@@ -32,7 +31,6 @@ using NLog ;
 using WenceyWang . FIGlet ;
 using WenceyWang . FoggyConsole ;
 using WenceyWang . FoggyConsole . Controls ;
-using WenceyWang . Richman4L . Apps . Console . Fonts ;
 using WenceyWang . Richman4L . Apps . Console . Pages ;
 
 namespace WenceyWang . Richman4L . Apps .Console
@@ -58,8 +56,10 @@ namespace WenceyWang . Richman4L . Apps .Console
 			if ( ! arguments . NoLogo )
 			{
 				ShowLogo ( ) ;
-				ShowCopyRight ( ) ;
+				ShowCopyright ( ) ;
 			}
+
+			#region Check License
 
 			if ( ! File . Exists ( FileNameConst . LicenseFile ) )
 			{
@@ -87,6 +87,10 @@ namespace WenceyWang . Richman4L . Apps .Console
 				}
 			}
 
+			#endregion
+
+			#region Loading Setting
+
 			if ( ! File . Exists ( FileNameConst . SettingFile ) ||
 				arguments . Setup )
 			{
@@ -101,7 +105,9 @@ namespace WenceyWang . Richman4L . Apps .Console
 				CurrentSetting = Settings . Load ( settingFile ) ;
 			}
 
-			List < Task > startUpTasks = new List < Task > ( ) ;
+			#endregion
+
+			List <Task> startUpTasks = new List <Task> ( ) ;
 
 			startUpTasks . Add ( Task . Run ( ( ) =>
 											{
@@ -119,78 +125,6 @@ namespace WenceyWang . Richman4L . Apps .Console
 
 			CurrentApplication = new Application ( new Frame ( ) ) ;
 			Task . WaitAll ( startUpTasks . ToArray ( ) ) ;
-
-			Canvas canvas = new Canvas ( ) ;
-
-			//StackPanel panel = new StackPanel ( );
-
-			WebClient client = new WebClient ( ) ;
-
-			FIGletLabel fLabel = new FIGletLabel
-								{
-									Text = "Wencey Wang Present" ,
-									Font = FontsHelper . LoadFont ( "invita" ) ,
-									ForegroundColor = ConsoleColor . Yellow ,
-									CharacterWidth = CharacterWidth . Fitted ,
-									BackgroundColor = ConsoleColor . DarkGreen
-								} ;
-
-			canvas . AddChild ( fLabel ) ;
-			canvas [ fLabel ] = new Point ( 0 , 0 ) ;
-
-
-			Label label = new Label
-						{
-							Text = nameof ( Richman4L ) ,
-							Align = ContentAlign . Right ,
-							Size = new Size ( 40 , 1 ) ,
-							ForegroundColor = ConsoleColor . White ,
-							BackgroundColor = ConsoleColor . DarkBlue
-						} ;
-
-			Button button = new Button
-							{
-								Text = nameof ( Richman4L ) ,
-								Size = new Size ( 18 , 1 ) ,
-								ForegroundColor = ConsoleColor . White ,
-								BackgroundColor = ConsoleColor . DarkBlue
-							} ;
-
-			canvas . AddChild ( label ) ;
-
-			//	panel . AddChild ( label );
-			canvas [ label ] = new Point ( 0 , 0 ) ;
-
-			canvas . AddChild ( button ) ;
-
-			//	panel . AddChild ( button );
-			canvas [ button ] = new Point ( 2 , 2 ) ;
-
-			button = new Button
-					{
-						Text = nameof ( Richman4L ) ,
-						Size = new Size ( 15 , 1 ) ,
-						ForegroundColor = ConsoleColor . White ,
-						BackgroundColor = ConsoleColor . DarkBlue
-					} ;
-
-			button . Pressed += ( obj , e ) => { System . Console . WriteLine ( "Pressed" ) ; } ;
-
-
-			canvas . AddChild ( button ) ;
-			canvas [ button ] = new Point ( 2 , 6 ) ;
-
-			MainPage page = new MainPage ( ) ;
-
-			page . Content = canvas ;
-
-
-			//		Panel applicationRoot = new Panel ( ) ;
-			//		applicationRoot . Name = nameof ( applicationRoot ) ;
-			//		applicationRoot . Width = CurrentSetting . ConsoleWidth ;
-			//		applicationRoot . Height = CurrentSetting . ConsoleHeight ;
-			//		applicationRoot . Add ( new MainPage ( ) . Container ) ;
-
 
 			CurrentApplication . Run ( ) ;
 
@@ -241,7 +175,7 @@ namespace WenceyWang . Richman4L . Apps .Console
 			System . Console . WriteLine ( new AsciiArt ( GameTitle . Defult . ContentWithSpace ) ) ;
 		}
 
-		public static void ShowCopyRight ( )
+		public static void ShowCopyright ( )
 		{
 			System . Console . WriteLine ( @"Richman4L Copyright (C) 2010 - 2016 Wencey Wang" ) ;
 			System . Console . WriteLine ( @"This program comes with ABSOLUTELY NO WARRANTY." ) ;

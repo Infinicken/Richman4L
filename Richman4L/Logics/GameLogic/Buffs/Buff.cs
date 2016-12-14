@@ -10,9 +10,9 @@ namespace WenceyWang . Richman4L .Buffs
 	public abstract class Buff : GameObject
 	{
 
-		public virtual string Name { get ; }
+		public virtual string Name { get ; protected set ; }
 
-		public virtual string Introduction { get ; }
+		public virtual string Introduction { get ; protected set ; }
 
 		protected GameDate StartDate { get ; set ; }
 

@@ -190,7 +190,7 @@
 												BorderThickness="2.5" >
 											<ContentPresenter x:Name="SwitchCurtainBounds" >
 												<ContentPresenter x:Name="SwitchCurtainClip" >
-													<Rectangle x:Name="SwitchCurtain" Fill="{StaticResource Pink}" >
+													<Rectangle x:Name="SwitchCurtain" Fill="{StaticResource PinkBrush}" >
 														<Rectangle.RenderTransform>
 															<TranslateTransform x:Name="CurtainTranslateTransform" X="-64" />
 														</Rectangle.RenderTransform>
@@ -212,7 +212,7 @@
 									</Rectangle>
 								</Grid>
 								<!-- Thumb UI trigger surface, it sets a resonable touch/drag margin around the 
-                   switch knob. -->
+				   switch knob. -->
 								<Thumb x:Name="SwitchThumb"
 										Margin="-13.5,-15.5,-13.5,-6.5"
 										AutomationProperties.AccessibilityView="Raw" >

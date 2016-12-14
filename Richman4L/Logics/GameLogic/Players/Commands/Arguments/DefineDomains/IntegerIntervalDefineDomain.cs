@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 		}
 
 
-		public override bool IsValid ( [ NotNull ] object value )
+		public override bool IsValid ( [NotNull] object value )
 		{
 			if ( value == null )
 			{
@@ -39,6 +39,7 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 			{
 				long number = Convert . ToInt64 ( value ) ;
 				bool valid = true ;
+
 				if ( IsLeftClosed )
 				{
 					valid &= number >= LeftEndpoint ;
@@ -47,6 +48,7 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 				{
 					valid &= number > LeftEndpoint ;
 				}
+
 				if ( IsRightClosed )
 				{
 					valid &= number <= RightEndpoint ;
@@ -55,6 +57,7 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 				{
 					valid &= number < RightEndpoint ;
 				}
+
 				return valid ;
 			}
 			catch ( Exception )

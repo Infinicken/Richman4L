@@ -47,10 +47,10 @@ namespace WenceyWang .Richman4L
 
 		public Map Map { get ; set ; }
 
-		public List < Tuple < PlayerModelProxy , PlayerConsole > > PlayerConfig { get ; set ; } =
-			new List < Tuple < PlayerModelProxy , PlayerConsole > > ( ) ;
+		public List <Tuple <PlayerModelProxy , PlayerConsole>> PlayerConfig { get ; set ; } =
+			new List <Tuple <PlayerModelProxy , PlayerConsole>> ( ) ;
 
-		public long ConditionsToWin { get ; set ; }
+		public WinningCondition WinningCondition { get ; set ; }
 
 		public Environment Enviroment { get ; set ; }
 

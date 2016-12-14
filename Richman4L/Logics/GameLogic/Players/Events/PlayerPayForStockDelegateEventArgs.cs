@@ -11,12 +11,12 @@ namespace WenceyWang . Richman4L . Players .Events
 	public class PlayerPayForStockDelegateEventArgs : PlayerPayEventArgs
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public StockDelegate StockDelegate { get ; }
 
 		public override long Money { get ; }
 
-		public PlayerPayForStockDelegateEventArgs ( [ NotNull ] StockDelegate stockDelegate , long money )
+		public PlayerPayForStockDelegateEventArgs ( [NotNull] StockDelegate stockDelegate , long money )
 		{
 			if ( stockDelegate == null )
 			{

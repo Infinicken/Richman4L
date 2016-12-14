@@ -72,14 +72,14 @@ namespace WenceyWang .FIGlet
 				HardBlank = configs [ 0 ] . Last ( ) ;
 				try
 				{
-					Height = Convert . ToInt32 ( configs [ 1 ] ) ;
-					BaseLine = Convert . ToInt32 ( configs [ 2 ] ) ;
-					MaxLength = Convert . ToInt32 ( configs [ 3 ] ) ;
-					OldLayout = Convert . ToInt32 ( configs [ 4 ] ) ;
-					CommentLines = Convert . ToInt32 ( configs [ 5 ] ) ;
-					PrintDirection = Convert . ToInt32 ( configs [ 6 ] ) ;
-					FullLayout = Convert . ToInt32 ( configs [ 7 ] ) ;
-					CodeTagCount = Convert . ToInt32 ( configs [ 8 ] ) ;
+					Height = Convert . ToInt32 ( TryGetMember ( configs , 1 ) ) ;
+					BaseLine = Convert . ToInt32 ( TryGetMember ( configs , 2 ) ) ;
+					MaxLength = Convert . ToInt32 ( TryGetMember ( configs , 3 ) ) ;
+					OldLayout = Convert . ToInt32 ( TryGetMember ( configs , 4 ) ) ;
+					CommentLines = Convert . ToInt32 ( TryGetMember ( configs , 5 ) ) ;
+					PrintDirection = Convert . ToInt32 ( TryGetMember ( configs , 6 ) ) ;
+					FullLayout = Convert . ToInt32 ( TryGetMember ( configs , 7 ) ) ;
+					CodeTagCount = Convert . ToInt32 ( TryGetMember ( configs , 8 ) ) ;
 				}
 				catch ( IndexOutOfRangeException )
 				{
@@ -130,7 +130,17 @@ namespace WenceyWang .FIGlet
 
 		private static readonly object Locker = new object ( ) ;
 
-		private static readonly WeakReference < FIGletFont > DefultFont = new WeakReference < FIGletFont > ( null ) ;
+		private static readonly WeakReference <FIGletFont> DefultFont = new WeakReference <FIGletFont> ( null ) ;
+
+		private static T TryGetMember <T> ( T [ ] array , int index )
+		{
+			if ( index < array . Length )
+			{
+				return array [ index ] ;
+			}
+
+			return default ( T ) ;
+		}
 
 		public string GetCharacter ( char sourceChar , int line )
 		{
@@ -148,24 +158,25 @@ namespace WenceyWang .FIGlet
 			return Lines [ Convert . ToByte ( sourceChar ) ] [ line ] ;
 		}
 
-		//CodeTagCount = configArray . GetIntValue ( 8 );
-		//FullLayout = configArray . GetIntValue ( 7 );
-		//PrintDirection = configArray . GetIntValue ( 6 );
-		//CommentLines = configArray . GetIntValue ( 5 );
-		//OldLayout = configArray . GetIntValue ( 4 );
-		//MaxLength = configArray . GetIntValue ( 3 );
-		//BaseLine = configArray . GetIntValue ( 2 );
-		//Height = configArray . GetIntValue ( 1 );
-		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
-		//	{
-		//	if ( Signature == "flf2a" )
-		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
-		//	string [ ] configArray = configString . Split ( ' ' );
-		//	string configString = Lines . First ( );
-		//	Lines = fontLines;
-		//{
-
 		//private void LoadLines ( List<string> fontLines )
+		//{
+		//	Lines = fontLines;
+		//	string configString = Lines . First ( );
+		//	string [ ] configArray = configString . Split ( ' ' );
+		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
+		//	if ( Signature == "flf2a" )
+		//	{
+		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
+		//Height = configArray . GetIntValue ( 1 );
+		//BaseLine = configArray . GetIntValue ( 2 );
+		//MaxLength = configArray . GetIntValue ( 3 );
+		//OldLayout = configArray . GetIntValue ( 4 );
+		//CommentLines = configArray . GetIntValue ( 5 );
+		//PrintDirection = configArray . GetIntValue ( 6 );
+		//FullLayout = configArray . GetIntValue ( 7 );
+
+		//CodeTagCount = configArray . GetIntValue ( 8 );
+
 		//	}
 		//}
 

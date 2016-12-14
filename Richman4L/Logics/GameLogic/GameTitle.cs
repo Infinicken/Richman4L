@@ -53,9 +53,9 @@ namespace WenceyWang .Richman4L
 			TitleKey = titleKey ;
 		}
 
-		internal static List < string > TitleRoots ;
+		internal static List <string> TitleRoots ;
 
-		internal static List < string > TitleKeys ;
+		internal static List <string> TitleKeys ;
 
 		internal static bool Loaded ;
 
@@ -109,8 +109,8 @@ namespace WenceyWang .Richman4L
 			lock ( Locker )
 			{
 				Loaded = true ;
-				TitleRoots = new List < string > ( ) ;
-				TitleKeys = new List < string > ( ) ;
+				TitleRoots = new List <string> ( ) ;
+				TitleKeys = new List <string> ( ) ;
 
 				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameTitle )}Resources.xml" ) ;
 

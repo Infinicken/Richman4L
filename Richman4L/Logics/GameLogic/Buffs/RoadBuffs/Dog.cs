@@ -106,9 +106,9 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 			Maturity ( ) ;
 		}
 
-		public event EventHandler < DogBiteEventArgs > BiteEvent ;
+		public event EventHandler <DogBiteEventArgs> BiteEvent ;
 
-		public event EventHandler < DogDeadEventArgs > DeadEvent ;
+		public event EventHandler <DogDeadEventArgs> DeadEvent ;
 
 		public void Kill ( Weather weather )
 		{

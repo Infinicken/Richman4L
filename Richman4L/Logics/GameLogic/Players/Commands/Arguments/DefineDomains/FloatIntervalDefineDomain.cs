@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 		}
 
 
-		public override bool IsValid ( [ NotNull ] object value )
+		public override bool IsValid ( [NotNull] object value )
 		{
 			if ( value == null )
 			{

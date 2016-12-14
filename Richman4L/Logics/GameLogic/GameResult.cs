@@ -1,5 +1,6 @@
 ﻿using System ;
 using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Players ;
@@ -16,8 +17,9 @@ namespace WenceyWang .Richman4L
 		/// <summary>
 		///     指示游戏的胜利者
 		/// </summary>
-		public Player Winer { get ; }
+		public List <Tuple <Player , WinningCondition>> WinersAndReasons { get ; }
 
+		internal GameResult ( ) { }
 
 		//Todo:添加其他信息
 	}

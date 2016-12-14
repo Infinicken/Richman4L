@@ -35,9 +35,9 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public override bool CanFocus => false ;
 
-		public override IList < Control > Items { get ; } = new List < Control > ( ) ;
+		public override IList <Control> Items { get ; } = new List <Control> ( ) ;
 
-		public Dictionary < Control , Point > Position { get ; } = new Dictionary < Control , Point > ( ) ;
+		public Dictionary <Control , Point> Position { get ; } = new Dictionary <Control , Point> ( ) ;
 
 		public Point this [ Control control ] { get { return Position [ control ] ; } set { Position [ control ] = value ; } }
 
@@ -92,7 +92,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Fired if a control gets added to this container
 		/// </summary>
 		/// <seealso cref="ControlRemoved" />
-		public event EventHandler < ContainerControlEventArgs > ControlAdded ;
+		public event EventHandler <ContainerControlEventArgs> ControlAdded ;
 
 		private void OnControlAdded ( Control control )
 		{
@@ -104,7 +104,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Fired if a control gets removed from this container
 		/// </summary>
 		/// <seealso cref="ControlAdded" />
-		public event EventHandler < ContainerControlEventArgs > ControlRemoved ;
+		public event EventHandler <ContainerControlEventArgs> ControlRemoved ;
 
 		private void OnControlRemoved ( Control control )
 		{

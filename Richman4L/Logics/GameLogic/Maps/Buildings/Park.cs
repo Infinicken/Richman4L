@@ -20,11 +20,25 @@ using System ;
 using System . Collections ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Calendars ;
+
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
 
-	public class Park
+	public class Park : Building
 	{
+
+		public override MapSize Size { get ; }
+
+		public override bool IsEasyToDestroy => true ;
+
+		public override long MaintenanceFee { get ; }
+
+		public override void EndToday ( ) { }
+
+		public override void StartDay ( GameDate nextDate ) { }
+
+		public override void Destoy ( BuildingDestroyReason reason ) { }
 
 	}
 

@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a <code>Label</code>-Control
 	/// </summary>
-	public class LabelRenderer : ControlRenderer < Label >
+	public class LabelRenderer : ControlRenderer <Label>
 	{
 
 		/// <summary>

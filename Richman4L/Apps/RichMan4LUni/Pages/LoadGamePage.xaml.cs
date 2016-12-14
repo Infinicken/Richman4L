@@ -2,16 +2,18 @@
 using System . Collections ;
 using System . Linq ;
 
+using Windows . UI ;
 using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
 
 namespace WenceyWang . Richman4L . Apps . Uni .Pages
 {
 
 	/// <summary>
 	/// </summary>
-	public sealed partial class LoadGamePage : Page
+	public sealed partial class LoadGamePage : AnimatePage
 	{
+
+		public static Color PageColor => XamlResources . Resources . Pink ;
 
 		public LoadGamePage ( ) { InitializeComponent ( ) ; }
 
@@ -21,6 +23,10 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 		private void MainPageButton_Click ( object sender , RoutedEventArgs e ) { }
 
 		private void Page_Loaded ( object sender , RoutedEventArgs e ) { }
+
+		public override void AddControl ( ) { }
+
+		public override void RemoveControl ( ) { }
 
 	}
 

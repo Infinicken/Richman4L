@@ -72,14 +72,14 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		/// <summary>
 		///     指示建筑是否易于摧毁
 		/// </summary>
-		public abstract bool EasyToDestroy { get ; }
+		public abstract bool IsEasyToDestroy { get ; }
 
 		/// <summary>
 		///     指示建筑今天所需的维持费
 		/// </summary>
 		public abstract long MaintenanceFee { get ; }
 
-		public static List < BuildingType > BuildingTypes { get ; private set ; } = new List < BuildingType > ( ) ;
+		public static List <BuildingType> BuildingTypes { get ; private set ; } = new List <BuildingType> ( ) ;
 
 		//Todo:complete this event arg
 
@@ -96,20 +96,20 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public virtual void Stay ( Player player ) { }
 
-		public abstract void Destoy ( DestroyReason reason ) ;
+		public abstract void Destoy ( BuildingDestroyReason reason ) ;
 
-		public static event EventHandler < BuildBuildingEventArgs > BuildBuildingEvent ;
+		public event EventHandler Destroied ;
+
+		public static event EventHandler <BuildBuildingEventArgs> BuildBuildingEvent ;
 
 		protected virtual void Build ( Area position , Player player )
 		{
 			Position = position ;
 			Grade = Type . EntryGrade ;
 			State = BuildingState . Building ;
-			player . PayForBuildBuilding ( this , Type . EntryGrade . StartUpgradeMoney ) ;
-			CompletedDgree = 0 ;
-			MaintenanceDegree = 0 ;
-			UpgradeTo = Type . EntryGrade ;
-			UpgradeProcess = 0 ;
+			player . PayForBuildBuilding ( this , Type . EntryGrade . StartUpgradeCost ) ;
+			UpgradeTo = null ;
+			UpgradeProcess = null ;
 
 			//Todo:完善这个
 		}
@@ -122,11 +122,13 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			{
 				throw new ArgumentNullException ( nameof ( entryType ) ) ;
 			}
+
 			if ( ! typeof ( Building ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 			{
 				throw new ArgumentException ( $"{nameof ( entryType )} should assignable from {nameof ( Building )}" ,
 											nameof ( entryType ) ) ;
 			}
+
 			if (
 				entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( BuildingAttribute ) , false ) . FirstOrDefault ( ) ==
 				null )
@@ -134,14 +136,17 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( BuildingAttribute )}" ,
 											nameof ( entryType ) ) ;
 			}
+
 			if ( element == null )
 			{
 				throw new ArgumentNullException ( nameof ( element ) ) ;
 			}
+
 			if ( element . Name != nameof ( BuildingType ) )
 			{
 				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
 			}
+
 			if ( BuildingTypes . Any ( type => type . EntryType == entryType ) )
 			{
 				throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" ) ;
@@ -152,15 +157,17 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			BuildingType buildingType = new BuildingType ( entryType , element ) ;
 
 			BuildingTypes . Add ( buildingType ) ;
+			RegisMapObjectType ( buildingType ) ;
 
 			return buildingType ;
 		}
 
+		[Startup ( "Loading Building Types" )]
 		public static void LoadBuildingTypes ( )
 		{
 			lock ( BuildingTypes )
 			{
-				BuildingTypes = new List < BuildingType > ( ) ;
+				BuildingTypes = new List <BuildingType> ( ) ;
 
 				//Todo:Regis all internal Building
 			}
@@ -211,19 +218,19 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		/// <summary>
 		///     指示当前建筑的状态
 		/// </summary>
-		public BuildingState State { get ; protected set ; }
+		public BuildingState State { get ; protected set ; } = BuildingState . NotBuild ;
 
-		#region	UpgradeState
+		#region	Upgrade
 
 		/// <summary>
-		///     指示建筑将会升级到的新等级
+		///     指示建筑将会升级到的等级
 		/// </summary>
 		public virtual BuildingGrade UpgradeTo { get ; protected set ; }
 
 		/// <summary>
 		///     指示建筑的升级进程的10000倍
 		/// </summary>
-		public virtual int? UpgradeProcess { get ; protected set ; }
+		public virtual int ? UpgradeProcess { get ; protected set ; }
 
 		#endregion
 

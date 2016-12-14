@@ -43,7 +43,8 @@ namespace WenceyWang . Richman4L .Banks
 		{
 			if ( nextDate >= EndDate )
 			{
-				Owner . GetFromSaving ( this ) ;
+//todo
+				//Owner . GetFromSaving ( this ) ;
 			}
 		}
 

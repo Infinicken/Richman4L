@@ -30,21 +30,16 @@ namespace WenceyWang . Richman4L . Players .Commands
 	public class PlayerMoveCommand : PlayerCommand
 	{
 
-		public override List < PlayerCommandArgumentInfo > Arguments { get ; }
+		public override List <PlayerCommandArgumentInfo> Arguments { get ; }
 
 		public PlayerMoveCommand ( Player performer ) : base ( performer )
 		{
+			//Todo:
 			PlayerCommandArgumentInfo diceType = new PlayerCommandArgumentInfo (
 													"" ,
 													"" ,
 													ArgumentValueType . Dice ,
 													new DiceOwnerDefineDomains ( Performer ) ) ;
-
-			//PlayerCommandArgumentInfo diceNumber = new PlayerCommandArgumentInfo (
-			//	"" ,
-			//	"" ,
-			//	ArgumentValueType . Integer ,
-			//	new IntegerIntervalDefineDomain ( 1 , true , Performer . NumberOfDice , true ) );
 
 			//Arguments = new List<PlayerCommandArgumentInfo> { diceType , diceNumber };
 		}

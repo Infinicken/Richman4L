@@ -25,7 +25,7 @@ using System . Xml . Linq ;
 namespace WenceyWang .Richman4L
 {
 
-	public class GameSaying
+	public class GameSaying : IEquatable <GameSaying>
 	{
 
 		public string Content { get ; }
@@ -39,6 +39,17 @@ namespace WenceyWang .Richman4L
 		public string Author { get ; }
 
 		public string Song { get ; }
+
+		public int ContentLenth => Content . Length ;
+
+		public int ActualLength
+			=>
+			Content . Length + ( People ? . Length ?? 0 ) + ( Book ? . Length ?? 0 ) + ( Author ? . Length ?? 0 ) +
+			( Song ? . Length ?? 0 ) ;
+
+		internal static List <GameSaying> Sayings { get ; set ; }
+
+		internal static bool Loaded { get ; set ; }
 
 		private GameSaying ( XElement element )
 		{
@@ -70,11 +81,23 @@ namespace WenceyWang .Richman4L
 #endif
 		}
 
-		internal static List < GameSaying > Sayings ;
-
-		internal static bool Loaded ;
-
 		private static readonly object Locker = new object ( ) ;
+
+		public bool Equals ( GameSaying other )
+		{
+			if ( ReferenceEquals ( null , other ) )
+			{
+				return false ;
+			}
+			if ( ReferenceEquals ( this , other ) )
+			{
+				return true ;
+			}
+
+			return string . Equals ( Content , other . Content ) && string . Equals ( People , other . People ) &&
+					string . Equals ( Book , other . Book ) && Guid . Equals ( other . Guid ) &&
+					string . Equals ( Author , other . Author ) && string . Equals ( Song , other . Song ) ;
+		}
 
 		public override string ToString ( ) => Content ;
 
@@ -110,18 +133,79 @@ namespace WenceyWang .Richman4L
 			return Sayings . RandomItem ( GameRandom . Current ) ;
 		}
 
+		public static void RegisSaying ( GameSaying newSaying )
+		{
+			if ( newSaying == null )
+			{
+				throw new ArgumentNullException ( nameof ( newSaying ) ) ;
+			}
+
+			if ( Sayings . Contains ( newSaying ) )
+			{
+				return ;
+			}
+
+			if ( Sayings . Any ( saying => newSaying . Guid == saying . Guid ) )
+			{
+				throw new ArgumentException ( $"{nameof ( newSaying )} have same {nameof ( Guid )} with others" ,
+											nameof ( newSaying ) ) ;
+			}
+
+			Sayings . Add ( newSaying ) ;
+		}
+
+		public override bool Equals ( object obj )
+		{
+			if ( ReferenceEquals ( null , obj ) )
+			{
+				return false ;
+			}
+			if ( ReferenceEquals ( this , obj ) )
+			{
+				return true ;
+			}
+			if ( obj . GetType ( ) != GetType ( ) )
+			{
+				return false ;
+			}
+
+			return Equals ( ( GameSaying ) obj ) ;
+		}
+
+		public override int GetHashCode ( )
+		{
+			unchecked
+			{
+				int hashCode = Content ? . GetHashCode ( ) ?? 0 ;
+				hashCode = ( hashCode * 397 ) ^ ( People ? . GetHashCode ( ) ?? 0 ) ;
+				hashCode = ( hashCode * 397 ) ^ ( Book ? . GetHashCode ( ) ?? 0 ) ;
+				hashCode = ( hashCode * 397 ) ^ Guid . GetHashCode ( ) ;
+				hashCode = ( hashCode * 397 ) ^ ( Author ? . GetHashCode ( ) ?? 0 ) ;
+				hashCode = ( hashCode * 397 ) ^ ( Song ? . GetHashCode ( ) ?? 0 ) ;
+				return hashCode ;
+			}
+		}
+
+		public static bool operator == ( GameSaying left , GameSaying right ) { return Equals ( left , right ) ; }
+
+		public static bool operator != ( GameSaying left , GameSaying right ) { return ! Equals ( left , right ) ; }
+
+		[Startup ( "Load Saying" )]
 		public static void LoadSayings ( )
 		{
 			lock ( Locker )
 			{
-				Loaded = true ;
-				Sayings = new List < GameSaying > ( ) ;
-
-				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameSaying )}Resources.xml" ) ;
-
-				foreach ( XElement item in doc . Root . Elements ( ) )
+				if ( ! Loaded )
 				{
-					Sayings . Add ( new GameSaying ( item ) ) ;
+					Loaded = true ;
+					Sayings = new List <GameSaying> ( ) ;
+
+					XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameSaying )}Resources.xml" ) ;
+
+					foreach ( XElement item in doc . Root . Elements ( ) )
+					{
+						Sayings . Add ( new GameSaying ( item ) ) ;
+					}
 				}
 			}
 		}

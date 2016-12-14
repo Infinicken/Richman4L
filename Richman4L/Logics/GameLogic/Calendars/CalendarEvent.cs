@@ -17,9 +17,9 @@ namespace WenceyWang . Richman4L .Calendars
 
 		public GameDate Date { get ; set ; }
 
-		public List < Player > GainedPlayer { get ; set ; } = new List < Player > ( ) ;
+		public List <Player> GainedPlayer { get ; set ; } = new List <Player> ( ) ;
 
-		public List < Player > HarmedPlayer { get ; set ; } = new List < Player > ( ) ;
+		public List <Player> HarmedPlayer { get ; set ; } = new List <Player> ( ) ;
 
 		public CalendarEvent ( string text , string title = null , Player gainedPlayer = null , Player harmedPlayer = null )
 		{

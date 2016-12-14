@@ -35,6 +35,11 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		Working ,
 
 		/// <summary>
+		///     建筑被规划但尚未被建造
+		/// </summary>
+		NotBuild ,
+
+		/// <summary>
 		///     建筑正在安装附件
 		/// </summary>
 		InstallingAccessory ,

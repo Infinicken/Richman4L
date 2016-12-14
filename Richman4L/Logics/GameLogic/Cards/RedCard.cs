@@ -9,7 +9,7 @@ using WenceyWang . Richman4L . Weathers ;
 namespace WenceyWang . Richman4L .Cards
 {
 
-	[ Card ]
+	[Card]
 	public class RedCard : Card
 	{
 

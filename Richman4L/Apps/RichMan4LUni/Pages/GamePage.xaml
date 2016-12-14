@@ -1,8 +1,9 @@
-﻿<Page
+﻿<pages:AnimatePage
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:pages="using:WenceyWang.Richman4L.Apps.Uni.Pages"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.GamePage"
 	mc:Ignorable="d"
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="Auto" Height="Auto" Loaded="Page_Loaded" >
@@ -66,7 +67,7 @@
 			</Setter>
 		</Style>-->
 
-		<Storyboard x:Name="StartStoryBoard" Completed="StartStoryBoard_Completed" >
+		<Storyboard x:Name="StartStoryboard" Completed="StartStoryboard_Completed" >
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
 				Storyboard.TargetName="MainGrid" >
@@ -419,9 +420,8 @@
 	</Page.Transitions>
 	<Grid>
 
-		<Rectangle x:Name="BackGroundRect" Fill="#FF13D62E" Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsLocked="True" />
+		<Rectangle x:Name="BackGroundRect" Fill="#FF13B3D6" Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsLocked="True" />
 		<Grid x:Name="MapFrame" >
-			<SwapChainPanel x:Name="GameMapPresenter" />
 			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform />
@@ -576,18 +576,18 @@
 				</Button>
 				<Grid x:Name="MoneyGrid" Grid.Row="8" Grid.ColumnSpan="2" >
 					<Grid.RowDefinitions>
-						<RowDefinition Height="10" />
+						<RowDefinition Height="8" />
 						<RowDefinition Height="Auto" />
-						<RowDefinition Height="10" />
+						<RowDefinition Height="8" />
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="10" />
+						<ColumnDefinition Width="8" />
 						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="10" />
+						<ColumnDefinition Width="8" />
 						<ColumnDefinition />
 						<ColumnDefinition Width="32" />
 					</Grid.ColumnDefinitions>
-					<Rectangle Grid.ColumnSpan="7" Fill="{StaticResource TransparentCran}" Grid.RowSpan="3" />
+					<Rectangle Grid.ColumnSpan="7" Fill="{StaticResource TransparentCranBrush}" Grid.RowSpan="3" />
 					<TextBlock x:Name="Money" Grid.Column="3" TextWrapping="Wrap" Text="$100,000,00"
 								FontFamily="{StaticResource Font}" FontSize="18.667" VerticalAlignment="Center" Grid.Row="1"
 								HorizontalAlignment="Center" />
@@ -630,28 +630,28 @@
 					<Button x:Name="ResumeButton" Content="恢复游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
 							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="ResumeButton_Click" FontSize="24"
 							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-							Background="{StaticResource TransparentCran}"
+							Background="{StaticResource TransparentCranBrush}"
 							MinWidth="0" MinHeight="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
 					<Button x:Name="SaveButton" Content="储存游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="SaveButton_Click"
 							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-							Background="{StaticResource TransparentCran}"
+							Background="{StaticResource TransparentCranBrush}"
 							MinHeight="0" MinWidth="0" FontSize="24" Margin="0,20,0,0"
 							Style="{StaticResource RoundedRectangleButtonStyle}" />
 					<Button x:Name="DevButton" Content="开发模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="DevButton_Click"
-							BorderBrush="{x:Null}" Background="{StaticResource TransparentCran}"
+							BorderBrush="{x:Null}" Background="{StaticResource TransparentCranBrush}"
 							Padding="{StaticResource ButtonPadding}"
 							FontSize="24" MinHeight="0" MinWidth="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
 					<Button x:Name="MainPageButton" Content="主选单" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="MainPageButton_Click"
 							MinWidth="0" MinHeight="0" FontSize="24" Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-							Background="{StaticResource TransparentCran}" Style="{StaticResource RoundedRectangleButtonStyle}" />
+							Background="{StaticResource TransparentCranBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
 				</StackPanel>
 			</Grid>
 		</Grid>
 		<Grid x:Name="StockFrame" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"
-			Grid.RowSpan="2" Grid.ColumnSpan="3" >
+			Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsHidden="True" >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="12" />
 				<ColumnDefinition />
@@ -661,7 +661,7 @@
 				<RowDefinition />
 				<RowDefinition Height="5" />
 				<RowDefinition Height="Auto" />
-				<RowDefinition Height="15" />
+				<RowDefinition Height="16" />
 			</Grid.RowDefinitions>
 			<!--<Pivot Title="投资" Margin="0" Style="{StaticResource PivotStyle}" Grid.ColumnSpan="2">
 				<PivotItem Margin="20,0" >
@@ -691,4 +691,4 @@
 			</Button>
 		</Grid>
 	</Grid>
-</Page>
+</pages:AnimatePage>

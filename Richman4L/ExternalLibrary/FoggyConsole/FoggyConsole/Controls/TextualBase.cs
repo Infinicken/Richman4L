@@ -49,8 +49,8 @@ namespace WenceyWang . FoggyConsole .Controls
 				if ( _text != value )
 				{
 					_text = value ;
-					RequestMeasure ( ) ;
 					TextChanged ? . Invoke ( this , EventArgs . Empty ) ;
+					RequestMeasure ( ) ;
 				}
 			}
 		}

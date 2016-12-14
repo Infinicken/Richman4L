@@ -20,6 +20,8 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
+using NLog ;
+
 using WenceyWang . FoggyConsole . Controls ;
 
 namespace WenceyWang .FoggyConsole
@@ -35,22 +37,14 @@ namespace WenceyWang .FoggyConsole
 
 		private Frame Root { get ; }
 
+
+		public Logger CurrentLoger { get ; } = LogManager . GetCurrentClassLogger ( ) ;
+
 		/// <summary>
 		///     Creates a new FocusManager
 		/// </summary>
 		/// <param name="root">The control which represents</param>
-		/// <param name="startControl"></param>
-		/// <exception cref="ArgumentNullException">
-		///     Is thrown if <paramref name="startControl" /> or <paramref name="root" /> is
-		///     null
-		/// </exception>
-		/// <exception cref="ArgumentException">Is thrown if <paramref name="startControl" /> has no container</exception>
-		/// <exception cref="ArgumentException">Is thrown if <paramref name="startControl" /> is no IInputHandler</exception>
 		/// <exception cref="ArgumentException">Is thrown if <paramref name="root" /> has an container</exception>
-		/// <exception cref="ArgumentException">
-		///     Is thrown if <paramref name="startControl" /> is not within
-		///     <paramref name="root" />
-		/// </exception>
 		public FocusManager ( Frame root )
 		{
 			if ( root == null )
@@ -84,13 +78,23 @@ namespace WenceyWang .FoggyConsole
 		public void ControlTreeChanged ( ) { }
 
 		/// <summary>
-		///     Handles the key-userinput which is given in <paramref name="args" />
+		///     Handles the key user input which is given in <paramref name="args" />
 		/// </summary>
-		/// <returns>true if the keypress was handled, otherwise false</returns>
-		/// <param name="args">The keypress to handle</param>
+		/// <returns>true if the key-press was handled, otherwise false</returns>
+		/// <param name="args">The key-press to handle</param>
 		public void HandleKeyInput ( KeyPressedEventArgs args )
 		{
-			List < Control > controlList = Root . GetAllItem ( ) . Where ( control => control . CanFocus ) . ToList ( ) ;
+			List <Control> controlList = Root . GetAllItem ( ) . Where (
+													control =>
+													{
+														if ( control == null )
+														{
+															CurrentLoger . Warn ( $"{nameof ( controlList )} of {Root . Name} contains null" ) ;
+															return false ;
+														}
+
+														return control . CanFocus ;
+													} ) . ToList ( ) ;
 			if ( controlList . Count == 0 )
 			{
 				return ;

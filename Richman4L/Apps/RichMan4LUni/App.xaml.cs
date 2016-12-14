@@ -10,7 +10,7 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
 
-using Microsoft . ApplicationInsights ;
+//using Microsoft . ApplicationInsights ;
 
 using WenceyWang . Richman4L . Apps . Uni . Pages ;
 using WenceyWang . Richman4L . Properties ;
@@ -43,16 +43,16 @@ namespace WenceyWang . Richman4L . Apps .Uni
 		public App ( )
 		{
 			Current = this ;
-			WindowsAppInitializer . InitializeAsync (
-				WindowsCollectors . Metadata |
-				WindowsCollectors . Session ) ;
+			//WindowsAppInitializer . InitializeAsync (
+			//	WindowsCollectors . Metadata |
+			//	WindowsCollectors . Session ) ;
 			InitializeComponent ( ) ;
 			Suspending += OnSuspending ;
 			UnhandledException += OnUnhandledException ;
 			Resuming += OnResuming ;
 		}
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public event EventHandler TitleChanged ;
 
 		private void OnResuming ( object sender , object e ) { }

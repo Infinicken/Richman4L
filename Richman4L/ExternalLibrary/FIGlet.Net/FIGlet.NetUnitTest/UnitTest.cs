@@ -10,11 +10,11 @@ using WenceyWang . FIGlet ;
 namespace FIGlet .NetUnitTest
 {
 
-	[ TestClass ]
+	[TestClass]
 	public class UnitTest
 	{
 
-		[ TestMethod ]
+		[TestMethod]
 		public void RandomAsciiArtTest ( )
 		{
 			Random random = new Random ( ) ;
@@ -40,7 +40,7 @@ namespace FIGlet .NetUnitTest
 			Console . WriteLine ( watch . Elapsed ) ;
 		}
 
-		[ TestMethod ]
+		[TestMethod]
 		public void TypeSomethingAsciiArtTest ( )
 		{
 			Stopwatch watch = Stopwatch . StartNew ( ) ;

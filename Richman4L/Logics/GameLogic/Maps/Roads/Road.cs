@@ -41,7 +41,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public bool BlockMoving => Buffs . Any ( buff => buff . BlockMoving ) ;
 
-		public List < RoadBuff > Buffs { get ; } = new List < RoadBuff > ( ) ;
+		public List <RoadBuff> Buffs { get ; } = new List <RoadBuff> ( ) ;
 
 		public override MapSize Size => MapSize . Small ;
 
@@ -49,11 +49,11 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public Road ( XElement resource ) : base ( resource )
 		{
-			playerPassCount = new List < PlayerCount > ( ) ;
-			PlayerPassCount = new ReadOnlyCollection < PlayerCount > ( playerPassCount ) ;
+			playerPassCount = new List <PlayerCount> ( ) ;
+			PlayerPassCount = new ReadOnlyCollection <PlayerCount> ( playerPassCount ) ;
 
-			playerStayCount = new List < PlayerCount > ( ) ;
-			PlayerStayCount = new ReadOnlyCollection < PlayerCount > ( playerStayCount ) ;
+			playerStayCount = new List <PlayerCount> ( ) ;
+			PlayerStayCount = new ReadOnlyCollection <PlayerCount> ( playerStayCount ) ;
 			PassCount = 0 ;
 			StayCount = 0 ;
 			try
@@ -153,9 +153,9 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public long PassCount { get ; private set ; }
 
-		public ReadOnlyCollection < PlayerCount > PlayerPassCount { get ; }
+		public ReadOnlyCollection <PlayerCount> PlayerPassCount { get ; }
 
-		private List < PlayerCount > playerPassCount { get ; }
+		private List <PlayerCount> playerPassCount { get ; }
 
 		private void CountPass ( Player player )
 		{
@@ -177,9 +177,9 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public long StayCount { get ; private set ; }
 
-		public ReadOnlyCollection < PlayerCount > PlayerStayCount { get ; }
+		public ReadOnlyCollection <PlayerCount> PlayerStayCount { get ; }
 
-		private List < PlayerCount > playerStayCount { get ; }
+		private List <PlayerCount> playerStayCount { get ; }
 
 		private void CountStay ( Player player )
 		{

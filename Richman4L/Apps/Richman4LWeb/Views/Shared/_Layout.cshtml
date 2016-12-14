@@ -34,6 +34,12 @@
 		@*<a href="@Url.Action("Xml","Saying")" class="p">*@
 		<p>@(saying.Content)</p>
 		@*</a>*@
+		@{
+			if ( ( saying . People != null ) ||
+				( ( saying . Song ?? saying . Book ) != null ) )
+			{
+			}
+		}
 		<footer>
 			@(saying.People)@(( saying.Song ?? saying.Book ) == null ? "" : " in ")<cite title="Source Title">@(saying.Song ?? saying.Book)</cite>@(saying.Author == null ? "" : " by ")@(saying.Author)
 		</footer>

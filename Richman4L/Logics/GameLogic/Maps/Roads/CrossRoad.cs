@@ -25,25 +25,25 @@ using System . Xml . Linq ;
 namespace WenceyWang . Richman4L . Maps .Roads
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class CrossRoad : Road
 	{
 
 		private Road _firstExit ;
 
-		private long? _firstExitId ;
+		private long ? _firstExitId ;
 
 		private Road _forthExit ;
 
-		private long? _forthExitId ;
+		private long ? _forthExitId ;
 
 		private Road _secondExit ;
 
-		private long? _secondExitId ;
+		private long ? _secondExitId ;
 
 		private Road _thirdExit ;
 
-		private long? _thirdExitId ;
+		private long ? _thirdExitId ;
 
 		public virtual Road FirstExit
 		{
@@ -160,7 +160,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			if ( ! BlockMoving &&
 				( moveCount != 0 ) )
 			{
-				List < Road > roadAvailable = new List < Road > { FirstExit , SecondExit , ThirdExit , ForthExit } ;
+				List <Road> roadAvailable = new List <Road> { FirstExit , SecondExit , ThirdExit , ForthExit } ;
 				roadAvailable . Remove ( previous ) ;
 				roadAvailable . RemoveAll ( road => null == road ) ;
 				roadAvailable . RemoveAll ( road => ! road . CanEnterFrom ( this ) ) ;

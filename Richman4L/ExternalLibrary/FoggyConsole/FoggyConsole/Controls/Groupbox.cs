@@ -73,7 +73,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public override bool CanFocus => false ;
 
-		public override IList < Control > Items { get ; }
+		public override IList <Control> Items { get ; }
 
 		/// <summary>
 		///     Creates a new <code>Groupbox</code>

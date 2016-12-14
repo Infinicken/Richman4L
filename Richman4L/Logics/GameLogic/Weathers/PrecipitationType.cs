@@ -8,7 +8,7 @@ namespace WenceyWang . Richman4L .Weathers
 	/// <summary>
 	///     表示降水的类型
 	/// </summary>
-	[ Flags ]
+	[Flags]
 	public enum PrecipitationType
 	{
 

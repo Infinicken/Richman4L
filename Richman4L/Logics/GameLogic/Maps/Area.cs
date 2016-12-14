@@ -42,9 +42,9 @@ namespace WenceyWang . Richman4L .Maps
 
 		public long Id { get ; }
 
-		[ NotNull ]
-		[ ItemNotNull ]
-		public List < AreaBuff > Buffs { get ; set ; } = new List < AreaBuff > ( ) ;
+		[NotNull]
+		[ItemNotNull]
+		public List <AreaBuff> Buffs { get ; set ; } = new List <AreaBuff> ( ) ;
 
 		public abstract long MoneyCostWhenCrossed { get ; protected set ; }
 
@@ -66,10 +66,10 @@ namespace WenceyWang . Richman4L .Maps
 
 		public abstract long Price { get ; protected set ; }
 
-		[ NotNull ]
-		public abstract ReadOnlyCollection < BuildingType > AvailableBuildings { get ; }
+		[NotNull]
+		public abstract ReadOnlyCollection <BuildingType> AvailableBuildings { get ; }
 
-		public Area ( [ NotNull ] XElement resource ) : base ( resource )
+		public Area ( [NotNull] XElement resource ) : base ( resource )
 		{
 			if ( resource == null )
 			{
@@ -87,10 +87,8 @@ namespace WenceyWang . Richman4L .Maps
 			}
 		}
 
-		public void Stay ( [ NotNull ] Player player )
+		public void Stay ( [NotNull] Player player )
 		{
-			CheckDisposed ( ) ;
-
 			if ( player == null )
 			{
 				throw new ArgumentNullException ( nameof ( player ) ) ;
@@ -99,10 +97,8 @@ namespace WenceyWang . Richman4L .Maps
 			Building ? . Stay ( player ) ;
 		}
 
-		public void Pass ( [ NotNull ] Player player )
+		public void Pass ( [NotNull] Player player )
 		{
-			CheckDisposed ( ) ;
-
 			if ( player == null )
 			{
 				throw new ArgumentNullException ( nameof ( player ) ) ;
@@ -113,13 +109,11 @@ namespace WenceyWang . Richman4L .Maps
 
 		public override void StartDay ( GameDate nextDate ) { }
 
-		public bool IsBuildingAvailable ( [ NotNull ] BuildingType buildingType )
+		public bool IsBuildingAvailable ( [NotNull] BuildingType buildingType )
 			=> AvailableBuildings . Contains ( buildingType ) ;
 
-		public void BuildBuildiing ( [ NotNull ] Building building )
+		public void BuildBuildiing ( [NotNull] Building building )
 		{
-			CheckDisposed ( ) ;
-
 			if ( building == null )
 			{
 				throw new ArgumentNullException ( nameof ( building ) ) ;
@@ -127,7 +121,7 @@ namespace WenceyWang . Richman4L .Maps
 
 			if ( ! IsBuildingAvailable ( building . Type ) )
 			{
-				throw new ArgumentException ( $"{nameof ( building )} is not vaild for this area" , nameof ( building ) ) ;
+				throw new ArgumentException ( $"{nameof ( building )} is not valid for this area" , nameof ( building ) ) ;
 			}
 			if ( Building != null )
 			{

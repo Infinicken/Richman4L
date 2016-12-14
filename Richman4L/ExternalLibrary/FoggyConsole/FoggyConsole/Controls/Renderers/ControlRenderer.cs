@@ -25,7 +25,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Base class for all ControlDrawers
 	/// </summary>
-	public abstract class ControlRenderer < T > : IControlRenderer where T : Control
+	public abstract class ControlRenderer <T> : IControlRenderer where T : Control
 	{
 
 		/// <summary>

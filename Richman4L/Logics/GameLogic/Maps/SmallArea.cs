@@ -28,7 +28,7 @@ using WenceyWang . Richman4L . Maps . Buildings ;
 namespace WenceyWang . Richman4L .Maps
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class SmallArea : Area
 	{
 
@@ -42,7 +42,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		public override long Price { get ; protected set ; }
 
-		public override ReadOnlyCollection < BuildingType > AvailableBuildings
+		public override ReadOnlyCollection <BuildingType> AvailableBuildings
 		{
 			get
 			{
@@ -50,17 +50,17 @@ namespace WenceyWang . Richman4L .Maps
 				{
 					return _availableBuilding ??
 							( _availableBuilding =
-								new ReadOnlyCollection < BuildingType > (
+								new ReadOnlyCollection <BuildingType> (
 									Building . BuildingTypes . Where ( type => type . Size == MapSize . Small ) . ToList ( ) ) ) ;
 				}
 
-				return new ReadOnlyCollection < BuildingType > ( new List < BuildingType > ( ) ) ;
+				return new ReadOnlyCollection <BuildingType> ( new List <BuildingType> ( ) ) ;
 			}
 		}
 
 		public SmallArea ( XElement resource ) : base ( resource ) { }
 
-		private static ReadOnlyCollection < BuildingType > _availableBuilding ;
+		private static ReadOnlyCollection <BuildingType> _availableBuilding ;
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 

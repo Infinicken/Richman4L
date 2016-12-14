@@ -37,12 +37,12 @@ namespace WenceyWang . Richman4L . Players .Models
 
 		public Uri Model { get ; set ; }
 
-		public List < PlayerSaying > SayingWhenGained { get ; } = new List < PlayerSaying > ( ) ;
+		public List <PlayerSaying> SayingWhenGained { get ; } = new List <PlayerSaying> ( ) ;
 
-		public List < PlayerSaying > SayingWhenHarmed { get ; } = new List < PlayerSaying > ( ) ;
+		public List <PlayerSaying> SayingWhenHarmed { get ; } = new List <PlayerSaying> ( ) ;
 
 
-		public List < PlayerSaying > SayingWhenMeet { get ; } = new List < PlayerSaying > ( ) ;
+		public List <PlayerSaying> SayingWhenMeet { get ; } = new List <PlayerSaying> ( ) ;
 
 		public override MapSize Size => MapSize . Small ;
 
@@ -66,19 +66,19 @@ namespace WenceyWang . Richman4L . Players .Models
 
 			Model = new Uri ( modelNode . Attribute ( nameof ( Model ) ) . Value ?? "" ) ;
 
-			IEnumerable < PlayerSaying > tempSayingWhenGained =
+			IEnumerable <PlayerSaying> tempSayingWhenGained =
 				from p in modelNode . Element ( nameof ( SayingWhenGained ) ) . Elements ( )
 				select new PlayerSaying ( p ) ;
 			SayingWhenGained . AddRange ( tempSayingWhenGained ) ;
 
-			IEnumerable < PlayerSaying > tempSayingWhenHarmed =
+			IEnumerable <PlayerSaying> tempSayingWhenHarmed =
 				from p in modelNode . Element ( nameof ( SayingWhenGained ) ) . Elements ( )
 				select new PlayerSaying
 							( p ) ;
 
 			SayingWhenHarmed . AddRange ( tempSayingWhenHarmed ) ;
 
-			IEnumerable < PlayerSaying > tempSayingWhenMeet =
+			IEnumerable <PlayerSaying> tempSayingWhenMeet =
 				from p in modelNode . Element ( nameof ( SayingWhenMeet ) ) . Elements ( )
 				select new PlayerSaying ( p ) ;
 			SayingWhenMeet . AddRange ( tempSayingWhenMeet ) ;
@@ -88,8 +88,8 @@ namespace WenceyWang . Richman4L . Players .Models
 		{
 			while ( true )
 			{
-				List < PlayerSaying > temp =
-					new List < PlayerSaying > ( SayingWhenGained . Where ( saying => saying . Player == harmed ? . Name ) ) ;
+				List <PlayerSaying> temp =
+					new List <PlayerSaying> ( SayingWhenGained . Where ( saying => saying . Player == harmed ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{
@@ -104,8 +104,8 @@ namespace WenceyWang . Richman4L . Players .Models
 		{
 			while ( true )
 			{
-				List < PlayerSaying > temp =
-					new List < PlayerSaying > ( SayingWhenHarmed . Where ( saying => saying . Player == gained ? . Name ) ) ;
+				List <PlayerSaying> temp =
+					new List <PlayerSaying> ( SayingWhenHarmed . Where ( saying => saying . Player == gained ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{
@@ -120,8 +120,8 @@ namespace WenceyWang . Richman4L . Players .Models
 		{
 			while ( true )
 			{
-				List < PlayerSaying > temp =
-					new List < PlayerSaying > ( SayingWhenMeet . Where ( saying => saying . Player == player ? . Name ) ) ;
+				List <PlayerSaying> temp =
+					new List <PlayerSaying> ( SayingWhenMeet . Where ( saying => saying . Player == player ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{

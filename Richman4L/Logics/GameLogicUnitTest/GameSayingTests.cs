@@ -7,14 +7,14 @@ using Microsoft . VisualStudio . TestTools . UnitTesting ;
 namespace WenceyWang . Richman4L .UnitTests
 {
 
-	[ TestClass ]
+	[TestClass]
 	public class GameSayingTests
 	{
 
-		[ TestMethod ]
+		[TestMethod]
 		public void LoadSayingTest ( ) { GameSaying . LoadSayings ( ) ; }
 
-		[ TestMethod ]
+		[TestMethod]
 		public void GetSayingTest ( )
 		{
 			for ( int i = 0 ; i < 1000 ; i++ )
@@ -23,7 +23,7 @@ namespace WenceyWang . Richman4L .UnitTests
 			}
 		}
 
-		[ TestMethod ]
+		[TestMethod]
 		public void SortSayingTest ( )
 		{
 			GameSaying . LoadSayings ( ) ;

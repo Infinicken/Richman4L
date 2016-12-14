@@ -1,4 +1,4 @@
-﻿<Page
+﻿<pages:AnimatePage
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.PlayerConfigPage"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,17 +6,17 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
+	xmlns:pages="using:WenceyWang.Richman4L.Apps.Uni.Pages"
 	mc:Ignorable="d"
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" >
 	<Page.Resources>
-		<logic:AppSettings x:Key="AppSettings" />
 		<Thickness x:Key="FlyoutContentPanelPortraitThemeMargin" >0,25.5,0,0</Thickness>
 		<Thickness x:Key="FlyoutContentPanelLandscapeThemeMargin" >0,0,0,0</Thickness>
 		<x:String x:Key="Player1String" >玩家1</x:String>
 		<x:String x:Key="CharacterString" >人物</x:String>
 		<x:String x:Key="ControllerString" >控制者</x:String>
 		<Flyout x:Key="PlayerFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
-			<Grid Background="{StaticResource DarkLime}" Height="324" >
+			<Grid Background="{StaticResource DarkLimeBrush}" Height="324" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="20" />
 					<RowDefinition Height="Auto" />
@@ -50,7 +50,7 @@
 		<x:String x:Key="Player2String" >玩家2</x:String>
 		<x:String x:Key="Player3String" >玩家3</x:String>
 		<x:String x:Key="Player4String" >玩家4</x:String>
-		<Storyboard x:Name="StartStoryBoard" >
+		<Storyboard x:Name="StartStoryboard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
@@ -74,7 +74,7 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
-		<Storyboard x:Name="LeaveStoryBoard" >
+		<Storyboard x:Name="LeaveStoryboard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
 											Storyboard.TargetName="PlayerConfigPageUpImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
@@ -100,7 +100,7 @@
 	</Page.Resources>
 
 	<Grid>
-		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource Lime}"
+		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource LimeBrush}"
 					d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition" />
 		<Image x:Name="PlayerConfigPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/PlayerConfigPageUp.png"
 				Stretch="UniformToFill" d:LayoutOverrides="TopPosition, BottomPosition" VerticalAlignment="Top" />
@@ -209,4 +209,4 @@
 		</Grid>
 
 	</Grid>
-</Page>
+</pages:AnimatePage>

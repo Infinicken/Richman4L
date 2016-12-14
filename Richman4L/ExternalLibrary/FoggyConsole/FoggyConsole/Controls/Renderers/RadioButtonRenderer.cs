@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a RadioButton
 	/// </summary>
-	public class RadioButtonRenderer : ControlRenderer < RadioButton >
+	public class RadioButtonRenderer : ControlRenderer <RadioButton>
 	{
 
 		private CheckableChar _checkableChar ;

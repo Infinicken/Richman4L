@@ -5,7 +5,7 @@ using System . Linq ;
 namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
-	public class PasswordBoxRenderer : ControlRenderer < PasswordBox >
+	public class PasswordBoxRenderer : ControlRenderer <PasswordBox>
 	{
 
 		public override void Draw ( )

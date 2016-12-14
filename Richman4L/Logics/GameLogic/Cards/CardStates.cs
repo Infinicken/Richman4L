@@ -10,7 +10,9 @@ namespace WenceyWang . Richman4L .Cards
 
 		Used ,
 
-		Unused
+		Unused ,
+
+		Broken
 
 	}
 

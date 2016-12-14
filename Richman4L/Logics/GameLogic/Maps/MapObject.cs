@@ -51,15 +51,15 @@ namespace WenceyWang . Richman4L .Maps
 
 		public MapObjectType Type => MapObjectTypes . Single ( type => type . EntryType == GetType ( ) ) ;
 
-		[ NotNull ]
-		[ ItemNotNull ]
-		public static List < MapObjectType > MapObjectTypes { get ; private set ; } = new List < MapObjectType > ( ) ;
+		[NotNull]
+		[ItemNotNull]
+		public static List <MapObjectType> MapObjectTypes { get ; private set ; } = new List <MapObjectType> ( ) ;
 
 		/// <summary>
 		///     基于地图资源创建MapObject
 		/// </summary>
 		/// <param name="resource"></param>
-		public MapObject ( [ NotNull ] XElement resource ) : this ( )
+		public MapObject ( [NotNull] XElement resource ) : this ( )
 		{
 			if ( resource == null )
 			{
@@ -82,13 +82,9 @@ namespace WenceyWang . Richman4L .Maps
 		/// <summary>
 		///     要求地图元素的视图更新
 		/// </summary>
-		public void UpdateView ( )
-		{
-			CheckDisposed ( ) ;
-			UpdateViewEvent ? . Invoke ( this , EventArgs . Empty ) ;
-		}
+		public void UpdateView ( ) { UpdateViewEvent ? . Invoke ( this , EventArgs . Empty ) ; }
 
-		[ NotNull ]
+		[NotNull]
 		public event EventHandler UpdateViewEvent ;
 
 		//protected override void Dispose ( bool disposing )
@@ -106,7 +102,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		public event EventHandler DisposeEvent ;
 
-		public static void CleanMapObjectType ( ) { MapObjectTypes = new List < MapObjectType > ( ) ; }
+		public static void CleanMapObjectType ( ) { MapObjectTypes = new List <MapObjectType> ( ) ; }
 
 		public static void LoadMapObjects ( )
 		{
@@ -122,6 +118,27 @@ namespace WenceyWang . Richman4L .Maps
 			;
 		}
 
+		[NotNull]
+		protected static void RegisMapObjectType <T> ( T mapObjectType ) where T : MapObjectType
+		{
+			#region Check Argument
+
+			if ( mapObjectType == null )
+			{
+				throw new ArgumentNullException ( nameof ( mapObjectType ) ) ;
+			}
+
+			#endregion
+
+			if ( MapObjectTypes . Any ( type => type . Name == mapObjectType . Name ) )
+			{
+				throw new Exception ( "Name is Invilable" ) ;
+			}
+
+			MapObjectTypes . Add ( mapObjectType ) ;
+		}
+
+
 		/// <summary>
 		///     注册一个MapObject类型
 		///     这个方法应当在加载程序集的时候被调用，加载的程序集应当注册所有的MapObject
@@ -129,8 +146,8 @@ namespace WenceyWang . Richman4L .Maps
 		/// <param name="name">用于从地图资源文件中识别的名称</param>
 		/// <param name="entryType">要注册的类型类型</param>
 		/// <returns>生成的类型</returns>
-		[ NotNull ]
-		public static MapObjectType RegisMapObjectType ( [ NotNull ] XName name , [ NotNull ] Type entryType )
+		[NotNull]
+		public static MapObjectType RegisMapObjectType ( [NotNull] XName name , [NotNull] Type entryType )
 		{
 			#region Check Argument
 
@@ -165,11 +182,8 @@ namespace WenceyWang . Richman4L .Maps
 		}
 
 
-		[ NotNull ]
-		public override string ToString ( )
-		{
-			return $"{GetType ( ) . Name} at {X},{Y}" ;
-		}
+		[NotNull]
+		public override string ToString ( ) { return $"{GetType ( ) . Name} at {X},{Y}" ; }
 
 	}
 

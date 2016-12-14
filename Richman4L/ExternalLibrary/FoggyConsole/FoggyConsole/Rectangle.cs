@@ -8,7 +8,7 @@ namespace WenceyWang .FoggyConsole
 	/// <summary>
 	///     A very basic represenation of a rectangle
 	/// </summary>
-	public struct Rectangle : IEquatable < Rectangle >
+	public struct Rectangle : IEquatable <Rectangle>
 	{
 
 		public int X { get ; }

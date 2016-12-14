@@ -124,7 +124,9 @@
     <Content Include="Fonts\ComicSansChinese1.ttf" />
     <Content Include="Fonts\ComicSansChinese2.ttf" />
     <Content Include="Fonts\ComicSansChinese3.ttf" />
-    <None Include="Package.StoreAssociation.xml" />
+    <None Include="Package.StoreAssociation.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Pages\ImageResources\AboutPageDown.png" />
     <Content Include="Pages\ImageResources\AboutPageUp.png" />
     <Content Include="Pages\ImageResources\CreateGamePageDown.png" />
@@ -172,6 +174,9 @@
     <Compile Include="Pages\Controls\CardControl.xaml.cs">
       <DependentUpon>CardControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Controls\DreamRecorderLogo.xaml.cs">
+      <DependentUpon>DreamRecorderLogo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Controls\LoadingRing.xaml.cs">
       <DependentUpon>LoadingRing.xaml</DependentUpon>
     </Compile>
@@ -193,6 +198,7 @@
     <Compile Include="Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AnimatePage.cs" />
     <Compile Include="Pages\LicensePage.xaml.cs">
       <DependentUpon>LicensePage.xaml</DependentUpon>
     </Compile>
@@ -222,6 +228,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\MaterialEase.cs" />
+    <Compile Include="XamlResources\XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -250,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Controls\CardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Controls\DreamRecorderLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -317,57 +328,57 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="XAMLResources\Brushs.xaml">
+    <Page Include="XamlResources\Brushs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\EasingFunction.xaml">
+    <Page Include="XamlResources\EasingFunction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\Fonts.xaml">
+    <Page Include="XamlResources\Fonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\RightArrowTextBlockButtonStyle.xaml">
+    <Page Include="XamlResources\RightArrowTextBlockButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\LeftArrowTextBlockButtonStyle.xaml">
+    <Page Include="XamlResources\LeftArrowTextBlockButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\ListBoxStyle.xaml">
+    <Page Include="XamlResources\ListBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\RoundedRectangleButtonStyle.xaml">
+    <Page Include="XamlResources\RoundedRectangleButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\SettingToggleSwitchStyle.xaml">
+    <Page Include="XamlResources\SettingToggleSwitchStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\TextBlockButtonStyle.xaml">
+    <Page Include="XamlResources\TextBlockButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\Thickness.xaml">
+    <Page Include="XamlResources\Thickness.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XAMLResources\ToggleSwitchTemplate.xaml">
+    <Page Include="XamlResources\ToggleSwitchTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -380,9 +391,6 @@
     <SDKReference Include="WindowsDesktop, Version=10.0.10586.0">
       <Name>Windows Desktop Extensions for the UWP %28WindowsDesktop, Version=10.0.10586.0%29</Name>
     </SDKReference>
-    <SDKReference Include="WindowsIoT, Version=10.0.10586.0">
-      <Name>Windows IoT Extensions for the UWP %28WindowsIoT, Version=10.0.10586.0%29</Name>
-    </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
       <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.10586.0%29</Name>
     </SDKReference>
@@ -392,9 +400,9 @@
       <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
       <Name>GameLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XamlMapRenderer\XamlMapRenderer.csproj">
+    <ProjectReference Include="..\XamlMapRenderers\XamlMapRenderers.csproj">
       <Project>{73b80fc0-34f1-429e-86a6-8f63451e53e8}</Project>
-      <Name>XamlMapRenderer</Name>
+      <Name>XamlMapRenderers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

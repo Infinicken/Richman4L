@@ -47,9 +47,9 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		/// <summary>
 		///     指示整个路径
 		/// </summary>
-		public ReadOnlyCollection < Road > Route { get ; }
+		public ReadOnlyCollection <Road> Route { get ; }
 
-		private List < Road > route { get ; }
+		private List <Road> route { get ; }
 
 		public override int X { get { return Route . Min ( road => road . X ) ; } protected set { } }
 
@@ -60,8 +60,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public Path ( )
 		{
-			route = new List < Road > ( ) ;
-			Route = new ReadOnlyCollection < Road > ( route ) ;
+			route = new List <Road> ( ) ;
+			Route = new ReadOnlyCollection <Road> ( route ) ;
 		}
 
 		/// <summary>

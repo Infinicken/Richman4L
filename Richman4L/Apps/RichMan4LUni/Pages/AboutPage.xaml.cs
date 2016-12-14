@@ -22,8 +22,8 @@ using System . Linq ;
 
 using Windows . Foundation . Metadata ;
 using Windows . Phone . UI . Input ;
+using Windows . UI ;
 using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
@@ -34,13 +34,13 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	/// <summary>
 	///     关于页。
 	/// </summary>
-	public sealed partial class AboutPage : Page
+	public sealed partial class AboutPage : AnimatePage
 	{
 
 		public AboutPage ( )
 		{
 			InitializeComponent ( ) ;
-			StartStoryBoard . Completed += StartStoryBoard_Completed ;
+			StartStoryboard . Completed += StartStoryboardCompleted ;
 		}
 
 		protected override void OnNavigatedTo ( NavigationEventArgs e )
@@ -52,33 +52,29 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			}
 		}
 
-		private void Page_Loaded ( object sender , RoutedEventArgs e ) { StartStoryBoard . Begin ( ) ; }
+		private void Page_Loaded ( object sender , RoutedEventArgs e ) { StartStoryboard . Begin ( ) ; }
 
-		private void StartStoryBoard_Completed ( object sender , object e )
+		private void StartStoryboardCompleted ( object sender , object e )
 		{
 			if ( AppSettings . Current . OcdMode )
 			{
 				MainGrid . TurnOnOcdMode ( ) ;
 			}
-			StartStoryBoard . Completed -= StartStoryBoard_Completed ;
+			StartStoryboard . Completed -= StartStoryboardCompleted ;
 		}
 
 
 		private void SettingPageButton_Click ( object sender , object e )
 		{
-			PageNavigateHelper . Navigate ( typeof ( SettingPage ) ,
-											null ,
-											"DeepRed" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			this.NavigateTo<SettingPage > (  );
+			
 		}
 
-		private void RemoveControl ( ) { SettingPageButton . Click -= SettingPageButton_Click ; }
+		public static Color PageColor => XamlResources . Resources . Blue ;
 
-		private void AddControl ( ) { SettingPageButton . Click += SettingPageButton_Click ; }
+		public override void RemoveControl ( ) { SettingPageButton . Click -= SettingPageButton_Click ; }
+
+		public override void AddControl ( ) { SettingPageButton . Click += SettingPageButton_Click ; }
 
 	}
 

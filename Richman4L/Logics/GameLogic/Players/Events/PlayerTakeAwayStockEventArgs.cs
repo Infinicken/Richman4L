@@ -11,12 +11,12 @@ namespace WenceyWang . Richman4L . Players .Events
 	public class PlayerTakeAwayStockEventArgs : PlayerEventArgs
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public Stock Stock { get ; }
 
 		public int Number { get ; }
 
-		public PlayerTakeAwayStockEventArgs ( [ NotNull ] Stock stock , int number )
+		public PlayerTakeAwayStockEventArgs ( [NotNull] Stock stock , int number )
 		{
 			if ( stock == null )
 			{

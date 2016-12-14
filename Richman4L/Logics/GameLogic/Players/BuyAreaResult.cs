@@ -30,9 +30,14 @@ namespace WenceyWang . Richman4L .Players
 
 		public Area Area { get ; set ; }
 
-		public long Money { get ; set ; }
+		public long CostMoney { get ; set ; }
 
-		public BuyAreaStatusCode StatusCode { get ; set ; }
+		public BuyAreaStatusCode ? StatusCode { get ; set ; }
+
+		public static BuyAreaResult Crate ( Area area )
+		{
+			return new BuyAreaResult { Area = area , CostMoney = 0 , StatusCode = null } ;
+		}
 
 	}
 
@@ -42,7 +47,7 @@ namespace WenceyWang . Richman4L .Players
 	public enum BuyAreaStatusCode
 	{
 
-		Success ,
+		Success = 0 ,
 
 		MoneyNotEnough ,
 

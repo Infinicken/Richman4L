@@ -80,7 +80,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		public override bool CanFocus => Enabled ;
 
 
-		public PasswordBox ( ControlRenderer < PasswordBox > renderer = null )
+		public PasswordBox ( ControlRenderer <PasswordBox> renderer = null )
 			: base ( renderer ?? new PasswordBoxRenderer ( ) ) { }
 
 		/// <summary>

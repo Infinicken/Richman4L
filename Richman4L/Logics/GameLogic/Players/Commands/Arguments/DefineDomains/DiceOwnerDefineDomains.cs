@@ -10,7 +10,7 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 	public class DiceOwnerDefineDomains : ArgumentValueDefineDomain
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public Player Target { get ; set ; }
 
 		public DiceOwnerDefineDomains ( Player target )
@@ -27,7 +27,7 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 		{
 			try
 			{
-				return Target . DiceList . Contains ( ( DiceType ) value ) ;
+				return Target . IsDiceAviliable ( ( DiceType ) value ) ;
 			}
 			catch ( Exception )
 			{

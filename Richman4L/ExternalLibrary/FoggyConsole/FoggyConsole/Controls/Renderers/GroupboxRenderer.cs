@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a Groupbox
 	/// </summary>
-	public class GroupBoxRenderer : ControlRenderer < Groupbox >
+	public class GroupBoxRenderer : ControlRenderer <Groupbox>
 	{
 
 		/// <summary>

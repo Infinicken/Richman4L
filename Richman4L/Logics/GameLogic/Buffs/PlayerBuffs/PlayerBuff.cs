@@ -56,7 +56,7 @@ namespace WenceyWang . Richman4L . Buffs .PlayerBuffs
 		{
 			if ( Game . Current . Calendar . Today == StartDate + Duration )
 			{
-				Target . LostBuff ( this ) ;
+				Target . RemoveBuff ( this ) ;
 			}
 			base . StartDay ( nextDate ) ;
 		}

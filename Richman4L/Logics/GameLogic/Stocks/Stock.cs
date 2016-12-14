@@ -19,7 +19,6 @@
 using System ;
 using System . Collections ;
 using System . Collections . Generic ;
-using System . Diagnostics . Contracts ;
 using System . Linq ;
 using System . Xml . Linq ;
 
@@ -45,11 +44,11 @@ namespace WenceyWang . Richman4L .Stocks
 		/// <summary>
 		///     表示当前的价格
 		/// </summary>
-		public StockPrice CurrentPrice { get ; set ; }
+		public StockPrice Price { get ; set ; }
 
 		internal StockPrice TodayAnticipate { get ; set ; }
 
-		[ NotNull ]
+		[NotNull]
 		public StockPriceController PriceController { get ; }
 
 		/// <summary>
@@ -63,10 +62,10 @@ namespace WenceyWang . Richman4L .Stocks
 		public bool TransactToday { get ; private set ; }
 
 
-		public List < StockPrice > PriceHistory { get ; set ; } = new List < StockPrice > ( ) ;
+		public List <StockPrice> PriceHistory { get ; set ; } = new List <StockPrice> ( ) ;
 
 
-		public List < StockBuff > Buffs { get ; set ; } = new List < StockBuff > ( ) ;
+		public List <StockBuff> Buffs { get ; set ; } = new List <StockBuff> ( ) ;
 
 		/// <summary>
 		///     今天的变动率
@@ -83,29 +82,32 @@ namespace WenceyWang . Richman4L .Stocks
 
 		public override void StartDay ( GameDate nextDate )
 		{
+			PriceHistory . Add ( Price ) ;
+
 			if ( Buffs . Any ( buff => buff is RedBuff ) )
 			{
 				//Todo:ChangeToUseAnotherController
 			}
+			PriceController . StartDay ( nextDate ) ;
 			TodayAnticipate = PriceController . GetPrice ( ) ;
-			CurrentPrice = new StockPrice ( TodayAnticipate . OpenPrice ,
-											TodayAnticipate . OpenPrice ,
-											TodayAnticipate . OpenPrice ,
-											TodayAnticipate . OpenPrice ,
-											0 ,
-											0 ) ;
+			Price = new StockPrice ( TodayAnticipate . OpenPrice ,
+									TodayAnticipate . OpenPrice ,
+									TodayAnticipate . OpenPrice ,
+									TodayAnticipate . OpenPrice ,
+									0 ,
+									0 ) ;
 		}
 
 		public override void EndToday ( )
 		{
-			ChangeNet = CurrentPrice . CurrentPrice / CurrentPrice . OpenPrice ;
+			ChangeNet = Price . CurrentPrice / Price . OpenPrice ;
 
-			//CurrentPrice = OpenPrice * ChangeNet;
-
-			//TodaysHigh = Math . Max ( OpenPrice , CurrentPrice ) + Math . Abs ( OpenPrice - CurrentPrice ) * GameRandom . Current . Next ( 0 , 1500 ) / 1000m;
-			//TodaysLow = Math . Min ( OpenPrice , CurrentPrice ) - Math . Abs ( OpenPrice - CurrentPrice ) * GameRandom . Current . Next ( 0 , 1500 ) / 1000m;
-
-			PriceHistory . Add ( new StockPrice ( ) ) ;
+			Price = new StockPrice ( TodayAnticipate . OpenPrice ,
+									TodayAnticipate . CurrentPrice ,
+									TodayAnticipate . TodaysHigh ,
+									TodayAnticipate . TodaysLow ,
+									0 ,
+									0 ) ;
 		}
 
 
@@ -120,46 +122,45 @@ namespace WenceyWang . Richman4L .Stocks
 
 		public void AddTradingVolume ( int tradingValue )
 		{
-			Contract . Requires < ArgumentOutOfRangeException > ( tradingValue > 0 ) ;
 
-			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,
-											CurrentPrice . CurrentPrice ,
-											CurrentPrice . TodaysHigh ,
-											CurrentPrice . TodaysLow ,
-											CurrentPrice . BuyVolume + tradingValue ,
-											CurrentPrice . SellVolume + tradingValue ) ;
+			Price = new StockPrice ( Price . OpenPrice ,
+									Price . CurrentPrice ,
+									Price . TodaysHigh ,
+									Price . TodaysLow ,
+									Price . BuyVolume + tradingValue ,
+									Price . SellVolume + tradingValue ) ;
 		}
 
 		public void LowerTodaysLow ( decimal lowerPrice )
 		{
-			if ( lowerPrice >= CurrentPrice . TodaysLow )
+			if ( lowerPrice >= Price . TodaysLow )
 			{
 				throw new ArgumentException (
-						$"{nameof ( lowerPrice )} should less than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysLow )}" ) ;
+						$"{nameof ( lowerPrice )} should less than {nameof ( Price )}.{nameof ( Price . TodaysLow )}" ) ;
 			}
 
-			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,
-											CurrentPrice . CurrentPrice ,
-											CurrentPrice . TodaysHigh ,
-											lowerPrice ,
-											CurrentPrice . BuyVolume ,
-											CurrentPrice . SellVolume ) ;
+			Price = new StockPrice ( Price . OpenPrice ,
+									Price . CurrentPrice ,
+									Price . TodaysHigh ,
+									lowerPrice ,
+									Price . BuyVolume ,
+									Price . SellVolume ) ;
 		}
 
 		public void HigherTodaysHigh ( decimal higherPrice )
 		{
-			if ( higherPrice <= CurrentPrice . TodaysLow )
+			if ( higherPrice <= Price . TodaysLow )
 			{
 				throw new ArgumentException (
-						$"{nameof ( higherPrice )} should greater than {nameof ( CurrentPrice )}.{nameof ( CurrentPrice . TodaysHigh )}" ) ;
+						$"{nameof ( higherPrice )} should greater than {nameof ( Price )}.{nameof ( Price . TodaysHigh )}" ) ;
 			}
 
-			CurrentPrice = new StockPrice ( CurrentPrice . OpenPrice ,
-											CurrentPrice . CurrentPrice ,
-											higherPrice ,
-											CurrentPrice . TodaysLow ,
-											CurrentPrice . BuyVolume ,
-											CurrentPrice . SellVolume ) ;
+			Price = new StockPrice ( Price . OpenPrice ,
+									Price . CurrentPrice ,
+									higherPrice ,
+									Price . TodaysLow ,
+									Price . BuyVolume ,
+									Price . SellVolume ) ;
 		}
 
 		public void AddBuff ( StockBuff buff )
@@ -172,18 +173,18 @@ namespace WenceyWang . Richman4L .Stocks
 			Buffs . Add ( buff ) ;
 		}
 
-		//}
-		//	}
-		//		base . Dispose ( disposing ) ;
-		//		}
-		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
-		//		{
-		//		if ( disposing )
-		//	{
-		//	if ( ! DisposedValue )
-		//{
-
 		//protected override void Dispose ( bool disposing )
+		//{
+		//	if ( ! DisposedValue )
+		//	{
+		//		if ( disposing )
+		//		{
+		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
+		//		}
+		//		base . Dispose ( disposing ) ;
+		//	}
+
+		//}
 	}
 
 }

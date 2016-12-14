@@ -30,11 +30,11 @@ namespace WenceyWang . FoggyConsole .Controls
 	public abstract class Control
 	{
 
-		private ConsoleColor? _backgroundColor ;
+		private ConsoleColor ? _backgroundColor ;
 
 		private bool _enabled = true ;
 
-		private ConsoleColor? _foregroundColor ;
+		private ConsoleColor ? _foregroundColor ;
 
 		private bool _isFocused ;
 
@@ -120,7 +120,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// <summary>
 		///     The background-color
 		/// </summary>
-		public ConsoleColor? BackgroundColor
+		public ConsoleColor ? BackgroundColor
 		{
 			get { return _backgroundColor ; }
 			set
@@ -138,7 +138,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// <summary>
 		///     The foreground-color
 		/// </summary>
-		public ConsoleColor? ForegroundColor
+		public ConsoleColor ? ForegroundColor
 		{
 			get { return _foregroundColor ; }
 			set

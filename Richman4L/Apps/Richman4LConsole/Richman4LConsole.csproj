@@ -9,13 +9,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WenceyWang.Richman4L.Apps.Console</RootNamespace>
     <AssemblyName>Richman4LConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -99,9 +100,9 @@
       <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
       <Name>GameLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CharacterMapRenderer\CharacterMapRenderer.csproj">
-      <Project>{7765d69c-137e-4d84-9978-56e10527e02e}</Project>
-      <Name>CharacterMapRenderer</Name>
+    <ProjectReference Include="..\CharacterMapRenderers\CharacterMapRenderers.csproj">
+      <Project>{fac43e22-00f1-48a9-b1f4-1831f3ed9cdb}</Project>
+      <Name>CharacterMapRenderers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

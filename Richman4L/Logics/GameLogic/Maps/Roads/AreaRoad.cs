@@ -26,7 +26,7 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L . Maps .Roads
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class AreaRoad : NormalRoad
 	{
 

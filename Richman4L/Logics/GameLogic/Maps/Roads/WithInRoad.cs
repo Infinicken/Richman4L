@@ -24,13 +24,13 @@ using System . Xml . Linq ;
 namespace WenceyWang . Richman4L . Maps .Roads
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class WithInRoad : NormalRoad
 	{
 
 		private Road _inRoad ;
 
-		private long? _inRoadId ;
+		private long ? _inRoadId ;
 
 		public virtual Road InRoad
 		{

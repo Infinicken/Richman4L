@@ -25,11 +25,11 @@ using WenceyWang . Richman4L . Calendars ;
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
 
-	[ Building ]
+	[Building]
 	public class MediumSimpleBuilding : MediumBuilding
 	{
 
-		public override bool EasyToDestroy { get ; }
+		public override bool IsEasyToDestroy { get ; }
 
 		public override long MaintenanceFee { get ; }
 
@@ -37,7 +37,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
 
-		public override void Destoy ( DestroyReason reason ) { throw new NotImplementedException ( ) ; }
+		public override void Destoy ( BuildingDestroyReason reason ) { throw new NotImplementedException ( ) ; }
 
 	}
 

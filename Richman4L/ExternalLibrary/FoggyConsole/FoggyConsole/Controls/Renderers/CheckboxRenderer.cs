@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a <code>Checkbox</code>-Control
 	/// </summary>
-	public class CheckboxRenderer : ControlRenderer < Checkbox >
+	public class CheckboxRenderer : ControlRenderer <Checkbox>
 	{
 
 		private CheckableChar _checkableChar ;

@@ -3,7 +3,6 @@ using System . Collections ;
 using System . Linq ;
 
 using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
@@ -13,7 +12,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	/// <summary>
 	///     光敏性癫痫警告页。
 	/// </summary>
-	public sealed partial class PhotosensitiveSeizureWarningPage : Page
+	public sealed partial class PhotosensitiveSeizureWarningPage : AnimatePage
 	{
 
 		public PhotosensitiveSeizureWarningPage ( )
@@ -38,20 +37,20 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			AddControl ( ) ;
 		}
 
-		public void AddControl ( ) { KnowButton . Click += KnowButton_Click ; }
+		public override void AddControl ( ) { KnowButton . Click += KnowButton_Click ; }
 
-		public void RemoveControl ( ) { KnowButton . Click -= KnowButton_Click ; }
+		public override void RemoveControl ( ) { KnowButton . Click -= KnowButton_Click ; }
 
 		private void KnowButton_Click ( object sender , RoutedEventArgs e )
 		{
-			PageNavigateHelper . Navigate ( typeof ( MyWishPage ) ,
-											null ,
-											"DarkBlue" ,
-											LeaveStoryboard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			//PageNavigateHelper . NavigateTo ( typeof ( MyWishPage ) ,
+			//								null ,
+			//								"DarkBlueBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 	}

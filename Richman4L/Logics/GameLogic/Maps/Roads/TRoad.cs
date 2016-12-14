@@ -28,23 +28,23 @@ namespace WenceyWang . Richman4L . Maps .Roads
 {
 
 	// ReSharper disable once InconsistentNaming
-	[ MapObject ]
+	[MapObject]
 	public class TRoad : Road
 	{
 
-		[ CanBeNull ] private Road _firstExit ;
+		[CanBeNull] private Road _firstExit ;
 
-		[ CanBeNull ] private long? _firstExitId ;
+		[CanBeNull] private long ? _firstExitId ;
 
-		[ CanBeNull ] private Road _secondExit ;
+		[CanBeNull] private Road _secondExit ;
 
-		[ CanBeNull ] private long? _secondExitId ;
+		[CanBeNull] private long ? _secondExitId ;
 
-		[ CanBeNull ] private Road _thirdExit ;
+		[CanBeNull] private Road _thirdExit ;
 
-		[ CanBeNull ] private long? _thirdExitId ;
+		[CanBeNull] private long ? _thirdExitId ;
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public virtual Road FirstExit
 		{
 			get
@@ -64,7 +64,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			}
 		}
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public virtual Road SecondExit
 		{
 			get
@@ -84,7 +84,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			}
 		}
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public virtual Road ThirdExit
 		{
 			get
@@ -140,7 +140,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 				return current ;
 			}
 
-			List < Road > roadAvailable = new List < Road > { FirstExit , SecondExit , ThirdExit } ;
+			List <Road> roadAvailable = new List <Road> { FirstExit , SecondExit , ThirdExit } ;
 			roadAvailable . Remove ( previous ) ;
 			roadAvailable . RemoveAll ( road => null == road ) ;
 			roadAvailable . RemoveAll ( road => ! road . CanEnterFrom ( this ) ) ;

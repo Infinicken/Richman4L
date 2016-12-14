@@ -51,7 +51,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public RadioButton ( ControlRenderer < RadioButton > renderer = null )
+		public RadioButton ( ControlRenderer <RadioButton> renderer = null )
 			: base ( renderer ?? new RadioButtonRenderer ( ) )
 		{
 			State = CheckState . Unchecked ;
@@ -60,9 +60,9 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		private void OnCheckedChanging ( object sender , CheckedChangingEventArgs checkedChangingEventArgs )
 		{
-			IEnumerable < RadioButton > radioButtons = ( Page . Container as ItemsControl ) ? . Items ? . OfType < RadioButton >
-																								( )
-																								? . Where ( cb => cb . ComboBoxGroup == ComboBoxGroup ) ;
+			IEnumerable <RadioButton> radioButtons = ( Page . Container as ItemsControl ) ? . Items ? . OfType <RadioButton>
+																							( )
+																							? . Where ( cb => cb . ComboBoxGroup == ComboBoxGroup ) ;
 			if ( radioButtons != null )
 			{
 				foreach ( RadioButton radioButton in radioButtons )

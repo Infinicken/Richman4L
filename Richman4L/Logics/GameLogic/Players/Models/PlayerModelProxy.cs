@@ -35,9 +35,9 @@ namespace WenceyWang . Richman4L . Players .Models
 			Image = new Uri ( element . Attribute ( nameof ( Image ) ) ? . Value ?? "" ) ;
 		}
 
-		private static List < PlayerModelProxy > _playerModels ;
+		private static List <PlayerModelProxy> _playerModels ;
 
-		public static List < PlayerModelProxy > GetPlayerModels ( )
+		public static List <PlayerModelProxy> GetPlayerModels ( )
 		{
 			if ( null == _playerModels )
 			{
@@ -49,7 +49,7 @@ namespace WenceyWang . Richman4L . Players .Models
 
 		public static void LoadPlayerModels ( )
 		{
-			_playerModels = new List < PlayerModelProxy > ( ) ;
+			_playerModels = new List <PlayerModelProxy> ( ) ;
 
 			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( Players )}.{nameof ( Models )}.Resources.Index.xml" ) ;
 

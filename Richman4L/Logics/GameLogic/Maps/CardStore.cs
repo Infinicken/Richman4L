@@ -29,7 +29,7 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L .Maps
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class CardStore : NormalRoad
 	{
 
@@ -39,7 +39,7 @@ namespace WenceyWang . Richman4L .Maps
 		public override void Stay ( Player player , MoveType moveType )
 		{
 			//Todo:MakeEnviromentBuyCard
-			List < CardType > cardCanBuy = new List < CardType > ( ) ;
+			List <CardType> cardCanBuy = new List <CardType> ( ) ;
 
 
 			base . Stay ( player , moveType ) ;

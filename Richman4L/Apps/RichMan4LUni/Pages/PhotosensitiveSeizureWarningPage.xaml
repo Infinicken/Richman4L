@@ -1,8 +1,9 @@
-﻿<Page
+﻿<pages:AnimatePage
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:pages="using:WenceyWang.Richman4L.Apps.Uni.Pages"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.PhotosensitiveSeizureWarningPage"
 	mc:Ignorable="d" >
 
@@ -67,7 +68,8 @@
 	</Page.Resources>
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource DarkBlue}" d:LayoutOverrides="TopPosition, BottomPosition" />
+		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource DarkBlueBrush}"
+					d:LayoutOverrides="TopPosition, BottomPosition" />
 		<Image x:Name="StartUpPageUpImage" Source="ms-appx:///Pages/ImageResources/StartUpPageUp.png" VerticalAlignment="Top"
 				Stretch="UniformToFill" />
 		<Image x:Name="StartUpPageMiddleImage" Source="ms-appx:///Pages/ImageResources/StartUpPageMiddle.png"
@@ -122,4 +124,4 @@
 		</Grid>
 
 	</Grid>
-</Page>
+</pages:AnimatePage>

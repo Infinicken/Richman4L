@@ -11,14 +11,14 @@ namespace WenceyWang . Richman4L . Players .Events
 	public class PlayerGetFromSellStockEventArgs : PlayerGetEventArgs
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public Stock Stock { get ; }
 
 		public int Number { get ; }
 
 		public override long Money { get ; }
 
-		public PlayerGetFromSellStockEventArgs ( [ NotNull ] Stock stock , int number , long money )
+		public PlayerGetFromSellStockEventArgs ( [NotNull] Stock stock , int number , long money )
 		{
 			if ( stock == null )
 			{

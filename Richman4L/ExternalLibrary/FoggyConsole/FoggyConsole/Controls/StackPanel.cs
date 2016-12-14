@@ -13,9 +13,9 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public override bool CanFocus => false ;
 
-		public override IList < Control > Items { get ; } = new List < Control > ( ) ;
+		public override IList <Control> Items { get ; } = new List <Control> ( ) ;
 
-		public Dictionary < Control , ContentAlign > ControlAlign { get ; } = new Dictionary < Control , ContentAlign > ( ) ;
+		public Dictionary <Control , ContentAlign> ControlAlign { get ; } = new Dictionary <Control , ContentAlign> ( ) ;
 
 		public ContentAlign this [ Control control ]
 		{

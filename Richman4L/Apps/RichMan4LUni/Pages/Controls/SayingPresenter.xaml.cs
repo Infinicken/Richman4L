@@ -14,8 +14,6 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 	public sealed partial class SayingPresenter : UserControl
 	{
 
-		private DispatcherTimer Timer { get ; }
-
 		public GameSaying Saying
 		{
 			get { return ( GameSaying ) GetValue ( SayingProperty ) ; }
@@ -71,41 +69,28 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 
 		public SayingPresenter ( )
 		{
-			Timer = new DispatcherTimer ( ) ;
 			InitializeComponent ( ) ;
 			Loaded += SayingPresenter_Loaded ;
 		}
+
 
 		public static readonly DependencyProperty SayingProperty =
 			DependencyProperty . Register ( nameof ( Saying ) ,
 											typeof ( GameSaying ) ,
 											typeof ( SayingPresenter ) ,
-											new PropertyMetadata ( default( GameSaying ) ) ) ;
+											new PropertyMetadata ( default ( GameSaying ) ) ) ;
 
-		public void ShowSaying ( )
-		{
-			VisualStateManager . GoToState ( this , nameof ( Show ) , true ) ;
-			Timer . Start ( ) ;
-		}
+		public void Hide ( ) { VisualStateManager . GoToState ( this , nameof ( HideState ) , true ) ; }
+
+		public void Show ( ) { VisualStateManager . GoToState ( this , nameof ( ShowState ) , true ) ; }
+
+		public void ShowSaying ( ) { VisualStateManager . GoToState ( this , nameof ( ShowState ) , true ) ; }
 
 		public event EventHandler ShowOverEvent ;
 
 		private void SayingPresenter_Loaded ( object sender , RoutedEventArgs e )
 		{
-			VisualStateManager . GoToState ( this , nameof ( Hide ) , false ) ;
-
-
-			Timer . Interval = TimeSpan . FromSeconds ( Saying . Content . Length * 0.1 + 1.5 ) ;
-
-			Timer . Tick += Timer_Tick ;
-		}
-
-		private void Timer_Tick ( object sender , object e )
-		{
-			Timer . Stop ( ) ;
-			VisualStateManager . GoToState ( this , nameof ( Hide ) , true ) ;
-			Timer . Tick -= Timer_Tick ;
-			ShowOverEvent ? . Invoke ( this , EventArgs . Empty ) ;
+			VisualStateManager . GoToState ( this , nameof ( HideState ) , false ) ;
 		}
 
 	}

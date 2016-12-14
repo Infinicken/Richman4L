@@ -50,10 +50,10 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage (
+	[AttributeUsage (
 		AttributeTargets . Method | AttributeTargets . Parameter | AttributeTargets . Property |
 		AttributeTargets . Delegate | AttributeTargets . Field | AttributeTargets . Event |
-		AttributeTargets . Class | AttributeTargets . Interface | AttributeTargets . GenericParameter ) ]
+		AttributeTargets . Class | AttributeTargets . Interface | AttributeTargets . GenericParameter )]
 	public sealed class CanBeNullAttribute : Attribute
 	{
 
@@ -69,10 +69,10 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage (
+	[AttributeUsage (
 		AttributeTargets . Method | AttributeTargets . Parameter | AttributeTargets . Property |
 		AttributeTargets . Delegate | AttributeTargets . Field | AttributeTargets . Event |
-		AttributeTargets . Class | AttributeTargets . Interface | AttributeTargets . GenericParameter ) ]
+		AttributeTargets . Class | AttributeTargets . Interface | AttributeTargets . GenericParameter )]
 	public sealed class NotNullAttribute : Attribute
 	{
 
@@ -83,9 +83,9 @@ namespace WenceyWang . Richman4L .Properties
 	///     and Lazy classes to indicate that the value of a collection item, of the Task.Result property
 	///     or of the Lazy.Value property can never be null.
 	/// </summary>
-	[ AttributeUsage (
+	[AttributeUsage (
 		AttributeTargets . Method | AttributeTargets . Parameter | AttributeTargets . Property |
-		AttributeTargets . Delegate | AttributeTargets . Field ) ]
+		AttributeTargets . Delegate | AttributeTargets . Field )]
 	public sealed class ItemNotNullAttribute : Attribute
 	{
 
@@ -96,9 +96,9 @@ namespace WenceyWang . Richman4L .Properties
 	///     and Lazy classes to indicate that the value of a collection item, of the Task.Result property
 	///     or of the Lazy.Value property can be null.
 	/// </summary>
-	[ AttributeUsage (
+	[AttributeUsage (
 		AttributeTargets . Method | AttributeTargets . Parameter | AttributeTargets . Property |
-		AttributeTargets . Delegate | AttributeTargets . Field ) ]
+		AttributeTargets . Delegate | AttributeTargets . Field )]
 	public sealed class ItemCanBeNullAttribute : Attribute
 	{
 
@@ -108,8 +108,8 @@ namespace WenceyWang . Richman4L .Properties
 	///     Implicitly apply [NotNull]/[ItemNotNull] annotation to all the of type members and parameters
 	///     in particular scope where this annotation is used (type declaration or whole assembly).
 	/// </summary>
-	[ AttributeUsage (
-		AttributeTargets . Class | AttributeTargets . Struct | AttributeTargets . Interface | AttributeTargets . Assembly ) ]
+	[AttributeUsage (
+		AttributeTargets . Class | AttributeTargets . Struct | AttributeTargets . Interface | AttributeTargets . Assembly )]
 	public sealed class ImplicitNotNullAttribute : Attribute
 	{
 
@@ -130,19 +130,19 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage (
+	[AttributeUsage (
 		AttributeTargets . Constructor | AttributeTargets . Method |
-		AttributeTargets . Property | AttributeTargets . Delegate ) ]
+		AttributeTargets . Property | AttributeTargets . Delegate )]
 	public sealed class StringFormatMethodAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string FormatParameterName { get ; private set ; }
 
 		/// <param name="formatParameterName">
 		///     Specifies which parameter of an annotated method should be treated as format-string
 		/// </param>
-		public StringFormatMethodAttribute ( [ NotNull ] string formatParameterName )
+		public StringFormatMethodAttribute ( [NotNull] string formatParameterName )
 		{
 			FormatParameterName = formatParameterName ;
 		}
@@ -153,14 +153,14 @@ namespace WenceyWang . Richman4L .Properties
 	///     For a parameter that is expected to be one of the limited set of values.
 	///     Specify fields of which type should be used as values for this parameter.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Property | AttributeTargets . Field ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Property | AttributeTargets . Field )]
 	public sealed class ValueProviderAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Name { get ; private set ; }
 
-		public ValueProviderAttribute ( [ NotNull ] string name ) { Name = name ; }
+		public ValueProviderAttribute ( [NotNull] string name ) { Name = name ; }
 
 	}
 
@@ -177,7 +177,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class InvokerParameterNameAttribute : Attribute
 	{
 
@@ -240,19 +240,16 @@ namespace WenceyWang . Richman4L .Properties
 	///         </item>
 	///     </list>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string ParameterName { get ; private set ; }
 
 		public NotifyPropertyChangedInvocatorAttribute ( ) { }
 
-		public NotifyPropertyChangedInvocatorAttribute ( [ NotNull ] string parameterName )
-		{
-			ParameterName = parameterName ;
-		}
+		public NotifyPropertyChangedInvocatorAttribute ( [NotNull] string parameterName ) { ParameterName = parameterName ; }
 
 	}
 
@@ -311,21 +308,21 @@ namespace WenceyWang . Richman4L .Properties
 	///         </item>
 	///     </list>
 	/// </examples>
-	[ AttributeUsage ( AttributeTargets . Method , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Method , AllowMultiple = true )]
 	public sealed class ContractAnnotationAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Contract { get ; private set ; }
 
 		public bool ForceFullStates { get ; private set ; }
 
-		public ContractAnnotationAttribute ( [ NotNull ] string contract )
+		public ContractAnnotationAttribute ( [NotNull] string contract )
 			: this ( contract , false )
 		{
 		}
 
-		public ContractAnnotationAttribute ( [ NotNull ] string contract , bool forceFullStates )
+		public ContractAnnotationAttribute ( [NotNull] string contract , bool forceFullStates )
 		{
 			Contract = contract ;
 			ForceFullStates = forceFullStates ;
@@ -344,7 +341,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . All ) ]
+	[AttributeUsage ( AttributeTargets . All )]
 	public sealed class LocalizationRequiredAttribute : Attribute
 	{
 
@@ -378,7 +375,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Interface | AttributeTargets . Class | AttributeTargets . Struct ) ]
+	[AttributeUsage ( AttributeTargets . Interface | AttributeTargets . Class | AttributeTargets . Struct )]
 	public sealed class CannotApplyEqualityOperatorAttribute : Attribute
 	{
 
@@ -397,15 +394,15 @@ namespace WenceyWang . Richman4L .Properties
 	/// class MyComponent : IComponent { }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Class , AllowMultiple = true ) ]
-	[ BaseTypeRequired ( typeof ( Attribute ) ) ]
+	[AttributeUsage ( AttributeTargets . Class , AllowMultiple = true )]
+	[BaseTypeRequired ( typeof ( Attribute ) )]
 	public sealed class BaseTypeRequiredAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public Type BaseType { get ; private set ; }
 
-		public BaseTypeRequiredAttribute ( [ NotNull ] Type baseType ) { BaseType = baseType ; }
+		public BaseTypeRequiredAttribute ( [NotNull] Type baseType ) { BaseType = baseType ; }
 
 	}
 
@@ -413,7 +410,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
 	///     so this symbol will not be marked as unused (as well as by other usage inspections).
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . All ) ]
+	[AttributeUsage ( AttributeTargets . All )]
 	public sealed class UsedImplicitlyAttribute : Attribute
 	{
 
@@ -448,14 +445,14 @@ namespace WenceyWang . Richman4L .Properties
 	///     Should be used on attributes and causes ReSharper to not mark symbols marked with such attributes
 	///     as unused (as well as by other usage inspections)
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Class | AttributeTargets . GenericParameter ) ]
+	[AttributeUsage ( AttributeTargets . Class | AttributeTargets . GenericParameter )]
 	public sealed class MeansImplicitUseAttribute : Attribute
 	{
 
-		[ UsedImplicitly ]
+		[UsedImplicitly]
 		public ImplicitUseKindFlags UseKindFlags { get ; private set ; }
 
-		[ UsedImplicitly ]
+		[UsedImplicitly]
 		public ImplicitUseTargetFlags TargetFlags { get ; private set ; }
 
 		public MeansImplicitUseAttribute ( )
@@ -481,7 +478,7 @@ namespace WenceyWang . Richman4L .Properties
 
 	}
 
-	[ Flags ]
+	[Flags]
 	public enum ImplicitUseKindFlags
 	{
 
@@ -508,7 +505,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     Specify what is considered used implicitly when marked
 	///     with <see cref="MeansImplicitUseAttribute" /> or <see cref="UsedImplicitlyAttribute" />.
 	/// </summary>
-	[ Flags ]
+	[Flags]
 	public enum ImplicitUseTargetFlags
 	{
 
@@ -528,16 +525,16 @@ namespace WenceyWang . Richman4L .Properties
 	///     This attribute is intended to mark publicly available API
 	///     which should not be removed and so is treated as used.
 	/// </summary>
-	[ MeansImplicitUse ( ImplicitUseTargetFlags . WithMembers ) ]
+	[MeansImplicitUse ( ImplicitUseTargetFlags . WithMembers )]
 	public sealed class PublicAPIAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string Comment { get ; private set ; }
 
 		public PublicAPIAttribute ( ) { }
 
-		public PublicAPIAttribute ( [ NotNull ] string comment ) { Comment = comment ; }
+		public PublicAPIAttribute ( [NotNull] string comment ) { Comment = comment ; }
 
 	}
 
@@ -546,7 +543,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     If the parameter is a delegate, indicates that delegate is executed while the method is executed.
 	///     If the parameter is an enumerable, indicates that it is enumerated while the method is executed.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class InstantHandleAttribute : Attribute
 	{
 
@@ -565,7 +562,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class PureAttribute : Attribute
 	{
 
@@ -574,16 +571,16 @@ namespace WenceyWang . Richman4L .Properties
 	/// <summary>
 	///     Indicates that the return value of method invocation must be used.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class MustUseReturnValueAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string Justification { get ; private set ; }
 
 		public MustUseReturnValueAttribute ( ) { }
 
-		public MustUseReturnValueAttribute ( [ NotNull ] string justification ) { Justification = justification ; }
+		public MustUseReturnValueAttribute ( [NotNull] string justification ) { Justification = justification ; }
 
 	}
 
@@ -604,10 +601,10 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage (
+	[AttributeUsage (
 		AttributeTargets . Field | AttributeTargets . Property | AttributeTargets . Parameter | AttributeTargets . Method |
 		AttributeTargets . Class | AttributeTargets . Interface | AttributeTargets . Struct |
-		AttributeTargets . GenericParameter ) ]
+		AttributeTargets . GenericParameter )]
 	public sealed class ProvidesContextAttribute : Attribute
 	{
 
@@ -617,16 +614,16 @@ namespace WenceyWang . Richman4L .Properties
 	///     Indicates that a parameter is a path to a file or a folder within a web project.
 	///     Path can be relative or absolute, starting from web root (~).
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class PathReferenceAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string BasePath { get ; private set ; }
 
 		public PathReferenceAttribute ( ) { }
 
-		public PathReferenceAttribute ( [ NotNull ] [ PathReference ] string basePath ) { BasePath = basePath ; }
+		public PathReferenceAttribute ( [NotNull] [PathReference] string basePath ) { BasePath = basePath ; }
 
 	}
 
@@ -653,7 +650,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class SourceTemplateAttribute : Attribute
 	{
 
@@ -687,7 +684,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method , AllowMultiple = true )]
 	public sealed class MacroAttribute : Attribute
 	{
 
@@ -716,40 +713,40 @@ namespace WenceyWang . Richman4L .Properties
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class AspMvcAreaMasterLocationFormatAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Format { get ; private set ; }
 
-		public AspMvcAreaMasterLocationFormatAttribute ( [ NotNull ] string format ) { Format = format ; }
+		public AspMvcAreaMasterLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class AspMvcAreaPartialViewLocationFormatAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Format { get ; private set ; }
 
-		public AspMvcAreaPartialViewLocationFormatAttribute ( [ NotNull ] string format ) { Format = format ; }
+		public AspMvcAreaPartialViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Format { get ; private set ; }
 
-		public AspMvcAreaViewLocationFormatAttribute ( [ NotNull ] string format ) { Format = format ; }
+		public AspMvcAreaViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class AspMvcMasterLocationFormatAttribute : Attribute
 	{
 
@@ -759,25 +756,25 @@ namespace WenceyWang . Richman4L .Properties
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Format { get ; private set ; }
 
-		public AspMvcPartialViewLocationFormatAttribute ( [ NotNull ] string format ) { Format = format ; }
+		public AspMvcPartialViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class AspMvcViewLocationFormatAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Format { get ; private set ; }
 
-		public AspMvcViewLocationFormatAttribute ( [ NotNull ] string format ) { Format = format ; }
+		public AspMvcViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
 	}
 
@@ -787,16 +784,16 @@ namespace WenceyWang . Richman4L .Properties
 	///     implicitly from the context. Use this attribute for custom wrappers similar to
 	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcActionAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string AnonymousProperty { get ; private set ; }
 
 		public AspMvcActionAttribute ( ) { }
 
-		public AspMvcActionAttribute ( [ NotNull ] string anonymousProperty ) { AnonymousProperty = anonymousProperty ; }
+		public AspMvcActionAttribute ( [NotNull] string anonymousProperty ) { AnonymousProperty = anonymousProperty ; }
 
 	}
 
@@ -805,16 +802,16 @@ namespace WenceyWang . Richman4L .Properties
 	///     Use this attribute for custom wrappers similar to
 	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcAreaAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string AnonymousProperty { get ; private set ; }
 
 		public AspMvcAreaAttribute ( ) { }
 
-		public AspMvcAreaAttribute ( [ NotNull ] string anonymousProperty ) { AnonymousProperty = anonymousProperty ; }
+		public AspMvcAreaAttribute ( [NotNull] string anonymousProperty ) { AnonymousProperty = anonymousProperty ; }
 
 	}
 
@@ -824,16 +821,16 @@ namespace WenceyWang . Richman4L .Properties
 	///     implicitly from the context. Use this attribute for custom wrappers similar to
 	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcControllerAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string AnonymousProperty { get ; private set ; }
 
 		public AspMvcControllerAttribute ( ) { }
 
-		public AspMvcControllerAttribute ( [ NotNull ] string anonymousProperty ) { AnonymousProperty = anonymousProperty ; }
+		public AspMvcControllerAttribute ( [NotNull] string anonymousProperty ) { AnonymousProperty = anonymousProperty ; }
 
 	}
 
@@ -841,7 +838,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
 	///     for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcMasterAttribute : Attribute
 	{
 
@@ -851,7 +848,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
 	///     for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcModelTypeAttribute : Attribute
 	{
 
@@ -863,7 +860,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     from the context. Use this attribute for custom wrappers similar to
 	///     <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcPartialViewAttribute : Attribute
 	{
 
@@ -872,7 +869,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// <summary>
 	///     ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Class | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Class | AttributeTargets . Method )]
 	public sealed class AspMvcSuppressViewErrorAttribute : Attribute
 	{
 
@@ -883,7 +880,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     Use this attribute for custom wrappers similar to
 	///     <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcDisplayTemplateAttribute : Attribute
 	{
 
@@ -894,7 +891,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     Use this attribute for custom wrappers similar to
 	///     <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcEditorTemplateAttribute : Attribute
 	{
 
@@ -905,7 +902,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     Use this attribute for custom wrappers similar to
 	///     <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcTemplateAttribute : Attribute
 	{
 
@@ -917,7 +914,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     from the context. Use this attribute for custom wrappers similar to
 	///     <c>System.Web.Mvc.Controller.View(Object)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcViewAttribute : Attribute
 	{
 
@@ -927,7 +924,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
 	///     is an MVC view component name.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcViewComponentAttribute : Attribute
 	{
 
@@ -937,7 +934,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
 	///     is an MVC view component view. If applied to a method, the MVC view component view name is default.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcViewComponentViewAttribute : Attribute
 	{
 
@@ -956,33 +953,33 @@ namespace WenceyWang . Richman4L .Properties
 	/// }
 	/// </code>
 	/// </example>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Property ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Property )]
 	public sealed class AspMvcActionSelectorAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Property | AttributeTargets . Field ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Property | AttributeTargets . Field )]
 	public sealed class HtmlElementAttributesAttribute : Attribute
 	{
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public string Name { get ; private set ; }
 
 		public HtmlElementAttributesAttribute ( ) { }
 
-		public HtmlElementAttributesAttribute ( [ NotNull ] string name ) { Name = name ; }
+		public HtmlElementAttributesAttribute ( [NotNull] string name ) { Name = name ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Field | AttributeTargets . Property ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Field | AttributeTargets . Property )]
 	public sealed class HtmlAttributeValueAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Name { get ; private set ; }
 
-		public HtmlAttributeValueAttribute ( [ NotNull ] string name ) { Name = name ; }
+		public HtmlAttributeValueAttribute ( [NotNull] string name ) { Name = name ; }
 
 	}
 
@@ -991,7 +988,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     Use this attribute for custom wrappers similar to
 	///     <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class RazorSectionAttribute : Attribute
 	{
 
@@ -1001,7 +998,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     Indicates how method, constructor invocation or property access
 	///     over collection type affects content of the collection.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Method | AttributeTargets . Constructor | AttributeTargets . Property ) ]
+	[AttributeUsage ( AttributeTargets . Method | AttributeTargets . Constructor | AttributeTargets . Property )]
 	public sealed class CollectionAccessAttribute : Attribute
 	{
 
@@ -1014,7 +1011,7 @@ namespace WenceyWang . Richman4L .Properties
 
 	}
 
-	[ Flags ]
+	[Flags]
 	public enum CollectionAccessType
 	{
 
@@ -1037,7 +1034,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     one of the conditions is satisfied. To set the condition, mark one of the parameters with
 	///     <see cref="AssertionConditionAttribute" /> attribute.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class AssertionMethodAttribute : Attribute
 	{
 
@@ -1048,7 +1045,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     marked by <see cref="AssertionMethodAttribute" /> attribute. The mandatory argument of
 	///     the attribute is the assertion type.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AssertionConditionAttribute : Attribute
 	{
 
@@ -1083,8 +1080,8 @@ namespace WenceyWang . Richman4L .Properties
 	///     Indicates that the marked method unconditionally terminates control flow execution.
 	///     For example, it could unconditionally throw exception.
 	/// </summary>
-	[ Obsolete ( "Use [ContractAnnotation('=> halt')] instead" ) ]
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[Obsolete ( "Use [ContractAnnotation('=> halt')] instead" )]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class TerminatesProgramAttribute : Attribute
 	{
 
@@ -1095,7 +1092,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     .Where). This annotation allows inference of [InstantHandle] annotation for parameters
 	///     of delegate type by analyzing LINQ method chains.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class LinqTunnelAttribute : Attribute
 	{
 
@@ -1104,7 +1101,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// <summary>
 	///     Indicates that IEnumerable, passed as parameter, is not enumerated.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class NoEnumerationAttribute : Attribute
 	{
 
@@ -1113,7 +1110,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// <summary>
 	///     Indicates that parameter is regular expression pattern.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class RegexPatternAttribute : Attribute
 	{
 
@@ -1123,7 +1120,7 @@ namespace WenceyWang . Richman4L .Properties
 	///     XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
 	///     as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
 	/// </summary>
-	[ AttributeUsage ( AttributeTargets . Class ) ]
+	[AttributeUsage ( AttributeTargets . Class )]
 	public sealed class XamlItemsControlAttribute : Attribute
 	{
 
@@ -1138,23 +1135,23 @@ namespace WenceyWang . Richman4L .Properties
 	///     Property should have the tree ancestor of the <c>ItemsControl</c> type or
 	///     marked with the <see cref="XamlItemsControlAttribute" /> attribute.
 	/// </remarks>
-	[ AttributeUsage ( AttributeTargets . Property ) ]
+	[AttributeUsage ( AttributeTargets . Property )]
 	public sealed class XamlItemBindingOfItemsControlAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Class , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Class , AllowMultiple = true )]
 	public sealed class AspChildControlTypeAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string TagName { get ; private set ; }
 
-		[ NotNull ]
+		[NotNull]
 		public Type ControlType { get ; private set ; }
 
-		public AspChildControlTypeAttribute ( [ NotNull ] string tagName , [ NotNull ] Type controlType )
+		public AspChildControlTypeAttribute ( [NotNull] string tagName , [NotNull] Type controlType )
 		{
 			TagName = tagName ;
 			ControlType = controlType ;
@@ -1162,36 +1159,36 @@ namespace WenceyWang . Richman4L .Properties
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Property | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Property | AttributeTargets . Method )]
 	public sealed class AspDataFieldAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Property | AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Property | AttributeTargets . Method )]
 	public sealed class AspDataFieldsAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Property ) ]
+	[AttributeUsage ( AttributeTargets . Property )]
 	public sealed class AspMethodPropertyAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Class , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Class , AllowMultiple = true )]
 	public sealed class AspRequiredAttributeAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Attribute { get ; private set ; }
 
-		public AspRequiredAttributeAttribute ( [ NotNull ] string attribute ) { Attribute = attribute ; }
+		public AspRequiredAttributeAttribute ( [NotNull] string attribute ) { Attribute = attribute ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Property ) ]
+	[AttributeUsage ( AttributeTargets . Property )]
 	public sealed class AspTypePropertyAttribute : Attribute
 	{
 
@@ -1204,28 +1201,28 @@ namespace WenceyWang . Richman4L .Properties
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class RazorImportNamespaceAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Name { get ; private set ; }
 
-		public RazorImportNamespaceAttribute ( [ NotNull ] string name ) { Name = name ; }
+		public RazorImportNamespaceAttribute ( [NotNull] string name ) { Name = name ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class RazorInjectionAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Type { get ; private set ; }
 
-		[ NotNull ]
+		[NotNull]
 		public string FieldName { get ; private set ; }
 
-		public RazorInjectionAttribute ( [ NotNull ] string type , [ NotNull ] string fieldName )
+		public RazorInjectionAttribute ( [NotNull] string type , [NotNull] string fieldName )
 		{
 			Type = type ;
 			FieldName = fieldName ;
@@ -1233,42 +1230,42 @@ namespace WenceyWang . Richman4L .Properties
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true ) ]
+	[AttributeUsage ( AttributeTargets . Assembly , AllowMultiple = true )]
 	public sealed class RazorDirectiveAttribute : Attribute
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public string Directive { get ; private set ; }
 
-		public RazorDirectiveAttribute ( [ NotNull ] string directive ) { Directive = directive ; }
+		public RazorDirectiveAttribute ( [NotNull] string directive ) { Directive = directive ; }
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class RazorHelperCommonAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Property ) ]
+	[AttributeUsage ( AttributeTargets . Property )]
 	public sealed class RazorLayoutAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class RazorWriteLiteralMethodAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Method ) ]
+	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class RazorWriteMethodAttribute : Attribute
 	{
 
 	}
 
-	[ AttributeUsage ( AttributeTargets . Parameter ) ]
+	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class RazorWriteMethodParameterAttribute : Attribute
 	{
 
@@ -1280,7 +1277,7 @@ namespace WenceyWang . Richman4L .Properties
 	/// <remarks>
 	///     The attribute must be mentioned in your member reordering patterns
 	/// </remarks>
-	[ AttributeUsage ( AttributeTargets . All ) ]
+	[AttributeUsage ( AttributeTargets . All )]
 	public sealed class NoReorder : Attribute
 	{
 

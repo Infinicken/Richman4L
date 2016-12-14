@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws an <code>Playground</code>
 	/// </summary>
-	public class PlayGroundRenderer : ControlRenderer < PlayGround >
+	public class PlayGroundRenderer : ControlRenderer <PlayGround>
 	{
 
 		/// <summary>

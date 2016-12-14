@@ -36,7 +36,7 @@ namespace WenceyWang .FoggyConsole
 		/// <summary>
 		///     Is fired when a user presses an key
 		/// </summary>
-		public static event EventHandler < KeyPressedEventArgs > KeyPressed ;
+		public static event EventHandler <KeyPressedEventArgs> KeyPressed ;
 
 		public static void Start ( )
 		{

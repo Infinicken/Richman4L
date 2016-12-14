@@ -42,7 +42,7 @@ namespace WenceyWang . Richman4L . Players .Commands
 		/// </summary>
 		public virtual string Introduction { get ; }
 
-		public abstract List < PlayerCommandArgumentInfo > Arguments { get ; }
+		public abstract List <PlayerCommandArgumentInfo> Arguments { get ; }
 
 		/// <summary>
 		///     指令的执行者

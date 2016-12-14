@@ -84,7 +84,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public PlayGround ( int height , int width , ControlRenderer < PlayGround > renderer = null )
+		public PlayGround ( int height , int width , ControlRenderer <PlayGround> renderer = null )
 			: base ( renderer )
 		{
 			if ( renderer == null )

@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a <code>Progressbar</code>-control
 	/// </summary>
-	public class ProgressBarRenderer : ControlRenderer < Progressbar >
+	public class ProgressBarRenderer : ControlRenderer <Progressbar>
 	{
 
 		/// <summary>

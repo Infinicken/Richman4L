@@ -62,8 +62,6 @@ namespace WenceyWang . Richman4L . Apps . Console .Pages
 			Frame . NavigateTo ( new MainPage ( ) ) ;
 		}
 
-		public override void Arrange ( Rectangle finalRect ) { base . Arrange ( finalRect ) ; }
-
 		public override void Measure ( Size availableSize )
 		{
 			base . Measure ( availableSize ) ;

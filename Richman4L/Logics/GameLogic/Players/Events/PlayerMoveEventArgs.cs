@@ -35,9 +35,9 @@ namespace WenceyWang . Richman4L . Players .Events
 
 		public Path MovePath { get ; }
 
-		public ReadOnlyCollection < int > DiceResult { get ; }
+		public ReadOnlyCollection <int> DiceResult { get ; }
 
-		public PlayerMoveEventArgs ( Path movePath , ReadOnlyCollection < int > diceResult )
+		public PlayerMoveEventArgs ( Path movePath , ReadOnlyCollection <int> diceResult )
 		{
 			MovePath = movePath ;
 			DiceResult = diceResult ;

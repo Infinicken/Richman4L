@@ -24,18 +24,18 @@ using System . Xml . Linq ;
 namespace WenceyWang . Richman4L . Maps .Roads
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class OneWayRoad : Road
 	{
 
 		private Road _entrance ;
 
-		private long? _entranceId ;
+		private long ? _entranceId ;
 
 		private Road _exit ;
 
 
-		private long? _exitId ;
+		private long ? _exitId ;
 
 		public virtual Road Entrance
 		{

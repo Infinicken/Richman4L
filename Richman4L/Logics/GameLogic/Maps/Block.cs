@@ -54,7 +54,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		public int SnowThickness { get ; protected set ; }
 
-		public Block ( [ NotNull ] XElement resource ) : base ( resource )
+		public Block ( [NotNull] XElement resource ) : base ( resource )
 		{
 			if ( resource == null )
 			{

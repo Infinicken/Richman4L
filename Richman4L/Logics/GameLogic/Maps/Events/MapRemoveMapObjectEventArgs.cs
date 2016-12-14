@@ -10,10 +10,10 @@ namespace WenceyWang . Richman4L . Maps .Events
 	public class MapRemoveMapObjectEventArgs : EventArgs
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public MapObject PastObject { get ; }
 
-		public MapRemoveMapObjectEventArgs ( [ NotNull ] MapObject pastObject )
+		public MapRemoveMapObjectEventArgs ( [NotNull] MapObject pastObject )
 		{
 			if ( pastObject == null )
 			{

@@ -15,9 +15,9 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 	internal static class ComicSansModeExtensions
 	{
 
-		internal static List < FontFamily > EnglishFonts ;
+		internal static List <FontFamily> EnglishFonts ;
 
-		internal static List < FontFamily > NatureFonts ;
+		internal static List <FontFamily> NatureFonts ;
 
 
 		internal static void LoadComicSansModeFont ( )

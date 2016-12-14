@@ -26,6 +26,18 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 
 		public double StockMovementPower { get ; }
 
+		public double StockOpenPricePower { get ; }
+
+		public double MaxPricePower { get ; }
+
+		public double MinPricePower { get ; }
+
+		public int MovementMaxLenth { get ; }
+
+		public int MovementMinLenth { get ; }
+
+		public double WaveTimeBase { get ; }
+
 		public static NormalStockPriceControllerConfig Default { get ; } = new NormalStockPriceControllerConfig ( 0.2 ,
 																												- 0.2 ,
 																												0.1 ,
@@ -34,7 +46,14 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 																												0.2 ,
 																												1.0 ,
 																												- 1.0 ,
-																												0.7 ) ;
+																												0.7 ,
+																												0.3 ,
+																												1.3 ,
+																												0.7 ,
+																												7 ,
+																												60 ,
+																												0.3 )
+			;
 
 		public NormalStockPriceControllerConfig ( double govermentControlMax ,
 												double govermentControlMin ,
@@ -44,7 +63,13 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 												double stockMarketMovementPower ,
 												double stockMovementMax ,
 												double stockMovementMin ,
-												double stockMovementPower )
+												double stockMovementPower ,
+												double stockOpenPricePower ,
+												double maxPricePower ,
+												double minPricePower ,
+												int movementMaxLenth ,
+												int movementMinLenth ,
+												double waveTimeBase )
 		{
 			GovermentControlMax = govermentControlMax ;
 			GovermentControlMin = govermentControlMin ;
@@ -55,6 +80,12 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 			StockMovementMax = stockMovementMax ;
 			StockMovementMin = stockMovementMin ;
 			StockMovementPower = stockMovementPower ;
+			StockOpenPricePower = stockOpenPricePower ;
+			MaxPricePower = maxPricePower ;
+			MinPricePower = minPricePower ;
+			MovementMaxLenth = movementMaxLenth ;
+			MovementMinLenth = movementMinLenth ;
+			WaveTimeBase = waveTimeBase ;
 		}
 
 	}

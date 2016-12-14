@@ -26,11 +26,13 @@ namespace WenceyWang . Richman4L .Maps
 	public class MapObjectType
 	{
 
+		public Guid Guid { get ; }
+
 		public virtual string Name { get ; }
 
 		public virtual Type EntryType { get ; }
 
-		internal MapObjectType ( string name , Type entryType )
+		protected internal MapObjectType ( string name , Type entryType )
 		{
 			#region Check Argument
 

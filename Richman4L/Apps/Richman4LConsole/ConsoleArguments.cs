@@ -13,16 +13,16 @@ namespace WenceyWang . Richman4L . Apps .Console
 	public class ConsoleArguments
 	{
 
-		[ Option ( DefaultValue = false , Required = false ) ]
+		[Option ( DefaultValue = false , Required = false )]
 		public bool NoLogo { get ; set ; }
 
-		[ Option ( DefaultValue = false , Required = false ) ]
+		[Option ( DefaultValue = false , Required = false )]
 		public bool Setup { get ; set ; }
+
+		//public bool ShowLicense { get; set; }
 
 
 		//[Option ( DefaultValue = false , Required = false )]
-
-		//public bool ShowLicense { get; set; }
 	}
 
 }

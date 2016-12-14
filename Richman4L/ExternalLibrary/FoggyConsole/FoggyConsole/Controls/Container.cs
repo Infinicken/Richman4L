@@ -31,13 +31,13 @@ namespace WenceyWang . FoggyConsole .Controls
 	public abstract class Container : Control
 	{
 
-		public abstract IList < Control > Chrildren { get ; }
+		public abstract IList <Control> Chrildren { get ; }
 
 		public Container ( IControlRenderer renderer = null ) : base ( renderer ) { }
 
-		public List < Control > GetAllItem ( )
+		public List <Control> GetAllItem ( )
 		{
-			List < Control > controlList = new List < Control > { this } ;
+			List <Control> controlList = new List <Control> { this } ;
 			foreach ( Control control in Chrildren )
 			{
 				Container container = control as Container ;
@@ -67,7 +67,18 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public abstract Control Content { get ; set ; }
 
-		public override IList < Control > Chrildren => new List < Control > { Content } ;
+		public override IList <Control> Chrildren
+		{
+			get
+			{
+				List <Control> chrildren = new List <Control> ( ) ;
+				if ( Content != null )
+				{
+					chrildren . Add ( Content ) ;
+				}
+				return chrildren ;
+			}
+		}
 
 
 		protected ContentControl ( IControlRenderer renderer ) : base ( renderer ) { }
@@ -77,9 +88,9 @@ namespace WenceyWang . FoggyConsole .Controls
 	public abstract class ItemsControl : Container
 	{
 
-		public abstract IList < Control > Items { get ; }
+		public abstract IList <Control> Items { get ; }
 
-		public override IList < Control > Chrildren => Items ;
+		public override IList <Control> Chrildren => Items ;
 
 		protected ItemsControl ( IControlRenderer renderer ) : base ( renderer ) { }
 

@@ -32,16 +32,16 @@ namespace WenceyWang . Richman4L . Players .Events
 		/// <summary>
 		///     卡片
 		/// </summary>
-		[ NotNull ]
+		[NotNull]
 		public Card Card { get ; set ; }
 
 		/// <summary>
 		///     获得卡片的玩家
 		/// </summary>
-		[ NotNull ]
+		[NotNull]
 		public Player Target { get ; set ; }
 
-		public PlayerGiveCardEventArgs ( [ NotNull ] Card card , [ NotNull ] Player target )
+		public PlayerGiveCardEventArgs ( [NotNull] Card card , [NotNull] Player target )
 		{
 			if ( card == null )
 			{

@@ -27,7 +27,7 @@ namespace WenceyWang . Richman4L .Maps
 	/// <summary>
 	///     空的地块
 	/// </summary>
-	[ MapObject ]
+	[MapObject]
 	public sealed class EmptyBlock : Block
 	{
 

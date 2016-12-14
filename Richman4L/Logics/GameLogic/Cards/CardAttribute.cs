@@ -23,7 +23,7 @@ using System . Linq ;
 namespace WenceyWang . Richman4L .Cards
 {
 
-	[ AttributeUsage ( AttributeTargets . Class ) ]
+	[AttributeUsage ( AttributeTargets . Class )]
 	public class CardAttribute : Attribute
 	{
 

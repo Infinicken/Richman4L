@@ -23,7 +23,7 @@ using System . Linq ;
 namespace WenceyWang . Richman4L .Maps
 {
 
-	[ AttributeUsage ( AttributeTargets . Class ) ]
+	[AttributeUsage ( AttributeTargets . Class )]
 	public sealed class MapObjectAttribute : Attribute
 	{
 

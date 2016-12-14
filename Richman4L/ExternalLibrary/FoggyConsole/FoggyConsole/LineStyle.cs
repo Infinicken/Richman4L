@@ -25,7 +25,7 @@ namespace WenceyWang .FoggyConsole
 	/// <summary>
 	///     A set of characters which can be used to draw a box or complex lines
 	/// </summary>
-	public struct LineStyle : IEquatable < LineStyle >
+	public struct LineStyle : IEquatable <LineStyle>
 	{
 
 		/// <summary>

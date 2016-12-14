@@ -20,7 +20,7 @@ namespace WenceyWang . Richman4L .Stocks
 
 		public BuyStockDelegateState State { get ; internal set ; }
 
-		public BuyStockDelegate ( [ NotNull ] Player player , [ NotNull ] Stock stock , int number , decimal price )
+		public BuyStockDelegate ( [NotNull] Player player , [NotNull] Stock stock , int number , decimal price )
 			: base ( player , stock )
 		{
 			Number = number ;

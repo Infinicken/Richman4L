@@ -22,6 +22,7 @@ using System . Linq ;
 
 using Windows . Foundation . Metadata ;
 using Windows . Phone . UI . Input ;
+using Windows . UI ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
 
@@ -33,8 +34,10 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	/// <summary>
 	///     设置页
 	/// </summary>
-	public sealed partial class SettingPage : Page
+	public sealed partial class SettingPage : AnimatePage
 	{
+
+		public static Color PageColor => XamlResources . Resources . DeepRed ;
 
 		public SettingPage ( ) { InitializeComponent ( ) ; }
 
@@ -57,28 +60,27 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			{
 				MainGrid . TurnOnComicSansMode ( ) ;
 			}
-			StartStoryBoard . Completed += StartStoryBoard_Completed ;
-			StartStoryBoard . Begin ( ) ;
+			StartStoryboard . Completed += StartStoryboard_Completed ;
+			StartStoryboard . Begin ( ) ;
 		}
 
-		private void StartStoryBoard_Completed ( object sender , object e )
+		private void StartStoryboard_Completed ( object sender , object e )
 		{
-			StartStoryBoard . Completed -= StartStoryBoard_Completed ;
+			StartStoryboard . Completed -= StartStoryboard_Completed ;
 			AddControl ( ) ;
 		}
 
-		private void RemoveControl ( )
+		public override void RemoveControl ( )
 		{
 			MainPageButton . Click -= MainPageButton_Click ;
 			AboutPageButton . Click += AboutPageButton_Click ;
 		}
 
-		private void AddControl ( )
+		public override void AddControl ( )
 		{
 			MainPageButton . Click += MainPageButton_Click ;
 			AboutPageButton . Click += AboutPageButton_Click ;
 		}
-
 
 		private void MainPageButton_Click ( object sender , object e )
 		{
@@ -87,26 +89,27 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			{
 				args . Handled = true ;
 			}
-			PageNavigateHelper . Navigate ( typeof ( MainPage ) ,
-											null ,
-											"Cyan" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+
+			//PageNavigateHelper . NavigateTo ( typeof ( MainPage ) ,
+			//								null ,
+			//								"CyanBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 		private void AboutPageButton_Click ( object sender , object e )
 		{
-			PageNavigateHelper . Navigate ( typeof ( AboutPage ) ,
-											null ,
-											"Blue" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			//PageNavigateHelper . NavigateTo ( typeof ( AboutPage ) ,
+			//								null ,
+			//								"BlueBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 	}

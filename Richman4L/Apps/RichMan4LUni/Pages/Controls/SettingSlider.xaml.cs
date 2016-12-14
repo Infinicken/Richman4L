@@ -15,64 +15,39 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 		public string SettingName
 		{
 			get { return ( string ) GetValue ( SettingNameProperty ) ; }
-			set
-			{
-				NameTextBlock . Text = value ;
-				SetValue ( SettingNameProperty , value ) ;
-			}
+			set { SetValue ( SettingNameProperty , value ) ; }
 		}
 
 		public double LargeChange
 		{
 			get { return ( double ) GetValue ( LargeChangeProperty ) ; }
-			set
-			{
-				ValueSlider . LargeChange = value ;
-				SetValue ( LargeChangeProperty , value ) ;
-			}
+			set { SetValue ( LargeChangeProperty , value ) ; }
 		}
 
 
 		public double Maximum
 		{
 			get { return ( double ) GetValue ( MaximumProperty ) ; }
-			set
-			{
-				ValueSlider . Maximum = value ;
-				SetValue ( MaximumProperty , value ) ;
-			}
+			set { SetValue ( MaximumProperty , value ) ; }
 		}
 
 
 		public double Minimum
 		{
 			get { return ( double ) GetValue ( MinimumProperty ) ; }
-			set
-			{
-				ValueSlider . Minimum = value ;
-				SetValue ( MinimumProperty , value ) ;
-			}
+			set { SetValue ( MinimumProperty , value ) ; }
 		}
 
 		public double SmallChange
 		{
 			get { return ( double ) GetValue ( SmallChangeProperty ) ; }
-			set
-			{
-				ValueSlider . SmallChange = value ;
-				SetValue ( SmallChangeProperty , value ) ;
-			}
+			set { SetValue ( SmallChangeProperty , value ) ; }
 		}
 
 		public double Value
 		{
 			get { return ( double ) GetValue ( ValueProperty ) ; }
-			set
-			{
-				ValueSlider . Value = value ;
-				SetValue ( ValueProperty , value ) ;
-				ValueChanged ? . Invoke ( this , EventArgs . Empty ) ;
-			}
+			set { SetValue ( ValueProperty , value ) ; }
 		}
 
 		public SettingSlider ( ) { InitializeComponent ( ) ; }
@@ -87,13 +62,13 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 			DependencyProperty . Register ( nameof ( LargeChange ) ,
 											typeof ( double ) ,
 											typeof ( SettingSlider ) ,
-											new PropertyMetadata ( 0 ) ) ;
+											new PropertyMetadata ( 20 ) ) ;
 
 		public static readonly DependencyProperty MaximumProperty =
 			DependencyProperty . Register ( nameof ( Maximum ) ,
 											typeof ( double ) ,
 											typeof ( SettingSlider ) ,
-											new PropertyMetadata ( 0 ) ) ;
+											new PropertyMetadata ( 100 ) ) ;
 
 		public static readonly DependencyProperty MinimumProperty =
 			DependencyProperty . Register ( nameof ( Minimum ) ,
@@ -105,7 +80,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 			DependencyProperty . Register ( nameof ( SmallChange ) ,
 											typeof ( double ) ,
 											typeof ( SettingSlider ) ,
-											new PropertyMetadata ( 0 ) ) ;
+											new PropertyMetadata ( 1 ) ) ;
 
 		public static readonly DependencyProperty ValueProperty =
 			DependencyProperty . Register ( nameof ( Value ) ,
@@ -114,20 +89,16 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 											new PropertyMetadata ( 0 ) ) ;
 
 
-		public event EventHandler ValueChanged ;
+		public event RangeBaseValueChangedEventHandler ValueChanged ;
 
 		private void UserControl_Loaded ( object sender , RoutedEventArgs e )
 		{
-			ValueSlider . Value = Value ;
-			NameTextBlock . FontSize = ValueTextBlock . FontSize = FontSize ;
-			NameTextBlock . FontFamily = ValueTextBlock . FontFamily = FontFamily ;
 			ValueSlider . ValueChanged += ValueSlider_ValueChanged ;
 		}
 
 		private void ValueSlider_ValueChanged ( object sender , RangeBaseValueChangedEventArgs e )
 		{
-			SetValue ( ValueProperty , ValueSlider . Value ) ;
-			;
+			ValueChanged ? . Invoke ( this , e ) ;
 		}
 
 	}

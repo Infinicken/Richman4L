@@ -23,15 +23,30 @@ using System . Linq ;
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
 
-	public enum DestroyReason
+	/// <summary>
+	///     Point out t
+	/// </summary>
+	public enum BuildingDestroyReason
 	{
 
+		/// <summary>
+		///     Bad Weather
+		/// </summary>
 		Weather ,
 
+		/// <summary>
+		///     Earthquake
+		/// </summary>
 		RandomEvent ,
 
+		/// <summary>
+		///     Card "Destroy some building"
+		/// </summary>
 		Card ,
 
+		/// <summary>
+		///     Player with bomb
+		/// </summary>
 		PlayerBuff
 
 	}

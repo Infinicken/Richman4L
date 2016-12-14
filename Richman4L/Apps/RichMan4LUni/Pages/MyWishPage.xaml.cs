@@ -2,8 +2,8 @@
 using System . Collections ;
 using System . Linq ;
 
+using Windows . UI ;
 using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
@@ -13,8 +13,10 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	/// <summary>
 	///     作者想说的页。
 	/// </summary>
-	public sealed partial class MyWishPage : Page
+	public sealed partial class MyWishPage : AnimatePage
 	{
+
+		public static Color PageColor => XamlResources . Resources . DarkBlue ;
 
 		public MyWishPage ( )
 		{
@@ -38,21 +40,23 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			AddControl ( ) ;
 		}
 
-		private void AddControl ( ) { OKButton . Click += OKButton_Click ; }
+		public override void AddControl ( ) { OKButton . Click += OKButton_Click ; }
 
-		private void RemoveControl ( ) { OKButton . Click -= OKButton_Click ; }
+		public override void RemoveControl ( ) { OKButton . Click -= OKButton_Click ; }
 
 		private void OKButton_Click ( object sender , RoutedEventArgs e )
 		{
 			AppSettings . Current . AcceptLicence = true ;
-			PageNavigateHelper . Navigate ( typeof ( MainPage ) ,
-											null ,
-											"Cyan" ,
-											LeaveStoryboard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			this . NavigateTo <MainPage> ( ) ;
+
+			//PageNavigateHelper . NavigateTo ( typeof ( MainPage ) ,
+			//								null ,
+			//								"CyanBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 	}

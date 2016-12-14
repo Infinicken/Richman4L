@@ -113,7 +113,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public Progressbar ( ControlRenderer < Progressbar > renderer = null )
+		public Progressbar ( ControlRenderer <Progressbar> renderer = null )
 			: base ( renderer )
 		{
 			if ( renderer == null )

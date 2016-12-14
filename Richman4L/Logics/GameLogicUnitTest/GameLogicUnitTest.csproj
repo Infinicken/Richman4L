@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WenceyWang.Richman4L.UnitTests</RootNamespace>
     <AssemblyName>GameLogicUnitTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -20,6 +20,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,11 +69,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Maps\Buildings\RegisterBuiltInBuildingTypeTest.cs" />
     <Compile Include="GameSayingTests.cs" />
+    <Compile Include="StartUpTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Apps\CharacterMapRenderer\CharacterMapRenderer.csproj">
-      <Project>{7765D69C-137E-4D84-9978-56E10527E02E}</Project>
-      <Name>CharacterMapRenderer</Name>
+    <ProjectReference Include="..\..\Apps\CharacterMapRenderers\CharacterMapRenderers.csproj">
+      <Project>{fac43e22-00f1-48a9-b1f4-1831f3ed9cdb}</Project>
+      <Name>CharacterMapRenderers</Name>
     </ProjectReference>
     <ProjectReference Include="..\GameLogic\GameLogic.csproj">
       <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>

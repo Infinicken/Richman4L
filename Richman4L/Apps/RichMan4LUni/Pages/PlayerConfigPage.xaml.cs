@@ -5,7 +5,6 @@ using System . Linq ;
 using System . Threading . Tasks ;
 
 using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
@@ -19,7 +18,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	/// <summary>
 	///     玩家配置页
 	/// </summary>
-	public sealed partial class PlayerConfigPage : Page
+	public sealed partial class PlayerConfigPage : AnimatePage
 	{
 
 		public StartGameParameters Parameters { get ; set ; }
@@ -37,57 +36,57 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			{
 				GenerateList ( ) ;
 			}
-			StartStoryBoard . Begin ( ) ;
-			StartStoryBoard . Completed += StartStoryBoard_Completed ;
+			StartStoryboard . Begin ( ) ;
+			StartStoryboard . Completed += StartStoryboard_Completed ;
 		}
 
-		private void StartStoryBoard_Completed ( object sender , object e )
+		private void StartStoryboard_Completed ( object sender , object e )
 		{
 			if ( AppSettings . Current . OcdMode )
 			{
 				MainGrid . TurnOnOcdMode ( ) ;
 			}
-			StartStoryBoard . Completed -= StartStoryBoard_Completed ;
+			StartStoryboard . Completed -= StartStoryboard_Completed ;
 		}
 
 		private void CreateGamePageButton_Click ( object sender , RoutedEventArgs e )
 		{
-			PageNavigateHelper . Navigate ( typeof ( CreateGamePage ) ,
-											Parameters ,
-											"Lime" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			//PageNavigateHelper . NavigateTo ( typeof ( CreateGamePage ) ,
+			//								Parameters ,
+			//								"LimeBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 		private void StartGameButton_Click ( object sender , RoutedEventArgs e )
 		{
-			Tuple < Task , Action > parameters = new Tuple < Task , Action > ( Task . Run ( ( ) =>
-																							{
-																								new Game ( ) ;
-																								Game . Current . Start ( Parameters ) ;
-																							} ) ,
-																				( ) => { } ) ;
+			LoadingPageArgument parameters = new LoadingPageArgument ( Task . Run ( ( ) =>
+																					{
+																						Game game = new Game ( ) ;
+																						Game . Current . Start ( Parameters ) ;
+																					} ) ,
+																		( ) => { } ) ;
 
-			PageNavigateHelper . Navigate ( typeof ( LoadingPage ) ,
-											Parameters ,
-											"Lime" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			//PageNavigateHelper . NavigateTo ( typeof ( LoadingPage ) ,
+			//								parameters ,
+			//								"LimeBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
-		private void RemoveControl ( )
+		public override void RemoveControl ( )
 		{
 			CreateGamePageButton . Click -= CreateGamePageButton_Click ;
 			StartGameButton . Click -= StartGameButton_Click ;
 		}
 
-		private void AddControl ( )
+		public override void AddControl ( )
 		{
 			CreateGamePageButton . Click += CreateGamePageButton_Click ;
 			StartGameButton . Click += StartGameButton_Click ;
@@ -95,7 +94,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void AddButton_Click ( object sender , RoutedEventArgs e )
 		{
-			List < PlayerModelProxy > modelList = PlayerModelProxy . GetPlayerModels ( ) ;
+			List <PlayerModelProxy> modelList = PlayerModelProxy . GetPlayerModels ( ) ;
 
 
 			PlayerConfigListItem toAdd = new PlayerConfigListItem ( ) ;
@@ -128,7 +127,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void GenerateParameters ( )
 		{
-			Parameters . PlayerConfig = new List < Tuple < PlayerModelProxy , PlayerConsole > > ( ) ;
+			Parameters . PlayerConfig = new List <Tuple <PlayerModelProxy , PlayerConsole>> ( ) ;
 			foreach ( UIElement item in PlayerConfigStackPanel . Children )
 			{
 				if ( item is PlayerConfigListItem )
@@ -141,7 +140,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void GenerateList ( )
 		{
-			foreach ( Tuple < PlayerModelProxy , PlayerConsole > item in Parameters . PlayerConfig )
+			foreach ( Tuple <PlayerModelProxy , PlayerConsole> item in Parameters . PlayerConfig )
 			{
 				PlayerConfigListItem toAdd = new PlayerConfigListItem ( ) ;
 				toAdd . PlayerModelName = item . Item1 . Name ;

@@ -9,11 +9,11 @@ using WenceyWang . Richman4L . Maps . Buildings ;
 namespace WenceyWang . Richman4L . UnitTests . Maps .Buildings
 {
 
-	[ TestClass ]
+	[TestClass]
 	public class RegisterBuiltInBuildingTypeTest
 	{
 
-		[ TestMethod ]
+		[TestMethod]
 		public void RegisterSmallSimpleBuildingTypeTest ( )
 		{
 			Building . RegisBuildingType ( typeof ( SmallSimpleBuilding ) ,

@@ -42,7 +42,7 @@ namespace WenceyWang . Richman4L .Cards
 
 		public abstract int PriceWhenSell { get ; set ; }
 
-		public static List < CardType > CardTypeList { get ; } = new List < CardType > ( ) ;
+		public static List <CardType> CardTypeList { get ; } = new List <CardType> ( ) ;
 
 		public abstract bool CanUse ( Weather weather ) ;
 
@@ -73,40 +73,49 @@ namespace WenceyWang . Richman4L .Cards
 			//Todo:Load All internal type
 		}
 
-		public static void RegisCardType ( Type cardType , XElement element )
+		public static CardType RegisCardType ( Type entryType , XElement element )
 		{
 			#region Check Argument
 
-			if ( cardType == null )
+			if ( entryType == null )
 			{
-				throw new ArgumentNullException ( nameof ( cardType ) ) ;
+				throw new ArgumentNullException ( nameof ( entryType ) ) ;
 			}
-			if ( ! typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( cardType . GetTypeInfo ( ) ) )
+
+			if ( ! typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 			{
-				throw new ArgumentException ( $"{nameof ( cardType )} should assignable from {nameof ( Card )}" ,
-											nameof ( cardType ) ) ;
+				throw new ArgumentException ( $"{nameof ( entryType )} should assignable from {nameof ( Card )}" ,
+											nameof ( entryType ) ) ;
 			}
-			if ( cardType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
+
+			if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
 			{
-				throw new ArgumentException ( $"{nameof ( cardType )} should have atribute {nameof ( CardAttribute )}" ,
-											nameof ( cardType ) ) ;
+				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( CardAttribute )}" ,
+											nameof ( entryType ) ) ;
 			}
+
 			if ( element == null )
 			{
 				throw new ArgumentNullException ( nameof ( element ) ) ;
 			}
-			if ( element . Name != nameof ( cardType ) )
+
+			if ( element . Name != nameof ( entryType ) )
 			{
 				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
 			}
-			if ( CardTypeList . Any ( type => type . EntryType == cardType ) )
+
+			if ( CardTypeList . Any ( type => type . EntryType == entryType ) )
 			{
-				throw new InvalidOperationException ( $"{nameof ( cardType )} have regised" ) ;
+				throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" ) ;
 			}
 
 			#endregion
 
-			CardTypeList . Add ( new CardType ( cardType , element ) ) ;
+			CardType cardType = new CardType ( entryType , element ) ;
+
+			CardTypeList . Add ( cardType ) ;
+
+			return cardType ;
 		}
 
 		public static void BuyCard ( CardType type , Player player ) { }

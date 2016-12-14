@@ -5,7 +5,7 @@ using System . Linq ;
 namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
-	public class StackPanelRanderer : ControlRenderer < StackPanel >
+	public class StackPanelRanderer : ControlRenderer <StackPanel>
 	{
 
 		public override void Draw ( )

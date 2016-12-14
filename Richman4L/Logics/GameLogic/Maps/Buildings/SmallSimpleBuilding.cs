@@ -26,22 +26,20 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
 
-	[ Building ]
+	[Building]
 	public class SmallSimpleBuilding : SmallBuilding
 	{
 
 		public long MoneyCostWhenCrossed { get { throw new NotImplementedException ( ) ; } }
 
 
-		public override bool EasyToDestroy => true ;
+		public override bool IsEasyToDestroy => true ;
 
 		//Todo:完善价格机制
 		public override long MaintenanceFee => Grade . MaintenanceFee ;
 
 		public override void Pass ( Player player )
 		{
-			CheckDisposed ( ) ;
-
 			if ( player == null )
 			{
 				throw new ArgumentNullException ( nameof ( player ) ) ;
@@ -57,7 +55,6 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override void Stay ( Player player )
 		{
-			CheckDisposed ( ) ;
 			if ( player == null )
 			{
 				throw new ArgumentNullException ( nameof ( player ) ) ;
@@ -72,8 +69,9 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 				{
 					if ( ! Owner . IsBlockGetCharge ( ) )
 					{
-						player . PayForCross ( Position , MoneyCostWhenCrossed ) ;
-						Owner . GetFromArea ( Position , player , MoneyCostWhenCrossed ) ;
+						//todo
+						//player . PayForCross ( Position , MoneyCostWhenCrossed ) ;
+						//Owner . GetFromArea ( Position , player , MoneyCostWhenCrossed ) ;
 					}
 				}
 			}
@@ -81,7 +79,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		}
 
 
-		public override void Destoy ( DestroyReason reason )
+		public override void Destoy ( BuildingDestroyReason reason )
 		{
 			State = BuildingState . Destroyed ;
 			MaintenanceDegree = 0 ;
@@ -90,15 +88,13 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override void StartDay ( GameDate nextDate )
 		{
-			CheckDisposed ( ) ;
-
 			if ( Game . Current . Weather . Wind . Strength >= 800 )
 			{
 				if ( Game . Current . Weather . Wind . Strength >= 950 )
 				{
 					if ( Game . Current . Weather . Wind . Strength - 950 >= GameRandom . Current . Next ( 51 ) )
 					{
-						Destoy ( DestroyReason . Weather ) ;
+						Destoy ( BuildingDestroyReason . Weather ) ;
 					}
 				}
 			}
@@ -123,7 +119,15 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override void EndToday ( ) { }
 
-		public override string ToString ( ) { return $"{nameof ( SmallSimpleBuilding )} in {Grade} at ({X},{Y})" ; }
+		public override string ToString ( )
+		{
+			return $"{nameof ( SmallSimpleBuilding )} named {Name} in {Grade} at ({X},{Y})" ;
+		}
+
+	}
+
+	public abstract class BuildingGradeState
+	{
 
 	}
 

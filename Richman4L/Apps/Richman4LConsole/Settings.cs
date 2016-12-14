@@ -11,25 +11,25 @@ namespace WenceyWang . Richman4L . Apps .Console
 	public class Settings
 	{
 
-		[ SettingItem ( SettingCategory . General , "Allow random title" , "If true, game title will be a random value." ,
-			false , false ) ]
+		[SettingItem ( SettingCategory . General , "Allow random title" , "If true, game title will be a random value." ,
+			false , false )]
 		public bool AllowRandomTitle { get ; set ; }
 
-		[ SettingItem ( SettingCategory . General , "Allow random title root" ,
-			"If true, the front part of the game title will be a random value." , false , false ) ]
+		[SettingItem ( SettingCategory . General , "Allow random title root" ,
+			"If true, the front part of the game title will be a random value." , false , false )]
 		public bool AllowRandomTitleRoot { get ; set ; }
 
-		[ SettingItem ( SettingCategory . Display , "Console Width" , "Set the width of the console." , true , 80 ) ]
+		[SettingItem ( SettingCategory . Display , "Console Width" , "Set the width of the console." , true , 80 )]
 		public int ConsoleWidth { get ; set ; }
 
-		[ SettingItem ( SettingCategory . Display , "Console Height" , "Set the height of the console." , true , 24 ) ]
+		[SettingItem ( SettingCategory . Display , "Console Height" , "Set the height of the console." , true , 24 )]
 		public int ConsoleHeight { get ; set ; }
 
 		public string Save ( )
 		{
 			StringBuilder [ ] stringBuilders =
 				new StringBuilder[
-					Enum . GetValues ( typeof ( SettingCategory ) ) . OfType < SettingCategory > ( ) . Max ( type => ( int ) type ) ] ;
+					Enum . GetValues ( typeof ( SettingCategory ) ) . OfType <SettingCategory> ( ) . Max ( type => ( int ) type ) ] ;
 
 			foreach ( SettingCategory type in Enum . GetValues ( typeof ( SettingCategory ) ) )
 			{
@@ -72,6 +72,29 @@ namespace WenceyWang . Richman4L . Apps .Console
 			}
 
 			return setting ;
+		}
+
+		public static Settings Load ( string source )
+		{
+			Settings settings = new Settings ( ) ;
+
+			foreach (
+				string line in source . Split ( new [ ] { Environment . NewLine } , StringSplitOptions . RemoveEmptyEntries ) )
+			{
+				if ( ! string . IsNullOrWhiteSpace ( line ) &&
+					! line . StartsWith ( "#" ) )
+				{
+					string [ ] setCommand = line . Split ( '=' ) ;
+
+					PropertyInfo property = settings . GetType ( ) .
+														GetProperty ( setCommand [ 0 ] . Trim ( ) , BindingFlags . IgnoreCase ) ;
+					object value = Convert . ChangeType ( setCommand [ 1 ] . Trim ( ) , property . PropertyType ) ;
+
+					property . SetValue ( settings , value ) ;
+				}
+			}
+
+			return settings ;
 		}
 
 		public static Settings Load ( Stream stream )

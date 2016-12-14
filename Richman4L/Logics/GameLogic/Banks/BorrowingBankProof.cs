@@ -32,7 +32,8 @@ namespace WenceyWang . Richman4L .Banks
 		{
 			if ( nextDate >= EndDate )
 			{
-				Owner . PayForBorrowing ( this ) ;
+				//todo
+				//Owner . PayForBorrowing ( this ) ;
 			}
 		}
 

@@ -23,7 +23,7 @@ using System . Linq ;
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
 
-	[ AttributeUsage ( AttributeTargets . Class ) ]
+	[AttributeUsage ( AttributeTargets . Class )]
 	public sealed class BuildingAttribute : Attribute
 	{
 

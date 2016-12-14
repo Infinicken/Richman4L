@@ -2,10 +2,11 @@
 using System . Collections ;
 using System . Linq ;
 
+using Windows . UI ;
 using Windows . UI . Xaml ;
-using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Maps ;
 
 namespace WenceyWang . Richman4L . Apps . Uni .Pages
 {
@@ -13,8 +14,10 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	/// <summary>
 	///     游戏的主界面
 	/// </summary>
-	public sealed partial class MainPage : Page
+	public sealed partial class MainPage : AnimatePage
 	{
+
+		public static Color PageColor => XamlResources . Resources . Cyan ;
 
 		public MainPage ( )
 		{
@@ -43,24 +46,27 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			{
 				MainGrid . TurnOnComicSansMode ( ) ;
 			}
-			StartStoryBoard . Completed += StartStoryBoard_Completed ;
-			StartStoryBoard . Begin ( ) ;
+			StartStoryboard . Completed += StartStoryboard_Completed ;
+			StartStoryboard . Begin ( ) ;
 		}
 
-		private void StartStoryBoard_Completed ( object sender , object e )
+		private void StartStoryboard_Completed ( object sender , object e )
 		{
-			StartStoryBoard . Completed -= StartStoryBoard_Completed ;
+			StartStoryboard . Completed -= StartStoryboard_Completed ;
+			Map map = new Map ( "Test.xml" ) ;
+			Wencey . SetMap ( map ) ;
+
 			AddControl ( ) ;
 		}
 
-		private void AddControl ( )
+		public override void AddControl ( )
 		{
 			NewGameButton . Click += NewGameButton_Click ;
 			LoadGameButton . Click += LoadGameButton_Click ;
 			SettingButton . Click += SettingButton_Click ;
 		}
 
-		private void RemoveControl ( )
+		public override void RemoveControl ( )
 		{
 			NewGameButton . Click -= NewGameButton_Click ;
 			LoadGameButton . Click -= LoadGameButton_Click ;
@@ -88,38 +94,42 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void NewGameButton_Click ( object sender , RoutedEventArgs e )
 		{
-			PageNavigateHelper . Navigate ( typeof ( CreateGamePage ) ,
-											new StartGameParameters ( ) ,
-											"Lime" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			this . NavigateTo <CreateGamePage> ( new StartGameParameters ( ) ) ;
+
+			//PageNavigateHelper . NavigateTo ( typeof ( CreateGamePage ) ,
+			//								new StartGameParameters ( ) ,
+			//								"LimeBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 		private void LoadGameButton_Click ( object sender , RoutedEventArgs e )
 		{
-			PageNavigateHelper . Navigate ( typeof ( LoadGamePage ) ,
-											null ,
-											"Black" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			this . NavigateTo <LoadGamePage> ( ) ;
+
+			//PageNavigateHelper . NavigateTo ( typeof ( LoadGamePage ) ,
+			//								null ,
+			//								"BlackBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 		private void SettingButton_Click ( object sender , RoutedEventArgs e )
 		{
-			PageNavigateHelper . Navigate ( typeof ( SettingPage ) ,
-											null ,
-											"DeepRed" ,
-											LeaveStoryBoard ,
-											BackGroundRect ,
-											Frame ,
-											RemoveControl ,
-											AddControl ) ;
+			//PageNavigateHelper . NavigateTo ( typeof ( SettingPage ) ,
+			//								null ,
+			//								"DeepRedBrush" ,
+			//								LeaveStoryboard ,
+			//								BackGroundRect ,
+			//								Frame ,
+			//								RemoveControl ,
+			//								AddControl ) ;
 		}
 
 	}

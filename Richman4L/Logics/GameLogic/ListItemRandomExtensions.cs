@@ -9,7 +9,7 @@ namespace WenceyWang .Richman4L
 	public static class ListItemRandomExtensions
 	{
 
-		public static T RandomItem < T > ( this IList < T > list , Random random = null )
+		public static T RandomItem <T> ( this IList <T> list , Random random = null )
 		{
 			if ( list == null )
 			{
@@ -20,7 +20,7 @@ namespace WenceyWang .Richman4L
 			return list [ random . Next ( list . Count ) ] ;
 		}
 
-		public static T RandomItem < T > ( this Random random , IList < T > list )
+		public static T RandomItem <T> ( this Random random , IList <T> list )
 		{
 			if ( random == null )
 			{

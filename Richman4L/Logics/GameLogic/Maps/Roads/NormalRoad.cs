@@ -24,17 +24,17 @@ using System . Xml . Linq ;
 namespace WenceyWang . Richman4L . Maps .Roads
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class NormalRoad : Road
 	{
 
 		private Road _backwardRoad ;
 
-		private long? _backwardRoadId ;
+		private long ? _backwardRoadId ;
 
 		private Road _forwardRoad ;
 
-		private long? _forwardRoadId ;
+		private long ? _forwardRoadId ;
 
 		public virtual Road ForwardRoad
 		{

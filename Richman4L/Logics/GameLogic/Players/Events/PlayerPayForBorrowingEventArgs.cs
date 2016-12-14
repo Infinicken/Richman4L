@@ -11,12 +11,12 @@ namespace WenceyWang . Richman4L . Players .Events
 	public class PlayerPayForBorrowingEventArgs : PlayerPayEventArgs
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public BorrowingBankProof Proof { get ; }
 
 		public override long Money => Proof . MoneyToReturn ;
 
-		public PlayerPayForBorrowingEventArgs ( [ NotNull ] BorrowingBankProof proof )
+		public PlayerPayForBorrowingEventArgs ( [NotNull] BorrowingBankProof proof )
 		{
 			if ( proof == null )
 			{

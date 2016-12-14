@@ -163,7 +163,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 
 		private void SaveSettings ( string key , object value ) { RoamingSettings . Values [ key ] = value ; }
 
-		private T ReadSettings < T > ( string key , T defaultValue )
+		private T ReadSettings <T> ( string key , T defaultValue )
 		{
 			if ( RoamingSettings . Values . ContainsKey ( key ) )
 			{
@@ -174,10 +174,10 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 				return defaultValue ;
 			}
 
-			return default( T ) ;
+			return default ( T ) ;
 		}
 
-		protected void NotifyPropertyChanged ( [ CallerMemberName ] string propName = "" )
+		protected void NotifyPropertyChanged ( [CallerMemberName] string propName = "" )
 		{
 			PropertyChanged ? . Invoke ( this , new PropertyChangedEventArgs ( propName ) ) ;
 		}

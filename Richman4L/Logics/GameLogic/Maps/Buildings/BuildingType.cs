@@ -43,6 +43,11 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		public string Introduction { get ; }
 
 		/// <summary>
+		///     形容这个建筑类型的格言
+		/// </summary>
+		public string Quote { get ; }
+
+		/// <summary>
 		///     建筑的尺寸
 		/// </summary>
 		public MapSize Size { get ; }
@@ -60,7 +65,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		/// <summary>
 		///     建筑的等级
 		/// </summary>
-		public ReadOnlyCollection < BuildingGrade > Grades { get ; }
+		public ReadOnlyCollection <BuildingGrade> Grades { get ; }
 
 		internal BuildingType ( Type entryType , XElement element )
 			: base ( element . Attribute ( nameof ( Name ) ) . Value , entryType )
@@ -75,8 +80,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value ;
 				Size = new MapSize ( Convert . ToInt32 ( element . Attribute ( nameof ( MapSize . Width ) ) . Value ) ,
 									Convert . ToInt32 ( element . Attribute ( nameof ( MapSize . Height ) ) . Value ) ) ;
-				List < BuildingGrade > grades = new List < BuildingGrade > ( ) ;
-				Grades = new ReadOnlyCollection < BuildingGrade > ( grades ) ;
+				List <BuildingGrade> grades = new List <BuildingGrade> ( ) ;
+				Grades = new ReadOnlyCollection <BuildingGrade> ( grades ) ;
 				foreach ( XElement grade in element . Element ( nameof ( Grades ) ) . Elements ( ) )
 				{
 					grades . Add ( new BuildingGrade ( grade , this ) ) ;
@@ -91,6 +96,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 			#endregion
 		}
+
 
 		public override string ToString ( ) => $"{Name} sized {Size}" ;
 

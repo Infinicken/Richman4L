@@ -23,7 +23,7 @@ using System . Linq ;
 namespace WenceyWang . Richman4L .Maps
 {
 
-	public interface IMapObjectRenderer < T > : IMapObjectRenderer where T : MapObject
+	public interface IMapObjectRenderer <T> : IMapObjectRenderer where T : MapObject
 	{
 
 		new T Target { get ; }

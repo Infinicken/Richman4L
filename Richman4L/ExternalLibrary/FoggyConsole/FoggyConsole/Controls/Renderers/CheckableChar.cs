@@ -5,7 +5,7 @@ using System . Linq ;
 namespace WenceyWang . FoggyConsole . Controls .Renderers
 {
 
-	public struct CheckableChar : IEquatable < CheckableChar >
+	public struct CheckableChar : IEquatable <CheckableChar>
 	{
 
 		public char Checked { get ; set ; }

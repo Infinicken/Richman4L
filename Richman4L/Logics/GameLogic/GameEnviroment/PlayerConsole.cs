@@ -45,7 +45,7 @@ namespace WenceyWang . Richman4L .GameEnviroment
 
 		public abstract Stock StockPicker ( ) ;
 
-		public abstract Player PlayerPicker ( Collection < Player > playerList ) ;
+		public abstract Player PlayerPicker ( Collection <Player> playerList ) ;
 
 		public abstract Road RoadPicker ( ) ;
 
@@ -62,7 +62,7 @@ namespace WenceyWang . Richman4L .GameEnviroment
 		public abstract void ShowDice ( DiceType diceType , int number ) ;
 
 
-		public abstract ReadOnlyCollection < CardType > CardStore ( Player player , ReadOnlyCollection < CardType > canBuy ) ;
+		public abstract ReadOnlyCollection <CardType> CardStore ( Player player , ReadOnlyCollection <CardType> canBuy ) ;
 
 	}
 

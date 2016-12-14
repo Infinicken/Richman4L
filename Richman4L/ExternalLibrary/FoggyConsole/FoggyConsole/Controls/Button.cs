@@ -48,7 +48,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public Button ( ControlRenderer < Button > renderer = null )
+		public Button ( ControlRenderer <Button> renderer = null )
 			: base ( renderer ?? new ButtonRenderer ( ) ) { }
 
 		/// <summary>

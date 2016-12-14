@@ -60,7 +60,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// <summary>
 		///     Fired if the State-Property is going to change
 		/// </summary>
-		public event EventHandler < CheckedChangingEventArgs > CheckedChanging ;
+		public event EventHandler <CheckedChangingEventArgs> CheckedChanging ;
 
 		/// <summary>
 		///     Fired if the State-Property has been changed

@@ -38,42 +38,6 @@ namespace WenceyWang .Richman4L
 
 		public abstract void StartDay ( GameDate nextDate ) ;
 
-		/// <summary>
-		///     检查这个GameObject是否已经被销毁
-		/// </summary>
-		protected void CheckDisposed ( )
-		{
-			//if ( DisposedValue )
-			{
-				throw new ObjectDisposedException ( ToString ( ) ) ;
-			}
-		}
-
-		//	{
-		//	if ( ! DisposedValue )
-		//{
-
-		//protected virtual void Dispose ( bool disposing )
-
-		//protected bool DisposedValue ; // To detect redundant calls
-
-		//#region IDisposable Support
-		//		if ( disposing )
-		//		{
-		//		}
-
-
-		//		// TODO: set large fields to null.
-
-		//		DisposedValue = true ;
-		//	}
-		//}
-
-		//~GameObject ( ) { Dispose ( false ) ; }
-
-		//public void Dispose ( ) { Dispose ( true ) ; }
-
-		//#endregion
 	}
 
 }

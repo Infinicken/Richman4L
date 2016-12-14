@@ -33,18 +33,23 @@ namespace WenceyWang . Richman4L .Maps
 	public class Map : GameObject
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public static Map Currnet { get ; set ; } /*=> Game . Current . Map;*/
 
-		[ NotNull ]
+		[NotNull]
 		public string Name { get ; set ; }
 
 		public MapSize Size { get ; set ; }
 
-		[ NotNull ]
-		[ ItemNotNull ]
-		public List < MapObject > Objects { get ; }
+		[NotNull]
+		[ItemNotNull]
+		public List <MapObject> Objects { get ; } = new List <MapObject> ( ) ;
 
+		[NotNull]
+		[ItemNotNull]
+		public List <WinningCondition> AviliableWinningConditions { get ; } = new List <WinningCondition> ( ) ;
+
+		[CanBeNull]
 		public Block this [ int x , int y ]
 		{
 			get
@@ -63,7 +68,7 @@ namespace WenceyWang . Richman4L .Maps
 		/// </summary>
 		public int PondingDecreaseBase { get ; }
 
-		public Map ( [ NotNull ] XDocument document ) : this ( )
+		public Map ( [NotNull] XDocument document ) : this ( )
 		{
 			if ( document == null )
 			{
@@ -110,20 +115,17 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			//todo:the line under is a test code
 			Currnet = this ;
-			Objects = new List < MapObject > ( ) ;
 
 			//todo
 		}
 
-		public Map ( [ NotNull ] string flieName )
-			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) )
-		{
-		}
+		public Map ( [NotNull] string flieName )
+			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) ) { }
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public Road GetRoad ( long id ) => Objects . SingleOrDefault ( road => ( road as Road ) ? . Id == id ) as Road ;
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public Area GetArea ( long id ) => Objects . SingleOrDefault ( area => ( area as Area ) ? . Id == id ) as Area ;
 
 
@@ -131,35 +133,13 @@ namespace WenceyWang . Richman4L .Maps
 
 		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
 
-		///// <summary>
-		/////     销毁这个Map
-		///// </summary>
-		///// <param name="disposing"></param>
-		//protected override void Dispose ( bool disposing )
-		//{
-		//	if ( DisposedValue )
-		//	{
-		//		if ( disposing )
-		//		{
-		//			foreach ( MapObject item in Objects )
-		//			{
-		//				item . Dispose ( ) ;
-		//			}
+		[CanBeNull]
+		public event EventHandler <MapAddMapObjectEventArgs> AddMapObjectEvent ;
 
-		//			Objects . Clear ( ) ;
-		//		}
-		//	}
+		[CanBeNull]
+		public event EventHandler <MapRemoveMapObjectEventArgs> RemoveMapObjectEvent ;
 
-		//	base . Dispose ( disposing ) ;
-		//}
-
-		[ CanBeNull ]
-		public event EventHandler < MapAddMapObjectEventArgs > AddMapObjectEvent ;
-
-		[ CanBeNull ]
-		public event EventHandler < MapRemoveMapObjectEventArgs > RemoveMapObjectEvent ;
-
-		public void RegisMapRenderer ( IMapRenderer mapRenderer ) { }
+		public void RegisMapRenderer ( [NotNull] IMapRenderer mapRenderer ) { }
 
 	}
 

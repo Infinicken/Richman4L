@@ -29,12 +29,12 @@ namespace WenceyWang . Richman4L . Players .Events
 	public class PlayerPayForBuildBuildingEventArgs : PlayerPayEventArgs
 	{
 
-		[ NotNull ]
+		[NotNull]
 		public Building Building { get ; }
 
 		public override long Money { get ; }
 
-		public PlayerPayForBuildBuildingEventArgs ( [ NotNull ] Building building , long money )
+		public PlayerPayForBuildBuildingEventArgs ( [NotNull] Building building , long money )
 		{
 			if ( building == null )
 			{

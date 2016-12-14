@@ -13,7 +13,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public override bool CanFocus => false ;
 
-		public override IList < Control > Items { get ; } = new List < Control > ( ) ;
+		public override IList <Control> Items { get ; } = new List <Control> ( ) ;
 
 		public RelativePanel ( IControlRenderer renderer ) : base ( renderer ?? new RelativePanelRanderer ( ) ) { }
 
@@ -31,7 +31,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 	}
 
-	public class RelativePanelRanderer : ControlRenderer < RelativePanel >
+	public class RelativePanelRanderer : ControlRenderer <RelativePanel>
 	{
 
 		public override void Draw ( )

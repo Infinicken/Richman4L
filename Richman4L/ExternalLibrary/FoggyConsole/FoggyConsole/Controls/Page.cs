@@ -12,11 +12,11 @@ namespace WenceyWang . FoggyConsole .Controls
 	public abstract class Page : ContentControl
 	{
 
-		[ CanBeNull ] private Control _content ;
+		[CanBeNull] private Control _content ;
 
 		public override bool CanFocus => false ;
 
-		[ CanBeNull ]
+		[CanBeNull]
 		public override Control Content
 		{
 			get { return _content ; }
@@ -27,7 +27,7 @@ namespace WenceyWang . FoggyConsole .Controls
 			}
 		}
 
-		[ NotNull ]
+		[NotNull]
 		public Frame Frame => Container as Frame ;
 
 		protected Page ( ) : base ( new PageRanderer ( ) ) { }

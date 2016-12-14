@@ -44,6 +44,8 @@ namespace WenceyWang . Richman4L .Players
 		/// </summary>
 		RidingMotorcycle = 3 ,
 
+		//todo:是否简化？
+
 		/// <summary>
 		///     驾驶汽车，使用四颗骰子
 		/// </summary>

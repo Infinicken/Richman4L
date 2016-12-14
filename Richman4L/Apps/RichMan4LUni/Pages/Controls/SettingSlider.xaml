@@ -3,7 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
+	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic" x:Name="SettingSliderUserControl"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.Controls.SettingSlider"
 	mc:Ignorable="d"
 	d:DesignHeight="300"
@@ -160,22 +160,22 @@
 									</Grid.RowDefinitions>
 									<Rectangle x:Name="HorizontalTrackRect" Grid.ColumnSpan="3" Fill="{TemplateBinding Background}" Grid.Row="1"
 												Stroke="{ThemeResource SliderTrackBorderThemeBrush}" StrokeThickness="0" />
-									<Rectangle x:Name="HorizontalDecreaseRect" Fill="{TemplateBinding Foreground}" Grid.Row="1" />
-									<TickBar x:Name="TopTickBar" Grid.ColumnSpan="3"
+									<Rectangle x:Name="HorizontalDecreaseRect" Fill="{TemplateBinding Foreground}" Grid.Row="1" Grid.Column="0" />
+									<TickBar x:Name="TopTickBar" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0"
 											Fill="{ThemeResource SliderTickmarkOutsideBackgroundThemeBrush}"
 											Height="{ThemeResource SliderOutsideTickBarThemeHeight}" Margin="-4.5,0" Visibility="Collapsed" />
-									<TickBar x:Name="HorizontalInlineTickBar" Grid.ColumnSpan="3"
+									<TickBar x:Name="HorizontalInlineTickBar" Grid.ColumnSpan="3" Grid.Column="0"
 											Fill="{ThemeResource SliderTickMarkInlineBackgroundThemeBrush}"
 											Height="{ThemeResource SliderTrackThemeHeight}" Margin="-4.5,0" Grid.Row="1" Visibility="Collapsed" />
-									<TickBar x:Name="BottomTickBar" Grid.ColumnSpan="3"
+									<TickBar x:Name="BottomTickBar" Grid.ColumnSpan="3" Grid.Column="0"
 											Fill="{ThemeResource SliderTickmarkOutsideBackgroundThemeBrush}"
 											Height="{ThemeResource SliderOutsideTickBarThemeHeight}" Margin="-4.5,0" Grid.Row="2"
 											Visibility="Collapsed" />
 									<Thumb x:Name="HorizontalThumb" AutomationProperties.AccessibilityView="Raw"
 											Background="{ThemeResource SliderThumbBackgroundThemeBrush}" Grid.Column="1"
-											DataContext="{TemplateBinding Value}" Height="19" Margin="0,13,0,0" Grid.RowSpan="3"
+											DataContext="{TemplateBinding Value}" Height="19" Margin="0,13,0,0" Grid.Row="0" Grid.RowSpan="3"
 											Style="{StaticResource SliderThumbStyle}" VerticalAlignment="Top" Width="9.5" />
-									<Rectangle x:Name="HorizontalBorder" Grid.ColumnSpan="3" Grid.RowSpan="3"
+									<Rectangle x:Name="HorizontalBorder" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
 												Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" />
 								</Grid>
 								<Grid x:Name="VerticalTemplate" Visibility="Collapsed" >
@@ -193,21 +193,23 @@
 												Stroke="{ThemeResource SliderTrackBorderThemeBrush}" />
 									<Rectangle x:Name="VerticalDecreaseRect" Grid.Column="1" Fill="{TemplateBinding Foreground}" Grid.Row="2" />
 									<TickBar x:Name="LeftTickBar" Fill="{ThemeResource SliderTickmarkOutsideBackgroundThemeBrush}"
-											HorizontalAlignment="Right" Margin="0,0,1.5,0" Grid.RowSpan="3" Visibility="Collapsed"
+											HorizontalAlignment="Right" Margin="0,0,1.5,0" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
+											Visibility="Collapsed"
 											Width="{ThemeResource SliderOutsideTickBarThemeHeight}" />
 									<TickBar x:Name="VerticalInlineTickBar" Grid.Column="1"
-											Fill="{ThemeResource SliderTickMarkInlineBackgroundThemeBrush}" Grid.RowSpan="3"
+											Fill="{ThemeResource SliderTickMarkInlineBackgroundThemeBrush}" Grid.Row="0" Grid.RowSpan="3"
 											Visibility="Collapsed"
 											Width="{ThemeResource SliderTrackThemeHeight}" />
 									<TickBar x:Name="RightTickBar" Grid.Column="2"
 											Fill="{ThemeResource SliderTickmarkOutsideBackgroundThemeBrush}" HorizontalAlignment="Left"
-											Margin="1.5,0,0,0" Grid.RowSpan="3" Visibility="Collapsed"
+											Margin="1.5,0,0,0" Grid.Row="0" Grid.RowSpan="3" Visibility="Collapsed"
 											Width="{ThemeResource SliderOutsideTickBarThemeHeight}" />
 									<Thumb x:Name="VerticalThumb" AutomationProperties.AccessibilityView="Raw"
 											Background="{ThemeResource SliderThumbBackgroundThemeBrush}" Grid.Column="1"
 											DataContext="{TemplateBinding Value}" Height="{ThemeResource SliderTrackThemeHeight}" Grid.Row="1"
 											Style="{StaticResource SliderThumbStyle}" Width="{ThemeResource SliderTrackThemeHeight}" />
-									<Rectangle x:Name="VerticalBorder" Grid.Column="1" Grid.RowSpan="3" Stroke="{TemplateBinding BorderBrush}"
+									<Rectangle x:Name="VerticalBorder" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
+												Stroke="{TemplateBinding BorderBrush}"
 												StrokeThickness="{TemplateBinding BorderThickness}" />
 								</Grid>
 							</Grid>
@@ -226,14 +228,22 @@
 
 		<Grid d:LayoutOverrides="Width, Height, TopPosition, BottomPosition" >
 			<TextBlock x:Name="NameTextBlock" d:LayoutOverrides="Width" TextWrapping="Wrap" Padding="0"
-						HorizontalAlignment="Left" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" />
+						HorizontalAlignment="Left" FontFamily="{StaticResource Font}"
+						FontSize="{Binding FontSize, ElementName=SettingSliderUserControl}"
+						Text="{Binding SettingName, ElementName=SettingSliderUserControl}" Foreground="White" />
 			<TextBlock x:Name="ValueTextBlock" d:LayoutOverrides="Width"
-						Text="{Binding Value, ElementName=ValueSlider, Mode=OneWay}" TextWrapping="Wrap" Padding="0"
-						HorizontalAlignment="Right" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" />
+						Text="{Binding Value, ElementName=SettingSliderUserControl}" TextWrapping="Wrap" Padding="0"
+						HorizontalAlignment="Right" FontFamily="{StaticResource Font}"
+						FontSize="{Binding FontSize, ElementName=SettingSliderUserControl}" Foreground="White" />
 		</Grid>
 		<Slider x:Name="ValueSlider" d:LayoutOverrides="Width, Height, TopPosition, BottomPosition"
-				Style="{StaticResource SliderStyle}" Foreground="{StaticResource Pink}"
-				Background="{StaticResource TransparentDeepRed}" Grid.Row="1" />
+				Style="{StaticResource SliderStyle}" Foreground="{Binding Foreground, ElementName=SettingSliderUserControl}"
+				Background="{Binding Background, ElementName=SettingSliderUserControl}" Grid.Row="1"
+				LargeChange="{Binding LargeChange, ElementName=SettingSliderUserControl}"
+				Maximum="{Binding Maximum, ElementName=SettingSliderUserControl}"
+				Minimum="{Binding Minimum, ElementName=SettingSliderUserControl}"
+				SmallChange="{Binding SmallChange, ElementName=SettingSliderUserControl}"
+				Value="{Binding Value, ElementName=SettingSliderUserControl, Mode=TwoWay}" />
 
 	</Grid>
 </UserControl>

@@ -9,7 +9,7 @@
 	d:DesignWidth="400" >
 	<UserControl.Resources>
 		<Flyout x:Key="PlayerModelNameFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
-			<Grid Background="{StaticResource DarkLime}" >
+			<Grid Background="{StaticResource DarkLimeBrush}" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="20" />
 					<RowDefinition Height="Auto" />
@@ -29,7 +29,7 @@
 			</Grid>
 		</Flyout>
 		<Flyout x:Key="ControllerFlyout" FlyoutPresenterStyle="{StaticResource FlyoutPresenterStyle}" >
-			<Grid Background="{StaticResource DarkLime}" >
+			<Grid Background="{StaticResource DarkLimeBrush}" >
 				<Grid.RowDefinitions>
 					<RowDefinition Height="20" />
 					<RowDefinition Height="Auto" />

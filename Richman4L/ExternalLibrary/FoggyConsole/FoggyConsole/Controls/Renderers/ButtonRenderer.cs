@@ -8,7 +8,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 	/// <summary>
 	///     Draws a <code>Button</code>-Control
 	/// </summary>
-	public class ButtonRenderer : ControlRenderer < Button >
+	public class ButtonRenderer : ControlRenderer <Button>
 	{
 
 		/// <summary>

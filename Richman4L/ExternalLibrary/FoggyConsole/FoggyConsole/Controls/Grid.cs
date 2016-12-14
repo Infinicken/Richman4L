@@ -13,7 +13,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public override bool CanFocus => false ;
 
-		public override IList < Control > Items { get ; } = new List < Control > ( ) ;
+		public override IList <Control> Items { get ; } = new List <Control> ( ) ;
 
 		public Grid ( IControlRenderer renderer ) : base ( renderer ?? new GridRanderer ( ) ) { }
 

@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0DDAAB3A-2358-4BD7-A865-E619446511BE}</ProjectGuid>
@@ -13,8 +13,9 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -86,7 +87,7 @@
     <Compile Include="GameEnviroment\Environment.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GovermentControl.cs" />
-    <Compile Include="InfomationCenter\Infomation.cs" />
+    <Compile Include="InfomationCenter\Event.cs" />
     <Compile Include="Maps\Area.cs" />
     <Compile Include="Maps\Block.cs" />
     <Compile Include="Maps\BlockAzimuth.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Maps\IMapRenderer.cs" />
     <Compile Include="Maps\IMapObjectRenderer.cs" />
     <Compile Include="Maps\Map.cs" />
+    <Compile Include="Maps\MapArea.cs" />
     <Compile Include="Maps\MapObject.cs" />
     <Compile Include="Maps\MapObjectAttribute.cs" />
     <Compile Include="Maps\MapObjectType.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Maps\Roads\Road.cs" />
     <Compile Include="Maps\Roads\AreaRoad.cs" />
     <Compile Include="Maps\Roads\Path.cs" />
+    <Compile Include="OrWinningCondition.cs" />
     <Compile Include="Players\Commands\Arguments\ArgumentsContainer.cs" />
     <Compile Include="Players\Commands\Arguments\ArgumentValueType.cs" />
     <Compile Include="Players\Commands\Arguments\DefineDomains\ArgumentValueDefineDomain.cs" />
@@ -147,6 +150,7 @@
     <Compile Include="Security\HashCheckFailedException.cs" />
     <Compile Include="Security\ReliableValue.cs" />
     <Compile Include="Security\ValueCheckFailedException.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Stats\PlayerCount.cs" />
     <Compile Include="Maps\SmallArea.cs" />
     <Compile Include="Maps\Buildings\SmallBuilding.cs" />
@@ -213,9 +217,11 @@
     <Compile Include="Stocks\StockType.cs" />
     <Compile Include="Stocks\StockTransactDateType.cs" />
     <Compile Include="TypeExtensions.cs" />
+    <Compile Include="VersusWinningCondition.cs" />
     <Compile Include="Weathers\Weather.cs" />
     <Compile Include="Weathers\PrecipitationType.cs" />
     <Compile Include="Weathers\Wind.cs" />
+    <Compile Include="WinningCondition.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Players\Models\Resources\Index.xml" />
@@ -268,33 +274,7 @@
     <None Include="GameSayingResources.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="PCLCrypto, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d4421c8a4786956c, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PCLCrypto.2.0.147\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\PCLCrypto.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PInvoke.BCrypt, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.BCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.BCrypt.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PInvoke.Kernel32, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.Kernel32.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Kernel32.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PInvoke.NCrypt, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.NCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.NCrypt.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PInvoke.Windows.Core, Version=0.3.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PInvoke.Windows.Core.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Validation, Version=2.2.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Validation.2.2.8\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Validation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <None Include="project.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

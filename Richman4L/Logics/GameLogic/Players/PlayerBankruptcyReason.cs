@@ -46,7 +46,7 @@ namespace WenceyWang . Richman4L .Players
 		PlayerLose ,
 
 		/// <summary>
-		///     玩家超卖股票
+		///     玩家无法提供被需要的股票
 		/// </summary>
 		OversoldStock ,
 

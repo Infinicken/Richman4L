@@ -26,7 +26,7 @@ using WenceyWang . Richman4L . Maps . Roads ;
 namespace WenceyWang . Richman4L .Maps
 {
 
-	[ MapObject ]
+	[MapObject]
 	public class Police : ReturnRoad
 	{
 
