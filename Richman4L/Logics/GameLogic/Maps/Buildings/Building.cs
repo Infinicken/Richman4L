@@ -25,6 +25,7 @@ using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Maps . Buildings . Events ;
 using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . PayReasons ;
 
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
@@ -107,7 +108,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			Position = position ;
 			Grade = Type . EntryGrade ;
 			State = BuildingState . Building ;
-			player . PayForBuildBuilding ( this , Type . EntryGrade . StartUpgradeCost ) ;
+			player . RequestPay ( Type . EntryGrade . StartUpgradeCost , new PayForBuildBuildingReason ( this ) ) ;
 			UpgradeTo = null ;
 			UpgradeProcess = null ;
 
@@ -162,7 +163,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			return buildingType ;
 		}
 
-		[Startup ( "Loading Building Types" )]
+		[Startup ( nameof ( LoadBuildingTypes ) )]
 		public static void LoadBuildingTypes ( )
 		{
 			lock ( BuildingTypes )

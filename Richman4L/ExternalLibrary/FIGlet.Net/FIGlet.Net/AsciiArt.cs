@@ -90,8 +90,8 @@ namespace WenceyWang .FIGlet
 						{
 							char currentChar = Text [ currentCharIndex ] ;
 							string currentCharacterLine = Font . GetCharacter ( currentChar , currentLine ) ;
-							if ( ( lastChar != ' ' ) &&
-								( currentChar != ' ' ) )
+							if ( lastChar != ' ' &&
+								currentChar != ' ' )
 							{
 								if ( lineBuilder [ lineBuilder . Length - 1 ] == ' ' )
 								{

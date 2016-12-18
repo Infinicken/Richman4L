@@ -104,6 +104,7 @@ namespace WenceyWang .Richman4L
 
 		private static readonly object Locker = new object ( ) ;
 
+		[Startup ( nameof ( LoadTitles ) )]
 		public static void LoadTitles ( )
 		{
 			lock ( Locker )

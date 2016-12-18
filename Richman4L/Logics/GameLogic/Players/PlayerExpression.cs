@@ -54,7 +54,7 @@ namespace WenceyWang . Richman4L .Players
 			}
 
 			//todo:
-			return player . DiceList . ContainsKey ( diceType ) && ( player . DiceList [ diceType ] != 0 ) ;
+			return player . DiceList . ContainsKey ( diceType ) && player . DiceList [ diceType ] != 0 ;
 		}
 
 	}

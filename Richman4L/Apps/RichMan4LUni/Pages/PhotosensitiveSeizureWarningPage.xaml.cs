@@ -2,6 +2,7 @@
 using System . Collections ;
 using System . Linq ;
 
+using Windows . UI ;
 using Windows . UI . Xaml ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
@@ -14,6 +15,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	/// </summary>
 	public sealed partial class PhotosensitiveSeizureWarningPage : AnimatePage
 	{
+
+		public static Color PageColor => XamlResources . Resources . DarkBlue ;
 
 		public PhotosensitiveSeizureWarningPage ( )
 		{

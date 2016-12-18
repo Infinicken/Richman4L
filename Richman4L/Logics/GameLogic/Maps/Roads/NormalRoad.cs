@@ -40,8 +40,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _forwardRoad == null ) &&
-					( _forwardRoadId == null ) )
+				if ( _forwardRoad == null &&
+					_forwardRoadId == null )
 				{
 					return null ;
 				}
@@ -59,8 +59,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _backwardRoad == null ) &&
-					( _backwardRoadId == null ) )
+				if ( _backwardRoad == null &&
+					_backwardRoadId == null )
 				{
 					return null ;
 				}
@@ -105,7 +105,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 			Path current = result ?? new Path ( ) ;
 			current . AddRoute ( this ) ;
-			if ( BlockMoving || ( moveCount == 0 ) )
+			if ( BlockMoving || moveCount == 0 )
 			{
 				return current ;
 			}
@@ -128,7 +128,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			return ForwardRoad . Route ( this , moveCount - 1 , current ) ;
 		}
 
-		public override bool CanEnterFrom ( Road road ) => ( road == ForwardRoad ) || ( road == BackwardRoad ) ;
+		public override bool CanEnterFrom ( Road road ) => road == ForwardRoad || road == BackwardRoad ;
 
 	}
 

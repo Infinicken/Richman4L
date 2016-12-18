@@ -87,23 +87,12 @@ namespace WenceyWang . Richman4L .Maps
 		[NotNull]
 		public event EventHandler UpdateViewEvent ;
 
-		//protected override void Dispose ( bool disposing )
-		//{
-		//	if ( !DisposedValue )
-		//	{
-		//		if ( disposing )
-		//		{
-		//			Map . Currnet . Objects . Remove ( this );
-		//			DisposeEvent?.Invoke ( this , EventArgs . Empty );
-		//		}
-		//	}
-		//	base . Dispose ( disposing );
-		//}
 
 		public event EventHandler DisposeEvent ;
 
 		public static void CleanMapObjectType ( ) { MapObjectTypes = new List <MapObjectType> ( ) ; }
 
+		[Startup ( nameof ( LoadMapObjects ) )]
 		public static void LoadMapObjects ( )
 		{
 			//Todo:Load All internal type

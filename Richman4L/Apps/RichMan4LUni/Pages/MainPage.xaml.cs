@@ -95,42 +95,11 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 		private void NewGameButton_Click ( object sender , RoutedEventArgs e )
 		{
 			this . NavigateTo <CreateGamePage> ( new StartGameParameters ( ) ) ;
-
-			//PageNavigateHelper . NavigateTo ( typeof ( CreateGamePage ) ,
-			//								new StartGameParameters ( ) ,
-			//								"LimeBrush" ,
-			//								LeaveStoryboard ,
-			//								BackGroundRect ,
-			//								Frame ,
-			//								RemoveControl ,
-			//								AddControl ) ;
 		}
 
-		private void LoadGameButton_Click ( object sender , RoutedEventArgs e )
-		{
-			this . NavigateTo <LoadGamePage> ( ) ;
+		private void LoadGameButton_Click ( object sender , RoutedEventArgs e ) { this . NavigateTo <LoadGamePage> ( ) ; }
 
-			//PageNavigateHelper . NavigateTo ( typeof ( LoadGamePage ) ,
-			//								null ,
-			//								"BlackBrush" ,
-			//								LeaveStoryboard ,
-			//								BackGroundRect ,
-			//								Frame ,
-			//								RemoveControl ,
-			//								AddControl ) ;
-		}
-
-		private void SettingButton_Click ( object sender , RoutedEventArgs e )
-		{
-			//PageNavigateHelper . NavigateTo ( typeof ( SettingPage ) ,
-			//								null ,
-			//								"DeepRedBrush" ,
-			//								LeaveStoryboard ,
-			//								BackGroundRect ,
-			//								Frame ,
-			//								RemoveControl ,
-			//								AddControl ) ;
-		}
+		private void SettingButton_Click ( object sender , RoutedEventArgs e ) { this . NavigateTo <SettingPage> ( ) ; }
 
 	}
 

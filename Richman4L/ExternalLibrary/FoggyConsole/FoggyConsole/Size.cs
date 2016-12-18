@@ -48,14 +48,14 @@ namespace WenceyWang .FoggyConsole
 
 		public static bool operator == ( Size size1 , Size size2 )
 		{
-			return ( size1 . Width == size2 . Width ) && ( size1 . Height == size2 . Height ) ;
+			return size1 . Width == size2 . Width && size1 . Height == size2 . Height ;
 		}
 
 		public static bool operator != ( Size size1 , Size size2 ) { return ! ( size1 == size2 ) ; }
 
 		public static explicit operator Point ( Size size ) { return new Point ( size . Width , size . Height ) ; }
 
-		public bool IsEmpty => ( Width == 0 ) && ( Height == 0 ) ;
+		public bool IsEmpty => Width == 0 && Height == 0 ;
 
 		public int Width { get ; }
 
@@ -83,8 +83,8 @@ namespace WenceyWang .FoggyConsole
 
 			// Note value types can't have derived classes, so we don't need to
 			// check the types of the objects here.  -- Microsoft, 2/21/2001
-			return ( comp . Width == Width ) &&
-					( comp . Height == Height ) ;
+			return comp . Width == Width &&
+					comp . Height == Height ;
 		}
 
 		public override int GetHashCode ( ) { return Width ^ Height ; }

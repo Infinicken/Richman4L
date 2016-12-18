@@ -41,8 +41,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _entrance == null ) &&
-					( _entranceId == null ) )
+				if ( _entrance == null &&
+					_entranceId == null )
 				{
 					return null ;
 				}
@@ -60,8 +60,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _exit == null ) &&
-					( _exitId == null ) )
+				if ( _exit == null &&
+					_exitId == null )
 				{
 					return null ;
 				}
@@ -108,7 +108,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 			Path current = result ?? new Path ( ) ;
 			current . AddRoute ( this ) ;
-			if ( BlockMoving || ( moveCount == 0 ) )
+			if ( BlockMoving || moveCount == 0 )
 			{
 				return current ;
 			}

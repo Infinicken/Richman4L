@@ -115,7 +115,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		public int ActualHeight => ActualSize . Height ;
 
 		public ConsoleColor ActualBackgroundColor => _backgroundColor ?? Container ? . BackgroundColor ?? ConsoleColor . Black
-			;
+		;
 
 		/// <summary>
 		///     The background-color
@@ -190,8 +190,8 @@ namespace WenceyWang . FoggyConsole .Controls
 			get { return _renderer ; }
 			set
 			{
-				if ( ( value ? . Control != null ) &&
-					( value . Control != this ) )
+				if ( value ? . Control != null &&
+					value . Control != this )
 				{
 					throw new ArgumentException ( $"{nameof ( Renderer )} already has an other {nameof ( Control )} assigned." ,
 												nameof ( value ) ) ;

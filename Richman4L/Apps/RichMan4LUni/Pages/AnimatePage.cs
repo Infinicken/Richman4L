@@ -27,7 +27,16 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		public static Color GetPageColor <T> ( T page ) where T : AnimatePage
 		{
-			return ( Color ) typeof ( T ) . GetTypeInfo ( ) . GetDeclaredProperty ( "PageColor" ) . GetValue ( null ) ;
+			return ( Color ) page . GetType ( ) . GetTypeInfo ( ) . GetDeclaredProperty ( "PageColor" ) . GetValue ( null ) ;
+		}
+
+		protected void SetEventArgsHandled ( object args )
+		{
+			BackClickEventArgs e = args as BackClickEventArgs ;
+			if ( e != null )
+			{
+				e . Handled = true ;
+			}
 		}
 
 		public abstract void AddControl ( ) ;

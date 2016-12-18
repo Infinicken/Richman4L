@@ -23,7 +23,6 @@ using System . Linq ;
 using Windows . Foundation . Metadata ;
 using Windows . Phone . UI . Input ;
 using Windows . UI ;
-using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
@@ -41,14 +40,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		public SettingPage ( ) { InitializeComponent ( ) ; }
 
-		protected override void OnNavigatedTo ( NavigationEventArgs e )
-		{
-			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
-													nameof ( HardwareButtons . BackPressed ) ) )
-			{
-				HardwareButtons . BackPressed += MainPageButton_Click ;
-			}
-		}
+		protected override void OnNavigatedTo ( NavigationEventArgs e ) { }
 
 		private void Page_Loaded ( object sender , object e )
 		{
@@ -72,45 +64,33 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		public override void RemoveControl ( )
 		{
+			if ( ApiInformation . IsEventPresent ( typeof ( HardwareButtons ) . FullName ,
+													nameof ( HardwareButtons . BackPressed ) ) )
+			{
+				HardwareButtons . BackPressed -= MainPageButton_Click ;
+			}
 			MainPageButton . Click -= MainPageButton_Click ;
 			AboutPageButton . Click += AboutPageButton_Click ;
 		}
 
 		public override void AddControl ( )
 		{
+			if ( ApiInformation . IsEventPresent ( typeof ( HardwareButtons ) . FullName ,
+													nameof ( HardwareButtons . BackPressed ) ) )
+			{
+				HardwareButtons . BackPressed += MainPageButton_Click ;
+			}
 			MainPageButton . Click += MainPageButton_Click ;
 			AboutPageButton . Click += AboutPageButton_Click ;
 		}
 
 		private void MainPageButton_Click ( object sender , object e )
 		{
-			BackClickEventArgs args = e as BackClickEventArgs ;
-			if ( args != null )
-			{
-				args . Handled = true ;
-			}
-
-			//PageNavigateHelper . NavigateTo ( typeof ( MainPage ) ,
-			//								null ,
-			//								"CyanBrush" ,
-			//								LeaveStoryboard ,
-			//								BackGroundRect ,
-			//								Frame ,
-			//								RemoveControl ,
-			//								AddControl ) ;
+			SetEventArgsHandled ( e ) ;
+			this . NavigateTo <MainPage> ( ) ;
 		}
 
-		private void AboutPageButton_Click ( object sender , object e )
-		{
-			//PageNavigateHelper . NavigateTo ( typeof ( AboutPage ) ,
-			//								null ,
-			//								"BlueBrush" ,
-			//								LeaveStoryboard ,
-			//								BackGroundRect ,
-			//								Frame ,
-			//								RemoveControl ,
-			//								AddControl ) ;
-		}
+		private void AboutPageButton_Click ( object sender , object e ) { this . NavigateTo <AboutPage> ( ) ; }
 
 	}
 

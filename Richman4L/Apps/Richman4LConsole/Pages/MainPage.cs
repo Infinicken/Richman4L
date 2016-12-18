@@ -47,7 +47,7 @@ namespace WenceyWang . Richman4L . Apps . Console .Pages
 		{
 			if ( Program . CurrentSetting . AllowRandomTitle )
 			{
-				CurrentGameTitle =GameTitle . GetTitle ( Program . CurrentSetting . AllowRandomTitleRoot ) . Content ;
+				CurrentGameTitle = GameTitle . GetTitle ( Program . CurrentSetting . AllowRandomTitleRoot ) . Content ;
 			}
 			else
 			{

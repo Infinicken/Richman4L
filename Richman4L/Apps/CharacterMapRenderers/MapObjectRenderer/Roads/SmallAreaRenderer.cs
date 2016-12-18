@@ -1,8 +1,7 @@
-﻿using System ;
-using System . Collections ;
-using System . Linq ;
-
-using WenceyWang . Richman4L . Maps ;
+﻿using System;
+using System . Collections;
+using System . Linq;
+using WenceyWang . Richman4L . Maps;
 
 namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer .Roads
 {

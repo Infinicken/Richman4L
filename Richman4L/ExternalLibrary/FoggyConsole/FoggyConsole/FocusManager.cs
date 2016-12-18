@@ -85,16 +85,16 @@ namespace WenceyWang .FoggyConsole
 		public void HandleKeyInput ( KeyPressedEventArgs args )
 		{
 			List <Control> controlList = Root . GetAllItem ( ) . Where (
-													control =>
-													{
-														if ( control == null )
-														{
-															CurrentLoger . Warn ( $"{nameof ( controlList )} of {Root . Name} contains null" ) ;
-															return false ;
-														}
+				control =>
+				{
+					if ( control == null )
+					{
+						CurrentLoger . Warn ( $"{nameof ( controlList )} of {Root . Name} contains null" ) ;
+						return false ;
+					}
 
-														return control . CanFocus ;
-													} ) . ToList ( ) ;
+					return control . CanFocus ;
+				} ) . ToList ( ) ;
 			if ( controlList . Count == 0 )
 			{
 				return ;

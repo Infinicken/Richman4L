@@ -14,14 +14,14 @@ namespace WenceyWang .FoggyConsole
 		{
 			get
 			{
-				if ( ( x < 0 ) ||
-					( x >= Content . GetLength ( 0 ) ) )
+				if ( x < 0 ||
+					x >= Content . GetLength ( 0 ) )
 				{
 					throw new ArgumentOutOfRangeException ( nameof ( x ) ) ;
 				}
 
-				if ( ( y < 0 ) ||
-					( y >= Content . GetLength ( 1 ) ) )
+				if ( y < 0 ||
+					y >= Content . GetLength ( 1 ) )
 				{
 					throw new ArgumentOutOfRangeException ( nameof ( y ) ) ;
 				}

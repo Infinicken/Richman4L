@@ -96,7 +96,7 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 		}
 
 		public bool IsKilled ( Weather weather )
-			=> ( weather . Wind . Strength >= 800 ) || ( weather . Temperature <= 0 ) || ( weather . Temperature >= 37 ) ;
+			=> weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37 ;
 
 		public void Bite ( Player player )
 		{

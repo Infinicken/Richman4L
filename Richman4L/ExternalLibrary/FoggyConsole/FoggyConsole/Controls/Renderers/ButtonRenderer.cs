@@ -40,7 +40,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 																			foregroundColor ,
 																			backgroundColor ) ;
 				int startPosition = ( Control . RenderArea . Width - Control . Text . Length ) / 2 + 1 ;
-				for ( int x = 0 ; ( x < Control . ActualWidth - 2 ) && ( x < Control . Text . Length ) ; x++ )
+				for ( int x = 0 ; x < Control . ActualWidth - 2 && x < Control . Text . Length ; x++ )
 				{
 					result [ x + startPosition , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
 																		foregroundColor ,
@@ -64,11 +64,11 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 
 				int startLine = ( Control . ActualHeight - lines . Length ) / 2 ;
 
-				for ( int y = 0 ; ( y < lines . Length ) && ( y + startLine < Control . ActualHeight ) ; y++ )
+				for ( int y = 0 ; y < lines . Length && y + startLine < Control . ActualHeight ; y++ )
 				{
 					int startPosition = ( Control . RenderArea . Width - lines [ y ] . Length ) / 2 + 1 ;
 
-					for ( int x = 0 ; ( x < Control . ActualWidth - 2 ) && ( x < lines [ y ] . Length ) ; x++ )
+					for ( int x = 0 ; x < Control . ActualWidth - 2 && x < lines [ y ] . Length ; x++ )
 					{
 						result [ x + startPosition , 0 ] = new ConsoleChar ( lines [ y ] [ x ] ,
 																			foregroundColor ,

@@ -50,8 +50,8 @@ namespace WenceyWang .FoggyConsole
 				{
 					ConsoleColor targetBackgroundColor = content [ x , y ] . BackgroundColor ;
 					ConsoleColor targetForegroundColor = content [ x , y ] . ForegroundColor ;
-					if ( ( CurrentBackgroundColor != targetBackgroundColor ) ||
-						( CurrentForegroundColor != targetForegroundColor ) )
+					if ( CurrentBackgroundColor != targetBackgroundColor ||
+						CurrentForegroundColor != targetForegroundColor )
 					{
 						Console . Write ( stringBuilder . ToString ( ) ) ;
 						stringBuilder . Clear ( ) ;

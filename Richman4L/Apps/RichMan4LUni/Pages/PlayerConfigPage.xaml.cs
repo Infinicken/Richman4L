@@ -4,6 +4,7 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Threading . Tasks ;
 
+using Windows . UI ;
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Navigation ;
 
@@ -22,6 +23,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	{
 
 		public StartGameParameters Parameters { get ; set ; }
+
+		public static Color PageColor => XamlResources . Resources . Lime ;
 
 		public PlayerConfigPage ( ) { InitializeComponent ( ) ; }
 

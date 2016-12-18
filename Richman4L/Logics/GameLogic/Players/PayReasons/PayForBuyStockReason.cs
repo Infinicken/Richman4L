@@ -1,4 +1,4 @@
-﻿/*
+/*
 * Richman4L: A free game with a rule like Richman4Fun.
 * Copyright (C) 2010-2016 Wencey Wang
 *
@@ -20,22 +20,29 @@ using System ;
 using System . Collections ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L . Players .Events
+namespace WenceyWang . Richman4L . Players .PayReasons
 {
 
-	public sealed class PlayerPayForCrossEventArgs : PlayerPayEventArgs
+	public class PayForBuyStockReason : PayReason
 	{
 
-		public Area Area { get ; }
+		[NotNull]
+		public Stock Stock { get ; }
 
-		public override long Money { get ; }
+		public int Number { get ; }
 
-		public PlayerPayForCrossEventArgs ( Area area , long money )
+		public PayForBuyStockReason ( [NotNull] Stock stock , int number )
 		{
-			Area = area ;
-			Money = money ;
+			if ( stock == null )
+			{
+				throw new ArgumentNullException ( nameof ( stock ) ) ;
+			}
+
+			Stock = stock ;
+			Number = number ;
 		}
 
 	}

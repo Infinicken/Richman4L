@@ -56,10 +56,10 @@ namespace WenceyWang . Richman4L .Maps
 			{
 				return
 					( Block ) Objects . FirstOrDefault ( mapobject => mapobject is Block &&
-																	( ( mapobject . X == x ) ||
-																	( ( mapobject . X < x ) && ( mapobject . X + mapobject . Size . Width - 1 >= x ) ) ) &&
-																	( ( mapobject . Y == y ) ||
-																	( ( mapobject . Y < y ) && ( mapobject . Y + mapobject . Size . Height - 1 >= y ) ) ) ) ;
+																	( mapobject . X == x ||
+																	mapobject . X < x && mapobject . X + mapobject . Size . Width - 1 >= x ) &&
+																	( mapobject . Y == y ||
+																	mapobject . Y < y && mapobject . Y + mapobject . Size . Height - 1 >= y ) ) ;
 			}
 		}
 

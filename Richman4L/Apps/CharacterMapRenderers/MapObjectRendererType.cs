@@ -1,8 +1,7 @@
-using System ;
-using System . Collections ;
-using System . Linq ;
-
-using WenceyWang . Richman4L . Properties ;
+using System;
+using System . Collections;
+using System . Linq;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 {

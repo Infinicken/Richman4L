@@ -21,21 +21,25 @@ using System . Collections ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
+using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players .Events
+namespace WenceyWang . Richman4L . Players .PayReasons
 {
 
-	public sealed class PlayerPayForMaintainBuildingEventArgs : PlayerPayEventArgs
+	public class PayForBuildBuildingReason : PayReason
 	{
 
-		public Building Building { get ; private set ; }
+		[NotNull]
+		public Building Building { get ; }
 
-		public override long Money { get ; }
-
-		public PlayerPayForMaintainBuildingEventArgs ( Building building , long money )
+		public PayForBuildBuildingReason ( [NotNull] Building building )
 		{
+			if ( building == null )
+			{
+				throw new ArgumentNullException ( nameof ( building ) ) ;
+			}
+
 			Building = building ;
-			Money = money ;
 		}
 
 	}

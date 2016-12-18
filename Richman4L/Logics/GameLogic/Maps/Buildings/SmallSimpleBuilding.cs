@@ -22,6 +22,7 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . PayReasons ;
 
 namespace WenceyWang . Richman4L . Maps .Buildings
 {
@@ -46,8 +47,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			}
 
 			//Todo:加入对是否收费的判断
-			if ( ( State == BuildingState . Working ) &&
-				( player != Owner ) )
+			if ( State == BuildingState . Working &&
+				player != Owner )
 			{
 			}
 			base . Pass ( player ) ;
@@ -103,7 +104,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			{
 				case BuildingState . Working :
 				{
-					Owner ? . PayForMaintainBuilding ( this , MaintenanceFee ) ;
+					Owner ? . RequestPay ( MaintenanceFee , new PayForMaintainBuildingReason ( this ) ) ;
 					break ;
 				}
 				case BuildingState . Closed :

@@ -26,7 +26,7 @@ namespace WenceyWang . Richman4L . Apps . Web .Controllers
 
 			Guid guid ;
 			if ( Guid . TryParse ( id , out guid ) &&
-				( GameSaying . GetSaying ( guid ) != null ) )
+				GameSaying . GetSaying ( guid ) != null )
 			{
 				return Content ( GameSaying . GetSaying ( guid ) . ToXElement ( ) . ToString ( ) , "text/xml" ) ;
 			}

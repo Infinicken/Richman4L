@@ -24,7 +24,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 			{
 				case ContentAlign . Left :
 				{
-					for ( int x = 0 ; ( x < Control . ActualWidth ) && ( x < Control . Text . Length ) ; x++ )
+					for ( int x = 0 ; x < Control . ActualWidth && x < Control . Text . Length ; x++ )
 					{
 						result [ x , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
 															Control . ActualForegroundColor ,
@@ -36,7 +36,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 				case ContentAlign . Center :
 				{
 					int startPosition = ( Control . RenderArea . Width - Control . Text . Length ) / 2 ;
-					for ( int x = 0 ; ( x < Control . ActualWidth ) && ( x < Control . Text . Length ) ; x++ )
+					for ( int x = 0 ; x < Control . ActualWidth && x < Control . Text . Length ; x++ )
 					{
 						result [ x + startPosition , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
 																			Control . ActualForegroundColor ,
@@ -47,7 +47,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 				}
 				case ContentAlign . Right :
 				{
-					for ( int x = 0 ; ( x < Control . ActualWidth ) && ( x < Control . Text . Length ) ; x++ )
+					for ( int x = 0 ; x < Control . ActualWidth && x < Control . Text . Length ; x++ )
 					{
 						result [ Control . ActualWidth - Control . Text . Length + x , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
 																												Control . ActualForegroundColor ,

@@ -22,30 +22,15 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L . Players .Events
+namespace WenceyWang . Richman4L . Players .PayReasons
 {
 
-	public class PlayerPayForUpgradeBuildingEventArgs : PlayerPayEventArgs
+	public sealed class PayForMaintainBuildingReason : PayReason
 	{
 
 		public Building Building { get ; private set ; }
 
-		public BuildingGrade SourceGrade { get ; }
-
-		public BuildingGrade TargetGrade { get ; }
-
-		public override long Money { get ; }
-
-		public PlayerPayForUpgradeBuildingEventArgs ( Building building ,
-													BuildingGrade sourceGrade ,
-													BuildingGrade targetGrade ,
-													long money )
-		{
-			Building = building ;
-			SourceGrade = sourceGrade ;
-			TargetGrade = targetGrade ;
-			Money = money ;
-		}
+		public PayForMaintainBuildingReason ( Building building ) { Building = building ; }
 
 	}
 

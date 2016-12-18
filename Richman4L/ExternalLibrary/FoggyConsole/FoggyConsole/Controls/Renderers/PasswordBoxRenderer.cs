@@ -16,7 +16,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 			{
 				result = new ConsoleArea ( Control . ActualSize , Control . ActualForegroundColor ) ;
 
-				for ( int y = 0 ; ( y < Control . ActualHeight ) && ( y * Control . ActualHeight < Control . Text . Length ) ; y++ )
+				for ( int y = 0 ; y < Control . ActualHeight && y * Control . ActualHeight < Control . Text . Length ; y++ )
 				{
 					for ( int x = 0 ; x < Control . ActualWidth ; x++ )
 					{
@@ -37,7 +37,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 			{
 				result = new ConsoleArea ( Control . ActualSize , Control . ActualBackgroundColor ) ;
 
-				for ( int y = 0 ; ( y < Control . ActualHeight ) && ( y * Control . ActualHeight < Control . Text . Length ) ; y++ )
+				for ( int y = 0 ; y < Control . ActualHeight && y * Control . ActualHeight < Control . Text . Length ; y++ )
 				{
 					for ( int x = 0 ; x < Control . ActualWidth ; x++ )
 					{

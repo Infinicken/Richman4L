@@ -44,8 +44,8 @@ namespace WenceyWang .Richman4L
 
 		public int ActualLength
 			=>
-			Content . Length + ( People ? . Length ?? 0 ) + ( Book ? . Length ?? 0 ) + ( Author ? . Length ?? 0 ) +
-			( Song ? . Length ?? 0 ) ;
+				Content . Length + ( People ? . Length ?? 0 ) + ( Book ? . Length ?? 0 ) + ( Author ? . Length ?? 0 ) +
+				( Song ? . Length ?? 0 ) ;
 
 		internal static List <GameSaying> Sayings { get ; set ; }
 
@@ -190,7 +190,7 @@ namespace WenceyWang .Richman4L
 
 		public static bool operator != ( GameSaying left , GameSaying right ) { return ! Equals ( left , right ) ; }
 
-		[Startup ( "Load Saying" )]
+		[Startup ( nameof ( LoadSayings ) )]
 		public static void LoadSayings ( )
 		{
 			lock ( Locker )

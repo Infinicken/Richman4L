@@ -45,14 +45,14 @@ namespace WenceyWang .FoggyConsole
 
 		public bool Equals ( LineStyle other )
 		{
-			return ( TopLeftCorner == other . TopLeftCorner ) && ( TopRightCorner == other . TopRightCorner ) &&
-					( BottomLeftCorner == other . BottomLeftCorner ) && ( BottomRightCorner == other . BottomRightCorner ) &&
-					( VerticalEdge == other . VerticalEdge ) && ( HorizontalEdge == other . HorizontalEdge ) &&
-					( ConnectionHorizontalUp == other . ConnectionHorizontalUp ) &&
-					( ConnectionHorizontalDown == other . ConnectionHorizontalDown ) &&
-					( ConnectionVerticalRight == other . ConnectionVerticalRight ) &&
-					( ConnectionVerticalLeft == other . ConnectionVerticalLeft ) && ( ConnectionCross == other . ConnectionCross ) &&
-					( EmptyChar == other . EmptyChar ) ;
+			return TopLeftCorner == other . TopLeftCorner && TopRightCorner == other . TopRightCorner &&
+					BottomLeftCorner == other . BottomLeftCorner && BottomRightCorner == other . BottomRightCorner &&
+					VerticalEdge == other . VerticalEdge && HorizontalEdge == other . HorizontalEdge &&
+					ConnectionHorizontalUp == other . ConnectionHorizontalUp &&
+					ConnectionHorizontalDown == other . ConnectionHorizontalDown &&
+					ConnectionVerticalRight == other . ConnectionVerticalRight &&
+					ConnectionVerticalLeft == other . ConnectionVerticalLeft && ConnectionCross == other . ConnectionCross &&
+					EmptyChar == other . EmptyChar ;
 		}
 
 		public override bool Equals ( object obj )

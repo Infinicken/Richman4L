@@ -36,8 +36,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _exit == null ) &&
-					( _exitId == null ) )
+				if ( _exit == null &&
+					_exitId == null )
 				{
 					return null ;
 				}

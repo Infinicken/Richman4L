@@ -85,8 +85,8 @@ namespace WenceyWang . FoggyConsole .Controls
 			get { return _value ; }
 			set
 			{
-				if ( ( value < MinValue ) ||
-					( value > MaxValue ) )
+				if ( value < MinValue ||
+					value > MaxValue )
 				{
 					throw new ArgumentOutOfRangeException ( nameof ( value ) ) ;
 				}

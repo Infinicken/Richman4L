@@ -202,6 +202,10 @@
       <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
       <Name>GameLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CharacterMapRenderers\CharacterMapRenderers.csproj">
+      <Project>{fac43e22-00f1-48a9-b1f4-1831f3ed9cdb}</Project>
+      <Name>CharacterMapRenderers</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

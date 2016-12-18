@@ -5,18 +5,16 @@ using System . Linq ;
 using WenceyWang . Richman4L . Properties ;
 using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L . Players .Events
+namespace WenceyWang . Richman4L . Players .PayReasons
 {
 
-	public class PlayerPayForStockDelegateEventArgs : PlayerPayEventArgs
+	public class PayForStockDelegateReason : PayReason
 	{
 
 		[NotNull]
 		public StockDelegate StockDelegate { get ; }
 
-		public override long Money { get ; }
-
-		public PlayerPayForStockDelegateEventArgs ( [NotNull] StockDelegate stockDelegate , long money )
+		public PayForStockDelegateReason ( [NotNull] StockDelegate stockDelegate )
 		{
 			if ( stockDelegate == null )
 			{
@@ -24,7 +22,6 @@ namespace WenceyWang . Richman4L . Players .Events
 			}
 
 			StockDelegate = stockDelegate ;
-			Money = money ;
 		}
 
 	}

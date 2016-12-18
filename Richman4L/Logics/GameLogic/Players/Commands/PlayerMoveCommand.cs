@@ -36,10 +36,10 @@ namespace WenceyWang . Richman4L . Players .Commands
 		{
 			//Todo:
 			PlayerCommandArgumentInfo diceType = new PlayerCommandArgumentInfo (
-													"" ,
-													"" ,
-													ArgumentValueType . Dice ,
-													new DiceOwnerDefineDomains ( Performer ) ) ;
+				"" ,
+				"" ,
+				ArgumentValueType . Dice ,
+				new DiceOwnerDefineDomains ( Performer ) ) ;
 
 			//Arguments = new List<PlayerCommandArgumentInfo> { diceType , diceNumber };
 		}

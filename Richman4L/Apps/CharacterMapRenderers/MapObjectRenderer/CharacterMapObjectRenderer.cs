@@ -16,12 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System ;
-using System . Collections ;
-using System . Linq ;
-
-using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Properties ;
+using System;
+using System . Collections;
+using System . Linq;
+using WenceyWang . Richman4L . Maps;
+using WenceyWang . Richman4L . Properties;
 
 namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers .MapObjectRenderer
 {
@@ -29,6 +28,10 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers .MapObjectRender
 	public abstract class CharacterMapObjectRenderer <T> : ICharacterMapObjectRenderer , IMapObjectRenderer <T>
 		where T : MapObject
 	{
+
+		MapObject IMapObjectRenderer . Target => Target ;
+
+		public T Target { get ; protected set ; }
 
 		public virtual ConsoleChar [ , ] CurrentView { get ; protected set ; }
 
@@ -71,10 +74,6 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers .MapObjectRender
 				throw new ArgumentException ( $"{nameof ( target )} is not {typeof ( T ) . Name}" ) ;
 			}
 		}
-
-		MapObject IMapObjectRenderer . Target => Target ;
-
-		public T Target { get ; protected set ; }
 
 		public virtual void SetTarget ( [NotNull] T target )
 		{

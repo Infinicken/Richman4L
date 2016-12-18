@@ -82,7 +82,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public override void KeyPressed ( KeyPressedEventArgs args )
 		{
-			if ( Enabled && ( args . KeyInfo . Key == ConsoleKey . Spacebar ) )
+			if ( Enabled && args . KeyInfo . Key == ConsoleKey . Spacebar )
 			{
 				CheckState newState ;
 				if ( State == CheckState . Checked )

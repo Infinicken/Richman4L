@@ -215,7 +215,6 @@ namespace WenceyWang .Richman4L
 			foreach ( Tuple <PlayerModelProxy , PlayerConsole> item in parameters . PlayerConfig )
 			{
 				Player player = new Player ( item . Item1 . Model , StartMoney ) ;
-				player . PayForMaintainBuildingEvent += OnPlayerPayForMaintainBuilding ;
 				player . MoveEvent += OnPlayerMove ;
 				player . BankruptcyEvent += OnPlayerBankruptcy ;
 				GamePlayers . Add ( player ) ;
@@ -236,12 +235,6 @@ namespace WenceyWang .Richman4L
 		private void OnPlayerBankruptcy ( object sender , PlayerBankruptcyEventArgs e ) { }
 
 		private void OnPlayerMove ( object sender , PlayerMoveEventArgs e ) { throw new NotImplementedException ( ) ; }
-
-		private void OnPlayerPayForCross ( object sender , PlayerPayForCrossEventArgs e ) { }
-
-		private void OnPlayerPayForMaintainBuilding ( object sender , PlayerPayForMaintainBuildingEventArgs e ) { }
-
-		private void OnPlayerGetFromArea ( object sender , PlayerGetFromAreaEventArgs e ) { }
 
 		public Game ( )
 		{

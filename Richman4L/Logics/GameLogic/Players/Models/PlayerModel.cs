@@ -74,7 +74,7 @@ namespace WenceyWang . Richman4L . Players .Models
 			IEnumerable <PlayerSaying> tempSayingWhenHarmed =
 				from p in modelNode . Element ( nameof ( SayingWhenGained ) ) . Elements ( )
 				select new PlayerSaying
-							( p ) ;
+					( p ) ;
 
 			SayingWhenHarmed . AddRange ( tempSayingWhenHarmed ) ;
 

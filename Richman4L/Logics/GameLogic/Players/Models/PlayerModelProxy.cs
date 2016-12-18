@@ -47,6 +47,7 @@ namespace WenceyWang . Richman4L . Players .Models
 			return _playerModels ;
 		}
 
+		[Startup ( nameof ( LoadPlayerModels ) )]
 		public static void LoadPlayerModels ( )
 		{
 			_playerModels = new List <PlayerModelProxy> ( ) ;

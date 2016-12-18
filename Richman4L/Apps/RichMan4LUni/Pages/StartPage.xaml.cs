@@ -50,24 +50,10 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 			if ( AppSettings . Current . AcceptLicence )
 			{
 				this . NavigateTo <MainPage> ( ) ;
-
-				//PageNavigateHelper . NavigateTo ( typeof ( MainPage ) ,
-				//								null ,
-				//								"CyanBrush" ,
-				//								LeaveStoryboard ,
-				//								BackGroundRect ,
-				//								Frame );
 			}
 			else
 			{
 				this . NavigateTo <LicensePage> ( ) ;
-
-				//PageNavigateHelper . NavigateTo ( typeof ( LicensePage ) ,
-				//								null ,
-				//								"DarkBlueBrush" ,
-				//								LeaveStoryboard ,
-				//								BackGroundRect ,
-				//								Frame );
 			}
 		}
 

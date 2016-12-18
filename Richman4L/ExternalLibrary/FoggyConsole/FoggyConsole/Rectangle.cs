@@ -41,7 +41,7 @@ namespace WenceyWang .FoggyConsole
 		public int Height { get ; }
 
 
-		public bool IsEmpty => ( Width <= 0 ) || ( Height <= 0 ) ;
+		public bool IsEmpty => Width <= 0 || Height <= 0 ;
 
 		public bool IntersectsWith ( Rectangle rect )
 		{
@@ -50,10 +50,10 @@ namespace WenceyWang .FoggyConsole
 				return false ;
 			}
 
-			return ( rect . Left <= Right ) &&
-					( rect . Right >= Left ) &&
-					( rect . Top <= Bottom ) &&
-					( rect . Bottom >= Top ) ;
+			return rect . Left <= Right &&
+					rect . Right >= Left &&
+					rect . Top <= Bottom &&
+					rect . Bottom >= Top ;
 		}
 
 		public Rectangle Intersect ( Rectangle rect )
@@ -115,7 +115,7 @@ namespace WenceyWang .FoggyConsole
 
 
 		public bool Equals ( Rectangle other )
-			=> ( X == other . X ) && ( Y == other . Y ) && ( Height == other . Height ) && ( Width == other . Width ) ;
+			=> X == other . X && Y == other . Y && Height == other . Height && Width == other . Width ;
 
 		public override bool Equals ( object obj )
 		{

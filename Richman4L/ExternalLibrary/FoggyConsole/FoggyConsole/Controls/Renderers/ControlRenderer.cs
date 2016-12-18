@@ -42,8 +42,8 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 			get { return _control ; }
 			set
 			{
-				if ( ( value . Renderer != null ) &&
-					( value . Renderer != this ) )
+				if ( value . Renderer != null &&
+					value . Renderer != this )
 				{
 					throw new ArgumentException ( $"{nameof ( Control )} already has a Drawer assigned" , nameof ( value ) ) ;
 				}

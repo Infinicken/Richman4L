@@ -28,7 +28,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		public override void Arrange ( Rectangle finalRect )
 		{
 			int currentHeight = 0 ;
-			for ( int i = 0 ; ( i < Items . Count ) && ( currentHeight < finalRect . Height ) ; i++ )
+			for ( int i = 0 ; i < Items . Count && currentHeight < finalRect . Height ; i++ )
 			{
 				Control control = Items [ i ] ;
 				switch ( this [ control ] )

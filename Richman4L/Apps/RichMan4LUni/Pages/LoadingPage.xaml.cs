@@ -2,6 +2,7 @@
 using System . Collections ;
 using System . Linq ;
 
+using Windows . UI ;
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
@@ -25,6 +26,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 		private GameSaying CurrentSaying { get ; set ; }
 
 		private SayingPresenter HidePrsenster { get ; set ; }
+
+		public static Color PageColor => XamlResources . Resources . LightBlue ;
 
 		public LoadingPageArgument Argument { get ; private set ; }
 

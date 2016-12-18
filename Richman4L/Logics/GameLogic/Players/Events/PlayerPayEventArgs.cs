@@ -2,6 +2,8 @@
 using System . Collections ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Players . PayReasons ;
+
 namespace WenceyWang . Richman4L . Players .Events
 {
 
@@ -10,9 +12,13 @@ namespace WenceyWang . Richman4L . Players .Events
 
 		public virtual long Money { get ; }
 
-		public PlayerPayEventArgs ( long money ) { Money = money ; }
+		public PayReason Reason { get ; }
 
-		protected PlayerPayEventArgs ( ) { }
+		public PlayerPayEventArgs ( long money , PayReason reason )
+		{
+			Money = money ;
+			Reason = reason ;
+		}
 
 	}
 

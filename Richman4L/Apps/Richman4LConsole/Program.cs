@@ -180,7 +180,7 @@ namespace WenceyWang . Richman4L . Apps .Console
 			System . Console . WriteLine ( @"Richman4L Copyright (C) 2010 - 2016 Wencey Wang" ) ;
 			System . Console . WriteLine ( @"This program comes with ABSOLUTELY NO WARRANTY." ) ;
 			System . Console . WriteLine (
-						@"This is free software, and you are welcome to redistribute it under certain conditions; read License.txt for ditails." ) ;
+				@"This is free software, and you are welcome to redistribute it under certain conditions; read License.txt for ditails." ) ;
 		}
 
 		public static string GetLicense ( )

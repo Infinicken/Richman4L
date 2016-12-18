@@ -66,12 +66,12 @@ namespace WenceyWang . Richman4L .Maps
 
 		public static bool operator == ( MapSize size1 , MapSize size2 )
 		{
-			return ( size1 . Width == size2 . Width ) && ( size1 . Height == size2 . Height ) ;
+			return size1 . Width == size2 . Width && size1 . Height == size2 . Height ;
 		}
 
 		public static bool operator != ( MapSize size1 , MapSize size2 )
 		{
-			return ( size1 . Width != size2 . Width ) || ( size1 . Height != size2 . Height ) ;
+			return size1 . Width != size2 . Width || size1 . Height != size2 . Height ;
 		}
 
 		public override bool Equals ( object obj )
@@ -84,7 +84,7 @@ namespace WenceyWang . Richman4L .Maps
 			return this == ( MapSize ) obj ;
 		}
 
-		public bool Equals ( MapSize other ) { return ( Width == other . Width ) && ( Height == other . Height ) ; }
+		public bool Equals ( MapSize other ) { return Width == other . Width && Height == other . Height ; }
 
 		public override int GetHashCode ( )
 		{

@@ -34,6 +34,7 @@ using WenceyWang . Richman4L . Maps . Roads ;
 using WenceyWang . Richman4L . Players . Commands ;
 using WenceyWang . Richman4L . Players . Events ;
 using WenceyWang . Richman4L . Players . Models ;
+using WenceyWang . Richman4L . Players . PayReasons ;
 using WenceyWang . Richman4L . Properties ;
 using WenceyWang . Richman4L . Stocks ;
 
@@ -153,12 +154,12 @@ namespace WenceyWang . Richman4L .Players
 		/// <summary>
 		///     指示玩家能否获得收益
 		/// </summary>
-		public bool CanGetCharge => ( State == PlayerState . Normal ) && this . IsBlockGetCharge ( ) ;
+		public bool CanGetCharge => State == PlayerState . Normal && this . IsBlockGetCharge ( ) ;
 
 		/// <summary>
 		///     指示玩家当前是否能移动
 		/// </summary>
-		public bool CanMove => ! HaveMoveToday && ( State == PlayerState . Normal ) && this . IsBlockMoving ( ) ;
+		public bool CanMove => ! HaveMoveToday && State == PlayerState . Normal && this . IsBlockMoving ( ) ;
 
 		[NotNull]
 		public ReadOnlyCollection <long> MoneyHistory { get ; }
@@ -328,9 +329,9 @@ namespace WenceyWang . Richman4L .Players
 		{
 			#region Change State
 
-			if ( ( State != PlayerState . Normal ) &&
-				( StateStartDate != null ) &&
-				( StateDuration != null ) )
+			if ( State != PlayerState . Normal &&
+				StateStartDate != null &&
+				StateDuration != null )
 			{
 				if ( StateStartDate + StateDuration >= Game . Current . Calendar . Today . Date + 1 )
 				{
@@ -473,56 +474,7 @@ namespace WenceyWang . Richman4L .Players
 		[CanBeNull]
 		public event EventHandler <PlayerBuyAreaEventArgs> BuyAreaEvent ;
 
-		/// <summary>
-		///     支付建造建筑所需的费用
-		/// </summary>
-		/// <param name="building">要支付建造费用的建筑</param>
-		/// <param name="money">要支付的数额</param>
-		public void PayForBuildBuilding ( Building building , long money )
-		{
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof ( building ) ) ;
-			}
-			if ( money < 0 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( money ) ) ;
-			}
-
-			Money -= money ;
-			PayForBuildBuildingEvent ? . Invoke ( this , new PlayerPayForBuildBuildingEventArgs ( building , money ) ) ;
-		}
-
-		[CanBeNull]
-		public event EventHandler <PlayerPayForBuildBuildingEventArgs> PayForBuildBuildingEvent ;
-
-		public void PayForUpgradeBuiding ( [NotNull] Building building , long money )
-		{
-			//Todo:
-		}
-
-		/// <summary>
-		///     支付建筑的维持费
-		/// </summary>
-		/// <param name="building">要支付维持费的建筑</param>
-		/// <param name="money">要支付的数额</param>
-		public void PayForMaintainBuilding ( [NotNull] Building building , long money )
-		{
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof ( building ) ) ;
-			}
-			if ( money < 0 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof ( money ) ) ;
-			}
-
-			Money -= money ;
-			PayForMaintainBuildingEvent ? . Invoke ( this , new PlayerPayForMaintainBuildingEventArgs ( building , money ) ) ;
-		}
-
-		[CanBeNull]
-		public event EventHandler <PlayerPayForMaintainBuildingEventArgs> PayForMaintainBuildingEvent ;
+		public void RequestPay ( long amount , PayReason reason ) { }
 
 		#region ReceiveStock
 

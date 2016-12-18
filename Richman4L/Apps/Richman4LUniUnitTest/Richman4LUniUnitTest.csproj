@@ -129,6 +129,10 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Logics\GameLogic\GameLogic.csproj">
+      <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
+      <Name>GameLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Richman4LUni\Richman4LUni.csproj">
       <Project>{ede6c6e9-fb2a-445d-b5e9-dc3cd6ce7828}</Project>
       <Name>Richman4LUni</Name>

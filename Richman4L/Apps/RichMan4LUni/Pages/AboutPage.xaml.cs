@@ -37,20 +37,15 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	public sealed partial class AboutPage : AnimatePage
 	{
 
+		public static Color PageColor => XamlResources . Resources . Blue ;
+
 		public AboutPage ( )
 		{
 			InitializeComponent ( ) ;
 			StartStoryboard . Completed += StartStoryboardCompleted ;
 		}
 
-		protected override void OnNavigatedTo ( NavigationEventArgs e )
-		{
-			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
-													nameof ( HardwareButtons . BackPressed ) ) )
-			{
-				HardwareButtons . BackPressed += SettingPageButton_Click ;
-			}
-		}
+		protected override void OnNavigatedTo ( NavigationEventArgs e ) { }
 
 		private void Page_Loaded ( object sender , RoutedEventArgs e ) { StartStoryboard . Begin ( ) ; }
 
@@ -66,15 +61,29 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void SettingPageButton_Click ( object sender , object e )
 		{
-			this.NavigateTo<SettingPage > (  );
-			
+			SetEventArgsHandled ( e ) ;
+			this . NavigateTo <SettingPage> ( ) ;
 		}
 
-		public static Color PageColor => XamlResources . Resources . Blue ;
+		public override void RemoveControl ( )
+		{
+			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
+													nameof ( HardwareButtons . BackPressed ) ) )
+			{
+				HardwareButtons . BackPressed -= SettingPageButton_Click ;
+			}
+			SettingPageButton . Click -= SettingPageButton_Click ;
+		}
 
-		public override void RemoveControl ( ) { SettingPageButton . Click -= SettingPageButton_Click ; }
-
-		public override void AddControl ( ) { SettingPageButton . Click += SettingPageButton_Click ; }
+		public override void AddControl ( )
+		{
+			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
+													nameof ( HardwareButtons . BackPressed ) ) )
+			{
+				HardwareButtons . BackPressed += SettingPageButton_Click ;
+			}
+			SettingPageButton . Click += SettingPageButton_Click ;
+		}
 
 	}
 

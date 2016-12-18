@@ -10,10 +10,10 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
 
-//using Microsoft . ApplicationInsights ;
-
 using WenceyWang . Richman4L . Apps . Uni . Pages ;
 using WenceyWang . Richman4L . Properties ;
+
+//using Microsoft . ApplicationInsights ;
 
 namespace WenceyWang . Richman4L . Apps .Uni
 {
@@ -43,6 +43,7 @@ namespace WenceyWang . Richman4L . Apps .Uni
 		public App ( )
 		{
 			Current = this ;
+
 			//WindowsAppInitializer . InitializeAsync (
 			//	WindowsCollectors . Metadata |
 			//	WindowsCollectors . Session ) ;

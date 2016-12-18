@@ -65,9 +65,9 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 							MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
 														EntryType ??
 							MapObjectRendererTypeList . FirstOrDefault (
-															renderer =>
-																renderer . TargetType . GetTypeInfo ( ) .
-																			IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? . EntryType ;
+								renderer =>
+									renderer . TargetType . GetTypeInfo ( ) .
+												IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? . EntryType ;
 						MapObjectRenderer . MapObjectRenderer objectRenderer =
 							( MapObjectRenderer . MapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
 						objectRenderer . RenderTransform =
@@ -120,7 +120,7 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 
 			MapObjectRendererType type =
 				MapObjectRendererTypeList . Find (
-					typ => ( typ . EntryType == mapRendererType ) && ( typ . TargetType == targetType ) ) ;
+					typ => typ . EntryType == mapRendererType && typ . TargetType == targetType ) ;
 
 			if ( type != null )
 			{

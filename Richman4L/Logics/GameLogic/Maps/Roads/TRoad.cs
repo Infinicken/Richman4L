@@ -49,8 +49,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _firstExit == null ) &&
-					( _firstExitId == null ) )
+				if ( _firstExit == null &&
+					_firstExitId == null )
 				{
 					return null ;
 				}
@@ -69,8 +69,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _secondExit == null ) &&
-					( _secondExitId == null ) )
+				if ( _secondExit == null &&
+					_secondExitId == null )
 				{
 					return null ;
 				}
@@ -89,8 +89,8 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			get
 			{
-				if ( ( _thirdExit == null ) &&
-					( _thirdExitId == null ) )
+				if ( _thirdExit == null &&
+					_thirdExitId == null )
 				{
 					return null ;
 				}
@@ -135,7 +135,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 			Path current = result ?? new Path ( ) ;
 			current . AddRoute ( this ) ;
-			if ( BlockMoving || ( moveCount == 0 ) )
+			if ( BlockMoving || moveCount == 0 )
 			{
 				return current ;
 			}
@@ -148,7 +148,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		}
 
 		public override bool CanEnterFrom ( Road road )
-			=> ( road == FirstExit ) || ( road == SecondExit ) || ( road == ThirdExit ) ;
+			=> road == FirstExit || road == SecondExit || road == ThirdExit ;
 
 	}
 

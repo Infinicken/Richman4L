@@ -20,30 +20,17 @@ using System ;
 using System . Collections ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Maps . Buildings ;
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Players .Events
+namespace WenceyWang . Richman4L . Players .PayReasons
 {
 
-	public class PlayerPayForBuildBuildingEventArgs : PlayerPayEventArgs
+	public sealed class PayForCrossReason : PayReason
 	{
 
-		[NotNull]
-		public Building Building { get ; }
+		public Area Area { get ; }
 
-		public override long Money { get ; }
-
-		public PlayerPayForBuildBuildingEventArgs ( [NotNull] Building building , long money )
-		{
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof ( building ) ) ;
-			}
-
-			Building = building ;
-			Money = money ;
-		}
+		public PayForCrossReason ( Area area ) { Area = area ; }
 
 	}
 

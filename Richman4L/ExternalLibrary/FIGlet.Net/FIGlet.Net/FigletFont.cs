@@ -144,8 +144,8 @@ namespace WenceyWang .FIGlet
 
 		public string GetCharacter ( char sourceChar , int line )
 		{
-			if ( ( line < 0 ) ||
-				( line >= Height ) )
+			if ( line < 0 ||
+				line >= Height )
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( line ) ) ;
 			}

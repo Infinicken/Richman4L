@@ -122,7 +122,6 @@ namespace WenceyWang . Richman4L .Stocks
 
 		public void AddTradingVolume ( int tradingValue )
 		{
-
 			Price = new StockPrice ( Price . OpenPrice ,
 									Price . CurrentPrice ,
 									Price . TodaysHigh ,
@@ -136,7 +135,7 @@ namespace WenceyWang . Richman4L .Stocks
 			if ( lowerPrice >= Price . TodaysLow )
 			{
 				throw new ArgumentException (
-						$"{nameof ( lowerPrice )} should less than {nameof ( Price )}.{nameof ( Price . TodaysLow )}" ) ;
+					$"{nameof ( lowerPrice )} should less than {nameof ( Price )}.{nameof ( Price . TodaysLow )}" ) ;
 			}
 
 			Price = new StockPrice ( Price . OpenPrice ,
@@ -152,7 +151,7 @@ namespace WenceyWang . Richman4L .Stocks
 			if ( higherPrice <= Price . TodaysLow )
 			{
 				throw new ArgumentException (
-						$"{nameof ( higherPrice )} should greater than {nameof ( Price )}.{nameof ( Price . TodaysHigh )}" ) ;
+					$"{nameof ( higherPrice )} should greater than {nameof ( Price )}.{nameof ( Price . TodaysHigh )}" ) ;
 			}
 
 			Price = new StockPrice ( Price . OpenPrice ,
