@@ -16,37 +16,48 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System ;
-using System . Collections ;
-using System . Collections . Generic ;
-using System . Linq ;
+using System;
+using System . Collections;
+using System . Collections . Generic;
+using System . Linq;
 
-using WenceyWang . Richman4L . Players . Commands . Arguments ;
-using WenceyWang . Richman4L . Players . Commands . Arguments . DefineDomains ;
+using WenceyWang . Richman4L . Interoperability . Arguments;
+using WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains;
 
-namespace WenceyWang . Richman4L . Players .Commands
+namespace WenceyWang . Richman4L . Players . Commands
 {
 
 	public class PlayerMoveCommand : PlayerCommand
 	{
 
-		public override List <PlayerCommandArgumentInfo> Arguments { get ; }
+		public override List<ArgumentInfo> Arguments { get; }
 
 		public PlayerMoveCommand ( Player performer ) : base ( performer )
 		{
-			//Todo:
-			PlayerCommandArgumentInfo diceType = new PlayerCommandArgumentInfo (
+			//Todo:完善资源文件
+			ArgumentInfo diceType = new ArgumentInfo (
 				"" ,
 				"" ,
-				ArgumentValueType . Dice ,
-				new DiceOwnerDefineDomains ( Performer ) ) ;
+				typeof ( DiceType ) ,
+				new DiceOwnerDefineDomains ( Performer ) );
 
-			//Arguments = new List<PlayerCommandArgumentInfo> { diceType , diceNumber };
+			ArgumentInfo moveType = new ArgumentInfo (
+				"" ,
+				"" ,
+				typeof ( MoveType ) ,
+				new MoveTypeAbilityDefineDomains ( Performer ) );
+
+			Arguments = new List<ArgumentInfo> { moveType , diceType };
 		}
 
 		public override void Apply ( ArgumentsContainer arguments )
 		{
-/*Performer.Move(arguments.Arguments[] */
+			if ( arguments . Arguments . Count != 2 )
+			{
+				throw new ArgumentException ( );
+			}
+
+			Performer . Move ( ( MoveType ) arguments . Arguments [ 0 ] , ( DiceType ) arguments . Arguments [ 1 ] );
 		}
 
 	}

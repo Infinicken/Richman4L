@@ -1,18 +1,18 @@
-﻿using System ;
-using System . Collections ;
-using System . Diagnostics ;
-using System . Linq ;
-using System . Threading . Tasks ;
+﻿using System;
+using System . Collections;
+using System . Diagnostics;
+using System . Linq;
+using System . Threading . Tasks;
 
-using Windows . Foundation . Metadata ;
-using Windows . System . Profile ;
-using Windows . UI ;
-using Windows . UI . ViewManagement ;
-using Windows . UI . Xaml ;
+using Windows . Foundation . Metadata;
+using Windows . System . Profile;
+using Windows . UI;
+using Windows . UI . ViewManagement;
+using Windows . UI . Xaml;
 
-using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Apps . Uni . Logic;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . Pages
 {
 
 	/// <summary>
@@ -21,39 +21,40 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 	public sealed partial class StartPage : AnimatePage
 	{
 
-		private Task _taskToWait ;
+		private Task _taskToWait;
 
-		public static Color PageColor => XamlResources . Resources . Black ;
+		public static Color PageColor => XamlResources . Resources . Black;
 
-		public StartPage ( ) { InitializeComponent ( ) ; }
+		public StartPage ( ) { InitializeComponent ( ); }
 
 		private async void Page_Loaded ( object sender , RoutedEventArgs e )
 		{
-			Debug . WriteLine ( AnalyticsInfo . DeviceForm ) ;
-			Debug . WriteLine ( AnalyticsInfo . VersionInfo . DeviceFamily ) ;
+			Debug . WriteLine ( "Loaded" );
+			Debug . WriteLine ( AnalyticsInfo . DeviceForm );
+			Debug . WriteLine ( AnalyticsInfo . VersionInfo . DeviceFamily );
 			if ( ApiInformation . IsMethodPresent ( "Windows.UI.ViewManagement.StatusBar" , nameof ( StatusBar . HideAsync ) ) )
 			{
-				await StatusBar . GetForCurrentView ( ) . HideAsync ( ) ;
+				await StatusBar . GetForCurrentView ( ) . HideAsync ( );
 			}
 
-			StartStoryboard . Completed += StartStoryboard_Completed ;
-			StartStoryboard . Begin ( ) ;
-			_taskToWait = Startup . GetAllTask ( ) ;
+			StartStoryboard . Completed += StartStoryboard_Completed;
+			StartStoryboard . Begin ( );
+			_taskToWait = Startup . GetAllTask ( );
 		}
 
 		private void StartStoryboard_Completed ( object sender , object e )
 		{
-			_taskToWait . Wait ( ) ;
+			_taskToWait . Wait ( );
 
-			GameTitleManager . GenerateNewTitle ( ) ;
+			GameTitleManager . GenerateNewTitle ( );
 
 			if ( AppSettings . Current . AcceptLicence )
 			{
-				this . NavigateTo <MainPage> ( ) ;
+				this . NavigateTo<MainPage> ( );
 			}
 			else
 			{
-				this . NavigateTo <LicensePage> ( ) ;
+				this . NavigateTo<LicensePage> ( );
 			}
 		}
 
@@ -61,6 +62,17 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		public override void RemoveControl ( ) { }
 
+		private void CanvasControl_Draw ( Microsoft . Graphics . Canvas . UI . Xaml . CanvasControl sender , Microsoft . Graphics . Canvas . UI . Xaml . CanvasDrawEventArgs args )
+		{
+			Debug . WriteLine ( "Draweed" );
+		}
+
+		private void CanvasControl_Unloaded (object sender , RoutedEventArgs e )
+		{
+			(sender as Microsoft . Graphics . Canvas . UI . Xaml . CanvasControl) . RemoveFromVisualTree ( );
+		}
+
+		
 	}
 
 }

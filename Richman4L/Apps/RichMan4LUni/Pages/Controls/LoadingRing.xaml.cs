@@ -8,30 +8,12 @@ using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Data ;
 using Windows . UI . Xaml . Media ;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 {
 
 	public sealed partial class LoadingRing : UserControl
 	{
-
-		private Brush foreGround = new SolidColorBrush ( Color . FromArgb ( 255 , 255 , 255 , 255 ) ) ;
-
-		public Brush ForeGround
-		{
-			get { return foreGround ; }
-			set
-			{
-				LargeRingUp . Stroke = value ;
-				LargeRingDown . Stroke = value ;
-				MiddleRingUp . Stroke = value ;
-				MiddleRingDown . Stroke = value ;
-				SmallRingUp . Stroke = value ;
-				SmallRingDown . Stroke = value ;
-				foreGround = value ;
-			}
-		}
 
 		public LoadingRing ( ) { InitializeComponent ( ) ; }
 

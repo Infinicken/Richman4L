@@ -63,6 +63,7 @@
     <Compile Include="Cards\CardAttribute.cs" />
     <Compile Include="Cards\CardStates.cs" />
     <Compile Include="Cards\CardType.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\StockTransactDefineDomain.cs" />
     <Compile Include="DiceType.cs" />
     <Compile Include="EventRandomExtensions.cs" />
     <Compile Include="GameEnviroment\SmallGameResult.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="GameSaying.cs" />
     <Compile Include="GameStatus.cs" />
     <Compile Include="GameTitle.cs" />
+    <Compile Include="Interoperability\Arguments\ArgumentCheckHelper.cs" />
     <Compile Include="ListItemRandomExtensions.cs" />
     <Compile Include="Maps\AreaBuffExtensions.cs" />
     <Compile Include="Buffs\PlayerBuffs\BlockBuyAreaPlayerBuff.cs" />
@@ -128,13 +130,12 @@
     <Compile Include="Maps\Roads\AreaRoad.cs" />
     <Compile Include="Maps\Roads\Path.cs" />
     <Compile Include="OrWinningCondition.cs" />
-    <Compile Include="Players\Commands\Arguments\ArgumentsContainer.cs" />
-    <Compile Include="Players\Commands\Arguments\ArgumentValueType.cs" />
-    <Compile Include="Players\Commands\Arguments\DefineDomains\ArgumentValueDefineDomain.cs" />
-    <Compile Include="Players\Commands\Arguments\DefineDomains\DiceOwnerDefineDomains.cs" />
-    <Compile Include="Players\Commands\Arguments\DefineDomains\FloatIntervalDefineDomain.cs" />
-    <Compile Include="Players\Commands\Arguments\DefineDomains\IntegerIntervalDefineDomain.cs" />
-    <Compile Include="Players\Commands\Arguments\PlayerCommandArgumentInfo.cs" />
+    <Compile Include="Interoperability\Arguments\ArgumentsContainer.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\ArgumentValueDefineDomain.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\DiceOwnerDefineDomains.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\FloatIntervalDefineDomain.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\IntegerIntervalDefineDomain.cs" />
+    <Compile Include="Interoperability\Arguments\ArgumentInfo.cs" />
     <Compile Include="Players\Commands\PlayerMoveCommand.cs" />
     <Compile Include="Players\Events\PlayerGetEventArgs.cs" />
     <Compile Include="Players\Events\PlayerGetFromSellStockEventArgs.cs" />
@@ -162,8 +163,6 @@
     <Compile Include="Maps\Buildings\SmallSimpleBuilding.cs" />
     <Compile Include="Maps\Roads\TRoad.cs" />
     <Compile Include="Maps\Roads\WithInRoad.cs" />
-    <Compile Include="Missions\Mission.cs" />
-    <Compile Include="Missions\MissionGame.cs" />
     <Compile Include="Newspapers\News.cs" />
     <Compile Include="Newspapers\Newspaper.cs" />
     <Compile Include="NormalRandomExtensions.cs" />
@@ -276,6 +275,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cards\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,7 +5,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:RichMan4L="WenceyWang.RichMan4L"
-	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.Pages.Controls"
+	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.Pages.Controls" x:Name="userControl"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.Pages.Controls.LoadingRing"
 	mc:Ignorable="d"
 	d:DesignHeight="100"
@@ -56,18 +56,18 @@
 	<Canvas>
 		<ProgressBar x:Name="LargeRingUpProgress" Maximum="180" Visibility="Collapsed" />
 		<Ellipse x:Name="LargeRingUp" Width="100" Height="100" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Tag="0"
-				StrokeDashArray="{Binding Value, ConverterParameter=90, Converter={StaticResource AngelConverter}, ElementName=LargeRingUpProgress}" >
+				StrokeDashArray="{Binding Value, ConverterParameter=90, Converter={StaticResource AngelConverter}, ElementName=LargeRingUpProgress}" Stroke="{Binding Foreground, ElementName=userControl}">
 			<Ellipse.RenderTransform>
 				<CompositeTransform Rotation="-180" />
 			</Ellipse.RenderTransform>
 		</Ellipse>
 		<ProgressBar x:Name="LargeRingDownProgress" Maximum="180" Visibility="Collapsed" />
 		<Ellipse x:Name="LargeRingDown" Width="100" Height="100" RenderTransformOrigin="0.5,0.5" StrokeThickness="10" Tag="0"
-				StrokeDashArray="{Binding Value, ConverterParameter=90, Converter={StaticResource AngelConverter}, ElementName=LargeRingDownProgress}" />
+				StrokeDashArray="{Binding Value, ConverterParameter=90, Converter={StaticResource AngelConverter}, ElementName=LargeRingDownProgress}" Stroke="{Binding Foreground, ElementName=userControl}"/>
 		<ProgressBar x:Name="MiddleRingUpProgress" Maximum="180" Visibility="Collapsed" />
 		<Ellipse x:Name="MiddleRingUp" Width="78" Height="78" RenderTransformOrigin="0.5,0.5" StrokeThickness="10"
 				Canvas.Left="11" Canvas.Top="11" Tag="0"
-				StrokeDashArray="{Binding Value, ConverterParameter=68, Converter={StaticResource AngelConverter}, ElementName=MiddleRingUpProgress}" >
+				StrokeDashArray="{Binding Value, ConverterParameter=68, Converter={StaticResource AngelConverter}, ElementName=MiddleRingUpProgress}" Stroke="{Binding Foreground, ElementName=userControl}">
 			<Ellipse.RenderTransform>
 				<CompositeTransform Rotation="-180" />
 			</Ellipse.RenderTransform>
@@ -75,11 +75,11 @@
 		<ProgressBar x:Name="MiddleRingDownProgress" Maximum="180" Visibility="Collapsed" />
 		<Ellipse x:Name="MiddleRingDown" Width="78" Height="78" RenderTransformOrigin="0.5,0.5" StrokeThickness="10"
 				Canvas.Left="11" Canvas.Top="11" Tag="0"
-				StrokeDashArray="{Binding Value, ConverterParameter=68, Converter={StaticResource AngelConverter}, ElementName=MiddleRingDownProgress}" />
+				StrokeDashArray="{Binding Value, ConverterParameter=68, Converter={StaticResource AngelConverter}, ElementName=MiddleRingDownProgress}" Stroke="{Binding Foreground, ElementName=userControl}" />
 		<ProgressBar x:Name="SmallRingUpProgress" Maximum="180" Visibility="Collapsed" />
 		<Ellipse x:Name="SmallRingUp" Width="56" Height="56" RenderTransformOrigin="0.5,0.5" StrokeThickness="10"
 				Canvas.Left="22" Canvas.Top="22" Tag="0"
-				StrokeDashArray="{Binding Value, ConverterParameter=46, Converter={StaticResource AngelConverter}, ElementName=SmallRingUpProgress}" >
+				StrokeDashArray="{Binding Value, ConverterParameter=46, Converter={StaticResource AngelConverter}, ElementName=SmallRingUpProgress}" Stroke="{Binding Foreground, ElementName=userControl}">
 			<Ellipse.RenderTransform>
 				<CompositeTransform Rotation="-180" />
 			</Ellipse.RenderTransform>
@@ -87,6 +87,6 @@
 		<ProgressBar x:Name="SmallRingDownProgress" Maximum="180" Visibility="Collapsed" />
 		<Ellipse x:Name="SmallRingDown" Width="56" Height="56" RenderTransformOrigin="0.5,0.5" StrokeThickness="10"
 				Canvas.Left="22" Canvas.Top="22" Tag="0"
-				StrokeDashArray="{Binding Value, ConverterParameter=46, Converter={StaticResource AngelConverter}, ElementName=SmallRingDownProgress}" />
+				StrokeDashArray="{Binding Value, ConverterParameter=46, Converter={StaticResource AngelConverter}, ElementName=SmallRingDownProgress}" Stroke="{Binding Foreground, ElementName=userControl}" />
 	</Canvas>
 </UserControl>

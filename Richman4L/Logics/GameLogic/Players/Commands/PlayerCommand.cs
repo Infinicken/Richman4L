@@ -21,7 +21,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Players . Commands . Arguments ;
+using WenceyWang . Richman4L . Interoperability . Arguments ;
 
 namespace WenceyWang . Richman4L . Players .Commands
 {
@@ -42,7 +42,7 @@ namespace WenceyWang . Richman4L . Players .Commands
 		/// </summary>
 		public virtual string Introduction { get ; }
 
-		public abstract List <PlayerCommandArgumentInfo> Arguments { get ; }
+		public abstract List <ArgumentInfo> Arguments { get ; }
 
 		/// <summary>
 		///     指令的执行者

@@ -13,7 +13,7 @@ namespace WenceyWang . Richman4L .Auctions
 	public abstract class AuctionRequest
 	{
 
-		public abstract Player Owner { get ; }
+		public abstract WithAssetObject Owner { get ; }
 
 		public long StartMoney { get ; }
 

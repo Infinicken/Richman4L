@@ -48,6 +48,8 @@ namespace WenceyWang . Richman4L .Stocks
 		[NotNull]
 		private Dictionary <Stock , List <SellStockDelegate>> SellDelegateList { get ; set ; }
 
+		public StockMarketState State { get ; set ; }
+
 
 		private StockMarket ( [NotNull] XDocument document ) : this ( )
 		{
@@ -273,6 +275,13 @@ namespace WenceyWang . Richman4L .Stocks
 			//Todo:Compele this;			
 		}
 
+	}
+
+	public enum StockMarketState
+	{
+		Running,
+		NotRunning,
+		Restricted
 	}
 
 }

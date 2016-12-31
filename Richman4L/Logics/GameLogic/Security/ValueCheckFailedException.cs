@@ -1,21 +1,21 @@
-﻿using System ;
-using System . Collections ;
-using System . Linq ;
+﻿using System;
+using System . Collections;
+using System . Linq;
 
-namespace WenceyWang . Richman4L .Security
+namespace WenceyWang . Richman4L . Security
 {
 
 	public sealed class ValueCheckFailedException : Exception
 	{
 
-		public byte [ ] HashCode { get ; set ; }
+		public byte [ ] ActualHashCode { get; set; }
 
-		public byte [ ] Value { get ; set ; }
+		public byte [ ] ExpectedHashCode { get; set; }
 
-		internal ValueCheckFailedException ( byte [ ] hashCode , byte [ ] value ) : base ( "Hash code check failed." )
+		public ValueCheckFailedException ( byte [ ] actualHashCode , byte [ ] expectedHashCode ) : base ( "Hash code check failed." )
 		{
-			HashCode = hashCode ;
-			Value = value ;
+			ActualHashCode = actualHashCode;
+			ExpectedHashCode = expectedHashCode;
 		}
 
 	}

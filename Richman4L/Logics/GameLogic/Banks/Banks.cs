@@ -11,7 +11,7 @@ namespace WenceyWang . Richman4L .Banks
 	/// <summary>
 	///     表示银行
 	/// </summary>
-	public class Bank : GameObject
+	public class Bank : WithAssetObject 
 	{
 
 		/// <summary>

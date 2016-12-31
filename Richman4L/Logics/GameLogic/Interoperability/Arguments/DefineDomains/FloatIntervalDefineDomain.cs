@@ -4,22 +4,22 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
+namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
 {
 
-	public class IntegerIntervalDefineDomain : ArgumentValueDefineDomain
+	public class FloatIntervalDefineDomain : ArgumentValueDefineDomain
 	{
 
-		public long LeftEndpoint { get ; }
+		public double LeftEndpoint { get ; }
 
 		public bool IsLeftClosed { get ; }
 
 
-		public long RightEndpoint { get ; }
+		public double RightEndpoint { get ; }
 
 		public bool IsRightClosed { get ; }
 
-		public IntegerIntervalDefineDomain ( long leftEndpoint , bool isLeftClosed , long rightEndpoint , bool isRightClosed )
+		public FloatIntervalDefineDomain ( double leftEndpoint , bool isLeftClosed , double rightEndpoint , bool isRightClosed )
 		{
 			LeftEndpoint = leftEndpoint ;
 			IsLeftClosed = isLeftClosed ;
@@ -37,9 +37,8 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 
 			try
 			{
-				long number = Convert . ToInt64 ( value ) ;
+				double number = Convert . ToDouble ( value ) ;
 				bool valid = true ;
-
 				if ( IsLeftClosed )
 				{
 					valid &= number >= LeftEndpoint ;
@@ -48,7 +47,6 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 				{
 					valid &= number > LeftEndpoint ;
 				}
-
 				if ( IsRightClosed )
 				{
 					valid &= number <= RightEndpoint ;
@@ -57,7 +55,6 @@ namespace WenceyWang . Richman4L . Players . Commands . Arguments .DefineDomains
 				{
 					valid &= number < RightEndpoint ;
 				}
-
 				return valid ;
 			}
 			catch ( Exception )

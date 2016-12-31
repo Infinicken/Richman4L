@@ -14,6 +14,10 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 
 		public DreamRecorderLogo ( ) { InitializeComponent ( ) ; }
 
+		private void CanvasAnimatedControl_Draw ( Microsoft . Graphics . Canvas . UI . Xaml . ICanvasAnimatedControl sender , Microsoft . Graphics . Canvas . UI . Xaml . CanvasAnimatedDrawEventArgs args )
+		{
+
+		}
 	}
 
 }

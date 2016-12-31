@@ -86,8 +86,6 @@ namespace WenceyWang . Richman4L . Apps . Uni . Pages .Controls
 
 		public void ShowSaying ( ) { VisualStateManager . GoToState ( this , nameof ( ShowState ) , true ) ; }
 
-		public event EventHandler ShowOverEvent ;
-
 		private void SayingPresenter_Loaded ( object sender , RoutedEventArgs e )
 		{
 			VisualStateManager . GoToState ( this , nameof ( HideState ) , false ) ;

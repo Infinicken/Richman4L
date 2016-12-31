@@ -46,6 +46,8 @@ namespace WenceyWang . Richman4L . Apps . Uni .Pages
 
 		private void KnowButton_Click ( object sender , RoutedEventArgs e )
 		{
+			this . NavigateTo <MyWishPage> ( ) ;
+
 			//PageNavigateHelper . NavigateTo ( typeof ( MyWishPage ) ,
 			//								null ,
 			//								"DarkBlueBrush" ,

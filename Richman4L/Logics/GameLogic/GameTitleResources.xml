@@ -31,6 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<TitleKeys>
 		<TitleKey Content="(Rain!)" />
 		<TitleKey Content="2333333" />
+		<TitleKey Content="Girl" />
 		<TitleKey Content="JLL" />
 		<TitleKey Content="L" />
 		<TitleKey Content="LAN" />
@@ -40,7 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="LPG" />
 		<TitleKey Content="Lab" />
 		<TitleKey Content="Label" />
-		<TitleKey Content="Labour" />
+		<TitleKey Content="Labor" />
 		<TitleKey Content="Lace" />
 		<TitleKey Content="Lack" />
 		<TitleKey Content="Lad" />
@@ -62,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Language" />
 		<TitleKey Content="Lantern" />
 		<TitleKey Content="Lap" />
-		<TitleKey Content="Lapa" />
+		<TitleKey Content="Lana" />
 		<TitleKey Content="Lapel" />
 		<TitleKey Content="Lapse" />
 		<TitleKey Content="Laptop" />
@@ -92,6 +93,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Layer" />
 		<TitleKey Content="Layout" />
 		<TitleKey Content="Laze" />
+		<TitleKey Content="Le" />
 		<TitleKey Content="Lead" />
 		<TitleKey Content="Leader" />
 		<TitleKey Content="Leading" />
@@ -121,11 +123,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Lego" />
 		<TitleKey Content="Leisure" />
 		<TitleKey Content="Leitmotif" />
-		<TitleKey Content="Lekker" />
+		<TitleKey Content="Leaker" />
 		<TitleKey Content="Lemma" />
-		<TitleKey Content="Girl" />
-		<TitleKey Content="Null" />
-		<TitleKey Content="Tank" />
 		<TitleKey Content="Lemon" />
 		<TitleKey Content="Lend" />
 		<TitleKey Content="Length" />
@@ -149,7 +148,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Liberate" />
 		<TitleKey Content="Library" />
 		<TitleKey Content="Lice" />
-		<TitleKey Content="Licence" />
+		<TitleKey Content="License" />
 		<TitleKey Content="Licit" />
 		<TitleKey Content="Lick" />
 		<TitleKey Content="Lid" />
@@ -177,6 +176,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Link" />
 		<TitleKey Content="Link" />
 		<TitleKey Content="Link" />
+		<TitleKey Content="LinkedList&lt;T&gt;" />
 		<TitleKey Content="Linq" />
 		<TitleKey Content="Lint" />
 		<TitleKey Content="Lip" />
@@ -184,7 +184,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Liquid" />
 		<TitleKey Content="List" />
 		<TitleKey Content="List&lt;T&gt;" />
-		<TitleKey Content="LinkedList&lt;T&gt;" />
 		<TitleKey Content="Lite" />
 		<TitleKey Content="Literal" />
 		<TitleKey Content="Literature" />
@@ -194,7 +193,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Live" />
 		<TitleKey Content="Livid" />
 		<TitleKey Content="Living" />
-		<TitleKey Content="Loacl" />
 		<TitleKey Content="Load" />
 		<TitleKey Content="Loaf" />
 		<TitleKey Content="Loafer" />
@@ -204,6 +202,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Lobby" />
 		<TitleKey Content="Lobe" />
 		<TitleKey Content="Lobster" />
+		<TitleKey Content="Local" />
 		<TitleKey Content="Lock" />
 		<TitleKey Content="Lodge" />
 		<TitleKey Content="Loft" />
@@ -267,7 +266,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Lurve" />
 		<TitleKey Content="Lydia" />
 		<TitleKey Content="Lyric" />
-		<TitleKey Content="Le" />
+		<TitleKey Content="Null" />
+		<TitleKey Content="Tank" />
 		<TitleKey Content="lolo" />
 	</TitleKeys>
 
