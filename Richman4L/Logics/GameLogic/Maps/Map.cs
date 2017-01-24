@@ -49,6 +49,9 @@ namespace WenceyWang . Richman4L .Maps
 		[ItemNotNull]
 		public List <WinningCondition> AviliableWinningConditions { get ; } = new List <WinningCondition> ( ) ;
 
+		public List <Road> StartPoints { get ; set ; }
+
+
 		[CanBeNull]
 		public Block this [ int x , int y ]
 		{

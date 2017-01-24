@@ -1,10 +1,11 @@
-﻿using System;
-using System . Collections;
-using System . Linq;
-using System . Reflection;
-using System . Windows;
-using System . Windows . Controls;
-using WenceyWang . Richman4L . Maps . Buildings;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
+using System . Reflection ;
+using System . Windows ;
+using System . Windows . Controls ;
+
+using WenceyWang . Richman4L . Maps . Buildings ;
 
 namespace BuildingTypeDesigner
 {

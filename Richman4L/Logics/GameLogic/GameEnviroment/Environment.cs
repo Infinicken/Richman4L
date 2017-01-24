@@ -22,9 +22,6 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Auctions ;
-using WenceyWang . Richman4L . InfomationCenter ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Players . Models ;
 
 namespace WenceyWang . Richman4L .GameEnviroment
 {
@@ -37,17 +34,8 @@ namespace WenceyWang . Richman4L .GameEnviroment
 
 		public abstract ReadOnlyCollection <int> GetDice ( int number , DiceType diceType ) ;
 
-		public abstract void ShowEvent ( Event @event ) ;
-
-		public abstract void PlayerSay ( Player player , PlayerSaying saying ) ;
-
-		public abstract void ShowDice ( DiceType diceType , int number ) ;
-
-
 		public abstract AuctionResult PerformAuction ( AuctionRequest request ) ;
 
-
-		public abstract void ShowFlag ( bool flaged ) ;
 
 		//public abstract 
 

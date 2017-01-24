@@ -35,7 +35,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 	/// <summary>
 	///     表示建筑
 	/// </summary>
-	public abstract class Building : MapObject
+	public abstract class Building : MapObject,IAsset 
 	{
 
 		/// <summary>
@@ -58,7 +58,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		/// </summary>
 		public int MaintenanceDegree { get ; set ; }
 
-		public Player Owner => Position . Owner ;
+		public WithAssetObject Owner { get; private set; }
+
 
 		/// <summary>
 		///     指示当前建筑所处的等级
@@ -108,7 +109,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			Position = position ;
 			Grade = Type . EntryGrade ;
 			State = BuildingState . Building ;
-			player . RequestPay ( Type . EntryGrade . StartUpgradeCost , new PayForBuildBuildingReason ( this ) ) ;
+			player . RequestPay (player , Type . EntryGrade . StartUpgradeCost , new PayForBuildBuildingReason ( this ) ) ;
 			UpgradeTo = null ;
 			UpgradeProcess = null ;
 
@@ -232,6 +233,10 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		///     指示建筑的升级进程的10000倍
 		/// </summary>
 		public virtual int ? UpgradeProcess { get ; protected set ; }
+
+		public decimal MinimumValue { get ; }
+
+		public void GiveTo ( WithAssetObject newOwner ) { throw new NotImplementedException ( ) ; }
 
 		#endregion
 

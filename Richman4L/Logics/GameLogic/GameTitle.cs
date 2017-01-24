@@ -29,7 +29,7 @@ namespace WenceyWang .Richman4L
 	public struct GameTitle
 	{
 
-		public static GameTitle Defult => new GameTitle ( "Richman" , "L" ) ;
+		public static GameTitle Defult => new GameTitle ( DefaultTitleRoot , DefaultTitleKey ) ;
 
 		public string TitleRoot { get ; }
 
@@ -59,6 +59,22 @@ namespace WenceyWang .Richman4L
 
 		internal static bool Loaded ;
 
+		public static string DefaultTitleRoot => @"Richman" ;
+
+		public static string DefaultTitleKey => @"L" ;
+
+		public static void AddTitleRoot ( string titleRoot )
+		{
+			if ( titleRoot == null )
+			{
+				throw new ArgumentNullException ( nameof ( titleRoot ) ) ;
+			}
+
+			TitleRoots . Add ( titleRoot ) ;
+		}
+
+		public static void AddTitleKey ( ) { }
+
 		public static GameTitle GetTitle ( bool randomTitleRoot )
 		{
 			if ( ! Loaded )
@@ -72,7 +88,7 @@ namespace WenceyWang .Richman4L
 										TitleKeys . RandomItem ( GameRandom . Current ) ) ;
 			}
 
-			return new GameTitle ( "Richman" , TitleKeys . RandomItem ( GameRandom . Current ) ) ;
+			return new GameTitle ( DefaultTitleRoot , TitleKeys . RandomItem ( GameRandom . Current ) ) ;
 		}
 
 		public bool Equals ( GameTitle other )
@@ -120,13 +136,13 @@ namespace WenceyWang .Richman4L
 				// ReSharper disable once PossibleNullReferenceException
 				foreach ( XElement item in doc . Root . Element ( nameof ( TitleRoots ) ) . Elements ( ) )
 				{
-					TitleRoots . Add ( item . Attribute ( "Content" ) . Value ) ;
+					TitleRoots . Add ( item . Attribute ( nameof ( Content ) ) . Value ) ;
 				}
 
 				// ReSharper disable once PossibleNullReferenceException
 				foreach ( XElement item in doc . Root . Element ( nameof ( TitleKeys ) ) . Elements ( ) )
 				{
-					TitleKeys . Add ( item . Attribute ( "Content" ) . Value ) ;
+					TitleKeys . Add ( item . Attribute ( nameof ( Content ) ) . Value ) ;
 				}
 			}
 		}

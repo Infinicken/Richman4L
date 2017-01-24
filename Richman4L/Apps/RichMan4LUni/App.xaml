@@ -10,17 +10,17 @@
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="XAMLResources/Brushs.xaml" />
-				<ResourceDictionary Source="XAMLResources\TextBlockButtonStyle.xaml" />
-				<ResourceDictionary Source="XAMLResources\LeftArrowTextBlockButtonStyle.xaml" />
-				<ResourceDictionary Source="XAMLResources\RightArrowTextBlockButtonStyle.xaml" />
-				<ResourceDictionary Source="XAMLResources\EasingFunction.xaml" />
-				<ResourceDictionary Source="XAMLResources\Fonts.xaml" />
-				<ResourceDictionary Source="XAMLResources\Thickness.xaml" />
-				<ResourceDictionary Source="XAMLResources\RoundedRectangleButtonStyle.xaml" />
-				<ResourceDictionary Source="XAMLResources\ToggleSwitchTemplate.xaml" />
-				<ResourceDictionary Source="XAMLResources\SettingToggleSwitchStyle.xaml" />
-				<ResourceDictionary Source="XAMLResources\ListBoxStyle.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources/Brushs.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\TextBlockButtonStyle.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\LeftArrowTextBlockButtonStyle.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\RightArrowTextBlockButtonStyle.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\EasingFunction.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\Fonts.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\Thickness.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\RoundedRectangleButtonStyle.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\ToggleSwitchTemplate.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\SettingToggleSwitchStyle.xaml" />
+				<ResourceDictionary Source="UI/XAMLResources\ListBoxStyle.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<Style x:Key="FlyoutPresenterStyle" TargetType="FlyoutPresenter" >
 				<Setter Property="HorizontalContentAlignment" Value="Stretch" />

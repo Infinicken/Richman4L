@@ -1,9 +1,7 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
 using System . Runtime . InteropServices ;
-using System . Text;
-using System . Threading . Tasks;
 
 using Windows . Security . Cryptography ;
 using Windows . Security . Cryptography . Core ;
@@ -11,30 +9,21 @@ using Windows . Storage . Streams ;
 
 using WenceyWang . Richman4L . Security ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Logic
+namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
-	public class UniReliableValue<T>:ReliableValue <T>
+
+	public class UniReliableValue <T> : ReliableValue <T>
 	{
 
-		// ReSharper disable once StaticMemberInGenericType
-		private static readonly HashAlgorithmProvider HashProvider;
+		private readonly CryptographicHash _hash ;
 
-		private readonly CryptographicHash _hash;
+		private IBuffer _hashCode ;
 
-		private IBuffer _hashCode;
+		private IBuffer _salt ;
 
-		private IBuffer _salt;
+		private IBuffer _saltHashCode ;
 
-		private IBuffer _saltHashCode;
-
-		private T _value;
-
-		public UniReliableValue ( ) { _hash = HashProvider . CreateHash ( ); }
-
-		static UniReliableValue ( )
-		{
-			HashProvider = HashAlgorithmProvider . OpenAlgorithm ( HashAlgorithmNames . Sha512 );
-		}
+		private T _value ;
 
 		public override T Value
 		{
@@ -42,29 +31,47 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			{
 				lock ( this )
 				{
-					CheckValue ( );
-					return _value;
+					CheckValue ( ) ;
+					return _value ;
 				}
 			}
 			set
 			{
 				lock ( this )
 				{
-					CheckValue ( );
-
-					_salt = CryptographicBuffer . GenerateRandom ( ( CryptographicBuffer . GenerateRandomNumber ( ) % 64 ) + 64 );
-
-					_hash . Append ( _salt );
-
-					_saltHashCode = _hash . GetValueAndReset ( );
-
-					_value = value;
-
-					_hash . Append ( ToIBuffer ( value ) );
-					_hash . Append ( _salt );
-
-					_hashCode = _hash . GetValueAndReset ( );
+					CheckValue ( ) ;
+					SetValue ( value ) ;
 				}
+			}
+		}
+
+		static UniReliableValue ( ) { HashProvider = HashAlgorithmProvider . OpenAlgorithm ( HashAlgorithmNames . Sha512 ) ; }
+
+		public UniReliableValue ( T value )
+		{
+			_hash = HashProvider . CreateHash ( ) ;
+			SetValue ( value ) ;
+		}
+
+		// ReSharper disable once StaticMemberInGenericType
+		private static readonly HashAlgorithmProvider HashProvider ;
+
+		private void SetValue ( T value )
+		{
+			lock ( this )
+			{
+				_salt = CryptographicBuffer . GenerateRandom ( CryptographicBuffer . GenerateRandomNumber ( ) % 64 + 64 ) ;
+
+				_hash . Append ( _salt ) ;
+
+				_saltHashCode = _hash . GetValueAndReset ( ) ;
+
+				_value = value ;
+
+				_hash . Append ( ToIBuffer ( value ) ) ;
+				_hash . Append ( _salt ) ;
+
+				_hashCode = _hash . GetValueAndReset ( ) ;
 			}
 		}
 
@@ -72,12 +79,12 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 		{
 			lock ( value )
 			{
-				int rawsize = Marshal . SizeOf ( value );
-				byte [ ] rawdata = new byte [ rawsize ];
-				GCHandle handle = GCHandle . Alloc ( rawdata , GCHandleType . Pinned );
-				Marshal . StructureToPtr ( value , handle . AddrOfPinnedObject ( ) , false );
-				handle . Free ( );
-				return CryptographicBuffer . CreateFromByteArray ( rawdata );
+				int rawsize = Marshal . SizeOf ( value ) ;
+				byte [ ] rawdata = new byte[ rawsize ] ;
+				GCHandle handle = GCHandle . Alloc ( rawdata , GCHandleType . Pinned ) ;
+				Marshal . StructureToPtr ( value , handle . AddrOfPinnedObject ( ) , false ) ;
+				handle . Free ( ) ;
+				return CryptographicBuffer . CreateFromByteArray ( rawdata ) ;
 			}
 		}
 
@@ -86,46 +93,50 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			lock ( this )
 			{
 				//验证盐
-				_hash . GetValueAndReset ( );
+				_hash . GetValueAndReset ( ) ;
 
-				byte [ ] currentSaltHashCode;
-				_hash . Append ( _salt );
-				CryptographicBuffer . CopyToByteArray ( _hash . GetValueAndReset ( ) , out currentSaltHashCode );
+				_hash . Append ( _salt ) ;
+				IBuffer saltHashCode = _hash . GetValueAndReset ( ) ;
 
-				byte [ ] savedSaltHashCode;
-				CryptographicBuffer . CopyToByteArray ( _saltHashCode , out savedSaltHashCode );
+				byte [ ] currentSaltHashCode ;
+				CryptographicBuffer . CopyToByteArray ( saltHashCode , out currentSaltHashCode ) ;
+				currentSaltHashCode = currentSaltHashCode ?? new byte [ ] { } ;
 
 
-				if ( !savedSaltHashCode . SequenceEqual ( currentSaltHashCode ) )
+				byte [ ] savedSaltHashCode ;
+				CryptographicBuffer . CopyToByteArray ( _saltHashCode , out savedSaltHashCode ) ;
+				savedSaltHashCode = savedSaltHashCode ?? new byte [ ] { } ;
+
+
+				if ( ! savedSaltHashCode . SequenceEqual ( currentSaltHashCode ) )
 				{
-					throw new ValueCheckFailedException ( savedSaltHashCode , currentSaltHashCode );
+					throw new ValueCheckFailedException ( savedSaltHashCode , currentSaltHashCode ) ;
 				}
 
 
 				//验证值
+				_hash . Append ( ToIBuffer ( _value ) ) ;
+				_hash . Append ( _salt ) ;
+				IBuffer hashCode = _hash . GetValueAndReset ( ) ;
 
-				byte [ ] currentHashCode;
-				_hash . Append ( ToIBuffer ( _value ) );
-				_hash . Append ( _salt );
-				CryptographicBuffer . CopyToByteArray ( _saltHashCode , out currentHashCode );
+				byte [ ] currentHashCode ;
+				CryptographicBuffer . CopyToByteArray ( hashCode , out currentHashCode ) ;
+				currentHashCode = currentHashCode ?? new byte [ ] { } ;
 
-				byte [ ] savedHashCode;
-				CryptographicBuffer . CopyToByteArray ( _hashCode , out savedHashCode );
+				byte [ ] savedHashCode ;
+				CryptographicBuffer . CopyToByteArray ( _hashCode , out savedHashCode ) ;
+				savedHashCode = savedHashCode ?? new byte [ ] { } ;
 
-				if ( !savedHashCode . SequenceEqual ( currentHashCode ) )
+				if ( ! savedHashCode . SequenceEqual ( currentHashCode ) )
 				{
-
-					throw new ValueCheckFailedException ( currentHashCode , savedHashCode );
+					throw new ValueCheckFailedException ( currentHashCode , savedHashCode ) ;
 				}
 			}
 		}
 
-		public static implicit operator UniReliableValue<T>( T value )
-		{
-			return new UniReliableValue<T> { Value = value };
-		}
+		public static implicit operator UniReliableValue <T> ( T value ) { return new UniReliableValue <T> ( value ) ; }
 
-		public static implicit operator T ( UniReliableValue<T> value ) { return value . Value; }
+		public static implicit operator T ( UniReliableValue <T> value ) { return value . Value ; }
 
 	}
 

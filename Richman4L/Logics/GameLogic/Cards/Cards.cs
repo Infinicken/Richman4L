@@ -16,40 +16,39 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections;
-using System . Collections . Generic;
-using System . Linq;
-using System . Reflection;
-using System . Xml . Linq;
+using System ;
+using System . Collections ;
+using System . Collections . Generic ;
+using System . Linq ;
+using System . Reflection ;
+using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Interoperability . Arguments;
-using WenceyWang . Richman4L . Players;
-using WenceyWang . Richman4L . Weathers;
+using WenceyWang . Richman4L . Interoperability . Arguments ;
+using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Cards
+namespace WenceyWang . Richman4L .Cards
 {
 
-	public abstract class Card : GameObject, IAsset
+	public abstract class Card : GameObject , IAsset
 	{
 
-		public CardStatus Status { get; protected set; }
+		public CardStatus Status { get ; protected set ; }
 
-		public WithAssetObject Owner { get; private set; }
+		public CardType Type { get ; private set ; }
 
-		public CardType Type { get; private set; }
+		public abstract int PriceWhenBuy { get ; set ; }
 
-		public abstract int PriceWhenBuy { get; set; }
+		public abstract int PriceWhenSell { get ; set ; }
 
-		public abstract int PriceWhenSell { get; set; }
+		public static List <CardType> CardTypeList { get ; } = new List <CardType> ( ) ;
 
-		public static List<CardType> CardTypeList { get; } = new List<CardType> ( );
+		public abstract List <ArgumentInfo> Arguments { get ; }
 
-		public abstract bool CanUse ( );
+		public WithAssetObject Owner { get ; private set ; }
 
-		public abstract List<ArgumentInfo> Arguments { get; }
+		public abstract bool CanUse ( ) ;
 
-		public abstract void Use ( ArgumentsContainer arguments );
+		public abstract void Use ( ArgumentsContainer arguments ) ;
 
 		public static Card CrateCard ( CardType cardType )
 		{
@@ -57,18 +56,18 @@ namespace WenceyWang . Richman4L . Cards
 
 			if ( cardType == null )
 			{
-				throw new ArgumentNullException ( nameof ( cardType ) );
+				throw new ArgumentNullException ( nameof ( cardType ) ) ;
 			}
-			if ( !CardTypeList . Contains ( cardType ) )
+			if ( ! CardTypeList . Contains ( cardType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( cardType )} have not being registered" , nameof ( cardType ) );
+				throw new ArgumentException ( $"{nameof ( cardType )} have not being registered" , nameof ( cardType ) ) ;
 			}
 
 			#endregion
 
-			Card card = ( Card ) Activator . CreateInstance ( cardType . EntryType );
+			Card card = ( Card ) Activator . CreateInstance ( cardType . EntryType ) ;
 
-			return card;
+			return card ;
 		}
 
 		[Startup ( nameof ( LoadCards ) )]
@@ -83,46 +82,50 @@ namespace WenceyWang . Richman4L . Cards
 
 			if ( entryType == null )
 			{
-				throw new ArgumentNullException ( nameof ( entryType ) );
+				throw new ArgumentNullException ( nameof ( entryType ) ) ;
 			}
 
-			if ( !typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
+			if ( ! typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 			{
 				throw new ArgumentException ( $"{nameof ( entryType )} should assignable from {nameof ( Card )}" ,
-											nameof ( entryType ) );
+											nameof ( entryType ) ) ;
 			}
 
 			if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
 			{
 				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( CardAttribute )}" ,
-											nameof ( entryType ) );
+											nameof ( entryType ) ) ;
 			}
 
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) );
+				throw new ArgumentNullException ( nameof ( element ) ) ;
 			}
 
 			if ( element . Name != nameof ( entryType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) );
+				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
 			}
 
 			if ( CardTypeList . Any ( type => type . EntryType == entryType ) )
 			{
-				throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" );
+				throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" ) ;
 			}
 
 			#endregion
 
-			CardType cardType = new CardType ( entryType , element );
+			CardType cardType = new CardType ( entryType , element ) ;
 
-			CardTypeList . Add ( cardType );
+			CardTypeList . Add ( cardType ) ;
 
-			return cardType;
+			return cardType ;
 		}
 
 		public static void BuyCard ( CardType type , Player player ) { }
+
+		public decimal MinimumValue { get ; }
+
+		public void GiveTo ( WithAssetObject newOwner ) { throw new NotImplementedException ( ) ; }
 
 	}
 

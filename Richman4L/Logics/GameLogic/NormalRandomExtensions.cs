@@ -1,8 +1,8 @@
-﻿using System ;
-using System . Collections ;
-using System . Linq ;
+﻿using System;
+using System . Collections;
+using System . Linq;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	public static class NormalRandomExtensions
@@ -11,7 +11,7 @@ namespace WenceyWang .Richman4L
 		private static double Normal ( double x , double miu , double sigma )
 		{
 			return 1.0 / Math . Sqrt ( 2 * Math . PI * sigma ) *
-					Math . Exp ( - 1 * ( x - miu ) * ( x - miu ) / ( 2 * sigma * sigma ) ) ;
+					Math . Exp ( -1 * ( x - miu ) * ( x - miu ) / ( 2 * sigma * sigma ) );
 		}
 
 		/// <summary>
@@ -33,29 +33,29 @@ namespace WenceyWang .Richman4L
 		{
 			if ( random == null )
 			{
-				throw new ArgumentNullException ( nameof ( random ) ) ;
+				throw new ArgumentNullException ( nameof ( random ) );
 			}
 			if ( sigma < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( sigma ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof ( sigma ) );
 			}
 			if ( minValue > maxValue )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( maxValue ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof ( maxValue ) );
 			}
 
-			double x ;
-			double dScope ;
-			double y ;
+			double x;
+			double dScope;
+			double y;
 			do
 			{
-				x = minValue + random . NextDouble ( ) * ( maxValue - minValue ) ;
-				y = Normal ( x , miu , sigma ) ;
-				dScope = random . NextDouble ( ) * Normal ( miu , miu , sigma ) ;
+				x = minValue + random . NextDouble ( ) * ( maxValue - minValue );
+				y = Normal ( x , miu , sigma );
+				dScope = random . NextDouble ( ) * Normal ( miu , miu , sigma );
 			}
-			while ( dScope > y ) ;
+			while ( dScope > y );
 
-			return x ;
+			return x;
 		}
 
 		/// <summary>
@@ -73,34 +73,39 @@ namespace WenceyWang .Richman4L
 		{
 			if ( random == null )
 			{
-				throw new ArgumentNullException ( nameof ( random ) ) ;
+				throw new ArgumentNullException ( nameof ( random ) );
 			}
 			if ( sigma < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( sigma ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof ( sigma ) );
 			}
 			if ( minValue > maxValue )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( maxValue ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof ( maxValue ) );
 			}
 
-			double x ;
-			double dScope ;
-			double y ;
+			double x;
+			double dScope;
+			double y;
 			do
 			{
-				x = minValue + random . NextDouble ( ) * ( maxValue - minValue ) ;
-				y = Normal ( x , miu , sigma ) ;
-				dScope = random . NextDouble ( ) * Normal ( miu , miu , sigma ) ;
+				x = minValue + random . NextDouble ( ) * ( maxValue - minValue );
+				y = Normal ( x , miu , sigma );
+				dScope = random . NextDouble ( ) * Normal ( miu , miu , sigma );
 			}
-			while ( dScope > y ) ;
+			while ( dScope > y );
 
-			return Convert . ToInt32 ( x ) ;
+			return Convert . ToInt32 ( x );
 		}
 
 		public static double NextDoubleBetween ( this Random random , double minValue , double maxValue )
 		{
-			return minValue + random . NextDouble ( ) * ( maxValue - minValue ) ;
+			return minValue + random . NextDouble ( ) * ( maxValue - minValue );
+		}
+
+		public static decimal NextDecimalBetween ( this Random random , decimal minValue , decimal maxValue )
+		{
+			return minValue + Convert . ToDecimal ( random . NextDouble ( ) ) * ( maxValue - minValue );
 		}
 
 	}

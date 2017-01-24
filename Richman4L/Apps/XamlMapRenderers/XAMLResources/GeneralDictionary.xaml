@@ -4,4 +4,15 @@
 	<CubicEase x:Key="EasingFunction" EasingMode="EaseInOut" />
 	<Thickness x:Key="MapObjMargin" >-1000</Thickness>
 	<CompositeTransform x:Key="MapObjTransform" ScaleY="0.5" SkewX="-45" />
+	<SolidColorBrush x:Key="TintBlue" Color="#FF5555C1"/>
+	<SolidColorBrush x:Key="WhiteFront" Color="#FFD8D8D8"/>
+	<SolidColorBrush x:Key="WhiteUp" Color="#FFF1F1F1"/>
+	<SolidColorBrush x:Key="WhiteRight" Color="#FFB9B9B9"/>
+	<SolidColorBrush x:Key="GrayFront" Color="#FF727272"/>
+	<SolidColorBrush x:Key="GrayUp" Color="#FF8D8D8D"/>
+	<SolidColorBrush x:Key="GrayRight" Color="#FF5D5D5D"/>
+	<SolidColorBrush x:Key="DarkDrownFront" Color="#FF7A7013"/>
+	<SolidColorBrush x:Key="DarkBrownRight" Color="#FF5F5711"/>
+	<SolidColorBrush x:Key="BrownFront" Color="#FF8B6E0D"/>
+	<SolidColorBrush x:Key="DarkTransparent" Color="#BF464646"/>
 </ResourceDictionary>

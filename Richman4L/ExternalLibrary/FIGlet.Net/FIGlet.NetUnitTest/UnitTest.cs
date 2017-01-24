@@ -5,9 +5,7 @@ using System . Linq ;
 
 using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
-using WenceyWang . FIGlet ;
-
-namespace FIGlet .NetUnitTest
+namespace WenceyWang . FIGlet .UnitTest
 {
 
 	[TestClass]

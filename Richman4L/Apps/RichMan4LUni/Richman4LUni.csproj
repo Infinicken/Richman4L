@@ -118,37 +118,31 @@
     <EmbeddedResource Include="GameResources\Maps\Test.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="ImageResources\WenceySignBlack.png" />
-    <Content Include="ImageResources\WenceySignWhite.png" />
     <Content Include="License\AGPL.htm" />
-    <Content Include="Fonts\ComicSansChinese1.ttf" />
-    <Content Include="Fonts\ComicSansChinese2.ttf" />
-    <Content Include="Fonts\ComicSansChinese3.ttf" />
+    <Content Include="Fonts\ERASMD.TTF" />
     <None Include="Package.StoreAssociation.xml">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Pages\ImageResources\AboutPageDown.png" />
-    <Content Include="Pages\ImageResources\AboutPageUp.png" />
-    <Content Include="Pages\ImageResources\CreateGamePageDown.png" />
-    <Content Include="Pages\ImageResources\HidePageDown.png" />
-    <Content Include="Pages\ImageResources\HidePageUp.png" />
-    <Content Include="Pages\ImageResources\StartUpPageDown.png" />
-    <Content Include="Pages\ImageResources\MainPageDown.png" />
-    <Content Include="Pages\ImageResources\MainPageUp.png" />
-    <Content Include="Pages\ImageResources\PlayerConfigPageDown.png" />
-    <Content Include="Pages\ImageResources\PlayerConfigPageUp.png" />
-    <Content Include="Pages\ImageResources\SettingPageUp.png" />
-    <Content Include="Pages\ImageResources\StartUpPageMiddle.png" />
-    <Content Include="Pages\ImageResources\StartUpPageUp.png" />
-    <Content Include="Pages\ImageResources\LoadingPageDown.png" />
+    <Content Include="UI\Pages\ImageResources\AboutPageDown.png" />
+    <Content Include="UI\Pages\ImageResources\AboutPageUp.png" />
+    <Content Include="UI\Pages\ImageResources\CreateGamePageDown.png" />
+    <Content Include="UI\Pages\ImageResources\HidePageDown.png" />
+    <Content Include="UI\Pages\ImageResources\HidePageUp.png" />
+    <Content Include="UI\Pages\ImageResources\StartUpPageDown.png" />
+    <Content Include="UI\Pages\ImageResources\MainPageDown.png" />
+    <Content Include="UI\Pages\ImageResources\MainPageUp.png" />
+    <Content Include="UI\Pages\ImageResources\PlayerConfigPageDown.png" />
+    <Content Include="UI\Pages\ImageResources\PlayerConfigPageUp.png" />
+    <Content Include="UI\Pages\ImageResources\SettingPageUp.png" />
+    <Content Include="UI\Pages\ImageResources\StartUpPageMiddle.png" />
+    <Content Include="UI\Pages\ImageResources\StartUpPageUp.png" />
+    <Content Include="UI\Pages\ImageResources\LoadingPageDown.png" />
     <Content Include="ReadMe.txt" />
     <Content Include="Fonts\bgothl.ttf" />
-    <Content Include="Fonts\Dynasty.ttf" />
     <Content Include="Fonts\Eternal Call.ttf" />
     <Content Include="Fonts\FontAwesome.otf" />
     <Content Include="Fonts\SentyBrush-lowercase.otf" />
     <Content Include="Fonts\SentyChalk.ttf" />
-    <Content Include="Fonts\SentyPaperCut.ttf" />
     <Content Include="Fonts\SentyTEA.ttf" />
     <Content Include="Fonts\SentyZHAO.ttf" />
     <None Include="project.json" />
@@ -169,76 +163,86 @@
     <Compile Include="Logic\NumberConvert.cs" />
     <Compile Include="Logic\UniReliableValue.cs" />
     <Compile Include="Logic\VisibilityBooleanConverter.cs" />
-    <Compile Include="Pages\AboutPage.xaml.cs">
+    <Compile Include="UI\Controls\CanvasContainer.cs" />
+    <Compile Include="UI\Controls\FlagSymbol.xaml.cs">
+      <DependentUpon>FlagSymbol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Controls\CardControl.xaml.cs">
+    <Compile Include="UI\Controls\CardControl.xaml.cs">
       <DependentUpon>CardControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Controls\DreamRecorderLogo.xaml.cs">
-      <DependentUpon>DreamRecorderLogo.xaml</DependentUpon>
+    <Compile Include="UI\Controls\DreamRecorderDarkLogo.xaml.cs">
+      <DependentUpon>DreamRecorderDarkLogo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Controls\LoadingRing.xaml.cs">
+    <Compile Include="UI\Controls\LoadingRing.xaml.cs">
       <DependentUpon>LoadingRing.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Controls\PigImage.xaml.cs">
+    <Compile Include="UI\Controls\MoneySymbol.xaml.cs">
+      <DependentUpon>MoneySymbol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\PigImage.xaml.cs">
       <DependentUpon>PigImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Controls\PlayerConfigListItem.xaml.cs">
+    <Compile Include="UI\Controls\PlayerConfigListItem.xaml.cs">
       <DependentUpon>PlayerConfigListItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Controls\SayingPresenter.xaml.cs">
+    <Compile Include="UI\Controls\SayingPresenter.xaml.cs">
       <DependentUpon>SayingPresenter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Controls\SettingSlider.xaml.cs">
+    <Compile Include="UI\Controls\SettingSlider.xaml.cs">
       <DependentUpon>SettingSlider.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CreateGamePage.xaml.cs">
+    <Compile Include="UI\Pages\CreateGamePage.xaml.cs">
       <DependentUpon>CreateGamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GamePage.xaml.cs">
+    <Compile Include="UI\Pages\FrameTooSmallPage.xaml.cs">
+      <DependentUpon>FrameTooSmallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AnimatePage.cs" />
-    <Compile Include="Pages\LicensePage.xaml.cs">
+    <Compile Include="UI\Pages\AnimatePage.cs" />
+    <Compile Include="UI\Pages\LicensePage.xaml.cs">
       <DependentUpon>LicensePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoadGamePage.xaml.cs">
+    <Compile Include="UI\Pages\LoadGamePage.xaml.cs">
       <DependentUpon>LoadGamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoadingPage.xaml.cs">
+    <Compile Include="UI\Pages\LoadingPage.xaml.cs">
       <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
+    <Compile Include="UI\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MyWishPage.xaml.cs">
+    <Compile Include="UI\Pages\MyWishPage.xaml.cs">
       <DependentUpon>MyWishPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PhotosensitiveSeizureWarningPage.xaml.cs">
+    <Compile Include="UI\Pages\PhotosensitiveSeizureWarningPage.xaml.cs">
       <DependentUpon>PhotosensitiveSeizureWarningPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PlayerConfigPage.xaml.cs">
+    <Compile Include="UI\Pages\PlayerConfigPage.xaml.cs">
       <DependentUpon>PlayerConfigPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingPage.xaml.cs">
+    <Compile Include="UI\Pages\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StartPage.xaml.cs">
+    <Compile Include="UI\Pages\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\MaterialEase.cs" />
-    <Compile Include="XamlResources\XamlResources.cs" />
+    <Compile Include="UI\XamlResources\XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="UI\StringResources\zh-CN\Resources.resw" />
     <None Include="RichMan4LUni_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ImageResources\MoneyIcon.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -253,133 +257,145 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\AboutPage.xaml">
+    <Page Include="UI\Controls\FlagSymbol.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Controls\CardControl.xaml">
+    <Page Include="UI\Pages\AboutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Controls\DreamRecorderLogo.xaml">
+    <Page Include="UI\Controls\CardControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Controls\LoadingRing.xaml">
+    <Page Include="UI\Controls\DreamRecorderDarkLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Controls\PigImage.xaml">
+    <Page Include="UI\Controls\LoadingRing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Controls\PlayerConfigListItem.xaml">
+    <Page Include="UI\Controls\MoneySymbol.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Controls\SayingPresenter.xaml">
+    <Page Include="UI\Controls\PigImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Controls\SettingSlider.xaml">
+    <Page Include="UI\Controls\PlayerConfigListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CreateGamePage.xaml">
+    <Page Include="UI\Controls\SayingPresenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\GamePage.xaml">
+    <Page Include="UI\Controls\SettingSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LicensePage.xaml">
+    <Page Include="UI\Pages\CreateGamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LoadGamePage.xaml">
+    <Page Include="UI\Pages\FrameTooSmallPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LoadingPage.xaml">
+    <Page Include="UI\Pages\GamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MainPage.xaml">
+    <Page Include="UI\Pages\LicensePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MyWishPage.xaml">
+    <Page Include="UI\Pages\LoadGamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PhotosensitiveSeizureWarningPage.xaml">
+    <Page Include="UI\Pages\LoadingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PlayerConfigPage.xaml">
+    <Page Include="UI\Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingPage.xaml">
+    <Page Include="UI\Pages\MyWishPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\StartPage.xaml">
+    <Page Include="UI\Pages\PhotosensitiveSeizureWarningPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="XamlResources\Brushs.xaml">
+    <Page Include="UI\Pages\PlayerConfigPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\EasingFunction.xaml">
+    <Page Include="UI\Pages\SettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\Fonts.xaml">
+    <Page Include="UI\Pages\StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\RightArrowTextBlockButtonStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
-    <Page Include="XamlResources\LeftArrowTextBlockButtonStyle.xaml">
+    <Page Include="UI\XamlResources\Brushs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\ListBoxStyle.xaml">
+    <Page Include="UI\XamlResources\EasingFunction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\RoundedRectangleButtonStyle.xaml">
+    <Page Include="UI\XamlResources\Fonts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\SettingToggleSwitchStyle.xaml">
+    <Page Include="UI\XamlResources\RightArrowTextBlockButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UI\XamlResources\LeftArrowTextBlockButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\TextBlockButtonStyle.xaml">
+    <Page Include="UI\XamlResources\ListBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\Thickness.xaml">
+    <Page Include="UI\XamlResources\RoundedRectangleButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="XamlResources\ToggleSwitchTemplate.xaml">
+    <Page Include="UI\XamlResources\SettingToggleSwitchStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UI\XamlResources\TextBlockButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UI\XamlResources\Thickness.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UI\XamlResources\ToggleSwitchTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -389,6 +405,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
+      <Name>Behaviors SDK %28XAML%29</Name>
+    </SDKReference>
     <SDKReference Include="WindowsDesktop, Version=10.0.14393.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>

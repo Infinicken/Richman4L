@@ -29,8 +29,8 @@ namespace WenceyWang . Richman4L .UnitTests
 			GameSaying . LoadSayings ( ) ;
 			GameSaying . Sayings . Sort ( ( x , y ) =>
 										{
-											int contentLenthDiff = x . Content . Length -
-																	y . Content . Length ;
+											int contentLenthDiff = x .ContentLenth -
+																	y . ContentLenth ;
 											if ( contentLenthDiff == 0 )
 											{
 												int lenthDiff = x . ToXElement ( ) . ToString ( ) . Length - y . ToXElement ( ) . ToString ( ) . Length ;

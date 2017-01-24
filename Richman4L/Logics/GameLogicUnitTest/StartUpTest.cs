@@ -12,10 +12,10 @@ namespace WenceyWang . Richman4L .UnitTests
 	{
 
 		[TestMethod]
-		public void GetTaskTest ( ) { Startup . GetAllTask ( ) ; }
+		public void GetTaskTest ( ) { Startup . RunAllTask ( ) ; }
 
 		[TestMethod]
-		public void RunTaskTest ( ) { Startup . GetAllTask ( ) . Wait ( ) ; }
+		public void RunTaskTest ( ) { Startup . RunAllTask ( ) . Wait ( ) ; }
 
 	}
 

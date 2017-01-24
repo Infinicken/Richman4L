@@ -19,9 +19,9 @@ namespace WenceyWang . Richman4L . Interoperability .Arguments
 		public ArgumentValueDefineDomain DefineDomain { get ; }
 
 		public ArgumentInfo ( string name ,
-											string introduction ,
-											Type type ,
-											ArgumentValueDefineDomain defineDomain )
+							string introduction ,
+							Type type ,
+							ArgumentValueDefineDomain defineDomain )
 		{
 			if ( name == null )
 			{
@@ -39,7 +39,7 @@ namespace WenceyWang . Richman4L . Interoperability .Arguments
 			{
 				throw new ArgumentNullException ( nameof ( defineDomain ) ) ;
 			}
-			
+
 
 			Name = name ;
 			Introduction = introduction ;

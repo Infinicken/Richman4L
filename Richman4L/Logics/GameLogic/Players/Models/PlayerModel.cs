@@ -37,6 +37,8 @@ namespace WenceyWang . Richman4L . Players .Models
 
 		public Uri Model { get ; set ; }
 
+		public DateTime BirthDay { get ; set ; }
+
 		public List <PlayerSaying> SayingWhenGained { get ; } = new List <PlayerSaying> ( ) ;
 
 		public List <PlayerSaying> SayingWhenHarmed { get ; } = new List <PlayerSaying> ( ) ;

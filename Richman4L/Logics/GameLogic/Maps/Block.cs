@@ -33,6 +33,8 @@ namespace WenceyWang . Richman4L .Maps
 	public abstract class Block : MapObject
 	{
 
+		public long Id => ( X + Y ) * ( X + Y + 1 ) / 2 + Y ;
+
 		/// <summary>
 		///     表示当前区块的积水量
 		/// </summary>

@@ -1,9 +1,10 @@
-﻿using System;
-using System . Collections;
-using System . Linq;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
-using Microsoft . VisualStudio . TestTools . UnitTesting;
-using WenceyWang . Richman4L . Maps . Buildings;
+using Microsoft . VisualStudio . TestTools . UnitTesting ;
+
+using WenceyWang . Richman4L . Maps . Buildings ;
 
 namespace WenceyWang . Richman4L . UnitTests . Maps .Buildings
 {

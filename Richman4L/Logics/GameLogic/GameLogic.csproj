@@ -153,7 +153,21 @@
     <Compile Include="Players\Events\PlayerReceiveCardEventArgs.cs" />
     <Compile Include="Players\Events\PlayerTakeAwayStockEventArgs.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Security\HashCheckFailedException.cs" />
+    <Compile Include="Resources\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Resource.en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Resource.zh-CN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.zh-CN.resx</DependentUpon>
+    </Compile>
     <Compile Include="Security\ReliableValue.cs" />
     <Compile Include="Security\ValueCheckFailedException.cs" />
     <Compile Include="Startup.cs" />
@@ -225,6 +239,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Players\Models\Resources\Index.xml" />
+    <EmbeddedResource Include="Resources\Resource.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.zh-CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Players\Models\Resources\Sudiao.xml" />
@@ -262,7 +288,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Stocks\Resources\Index.xml" />
-    <Content Include="Stocks\Resources\Test.xml" />
+    <Content Include="Stocks\Resources\Test.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="GameTitleResources.xsd">

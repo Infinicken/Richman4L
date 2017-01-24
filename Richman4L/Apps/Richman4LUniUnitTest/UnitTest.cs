@@ -7,7 +7,9 @@ using System . Text ;
 
 using Microsoft . VisualStudio . TestPlatform . UnitTestFramework ;
 
-using WenceyWang . Richman4L . Apps . Uni . Pages ;
+using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
+using WenceyWang . Richman4L . Security ;
 
 namespace WenceyWang . Richman4L . Apps . Uni .UnitTests
 {
@@ -17,7 +19,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .UnitTests
 	{
 
 		[TestMethod]
-		public void TestMethod ( )
+		public void PageColorTest ( )
 		{
 			IEnumerable <TypeInfo> types = typeof ( AnimatePage ) . GetTypeInfo ( ) .
 																	Assembly . DefinedTypes . Where (
@@ -36,6 +38,22 @@ namespace WenceyWang . Richman4L . Apps . Uni .UnitTests
 			}
 
 			Assert . IsTrue ( passed , message . ToString ( ) ) ;
+		}
+
+		[TestMethod]
+		public void UniReliviableValueTest ( )
+		{
+			ReliableValue . RegisImplement ( typeof ( UniReliableValue <> ) ) ;
+
+			Random random = new Random ( ) ;
+
+			for ( int i = 0 ; i < 100 ; i++ )
+			{
+				int value = random . Next ( ) ;
+				ReliableValue <int> checkedValue = value ;
+
+				Assert . AreEqual ( value , ( int ) checkedValue ) ;
+			}
 		}
 
 	}

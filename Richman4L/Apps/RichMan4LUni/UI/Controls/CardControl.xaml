@@ -1,0 +1,37 @@
+﻿<UserControl
+	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Controls.CardControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	d:DesignHeight="300"
+	d:DesignWidth="400" Loaded="UserControl_Loaded" >
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="10" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="10" />
+			<RowDefinition />
+			<RowDefinition Height="10" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="10" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="10" />
+		</Grid.ColumnDefinitions>
+		<Image x:Name="ImageImage" Margin="10,0" Grid.Row="1" Grid.RowSpan="5" />
+		<TextBlock x:Name="TitleTextBlock" Grid.Column="1" Margin="10,0,0,0" Grid.Row="1" TextWrapping="Wrap"
+					Text="TextBlock" FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" />
+		<TextBlock x:Name="TextTextBlock" Grid.Column="1" Margin="10,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock"
+					FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" />
+		<Button x:Name="UseButton" Content="使用" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="5"
+				VerticalAlignment="Stretch" MinWidth="0" MinHeight="35"
+				FontFamily="{StaticResource Font}" FontSize="18.667" Background="#CCFF5050"
+				Click="UseButton_Click" Style="{StaticResource RoundedRectangleButtonStyle}" />
+
+	</Grid>
+</UserControl>

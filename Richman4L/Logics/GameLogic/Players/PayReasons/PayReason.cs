@@ -7,7 +7,7 @@ using WenceyWang . Richman4L . Players . Events ;
 namespace WenceyWang . Richman4L . Players .PayReasons
 {
 
-	public class PayReason : PlayerEventArgs
+	public class PayReason 
 	{
 
 		public string Reason { get ; }

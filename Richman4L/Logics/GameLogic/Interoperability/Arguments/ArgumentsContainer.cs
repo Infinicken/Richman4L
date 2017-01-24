@@ -13,8 +13,6 @@ namespace WenceyWang . Richman4L . Interoperability .Arguments
 
 		public ArgumentsContainer ( params object [ ] args ) { Arguments = new List <object> ( args ) ; }
 
-		
-
 	}
 
 }

@@ -37,8 +37,6 @@ namespace WenceyWang . Richman4L . Maps .Roads
 	public abstract class Road : Block
 	{
 
-		public long Id { get ; }
-
 		public bool BlockMoving => Buffs . Any ( buff => buff . BlockMoving ) ;
 
 		public List <RoadBuff> Buffs { get ; } = new List <RoadBuff> ( ) ;
@@ -54,16 +52,9 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 			playerStayCount = new List <PlayerCount> ( ) ;
 			PlayerStayCount = new ReadOnlyCollection <PlayerCount> ( playerStayCount ) ;
+
 			PassCount = 0 ;
 			StayCount = 0 ;
-			try
-			{
-				Id = Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value ) ;
-			}
-			catch ( NullReferenceException e )
-			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
-			}
 		}
 
 		public virtual void Pass ( Player player , MoveType moveType )
@@ -113,23 +104,6 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		public abstract bool CanEnterFrom ( Road road ) ;
 
 		public override void StartDay ( GameDate nextDate ) { }
-
-		//protected override void Dispose ( bool disposing )
-		//{
-		//	if ( ! DisposedValue )
-		//	{
-		//		if ( disposing )
-		//		{
-		//			foreach ( RoadBuff item in Buffs )
-		//			{
-		//				item . Dispose ( ) ;
-		//			}
-		//		}
-		//	}
-
-		//	base . Dispose ( disposing ) ;
-		//}
-
 
 		public override void EndToday ( ) { }
 

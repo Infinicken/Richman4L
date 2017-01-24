@@ -16,11 +16,12 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections;
-using System . Linq;
-using WenceyWang . Richman4L . Maps;
-using WenceyWang . Richman4L . Maps . Roads;
+using System ;
+using System . Collections ;
+using System . Linq ;
+
+using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Maps . Roads ;
 
 namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer .Roads
 {

@@ -1,45 +1,46 @@
-﻿using System;
-using System . Collections . Generic;
-using System . Linq;
-using System . Text;
-using System . Threading . Tasks;
+﻿using System ;
+using System . Collections ;
+using System . Collections . Generic ;
+using System . Linq ;
 
-namespace WenceyWang . Richman4L . Interoperability . Arguments
+namespace WenceyWang . Richman4L . Interoperability .Arguments
 {
+
 	internal static class ArgumentCheckHelper
 	{
-		internal static void CheckArgument ( this List<ArgumentInfo> info , ArgumentsContainer container )
+
+		internal static void CheckArgument ( this List <ArgumentInfo> info , ArgumentsContainer container )
 		{
 			if ( info == null )
 			{
-				throw new ArgumentNullException ( nameof ( info ) );
+				throw new ArgumentNullException ( nameof ( info ) ) ;
 			}
 			if ( container == null )
 			{
-				throw new ArgumentNullException ( nameof ( container ) );
+				throw new ArgumentNullException ( nameof ( container ) ) ;
 			}
 
 			if ( info . Count != container . Arguments . Count )
 			{
-				throw new ArgumentException ( );
+				throw new ArgumentException ( ) ;
 			}
 
 			for ( int i = 0 ; i < info . Count ; i++ )
 			{
-				ArgumentInfo argumentInfo = info [ i ];
-				object argument = container . Arguments [ i ];
+				ArgumentInfo argumentInfo = info [ i ] ;
+				object argument = container . Arguments [ i ] ;
 
 				if ( argumentInfo . Type != argument . GetType ( ) )
 				{
-					throw new ArgumentException ( );
+					throw new ArgumentException ( ) ;
 				}
-				if ( !argumentInfo . DefineDomain . IsValid ( argument ) )
+				if ( ! argumentInfo . DefineDomain . IsValid ( argument ) )
 				{
-					throw new ArgumentException ( );
+					throw new ArgumentException ( ) ;
 				}
-
 			}
-
 		}
+
 	}
+
 }

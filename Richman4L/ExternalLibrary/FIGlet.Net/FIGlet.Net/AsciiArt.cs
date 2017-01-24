@@ -23,9 +23,7 @@ namespace WenceyWang .FIGlet
 
 		public AsciiArt ( string text ) : this ( text , FIGletFont . Defult ) { }
 
-		public AsciiArt ( string text , FIGletFont font ) : this ( text , font , CharacterWidth . Fitted ) { }
-
-		public AsciiArt ( string text , FIGletFont font , CharacterWidth width )
+		public AsciiArt ( string text , FIGletFont font , CharacterWidth width = CharacterWidth . Fitted )
 		{
 			if ( text == null )
 			{

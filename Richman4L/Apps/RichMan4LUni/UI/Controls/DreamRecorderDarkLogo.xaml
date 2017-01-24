@@ -1,0 +1,81 @@
+﻿<controls:CanvasContainer
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.UI.Controls"
+	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Controls.DreamRecorderDarkLogo"
+	mc:Ignorable="d" >
+
+	<Canvas Width="1636.824" Height="501.932" HorizontalAlignment="Center" VerticalAlignment="Center"
+			RenderTransformOrigin="0.5,0.5" >
+
+		<Canvas Width="1636.82" Height="501.932" >
+
+			<Canvas Height="501.932" Width="1636.82" >
+
+
+				<Path Fill="#ffd599b5" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
+
+
+				<Path Fill="#ffd086a7" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
+
+
+				<Path Fill="#ffbd6a9d" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
+
+
+				<Path Fill="#ffbd6a9d" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
+
+
+				<Path Fill="#ffa34b82" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
+
+
+				<Path Fill="#ffe77b7e" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
+
+
+				<Path Fill="#ffe77b7e" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
+
+
+				<Path Fill="#ffe89487" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
+
+
+				<Path Fill="#ffe7a391" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
+
+
+				<Path Fill="#ffd56674" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
+
+
+				<Path Fill="#ff592959" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
+
+
+				<Path Fill="#ff432456" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
+
+
+				<Path Fill="#ff432456" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
+
+
+				<Path Fill="#ff301e49" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
+
+				<Path Fill="#ff231b42" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
+
+				<Path Fill="#ff833869" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
+
+
+				<Path Fill="#ff9f5770" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
+
+				<Path Fill="#ff6a3063" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
+
+				<Path Opacity="0.2" Fill="#ff000000"
+					Data="F1 M 259.172,0.000 L 123.233,124.181 L 83.658,304.004 L 259.172,359.637 L 434.686,304.004 L 395.110,124.181 L 259.172,0.000 Z" />
+
+			</Canvas>
+
+			<!-- Layer 1/Dream Recorder -->
+			<TextBlock Foreground="White" Canvas.Left="587.343" Canvas.Top="147.796" FontSize="145.00"
+						FontFamily="ms-appx:/Fonts/ERASMD.TTF#Eras ITC" Margin="0" >
+				Dream Recorder
+			</TextBlock>
+
+		</Canvas>
+	</Canvas>
+</controls:CanvasContainer>

@@ -21,15 +21,11 @@ using System . Collections ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Buffs . AreaBuffs ;
-using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
-using WenceyWang . Richman4L . Buffs . RoadBuffs ;
-using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Cards ;
-using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . InfomationCenter ;
+using WenceyWang . Richman4L . Interoperability . Arguments ;
 using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Stocks ;
+using WenceyWang . Richman4L . Players . Models ;
 
 namespace WenceyWang . Richman4L .GameEnviroment
 {
@@ -42,24 +38,15 @@ namespace WenceyWang . Richman4L .GameEnviroment
 
 		public Player Target { get ; internal set ; }
 
-
-		public abstract Stock StockPicker ( ) ;
-
-		public abstract Player PlayerPicker ( Collection <Player> playerList ) ;
-
-		public abstract Road RoadPicker ( ) ;
-
-		public abstract Area AreaPicker ( ) ;
-
-		public abstract AreaBuff AreaBuffPicker ( Area area ) ;
-
-		public abstract PlayerBuff PlayerBuffPicker ( Player player ) ;
-
-		public abstract RoadBuff RoadBuffPicker ( Road road ) ;
-
-		public abstract StockBuff StockBuffPicker ( Stock stock ) ;
+		public abstract object Picker ( ArgumentInfo info ) ;
 
 		public abstract void ShowDice ( DiceType diceType , int number ) ;
+
+		public abstract void ShowEvent ( Event @event ) ;
+
+		public abstract void PlayerSay ( Player player , PlayerSaying saying ) ;
+
+		public abstract void ShowFlag ( bool flaged ) ;
 
 
 		public abstract ReadOnlyCollection <CardType> CardStore ( Player player , ReadOnlyCollection <CardType> canBuy ) ;

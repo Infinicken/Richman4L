@@ -135,7 +135,10 @@ namespace WenceyWang . Richman4L .Stocks
 			if ( lowerPrice >= Price . TodaysLow )
 			{
 				throw new ArgumentException (
-					$"{nameof ( lowerPrice )} should less than {nameof ( Price )}.{nameof ( Price . TodaysLow )}" ) ;
+					string . Format ( "{0} should less than {1}.{2}" ,
+									nameof ( lowerPrice ) ,
+									nameof ( Price ) ,
+									nameof ( Price . TodaysLow ) ) ) ;
 			}
 
 			Price = new StockPrice ( Price . OpenPrice ,
@@ -151,7 +154,10 @@ namespace WenceyWang . Richman4L .Stocks
 			if ( higherPrice <= Price . TodaysLow )
 			{
 				throw new ArgumentException (
-					$"{nameof ( higherPrice )} should greater than {nameof ( Price )}.{nameof ( Price . TodaysHigh )}" ) ;
+					string . Format ( "{0} should greater than {1}.{2}" ,
+									nameof ( higherPrice ) ,
+									nameof ( Price ) ,
+									nameof ( Price . TodaysHigh ) ) ) ;
 			}
 
 			Price = new StockPrice ( Price . OpenPrice ,
@@ -172,18 +178,18 @@ namespace WenceyWang . Richman4L .Stocks
 			Buffs . Add ( buff ) ;
 		}
 
-		//protected override void Dispose ( bool disposing )
-		//{
-		//	if ( ! DisposedValue )
-		//	{
-		//		if ( disposing )
-		//		{
-		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
-		//		}
-		//		base . Dispose ( disposing ) ;
-		//	}
-
 		//}
+		//	}
+		//		base . Dispose ( disposing ) ;
+		//		}
+		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
+		//		{
+		//		if ( disposing )
+		//	{
+		//	if ( ! DisposedValue )
+		//{
+
+		//protected override void Dispose ( bool disposing )
 	}
 
 }

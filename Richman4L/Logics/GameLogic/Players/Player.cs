@@ -43,61 +43,56 @@ namespace WenceyWang . Richman4L . Players
 
 	public class BuyAssertRequest
 	{
-		public IAsset Asset { get ; }
 
-		public decimal? Price { get ; }
+		public IAsset Asset { get; }
 
-		
+		public decimal Price { get; }
 
 	}
 
-	public interface  IAsset
+	public interface IAsset
 	{
-		WithAssetObject Owner { get ; }
 
+		WithAssetObject Owner { get; }
+
+		decimal MinimumValue { get; }
+
+		void GiveTo ( WithAssetObject newOwner );
+
+	}
+
+	public sealed class AssetTransactionAgreement
+	{
+		public WithAssetObject PartyA { get; private set; }
+
+		public IAsset PartyAProvide { get; private set; }
+
+		public WithAssetObject PartyB { get; private set; }
+
+		public decimal PartyBProvide { get; set; }
 
 	}
 
 	public abstract class WithAssetObject : GameObject
 	{
+
 		public decimal Cash { get; protected set; }
 
 		public decimal DemandDeposits { get; protected set; }
 
-		public void ReceiveBuyAssertRequest ( )
-		{
+		public abstract decimal ReceiveBuyAssertRequest ( IAsset asset );
 
-		}
+		public abstract void RequestPay ( WithAssetObject source , long amount , PayReason reason );
 
-		
-		public void ReceiveAsset()
-		{
+		public abstract void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason );
 
-		}
+		public abstract void ReceiveCash ( WithAssetObject source , PayReason reason , decimal amount );
 
-		public void ReceiveCash ( WithAssetObject source , PayReason reason , decimal amount )
-		{
+		public abstract void ReceiveCheck ( WithAssetObject source , decimal amount , PayReason reason );
 
-		}
+		public abstract void ReceiveTransfer ( WithAssetObject source , decimal amount , PayReason reason );
 
-		public void ReceiveCheck ( )
-		{
 
-		}
-
-		public void ReceiveTransfer ( )
-		{
-
-		}
-
-		public override void EndToday ( )
-		{
-
-		}
-
-		public override void StartDay ( GameDate nextDate )
-		{
-		}
 	}
 
 	//Todo:玩家拥有的区块列表
@@ -379,6 +374,8 @@ namespace WenceyWang . Richman4L . Players
 			ChangeStateEvent?.Invoke ( this , new PlayerChangeStateEventArgs ( oldState , State , duration ) );
 		}
 
+		public Guid Guid { get ; private set ; }
+
 		[CanBeNull]
 		public event EventHandler<PlayerChangeStateEventArgs> ChangeStateEvent;
 
@@ -533,7 +530,6 @@ namespace WenceyWang . Richman4L . Players
 		[CanBeNull]
 		public event EventHandler<PlayerBuyAreaEventArgs> BuyAreaEvent;
 
-		public void RequestPay ( long amount , PayReason reason ) { }
 
 		#region ReceiveStock
 
@@ -684,6 +680,18 @@ namespace WenceyWang . Richman4L . Players
 
 		[CanBeNull]
 		public event EventHandler<PlayerReceiveCardEventArgs> ReceiveCardEvent;
+
+		public override decimal ReceiveBuyAssertRequest ( IAsset asset ) { throw new NotImplementedException ( ) ; }
+
+		public override void RequestPay ( WithAssetObject source , long amount , PayReason reason ) { throw new NotImplementedException ( ) ; }
+
+		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason ) { throw new NotImplementedException ( ) ; }
+
+		public override void ReceiveCash ( WithAssetObject source , PayReason reason , decimal amount ) { throw new NotImplementedException ( ) ; }
+
+		public override void ReceiveCheck ( WithAssetObject source , decimal amount , PayReason reason ) { throw new NotImplementedException ( ) ; }
+
+		public override void ReceiveTransfer ( WithAssetObject source , decimal amount , PayReason reason ) { throw new NotImplementedException ( ) ; }
 
 		#endregion
 	}

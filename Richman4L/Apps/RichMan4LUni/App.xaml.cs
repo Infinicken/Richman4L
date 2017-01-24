@@ -1,21 +1,21 @@
-﻿using System;
-using System . Collections;
-using System . Diagnostics;
-using System . Linq;
+﻿using System ;
+using System . Collections ;
+using System . Diagnostics ;
+using System . Linq ;
 
-using Windows . ApplicationModel;
-using Windows . ApplicationModel . Activation;
-using Windows . UI . ViewManagement;
-using Windows . UI . Xaml;
-using Windows . UI . Xaml . Controls;
-using Windows . UI . Xaml . Navigation;
+using Windows . ApplicationModel ;
+using Windows . ApplicationModel . Activation ;
+using Windows . UI . ViewManagement ;
+using Windows . UI . Xaml ;
+using Windows . UI . Xaml . Controls ;
+using Windows . UI . Xaml . Navigation ;
 
-using WenceyWang . Richman4L . Apps . Uni . Pages;
-using WenceyWang . Richman4L . Properties;
+using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
+using WenceyWang . Richman4L . Properties ;
 
 //using Microsoft . ApplicationInsights ;
 
-namespace WenceyWang . Richman4L . Apps . Uni
+namespace WenceyWang . Richman4L . Apps .Uni
 {
 
 	/// <summary>
@@ -24,17 +24,29 @@ namespace WenceyWang . Richman4L . Apps . Uni
 	public sealed partial class App : Application
 	{
 
-		public new static App Current { get; private set; }
+		public new static App Current { get ; private set ; }
 
 		internal string WindowTitle
 		{
-			get { return ApplicationView . GetForCurrentView ( ) . Title; }
+			get { return ApplicationView . GetForCurrentView ( ) . Title ; }
 			set
 			{
-				ApplicationView . GetForCurrentView ( ) . Title = value;
-				TitleChanged?.Invoke ( this , EventArgs . Empty );
+				ApplicationView . GetForCurrentView ( ) . Title = value ;
+				TitleChanged ? . Invoke ( this , EventArgs . Empty ) ;
 			}
 		}
+
+		public Grid ViewRoot
+		{
+			get { return Window . Current . Content as Grid ; }
+			private set { Window . Current . Content = value ; }
+		}
+
+		public Frame WindowTooSmallFrame { get ; private set ; }
+
+		public Frame RootFrame { get ; private set ; }
+
+		public bool IsInTooSmallState { get ; private set ; }
 
 		/// <summary>
 		///     初始化单一实例应用程序对象。这是执行的创作代码的第一行，
@@ -42,27 +54,20 @@ namespace WenceyWang . Richman4L . Apps . Uni
 		/// </summary>
 		public App ( )
 		{
-			Current = this;
+			Current = this ;
 
-			//WindowsAppInitializer . InitializeAsync (
-			//	WindowsCollectors . Metadata |
-			//	WindowsCollectors . Session ) ;
-			InitializeComponent ( );
-			Suspending += OnSuspending;
-			UnhandledException += OnUnhandledException;
-			Resuming += OnResuming;
+			InitializeComponent ( ) ;
+			Suspending += OnSuspending ;
+			UnhandledException += OnUnhandledException ;
+			Resuming += OnResuming ;
 		}
 
 		[CanBeNull]
-		public event EventHandler TitleChanged;
+		public event EventHandler TitleChanged ;
 
 		private void OnResuming ( object sender , object e ) { }
 
-		private void OnUnhandledException ( object sender , UnhandledExceptionEventArgs e ) { e . Handled = false; }
-
-		public Frame CurrentFrame => Window . Current . Content as Frame;
-
-		public Frame RootFrame { get; private set; }
+		private void OnUnhandledException ( object sender , UnhandledExceptionEventArgs e ) { e . Handled = false ; }
 
 		/// <summary>
 		///     在应用程序由最终用户正常启动时进行调用。
@@ -71,59 +76,77 @@ namespace WenceyWang . Richman4L . Apps . Uni
 		/// <param name="e">有关启动请求和过程的详细信息。</param>
 		protected override void OnLaunched ( LaunchActivatedEventArgs e )
 		{
-
 #if DEBUG
 			if ( Debugger . IsAttached )
 			{
-				DebugSettings . EnableFrameRateCounter = true;
+				DebugSettings . EnableFrameRateCounter = true ;
 			}
 #endif
 
-			RootFrame = Window . Current . Content as Frame;
-
-			// 不要在窗口已包含内容时重复应用程序初始化，
-			// 只需确保窗口处于活动状态
 			if ( RootFrame == null )
 			{
-				// 创建要充当导航上下文的框架，并导航到第一页
-				RootFrame = new Frame ( );
+				RootFrame = new Frame ( ) ;
 
-				RootFrame . NavigationFailed += OnNavigationFailed;
+				RootFrame . NavigationFailed += OnNavigationFailed ;
+				RootFrame . SizeChanged += Frame_SizeChanged ;
 
 				if ( e . PreviousExecutionState == ApplicationExecutionState . Terminated )
 				{
 					//TODO: 从之前挂起的应用程序加载状态
 				}
 
-				// 将框架放在当前窗口中
-				Window . Current . Content = RootFrame;
+				RootFrame . Navigate ( typeof ( StartPage ) , e . Arguments ) ;
 			}
 
-			if ( RootFrame . Content == null )
+			if ( WindowTooSmallFrame == null )
 			{
-				RootFrame . Navigate ( typeof ( StartPage ) , e . Arguments );
+				WindowTooSmallFrame = new Frame ( ) ;
+				WindowTooSmallFrame . SizeChanged += Frame_SizeChanged ;
+
+				WindowTooSmallFrame . Navigate ( typeof ( FrameTooSmallPage ) ) ;
 			}
 
+			if ( ViewRoot == null )
+			{
+				ViewRoot = new Grid ( ) ;
+				ViewRoot . Children . Add ( RootFrame ) ;
+				ViewRoot . Children . Add ( WindowTooSmallFrame ) ;
+			}
 
-			RootFrame . SizeChanged += Frame_SizeChanged;
+			SetVisibility ( ) ;
 
 			// 确保当前窗口处于活动状态
-			Window . Current . Activate ( );
+			Window . Current . Activate ( ) ;
 
-			WindowTitle = "Starting";
+			WindowTitle = "Starting" ;
 		}
 
-		private void Frame_SizeChanged ( object sender , SizeChangedEventArgs e )
+		private void Frame_SizeChanged ( object sender , SizeChangedEventArgs e ) { SetVisibility ( ) ; }
+
+
+		private void SetVisibility ( )
 		{
-			//Todo:检查画面大小
-			if ( ( Math . Max ( CurrentFrame . RenderSize . Height , CurrentFrame . Width ) < 640 ) | ( Math . Min ( CurrentFrame . RenderSize . Height , CurrentFrame . Width ) < 360 ) )
+			if ( ( Math . Max ( ViewRoot . RenderSize . Height , ViewRoot . RenderSize . Width ) < 640 ) |
+				( Math . Min ( ViewRoot . RenderSize . Height , ViewRoot . RenderSize . Width ) < 360 ) )
 			{
 				//Too small to display
-
-
+				if ( ! IsInTooSmallState )
+				{
+					RootFrame . Visibility = Visibility . Collapsed ;
+					WindowTooSmallFrame . Visibility = Visibility . Visible ;
+					IsInTooSmallState = true ;
+				}
+			}
+			else
+			{
+				if ( IsInTooSmallState )
+				{
+					RootFrame . Visibility = Visibility . Visible ;
+					WindowTooSmallFrame . Visibility = Visibility . Collapsed ;
+					IsInTooSmallState = false ;
+				}
 			}
 		}
-
 
 		/// <summary>
 		///     导航到特定页失败时调用
@@ -132,7 +155,7 @@ namespace WenceyWang . Richman4L . Apps . Uni
 		/// <param name="e">有关导航失败的详细信息</param>
 		private void OnNavigationFailed ( object sender , NavigationFailedEventArgs e )
 		{
-			throw new Exception ( "Failed to load Page " + e . SourcePageType . FullName );
+			throw new Exception ( "Failed to load Page " + e . SourcePageType . FullName ) ;
 		}
 
 
@@ -145,10 +168,10 @@ namespace WenceyWang . Richman4L . Apps . Uni
 		/// <param name="e">有关挂起请求的详细信息。</param>
 		private void OnSuspending ( object sender , SuspendingEventArgs e )
 		{
-			SuspendingDeferral deferral = e . SuspendingOperation . GetDeferral ( );
+			SuspendingDeferral deferral = e . SuspendingOperation . GetDeferral ( ) ;
 
 			//TODO: 保存应用程序状态并停止任何后台活动
-			deferral . Complete ( );
+			deferral . Complete ( ) ;
 		}
 
 	}

@@ -120,6 +120,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MapObjectRenderer\Buildings\Hell.xaml.cs">
+      <DependentUpon>Hell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MapObjectRenderer\EmptyBlockRenderer.xaml.cs">
       <DependentUpon>EmptyBlockRenderer.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
     <EmbeddedResource Include="Properties\XamlMapRenderer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MapObjectRenderer\Buildings\Hell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MapObjectRenderer\Buildings\SmallHouseRenderer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -16,16 +16,17 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections;
-using System . Linq;
-using System . Text;
+using System ;
+using System . Collections ;
+using System . Linq ;
+using System . Text ;
 
-using Microsoft . VisualStudio . TestTools . UnitTesting;
+using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
-using WenceyWang . Richman4L . Apps . CharacterMapRenderers;
-using WenceyWang . Richman4L . Maps;
-using ConsoleColor = System . ConsoleColor;
+using WenceyWang . Richman4L . Apps . CharacterMapRenderers ;
+using WenceyWang . Richman4L . Maps ;
+
+using ConsoleColor = System . ConsoleColor ;
 
 namespace WenceyWang . Richman4L . UnitTests .Maps
 {

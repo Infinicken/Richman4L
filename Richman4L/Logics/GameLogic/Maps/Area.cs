@@ -16,74 +16,71 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System ;
-using System . Collections ;
-using System . Collections . Generic ;
-using System . Collections . ObjectModel ;
-using System . Linq ;
-using System . Xml . Linq ;
+using System;
+using System . Collections;
+using System . Collections . Generic;
+using System . Collections . ObjectModel;
+using System . Linq;
+using System . Xml . Linq;
 
-using WenceyWang . Richman4L . Buffs . AreaBuffs ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Maps . Buildings ;
-using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Buffs . AreaBuffs;
+using WenceyWang . Richman4L . Calendars;
+using WenceyWang . Richman4L . Maps . Buildings;
+using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Players;
+using WenceyWang . Richman4L . Properties;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
-	public abstract class Area : Block
+	public abstract class Area : Block, IAsset
 	{
 
-		private AreaRoad _position ;
+		private AreaRoad _position;
 
-		private long _positionId ;
-
-		public long Id { get ; }
+		private long _positionId;
 
 		[NotNull]
 		[ItemNotNull]
-		public List <AreaBuff> Buffs { get ; set ; } = new List <AreaBuff> ( ) ;
+		public List<AreaBuff> Buffs { get; set; } = new List<AreaBuff> ( );
 
-		public abstract long MoneyCostWhenCrossed { get ; protected set ; }
+		public abstract long MoneyCostWhenCrossed { get; protected set; }
 
-		public abstract double BuildingResistance { get ; protected set ; }
+		public abstract double BuildingResistance { get; protected set; }
 
 		public AreaRoad Position
 		{
-			get { return _position ?? ( _position = ( AreaRoad ) Map . Currnet . GetRoad ( _positionId ) ) ; }
+			get { return _position ?? ( _position = ( AreaRoad ) Map . Currnet . GetRoad ( _positionId ) ); }
 			set
 			{
-				_positionId = value . Id ;
-				_position = value ;
+				_positionId = value . Id;
+				_position = value;
 			}
 		}
 
-		public Player Owner { get ; set ; }
+		public WithAssetObject Owner { get; set; }
 
-		public Building Building { get ; private set ; }
+		public Building Building { get; private set; }
 
-		public abstract long Price { get ; protected set ; }
+		public abstract long Price { get; protected set; }
 
 		[NotNull]
-		public abstract ReadOnlyCollection <BuildingType> AvailableBuildings { get ; }
+		public abstract ReadOnlyCollection<BuildingType> AvailableBuildings { get; }
 
 		public Area ( [NotNull] XElement resource ) : base ( resource )
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) ) ;
+				throw new ArgumentNullException ( nameof ( resource ) );
 			}
 
 			try
 			{
-				Id = Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value ) ;
-				_positionId = Convert . ToInt64 ( resource . Attribute ( nameof ( Position ) ) . Value ) ;
+				_positionId = Convert . ToInt64 ( resource . Attribute ( nameof ( Position ) ) . Value );
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e );
 			}
 		}
 
@@ -91,44 +88,56 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof ( player ) );
 			}
 
-			Building ? . Stay ( player ) ;
+			Building?.Stay ( player );
 		}
 
 		public void Pass ( [NotNull] Player player )
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof ( player ) );
 			}
 
-			Building ? . Pass ( player ) ;
+			Building?.Pass ( player );
 		}
 
 		public override void StartDay ( GameDate nextDate ) { }
 
 		public bool IsBuildingAvailable ( [NotNull] BuildingType buildingType )
-			=> AvailableBuildings . Contains ( buildingType ) ;
+			=> AvailableBuildings . Contains ( buildingType );
 
 		public void BuildBuildiing ( [NotNull] Building building )
 		{
 			if ( building == null )
 			{
-				throw new ArgumentNullException ( nameof ( building ) ) ;
+				throw new ArgumentNullException ( nameof ( building ) );
 			}
 
-			if ( ! IsBuildingAvailable ( building . Type ) )
+			if ( !IsBuildingAvailable ( building . Type ) )
 			{
-				throw new ArgumentException ( $"{nameof ( building )} is not valid for this area" , nameof ( building ) ) ;
+				throw new ArgumentException ( $"{nameof ( building )} is not valid for this area" , nameof ( building ) );
 			}
 			if ( Building != null )
 			{
-				throw new InvalidOperationException ( "this area have building" ) ;
+				throw new InvalidOperationException ( "this area have building" );
 			}
 
-			Building = building ;
+			Building = building;
+		}
+
+		public decimal MinimumValue { get; }
+
+		public void GiveTo ( WithAssetObject newOwner )
+		{
+			if ( newOwner == null )
+			{
+				throw new ArgumentNullException ( nameof ( newOwner ) ) ;
+			}
+
+			Owner = newOwner;
 		}
 
 	}

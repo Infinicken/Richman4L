@@ -4,6 +4,8 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Threading . Tasks ;
 
+using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
+
 namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
 
@@ -14,7 +16,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 
 		public Task TaskToWait { get ; }
 
-		public Action ToDoNext { get ; }
+		public Action <LoadingPage> ToDoNext { get ; }
 
 		public int LoadingProcess
 		{
@@ -31,7 +33,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 
 		public List <LoadingStatus> LoadingStatusList { get ; } = new List <LoadingStatus> ( ) ;
 
-		public LoadingPageArgument ( Task taskToWait , Action toDoNext )
+		public LoadingPageArgument ( Task taskToWait , Action <LoadingPage> toDoNext )
 		{
 			if ( taskToWait == null )
 			{

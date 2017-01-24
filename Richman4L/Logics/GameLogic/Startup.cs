@@ -24,7 +24,7 @@ namespace WenceyWang .Richman4L
 	public static class Startup
 	{
 
-		public static Task GetAllTask ( )
+		public static Task RunAllTask ( )
 		{
 			List <Task> tasks = new List <Task> ( ) ;
 			foreach ( TypeInfo type in

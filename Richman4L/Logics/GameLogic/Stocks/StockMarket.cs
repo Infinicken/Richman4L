@@ -279,9 +279,13 @@ namespace WenceyWang . Richman4L .Stocks
 
 	public enum StockMarketState
 	{
-		Running,
-		NotRunning,
+
+		Running ,
+
+		NotRunning ,
+
 		Restricted
+
 	}
 
 }
