@@ -15,12 +15,12 @@
 * along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
-using System ;
-using System . Collections ;
-using System . Linq ;
-using System . Text ;
+using System;
+using System . Collections;
+using System . Linq;
+using System . Text;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
@@ -31,38 +31,38 @@ namespace WenceyWang .FoggyConsole
 	internal static class FogConsole
 	{
 
-		private static ConsoleColor CurrentForegroundColor { get ; set ; }
+		private static ConsoleColor CurrentForegroundColor { get; set; }
 
-		private static ConsoleColor CurrentBackgroundColor { get ; set ; }
+		private static ConsoleColor CurrentBackgroundColor { get; set; }
 
 		public static void Draw ( Point position , ConsoleArea area )
 		{
-			Draw ( new Rectangle ( position , area . Size ) , area . Content ) ;
+			Draw ( new Rectangle ( position , area . Size ) , area . Content );
 		}
 
 		public static void Draw ( Rectangle position , ConsoleChar [ , ] content )
 		{
-			StringBuilder stringBuilder = new StringBuilder ( ) ;
-			for ( int y = 0 ; y < position . Height ; y++ )
+			StringBuilder stringBuilder = new StringBuilder ( );
+			for ( int y = Math . Max ( -position . Y , 0 ); y < position . Height; y++ )
 			{
-				Console . SetCursorPosition ( position . Left , position . Top + y ) ;
-				for ( int x = 0 ; x < position . Width ; x++ )
+				Console . SetCursorPosition ( Math . Max ( position . Left , 0 ) , Math . Max ( position . Top + y , 0 ) );
+				for ( int x = Math . Max ( -position . X , 0 ); x < position . Width; x++ )
 				{
-					ConsoleColor targetBackgroundColor = content [ x , y ] . BackgroundColor ;
-					ConsoleColor targetForegroundColor = content [ x , y ] . ForegroundColor ;
+					ConsoleColor targetBackgroundColor = content [ x , y ] . BackgroundColor;
+					ConsoleColor targetForegroundColor = content [ x , y ] . ForegroundColor;
 					if ( CurrentBackgroundColor != targetBackgroundColor ||
 						CurrentForegroundColor != targetForegroundColor )
 					{
-						Console . Write ( stringBuilder . ToString ( ) ) ;
-						stringBuilder . Clear ( ) ;
-						Console . BackgroundColor = CurrentBackgroundColor = targetBackgroundColor ;
-						Console . ForegroundColor = CurrentForegroundColor = targetForegroundColor ;
+						Console . Write ( stringBuilder . ToString ( ) );
+						stringBuilder . Clear ( );
+						Console . BackgroundColor = CurrentBackgroundColor = targetBackgroundColor;
+						Console . ForegroundColor = CurrentForegroundColor = targetForegroundColor;
 					}
-					stringBuilder . Append ( content [ x , y ] . Character ) ;
+					stringBuilder . Append ( content [ x , y ] . Character );
 				}
 
-				Console . Write ( stringBuilder . ToString ( ) ) ;
-				stringBuilder . Clear ( ) ;
+				Console . Write ( stringBuilder . ToString ( ) );
+				stringBuilder . Clear ( );
 			}
 		}
 

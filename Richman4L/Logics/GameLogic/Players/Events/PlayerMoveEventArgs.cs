@@ -16,31 +16,31 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections;
-using System . Collections . ObjectModel;
-using System . Linq;
+using System ;
+using System . Collections ;
+using System . Collections . ObjectModel ;
+using System . Linq ;
 
-using WenceyWang . Richman4L . Maps . Roads;
+using WenceyWang . Richman4L . Maps . Roads ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Players .Events
 {
 
 	public sealed class PlayerMoveEventArgs : PlayerEventArgs
 	{
 
-		public Road OldPosition => MovePath . Route . First ( );
+		public Road OldPosition => MovePath . Route . First ( ) ;
 
-		public Road NewPosition => MovePath . Terminal;
+		public Road NewPosition => MovePath . Terminal ;
 
-		public Path MovePath { get; }
+		public Path MovePath { get ; }
 
-		public ReadOnlyCollection<int> DiceResult { get; }
+		public ReadOnlyCollection <int> DiceResult { get ; }
 
-		public PlayerMoveEventArgs ( Path movePath , ReadOnlyCollection<int> diceResult )
+		public PlayerMoveEventArgs ( Path movePath , ReadOnlyCollection <int> diceResult )
 		{
-			MovePath = movePath;
-			DiceResult = diceResult;
+			MovePath = movePath ;
+			DiceResult = diceResult ;
 		}
 
 	}

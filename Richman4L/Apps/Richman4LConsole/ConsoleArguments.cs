@@ -19,10 +19,10 @@ namespace WenceyWang . Richman4L . Apps .Console
 		[Option ( DefaultValue = false , Required = false )]
 		public bool Setup { get ; set ; }
 
+		//public bool ShowLicense { get; set; }
+
 
 		//[Option ( DefaultValue = false , Required = false )]
-
-		//public bool ShowLicense { get; set; }
 	}
 
 }
