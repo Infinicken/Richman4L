@@ -35,6 +35,6 @@
 	<SolidColorBrush x:Key="TransparentLightRedBrush" Color="{StaticResource TransparentLightRed}" />
 	<SolidColorBrush x:Key="LightRedBrush" Color="{StaticResource LightRed}" />
 	<SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}" />
-	<SolidColorBrush x:Key="GroundBlue" Color="Green"/>
+	<SolidColorBrush x:Key="GroundBlue" Color="Green" />
 
 </ResourceDictionary>

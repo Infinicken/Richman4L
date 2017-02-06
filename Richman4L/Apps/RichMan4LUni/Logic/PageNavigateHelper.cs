@@ -34,7 +34,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 										KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 1 ) ) ,
 										Value = AnimatePage . GetPageColor <T> ( ) ,
 										EasingFunction = UI . XamlResources . Resources . EasingFunction
-			} ) ;
+									} ) ;
 
 			page . GetLeaveStoryboard . Children . Add ( ca ) ;
 			page . GetLeaveStoryboard . Completed += ( obj , ev ) =>

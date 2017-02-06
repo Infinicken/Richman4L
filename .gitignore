@@ -1,7 +1,7 @@
 /$tf/
+/$git/
 /BuildProcessTemplates/
 *.tfignore
 *.vssscc
 *.vspscc
-/GitBackup/
 /.vs/

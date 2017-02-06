@@ -48,10 +48,13 @@
 				<Rectangle Grid.ColumnSpan="10" Fill="{StaticResource GroundBlue}" Grid.RowSpan="10" Width="120" Height="120"
 							Margin="0"
 							StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="4" Grid.Column="3" Fill="{StaticResource GrayUp}" Grid.Row="8" d:LayoutOverrides="VerticalAlignment"
+				<Rectangle Grid.ColumnSpan="4" Grid.Column="3" Fill="{StaticResource GrayUp}" Grid.Row="8"
+							d:LayoutOverrides="VerticalAlignment"
 							StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="1" Grid.RowSpan="7" StrokeThickness="0" />
-				<Rectangle Grid.Column="4" Fill="{StaticResource GrayUp}" Grid.Row="7" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="1"
+							Grid.RowSpan="7" StrokeThickness="0" />
+				<Rectangle Grid.Column="4" Fill="{StaticResource GrayUp}" Grid.Row="7" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
@@ -142,7 +145,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="4"
+				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"
+							Grid.RowSpan="4"
 							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
@@ -238,7 +242,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="7" d:LayoutOverrides="VerticalAlignment"
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="7"
+							d:LayoutOverrides="VerticalAlignment"
 							Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
@@ -317,8 +322,10 @@
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
-				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkDrownFront}" Grid.RowSpan="2" Grid.Column="3" Grid.Row="6" StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="6" Fill="{StaticResource WhiteFront}" Grid.Column="2" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
+				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkDrownFront}" Grid.RowSpan="2" Grid.Column="3" Grid.Row="6"
+							StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="6" Fill="{StaticResource WhiteFront}" Grid.Column="2" Grid.Row="5" StrokeThickness="0"
+							Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
 				Margin="{StaticResource MapObjMargin}" >
@@ -349,7 +356,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Fill="{StaticResource WhiteRight}" Grid.RowSpan="2" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" StrokeThickness="0" />
+				<Rectangle Fill="{StaticResource WhiteRight}" Grid.RowSpan="2" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
 				UseLayoutRounding="False" d:LayoutRounding="Auto" >
@@ -380,9 +388,11 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="8" d:LayoutOverrides="VerticalAlignment"
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="8"
+							d:LayoutOverrides="VerticalAlignment"
 							StrokeThickness="0" />
-				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="2" d:LayoutOverrides="VerticalAlignment" Grid.RowSpan="6"
+				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="2" d:LayoutOverrides="VerticalAlignment"
+							Grid.RowSpan="6"
 							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
@@ -414,7 +424,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkTransparent}" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Right" Width="54" />
+				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkTransparent}" Grid.Row="8" Grid.Column="3"
+							HorizontalAlignment="Right" Width="54" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
 				UseLayoutRounding="False" d:LayoutRounding="Auto" >
@@ -479,11 +490,14 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="2" Fill="{StaticResource WhiteRight}" Grid.Row="8" StrokeThickness="0" Margin="0,0,6,0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="2" Fill="{StaticResource WhiteRight}" Grid.Row="8" StrokeThickness="0"
+							Margin="0,0,6,0" />
 				<Rectangle Grid.Column="2" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" Grid.RowSpan="2" StrokeThickness="0" />
-				<Rectangle Grid.Column="7" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="2" />
+				<Rectangle Grid.Column="7" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0"
+							Grid.ColumnSpan="2" />
 				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
-				<Rectangle Grid.Column="7" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="2" Margin="0,6,0,0" />
+				<Rectangle Grid.Column="7" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="2"
+							Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
@@ -545,7 +559,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="8" Fill="{StaticResource DarkTransparent}" Grid.Row="8" Width="6" StrokeThickness="0" Margin="0,0,6,0" />
+				<Rectangle Grid.Column="8" Fill="{StaticResource DarkTransparent}" Grid.Row="8" Width="6" StrokeThickness="0"
+							Margin="0,0,6,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
@@ -575,7 +590,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Path Grid.ColumnSpan="2" Grid.Column="7" Data="M0,0 L24,0 L24,30 L24,60 L12,60 L12,30 L0,30 z" Fill="{StaticResource GrayFront}"
+				<Path Grid.ColumnSpan="2" Grid.Column="7" Data="M0,0 L24,0 L24,30 L24,60 L12,60 L12,30 L0,30 z"
+					Fill="{StaticResource GrayFront}"
 					Grid.Row="3" Grid.RowSpan="5" Stretch="Fill" StrokeThickness="0" UseLayoutRounding="False" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
@@ -607,7 +623,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Fill="{StaticResource GrayUp}" Grid.RowSpan="2" Grid.Column="7" Grid.Row="5" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="2" Fill="{StaticResource GrayUp}" Grid.RowSpan="2" Grid.Column="7" Grid.Row="5"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto"
 				Margin="{StaticResource MapObjMargin}" >
@@ -638,7 +655,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Fill="{StaticResource GrayRight}" Margin="0" Grid.RowSpan="4" StrokeThickness="0" Grid.Column="1" Grid.Row="6" />
+				<Rectangle Fill="{StaticResource GrayRight}" Margin="0" Grid.RowSpan="4" StrokeThickness="0" Grid.Column="1"
+							Grid.Row="6" />
 			</Grid>
 		</Grid>
 		<Grid Width="120" Height="60" HorizontalAlignment="Center" d:LayoutOverrides="Width"
@@ -671,10 +689,13 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="10" Fill="Green" Grid.RowSpan="10" Width="120" Height="120" Margin="0"
 							StrokeThickness="0" />
-				<Rectangle Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="3" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"
+				<Rectangle Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="3" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0"
 							Grid.RowSpan="4" />
-				<Rectangle Grid.Column="2" Fill="{StaticResource GrayUp}" Grid.Row="4" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="7" Grid.Column="2" Fill="{StaticResource DarkTransparent}" Grid.Row="1" Grid.RowSpan="8" StrokeThickness="0" />
+				<Rectangle Grid.Column="2" Fill="{StaticResource GrayUp}" Grid.Row="4" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="7" Grid.Column="2" Fill="{StaticResource DarkTransparent}" Grid.Row="1"
+							Grid.RowSpan="8" StrokeThickness="0" />
 				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="6" StrokeThickness="0" />
 				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="4" StrokeThickness="0" />
 			</Grid>
@@ -707,9 +728,11 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="7" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"
+				<Rectangle Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="7" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0"
 							Grid.RowSpan="2" />
-				<Rectangle Grid.Column="2" Fill="{StaticResource GrayUp}" Grid.Row="8" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"
+				<Rectangle Grid.Column="2" Fill="{StaticResource GrayUp}" Grid.Row="8" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0"
 							Grid.ColumnSpan="6" />
 				<Rectangle Grid.Column="8" Fill="{StaticResource WhiteUp}" Grid.Row="1" StrokeThickness="0" Grid.RowSpan="2" />
 			</Grid>
@@ -742,11 +765,15 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="2" Fill="{StaticResource WhiteRight}" Grid.Row="8" StrokeThickness="0" Margin="0,0,6,0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="2" Fill="{StaticResource WhiteRight}" Grid.Row="8" StrokeThickness="0"
+							Margin="0,0,6,0" />
 				<Rectangle Grid.Column="2" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" Grid.RowSpan="2" StrokeThickness="0" />
-				<Rectangle Grid.Column="5" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="4" />
-				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Height="6" VerticalAlignment="Bottom" />
-				<Rectangle Grid.Column="5" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4" Margin="0,6,0,0" />
+				<Rectangle Grid.Column="5" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0"
+							Grid.ColumnSpan="4" />
+				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Height="6"
+							VerticalAlignment="Bottom" />
+				<Rectangle Grid.Column="5" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4"
+							Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -777,8 +804,10 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="7" Grid.Column="2" Fill="{StaticResource WhiteUp}" Grid.RowSpan="6" StrokeThickness="0" Grid.Row="2" />
-				<Rectangle Grid.ColumnSpan="5" Grid.Column="4" Fill="{StaticResource WhiteUp}" StrokeThickness="0" RenderTransformOrigin="0.5,0.5"
+				<Rectangle Grid.ColumnSpan="7" Grid.Column="2" Fill="{StaticResource WhiteUp}" Grid.RowSpan="6" StrokeThickness="0"
+							Grid.Row="2" />
+				<Rectangle Grid.ColumnSpan="5" Grid.Column="4" Fill="{StaticResource WhiteUp}" StrokeThickness="0"
+							RenderTransformOrigin="0.5,0.5"
 							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="1" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
@@ -814,7 +843,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkTransparent}" Grid.Row="8" Grid.Column="3" Margin="6,0,0,0" />
+				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkTransparent}" Grid.Row="8" Grid.Column="3"
+							Margin="6,0,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -880,7 +910,8 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.Column="1" Fill="{StaticResource GrayFront}" Grid.Row="3" Grid.RowSpan="4" StrokeThickness="0" />
-				<Rectangle Fill="{StaticResource GrayFront}" Margin="0,0,0,6" StrokeThickness="0" Grid.Column="2" Grid.Row="3" Grid.RowSpan="3" />
+				<Rectangle Fill="{StaticResource GrayFront}" Margin="0,0,0,6" StrokeThickness="0" Grid.Column="2" Grid.Row="3"
+							Grid.RowSpan="3" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -911,7 +942,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="5" Fill="{StaticResource GrayUp}" Grid.Row="8" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"
+				<Rectangle Grid.Column="5" Fill="{StaticResource GrayUp}" Grid.Row="8" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0"
 							Grid.ColumnSpan="4" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
@@ -1005,7 +1037,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="7" Fill="{StaticResource DarkTransparent}" Margin="0,0,6,0" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="2" />
+				<Rectangle Grid.Column="7" Fill="{StaticResource DarkTransparent}" Margin="0,0,6,0" Grid.Row="8"
+							StrokeThickness="0" Grid.ColumnSpan="2" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1040,7 +1073,8 @@
 				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteFront}" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" />
 				<Rectangle Grid.Column="4" Fill="{StaticResource WhiteFront}" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" />
 				<Rectangle Grid.Column="6" Fill="{StaticResource WhiteFront}" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" />
-				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="7" Margin="0,6,0,0" />
+				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="7"
+							Margin="0,6,0,0" />
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource WhiteFront}" Grid.Row="9" StrokeThickness="0" />
 				<Path Grid.ColumnSpan="7" Grid.Column="2"
 					Data="M4,1 L7,1 L7,2 L4,2 z M2,1 L3,1 L3,2 L2,2 z M0,0 L7,0 L7,1 L1,1 L1,2 L0,2 L0,1 z"
@@ -1075,7 +1109,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="{StaticResource GrayUp}" Grid.Row="7" Grid.RowSpan="2" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="{StaticResource GrayUp}" Grid.Row="7" Grid.RowSpan="2"
+							StrokeThickness="0" />
 			</Grid>
 		</Grid>
 		<Grid Width="120" Height="60" Margin="{StaticResource MapObjMargin}" HorizontalAlignment="Center"
@@ -1108,10 +1143,13 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="10" Fill="Green" Grid.RowSpan="10" Width="120" Height="120" Margin="0"
 							StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="1" Grid.RowSpan="7" StrokeThickness="0" />
-				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="3" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"
+				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="1"
+							Grid.RowSpan="7" StrokeThickness="0" />
+				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="3" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0"
 							Grid.RowSpan="4" />
-				<Rectangle Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="5" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" />
+				<Rectangle Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="5" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1178,7 +1216,8 @@
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
-				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkDrownFront}" Grid.RowSpan="2" Grid.Column="3" Grid.Row="6" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="5" Fill="{StaticResource DarkDrownFront}" Grid.RowSpan="2" Grid.Column="3" Grid.Row="6"
+							StrokeThickness="0" />
 				<Rectangle Fill="{StaticResource WhiteRight}" Grid.Column="5" RenderTransformOrigin="0.5,0.5"
 							d:LayoutOverrides="TopPosition, BottomPosition" Grid.ColumnSpan="3" Grid.Row="8" Grid.RowSpan="2"
 							StrokeThickness="0" >
@@ -1217,7 +1256,8 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.Column="8" Fill="{StaticResource GrayUp}" Grid.Row="1" Grid.RowSpan="2" StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="3" Grid.Column="4" Fill="{StaticResource WhiteUp}" Grid.Row="7" Grid.RowSpan="2" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="3" Grid.Column="4" Fill="{StaticResource WhiteUp}" Grid.Row="7" Grid.RowSpan="2"
+							StrokeThickness="0" />
 				<Rectangle Grid.ColumnSpan="3" Grid.Column="1" Fill="{StaticResource WhiteUp}" Grid.Row="8" StrokeThickness="0" />
 				<Rectangle Grid.Column="1" Fill="{StaticResource WhiteUp}" Grid.Row="4" Grid.RowSpan="4" StrokeThickness="0" />
 			</Grid>
@@ -1249,7 +1289,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="3" Grid.Column="4" Fill="{StaticResource DarkTransparent}" Margin="6,0" Grid.Row="8" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="3" Grid.Column="4" Fill="{StaticResource DarkTransparent}" Margin="6,0" Grid.Row="8"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
@@ -1279,7 +1320,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" Grid.RowSpan="2" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" Grid.RowSpan="2"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1310,7 +1352,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="7" d:LayoutOverrides="VerticalAlignment"
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="7"
+							d:LayoutOverrides="VerticalAlignment"
 							Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
@@ -1341,7 +1384,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="5" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="3" Margin="0,6,0,0" />
+				<Rectangle Grid.Column="5" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="3"
+							Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1372,7 +1416,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="6" Fill="{StaticResource WhiteRight}" Grid.Column="2" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
+				<Rectangle Grid.ColumnSpan="6" Fill="{StaticResource WhiteRight}" Grid.Column="2" Grid.Row="5" StrokeThickness="0"
+							Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
@@ -1435,7 +1480,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Fill="{StaticResource GrayRight}" Grid.RowSpan="4" StrokeThickness="0" Grid.Column="7" Grid.Row="6" Grid.ColumnSpan="2" />
+				<Rectangle Fill="{StaticResource GrayRight}" Grid.RowSpan="4" StrokeThickness="0" Grid.Column="7" Grid.Row="6"
+							Grid.ColumnSpan="2" />
 				<Rectangle Grid.Column="1" Fill="{StaticResource WhiteFront}" Grid.Row="9" StrokeThickness="0" Grid.ColumnSpan="6" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
@@ -1467,7 +1513,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Fill="{StaticResource WhiteUp}" StrokeThickness="0" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Grid.Row="2"
+				<Rectangle Fill="{StaticResource WhiteUp}" StrokeThickness="0" Grid.Column="1" RenderTransformOrigin="0.5,0.5"
+							Grid.Row="2"
 							d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin, TopPosition, BottomPosition"
 							Grid.ColumnSpan="4" >
 					<Rectangle.RenderTransform>
@@ -1504,7 +1551,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayFront}" Grid.Row="3" Grid.RowSpan="3" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayFront}" Grid.Row="3" Grid.RowSpan="3"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
@@ -1535,7 +1583,8 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.Column="8" Fill="{StaticResource GrayRight}" Grid.Row="9" StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="{StaticResource GrayRight}" Grid.Row="3" Grid.RowSpan="3" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="{StaticResource GrayRight}" Grid.Row="3" Grid.RowSpan="3"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1566,14 +1615,17 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="7" Grid.Column="1" Fill="{StaticResource WhiteUp}" Grid.Row="3" Grid.RowSpan="5" StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="4" Fill="{StaticResource WhiteUp}" StrokeThickness="0" Grid.Column="1" RenderTransformOrigin="0.5,0.5"
+				<Rectangle Grid.ColumnSpan="7" Grid.Column="1" Fill="{StaticResource WhiteUp}" Grid.Row="3" Grid.RowSpan="5"
+							StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="4" Fill="{StaticResource WhiteUp}" StrokeThickness="0" Grid.Column="1"
+							RenderTransformOrigin="0.5,0.5"
 							d:LayoutOverrides="TopPosition, BottomPosition" Grid.Row="8" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
 					</Rectangle.RenderTransform>
 				</Rectangle>
-				<Rectangle Fill="{StaticResource WhiteUp}" StrokeThickness="0" Grid.Column="7" RenderTransformOrigin="0.5,0.5" Grid.Row="2"
+				<Rectangle Fill="{StaticResource WhiteUp}" StrokeThickness="0" Grid.Column="7" RenderTransformOrigin="0.5,0.5"
+							Grid.Row="2"
 							d:LayoutOverrides="VerticalAlignment, TopMargin, BottomMargin, TopPosition, BottomPosition" >
 					<Rectangle.RenderTransform>
 						<CompositeTransform ScaleY="-1" />
@@ -1609,7 +1661,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="2" Margin="6,0" />
+				<Rectangle Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0"
+							Grid.ColumnSpan="2" Margin="6,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1671,7 +1724,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Margin="6,0" Grid.Row="8" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Margin="6,0" Grid.Row="8"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 				<Grid.RenderTransform>
@@ -1701,8 +1755,10 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0" Margin="0,6,0,0" />
-				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" Grid.RowSpan="2" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0"
+							Margin="0,6,0,0" />
+				<Rectangle Grid.ColumnSpan="4" Grid.Column="1" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" Grid.RowSpan="2"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1733,7 +1789,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="{StaticResource GrayUp}" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="5" Fill="{StaticResource GrayUp}" Grid.Row="1"
+							d:LayoutOverrides="VerticalAlignment"
 							Grid.RowSpan="2" StrokeThickness="0" />
 			</Grid>
 		</Grid>
@@ -1767,12 +1824,15 @@
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.ColumnSpan="10" Fill="Green" Grid.RowSpan="10" Width="120" Height="120" Margin="0"
 							StrokeThickness="0" />
-				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="2" Grid.RowSpan="7" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="8" Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="2"
+							Grid.RowSpan="7" StrokeThickness="0" />
 				<Rectangle Grid.Column="3" Fill="{StaticResource GrayUp}" Grid.Row="8" StrokeThickness="0" />
 				<Rectangle Grid.Column="5" Fill="{StaticResource GrayUp}" Grid.Row="8" StrokeThickness="0" />
-				<Rectangle Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="3" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0"
+				<Rectangle Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="3" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0"
 							Grid.RowSpan="4" />
-				<Rectangle Grid.Column="2" Fill="{StaticResource GrayUp}" Grid.Row="4" d:LayoutOverrides="VerticalAlignment" StrokeThickness="0" />
+				<Rectangle Grid.Column="2" Fill="{StaticResource GrayUp}" Grid.Row="4" d:LayoutOverrides="VerticalAlignment"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
@@ -1896,8 +1956,10 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="{StaticResource GrayFront}" Grid.Row="3" Grid.RowSpan="4" StrokeThickness="0" />
-				<Rectangle Grid.Column="8" Fill="{StaticResource GrayFront}" Grid.Row="5" StrokeThickness="0" Grid.RowSpan="4" Grid.ColumnSpan="2" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="{StaticResource GrayFront}" Grid.Row="3" Grid.RowSpan="4"
+							StrokeThickness="0" />
+				<Rectangle Grid.Column="8" Fill="{StaticResource GrayFront}" Grid.Row="5" StrokeThickness="0" Grid.RowSpan="4"
+							Grid.ColumnSpan="2" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -1961,9 +2023,12 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="3" Fill="{StaticResource DarkTransparent}" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0" />
-				<Rectangle Grid.Column="5" Fill="{StaticResource DarkTransparent}" Grid.Row="7" Grid.RowSpan="3" StrokeThickness="0" />
-				<Rectangle Grid.Column="7" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="2" Margin="0,0,6,0" />
+				<Rectangle Grid.Column="3" Fill="{StaticResource DarkTransparent}" Grid.Row="7" Grid.RowSpan="3"
+							StrokeThickness="0" />
+				<Rectangle Grid.Column="5" Fill="{StaticResource DarkTransparent}" Grid.Row="7" Grid.RowSpan="3"
+							StrokeThickness="0" />
+				<Rectangle Grid.Column="7" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0"
+							Grid.ColumnSpan="2" Margin="0,0,6,0" />
 
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
@@ -2026,7 +2091,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="4" Margin="6,0" />
+				<Rectangle Grid.Column="1" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0"
+							Grid.ColumnSpan="4" Margin="6,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -2061,7 +2127,8 @@
 				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteFront}" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" />
 				<Rectangle Grid.Column="4" Fill="{StaticResource WhiteFront}" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" />
 				<Rectangle Grid.Column="6" Fill="{StaticResource WhiteFront}" Grid.Row="8" Grid.RowSpan="2" StrokeThickness="0" />
-				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="7" Margin="0,6,0,0" />
+				<Rectangle Grid.Column="2" Fill="{StaticResource WhiteFront}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="7"
+							Margin="0,6,0,0" />
 				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource WhiteFront}" Grid.Row="9" StrokeThickness="0" />
 				<Path Grid.ColumnSpan="7" Grid.Column="2"
 					Data="M4,2 L7,2 L7,2 L4,2 z M2,2 L3,2 L3,2 L2,2 z M0,0 L7,0 L7,2 L2,2 L2,2 L0,2 L0,2 z"
@@ -2096,7 +2163,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="4" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0" Grid.ColumnSpan="3" Margin="6,0" />
+				<Rectangle Grid.Column="4" Fill="{StaticResource DarkTransparent}" Grid.Row="8" StrokeThickness="0"
+							Grid.ColumnSpan="3" Margin="6,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -2127,7 +2195,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="1" Grid.RowSpan="2" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayUp}" Grid.Row="1" Grid.RowSpan="2"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -2158,8 +2227,10 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="4" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="2" />
-				<Rectangle Grid.Column="4" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4" Margin="0,6,0,0" />
+				<Rectangle Grid.Column="4" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0"
+							Grid.ColumnSpan="3" Grid.RowSpan="2" />
+				<Rectangle Grid.Column="4" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="4"
+							Margin="0,6,0,0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -2191,9 +2262,12 @@
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<Rectangle Grid.Column="1" Fill="{StaticResource WhiteRight}" Grid.Row="9" StrokeThickness="0" Grid.ColumnSpan="6" />
-				<Rectangle Grid.Column="1" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0" Grid.ColumnSpan="3" Grid.RowSpan="2" />
-				<Rectangle Grid.Column="1" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="3" Margin="0,6,0,0" />
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayRight}" Grid.Row="6" Grid.RowSpan="4" StrokeThickness="0" />
+				<Rectangle Grid.Column="1" Fill="{StaticResource DarkBrownRight}" Grid.Row="6" StrokeThickness="0"
+							Grid.ColumnSpan="3" Grid.RowSpan="2" />
+				<Rectangle Grid.Column="1" Fill="{StaticResource WhiteRight}" Grid.Row="5" StrokeThickness="0" Grid.ColumnSpan="3"
+							Margin="0,6,0,0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="7" Fill="{StaticResource GrayRight}" Grid.Row="6" Grid.RowSpan="4"
+							StrokeThickness="0" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
 				d:LayoutRounding="Auto" >
@@ -2258,7 +2332,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="{StaticResource GrayRight}" Grid.Row="2" Grid.RowSpan="3" StrokeThickness="0"
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="{StaticResource GrayRight}" Grid.Row="2" Grid.RowSpan="3"
+							StrokeThickness="0"
 							Margin="0,0,0,6" />
 			</Grid>
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
@@ -2290,7 +2365,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="3" Grid.RowSpan="2" StrokeThickness="0" />
+				<Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="{StaticResource GrayUp}" Grid.Row="3" Grid.RowSpan="2"
+							StrokeThickness="0" />
 			</Grid>
 		</Grid>
 

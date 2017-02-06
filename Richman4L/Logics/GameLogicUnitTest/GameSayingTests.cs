@@ -29,7 +29,7 @@ namespace WenceyWang . Richman4L .UnitTests
 			GameSaying . LoadSayings ( ) ;
 			GameSaying . Sayings . Sort ( ( x , y ) =>
 										{
-											int contentLenthDiff = x .ContentLenth -
+											int contentLenthDiff = x . ContentLenth -
 																	y . ContentLenth ;
 											if ( contentLenthDiff == 0 )
 											{

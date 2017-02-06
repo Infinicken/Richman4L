@@ -16,11 +16,11 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
-using System . Collections;
-using System . Linq;
+using System ;
+using System . Collections ;
+using System . Linq ;
 
-namespace WenceyWang . Richman4L . Players
+namespace WenceyWang . Richman4L .Players
 {
 
 	public static class PlayerBuffExtensions
@@ -30,20 +30,20 @@ namespace WenceyWang . Richman4L . Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 
-			return player . Buffs . Any ( item => item . BlockBuyArea );
+			return player . Buffs . Any ( item => item . BlockBuyArea ) ;
 		}
 
 		public static bool IsBlockBuyStock ( this Player player )
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 
-			return player . Buffs . Any ( item => item . BlockBuyStock );
+			return player . Buffs . Any ( item => item . BlockBuyStock ) ;
 		}
 
 
@@ -51,42 +51,41 @@ namespace WenceyWang . Richman4L . Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 
-			return player . Buffs . Any ( item => item . BlockGetCharge );
+			return player . Buffs . Any ( item => item . BlockGetCharge ) ;
 		}
-
 
 
 		public static bool IsBlockMoving ( this Player player )
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 
-			return player . Buffs . Any ( item => item . BlockMoving );
+			return player . Buffs . Any ( item => item . BlockMoving ) ;
 		}
 
 		public static bool IsBlockSellStock ( this Player player )
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 
-			return player . Buffs . Any ( item => item . BlockSellStock );
+			return player . Buffs . Any ( item => item . BlockSellStock ) ;
 		}
 
 		public static bool IsFreeOfCharge ( this Player player )
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) );
+				throw new ArgumentNullException ( nameof ( player ) ) ;
 			}
 
-			return player . Buffs . Any ( item => item . FreeOfCharge );
+			return player . Buffs . Any ( item => item . FreeOfCharge ) ;
 		}
 
 	}

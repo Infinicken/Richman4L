@@ -16,7 +16,7 @@ namespace WenceyWang . Richman4L .Banks
 		/// <summary>
 		///     存款数额
 		/// </summary>
-		public long MoneySaved { get ; set ; }
+		public decimal MoneySaved { get ; set ; }
 
 		/// <summary>
 		///     利息率
@@ -24,15 +24,15 @@ namespace WenceyWang . Richman4L .Banks
 		public double InterestRate { get ; set ; }
 
 		/// <summary>
-		///     能够取出的金额
+		///     当前能够取出的金额
 		/// </summary>
-		public long MoneyToGet
+		public decimal MoneyToGet
 		{
 			get
 			{
 				if ( Game . Current . Calendar . Today >= EndDate )
 				{
-					return Convert . ToInt64 ( MoneySaved * ( 1 + InterestRate ) ) ;
+					return Convert . ToDecimal ( MoneySaved * ( decimal ) ( 1 + InterestRate ) ) ;
 				}
 
 				return MoneySaved ;

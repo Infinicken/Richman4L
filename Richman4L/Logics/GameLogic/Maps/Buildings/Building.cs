@@ -35,7 +35,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 	/// <summary>
 	///     表示建筑
 	/// </summary>
-	public abstract class Building : MapObject,IAsset 
+	public abstract class Building : MapObject , IAsset
 	{
 
 		/// <summary>
@@ -57,8 +57,6 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		///     指示建筑的维护水平的10000倍
 		/// </summary>
 		public int MaintenanceDegree { get ; set ; }
-
-		public WithAssetObject Owner { get; private set; }
 
 
 		/// <summary>
@@ -92,6 +90,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			MaintenanceDegree = 0 ;
 		}
 
+		public WithAssetObject Owner { get ; private set ; }
+
 		public virtual void Upgrade ( BuildingGrade targetGrade ) { }
 
 		public virtual void Pass ( Player player ) { }
@@ -109,7 +109,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			Position = position ;
 			Grade = Type . EntryGrade ;
 			State = BuildingState . Building ;
-			player . RequestPay (player , Type . EntryGrade . StartUpgradeCost , new PayForBuildBuildingReason ( this ) ) ;
+			player . RequestPay ( player , Type . EntryGrade . StartUpgradeCost , new PayForBuildBuildingReason ( this ) ) ;
 			UpgradeTo = null ;
 			UpgradeProcess = null ;
 

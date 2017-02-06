@@ -46,6 +46,10 @@ namespace WenceyWang . Richman4L .Cards
 
 		public WithAssetObject Owner { get ; private set ; }
 
+		public decimal MinimumValue { get ; }
+
+		public void GiveTo ( WithAssetObject newOwner ) { throw new NotImplementedException ( ) ; }
+
 		public abstract bool CanUse ( ) ;
 
 		public abstract void Use ( ArgumentsContainer arguments ) ;
@@ -122,10 +126,6 @@ namespace WenceyWang . Richman4L .Cards
 		}
 
 		public static void BuyCard ( CardType type , Player player ) { }
-
-		public decimal MinimumValue { get ; }
-
-		public void GiveTo ( WithAssetObject newOwner ) { throw new NotImplementedException ( ) ; }
 
 	}
 

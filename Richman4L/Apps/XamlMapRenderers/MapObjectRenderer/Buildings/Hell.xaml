@@ -1,11 +1,11 @@
 ﻿<UserControl
-    x:Class="WenceyWang.Richman4L.Apps.XamlMapRenderers.MapObjectRenderer.Buildings.Hell"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WenceyWang.Richman4L.Apps.XamlMapRenderers.MapObjectRenderer.Buildings"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="60" Width="120" >
+	x:Class="WenceyWang.Richman4L.Apps.XamlMapRenderers.MapObjectRenderer.Buildings.Hell"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:WenceyWang.Richman4L.Apps.XamlMapRenderers.MapObjectRenderer.Buildings"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" Height="60" Width="120" >
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -13,512 +13,527 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
-	<Grid Padding="{StaticResource MapObjMargin}">
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransform="{StaticResource MapObjTransform}">
-			<Rectangle Width="120" Height="120" Fill="{StaticResource DarkLimeBrush}"/>
+	<Grid Padding="{StaticResource MapObjMargin}" >
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"
+			VerticalAlignment="Center" RenderTransform="{StaticResource MapObjTransform}" >
+			<Rectangle Width="120" Height="120" Fill="{StaticResource DarkLimeBrush}" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform TranslateX="-30" TranslateY="-30"/>
+				<CompositeTransform TranslateX="-30" TranslateY="-30" />
 			</Grid.RenderTransform>
-			<Rectangle Grid.ColumnSpan="20" Grid.Row="19" Fill="{StaticResource WhiteFront}"/>
+			<Rectangle Grid.ColumnSpan="20" Grid.Row="19" Fill="{StaticResource WhiteFront}" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="60"/>
+				<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="60" />
 			</Grid.RenderTransform>
-			<Rectangle Grid.ColumnSpan="20" Grid.Row="19" Fill="{StaticResource WhiteRight}"/>
+			<Rectangle Grid.ColumnSpan="20" Grid.Row="19" Fill="{StaticResource WhiteRight}" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"
+			VerticalAlignment="Center" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 			<Grid.RenderTransform>
-				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-6"/>
+				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-6" />
 			</Grid.RenderTransform>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
-			<Path Grid.ColumnSpan="20" Data="M0,0 L19,0 L19,1 L1,1 L1,19 L19,19 L19,0 L20,0 L20,19 L20,20 L0,20 L0,19 L0,1 z" Fill="{StaticResource WhiteUp}" Grid.RowSpan="20" Stretch="Fill" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+			<Path Grid.ColumnSpan="20" Data="M0,0 L19,0 L19,1 L1,1 L1,19 L19,19 L19,0 L20,0 L20,19 L20,20 L0,20 L0,19 L0,1 z"
+				Fill="{StaticResource WhiteUp}" Grid.RowSpan="20" Stretch="Fill"
+				d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform TranslateX="-27" TranslateY="-33"/>
+				<CompositeTransform TranslateX="-27" TranslateY="-33" />
 			</Grid.RenderTransform>
-			<Rectangle Grid.ColumnSpan="18" Grid.Row="18" Fill="{StaticResource WhiteFront}" Grid.Column="1"/>
+			<Rectangle Grid.ColumnSpan="18" Grid.Row="18" Fill="{StaticResource WhiteFront}" Grid.Column="1" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" UseLayoutRounding="False"
+			d:LayoutRounding="Auto" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="54"/>
+				<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="54" />
 			</Grid.RenderTransform>
-			<Rectangle Grid.ColumnSpan="18" Grid.Row="18" Fill="{StaticResource WhiteRight}" Grid.Column="1"/>
+			<Rectangle Grid.ColumnSpan="18" Grid.Row="18" Fill="{StaticResource WhiteRight}" Grid.Column="1" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"
+			VerticalAlignment="Center" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 			<Grid.RenderTransform>
-				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12"/>
+				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-12" />
 			</Grid.RenderTransform>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
-			<Path Grid.ColumnSpan="18" Data="M0,0 L17,0 L17,1 L1,1 L1,17 L17,17 L17,0 L18,0 L18,17 L18,18 L0,18 L0,17 L0,1 z" Fill="{StaticResource WhiteUp}" Grid.RowSpan="18" Stretch="Fill" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.Row="1" Grid.Column="1"/>
+			<Path Grid.ColumnSpan="18" Data="M0,0 L17,0 L17,1 L1,1 L1,17 L17,17 L17,0 L18,0 L18,17 L18,18 L0,18 L0,17 L0,1 z"
+				Fill="{StaticResource WhiteUp}" Grid.RowSpan="18" Stretch="Fill"
+				d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.Row="1" Grid.Column="1" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform TranslateX="-24" TranslateY="-36"/>
+				<CompositeTransform TranslateX="-24" TranslateY="-36" />
 			</Grid.RenderTransform>
-			<Rectangle Grid.ColumnSpan="16" Grid.Row="17" Fill="{StaticResource WhiteFront}" Grid.Column="2" RenderTransformOrigin="0.5,0.5"/>
+			<Rectangle Grid.ColumnSpan="16" Grid.Row="17" Fill="{StaticResource WhiteFront}" Grid.Column="2"
+						RenderTransformOrigin="0.5,0.5" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" UseLayoutRounding="False"
+			d:LayoutRounding="Auto" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="48"/>
+				<CompositeTransform TranslateY="-60" SkewY="-45" ScaleX="0.5" TranslateX="48" />
 			</Grid.RenderTransform>
-			<Rectangle Grid.ColumnSpan="16" Grid.Row="17" Fill="{StaticResource WhiteRight}" Grid.Column="2"/>
+			<Rectangle Grid.ColumnSpan="16" Grid.Row="17" Fill="{StaticResource WhiteRight}" Grid.Column="2" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"
+			VerticalAlignment="Center" Margin="0,-30" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 			<Grid.RenderTransform>
-				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-18"/>
+				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-18" />
 			</Grid.RenderTransform>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
-			<Rectangle Grid.ColumnSpan="16" Grid.Column="2" Fill="{StaticResource WhiteUp}" Grid.Row="2" Grid.RowSpan="16"/>
+			<Rectangle Grid.ColumnSpan="16" Grid.Column="2" Fill="{StaticResource WhiteUp}" Grid.Row="2" Grid.RowSpan="16" />
 		</Grid>
-		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30">
+		<Grid Width="120" Height="120" RenderTransformOrigin="0.5,0.5" Margin="0,-30" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
-				<ColumnDefinition/>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 			<Grid.RenderTransform>
-				<CompositeTransform TranslateX="-18" TranslateY="-42"/>
+				<CompositeTransform TranslateX="-18" TranslateY="-42" />
 			</Grid.RenderTransform>
-			<Rectangle Grid.ColumnSpan="2" Grid.Column="15" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16" VerticalAlignment="Bottom"/>
-			<Rectangle Grid.ColumnSpan="2" Grid.Column="12" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16" VerticalAlignment="Bottom"/>
-			<Rectangle Grid.ColumnSpan="2" Grid.Column="6" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16" VerticalAlignment="Bottom"/>
-			<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16" VerticalAlignment="Bottom"/>
+			<Rectangle Grid.ColumnSpan="2" Grid.Column="15" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16"
+						VerticalAlignment="Bottom" />
+			<Rectangle Grid.ColumnSpan="2" Grid.Column="12" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16"
+						VerticalAlignment="Bottom" />
+			<Rectangle Grid.ColumnSpan="2" Grid.Column="6" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16"
+						VerticalAlignment="Bottom" />
+			<Rectangle Grid.ColumnSpan="2" Grid.Column="3" Fill="{StaticResource WhiteFront}" Height="3" Grid.Row="16"
+						VerticalAlignment="Bottom" />
 		</Grid>
 
 	</Grid>

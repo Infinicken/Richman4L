@@ -1,12 +1,12 @@
-﻿using System;
-using System . Collections;
-using System . Linq;
+﻿using System ;
+using System . Collections ;
+using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars;
-using WenceyWang . Richman4L . Players;
-using WenceyWang . Richman4L . Players . PayReasons;
+using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . PayReasons ;
 
-namespace WenceyWang . Richman4L . Banks
+namespace WenceyWang . Richman4L .Banks
 {
 
 	/// <summary>
@@ -18,48 +18,58 @@ namespace WenceyWang . Richman4L . Banks
 		/// <summary>
 		///     存款利率基础值
 		/// </summary>
-		public double SavingInterestRateBase { get; set; }
+		public double SavingInterestRateBase { get ; set ; }
 
 		/// <summary>
 		///     贷款利率基础值
 		/// </summary>
-		public double BorrowingInterestRateBase { get; set; }
+		public double BorrowingInterestRateBase { get ; set ; }
 
 		/// <summary>
 		/// </summary>
-		public double SavingInterestRateIncrease { get; set; }
+		public double SavingInterestRateIncrease { get ; set ; }
 
 
-		public double BorrowingInterestRateIncrease { get; set; }
+		public double BorrowingInterestRateIncrease { get ; set ; }
+
+		public static Bank Current { get ; } = new Bank ( ) ;
+
+		private Bank ( ) { }
 
 		//Todo:贷款
 
-		public SavingBankProof Deposit ( Player owner , long money , int takeTime )
+		public SavingBankProof Deposit ( Player owner , decimal money , int takeTime )
 		{
 			if ( owner == null )
 			{
-				throw new ArgumentNullException ( nameof ( owner ) );
+				throw new ArgumentNullException ( nameof ( owner ) ) ;
 			}
 			if ( Game . Current . Calendar . Today . Date + takeTime >= Game . Current . GameLenth )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( takeTime ) );
+				throw new ArgumentOutOfRangeException ( nameof ( takeTime ) ) ;
 			}
 
 			return new SavingBankProof
-			{
-				Owner = owner ,
-				StartDate = Game . Current . Calendar . Today ,
-				EndDate = Game . Current . Calendar . Today + takeTime ,
-				MoneySaved = money ,
-				InterestRate = SavingInterestRateBase
-			};
+					{
+						Owner = owner ,
+						StartDate = Game . Current . Calendar . Today ,
+						EndDate = Game . Current . Calendar . Today + takeTime ,
+						MoneySaved = money ,
+						InterestRate = SavingInterestRateBase
+					} ;
 		}
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ); }
+		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
 
-		public override void RequestPay ( WithAssetObject source , long amount , PayReason reason ) { throw new NotImplementedException ( ); }
+		public override void RequestPay ( WithAssetObject source , decimal amount , PayReason reason )
+		{
+			throw new NotImplementedException ( ) ;
+		}
 
-		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason ) { throw new NotImplementedException ( ); }
+		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason )
+		{
+			throw new NotImplementedException ( ) ;
+		}
 
 
 		public override void ReceiveCash ( WithAssetObject source , PayReason reason , decimal amount ) { }
@@ -68,19 +78,12 @@ namespace WenceyWang . Richman4L . Banks
 
 		public override void ReceiveTransfer ( WithAssetObject source , decimal amount , PayReason reason ) { }
 
-		public override void EndToday ( ) {  }
+		public override void EndToday ( ) { }
 
 		public override decimal ReceiveBuyAssertRequest ( IAsset asset )
 		{
-			return asset . MinimumValue * GameRandom . Current . NextDecimalBetween ( 1.0m , 1.2m );
+			return asset . MinimumValue * GameRandom . Current . NextDecimalBetween ( 1.0m , 1.2m ) ;
 		}
-
-		private Bank ( )
-		{
-
-		}
-
-		public static Bank Current { get; } = new Bank ( );
 
 	}
 
