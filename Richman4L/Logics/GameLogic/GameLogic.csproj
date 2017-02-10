@@ -153,11 +153,6 @@
     <Compile Include="Players\Events\PlayerReceiveCardEventArgs.cs" />
     <Compile Include="Players\Events\PlayerTakeAwayStockEventArgs.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Resources\Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Resource.en-US.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -245,7 +240,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.zh-CN.resx">
       <Generator>ResXFileCodeGenerator</Generator>

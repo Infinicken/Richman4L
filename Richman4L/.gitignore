@@ -2,6 +2,7 @@
 /packages/
 /.vs/
 *.vssscc
+*.lock.json
 /Performance/
 /packages.exe
 /packages.rar

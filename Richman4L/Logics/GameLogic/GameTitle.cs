@@ -26,6 +26,7 @@ using System . Xml . Linq ;
 namespace WenceyWang .Richman4L
 {
 
+	//Todo:Add custom title?
 	public struct GameTitle
 	{
 
@@ -125,7 +126,11 @@ namespace WenceyWang .Richman4L
 		{
 			lock ( Locker )
 			{
-				Loaded = true ;
+				if ( Loaded )
+				{
+					return ;
+				}
+
 				TitleRoots = new List <string> ( ) ;
 				TitleKeys = new List <string> ( ) ;
 
@@ -144,6 +149,8 @@ namespace WenceyWang .Richman4L
 				{
 					TitleKeys . Add ( item . Attribute ( nameof ( Content ) ) . Value ) ;
 				}
+
+				Loaded = true ;
 			}
 		}
 

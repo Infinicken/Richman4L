@@ -25,6 +25,7 @@ using System . Xml . Linq ;
 namespace WenceyWang .Richman4L
 {
 
+	//Todo:Add Custom Saying?
 	public class GameSaying : IEquatable <GameSaying>
 	{
 
@@ -49,7 +50,9 @@ namespace WenceyWang .Richman4L
 
 		internal static List <GameSaying> Sayings { get ; set ; }
 
-		internal static bool Loaded { get ; set ; }
+		private static bool Loaded { get ; set ; }
+
+		private static object Locker { get ; } = new object ( ) ;
 
 		private GameSaying ( XElement element )
 		{
@@ -80,8 +83,6 @@ namespace WenceyWang .Richman4L
 			}
 #endif
 		}
-
-		private static readonly object Locker = new object ( ) ;
 
 		public bool Equals ( GameSaying other )
 		{
@@ -195,18 +196,21 @@ namespace WenceyWang .Richman4L
 		{
 			lock ( Locker )
 			{
-				if ( ! Loaded )
+				if ( Loaded )
 				{
-					Loaded = true ;
-					Sayings = new List <GameSaying> ( ) ;
-
-					XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameSaying )}Resources.xml" ) ;
-
-					foreach ( XElement item in doc . Root . Elements ( ) )
-					{
-						Sayings . Add ( new GameSaying ( item ) ) ;
-					}
+					return ;
 				}
+
+				Sayings = new List <GameSaying> ( ) ;
+
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameSaying )}Resources.xml" ) ;
+
+				foreach ( XElement item in doc . Root . Elements ( ) )
+				{
+					Sayings . Add ( new GameSaying ( item ) ) ;
+				}
+
+				Loaded = true ;
 			}
 		}
 

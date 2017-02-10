@@ -44,6 +44,10 @@ namespace WenceyWang . Richman4L .Cards
 
 		public abstract List <ArgumentInfo> Arguments { get ; }
 
+		private static object Locker { get ; } = new object ( ) ;
+
+		private static bool Loaded { get ; set ; }
+
 		public WithAssetObject Owner { get ; private set ; }
 
 		public decimal MinimumValue { get ; }
@@ -74,55 +78,66 @@ namespace WenceyWang . Richman4L .Cards
 			return card ;
 		}
 
+
 		[Startup ( nameof ( LoadCards ) )]
 		public static void LoadCards ( )
 		{
+			lock ( Locker )
+			{
+				if ( Loaded )
+				{
+				}
+			}
+
 			//Todo:Load All internal type
 		}
 
 		public static CardType RegisCardType ( Type entryType , XElement element )
 		{
-			#region Check Argument
-
-			if ( entryType == null )
+			lock ( Locker )
 			{
-				throw new ArgumentNullException ( nameof ( entryType ) ) ;
+				#region Check Argument
+
+				if ( entryType == null )
+				{
+					throw new ArgumentNullException ( nameof ( entryType ) ) ;
+				}
+
+				if ( ! typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
+				{
+					throw new ArgumentException ( $"{nameof ( entryType )} should assignable from {nameof ( Card )}" ,
+												nameof ( entryType ) ) ;
+				}
+
+				if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
+				{
+					throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( CardAttribute )}" ,
+												nameof ( entryType ) ) ;
+				}
+
+				if ( element == null )
+				{
+					throw new ArgumentNullException ( nameof ( element ) ) ;
+				}
+
+				if ( element . Name != nameof ( entryType ) )
+				{
+					throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
+				}
+
+				if ( CardTypeList . Any ( type => type . EntryType == entryType ) )
+				{
+					throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" ) ;
+				}
+
+				#endregion
+
+				CardType cardType = new CardType ( entryType , element ) ;
+
+				CardTypeList . Add ( cardType ) ;
+
+				return cardType ;
 			}
-
-			if ( ! typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
-			{
-				throw new ArgumentException ( $"{nameof ( entryType )} should assignable from {nameof ( Card )}" ,
-											nameof ( entryType ) ) ;
-			}
-
-			if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
-			{
-				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( CardAttribute )}" ,
-											nameof ( entryType ) ) ;
-			}
-
-			if ( element == null )
-			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
-			}
-
-			if ( element . Name != nameof ( entryType ) )
-			{
-				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
-			}
-
-			if ( CardTypeList . Any ( type => type . EntryType == entryType ) )
-			{
-				throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" ) ;
-			}
-
-			#endregion
-
-			CardType cardType = new CardType ( entryType , element ) ;
-
-			CardTypeList . Add ( cardType ) ;
-
-			return cardType ;
 		}
 
 		public static void BuyCard ( CardType type , Player player ) { }

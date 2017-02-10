@@ -81,6 +81,10 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public static List <BuildingType> BuildingTypes { get ; private set ; } = new List <BuildingType> ( ) ;
 
+		private static object Locker { get ; } = new object ( ) ;
+
+		private static bool Loaded { get ; set ; }
+
 		//Todo:complete this event arg
 
 
@@ -167,8 +171,13 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		[Startup ( nameof ( LoadBuildingTypes ) )]
 		public static void LoadBuildingTypes ( )
 		{
-			lock ( BuildingTypes )
+			lock ( Locker )
 			{
+				if ( Loaded )
+				{
+					return ;
+				}
+
 				BuildingTypes = new List <BuildingType> ( ) ;
 
 				//Todo:Regis all internal Building

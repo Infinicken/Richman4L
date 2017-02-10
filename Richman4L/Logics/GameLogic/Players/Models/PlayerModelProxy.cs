@@ -22,6 +22,10 @@ namespace WenceyWang . Richman4L . Players .Models
 
 		public PlayerModel Model => _model ?? ( _model = new PlayerModel ( FileName ) ) ;
 
+		private static bool Loaded { get ; set ; }
+
+		private static object Locker { get ; } = new object ( ) ;
+
 
 		public PlayerModelProxy ( XElement element )
 		{
@@ -50,18 +54,26 @@ namespace WenceyWang . Richman4L . Players .Models
 		[Startup ( nameof ( LoadPlayerModels ) )]
 		public static void LoadPlayerModels ( )
 		{
-			_playerModels = new List <PlayerModelProxy> ( ) ;
-
-			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( Players )}.{nameof ( Models )}.Resources.Index.xml" ) ;
-
-			if ( doc . Root == null )
+			lock ( Locker )
 			{
-				throw new NullReferenceException ( "Document file have no root" ) ;
-			}
+				if ( Loaded )
+				{
+					return ;
+				}
 
-			foreach ( XElement item in doc . Root . Elements ( ) )
-			{
-				_playerModels . Add ( new PlayerModelProxy ( item ) ) ;
+				_playerModels = new List <PlayerModelProxy> ( ) ;
+
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( Players )}.{nameof ( Models )}.Resources.Index.xml" ) ;
+
+				if ( doc . Root == null )
+				{
+					throw new NullReferenceException ( "Document file have no root" ) ;
+				}
+
+				foreach ( XElement item in doc . Root . Elements ( ) )
+				{
+					_playerModels . Add ( new PlayerModelProxy ( item ) ) ;
+				}
 			}
 		}
 

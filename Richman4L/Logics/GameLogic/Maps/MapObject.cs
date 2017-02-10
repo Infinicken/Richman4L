@@ -55,6 +55,10 @@ namespace WenceyWang . Richman4L .Maps
 		[ItemNotNull]
 		public static List <MapObjectType> MapObjectTypes { get ; private set ; } = new List <MapObjectType> ( ) ;
 
+		private static object Locker { get ; } = new object ( ) ;
+
+		private static bool Loaded { get ; set ; }
+
 		/// <summary>
 		///     基于地图资源创建MapObject
 		/// </summary>
@@ -95,36 +99,47 @@ namespace WenceyWang . Richman4L .Maps
 		[Startup ( nameof ( LoadMapObjects ) )]
 		public static void LoadMapObjects ( )
 		{
-			//Todo:Load All internal type
-			foreach (
-				TypeInfo type in
-				typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
-								Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
+			lock ( Locker )
 			{
-				RegisMapObjectType ( type . Name , type . AsType ( ) ) ;
-			}
+				if ( Loaded )
+				{
+					return ;
+				}
 
-			;
+				//Todo:Load All internal type
+				foreach (
+					TypeInfo type in
+					typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+									Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
+				{
+					RegisMapObjectType ( type . Name , type . AsType ( ) ) ;
+				}
+
+				Loaded = true ;
+			}
 		}
 
 		[NotNull]
 		protected static void RegisMapObjectType <T> ( T mapObjectType ) where T : MapObjectType
 		{
-			#region Check Argument
-
-			if ( mapObjectType == null )
+			lock ( Locker )
 			{
-				throw new ArgumentNullException ( nameof ( mapObjectType ) ) ;
+				#region Check Argument
+
+				if ( mapObjectType == null )
+				{
+					throw new ArgumentNullException ( nameof ( mapObjectType ) ) ;
+				}
+
+				#endregion
+
+				if ( MapObjectTypes . Any ( type => type . Name == mapObjectType . Name ) )
+				{
+					throw new Exception ( "Name is Invilable" ) ;
+				}
+
+				MapObjectTypes . Add ( mapObjectType ) ;
 			}
-
-			#endregion
-
-			if ( MapObjectTypes . Any ( type => type . Name == mapObjectType . Name ) )
-			{
-				throw new Exception ( "Name is Invilable" ) ;
-			}
-
-			MapObjectTypes . Add ( mapObjectType ) ;
 		}
 
 
@@ -138,36 +153,39 @@ namespace WenceyWang . Richman4L .Maps
 		[NotNull]
 		public static MapObjectType RegisMapObjectType ( [NotNull] XName name , [NotNull] Type entryType )
 		{
-			#region Check Argument
-
-			if ( name == null )
+			lock ( Locker )
 			{
-				throw new ArgumentNullException ( nameof ( name ) ) ;
+				#region Check Argument
+
+				if ( name == null )
+				{
+					throw new ArgumentNullException ( nameof ( name ) ) ;
+				}
+				if ( entryType == null )
+				{
+					throw new ArgumentNullException ( nameof ( entryType ) ) ;
+				}
+				if (
+					entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) ==
+					null )
+				{
+					throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( MapObjectAttribute )}" ,
+												nameof ( entryType ) ) ;
+				}
+
+				#endregion
+
+				if ( MapObjectTypes . Any ( type => type . Name == name ) )
+				{
+					return MapObjectTypes . Single ( type => type . Name == name ) ;
+				}
+
+				MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType ) ;
+
+				MapObjectTypes . Add ( mapObjectType ) ;
+
+				return mapObjectType ;
 			}
-			if ( entryType == null )
-			{
-				throw new ArgumentNullException ( nameof ( entryType ) ) ;
-			}
-			if (
-				entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) ==
-				null )
-			{
-				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( MapObjectAttribute )}" ,
-											nameof ( entryType ) ) ;
-			}
-
-			#endregion
-
-			if ( MapObjectTypes . Any ( type => type . Name == name ) )
-			{
-				return MapObjectTypes . Single ( type => type . Name == name ) ;
-			}
-
-			MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType ) ;
-
-			MapObjectTypes . Add ( mapObjectType ) ;
-
-			return mapObjectType ;
 		}
 
 

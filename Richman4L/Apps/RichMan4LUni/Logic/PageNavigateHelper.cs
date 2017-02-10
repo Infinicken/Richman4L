@@ -5,6 +5,7 @@ using System . Linq ;
 using Windows . UI . Xaml . Media . Animation ;
 
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
+using WenceyWang . Richman4L . Apps . Uni . UI . XamlResources ;
 
 namespace WenceyWang . Richman4L . Apps . Uni .Logic
 {
@@ -26,14 +27,14 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 									{
 										KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 0.5 ) ) ,
 										Value = AnimatePage . GetPageColor ( page ) ,
-										EasingFunction = UI . XamlResources . Resources . EasingFunction
+										EasingFunction = Resources . EasingFunction
 									} ) ;
 
 			ca . KeyFrames . Add ( new EasingColorKeyFrame
 									{
 										KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 1 ) ) ,
 										Value = AnimatePage . GetPageColor <T> ( ) ,
-										EasingFunction = UI . XamlResources . Resources . EasingFunction
+										EasingFunction = Resources . EasingFunction
 									} ) ;
 
 			page . GetLeaveStoryboard . Children . Add ( ca ) ;

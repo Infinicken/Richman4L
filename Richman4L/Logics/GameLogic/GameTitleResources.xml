@@ -24,6 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleRoot Content="Poorman" />
 		<TitleRoot Content="Normalman" />
 		<TitleRoot Content="Abnormalman" />
+		<TitleRoot Content="#RICH man" />
+		<TitleRoot Content="#POOR man" />
 		<TitleRoot Content="Rationalman" />
 		<!--<TitleRoot Content="Tank（°ο°）Man"/>-->
 		<TitleRoot Content="TankMan" />
