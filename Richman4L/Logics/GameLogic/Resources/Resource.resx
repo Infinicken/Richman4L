@@ -120,6 +120,9 @@
   <data name="CalenderNextDayCheckFailed" xml:space="preserve">
     <value>{0} is not the day after yesterday</value>
   </data>
+  <data name="CurrentGameExists" xml:space="preserve">
+    <value />
+  </data>
   <data name="XmlWrongData" xml:space="preserve">
     <value>{0} has wrong data or lack of data</value>
   </data>

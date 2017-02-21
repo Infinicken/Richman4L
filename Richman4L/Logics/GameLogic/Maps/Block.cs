@@ -45,15 +45,67 @@ namespace WenceyWang . Richman4L .Maps
 		/// </summary>
 		public abstract int PondingDecrease { get ; }
 
-
+		/// <summary>
+		///     指示当前块是否覆盖了水
+		/// </summary>
 		public bool IsWet => PondingAmount != 0 ;
 
+		/// <summary>
+		///     指示可燃性
+		/// </summary>
+		public abstract int Flammability { get ; }
+
+		/// <summary>
+		///     指示当前的火焰强度
+		/// </summary>
+		public int FlameStrength { get ; set ; }
+
+		/// <summary>
+		///     指示没有被燃烧的比率
+		/// </summary>
+		public int UnburnedRatio
+			=>
+				Convert . ToInt32 ( Convert . ToDecimal ( BurnedAmount ) / Convert . ToDecimal ( CombustibleMaterialAmount ) * 10000 )
+		;
+
+		/// <summary>
+		///     指示当前块的可燃物总量
+		/// </summary>
+		public abstract int CombustibleMaterialAmount { get ; }
+
+		/// <summary>
+		///     指示当前块已经被烧毁的量
+		/// </summary>
+		public int BurnedAmount { get ; set ; }
+
+		/// <summary>
+		///     指示当前块的森林覆盖率
+		/// </summary>
+		public abstract int ForestCoverRate { get ; set ; }
+
+		/// <summary>
+		///     指示当前块是否正在燃烧
+		/// </summary>
+		public bool IsFiring => FlameStrength != 0 ;
+
+		/// <summary>
+		///     指示当前块是否覆盖了冰
+		/// </summary>
 		public bool IsFrozen => IceThickness != 0 ;
 
+		/// <summary>
+		///     指示当前块覆盖冰的厚度
+		/// </summary>
 		public int IceThickness { get ; protected set ; }
 
+		/// <summary>
+		///     指示当前块是否覆盖了雪
+		/// </summary>
 		public bool IsBearSnow => SnowThickness != 0 ;
 
+		/// <summary>
+		///     指示当前块覆盖雪的厚度
+		/// </summary>
 		public int SnowThickness { get ; protected set ; }
 
 		public Block ( [NotNull] XElement resource ) : base ( resource )
@@ -66,12 +118,46 @@ namespace WenceyWang . Richman4L .Maps
 
 		protected Block ( ) { }
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate nextDate )
+		{
+			//Todo:更新火焰强度之类的
+			//积水量会减少燃烧强度
+			if ( IsFiring )
+			{
+				FlameStrength += Flammability ;
 
-		public override void EndToday ( ) { PondingAmount += Game . Current . Weather . Precipitation ; }
+				//降水量造成的影响
+				//Todo:改名字以及定义
+				int 降水量造成的影响的系数 = 1 ;
+				FlameStrength = Math . Max ( FlameStrength - Game . Current . Weather . Precipitation * 降水量造成的影响的系数 , 0 ) ;
+
+				//判断是否扩散
+
+
+				//风影响扩散而不是强度
+			}
+		}
+
+		public override void EndToday ( )
+		{
+			//todo:
+			//积水量会增加降雨量的数目
+			//可燃物的量减少燃烧强度
+
+
+			PondingAmount += Game . Current . Weather . Precipitation ;
+			int firePoint = FlameStrength ;
+			int currentPondignAmount = PondingAmount ;
+			PondingAmount = Math . Max ( currentPondignAmount - firePoint , 0 ) ;
+			firePoint = Math . Max ( firePoint - currentPondignAmount , 0 ) ;
+			BurnedAmount = Math . Min ( firePoint + BurnedAmount , CombustibleMaterialAmount ) ;
+		}
 
 	}
 
+	/// <summary>
+	///     提供将x,y映射到单个值的方法
+	/// </summary>
 	public static class CantorPairing
 	{
 

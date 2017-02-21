@@ -33,8 +33,10 @@ namespace WenceyWang . Richman4L .Maps
 	public class Map : GameObject
 	{
 
+		/// <summary>
+		/// </summary>
 		[NotNull]
-		public static Map Currnet { get ; set ; } /*=> Game . Current . Map;*/
+		public static Map Currnet => Game . Current . Map ;
 
 		[NotNull]
 		public string Name { get ; set ; }
@@ -117,7 +119,7 @@ namespace WenceyWang . Richman4L .Maps
 		public Map ( )
 		{
 			//todo:the line under is a test code, Current should return Game.Current.Map or something else.
-			Currnet = this ;
+			//Currnet = this ;
 
 			//todo
 		}

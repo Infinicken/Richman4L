@@ -39,22 +39,21 @@ namespace WenceyWang .FIGlet
 		{
 			get
 			{
-				FIGletFont defult = null ;
-
 				lock ( DefultFont )
 				{
+					FIGletFont defult = null ;
 					DefultFont ? . TryGetTarget ( out defult ) ;
 					if ( defult == null )
 					{
-						Stream stream = Assembly . GetExecutingAssembly ( ) .
-													GetManifestResourceStream ( typeof ( FIGletFont ) . Namespace + "." +
-																				@"Fonts.standard.flf" ) ;
+						Stream stream = typeof ( FIGletFont ) . GetTypeInfo ( ) . Assembly .
+																GetManifestResourceStream ( typeof ( FIGletFont ) . Namespace + "." +
+																							@"Fonts.standard.flf" ) ;
 						defult = new FIGletFont ( stream ) ;
-						stream ? . Close ( ) ;
+						stream ? . Dispose ( ) ;
 						DefultFont . SetTarget ( defult ) ;
 					}
+					return defult ;
 				}
-				return defult ;
 			}
 		}
 
@@ -158,26 +157,26 @@ namespace WenceyWang .FIGlet
 			return Lines [ Convert . ToInt16 ( sourceChar ) ] [ line ] ;
 		}
 
-		//private void LoadLines ( List<string> fontLines )
-		//{
-		//	Lines = fontLines;
-		//	string configString = Lines . First ( );
-		//	string [ ] configArray = configString . Split ( ' ' );
-		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
-		//	if ( Signature == "flf2a" )
-		//	{
-		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
-		//Height = configArray . GetIntValue ( 1 );
-		//BaseLine = configArray . GetIntValue ( 2 );
-		//MaxLength = configArray . GetIntValue ( 3 );
-		//OldLayout = configArray . GetIntValue ( 4 );
-		//CommentLines = configArray . GetIntValue ( 5 );
-		//PrintDirection = configArray . GetIntValue ( 6 );
-		//FullLayout = configArray . GetIntValue ( 7 );
+		//	}
 
 		//CodeTagCount = configArray . GetIntValue ( 8 );
+		//FullLayout = configArray . GetIntValue ( 7 );
+		//PrintDirection = configArray . GetIntValue ( 6 );
+		//CommentLines = configArray . GetIntValue ( 5 );
+		//OldLayout = configArray . GetIntValue ( 4 );
+		//MaxLength = configArray . GetIntValue ( 3 );
+		//BaseLine = configArray . GetIntValue ( 2 );
+		//Height = configArray . GetIntValue ( 1 );
+		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
+		//	{
+		//	if ( Signature == "flf2a" )
+		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
+		//	string [ ] configArray = configString . Split ( ' ' );
+		//	string configString = Lines . First ( );
+		//	Lines = fontLines;
+		//{
 
-		//	}
+		//private void LoadLines ( List<string> fontLines )
 		//}
 
 

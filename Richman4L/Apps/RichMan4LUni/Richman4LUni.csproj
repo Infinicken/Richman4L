@@ -173,8 +173,8 @@
     <Compile Include="UI\Controls\CardControl.xaml.cs">
       <DependentUpon>CardControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Controls\DreamRecorderDarkLogo.xaml.cs">
-      <DependentUpon>DreamRecorderDarkLogo.xaml</DependentUpon>
+    <Compile Include="UI\Controls\DreamRecorderLogo.xaml.cs">
+      <DependentUpon>DreamRecorderLogo.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Controls\LoadingRing.xaml.cs">
       <DependentUpon>LoadingRing.xaml</DependentUpon>
@@ -269,7 +269,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Controls\DreamRecorderDarkLogo.xaml">
+    <Page Include="UI\Controls\DreamRecorderLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

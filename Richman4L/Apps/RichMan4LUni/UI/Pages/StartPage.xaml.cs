@@ -39,7 +39,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 
 			StartStoryboard . Completed += StartStoryboard_Completed ;
 			StartStoryboard . Begin ( ) ;
-			_taskToWait = Startup . RunAllTask ( ) ;
+			_taskToWait = Task . WhenAll ( Startup . RunAllTask ( ) , XamlMapRenderers . Startup . RunAllTask ( ) ) ;
 		}
 
 		private void StartStoryboard_Completed ( object sender , object e )

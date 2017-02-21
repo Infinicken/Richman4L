@@ -33,6 +33,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override long MaintenanceFee { get ; }
 
+		public override int NoncombustiblePartRatio { get { throw new NotImplementedException ( ) ; } }
+
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
 		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }

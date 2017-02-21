@@ -54,11 +54,11 @@ namespace WenceyWang .Richman4L
 			TitleKey = titleKey ;
 		}
 
-		internal static List <string> TitleRoots ;
+		private static List <string> TitleRoots { get ; set ; }
 
-		internal static List <string> TitleKeys ;
+		private static List <string> TitleKeys { get ; set ; }
 
-		internal static bool Loaded ;
+		private static bool Loaded { get ; set ; }
 
 		public static string DefaultTitleRoot => @"Richman" ;
 
@@ -119,7 +119,7 @@ namespace WenceyWang .Richman4L
 
 		public static bool operator != ( GameTitle left , GameTitle right ) { return ! left . Equals ( right ) ; }
 
-		private static readonly object Locker = new object ( ) ;
+		private static object Locker { get ; } = new object ( ) ;
 
 		[Startup ( nameof ( LoadTitles ) )]
 		public static void LoadTitles ( )

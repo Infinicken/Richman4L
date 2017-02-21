@@ -390,7 +390,7 @@
 
 		<Rectangle x:Name="BackGroundRect" Fill="#FF13B3D6" Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsLocked="True" />
 		<Grid x:Name="MapFrame" >
-			<XamlMapRenderers:XamlMapRenderer />
+			<XamlMapRenderers:XamlMapRenderer x:Name="MapRenderer" />
 			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
 					<CompositeTransform />
@@ -599,39 +599,42 @@
 				</Grid>
 
 			</Grid>
-			<Grid x:Name="MenuGrid" d:LayoutOverrides="TopPosition, BottomPosition" Background="#66000000"
-				RenderTransformOrigin="0.5,0.5" >
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition Width="2*" />
-					<ColumnDefinition />
-				</Grid.ColumnDefinitions>
-				<Grid.RenderTransform>
-					<CompositeTransform TranslateY="600" />
-				</Grid.RenderTransform>
-				<StackPanel VerticalAlignment="Center" Grid.Column="1" Margin="0" >
-					<Button x:Name="ResumeButton" Content="恢复游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
-							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="ResumeButton_Click" FontSize="24"
-							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-							Background="{StaticResource TransparentCranBrush}"
-							MinWidth="0" MinHeight="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
-					<Button x:Name="SaveButton" Content="储存游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="SaveButton_Click"
-							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-							Background="{StaticResource TransparentCranBrush}"
-							MinHeight="0" MinWidth="0" FontSize="24" Margin="0,20,0,0"
-							Style="{StaticResource RoundedRectangleButtonStyle}" />
-					<Button x:Name="DevButton" Content="开发模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="DevButton_Click"
-							BorderBrush="{x:Null}" Background="{StaticResource TransparentCranBrush}"
-							Padding="{StaticResource ButtonPadding}"
-							FontSize="24" MinHeight="0" MinWidth="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
-					<Button x:Name="MainPageButton" Content="主选单" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="MainPageButton_Click"
-							MinWidth="0" MinHeight="0" FontSize="24" Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-							Background="{StaticResource TransparentCranBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
-				</StackPanel>
-			</Grid>
+			<controls:SlidePanel x:Name="MenuPanel" HorizontalAlignment="Left" VerticalAlignment="Top"
+								HideStoryboard="{StaticResource HideMenuGridStoryBoard}" Visibility="Collapsed" >
+				<Grid x:Name="MenuGrid" Background="#66000000"
+					RenderTransformOrigin="0.5,0.5" Height="640" Width="360" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<Grid.RenderTransform>
+						<CompositeTransform TranslateY="600" />
+					</Grid.RenderTransform>
+					<StackPanel VerticalAlignment="Center" Grid.Column="1" Margin="0" >
+						<Button x:Name="ResumeButton" Content="恢复游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
+								FontFamily="{StaticResource Font}" FontWeight="Normal" Click="ResumeButton_Click" FontSize="24"
+								Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+								Background="{StaticResource TransparentCranBrush}"
+								MinWidth="0" MinHeight="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
+						<Button x:Name="SaveButton" Content="储存游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+								FontFamily="{StaticResource Font}" FontWeight="Normal" Click="SaveButton_Click"
+								Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+								Background="{StaticResource TransparentCranBrush}"
+								MinHeight="0" MinWidth="0" FontSize="24" Margin="0,20,0,0"
+								Style="{StaticResource RoundedRectangleButtonStyle}" />
+						<Button x:Name="DevButton" Content="开发模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+								Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="DevButton_Click"
+								BorderBrush="{x:Null}" Background="{StaticResource TransparentCranBrush}"
+								Padding="{StaticResource ButtonPadding}"
+								FontSize="24" MinHeight="0" MinWidth="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
+						<Button x:Name="MainPageButton" Content="主选单" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+								Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="MainPageButton_Click"
+								MinWidth="0" MinHeight="0" FontSize="24" Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+								Background="{StaticResource TransparentCranBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
+					</StackPanel>
+				</Grid>
+			</controls:SlidePanel>
 		</Grid>
 		<Grid x:Name="StockFrame" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"
 			Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsHidden="True" >

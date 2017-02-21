@@ -30,6 +30,7 @@ using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . Events ;
 using WenceyWang . Richman4L . Players . Models ;
+using WenceyWang . Richman4L . Resources ;
 using WenceyWang . Richman4L . Stocks ;
 using WenceyWang . Richman4L . Weathers ;
 
@@ -240,7 +241,7 @@ namespace WenceyWang .Richman4L
 		{
 			if ( Current != null )
 			{
-				throw new InvalidOperationException ( "已存在当前游戏" ) ;
+				throw new InvalidOperationException ( Resource . CurrentGameExists ) ;
 			}
 
 			Status = GameStatus . NotStart ;

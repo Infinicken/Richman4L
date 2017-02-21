@@ -16,6 +16,8 @@ namespace WenceyWang . Richman4L .Maps
 
 		private int Height ;
 
+		public bool IsInArea ( MapObject mapObject ) { throw new NotImplementedException ( ) ; }
+
 	}
 
 }

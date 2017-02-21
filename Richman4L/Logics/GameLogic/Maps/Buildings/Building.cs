@@ -58,6 +58,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		/// </summary>
 		public int MaintenanceDegree { get ; set ; }
 
+		public abstract int NoncombustiblePartRatio { get ; }
 
 		/// <summary>
 		///     指示当前建筑所处的等级
@@ -73,6 +74,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		///     指示建筑是否易于摧毁
 		/// </summary>
 		public abstract bool IsEasyToDestroy { get ; }
+
 
 		/// <summary>
 		///     指示建筑今天所需的维持费

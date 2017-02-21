@@ -3,6 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
+using System . Threading . Tasks ;
 
 using Windows . Foundation ;
 using Windows . UI . Xaml . Controls ;
@@ -24,6 +25,10 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 
 		public static List <MapObjectRendererType> MapObjectRendererTypeList { get ; } =
 			new List <MapObjectRendererType> ( ) ;
+
+		private static object Locker { get ; } = new object ( ) ;
+
+		private static bool Loaded { get ; set ; }
 
 		public XamlMapRenderer ( ) { InitializeComponent ( ) ; }
 
@@ -97,13 +102,22 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 
 		private void Map_RemoveMapObjectEvent ( object sender , MapRemoveMapObjectEventArgs e ) { }
 
-		public static void RegisDefult ( )
+		[Startup ( nameof ( RegisDefultRenderer ) )]
+		public static void RegisDefultRenderer ( )
 		{
-			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) ) ;
-			RegisMapObjectRenderer ( typeof ( SmallAreaRenderer ) , typeof ( SmallArea ) ) ;
+			lock ( Locker )
+			{
+				if ( Loaded )
+				{
+					return ;
+				}
 
-			RegisMapObjectRenderer ( typeof ( EmptyBlockRenderer ) , typeof ( EmptyBlock ) ) ;
-			RegisMapObjectRenderer ( typeof ( NameShower ) , typeof ( MapObject ) ) ;
+				RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) ) ;
+				RegisMapObjectRenderer ( typeof ( SmallAreaRenderer ) , typeof ( SmallArea ) ) ;
+
+				RegisMapObjectRenderer ( typeof ( EmptyBlockRenderer ) , typeof ( EmptyBlock ) ) ;
+				RegisMapObjectRenderer ( typeof ( NameShower ) , typeof ( MapObject ) ) ;
+			}
 		}
 
 		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType ,
@@ -139,6 +153,29 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 
 
 		private void Map_AddMapObjectEvent ( object sender , MapAddMapObjectEventArgs e ) { }
+
+	}
+
+	public static class Startup
+	{
+
+		public static Task RunAllTask ( )
+		{
+			List <Task> tasks = new List <Task> ( ) ;
+			foreach ( TypeInfo type in
+				typeof ( XamlMapRenderer ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
+			{
+				foreach ( MethodInfo method in type . DeclaredMethods )
+				{
+					if ( method . GetCustomAttributes ( typeof ( StartupAttribute ) ) . Any ( ) )
+					{
+						tasks . Add ( Task . Run ( ( ) => method . Invoke ( null , new object [ ] { } ) ) ) ;
+					}
+				}
+			}
+
+			return Task . WhenAll ( tasks ) ;
+		}
 
 	}
 

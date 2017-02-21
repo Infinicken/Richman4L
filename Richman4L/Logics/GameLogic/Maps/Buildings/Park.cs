@@ -34,6 +34,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override long MaintenanceFee { get ; }
 
+		public override int NoncombustiblePartRatio { get ; }
+
 		public override void EndToday ( ) { }
 
 		public override void StartDay ( GameDate nextDate ) { }

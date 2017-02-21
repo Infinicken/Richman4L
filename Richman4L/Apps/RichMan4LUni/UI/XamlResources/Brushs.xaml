@@ -14,7 +14,7 @@
 	<Color x:Key="Lime" >#FF5CA210</Color>
 	<Color x:Key="Pink" >#FFB21D62</Color>
 	<Color x:Key="Purple" >#FF260048</Color>
-	<Color x:Key="Transparent" >#01FFFFFF</Color>
+	<Color x:Key="Transparent" >#00FFFFFF</Color>
 	<Color x:Key="TransparentCran" >#33006464</Color>
 	<Color x:Key="TransparentDeepRed" >#7F330819</Color>
 	<Color x:Key="TransparentLightRed" >#CCFF5050</Color>
@@ -36,5 +36,6 @@
 	<SolidColorBrush x:Key="LightRedBrush" Color="{StaticResource LightRed}" />
 	<SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}" />
 	<SolidColorBrush x:Key="GroundBlue" Color="Green" />
+	<Color x:Key="TransparentBlack" >#33000000</Color>
 
 </ResourceDictionary>

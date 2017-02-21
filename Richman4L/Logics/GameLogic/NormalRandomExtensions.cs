@@ -5,6 +5,7 @@ using System . Linq ;
 namespace WenceyWang .Richman4L
 {
 
+	//Todo:可能的优化？
 	public static class NormalRandomExtensions
 	{
 

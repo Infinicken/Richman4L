@@ -178,18 +178,18 @@ namespace WenceyWang . Richman4L .Stocks
 			Buffs . Add ( buff ) ;
 		}
 
-		//protected override void Dispose ( bool disposing )
-		//{
-		//	if ( ! DisposedValue )
-		//	{
-		//		if ( disposing )
-		//		{
-		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
-		//		}
-		//		base . Dispose ( disposing ) ;
-		//	}
-
 		//}
+		//	}
+		//		base . Dispose ( disposing ) ;
+		//		}
+		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
+		//		{
+		//		if ( disposing )
+		//	{
+		//	if ( ! DisposedValue )
+		//{
+
+		//protected override void Dispose ( bool disposing )
 	}
 
 }

@@ -13,7 +13,7 @@ namespace WenceyWang . Richman4L .Cards
 {
 
 	[Card]
-	public class BlackCard : Card
+	public class BlackCard : Card <BlackCard>
 	{
 
 		public override int PriceWhenBuy
@@ -28,27 +28,22 @@ namespace WenceyWang . Richman4L .Cards
 			set { throw new NotImplementedException ( ) ; }
 		}
 
-		public override List <ArgumentInfo> Arguments
+		static BlackCard ( )
 		{
-			get
-			{
-				ArgumentInfo stock = new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
-
-				return new List <ArgumentInfo> { stock } ;
-			}
+			//Todo:Resources
+			ArgumentInfo stock = new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
+			Arguments = new List <ArgumentInfo> { stock } ;
 		}
-
 
 		public override bool CanUse ( ) { return Game . Current . StockMarket . State == StockMarketState . Running ; }
 
 		public override void Use ( ArgumentsContainer arguments )
 		{
-			if ( arguments . Arguments . Count != 1 )
-			{
-				throw new ArgumentException ( ) ;
-			}
+			ArgumentsInfo . CheckArgument ( arguments ) ;
 
-			BlackBuff buff = new BlackBuff ( ( Stock ) arguments . Arguments . Single ( ) , 3 ) ;
+			//Todo:GameSettings?
+			int duration = 3 ;
+			BlackBuff buff = new BlackBuff ( ( Stock ) arguments . Arguments . Single ( ) , duration ) ;
 		}
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }

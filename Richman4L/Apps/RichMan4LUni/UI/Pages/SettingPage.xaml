@@ -61,7 +61,7 @@
 		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource DeepRedBrush}" Margin="0,0,0,-1"
 					d:LayoutOverrides="LeftMargin, RightMargin" Grid.ColumnSpan="3" Grid.RowSpan="2" />
 
-		<Image x:Name="SettingPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/SettingPageUp.png"
+		<Image x:Name="SettingPageUpImage" Margin="0" Source="ImageResources/SettingPageUp.png"
 				Stretch="UniformToFill" Grid.ColumnSpan="3" Grid.RowSpan="2" VerticalAlignment="Top" />
 		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="2" >
 			<Grid.RowDefinitions>

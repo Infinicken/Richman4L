@@ -4,7 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.UI.Controls"
-	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Controls.DreamRecorderDarkLogo"
+	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Controls.DreamRecorderLogo"
 	mc:Ignorable="d" >
 
 	<Canvas Width="1636.824" Height="501.932" HorizontalAlignment="Center" VerticalAlignment="Center"

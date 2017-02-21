@@ -23,6 +23,8 @@ namespace WenceyWang .Richman4L
 			return random . Next ( 10000 ) <= possibility ;
 		}
 
+		public static int RandomGameValue ( this Random random ) { return random . Next ( 10001 ) ; }
+
 	}
 
 }

@@ -357,7 +357,7 @@ namespace WenceyWang . Richman4L .Players
 		/// <param name="buildingType">要建筑的类型</param>
 		public void BuildBuilding ( [NotNull] Area position , [NotNull] BuildingType buildingType )
 		{
-			#region Check Arguments and State
+			#region Check ArgumentsInfo and State
 
 			if ( position == null )
 			{

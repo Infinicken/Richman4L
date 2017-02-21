@@ -62,6 +62,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			LoadingPageArgument parameters = new LoadingPageArgument ( Task . Run ( ( ) =>
 																					{
 																						new Game ( ) ;
+
 																						Game . Current . Start ( Parameters ) ;
 																					} ) ,
 																		currentPage => { currentPage . NavigateTo <GamePage> ( ) ; } ) ;

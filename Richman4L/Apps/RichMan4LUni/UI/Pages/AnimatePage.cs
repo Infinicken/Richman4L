@@ -30,6 +30,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			return ( Color ) page . GetType ( ) . GetTypeInfo ( ) . GetDeclaredProperty ( "PageColor" ) . GetValue ( null ) ;
 		}
 
+
 		protected void SetEventArgsHandled ( object args )
 		{
 			dynamic e = args ;
@@ -39,6 +40,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			}
 			catch ( Exception )
 			{
+				// ignored
 			}
 		}
 

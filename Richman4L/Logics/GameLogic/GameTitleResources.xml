@@ -21,11 +21,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <Titles>
 	<TitleRoots>
 		<TitleRoot Content="Richman" />
+		<TitleRoot Content="Richerman" />
+		<TitleRoot Content="Richestman" />
 		<TitleRoot Content="Poorman" />
+		<TitleRoot Content="Wealthyman" />
+		<!--Todo:Trans this-->
+		<TitleRoot Content="Poorman" />
+		<TitleRoot Content="Poorman" />
+		<TitleRoot Content="Impoverishedman" />
+		<TitleRoot Content="Destituteman" />
 		<TitleRoot Content="Normalman" />
 		<TitleRoot Content="Abnormalman" />
-		<TitleRoot Content="#RICH man" />
-		<TitleRoot Content="#POOR man" />
+		<TitleRoot Content="#RICHman" />
+		<TitleRoot Content="#POORman" />
 		<TitleRoot Content="Rationalman" />
 		<!--<TitleRoot Content="Tank（°ο°）Man"/>-->
 		<TitleRoot Content="TankMan" />
@@ -65,6 +73,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Language" />
 		<TitleKey Content="Lantern" />
 		<TitleKey Content="Lap" />
+		<TitleKey Content="Lookup&lt;TKey, TElement&gt;" />
 		<TitleKey Content="Lana" />
 		<TitleKey Content="Lapel" />
 		<TitleKey Content="Lapse" />
@@ -200,6 +209,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleKey Content="Loafer" />
 		<TitleKey Content="Loam" />
 		<TitleKey Content="Loan" />
+		<TitleKey Content="Lazy&lt;T&gt;" />
 		<TitleKey Content="Lob" />
 		<TitleKey Content="Lobby" />
 		<TitleKey Content="Lobe" />

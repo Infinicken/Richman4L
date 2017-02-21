@@ -78,8 +78,8 @@
 			<!--<TextBlock x:Name="DRText" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"
 						TextAlignment="Right" FontSize="74.667" Text="Dream Recorder"
 						FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" Foreground="White" Margin="20,0" />-->
-			<Controls:DreamRecorderDarkLogo x:Name="DRText" RenderTransformOrigin="0.5,0.5" MaxWidth="640" MaxHeight="320"
-											Margin="20,0" />
+			<Controls:DreamRecorderLogo x:Name="DRText" RenderTransformOrigin="0.5,0.5" MaxWidth="640" MaxHeight="320"
+										Margin="20,0" />
 
 		</Grid>
 

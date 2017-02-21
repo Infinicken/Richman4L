@@ -214,7 +214,7 @@
 
 		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource LimeBrush}"
 					d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition" />
-		<Image x:Name="CreateGamePageDownImage" Margin="0" Source="ms-appx:///Pages/ImageResources/CreateGamePageDown.png"
+		<Image x:Name="CreateGamePageDownImage" Margin="0" Source="ImageResources/CreateGamePageDown.png"
 				Stretch="UniformToFill" VerticalAlignment="Bottom" />
 
 		<Grid x:Name="MainGrid" Margin="0" RenderTransformOrigin="0.5,0.5" >

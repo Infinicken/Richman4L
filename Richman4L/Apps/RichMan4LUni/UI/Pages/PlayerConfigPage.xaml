@@ -102,10 +102,10 @@
 	<Grid>
 		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource LimeBrush}"
 					d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition" />
-		<Image x:Name="PlayerConfigPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/PlayerConfigPageUp.png"
+		<Image x:Name="PlayerConfigPageUpImage" Margin="0" Source="ImageResources/PlayerConfigPageUp.png"
 				Stretch="UniformToFill" d:LayoutOverrides="TopPosition, BottomPosition" VerticalAlignment="Top" />
 		<Image x:Name="PlayerConfigPageDownImage" Margin="0"
-				Source="ms-appx:///Pages/ImageResources/PlayerConfigPageDown.png" Stretch="UniformToFill"
+				Source="ImageResources/PlayerConfigPageDown.png" Stretch="UniformToFill"
 				d:LayoutOverrides="TopPosition, BottomPosition" VerticalAlignment="Bottom" />
 		<Grid x:Name="MainGrid" Margin="0" RenderTransformOrigin="0.5,0.5" >
 			<Grid.RenderTransform>

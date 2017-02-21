@@ -120,4 +120,7 @@
   <data name="CalenderNextDayCheckFailed" xml:space="preserve">
     <value>{0}不是上一天之后的天</value>
   </data>
+  <data name="CurrentGameExists" xml:space="preserve">
+    <value>已存在当前游戏</value>
+  </data>
 </root>

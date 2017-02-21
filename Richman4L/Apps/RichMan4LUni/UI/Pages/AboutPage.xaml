@@ -67,9 +67,9 @@
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource BlueBrush}" Grid.RowSpan="3" Grid.ColumnSpan="3" />
-		<Image x:Name="AboutPageUpImage" Margin="0" Source="ms-appx:///Pages/ImageResources/AboutPageUp.png"
+		<Image x:Name="AboutPageUpImage" Margin="0" Source="ImageResources/AboutPageUp.png"
 				Stretch="UniformToFill" VerticalAlignment="Top" />
-		<Image x:Name="AboutPageDownImage" Margin="0" Source="ms-appx:///Pages/ImageResources/AboutPageDown.png"
+		<Image x:Name="AboutPageDownImage" Margin="0" Source="ImageResources/AboutPageDown.png"
 				Stretch="UniformToFill" VerticalAlignment="Bottom" />
 
 		<Grid x:Name="MainGrid" Grid.ColumnSpan="3" d:LayoutOverrides="LeftPosition, RightPosition"

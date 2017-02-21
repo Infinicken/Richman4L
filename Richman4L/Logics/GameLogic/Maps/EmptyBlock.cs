@@ -21,6 +21,8 @@ using System . Collections ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Properties ;
+
 namespace WenceyWang . Richman4L .Maps
 {
 
@@ -35,12 +37,36 @@ namespace WenceyWang . Richman4L .Maps
 
 		public override int PondingDecrease => Map . Currnet . PondingDecreaseBase ;
 
-		public EmptyBlock ( XElement resource ) : base ( resource ) { }
+		//todo:转化率
+		public override int Flammability => ForestCoverRate * 1 ;
+
+		public override int ForestCoverRate { get ; set ; }
+
+		//todo:转化率
+		public override int CombustibleMaterialAmount => ForestCoverRate * 1 ;
+
+		public EmptyBlock ( [NotNull] XElement resource ) : base ( resource )
+		{
+			if ( resource == null )
+			{
+				throw new ArgumentNullException ( nameof ( resource ) ) ;
+			}
+
+			try
+			{
+				ForestCoverRate = Convert . ToInt32 ( resource . Attribute ( nameof ( ForestCoverRate ) ) . Value ) ;
+			}
+			catch ( NullReferenceException e )
+			{
+				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+			}
+		}
 
 		public EmptyBlock ( int x , int y )
 		{
 			X = x ;
 			Y = y ;
+			ForestCoverRate = GameRandom . Current . RandomGameValue ( ) ;
 		}
 
 	}

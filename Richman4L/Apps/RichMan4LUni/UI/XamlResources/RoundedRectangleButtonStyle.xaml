@@ -33,7 +33,7 @@
 						</VisualStateManager.VisualStateGroups>
 						<Rectangle x:Name="rectangle" Margin="0" RadiusX="10" RadiusY="10" >
 							<Rectangle.Fill>
-								<SolidColorBrush Color="#33000000" Opacity="0" />
+								<SolidColorBrush Color="{StaticResource TransparentBlack}" Opacity="0" />
 							</Rectangle.Fill>
 						</Rectangle>
 						<Rectangle Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" RadiusX="10" RadiusY="10" />

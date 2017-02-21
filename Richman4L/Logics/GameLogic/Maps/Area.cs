@@ -58,6 +58,15 @@ namespace WenceyWang . Richman4L .Maps
 			}
 		}
 
+		public override int PondingDecrease { get ; }
+
+		public override int Flammability { get ; }
+
+		public override int CombustibleMaterialAmount { get
+			; }
+
+		public override int ForestCoverRate { get ; set ; }
+
 		public Building Building { get ; private set ; }
 
 		public abstract long Price { get ; protected set ; }
@@ -75,6 +84,7 @@ namespace WenceyWang . Richman4L .Maps
 			try
 			{
 				_positionId = Convert . ToInt64 ( resource . Attribute ( nameof ( Position ) ) . Value ) ;
+				ForestCoverRate = Convert . ToInt32 ( resource . Attribute ( nameof ( ForestCoverRate ) ) . Value ) ;
 			}
 			catch ( NullReferenceException e )
 			{
@@ -123,6 +133,8 @@ namespace WenceyWang . Richman4L .Maps
 
 		public void BuildBuildiing ( [NotNull] Building building )
 		{
+			#region Check Argument
+
 			if ( building == null )
 			{
 				throw new ArgumentNullException ( nameof ( building ) ) ;
@@ -136,6 +148,8 @@ namespace WenceyWang . Richman4L .Maps
 			{
 				throw new InvalidOperationException ( "this area have building" ) ;
 			}
+
+			#endregion
 
 			Building = building ;
 		}

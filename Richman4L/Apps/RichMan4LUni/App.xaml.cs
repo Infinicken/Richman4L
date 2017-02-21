@@ -5,10 +5,14 @@ using System . Linq ;
 
 using Windows . ApplicationModel ;
 using Windows . ApplicationModel . Activation ;
+using Windows . UI . Composition ;
 using Windows . UI . ViewManagement ;
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
+using Windows . UI . Xaml . Hosting ;
 using Windows . UI . Xaml . Navigation ;
+
+using Microsoft . Graphics . Canvas . Effects ;
 
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
 using WenceyWang . Richman4L . Properties ;
@@ -47,6 +51,19 @@ namespace WenceyWang . Richman4L . Apps .Uni
 		public Frame RootFrame { get ; private set ; }
 
 		public bool IsInTooSmallState { get ; private set ; }
+
+		private Visual viewRootVisual { get ; set ; }
+
+		public float ViewSaturation
+		{
+			get
+			{
+				float temp ;
+				viewRootVisual . Properties . TryGetScalar ( nameof ( SaturationEffect . Saturation ) , out temp ) ;
+				return temp ;
+			}
+			set { viewRootVisual . Properties . InsertScalar ( nameof ( SaturationEffect . Saturation ) , value ) ; }
+		}
 
 		/// <summary>
 		///     初始化单一实例应用程序对象。这是执行的创作代码的第一行，
@@ -111,6 +128,48 @@ namespace WenceyWang . Richman4L . Apps .Uni
 				ViewRoot = new Grid ( ) ;
 				ViewRoot . Children . Add ( RootFrame ) ;
 				ViewRoot . Children . Add ( WindowTooSmallFrame ) ;
+
+				{
+					viewRootVisual = ElementCompositionPreview . GetElementVisual ( ViewRoot ) ;
+					viewRootVisual . Properties . InsertScalar ( nameof ( SaturationEffect . Saturation ) , 0.2f ) ;
+					Compositor compositor = viewRootVisual . Compositor ;
+
+					CompositionBackdropBrush backdropBrush = compositor . CreateBackdropBrush ( ) ;
+
+					SaturationEffect graphicsEffect = new SaturationEffect
+													{
+														Name = nameof ( SaturationEffect ) ,
+														Source = new CompositionEffectSourceParameter ( nameof ( backdropBrush ) )
+													} ;
+
+					CompositionEffectFactory effectFactory = compositor . CreateEffectFactory ( graphicsEffect ,
+																								new [ ] { $"{nameof ( SaturationEffect )}.{nameof ( graphicsEffect . Saturation )}" } ) ;
+					CompositionEffectBrush effectBrush = effectFactory . CreateBrush ( ) ;
+
+					effectBrush . Properties . InsertScalar (
+						$"{nameof ( SaturationEffect )}.{nameof ( graphicsEffect . Saturation )}" ,
+						0f ) ;
+
+					ExpressionAnimation bindSaturationAnimation =
+						compositor . CreateExpressionAnimation ( $"{nameof ( viewRootVisual )}.{nameof ( SaturationEffect . Saturation )}" ) ;
+
+					bindSaturationAnimation . SetReferenceParameter ( $"{nameof ( viewRootVisual )}" , viewRootVisual ) ;
+
+					effectBrush . StartAnimation ( $"{nameof ( SaturationEffect )}.{nameof ( graphicsEffect . Saturation )}" ,
+													bindSaturationAnimation ) ;
+					effectBrush . SetSourceParameter ( nameof ( backdropBrush ) , backdropBrush ) ;
+
+
+					SpriteVisual glassVisual = compositor . CreateSpriteVisual ( ) ;
+					glassVisual . Brush = effectBrush ;
+
+					ExpressionAnimation bindSizeAnimation =
+						compositor . CreateExpressionAnimation ( $"{nameof ( viewRootVisual )}.{nameof ( viewRootVisual . Size )}" ) ;
+					bindSizeAnimation . SetReferenceParameter ( $"{nameof ( viewRootVisual )}" , viewRootVisual ) ;
+					glassVisual . StartAnimation ( $"{nameof ( glassVisual . Size )}" , bindSizeAnimation ) ;
+
+					ElementCompositionPreview . SetElementChildVisual ( ViewRoot , glassVisual ) ;
+				}
 			}
 
 			SetVisibility ( ) ;

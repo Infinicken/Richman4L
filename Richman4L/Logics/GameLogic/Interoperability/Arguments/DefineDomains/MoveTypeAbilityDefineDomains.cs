@@ -8,13 +8,13 @@ using WenceyWang . Richman4L . Properties ;
 namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
 {
 
-	public class DiceOwnerDefineDomains : ArgumentValueDefineDomain
+	public class MoveTypeAbilityDefineDomains : ArgumentValueDefineDomain
 	{
 
 		[NotNull]
 		public Player Target { get ; }
 
-		public DiceOwnerDefineDomains ( Player target )
+		public MoveTypeAbilityDefineDomains ( Player target )
 		{
 			if ( target == null )
 			{
@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
 		{
 			try
 			{
-				return Target . IsDiceAviliable ( ( DiceType ) value ) ;
+				return Target . IsMoveTypeAvilibale ( ( MoveType ) value ) ;
 			}
 			catch ( Exception )
 			{

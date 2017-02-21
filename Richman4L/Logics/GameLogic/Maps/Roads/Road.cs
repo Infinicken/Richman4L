@@ -45,6 +45,12 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public override int PondingDecrease => 400 ;
 
+		public override int Flammability => 0 ;
+
+		public override int CombustibleMaterialAmount => 0 ;
+
+		public override int ForestCoverRate { get { return 0 ; } set { } }
+
 		public Road ( XElement resource ) : base ( resource )
 		{
 			playerPassCount = new List <PlayerCount> ( ) ;

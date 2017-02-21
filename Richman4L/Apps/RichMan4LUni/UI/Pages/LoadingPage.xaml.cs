@@ -135,9 +135,14 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 
 			if ( Argument . TaskToWait . IsCompleted )
 			{
+				Timer . Stop ( ) ;
+				Timer . Tick -= TimerTick ;
 				Argument . ToDoNext ( this ) ;
 			}
-			Timer . Interval = UpdateSaying ( ) ;
+			else
+			{
+				Timer . Interval = UpdateSaying ( ) ;
+			}
 		}
 
 	}

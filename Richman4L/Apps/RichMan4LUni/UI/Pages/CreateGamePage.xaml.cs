@@ -29,6 +29,7 @@ using Windows . UI . Xaml . Media . Imaging ;
 using Windows . UI . Xaml . Navigation ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Maps ;
 
 namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 {
@@ -63,6 +64,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 
 			GameMapView . Items . Add ( map ) ;
 
+			Parameters . Map = new Map ( "Test.xml" ) ;
 
 			StartStoryboard . Begin ( ) ;
 			StartStoryboard . Completed += StartStoryboard_Completed ;

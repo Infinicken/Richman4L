@@ -29,6 +29,15 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L .Cards
 {
 
+	public abstract class Card <T> : Card where T : Card <T>
+	{
+
+		public static List <ArgumentInfo> Arguments { get ; protected set ; }
+
+		public sealed override List <ArgumentInfo> ArgumentsInfo => Arguments ;
+
+	}
+
 	public abstract class Card : GameObject , IAsset
 	{
 
@@ -42,7 +51,7 @@ namespace WenceyWang . Richman4L .Cards
 
 		public static List <CardType> CardTypeList { get ; } = new List <CardType> ( ) ;
 
-		public abstract List <ArgumentInfo> Arguments { get ; }
+		public abstract List <ArgumentInfo> ArgumentsInfo { get ; }
 
 		private static object Locker { get ; } = new object ( ) ;
 

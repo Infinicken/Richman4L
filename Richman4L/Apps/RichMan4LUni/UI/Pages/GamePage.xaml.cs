@@ -17,11 +17,21 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 
 		private bool CardGridShow { get ; set ; }
 
-		public Game CurrentGame { get ; set ; }
+		public Game CurrentGame => Game . Current ;
 
 		public static Color PageColor => XamlResources . Resources . Pink ;
 
-		public GamePage ( ) { InitializeComponent ( ) ; }
+		public GamePage ( )
+		{
+			InitializeComponent ( ) ;
+			Loaded += GamePage_Loaded ;
+		}
+
+		private void GamePage_Loaded ( object sender , RoutedEventArgs e )
+		{
+			MapRenderer . SetMap ( Game . Current . Map ) ;
+			MapRenderer . RendererCatched ( ) ;
+		}
 
 		/// <summary>
 		///     Invoked when this page is about to be displayed in a Frame.

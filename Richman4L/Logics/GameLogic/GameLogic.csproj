@@ -28,9 +28,10 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>3</WarningLevel>
+    <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\GameLogic.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -63,6 +64,7 @@
     <Compile Include="Cards\CardAttribute.cs" />
     <Compile Include="Cards\CardStates.cs" />
     <Compile Include="Cards\CardType.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\MoveTypeAbilityDefineDomains.cs" />
     <Compile Include="Interoperability\Arguments\DefineDomains\StockTransactDefineDomain.cs" />
     <Compile Include="DiceType.cs" />
     <Compile Include="EventRandomExtensions.cs" />
@@ -153,6 +155,11 @@
     <Compile Include="Players\Events\PlayerReceiveCardEventArgs.cs" />
     <Compile Include="Players\Events\PlayerTakeAwayStockEventArgs.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Resources\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Resource.en-US.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -240,6 +247,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.zh-CN.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -300,6 +308,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cards\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.JScript">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.JScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

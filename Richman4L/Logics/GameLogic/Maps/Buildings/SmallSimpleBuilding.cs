@@ -40,6 +40,8 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		//Todo:完善价格机制
 		public override long MaintenanceFee => Grade . MaintenanceFee ;
 
+		public override int NoncombustiblePartRatio { get ; }
+
 		public override void Pass ( Player player )
 		{
 			if ( player == null )
