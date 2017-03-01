@@ -7,7 +7,7 @@ using WenceyWang . Richman4L . Properties ;
 namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
 {
 
-	public class FloatIntervalDefineDomain : ArgumentValueDefineDomain
+	public sealed class FloatIntervalDefineDomain : ArgumentValueDefineDomain
 	{
 
 		public double LeftEndpoint { get ; }

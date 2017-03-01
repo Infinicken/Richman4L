@@ -20,6 +20,8 @@ using System ;
 using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
+using System . Reflection ;
+using System . Threading . Tasks ;
 
 using WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer ;
 using WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer . Roads ;
@@ -109,29 +111,19 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 
 		private void DrawObject ( MapObject mapObject )
 		{
-			MapObjectRendererType rendererType =
-				MapObjectRendererTypeList . FirstOrDefault ( typ => typ . TargetType == mapObject . GetType ( ) ) ;
-			if ( rendererType != null )
-			{
-				ICharacterMapObjectRenderer renderer =
-					( ICharacterMapObjectRenderer ) Activator . CreateInstance ( rendererType . EntryType ) ;
-				renderer . SetTarget ( mapObject ) ;
-				MapObjectRendererList . Add ( renderer ) ;
-				renderer . SetUnit ( MapUnit ) ;
-				renderer . StartUp ( ) ;
-			}
-			else
-			{
-				string text = mapObject . Type . Name + " No Renderer " ;
-				for ( int y = 0 ; y < mapObject . Size . Height * MapUnit . Height ; y++ )
-				{
-					for ( int x = 0 ; x < mapObject . Size . Width * MapUnit . Width ; x++ )
-					{
-						CurrentView [ mapObject . X * MapUnit . Width + x , mapObject . Y * MapUnit . Height + y ] =
-							text [ ( y * mapObject . Size . Width * MapUnit . Width + x ) % text . Length ] ;
-					}
-				}
-			}
+			Type rendererType = MapObjectRendererTypeList . FirstOrDefault (
+																renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
+															EntryType ??
+								MapObjectRendererTypeList . FirstOrDefault (
+									renderer =>
+										renderer . TargetType . GetTypeInfo ( ) .
+													IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? . EntryType ;
+			ICharacterMapObjectRenderer objectRenderer =
+				( ICharacterMapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
+			objectRenderer . SetTarget ( mapObject ) ;
+			MapObjectRendererList . Add ( objectRenderer ) ;
+			objectRenderer . SetUnit ( MapUnit ) ;
+			objectRenderer . StartUp ( ) ;
 		}
 
 		private void Map_AddMapObjectEvent ( object sender , MapAddMapObjectEventArgs e )
@@ -140,6 +132,7 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 			Update ( ) ;
 		}
 
+		[Startup ( nameof ( LoadMapObjectRenderers ) )]
 		public static void LoadMapObjectRenderers ( )
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) ) ;
@@ -148,6 +141,8 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 			RegisMapObjectRenderer ( typeof ( OneWayRoadRenderer ) , typeof ( OneWayRoad ) ) ;
 			RegisMapObjectRenderer ( typeof ( AreaRoadRenderer ) , typeof ( AreaRoad ) ) ;
 			RegisMapObjectRenderer ( typeof ( SmallAreaRenderer ) , typeof ( SmallArea ) ) ;
+			RegisMapObjectRenderer ( typeof ( EmptyBlockRenderer ) , typeof ( EmptyBlock ) ) ;
+			RegisMapObjectRenderer ( typeof ( NameShower ) , typeof ( MapObject ) ) ;
 		}
 
 		public static MapObjectRendererType RegisMapObjectRenderer ( [NotNull] Type mapRendererType ,
@@ -173,7 +168,36 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 
 			type = new MapObjectRendererType ( mapRendererType , targetType ) ;
 			MapObjectRendererTypeList . Add ( type ) ;
+			MapObjectRendererTypeList . Sort (
+				( x , y ) =>
+					y . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) -
+					x . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) ) ;
+
+
 			return type ;
+		}
+
+	}
+
+	public static class Startup
+	{
+
+		public static Task RunAllTask ( )
+		{
+			List <Task> tasks = new List <Task> ( ) ;
+			foreach ( TypeInfo type in
+				typeof ( CharacterMapRenderer ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
+			{
+				foreach ( MethodInfo method in type . DeclaredMethods )
+				{
+					if ( method . GetCustomAttributes ( typeof ( StartupAttribute ) ) . Any ( ) )
+					{
+						tasks . Add ( Task . Run ( ( ) => method . Invoke ( null , new object [ ] { } ) ) ) ;
+					}
+				}
+			}
+
+			return Task . WhenAll ( tasks ) ;
 		}
 
 	}

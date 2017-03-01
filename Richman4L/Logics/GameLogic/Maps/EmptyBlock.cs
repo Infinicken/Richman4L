@@ -52,14 +52,9 @@ namespace WenceyWang . Richman4L .Maps
 				throw new ArgumentNullException ( nameof ( resource ) ) ;
 			}
 
-			try
-			{
-				ForestCoverRate = Convert . ToInt32 ( resource . Attribute ( nameof ( ForestCoverRate ) ) . Value ) ;
-			}
-			catch ( NullReferenceException e )
-			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
-			}
+			ForestCoverRate = ReadUnnecessaryValue ( resource ,
+													nameof ( ForestCoverRate ) ,
+													GameRandom . Current . RandomGameValue ( ) ) ;
 		}
 
 		public EmptyBlock ( int x , int y )

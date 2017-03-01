@@ -24,7 +24,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 {
 
 	/// <summary>
-	///     Point out t
+	///     Point out the reason that building destroyed
 	/// </summary>
 	public enum BuildingDestroyReason
 	{

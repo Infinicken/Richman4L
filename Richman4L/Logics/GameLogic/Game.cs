@@ -89,7 +89,8 @@ namespace WenceyWang .Richman4L
 
 		internal GameDate GovermentControlChanging { get ; set ; }
 
-
+		/// <summary>
+		/// </summary>
 		public List <Buff> GameBuffs { get ; } = new List <Buff> ( ) ;
 
 		public List <Player> GamePlayers { get ; } = new List <Player> ( ) ;

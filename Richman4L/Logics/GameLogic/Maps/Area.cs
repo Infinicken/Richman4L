@@ -62,10 +62,9 @@ namespace WenceyWang . Richman4L .Maps
 
 		public override int Flammability { get ; }
 
-		public override int CombustibleMaterialAmount { get
-			; }
+		public override int CombustibleMaterialAmount { get ; }
 
-		public override int ForestCoverRate { get ; set ; }
+		public sealed override int ForestCoverRate { get ; set ; }
 
 		public Building Building { get ; private set ; }
 
@@ -81,15 +80,10 @@ namespace WenceyWang . Richman4L .Maps
 				throw new ArgumentNullException ( nameof ( resource ) ) ;
 			}
 
-			try
-			{
-				_positionId = Convert . ToInt64 ( resource . Attribute ( nameof ( Position ) ) . Value ) ;
-				ForestCoverRate = Convert . ToInt32 ( resource . Attribute ( nameof ( ForestCoverRate ) ) . Value ) ;
-			}
-			catch ( NullReferenceException e )
-			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
-			}
+			_positionId = ReadNecessaryValue <long> ( resource , nameof ( Position ) ) ;
+			ForestCoverRate = ReadUnnecessaryValue ( resource ,
+													nameof ( ForestCoverRate ) ,
+													GameRandom . Current . RandomGameValue ( ) ) ;
 		}
 
 		public WithAssetObject Owner { get ; set ; }

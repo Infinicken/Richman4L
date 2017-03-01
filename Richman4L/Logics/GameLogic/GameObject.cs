@@ -19,6 +19,7 @@
 using System ;
 using System . Collections ;
 using System . Linq ;
+using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
@@ -37,6 +38,48 @@ namespace WenceyWang .Richman4L
 		public abstract void EndToday ( ) ;
 
 		public abstract void StartDay ( GameDate nextDate ) ;
+
+		public static T ReadNecessaryValue <T> ( XElement element , string name )
+		{
+			if ( element == null )
+			{
+				throw new ArgumentNullException ( nameof ( element ) ) ;
+			}
+			if ( name == null )
+			{
+				throw new ArgumentNullException ( nameof ( name ) ) ;
+			}
+
+			string value = element . Attribute ( name ) ? . Value ;
+
+			if ( value == null )
+			{
+				throw new ArgumentException ( $"" ) ;
+			}
+
+			return ( T ) Convert . ChangeType ( value , typeof ( T ) ) ;
+		}
+
+		public static T ReadUnnecessaryValue <T> ( XElement element , string name , T defaultValue )
+		{
+			if ( element == null )
+			{
+				throw new ArgumentNullException ( nameof ( element ) ) ;
+			}
+			if ( name == null )
+			{
+				throw new ArgumentNullException ( nameof ( name ) ) ;
+			}
+
+			string value = element . Attribute ( name ) ? . Value ;
+
+			if ( value == null )
+			{
+				return defaultValue ;
+			}
+
+			return ( T ) Convert . ChangeType ( value , typeof ( T ) ) ;
+		}
 
 	}
 

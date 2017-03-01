@@ -6,7 +6,6 @@ using Windows . UI ;
 using Windows . UI . Xaml ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
-using WenceyWang . Richman4L . Maps ;
 
 namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 {
@@ -53,8 +52,6 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 		private void StartStoryboard_Completed ( object sender , object e )
 		{
 			StartStoryboard . Completed -= StartStoryboard_Completed ;
-			Map map = new Map ( "Test.xml" ) ;
-
 			AddControl ( ) ;
 		}
 

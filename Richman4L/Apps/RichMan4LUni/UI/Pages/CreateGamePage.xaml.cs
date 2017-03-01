@@ -103,7 +103,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			{
 				MoneyStartButton . Content = MoneyStartList ? . SelectedItem ;
 				Parameters . StartMoney =
-					new NumberConverter ( ) . ConvertBack ( MoneyStartList . SelectedItem ? . ToString ( ) ) ;
+					NumberConverter . ConvertBack ( MoneyStartList . SelectedItem ? . ToString ( ) ) ;
 			}
 		}
 

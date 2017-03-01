@@ -4,37 +4,42 @@ using System . Linq ;
 
 using Windows . UI . Xaml ;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 {
 
 	public sealed partial class DreamRecorderLogo : CanvasContainer
 	{
 
-		public bool Color
+		public bool HaveColor
 		{
-			get { return ( bool ) GetValue ( ColorProperty ) ; }
-			set { SetValue ( ColorProperty , value ) ; }
+			get { return ( bool ) GetValue ( HaveColorProperty ) ; }
+			set { SetValue ( HaveColorProperty , value ) ; }
 		}
 
-
-		public bool Light
+		public bool IsLight
 		{
-			get { return ( bool ) GetValue ( LightProperty ) ; }
-			set { SetValue ( LightProperty , value ) ; }
+			get { return ( bool ) GetValue ( IsLightProperty ) ; }
+			set { SetValue ( IsLightProperty , value ) ; }
 		}
+
+		public bool UseColorLight => HaveColor && IsLight ;
+
+		public bool UseColorDark => HaveColor && ! IsLight ;
+
+		public bool UseMonoLight => ! HaveColor && IsLight ;
+
+		public bool UseMonoDark => ! HaveColor && ! IsLight ;
 
 		public DreamRecorderLogo ( ) { InitializeComponent ( ) ; }
 
-		public static readonly DependencyProperty ColorProperty =
-			DependencyProperty . Register ( nameof ( Color ) ,
+		public static readonly DependencyProperty HaveColorProperty =
+			DependencyProperty . Register ( nameof ( HaveColor ) ,
 											typeof ( bool ) ,
 											typeof ( DreamRecorderLogo ) ,
 											new PropertyMetadata ( true ) ) ;
 
-		public static readonly DependencyProperty LightProperty =
-			DependencyProperty . Register ( nameof ( Light ) ,
+		public static readonly DependencyProperty IsLightProperty =
+			DependencyProperty . Register ( nameof ( IsLight ) ,
 											typeof ( bool ) ,
 											typeof ( DreamRecorderLogo ) ,
 											new PropertyMetadata ( true ) ) ;

@@ -38,9 +38,9 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 			return System . Convert . ToInt64 ( ( ( string ) value ) . Replace ( "$" , "" ) . Replace ( "," , "" ) ) ;
 		}
 
-		public string Convert ( long value ) { return value . ToString ( "C2" ) ; }
+		public static string Convert ( long value ) { return value . ToString ( "C2" ) ; }
 
-		public long ConvertBack ( string value )
+		public static long ConvertBack ( string value )
 		{
 			return System . Convert . ToInt64 ( value . Replace ( "$" , "" ) . Replace ( "," , "" ) ) ;
 		}

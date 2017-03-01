@@ -17,8 +17,6 @@ using Microsoft . Graphics . Canvas . Effects ;
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
 using WenceyWang . Richman4L . Properties ;
 
-//using Microsoft . ApplicationInsights ;
-
 namespace WenceyWang . Richman4L . Apps .Uni
 {
 
@@ -40,9 +38,9 @@ namespace WenceyWang . Richman4L . Apps .Uni
 			}
 		}
 
-		public Grid ViewRoot
+		public Panel ViewRoot
 		{
-			get { return Window . Current . Content as Grid ; }
+			get { return Window . Current . Content as Panel ; }
 			private set { Window . Current . Content = value ; }
 		}
 
@@ -104,6 +102,8 @@ namespace WenceyWang . Richman4L . Apps .Uni
 			{
 				RootFrame = new Frame ( ) ;
 
+				RootFrame . CacheSize = 0 ;
+
 				RootFrame . NavigationFailed += OnNavigationFailed ;
 				RootFrame . SizeChanged += Frame_SizeChanged ;
 
@@ -118,6 +118,9 @@ namespace WenceyWang . Richman4L . Apps .Uni
 			if ( WindowTooSmallFrame == null )
 			{
 				WindowTooSmallFrame = new Frame ( ) ;
+
+				WindowTooSmallFrame . CacheSize = 0 ;
+
 				WindowTooSmallFrame . SizeChanged += Frame_SizeChanged ;
 
 				WindowTooSmallFrame . Navigate ( typeof ( FrameTooSmallPage ) ) ;
@@ -131,7 +134,7 @@ namespace WenceyWang . Richman4L . Apps .Uni
 
 				{
 					viewRootVisual = ElementCompositionPreview . GetElementVisual ( ViewRoot ) ;
-					viewRootVisual . Properties . InsertScalar ( nameof ( SaturationEffect . Saturation ) , 0.2f ) ;
+					viewRootVisual . Properties . InsertScalar ( nameof ( SaturationEffect . Saturation ) , 1f ) ;
 					Compositor compositor = viewRootVisual . Compositor ;
 
 					CompositionBackdropBrush backdropBrush = compositor . CreateBackdropBrush ( ) ;

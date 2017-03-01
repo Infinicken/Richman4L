@@ -6,7 +6,7 @@ using Windows . UI . Xaml . Controls ;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace MapDesigner
+namespace WenceyWang . Richman4L . Tools .MapDesigner
 {
 
 	/// <summary>

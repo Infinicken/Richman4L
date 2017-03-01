@@ -7,7 +7,7 @@ using System . Windows . Controls ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
 
-namespace BuildingTypeDesigner
+namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
 {
 
 	/// <summary>

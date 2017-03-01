@@ -12,12 +12,12 @@ namespace WenceyWang . Richman4L .RandomEvents
 	{
 
 		/// <summary>
-		///     表示事件每天发生的概率，概率表示为这个数值的1/10000。
+		///     表示事件每天发生的概率，概率为这个数值的1/10000。
 		/// </summary>
 		public virtual int Possibility { get ; set ; } = 0 ;
 
 		/// <summary>
-		///     表示事件能否发生。
+		///     表示事件能否发生
 		/// </summary>
 		public abstract bool CanInvoke { get ; }
 

@@ -163,6 +163,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		public static long Calu ( int x , int y ) { return ( x + y ) * ( x + y + 1 ) / 2 + y ; }
 
+		//public static 
 	}
 
 }

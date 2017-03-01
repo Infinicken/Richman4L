@@ -46,7 +46,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		/// <summary>
 		///     建筑的位置
 		/// </summary>
-		public virtual Area Position { get ; protected set ; }
+		public Area Position { get ; protected set ; }
 
 		/// <summary>
 		///     指示建筑的完成度的10000倍

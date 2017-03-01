@@ -34,9 +34,12 @@ namespace WenceyWang . Richman4L .Maps
 	{
 
 		/// <summary>
+		///     This prop should always return Game.Current.Map
 		/// </summary>
 		[NotNull]
-		public static Map Currnet => Game . Current . Map ;
+		public static Map Currnet { get ; set ; }
+
+		public Guid Guid { get ; private set ; }
 
 		[NotNull]
 		public string Name { get ; set ; }
@@ -90,8 +93,9 @@ namespace WenceyWang . Richman4L .Maps
 			{
 				Name = ele . Attribute ( nameof ( Name ) ) . Value ;
 				Size = new MapSize ( Convert . ToInt32 ( ele . Attribute ( "SizeX" ) . Value ) ,
-									Convert . ToInt32 ( ele . Attribute ( "SizeY" ) ? . Value ) ) ;
-				foreach ( XElement item in ele . Element ( "MapObjects" ) ? . Elements ( ) )
+									Convert . ToInt32 ( ele . Attribute ( "SizeY" ) . Value ) ) ;
+				Guid = Guid . Parse ( ele . Attribute ( nameof ( Guid ) ) . Value ) ;
+				foreach ( XElement item in ele . Element ( nameof ( Objects ) ) ? . Elements ( ) )
 				{
 					Objects . Add (
 						Activator . CreateInstance (
@@ -119,7 +123,7 @@ namespace WenceyWang . Richman4L .Maps
 		public Map ( )
 		{
 			//todo:the line under is a test code, Current should return Game.Current.Map or something else.
-			//Currnet = this ;
+			Currnet = this ;
 
 			//todo
 		}

@@ -5,18 +5,52 @@ using System . Linq ;
 namespace WenceyWang . Richman4L .Maps
 {
 
-	public struct MapArea
+	public abstract class MapArea
 	{
 
-		private int X ;
+		public abstract bool IsInArea ( MapObject mapObject ) ;
 
-		private int Y ;
+	}
 
-		private int Width ;
+	public class RectangleMapArea : MapArea
+	{
 
-		private int Height ;
+		public int X { get ; }
 
-		public bool IsInArea ( MapObject mapObject ) { throw new NotImplementedException ( ) ; }
+		public int Y { get ; }
+
+		public int Width { get ; }
+
+		public int Height { get ; }
+
+		public RectangleMapArea ( int x , int y , int width , int height )
+		{
+			X = x ;
+			Y = y ;
+			Width = width ;
+			Height = height ;
+		}
+
+		public override bool IsInArea ( MapObject mapObject )
+			=> mapObject . X >= X &&
+				mapObject . X + mapObject . Size . Width <= X + Width &&
+				mapObject . Y >= Y &&
+				mapObject . Y + mapObject . Size . Height <= Y + Height ;
+
+	}
+
+	public class ObjectChebyshevDistanceMapArea : MapArea
+	{
+
+		public MapObject Object { get ; }
+
+		public int Distance { get ; }
+
+		public override bool IsInArea ( MapObject mapObject )
+		{
+			return Math . Max ( Math . Abs ( Object . X - mapObject . X ) , Math . Abs ( Object . Y - mapObject . Y ) ) <
+					Distance ;
+		}
 
 	}
 

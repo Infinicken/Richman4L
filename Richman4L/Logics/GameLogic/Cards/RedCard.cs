@@ -97,11 +97,7 @@ namespace WenceyWang . Richman4L .Cards
 
 		public PlayerPositionAreaDefineDomain ( Player target ) { Target = target ; }
 
-		public PlayerPositionAreaDefineDomain ( WithAssetObject owner , Player target )
-		{
-			Target = target ;
-			throw new NotImplementedException ( ) ;
-		}
+		public PlayerPositionAreaDefineDomain ( WithAssetObject owner , Player target ) { Target = target ; }
 
 		public override bool IsValid ( object value ) { throw new NotImplementedException ( ) ; }
 

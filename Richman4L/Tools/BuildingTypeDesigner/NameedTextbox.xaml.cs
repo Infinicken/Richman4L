@@ -4,7 +4,7 @@ using System . Linq ;
 using System . Windows ;
 using System . Windows . Controls ;
 
-namespace BuildingTypeDesigner
+namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
 {
 
 	/// <summary>

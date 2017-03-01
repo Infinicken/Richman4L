@@ -11,7 +11,7 @@
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" >
 	<pages:AnimatePage.Resources>
 		<Storyboard x:Name="StartStoryboard" >
-			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="DRText" >
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="DrText" >
 				<DiscreteObjectKeyFrame KeyTime="0" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
@@ -38,7 +38,7 @@
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
 			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DRText" >
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DrText" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:6" Value="1" EasingFunction="{StaticResource EasingFunction}" />
@@ -75,11 +75,8 @@
 						VerticalAlignment="Center" Foreground="{StaticResource WhiteBrush}"
 						FontFamily="ms-appx:/Fonts/LeviReBrushed.ttf#LeviReBrushed" FontSize="64" TextAlignment="Center"
 						Margin="20,0" />
-			<!--<TextBlock x:Name="DRText" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"
-						TextAlignment="Right" FontSize="74.667" Text="Dream Recorder"
-						FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" Foreground="White" Margin="20,0" />-->
-			<Controls:DreamRecorderLogo x:Name="DRText" RenderTransformOrigin="0.5,0.5" MaxWidth="640" MaxHeight="320"
-										Margin="20,0" />
+			<Controls:DreamRecorderLogo x:Name="DrText" RenderTransformOrigin="0.5,0.5" MaxWidth="640" MaxHeight="320"
+										Margin="20,0" IsLight="False" />
 
 		</Grid>
 

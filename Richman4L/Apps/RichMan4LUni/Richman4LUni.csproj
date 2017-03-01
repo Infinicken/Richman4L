@@ -423,6 +423,10 @@
       <Project>{0ddaab3a-2358-4bd7-a865-e619446511be}</Project>
       <Name>GameLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Sockets\RemoteClient\RemoteClient.csproj">
+      <Project>{cf001341-ad92-4d01-950e-2111e379acff}</Project>
+      <Name>RemoteClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamlMapRenderers\XamlMapRenderers.csproj">
       <Project>{73b80fc0-34f1-429e-86a6-8f63451e53e8}</Project>
       <Name>XamlMapRenderers</Name>

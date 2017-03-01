@@ -9,7 +9,7 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Navigation ;
 
-namespace MapDesigner
+namespace WenceyWang . Richman4L . Tools .MapDesigner
 {
 
 	/// <summary>
@@ -96,6 +96,7 @@ namespace MapDesigner
 		private void OnSuspending ( object sender , SuspendingEventArgs e )
 		{
 			SuspendingDeferral deferral = e . SuspendingOperation . GetDeferral ( ) ;
+
 
 			//TODO: Save application state and stop any background activity
 			deferral . Complete ( ) ;

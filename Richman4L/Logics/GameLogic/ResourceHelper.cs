@@ -20,7 +20,7 @@ namespace WenceyWang .Richman4L
 
 			Assembly assembly = typeof ( Game ) . GetTypeInfo ( ) . Assembly ;
 
-			Stream stream = assembly . GetManifestResourceStream ( typeof ( Game ) . Namespace + "." + fileName ) ;
+			Stream stream = assembly . GetManifestResourceStream ( $"{typeof ( Game ) . Namespace}.{fileName}" ) ;
 
 			if ( stream == null )
 			{

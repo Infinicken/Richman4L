@@ -7,7 +7,7 @@
     <ProjectGuid>{38A9075E-B827-4D8B-BD53-DA9F3FBCDC5F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BuildingTypeDesigner</RootNamespace>
+    <RootNamespace>WenceyWang.Richman4L.Tools.BuildingTypeDesigner</RootNamespace>
     <AssemblyName>BuildingTypeDesigner</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

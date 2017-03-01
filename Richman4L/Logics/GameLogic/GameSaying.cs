@@ -62,7 +62,9 @@ namespace WenceyWang .Richman4L
 			}
 			if ( element . Name != nameof ( GameSaying ) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} do not perform a {nameof ( GameSaying )}" ) ;
+				throw new ArgumentException ( string . Format ( "{0} do not perform a {1}" ,
+																nameof ( element ) ,
+																nameof ( GameSaying ) ) ) ;
 			}
 
 			Content = element . Attribute ( nameof ( Content ) ) ? . Value ;
@@ -207,7 +209,7 @@ namespace WenceyWang .Richman4L
 
 				foreach ( XElement item in doc . Root . Elements ( ) )
 				{
-					Sayings . Add ( new GameSaying ( item ) ) ;
+					RegisSaying ( new GameSaying ( item ) ) ;
 				}
 
 				Loaded = true ;
