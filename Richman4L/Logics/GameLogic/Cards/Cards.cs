@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -40,8 +39,6 @@ namespace WenceyWang . Richman4L .Cards
 
 	public abstract class Card : GameObject , IAsset
 	{
-
-		public CardStatus Status { get ; protected set ; }
 
 		public CardType Type { get ; private set ; }
 

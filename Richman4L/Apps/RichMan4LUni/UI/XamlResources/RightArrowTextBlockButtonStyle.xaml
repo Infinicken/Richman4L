@@ -175,7 +175,7 @@
 								<VisualState x:Name="Indeterminate" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<ContentPresenter x:Name="Text" Content="{TemplateBinding Content}" />
+						<ContentPresenter x:Name="Text" Content="{TemplateBinding Content}" VerticalAlignment="Center" />
 						<Rectangle
 							Grid.Column="0" x:Name="FocusVisualWhite"
 							IsHitTestVisible="False"

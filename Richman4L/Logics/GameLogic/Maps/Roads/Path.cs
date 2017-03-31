@@ -17,9 +17,7 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
-using System . Collections . ObjectModel ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
@@ -41,15 +39,13 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		/// <summary>
 		///     指示这个路径末尾之前的路径
 		/// </summary>
-		/// todo:rename this
-		public Road Previous => Route [ Route . Count - 2 ] ;
+		public Road Penultimate => Route [ Route . Count - 2 ] ;
+
 
 		/// <summary>
 		///     指示整个路径
 		/// </summary>
-		public ReadOnlyCollection <Road> Route { get ; }
-
-		private List <Road> route { get ; }
+		public List <Road> Route { get ; } = new List <Road> ( ) ;
 
 		public override int X { get { return Route . Min ( road => road . X ) ; } protected set { } }
 
@@ -58,11 +54,6 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		public override MapSize Size => new MapSize ( Route . Max ( road => road . X ) - Route . Min ( road => road . X ) ,
 													Route . Max ( road => road . Y ) - Route . Min ( road => road . Y ) ) ;
 
-		public Path ( )
-		{
-			route = new List <Road> ( ) ;
-			Route = new ReadOnlyCollection <Road> ( route ) ;
-		}
 
 		/// <summary>
 		///     延长这个路径
@@ -79,12 +70,12 @@ namespace WenceyWang . Richman4L . Maps .Roads
 				throw new ArgumentException ( $"{nameof ( road )} can not enter from {nameof ( Terminal )}" ) ;
 			}
 
-			route . Add ( road ) ;
+			Route . Add ( road ) ;
 		}
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
+		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
 	}
 

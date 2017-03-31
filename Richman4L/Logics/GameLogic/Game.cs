@@ -17,12 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . IO ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . Buffs ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . GameEnviroment ;
@@ -30,11 +30,10 @@ using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . Events ;
 using WenceyWang . Richman4L . Players . Models ;
+using WenceyWang . Richman4L . Properties ;
 using WenceyWang . Richman4L . Resources ;
 using WenceyWang . Richman4L . Stocks ;
 using WenceyWang . Richman4L . Weathers ;
-
-using Environment = WenceyWang . Richman4L . GameEnviroment . Environment ;
 
 namespace WenceyWang .Richman4L
 {
@@ -46,20 +45,23 @@ namespace WenceyWang .Richman4L
 
 		public ReadOnlyCollection <Guid> PreviousGameId { get ; }
 
+		[ConsoleVisable]
 		public Guid GameId { get ; private set ; }
 
 		public GameStatus Status { get ; set ; }
 
+		[ConsoleVisable]
 		public WinningCondition WinningCondition { get ; set ; }
 
-		public Environment GameEnviroment { get ; set ; }
+		public GameRule EnviromentSetting { get ; set ; }
 
 		public static Game Current { get ; private set ; }
 
 		/// <summary>
-		///     指示当前的上下文玩家
+		///     玩家使用的控制台
 		/// </summary>
-		public Player CurrentPlayer { get ; private set ; }
+		[NotNull]
+		public List <PlayerConsole> Consoles { get ; } = new List <PlayerConsole> ( ) ;
 
 		/// <summary>
 		///     指示游戏是否开始
@@ -69,21 +71,25 @@ namespace WenceyWang .Richman4L
 		/// <summary>
 		///     游戏的日历
 		/// </summary>
+		[ConsoleVisable]
 		public Calendar Calendar { get ; private set ; }
 
 		/// <summary>
 		///     今天的天气
 		/// </summary>
+		[ConsoleVisable]
 		public Weather Weather { get ; set ; }
 
 		/// <summary>
 		///     当前游戏的地图
 		/// </summary>
+		[ConsoleVisable]
 		public Map Map { get ; private set ; }
 
 		/// <summary>
 		///     政府对经济的态度
 		/// </summary>
+		[ConsoleVisable]
 		public GovermentControl GovermentControl { get ; set ; }
 
 
@@ -91,27 +97,15 @@ namespace WenceyWang .Richman4L
 
 		/// <summary>
 		/// </summary>
+		[ConsoleVisable]
 		public List <Buff> GameBuffs { get ; } = new List <Buff> ( ) ;
 
+		[ConsoleVisable]
 		public List <Player> GamePlayers { get ; } = new List <Player> ( ) ;
 
+		[ConsoleVisable]
 		public StockMarket StockMarket { get ; set ; }
 
-		/// <summary>
-		///     切换到下一个玩家的上下文
-		/// </summary>
-		public void NextPlayer ( )
-		{
-			if ( GamePlayers . IndexOf ( CurrentPlayer ) + 1 < GamePlayers . Count )
-			{
-				CurrentPlayer = GamePlayers [ GamePlayers . IndexOf ( CurrentPlayer ) + 1 ] ;
-			}
-			else
-			{
-				NextDay ( ) ;
-				CurrentPlayer = GamePlayers . First ( ) ;
-			}
-		}
 
 		public virtual void NextDay ( )
 		{
@@ -135,10 +129,12 @@ namespace WenceyWang .Richman4L
 
 			#endregion
 
-			if ( GamePlayers . Any ( player => WinningCondition . IsWin ( player ) ) )
+			List <Player> winners = GamePlayers . Where ( player => WinningCondition . IsWin ( player ) ) . ToList ( ) ;
+			if ( winners . Any ( ) )
 			{
 				GameResult info = new GameResult ( ) ;
-				GameEnviroment . GameOver ( info ) ;
+				info . Winers = winners ;
+				GameOver ( info ) ;
 			}
 
 			#region Start Next Day
@@ -191,6 +187,18 @@ namespace WenceyWang .Richman4L
 			#endregion
 		}
 
+		private void GameOver ( GameResult info ) { throw new NotImplementedException ( ) ; }
+
+		public void UpdateGameObject ( GameObject gameObject )
+		{
+			foreach ( PlayerConsole playerConsole in Consoles )
+			{
+				playerConsole . UpdateGame ( gameObject ) ;
+			}
+		}
+
+		public void RemovePlayer ( Player player , RemovePlayerReason reason ) { }
+
 		#region Starting
 
 		public long StartMoney { get ; private set ; }
@@ -200,6 +208,8 @@ namespace WenceyWang .Richman4L
 		/// </summary>
 		public long GameLenth { get ; private set ; }
 
+		public AuctionPerformer AuctionPerformer { get ; set ; }
+
 		#endregion
 
 		#region Initialize
@@ -208,7 +218,7 @@ namespace WenceyWang .Richman4L
 		{
 			Calendar = new Calendar ( ) ;
 
-			GameEnviroment = parameters . Enviroment ;
+			EnviromentSetting = parameters . EnviromentSetting ;
 
 			StartMoney = parameters . StartMoney ;
 
@@ -286,6 +296,11 @@ namespace WenceyWang .Richman4L
 		}
 
 		#endregion
+	}
+
+	public enum RemovePlayerReason
+	{
+
 	}
 
 }

@@ -1,5 +1,4 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -43,12 +42,13 @@ namespace WenceyWang . Richman4L .Cards
 		{
 			ArgumentsInfo . CheckArgument ( arguments ) ;
 
-			RedBuff buff = new RedBuff ( ( Stock ) arguments . Arguments . Single ( ) , 3 ) ;
+			RedBuff buff = new RedBuff ( ( Stock ) arguments . Arguments . Single ( ) ,
+										Game . Current . EnviromentSetting . RedCardBuffDuration ) ;
 		}
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
+		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
 	}
 
@@ -81,7 +81,7 @@ namespace WenceyWang . Richman4L .Cards
 
 		public override void EndToday ( ) { }
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 
 		public override bool CanUse ( ) { return Owner is Player ; }

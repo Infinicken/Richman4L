@@ -18,10 +18,13 @@
 
 using System ;
 using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
+using System . Reflection ;
 using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Maps ;
 
 namespace WenceyWang .Richman4L
 {
@@ -29,15 +32,60 @@ namespace WenceyWang .Richman4L
 	public abstract class GameObject
 	{
 
-		protected bool IsSaving = false ;
+		[ConsoleVisable]
+		public Guid Guid { get ; set ; }
 
-		public long Index { get ; set ; }
+		public GameObject ( ) { Guid = Guid . NewGuid ( ) ; }
 
-		public GameObject ( ) { Index = GetHashCode ( ) ; }
+		public void RequestUpdate ( ) { }
 
 		public abstract void EndToday ( ) ;
 
 		public abstract void StartDay ( GameDate nextDate ) ;
+
+		public virtual XElement ToXElement ( )
+		{
+			TypeInfo typeInfo = GetType ( ) . GetTypeInfo ( ) ;
+			XElement result = new XElement ( typeInfo . Name ) ;
+			foreach (
+				PropertyInfo property in
+				typeInfo . DeclaredProperties . Where (
+					property => property . GetCustomAttribute ( typeof ( ConsoleVisableAttribute ) ) != null && property . CanRead ) )
+			{
+				if ( typeof ( IEnumerable ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				{
+					XElement propertyContainer = new XElement ( property . Name ) ;
+
+					IEnumerable enumerable = ( IEnumerable ) property . GetValue ( this ) ;
+					foreach ( object item in enumerable )
+					{
+						if ( item is GameObject gameObject )
+						{
+							propertyContainer . Add ( gameObject . ToXElement ( ) ) ;
+						}
+						else
+						{
+							XElement element = new XElement ( item . GetType ( ) . Name ) ;
+							element . SetAttributeValue ( "Value" , item ) ;
+							propertyContainer . Add ( element ) ;
+						}
+					}
+				}
+				else if ( typeof ( GameObject ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				{
+					XElement propertyContainer = new XElement ( property . Name ) ;
+					XElement propertyValue = ( ( GameObject ) property . GetValue ( this ) ) . ToXElement ( ) ;
+					propertyContainer . Add ( propertyValue ) ;
+					result . Add ( propertyContainer ) ;
+				}
+				else
+				{
+					result . SetAttributeValue ( property . Name , property . GetValue ( this ) ) ;
+				}
+			}
+
+			return result ;
+		}
 
 		public static T ReadNecessaryValue <T> ( XElement element , string name )
 		{

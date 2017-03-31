@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<TitleRoot Content="Wealthyman" />
 		<!--Todo:Trans this-->
 		<TitleRoot Content="Poorman" />
+		<TitleRoot Content="Umbrellaman" />
 		<TitleRoot Content="Poorman" />
 		<TitleRoot Content="Impoverishedman" />
 		<TitleRoot Content="Destituteman" />

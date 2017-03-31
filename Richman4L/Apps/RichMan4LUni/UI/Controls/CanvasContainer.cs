@@ -1,5 +1,4 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -174,10 +173,17 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 		protected override Size MeasureOverride ( Size availableSize )
 		{
 			FrameworkElement frameworkElement = Content as FrameworkElement ;
+
 			if ( frameworkElement != null )
 			{
-				Content . Measure ( new Size ( frameworkElement . Width , frameworkElement . Height ) ) ;
+				Size requireSize = new Size ( frameworkElement . Width , frameworkElement . Height ) ;
+				Content . Measure ( requireSize ) ;
+				double zoomRatio = Math . Min ( availableSize . Height / requireSize . Height ,
+												availableSize . Width / requireSize . Width ) ;
+
+				return new Size ( requireSize . Width * zoomRatio , requireSize . Height * zoomRatio ) ;
 			}
+
 			return availableSize ;
 		}
 

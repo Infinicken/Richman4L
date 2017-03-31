@@ -16,10 +16,10 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-using NLog ;
+using Microsoft . Extensions . Logging ;
 
 using WenceyWang . FoggyConsole . Controls ;
 
@@ -49,7 +49,7 @@ namespace WenceyWang .FoggyConsole
 		/// </summary>
 		public Frame ViewRoot { get ; }
 
-		private static Logger Logger { get ; } = LogManager . GetCurrentClassLogger ( ) ;
+		private static ILogger Logger { get ; } = LoggerFactory . CreateLogger <Application> ( ) ;
 
 		/// <summary>
 		///     Used as the boundary for the ViewRoot if the terminal-size can't determined
@@ -122,6 +122,8 @@ namespace WenceyWang .FoggyConsole
 			FocusManager = new FocusManager ( ViewRoot ) ;
 		}
 
+		public static ILoggerFactory LoggerFactory = new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
+
 		public static Application Current ;
 
 		/// <summary>
@@ -163,7 +165,7 @@ namespace WenceyWang .FoggyConsole
 		{
 			if ( DebugLog )
 			{
-				Logger . Debug ( $"Key pressed: {eventArgs . KeyInfo . Key}" ) ;
+				Logger . LogDebug ( $"Key pressed: {eventArgs . KeyInfo . Key}" ) ;
 			}
 
 			Control currentControl = FocusManager ? . FocusedControl ;
@@ -185,7 +187,7 @@ namespace WenceyWang .FoggyConsole
 				FocusManager . HandleKeyInput ( eventArgs ) ;
 				if ( DebugLog )
 				{
-					Logger . Debug ( $"Focused: {FocusManager . FocusedControl . Name}" ) ;
+					Logger . LogDebug ( $"Focused: {FocusManager . FocusedControl . Name}" ) ;
 				}
 			}
 		}

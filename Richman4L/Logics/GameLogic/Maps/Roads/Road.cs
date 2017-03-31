@@ -17,9 +17,7 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
-using System . Collections . ObjectModel ;
 using System . Linq ;
 using System . Xml . Linq ;
 
@@ -51,17 +49,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public override int ForestCoverRate { get { return 0 ; } set { } }
 
-		public Road ( XElement resource ) : base ( resource )
-		{
-			playerPassCount = new List <PlayerCount> ( ) ;
-			PlayerPassCount = new ReadOnlyCollection <PlayerCount> ( playerPassCount ) ;
-
-			playerStayCount = new List <PlayerCount> ( ) ;
-			PlayerStayCount = new ReadOnlyCollection <PlayerCount> ( playerStayCount ) ;
-
-			PassCount = 0 ;
-			StayCount = 0 ;
-		}
+		public Road ( XElement resource ) : base ( resource ) { }
 
 		public virtual void Pass ( Player player , MoveType moveType )
 		{
@@ -109,7 +97,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		/// <returns>能否进入</returns>
 		public abstract bool CanEnterFrom ( Road road ) ;
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 		public override void EndToday ( ) { }
 
@@ -133,17 +121,15 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public long PassCount { get ; private set ; }
 
-		public ReadOnlyCollection <PlayerCount> PlayerPassCount { get ; }
-
-		private List <PlayerCount> playerPassCount { get ; }
+		public List <PlayerCount> PlayerPassCount { get ; } = new List <PlayerCount> ( ) ;
 
 		private void CountPass ( Player player )
 		{
 			PassCount++ ;
-			PlayerCount currentItem = playerPassCount . SingleOrDefault ( item => item . Player == player ) ;
+			PlayerCount currentItem = PlayerPassCount . SingleOrDefault ( item => item . Player == player ) ;
 			if ( currentItem == null )
 			{
-				playerPassCount . Add ( new PlayerCount ( player ) ) ;
+				PlayerPassCount . Add ( new PlayerCount ( player ) ) ;
 			}
 			else
 			{
@@ -157,17 +143,15 @@ namespace WenceyWang . Richman4L . Maps .Roads
 
 		public long StayCount { get ; private set ; }
 
-		public ReadOnlyCollection <PlayerCount> PlayerStayCount { get ; }
-
-		private List <PlayerCount> playerStayCount { get ; }
+		public List <PlayerCount> PlayerStayCount { get ; } = new List <PlayerCount> ( ) ;
 
 		private void CountStay ( Player player )
 		{
 			StayCount++ ;
-			PlayerCount currentItem = playerStayCount . SingleOrDefault ( item => item . Player == player ) ;
+			PlayerCount currentItem = PlayerStayCount . SingleOrDefault ( item => item . Player == player ) ;
 			if ( currentItem == null )
 			{
-				playerStayCount . Add ( new PlayerCount ( player ) ) ;
+				PlayerStayCount . Add ( new PlayerCount ( player ) ) ;
 			}
 			else
 			{

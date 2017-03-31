@@ -17,16 +17,14 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
 using System . Reflection ;
 using System . Threading . Tasks ;
 
-using CommandLine ;
-
-using NLog ;
+using Microsoft . Extensions . CommandLineUtils ;
+using Microsoft . Extensions . Logging ;
 
 using WenceyWang . FIGlet ;
 using WenceyWang . FoggyConsole ;
@@ -39,21 +37,66 @@ namespace WenceyWang . Richman4L . Apps .Console
 	public static class Program
 	{
 
-		private static Logger Logger { get ; } = LogManager . GetCurrentClassLogger ( ) ;
+		private static ILogger Logger { get ; } = LoggerFactory . CreateLogger ( typeof ( Program ) ) ;
 
 		public static Application CurrentApplication { get ; private set ; }
 
 		public static Settings CurrentSetting { get ; set ; }
 
+		public static ILoggerFactory LoggerFactory = new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
+
+		/// <summary>
+		///     Program.exe <-g|-- greeting|-$ <greeting>
+		///         > [name
+		///         <fullname>
+		///             ]
+		///             [-?|-h|--help]
+		///             [-u|--uppercase]
+		/// </summary>
+		/// <param name="args"></param>
 		public static void Main ( string [ ] args )
 		{
+			//// Program.exe <-g|--greeting|-$ <greeting>> [name <fullname>]
+			//// [-?|-h|--help] [-u|--uppercase]
+			//CommandLineApplication commandLineApplication =
+			//  new CommandLineApplication(throwOnUnexpectedArg: false);
+			//CommandArgument names = null;
+			//commandLineApplication.Command("name",
+			//  (target) =>
+			//	names = target.Argument(
+			//	  "fullname",
+			//	  "Enter the full name of the person to be greeted.",
+			//	  multipleValues: true));
+			//CommandOption greeting = commandLineApplication.Option(
+			//  "-$|-g |--greeting <greeting>",
+			//  "The greeting to display. The greeting supports"
+			//  + " a format string where {fullname} will be "
+			//  + "substituted with the full name.",
+			//  CommandOptionType.SingleValue);
+			//CommandOption uppercase = commandLineApplication.Option(
+			//  "-u | --uppercase", "Display the greeting in uppercase.",
+			//  CommandOptionType.NoValue);
+			//commandLineApplication.HelpOption("-? | -h | --help");
+			//commandLineApplication.OnExecute(() =>
+			//{
+			//	if (greeting.HasValue())
+			//	{
+			//		Greet(greeting.Value(), names.Values, uppercase.HasValue());
+			//	}
+			//	return 0;
+			//});
+			//commandLineApplication.Execute(args);
+
+
 			System . Console . CancelKeyPress += Console_CancelKeyPress ;
 
-			ConsoleArguments arguments = new ConsoleArguments ( ) ;
+			//ConsoleArguments arguments = new ConsoleArguments();
 
-			Parser . Default . ParseArguments ( args , arguments ) ;
+			CommandLineApplication commandLineApplication = new CommandLineApplication ( true ) ;
 
-			if ( ! arguments . NoLogo )
+			//var noLogoCommand = commandLineApplication . Option ( @"-nologo|--nologo" , "Show no logo" , CommandOptionType . NoValue ,) ;
+
+			//if (!arguments.NoLogo)
 			{
 				ShowLogo ( ) ;
 				ShowCopyright ( ) ;
@@ -63,53 +106,53 @@ namespace WenceyWang . Richman4L . Apps .Console
 
 #if !DEBUG
 
-			if ( !File . Exists ( FileNameConst . LicenseFile ) )
-			{
-				System . Console . WriteLine ( @"License file not found" );
-				Logger . Info ( "License file not found, will generate it." );
-				GenerateNewLicenseFile ( );
-				Exit ( ProgramExitCode . LicenseNotAccepted );
-			}
-			else
-			{
-				FileStream licenseFile = File . OpenRead ( FileNameConst . LicenseFile );
-				StreamReader reader = new StreamReader ( licenseFile );
-				Logger . Info ( "License file found, reading it." );
-				string licenseFileContent = reader . ReadToEnd ( );
-				reader . Close ( );
-				if ( !licenseFileContent . EndsWith ( "I accept this License." ) )
-				{
-					Logger . Info ( "License check error." );
-					System . Console . WriteLine ( @"You should read the License.txt and accept it before use this program." );
-					Exit ( ProgramExitCode . LicenseNotAccepted );
-				}
-				else
-				{
-					Logger . Info ( "License check pass." );
-				}
-			}
+						if ( !File . Exists ( FileNameConst . LicenseFile ) )
+						{
+							System . Console . WriteLine ( @"License file not found" );
+							Logger . Info ( "License file not found, will generate it." );
+							GenerateNewLicenseFile ( );
+							Exit ( ProgramExitCode . LicenseNotAccepted );
+						}
+						else
+						{
+							FileStream licenseFile = File . OpenRead ( FileNameConst . LicenseFile );
+							StreamReader reader = new StreamReader ( licenseFile );
+							Logger . Info ( "License file found, reading it." );
+							string licenseFileContent = reader . ReadToEnd ( );
+							reader . Close ( );
+							if ( !licenseFileContent . EndsWith ( "I accept this License." ) )
+							{
+								Logger . Info ( "License check error." );
+								System . Console . WriteLine ( @"You should read the License.txt and accept it before use this program." );
+								Exit ( ProgramExitCode . LicenseNotAccepted );
+							}
+							else
+							{
+								Logger . Info ( "License check pass." );
+							}
+						}
 
 #endif
 
 #if DEBUG
-			Logger . Info ( "Debug version, skip license check." ) ;
+			Logger . LogInformation ( "Debug version, skip license check." ) ;
 #endif
 
 			#endregion
 
 			#region Loading Setting
 
-			if ( ! File . Exists ( FileNameConst . SettingFile ) ||
-				arguments . Setup )
+			if ( ! File . Exists ( FileNameConst . SettingFile ) /* ||
+				arguments.Setup*/ )
 			{
 				System . Console . WriteLine ( @"Setting file not found" ) ;
-				Logger . Info ( "Setting file not found, will generate it." ) ;
+				Logger . LogInformation ( "Setting file not found, will generate it." ) ;
 				CurrentSetting = Settings . GenerateNew ( ) ;
 			}
 			else
 			{
 				FileStream settingFile = File . OpenRead ( FileNameConst . SettingFile ) ;
-				Logger . Info ( "Setting file found, loading it." ) ;
+				Logger . LogInformation ( "Setting file found, loading it." ) ;
 				CurrentSetting = Settings . Load ( settingFile ) ;
 			}
 
@@ -119,16 +162,16 @@ namespace WenceyWang . Richman4L . Apps .Console
 
 			startUpTasks . Add ( Task . Run ( ( ) =>
 											{
-												Logger . Debug ( "Loading titles." ) ;
+												Logger . LogDebug ( "Loading titles." ) ;
 												GameTitle . LoadTitles ( ) ;
-												Logger . Debug ( "Loading titles complete." ) ;
+												Logger . LogDebug ( "Loading titles complete." ) ;
 											} ) ) ;
 
 			startUpTasks . Add ( Task . Run ( ( ) =>
 											{
-												Logger . Debug ( "Loading sayings." ) ;
+												Logger . LogDebug ( "Loading sayings." ) ;
 												GameSaying . LoadSayings ( ) ;
-												Logger . Debug ( "Loading sayings complete." ) ;
+												Logger . LogDebug ( "Loading sayings complete." ) ;
 											} ) ) ;
 
 			CurrentApplication = new Application ( new Frame ( ) ) ;
@@ -148,7 +191,7 @@ namespace WenceyWang . Richman4L . Apps .Console
 				FileStream settingFile = File . OpenWrite ( FileNameConst . SettingFile ) ;
 				StreamWriter writer = new StreamWriter ( settingFile ) ;
 				writer . Write ( config ) ;
-				writer . Close ( ) ;
+				writer . Dispose ( ) ;
 			}
 
 			ShowExit ( ) ;
@@ -157,7 +200,7 @@ namespace WenceyWang . Richman4L . Apps .Console
 
 		private static void ShowExit ( )
 		{
-			Logger . Info ( "Exiting" ) ;
+			Logger . LogInformation ( "Exiting" ) ;
 			System . Console . WriteLine ( ) ;
 			System . Console . WriteLine ( @"Exiting..." ) ;
 			System . Console . WriteLine ( ) ;
@@ -173,7 +216,7 @@ namespace WenceyWang . Richman4L . Apps .Console
 			writer . WriteLine ( GetLicense ( ) ) ;
 			writer . WriteLine ( ) ;
 			writer . WriteLine ( "To accept this license, you should write \"I accept this License.\" at the end of this file." ) ;
-			writer . Close ( ) ;
+			writer . Dispose ( ) ;
 		}
 
 		private static void Console_CancelKeyPress ( object sender , ConsoleCancelEventArgs e ) { }
@@ -193,11 +236,11 @@ namespace WenceyWang . Richman4L . Apps .Console
 
 		public static string GetLicense ( )
 		{
-			Assembly assembly = Assembly . GetExecutingAssembly ( ) ;
+			Assembly assembly = typeof ( Program ) . GetTypeInfo ( ) . Assembly ;
 			Stream stream = assembly . GetManifestResourceStream ( typeof ( Program ) . Namespace + @".License.AGPL.txt" ) ;
 			StreamReader reader = new StreamReader ( stream ) ;
 			string license = reader . ReadToEnd ( ) ;
-			reader . Close ( ) ;
+			reader . Dispose ( ) ;
 			return license ;
 		}
 

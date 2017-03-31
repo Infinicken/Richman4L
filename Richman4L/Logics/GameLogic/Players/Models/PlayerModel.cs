@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -139,7 +138,7 @@ namespace WenceyWang . Richman4L . Players .Models
 			}
 		}
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 

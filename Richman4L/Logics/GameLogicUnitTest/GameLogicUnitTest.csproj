@@ -70,6 +70,7 @@
     <Compile Include="Maps\Buildings\RegisterBuiltInBuildingTypeTest.cs" />
     <Compile Include="GameSayingTests.cs" />
     <Compile Include="StartUpTest.cs" />
+    <Compile Include="RandomExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Apps\CharacterMapRenderers\CharacterMapRenderers.csproj">

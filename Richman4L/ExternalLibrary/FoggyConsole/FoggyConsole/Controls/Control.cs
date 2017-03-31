@@ -16,7 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
@@ -202,19 +202,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		}
 
 
-		public Page Page
-		{
-			get
-			{
-				Page page = Container as Page ;
-				if ( page != null )
-				{
-					return page ;
-				}
-
-				return Container . Page ;
-			}
-		}
+		public Page Page => Container as Page ?? Container . Page ;
 
 		public bool Enabled
 		{

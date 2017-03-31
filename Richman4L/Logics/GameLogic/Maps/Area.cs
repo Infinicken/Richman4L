@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
@@ -120,7 +119,7 @@ namespace WenceyWang . Richman4L .Maps
 			Building ? . Pass ( player ) ;
 		}
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 		public bool IsBuildingAvailable ( [NotNull] BuildingType buildingType )
 			=> AvailableBuildings . Contains ( buildingType ) ;

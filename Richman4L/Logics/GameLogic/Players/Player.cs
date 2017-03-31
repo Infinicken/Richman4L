@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
@@ -27,7 +26,6 @@ using WenceyWang . Richman4L . Banks ;
 using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Cards ;
-using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Maps . Buildings ;
 using WenceyWang . Richman4L . Maps . Roads ;
@@ -124,8 +122,8 @@ namespace WenceyWang . Richman4L .Players
 
 	}
 
-	//Todo:玩家拥有的区块列表
-	//Todo:重写ToString并更新Disposed之类的
+	//Todo:玩家破产了怎么办？
+	//Todo:玩家希望退出游戏怎么办？
 	public class Player : WithAssetObject
 	{
 
@@ -134,13 +132,14 @@ namespace WenceyWang . Richman4L .Players
 		/// <summary>
 		///     玩家所拥有的前进类型
 		/// </summary>
-		//public int NumberOfDice { get; protected set; } = 1;
-		public List <MoveType> MoveTypeList = new List <MoveType> ( ) ;
+		[ConsoleVisable]
+		public List <MoveType> MoveTypeList { get ; } = new List <MoveType> ( ) ;
 
 		/// <summary>
 		///     玩家的名称
 		/// </summary>
 		[NotNull]
+		[ConsoleVisable]
 		public string Name => Model . Name ;
 
 		/// <summary>
@@ -148,12 +147,6 @@ namespace WenceyWang . Richman4L .Players
 		/// </summary>
 		[NotNull]
 		public PlayerModel Model { get ; }
-
-		/// <summary>
-		///     玩家使用的控制台
-		/// </summary>
-		[NotNull]
-		public PlayerConsole Console { get ; private set ; }
 
 		[NotNull]
 		[ItemNotNull]
@@ -166,6 +159,7 @@ namespace WenceyWang . Richman4L .Players
 		/// <summary>
 		///     玩家的游戏点数
 		/// </summary>
+		[ConsoleVisable]
 		public long GamePoint { get ; set ; } = 0 ;
 
 		/// <summary>
@@ -182,14 +176,11 @@ namespace WenceyWang . Richman4L .Players
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
-		public ReadOnlyCollection <Area> Areas { get ; }
-
-		/// <summary>
-		///     玩家的地块
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		private List <Area> areas { get ; }
+		public List <Area> Areas
+			=>
+				Map . Currnet . Objects . Where ( mapObject => ( mapObject as Area ) ? . Owner == this ) .
+					Select ( mapObject => ( Area ) mapObject ) .
+					ToList ( ) ;
 
 		/// <summary>
 		///     玩家当前的位置
@@ -208,31 +199,28 @@ namespace WenceyWang . Richman4L .Players
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
-		public ReadOnlyCollection <PlayerBuff> Buffs { get ; }
+		[ConsoleVisable]
+		public List <PlayerBuff> Buffs { get ; } = new List <PlayerBuff> ( ) ;
 
-		/// <summary>
-		///     玩家的增益效果
-		/// </summary>
-		[NotNull]
-		[ItemNotNull]
-		private List <PlayerBuff> buffs { get ; }
-
+		[ConsoleVisable]
 		public bool HaveMoveToday { get ; protected set ; }
 
 		/// <summary>
 		///     玩家的状态
 		/// </summary>
+		[ConsoleVisable]
 		public PlayerState State { get ; protected set ; }
 
 		/// <summary>
 		///     当前状态将会持续的时间
 		/// </summary>
 		[CanBeNull]
-		public long ? StateDuration { get ; protected set ; }
+		[ConsoleVisable]
+		public int StateDuration { get ; protected set ; }
 
 
 		[CanBeNull]
-		public long ? StateStartDate { get ; protected set ; }
+		public GameDate StateStartDate { get ; protected set ; }
 
 		/// <summary>
 		///     指示玩家能否获得收益
@@ -268,21 +256,12 @@ namespace WenceyWang . Richman4L .Players
 
 		[NotNull]
 		[ItemNotNull]
-		public ReadOnlyCollection <SavingBankProof> SavedMoney { get ; }
+		public List <SavingBankProof> SavedMoney { get ; } = new List <SavingBankProof> ( ) ;
 
 		[NotNull]
 		[ItemNotNull]
-		private List <SavingBankProof> savedMoney { get ; }
+		public List <BorrowingBankProof> BorrowedMoney { get ; } = new List <BorrowingBankProof> ( ) ;
 
-		[NotNull]
-		[ItemNotNull]
-		public ReadOnlyCollection <BorrowingBankProof> BorrowedMoney { get ; }
-
-		[NotNull]
-		[ItemNotNull]
-		private List <BorrowingBankProof> borrowedMoney { get ; }
-
-		public Guid Guid { get ; private set ; }
 
 		public Player ( [NotNull] PlayerModel model , long startMoney )
 		{
@@ -297,10 +276,6 @@ namespace WenceyWang . Richman4L .Players
 
 			Model = model ;
 			Money = startMoney ;
-			buffs = new List <PlayerBuff> ( ) ;
-			Buffs = new ReadOnlyCollection <PlayerBuff> ( buffs ) ;
-			savedMoney = new List <SavingBankProof> ( ) ;
-			SavedMoney = new ReadOnlyCollection <SavingBankProof> ( savedMoney ) ;
 		}
 
 		public void Pay ( long money ) { }
@@ -324,7 +299,7 @@ namespace WenceyWang . Richman4L .Players
 				throw new ArgumentNullException ( nameof ( buff ) ) ;
 			}
 
-			buffs . Add ( buff ) ;
+			Buffs . Add ( buff ) ;
 			GetBuffEvent ? . Invoke ( this , new PlayerGetBuffEventArgs ( buff ) ) ;
 		}
 
@@ -337,12 +312,12 @@ namespace WenceyWang . Richman4L .Players
 			{
 				throw new ArgumentNullException ( nameof ( buff ) ) ;
 			}
-			if ( ! buffs . Contains ( buff ) )
+			if ( ! Buffs . Contains ( buff ) )
 			{
 				throw new ArgumentException ( $"{nameof ( buff )} is not for this player" , nameof ( buff ) ) ;
 			}
 
-			buffs . Remove ( buff ) ;
+			Buffs . Remove ( buff ) ;
 
 			LostBuffEvent ? . Invoke ( this , new PlayerLostBuffEventArgs ( buff ) ) ;
 		}
@@ -400,7 +375,7 @@ namespace WenceyWang . Richman4L .Players
 
 			PlayerState oldState = State ;
 			State = state ;
-			StateStartDate = Game . Current . Calendar . Today . Date ;
+			StateStartDate = Game . Current . Calendar . Today ;
 			StateDuration = duration ;
 			ChangeStateEvent ? . Invoke ( this , new PlayerChangeStateEventArgs ( oldState , State , duration ) ) ;
 		}
@@ -408,26 +383,26 @@ namespace WenceyWang . Richman4L .Players
 		[CanBeNull]
 		public event EventHandler <PlayerChangeStateEventArgs> ChangeStateEvent ;
 
-		public override void StartDay ( GameDate nextDate ) { HaveMoveToday = false ; }
-
-		public override void EndToday ( )
+		public override void StartDay ( GameDate thisDate )
 		{
 			#region Change State
 
 			if ( State != PlayerState . Normal &&
-				StateStartDate != null &&
-				StateDuration != null )
+				StateStartDate + StateDuration >= thisDate )
 			{
-				if ( StateStartDate + StateDuration >= Game . Current . Calendar . Today . Date + 1 )
-				{
-					State = PlayerState . Normal ;
-				}
+				StateStartDate = thisDate ;
+				StateDuration = 0 ;
+				State = PlayerState . Normal ;
 			}
 
 			#endregion
 
-			moneyHistory . Add ( Money ) ;
+			HaveMoveToday = false ;
 		}
+
+		public override void EndToday ( ) { moneyHistory . Add ( Money ) ; }
+
+		public void ExitGame ( ) { Bankruptcy ( PlayerBankruptcyReason . BySelf ) ; }
 
 		/// <summary>
 		///     宣告破产
@@ -435,22 +410,15 @@ namespace WenceyWang . Richman4L .Players
 		/// <param name="reason">破产的原因</param>
 		public void Bankruptcy ( PlayerBankruptcyReason reason )
 		{
-			foreach ( PlayerBuff item in Buffs )
-			{
-				item . Maturity ( ) ;
-			}
-
-			buffs . Clear ( ) ;
-
-			State = PlayerState . Bankrupt ;
+			State = PlayerState . Normal ;
 
 			foreach ( AreaAuctionRequest request in Areas . Select ( item => new AreaAuctionRequest ( item , item . Price ) ) )
 			{
-				Game . Current . GameEnviroment . PerformAuction ( request ) ;
+				Game . Current . AuctionPerformer . PerformAuction ( request ) ;
 			}
 			foreach ( Card item in Cards )
 			{
-				Game . Current . GameEnviroment . PerformAuction ( new CardAuctionRequest ( item , item . PriceWhenSell * 100 ) ) ;
+				Game . Current . AuctionPerformer . PerformAuction ( new CardAuctionRequest ( item , item . PriceWhenSell * 100 ) ) ;
 			}
 
 			BankruptcyEvent ? . Invoke ( this , new PlayerBankruptcyEventArgs ( reason ) ) ;
@@ -482,7 +450,7 @@ namespace WenceyWang . Richman4L .Players
 			if ( CanMove )
 			{
 				HaveMoveToday = true ;
-				ReadOnlyCollection <int> diceResult = Game . Current . GameEnviroment . GetDice ( ( int ) moveType , diceType ) ;
+				ReadOnlyCollection <int> diceResult = Game . Current . EnviromentSetting . GetDice ( diceType , ( int ) moveType ) ;
 				Path route = Position . Route ( PreviousPosition , diceResult . Sum ( ) ) ;
 				foreach ( Road item in route . Route )
 				{

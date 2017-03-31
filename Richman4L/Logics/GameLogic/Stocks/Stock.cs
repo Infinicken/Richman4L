@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -80,7 +79,7 @@ namespace WenceyWang . Richman4L .Stocks
 		public Stock ( XElement element ) { }
 
 
-		public override void StartDay ( GameDate nextDate )
+		public override void StartDay ( GameDate thisDate )
 		{
 			PriceHistory . Add ( Price ) ;
 
@@ -88,7 +87,7 @@ namespace WenceyWang . Richman4L .Stocks
 			{
 				//Todo:ChangeToUseAnotherController
 			}
-			PriceController . StartDay ( nextDate ) ;
+			PriceController . StartDay ( thisDate ) ;
 			TodayAnticipate = PriceController . GetPrice ( ) ;
 			Price = new StockPrice ( TodayAnticipate . OpenPrice ,
 									TodayAnticipate . OpenPrice ,
@@ -178,18 +177,18 @@ namespace WenceyWang . Richman4L .Stocks
 			Buffs . Add ( buff ) ;
 		}
 
-		//}
-		//	}
-		//		base . Dispose ( disposing ) ;
-		//		}
-		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
-		//		{
-		//		if ( disposing )
-		//	{
-		//	if ( ! DisposedValue )
-		//{
-
 		//protected override void Dispose ( bool disposing )
+		//{
+		//	if ( ! DisposedValue )
+		//	{
+		//		if ( disposing )
+		//		{
+		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
+		//		}
+		//		base . Dispose ( disposing ) ;
+		//	}
+
+		//}
 	}
 
 }

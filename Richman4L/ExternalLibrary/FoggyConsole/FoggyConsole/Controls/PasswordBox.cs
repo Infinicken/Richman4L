@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Security ;
 
@@ -128,13 +128,21 @@ namespace WenceyWang . FoggyConsole .Controls
 				case ConsoleKey . Backspace :
 				{
 					args . Handled = true ;
-					if ( Text . Length != 0 )
+					if ( Text . Length != 0 &&
+						CursorPosition > 0 )
 					{
-						if ( CursorPosition > 0 )
-						{
-							Text . RemoveAt ( CursorPosition - 1 ) ;
-							CursorPosition-- ;
-						}
+						Text . RemoveAt ( CursorPosition - 1 ) ;
+						CursorPosition-- ;
+					}
+					break ;
+				}
+				case ConsoleKey . Delete :
+				{
+					args . Handled = true ;
+					if ( Text . Length != 0 &&
+						CursorPosition < Text . Length )
+					{
+						Text . RemoveAt ( CursorPosition + 1 ) ;
 					}
 					break ;
 				}

@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
@@ -59,7 +59,7 @@ namespace WenceyWang . Richman4L .Banks
 					} ;
 		}
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
+		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
 		public override void RequestPay ( WithAssetObject source , decimal amount , PayReason reason )
 		{

@@ -19,6 +19,7 @@
 	<Color x:Key="TransparentDeepRed" >#7F330819</Color>
 	<Color x:Key="TransparentLightRed" >#CCFF5050</Color>
 	<Color x:Key="White" >#FFFFFFFF</Color>
+	<Color x:Key="NightBlue" >#ff0064a9</Color>
 
 	<SolidColorBrush x:Key="BlackBrush" Color="{StaticResource Black}" />
 	<SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}" />
@@ -29,6 +30,7 @@
 	<SolidColorBrush x:Key="LightBlueBrush" Color="{StaticResource LightBlue}" />
 	<SolidColorBrush x:Key="LimeBrush" Color="{StaticResource Lime}" />
 	<SolidColorBrush x:Key="PinkBrush" Color="{StaticResource Pink}" />
+	<SolidColorBrush x:Key="NightBlueBrush" Color="{StaticResource NightBlue }" />
 	<SolidColorBrush x:Key="PurpleBrush" Color="{StaticResource Purple}" />
 	<SolidColorBrush x:Key="TransparentCranBrush" Color="{StaticResource TransparentCran}" />
 	<SolidColorBrush x:Key="TransparentDeepRedBrush" Color="{StaticResource TransparentDeepRed}" />

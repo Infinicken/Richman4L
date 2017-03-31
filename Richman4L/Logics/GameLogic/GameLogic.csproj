@@ -62,7 +62,6 @@
     <Compile Include="Calendars\GameDate.cs" />
     <Compile Include="Cards\BlackCard.cs" />
     <Compile Include="Cards\CardAttribute.cs" />
-    <Compile Include="Cards\CardStates.cs" />
     <Compile Include="Cards\CardType.cs" />
     <Compile Include="Interoperability\Arguments\DefineDomains\MoveTypeAbilityDefineDomains.cs" />
     <Compile Include="Interoperability\Arguments\DefineDomains\StockTransactDefineDomain.cs" />
@@ -123,11 +122,8 @@
     <Compile Include="Maps\MapObjectAttribute.cs" />
     <Compile Include="Maps\MapObjectType.cs" />
     <Compile Include="Maps\MapSize.cs" />
-    <Compile Include="Maps\Roads\CrossRoad.cs" />
-    <Compile Include="Maps\Roads\NormalRoad.cs" />
-    <Compile Include="Maps\Roads\OneWayRoad.cs" />
     <Compile Include="Maps\Police.cs" />
-    <Compile Include="Maps\Roads\ReturnRoad.cs" />
+    <Compile Include="Maps\Roads\NormalRoad.cs" />
     <Compile Include="Maps\Roads\Road.cs" />
     <Compile Include="Maps\Roads\AreaRoad.cs" />
     <Compile Include="Maps\Roads\Path.cs" />
@@ -177,8 +173,6 @@
     <Compile Include="Maps\SmallArea.cs" />
     <Compile Include="Maps\Buildings\SmallBuilding.cs" />
     <Compile Include="Maps\Buildings\SmallSimpleBuilding.cs" />
-    <Compile Include="Maps\Roads\TRoad.cs" />
-    <Compile Include="Maps\Roads\WithInRoad.cs" />
     <Compile Include="Newspapers\News.cs" />
     <Compile Include="Newspapers\Newspaper.cs" />
     <Compile Include="NormalRandomExtensions.cs" />
@@ -308,11 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cards\Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.JScript">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.JScript.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

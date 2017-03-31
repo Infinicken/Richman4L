@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
@@ -96,9 +95,6 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 			#endregion
 		}
-
-
-		public override string ToString ( ) => $"{Name} sized {Size}" ;
 
 	}
 

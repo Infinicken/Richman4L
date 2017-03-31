@@ -17,7 +17,7 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Banks ;
@@ -92,7 +92,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			CompletedDgree = 5000 ;
 		}
 
-		public override void StartDay ( GameDate nextDate )
+		public override void StartDay ( GameDate thisDate )
 		{
 			if ( Game . Current . Weather . Wind . Strength >= 800 )
 			{

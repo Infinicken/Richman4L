@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . Foundation ;
@@ -36,81 +36,81 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer .
 
 		public void StartUp ( )
 		{
-			#region 断头路
+			//#region 断头路
 
-			if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-				Target . BackwardRoad == null ||
-				Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up &&
-				Target . ForwardRoad == null )
-			{
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down &&
-					Target . ForwardRoad == null )
-			{
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left &&
-					Target . ForwardRoad == null )
-			{
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . BackwardRoad == null ||
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right &&
-					Target . ForwardRoad == null )
-			{
-			}
+			//if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
+			//	Target . BackwardRoad == null ||
+			//	Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up &&
+			//	Target . ForwardRoad == null )
+			//{
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
+			//		Target . BackwardRoad == null ||
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down &&
+			//		Target . ForwardRoad == null )
+			//{
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
+			//		Target . BackwardRoad == null ||
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left &&
+			//		Target . ForwardRoad == null )
+			//{
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
+			//		Target . BackwardRoad == null ||
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right &&
+			//		Target . ForwardRoad == null )
+			//{
+			//}
 
-			#endregion
+			//#endregion
 
-			#region 连续路
+			//#region 连续路
 
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
-			{
-				//上下
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
-			{
-				//左右
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
-			{
-				//左上
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
-			{
-				//右上
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
-			{
-				//左下
-			}
-			else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
-					Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
-					Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
-			{
-				//右下
-			}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+			//		Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up )
+			//{
+			//	//上下
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right ||
+			//		Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+			//{
+			//	//左右
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
+			//		Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+			//{
+			//	//左上
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Up ||
+			//		Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Up &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+			//{
+			//	//右上
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Left &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+			//		Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Left )
+			//{
+			//	//左下
+			//}
+			//else if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Right &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Down ||
+			//		Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . Down &&
+			//		Target . GetAzimuth ( Target . BackwardRoad ) == BlockAzimuth . Right )
+			//{
+			//	//右下
+			//}
 
-			#endregion
+			//#endregion
 		}
 
 		public void Update ( )

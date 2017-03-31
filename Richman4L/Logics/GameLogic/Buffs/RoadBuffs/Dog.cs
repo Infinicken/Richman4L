@@ -17,7 +17,7 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Buffs . RoadBuffs . Event ;
@@ -86,13 +86,13 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 			base . DoWhenStay ( player , moveType ) ;
 		}
 
-		public override void StartDay ( GameDate nextDate )
+		public override void StartDay ( GameDate thisDate )
 		{
 			if ( IsKilled ( Game . Current . Weather ) )
 			{
 				Kill ( Game . Current . Weather ) ;
 			}
-			base . StartDay ( nextDate ) ;
+			base . StartDay ( thisDate ) ;
 		}
 
 		public bool IsKilled ( Weather weather )
@@ -101,7 +101,7 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 		public void Bite ( Player player )
 		{
 			int days = GameRandom . Current . Next ( 1 , 4 ) ;
-			player . ChangeState ( PlayerState . 住院 , days ) ;
+			player . ChangeState ( PlayerState . Hospitalized , days ) ;
 			BiteEvent ? . Invoke ( this , new DogBiteEventArgs ( player , days ) ) ;
 			Maturity ( ) ;
 		}

@@ -18,7 +18,7 @@
 	</UserControl.Resources>
 	<Grid>
 		<Grid Margin="{StaticResource MapObjMargin}" d:LayoutOverrides="TopPosition, BottomPosition" Width="120" Height="60"
-			HorizontalAlignment="Center" VerticalAlignment="Center" >
+			HorizontalAlignment="Center" VerticalAlignment="Center" d:IsHidden="True" >
 			<Grid Height="120" Width="120" Margin="{StaticResource MapObjMargin}" RenderTransformOrigin="0.5,0.5"
 				RenderTransform="{StaticResource MapObjTransform}" >
 				<Grid.RowDefinitions>
@@ -660,7 +660,7 @@
 			</Grid>
 		</Grid>
 		<Grid Width="120" Height="60" HorizontalAlignment="Center" d:LayoutOverrides="Width"
-			Margin="{StaticResource MapObjMargin}" VerticalAlignment="Center" Visibility="Collapsed" d:IsHidden="True" >
+			Margin="{StaticResource MapObjMargin}" VerticalAlignment="Center" d:IsHidden="True" >
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5"
 				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RowDefinitions>
@@ -1795,7 +1795,7 @@
 			</Grid>
 		</Grid>
 		<Grid Width="120" Height="60" Margin="{StaticResource MapObjMargin}" HorizontalAlignment="Center"
-			VerticalAlignment="Center" Visibility="Collapsed" d:IsHidden="True" >
+			VerticalAlignment="Center" >
 			<Grid Height="120" Width="120" Margin="0,-30" RenderTransformOrigin="0.5,0.5"
 				RenderTransform="{StaticResource MapObjTransform}" UseLayoutRounding="False" d:LayoutRounding="Auto" >
 				<Grid.RowDefinitions>

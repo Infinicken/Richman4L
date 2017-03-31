@@ -17,7 +17,7 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
@@ -118,7 +118,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		protected Block ( ) { }
 
-		public override void StartDay ( GameDate nextDate )
+		public override void StartDay ( GameDate thisDate )
 		{
 			//Todo:更新火焰强度之类的
 			//积水量会减少燃烧强度

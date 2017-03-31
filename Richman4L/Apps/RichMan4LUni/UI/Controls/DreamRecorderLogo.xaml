@@ -7,299 +7,121 @@
 	xmlns:Logic="using:WenceyWang.Richman4L.Apps.Uni.Logic" x:Name="LogoContainer"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Controls.DreamRecorderLogo"
 	mc:Ignorable="d" >
-
 	<controls:CanvasContainer.Resources>
 		<Logic:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
 	</controls:CanvasContainer.Resources>
-
 	<Canvas Width="1636.824" Height="501.932" HorizontalAlignment="Center" VerticalAlignment="Center"
 			RenderTransformOrigin="0.5,0.5" >
 		<Canvas x:Name="MonoLightLogo" Width="1636.824" Height="501.932"
-				Visibility="{Binding UseMonoLight, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}" >
-
-
+				Visibility="{Binding UseMonoLight, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}"
+				d:IsHidden="True" >
 			<Canvas>
-
-
-				<Path Fill="#ff4f4f4f" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
-
-
-				<Path Fill="#ff5e5e5e" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
-
-
-				<Path Fill="#ff757575" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff757575" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
-
-
-				<Path Fill="#ff929292" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff626262" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
-
-
-				<Path Fill="#ff626262" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ff525252" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
-
-
-				<Path Fill="#ff484848" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
-
-
-				<Path Fill="#ff757575" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ffc1c1c1" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ffcbcbcb" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
-
-
-				<Path Fill="#ffcbcbcb" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
-
-
-				<Path Fill="#ffd5d5d5" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
-
-
-				<Path Fill="#ffdcdcdc" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
-
-
-				<Path Fill="#ffaaaaaa" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff8e8e8e" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ffb6b6b6" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
-
-
-				<Path Opacity="0.2" Fill="#ffffffff"
-					Data="F1 M 259.172,0.000 L 123.233,124.181 L 83.658,304.004 L 259.172,359.637 L 434.686,304.004 L 395.110,124.181 L 259.172,0.000 Z" />
-
+				<Path Fill="#af000000" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
+				<Path Fill="#a0000000" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
+				<Path Fill="#89000000" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
+				<Path Fill="#89000000" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
+				<Path Fill="#6c000000" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
+				<Path Fill="#9c000000" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
+				<Path Fill="#9c000000" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
+				<Path Fill="#ac000000" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
+				<Path Fill="#b6000000" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
+				<Path Fill="#89000000" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
+				<Path Fill="#3d000000" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
+				<Path Fill="#33000000" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
+				<Path Fill="#33000000" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
+				<Path Fill="#29000000" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
+				<Path Fill="#22000000" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
+				<Path Fill="#54000000" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
+				<Path Fill="#70000000" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
+				<Path Fill="#48000000" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
 			</Canvas>
-
-
 			<TextBlock Foreground="#ff000000" Canvas.Left="587.343" Canvas.Top="147.796" FontSize="145.00"
 						FontFamily="ms-appx:/Fonts/ERASMD.TTF#Eras ITC" >
 				<Run Text="Dream Recorder" />
 			</TextBlock>
-
 		</Canvas>
 		<Canvas x:Name="MonoDarkLogo" Width="1636.824" Height="501.932"
-				Visibility="{Binding UseMonoDark, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}" >
-
-
+				Visibility="{Binding UseMonoDark, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}"
+				d:IsHidden="True" >
 			<Canvas>
-
-
-				<Path Fill="#ffafafaf" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
-
-
-				<Path Fill="#ffa0a0a0" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
-
-
-				<Path Fill="#ff898989" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff898989" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
-
-
-				<Path Fill="#ff6c6c6c" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff9c9c9c" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
-
-
-				<Path Fill="#ff9c9c9c" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ffacacac" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
-
-
-				<Path Fill="#ffb6b6b6" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
-
-
-				<Path Fill="#ff898989" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ff3d3d3d" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff333333" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
-
-
-				<Path Fill="#ff333333" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
-
-
-				<Path Fill="#ff292929" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
-
-
-				<Path Fill="#ff222222" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
-
-
-				<Path Fill="#ff545454" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff707070" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ff484848" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
-
-
-				<Path Opacity="0.2" Fill="#ff000000"
-					Data="F1 M 259.172,0.000 L 123.233,124.181 L 83.658,304.004 L 259.172,359.637 L 434.686,304.004 L 395.110,124.181 L 259.172,0.000 Z" />
-
+				<Path Fill="#afffffff" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
+				<Path Fill="#a0ffffff" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
+				<Path Fill="#89ffffff" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
+				<Path Fill="#89ffffff" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
+				<Path Fill="#6cffffff" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
+				<Path Fill="#9cffffff" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
+				<Path Fill="#9cffffff" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
+				<Path Fill="#acffffff" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
+				<Path Fill="#b6ffffff" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
+				<Path Fill="#89ffffff" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
+				<Path Fill="#3dffffff" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
+				<Path Fill="#33ffffff" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
+				<Path Fill="#33ffffff" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
+				<Path Fill="#29ffffff" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
+				<Path Fill="#22ffffff" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
+				<Path Fill="#54ffffff" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
+				<Path Fill="#70ffffff" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
+				<Path Fill="#48ffffff" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
 			</Canvas>
-
-
 			<TextBlock Foreground="#ffffffff" Canvas.Left="587.343" Canvas.Top="147.796" FontSize="145.00"
 						FontFamily="ms-appx:/Fonts/ERASMD.TTF#Eras ITC" >
 				<Run Text="Dream Recorder" />
 			</TextBlock>
-
 		</Canvas>
 		<Canvas x:Name="ColorLightLogo" Width="1636.824" Height="501.932"
 				Visibility="{Binding UseColorLight, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}" >
-
-
 			<Canvas>
-
-
 				<Path Fill="#ff286448" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
-
-
 				<Path Fill="#ff2d7756" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
-
-
 				<Path Fill="#ff409360" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
-
-
 				<Path Fill="#ff409360" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
-
-
 				<Path Fill="#ff5ab27b" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
-
-
 				<Path Fill="#ff16827f" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
-
-
 				<Path Fill="#ff16827f" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
-
-
 				<Path Fill="#ff156976" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
-
-
 				<Path Fill="#ff165a6c" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
-
-
 				<Path Fill="#ff289789" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
-
-
 				<Path Fill="#ffa4d4a4" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
-
-
 				<Path Fill="#ffbad9a7" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
-
-
 				<Path Fill="#ffbad9a7" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
-
-
 				<Path Fill="#ffcddfb4" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
-
-
 				<Path Fill="#ffdae2bb" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
-
-
 				<Path Fill="#ff7ac594" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
-
-
 				<Path Fill="#ff5ea68d" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
-
-
 				<Path Fill="#ff93cd9a" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
-
-
-				<Path Opacity="0.2" Fill="#ffffffff"
-					Data="F1 M 259.172,0.000 L 123.233,124.181 L 83.658,304.004 L 259.172,359.637 L 434.686,304.004 L 395.110,124.181 L 259.172,0.000 Z" />
-
 			</Canvas>
-
-
 			<TextBlock Foreground="#ff000000" Canvas.Left="587.343" Canvas.Top="147.796" FontSize="145.00"
 						FontFamily="ms-appx:/Fonts/ERASMD.TTF#Eras ITC" >
 				<Run Text="Dream Recorder" />
 			</TextBlock>
-
 		</Canvas>
 		<Canvas x:Name="ColorDarkLogo" Width="1636.82" Height="501.932"
-				Visibility="{Binding UseColorDark, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}" >
-
+				Visibility="{Binding UseColorDark, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}"
+				d:IsHidden="True" >
 			<Canvas Height="501.932" Width="1636.82" >
-
-
-				<Path Fill="#ffd599b5" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
-
-
-				<Path Fill="#ffd086a7" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
-
-
-				<Path Fill="#ffbd6a9d" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ffbd6a9d" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
-
-
-				<Path Fill="#ffa34b82" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ffe77b7e" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
-
-
-				<Path Fill="#ffe77b7e" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ffe89487" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
-
-
-				<Path Fill="#ffe7a391" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
-
-
-				<Path Fill="#ffd56674" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
-
-
-				<Path Fill="#ff592959" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff432456" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
-
-
-				<Path Fill="#ff432456" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
-
-
-				<Path Fill="#ff301e49" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
-
-				<Path Fill="#ff231b42" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
-
-				<Path Fill="#ff833869" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
-
-
-				<Path Fill="#ff9f5770" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
-
-				<Path Fill="#ff6a3063" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
-
-				<Path Opacity="0.2" Fill="#ff000000"
-					Data="F1 M 259.172,0.000 L 123.233,124.181 L 83.658,304.004 L 259.172,359.637 L 434.686,304.004 L 395.110,124.181 L 259.172,0.000 Z" />
-
+				<Path Fill="#D5FFB7D9" Data="F1 M 259.172,501.932 L 83.658,304.004 L 0.000,53.037 L 259.172,501.932 Z" />
+				<Path Fill="#D0FFA4CD" Data="F1 M 170.006,254.154 L 0.000,53.037 L 259.172,501.932 L 170.006,254.154 Z" />
+				<Path Fill="#BDFF8FD4" Data="F1 M 123.233,124.181 L 0.000,53.037 L 170.006,254.154 L 123.233,124.181 Z" />
+				<Path Fill="#BDFF8FD4" Data="F1 M 170.006,254.154 L 259.172,501.932 L 259.172,359.637 L 170.006,254.154 Z" />
+				<Path Fill="#A3FF75CB" Data="F1 M 123.233,124.181 L 170.006,254.154 L 259.172,359.637 L 123.233,124.181 Z" />
+				<Path Fill="#E7FF888B" Data="F1 M 348.339,254.150 L 259.172,359.637 L 259.172,501.932 L 348.339,254.150 Z" />
+				<Path Fill="#E7FF888B" Data="F1 M 395.110,124.181 L 348.339,254.150 L 518.343,53.037 L 395.110,124.181 Z" />
+				<Path Fill="#E8FFA394" Data="F1 M 259.172,501.932 L 518.343,53.037 L 348.339,254.150 L 259.172,501.932 Z" />
+				<Path Fill="#E7FFB4A0" Data="F1 M 434.686,304.004 L 518.343,53.037 L 259.172,501.932 L 434.686,304.004 Z" />
+				<Path Fill="#D5FF7A8B" Data="F1 M 395.110,124.181 L 259.172,359.637 L 348.339,254.150 L 395.110,124.181 Z" />
+				<Path Fill="#59FF75FF" Data="F1 M 123.233,124.181 L 395.110,124.181 L 259.172,99.704 L 123.233,124.181 Z" />
+				<Path Fill="#56C76BFF" Data="F1 M 0.000,53.037 L 123.233,124.181 L 259.172,99.704 L 0.000,53.037 Z" />
+				<Path Fill="#56C76BFF" Data="F1 M 518.343,53.037 L 259.172,99.704 L 395.110,124.181 L 518.343,53.037 Z" />
+				<Path Fill="#49A869FF" Data="F1 M 0.000,53.037 L 259.172,99.704 L 518.343,53.037 L 0.000,53.037 Z" />
+				<Path Fill="#428768FF" Data="F1 M 259.172,0.000 L 0.000,53.037 L 518.343,53.037 L 259.172,0.000 Z" />
+				<Path Fill="#83FF6DCC" Data="F1 M 123.233,124.181 L 259.172,359.637 L 259.172,202.667 L 123.233,124.181 Z" />
+				<Path Fill="#9FFF8CB4" Data="F1 M 395.110,124.181 L 259.172,202.667 L 259.172,359.637 L 395.110,124.181 Z" />
+				<Path Fill="#6AFF73EE" Data="F1 M 123.233,124.181 L 259.172,202.667 L 395.110,124.181 L 123.233,124.181 Z" />
 			</Canvas>
-
-
 			<TextBlock Foreground="White" Canvas.Left="587.343" Canvas.Top="147.796" FontSize="145.00"
 						FontFamily="ms-appx:/Fonts/ERASMD.TTF#Eras ITC" Margin="0" >
 				<Run Text="Dream Recorder" />
 			</TextBlock>
-
 		</Canvas>
 	</Canvas>
 </controls:CanvasContainer>

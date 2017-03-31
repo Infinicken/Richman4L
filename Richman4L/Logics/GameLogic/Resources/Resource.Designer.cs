@@ -62,6 +62,15 @@ namespace WenceyWang.Richman4L.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;{0} borrowed by {1}&quot;.
+        /// </summary>
+        internal static string BorrowingBankProofToString {
+            get {
+                return ResourceManager.GetString("BorrowingBankProofToString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is not the day after yesterday.
         /// </summary>
         internal static string CalenderNextDayCheckFailed {

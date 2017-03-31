@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Diagnostics ;
 using System . Linq ;
@@ -69,6 +68,11 @@ namespace WenceyWang .Richman4L
 			if ( titleRoot == null )
 			{
 				throw new ArgumentNullException ( nameof ( titleRoot ) ) ;
+			}
+
+			if ( TitleRoots . Contains ( titleRoot ) )
+			{
+				return ;
 			}
 
 			TitleRoots . Add ( titleRoot ) ;
@@ -137,6 +141,8 @@ namespace WenceyWang .Richman4L
 				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameTitle )}Resources.xml" ) ;
 
 				Debug . Assert ( doc . Root != null , "doc . Root != null" ) ;
+
+				//Let resource file error throw
 
 				// ReSharper disable once PossibleNullReferenceException
 				foreach ( XElement item in doc . Root . Element ( nameof ( TitleRoots ) ) . Elements ( ) )

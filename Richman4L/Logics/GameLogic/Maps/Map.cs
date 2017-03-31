@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -48,6 +47,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		[NotNull]
 		[ItemNotNull]
+		[ConsoleVisable]
 		public List <MapObject> Objects { get ; } = new List <MapObject> ( ) ;
 
 		[NotNull]
@@ -74,6 +74,7 @@ namespace WenceyWang . Richman4L .Maps
 		/// <summary>
 		///     地图的排水基数
 		/// </summary>
+		[ConsoleVisable]
 		public int PondingDecreaseBase { get ; }
 
 		public Map ( [NotNull] XDocument document ) : this ( )
@@ -142,7 +143,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
+		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
 		[CanBeNull]
 		public event EventHandler <MapAddMapObjectEventArgs> AddMapObjectEvent ;

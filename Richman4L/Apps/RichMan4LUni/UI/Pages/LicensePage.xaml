@@ -30,12 +30,6 @@
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainGrid" >
 				<DiscreteObjectKeyFrame KeyTime="0" >
 					<DiscreteObjectKeyFrame.Value>
@@ -64,18 +58,12 @@
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="640" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</Page.Resources>
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
 
-		<Rectangle x:Name="BackGroundRect" d:LayoutOverrides="TopPosition, BottomPosition"
+		<Rectangle x:Name="BackgroundRect" d:LayoutOverrides="TopPosition, BottomPosition"
 					Fill="{StaticResource DarkBlueBrush}"
 					Grid.RowSpan="4" />
 		<Image x:Name="StartUpPageUpImage" Source="ImageResources/StartUpPageUp.png" VerticalAlignment="Top"

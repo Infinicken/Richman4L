@@ -103,19 +103,13 @@
 		<Storyboard x:Name="StartStoryboard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="640" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
 											Storyboard.TargetName="CreateGamePageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
 											Storyboard.TargetName="CreateGamePageDownImage" >
@@ -124,7 +118,7 @@
 						<Visibility>Collapsed</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.25" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
@@ -132,20 +126,14 @@
 			</ObjectAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Name="LeaveStoryboard" >
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="640" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
 											Storyboard.TargetName="CreateGamePageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
 											Storyboard.TargetName="CreateGamePageDownImage" >
@@ -154,7 +142,7 @@
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.25" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
 					</DiscreteObjectKeyFrame.Value>
@@ -212,7 +200,7 @@
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 
-		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource LimeBrush}"
+		<Rectangle x:Name="BackgroundRect" Fill="{StaticResource LimeBrush}"
 					d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition" />
 		<Image x:Name="CreateGamePageDownImage" Margin="0" Source="ImageResources/CreateGamePageDown.png"
 				Stretch="UniformToFill" VerticalAlignment="Bottom" />

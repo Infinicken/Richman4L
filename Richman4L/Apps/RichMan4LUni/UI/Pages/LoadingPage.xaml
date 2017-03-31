@@ -8,51 +8,28 @@
 	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Pages.LoadingPage"
 	mc:Ignorable="d" Foreground="{x:Null}" >
 	<Page.Resources>
-		<x:Int32 x:Key="Int321" >1</x:Int32>
-		<Thickness x:Key="Thickness1" >0,-100</Thickness>
 		<Storyboard x:Name="StartStoryBoard" >
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="300" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
 											Storyboard.TargetName="LoadingPageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
+
 		<Storyboard x:Name="LeaveStoryboard" >
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
 											Storyboard.TargetName="LoadingPageDownImage" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
-											Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="2" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
-											Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="2" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MainGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="300" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</Page.Resources>
@@ -61,7 +38,7 @@
 		<VisualStateManager.VisualStateGroups>
 			<VisualStateGroup x:Name="VisualStateGroup" />
 		</VisualStateManager.VisualStateGroups>
-		<Rectangle x:Name="BackGroundRect" Fill="{StaticResource LightBlueBrush}"
+		<Rectangle x:Name="BackgroundRect" Fill="{StaticResource LightBlueBrush}"
 					d:LayoutOverrides="TopPosition, BottomPosition" />
 		<Image x:Name="LoadingPageDownImage" Margin="0" Source="ImageResources/LoadingPageDown.png"
 				HorizontalAlignment="Right" />

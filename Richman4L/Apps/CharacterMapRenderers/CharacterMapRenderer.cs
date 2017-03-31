@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -136,9 +135,6 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 		public static void LoadMapObjectRenderers ( )
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) ) ;
-			RegisMapObjectRenderer ( typeof ( WithinRoadRenderer ) , typeof ( WithInRoad ) ) ;
-			RegisMapObjectRenderer ( typeof ( TRoadRanderer ) , typeof ( TRoad ) ) ;
-			RegisMapObjectRenderer ( typeof ( OneWayRoadRenderer ) , typeof ( OneWayRoad ) ) ;
 			RegisMapObjectRenderer ( typeof ( AreaRoadRenderer ) , typeof ( AreaRoad ) ) ;
 			RegisMapObjectRenderer ( typeof ( SmallAreaRenderer ) , typeof ( SmallArea ) ) ;
 			RegisMapObjectRenderer ( typeof ( EmptyBlockRenderer ) , typeof ( EmptyBlock ) ) ;

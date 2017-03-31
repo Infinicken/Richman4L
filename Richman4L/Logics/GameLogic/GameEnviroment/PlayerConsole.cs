@@ -17,18 +17,35 @@
 */
 
 using System ;
-using System . Collections ;
-using System . Collections . ObjectModel ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Cards ;
+using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . InfomationCenter ;
 using WenceyWang . Richman4L . Interoperability . Arguments ;
 using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . Commands ;
 using WenceyWang . Richman4L . Players . Models ;
 
 namespace WenceyWang . Richman4L .GameEnviroment
 {
+
+	public class DiceWithValue
+	{
+
+		public DiceType DiceType { get ; set ; }
+
+		public int Value { get ; set ; }
+
+		public DiceWithValue ( DiceType diceType , int value )
+		{
+			DiceType = diceType ;
+			Value = value ;
+		}
+
+		public override string ToString ( ) { return $"{nameof ( DiceType )}: {DiceType}, {nameof ( Value )}: {Value}" ; }
+
+	}
 
 	/// <summary>
 	///     指示玩家所使用的控制台
@@ -38,9 +55,7 @@ namespace WenceyWang . Richman4L .GameEnviroment
 
 		public Player Target { get ; internal set ; }
 
-		public abstract object Picker ( ArgumentInfo info ) ;
-
-		public abstract void ShowDice ( DiceType diceType , int number ) ;
+		public abstract void ShowDices ( List <DiceWithValue> dices ) ;
 
 		public abstract void ShowEvent ( Event @event ) ;
 
@@ -48,8 +63,34 @@ namespace WenceyWang . Richman4L .GameEnviroment
 
 		public abstract void ShowFlag ( bool flaged ) ;
 
+		public abstract void UpdateGame ( GameObject gameObject ) ;
 
-		public abstract ReadOnlyCollection <CardType> CardStore ( Player player , ReadOnlyCollection <CardType> canBuy ) ;
+		public abstract void UpdatePlayerCommand ( List <PlayerCommand> commands ) ;
+
+		public abstract void ShowChatMessage ( Player source , string message ) ;
+
+		public abstract void StartSmallGame ( SmallGameType gameType ) ;
+
+		public abstract void ShowGameOver ( GameResult info ) ;
+
+		public abstract void StartAuction ( AuctionRequest request ) ;
+
+		public abstract void UpdateAuction ( Player buyer , long priceRised ) ;
+
+		public abstract void ShowDice ( DiceType diceType , int value ) ;
+
+		public void RiseAuctionPrice ( long priceRised ) { }
+
+		public abstract void ShowAuctionResult ( ) ;
+
+		//Todo:这点事件得慢慢生成啊
+		//public event EventHandler<>
+
+		public void SmallGameResult ( SmallGameResult result ) { }
+
+		public void ApplyPlayerCommand ( PlayerCommand command , ArgumentsContainer arguments ) { }
+
+		public void SendChatMessage ( string message ) { }
 
 	}
 

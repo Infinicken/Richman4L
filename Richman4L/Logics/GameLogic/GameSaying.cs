@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -138,23 +137,26 @@ namespace WenceyWang .Richman4L
 
 		public static void RegisSaying ( GameSaying newSaying )
 		{
-			if ( newSaying == null )
+			lock ( Locker )
 			{
-				throw new ArgumentNullException ( nameof ( newSaying ) ) ;
-			}
+				if ( newSaying == null )
+				{
+					throw new ArgumentNullException ( nameof ( newSaying ) ) ;
+				}
 
-			if ( Sayings . Contains ( newSaying ) )
-			{
-				return ;
-			}
+				if ( Sayings . Contains ( newSaying ) )
+				{
+					return ;
+				}
 
-			if ( Sayings . Any ( saying => newSaying . Guid == saying . Guid ) )
-			{
-				throw new ArgumentException ( $"{nameof ( newSaying )} have same {nameof ( Guid )} with others" ,
-											nameof ( newSaying ) ) ;
-			}
+				if ( Sayings . Any ( saying => newSaying . Guid == saying . Guid ) )
+				{
+					throw new ArgumentException ( $"{nameof ( newSaying )} have same {nameof ( Guid )} with others" ,
+												nameof ( newSaying ) ) ;
+				}
 
-			Sayings . Add ( newSaying ) ;
+				Sayings . Add ( newSaying ) ;
+			}
 		}
 
 		public override bool Equals ( object obj )

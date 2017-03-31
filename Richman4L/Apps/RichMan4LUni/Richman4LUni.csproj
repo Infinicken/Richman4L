@@ -112,6 +112,8 @@
     </Content>
     <Content Include="Fonts\Fonts.xml" />
     <Content Include="Fonts\LeviReBrushed.ttf" />
+    <Content Include="UI\Pages\ImageResources\LoadGamePageUp.png" />
+    <Content Include="UI\Pages\ImageResources\LoadGamePageDown.png" />
     <EmbeddedResource Include="GameResources\Maps\Index.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -120,6 +122,7 @@
     </EmbeddedResource>
     <Content Include="License\AGPL.htm" />
     <Content Include="Fonts\ERASMD.TTF" />
+    <Content Include="Fonts\HYXinRenWenSongW.ttf" />
     <None Include="Package.StoreAssociation.xml">
       <SubType>Designer</SubType>
     </None>
@@ -405,9 +408,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
-    </SDKReference>
     <SDKReference Include="WindowsDesktop, Version=10.0.14393.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>

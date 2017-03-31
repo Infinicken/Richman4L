@@ -17,7 +17,7 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
@@ -28,58 +28,23 @@ namespace WenceyWang . Richman4L . Maps .Roads
 	public class NormalRoad : Road
 	{
 
-		private Road _backwardRoad ;
-
-		private long ? _backwardRoadId ;
-
-		private Road _forwardRoad ;
-
-		private long ? _forwardRoadId ;
-
-		public virtual Road ForwardRoad
-		{
-			get
-			{
-				if ( _forwardRoad == null &&
-					_forwardRoadId == null )
-				{
-					return null ;
-				}
-
-				return _forwardRoad ?? ( _forwardRoad = Map . Currnet . GetRoad ( _forwardRoadId . Value ) ) ;
-			}
-			protected set
-			{
-				_forwardRoadId = value ? . Id ;
-				_forwardRoad = value ;
-			}
-		}
-
-		public virtual Road BackwardRoad
-		{
-			get
-			{
-				if ( _backwardRoad == null &&
-					_backwardRoadId == null )
-				{
-					return null ;
-				}
-
-				return _backwardRoad ?? ( _backwardRoad = Map . Currnet . GetRoad ( _backwardRoadId . Value ) ) ;
-			}
-			protected set
-			{
-				_backwardRoadId = value ? . Id ;
-				_backwardRoad = value ;
-			}
-		}
-
 		public NormalRoad ( XElement resource ) : base ( resource )
 		{
 			try
 			{
-				_forwardRoadId = Convert . ToInt64 ( resource . Attribute ( nameof ( ForwardRoad ) ) . Value ) ;
-				_backwardRoadId = Convert . ToInt64 ( resource . Attribute ( nameof ( BackwardRoad ) ) . Value ) ;
+				XElement entrances = resource . Element ( nameof ( Entrances ) ) ;
+
+				foreach ( XElement road in entrances . Elements ( ) )
+				{
+					_entrancesId . Add ( Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value ) ) ;
+				}
+
+				XElement exits = resource . Element ( nameof ( Exits ) ) ;
+
+				foreach ( XElement road in exits . Elements ( ) )
+				{
+					_exitsId . Add ( Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value ) ) ;
+				}
 			}
 			catch ( NullReferenceException e )
 			{
@@ -102,6 +67,10 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			{
 				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) ) ;
 			}
+			if ( ! Exits . Any ( ) )
+			{
+				throw new InvalidOperationException ( "没有可用的出口" ) ;
+			}
 
 			Path current = result ?? new Path ( ) ;
 			current . AddRoute ( this ) ;
@@ -110,26 +79,89 @@ namespace WenceyWang . Richman4L . Maps .Roads
 				return current ;
 			}
 
-			if ( BackwardRoad == previous )
+			List <Road> exits = Exits . Where ( road => road != previous ) . ToList ( ) ;
+			if ( exits . Count == 0 )
 			{
-				if ( ForwardRoad . CanEnterFrom ( this ) )
-				{
-					return ForwardRoad . Route ( this , moveCount - 1 , current ) ;
-				}
-
-				return BackwardRoad . Route ( this , moveCount - 1 , current ) ;
+				return previous . Route ( this , moveCount - 1 , result ) ;
 			}
 
-			if ( BackwardRoad . CanEnterFrom ( this ) )
-			{
-				return BackwardRoad . Route ( this , moveCount - 1 , current ) ;
-			}
-
-			return ForwardRoad . Route ( this , moveCount - 1 , current ) ;
+			return exits . RandomItem ( ) . Route ( this , moveCount - 1 , result ) ;
 		}
 
-		public override bool CanEnterFrom ( Road road ) => road == ForwardRoad || road == BackwardRoad ;
+		public override bool CanEnterFrom ( Road road ) => Entrances . Contains ( road ) ;
 
+		#region Entrances
+
+		private List <Road> _entrances = new List <Road> ( ) ;
+
+		private readonly List <long> _entrancesId = new List <long> ( ) ;
+
+		public virtual List <Road> Entrances
+		{
+			get
+			{
+				if ( _entrances == null &&
+					_entrancesId == null )
+				{
+					return null ;
+				}
+
+				return _entrances ??
+						( _entrances = _entrancesId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ) ;
+			}
+		}
+
+		#endregion
+
+		#region Console Attribute
+
+		[ConsoleVisable]
+		public bool UpEntrance => Entrances . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Up ) ;
+
+		[ConsoleVisable]
+		public bool DownEntrance => Entrances . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Down ) ;
+
+		[ConsoleVisable]
+		public bool LeftEntrance => Entrances . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Left ) ;
+
+		[ConsoleVisable]
+		public bool RightEntrance => Entrances . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Right ) ;
+
+		[ConsoleVisable]
+		public bool UpExit => Exits . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Up ) ;
+
+		[ConsoleVisable]
+		public bool DownExit => Exits . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Down ) ;
+
+		[ConsoleVisable]
+		public bool LeftExit => Exits . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Left ) ;
+
+		[ConsoleVisable]
+		public bool RightExit => Exits . Any ( road => this . GetAzimuth ( road ) == BlockAzimuth . Right ) ;
+
+		#endregion
+
+		#region Exits
+
+		private List <Road> _exits = new List <Road> ( ) ;
+
+		private readonly List <long> _exitsId = new List <long> ( ) ;
+
+		public virtual List <Road> Exits
+		{
+			get
+			{
+				if ( _exits == null &&
+					_exitsId == null )
+				{
+					return null ;
+				}
+
+				return _exits ?? ( _exits = _exitsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ) ;
+			}
+		}
+
+		#endregion
 	}
 
 }

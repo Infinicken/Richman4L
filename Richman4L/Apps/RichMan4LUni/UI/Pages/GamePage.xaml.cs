@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . UI ;
@@ -212,11 +212,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 
 		private void GoButton_Click ( object sender , RoutedEventArgs e ) { }
 
-		private void MenuButton_Click ( object sender , RoutedEventArgs e )
-		{
-			ShowMenuGridStoryBoard . Begin ( ) ;
-			RemoveMenuControl ( ) ;
-		}
+		private void MenuButton_Click ( object sender , RoutedEventArgs e ) { MenuPanel . Show ( ) ; }
 
 		private void ZoomInButton_Click ( object sender , RoutedEventArgs e ) { }
 

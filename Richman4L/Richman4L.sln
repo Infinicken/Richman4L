@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Blend for Visual Studio 15
+VisualStudioVersion = 15.0.26228.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{6FC8DA3E-DE22-4C74-B70C-39819C441EE0}"
 EndProject
@@ -312,6 +312,7 @@ Global
 		{73B80FC0-34F1-429E-86A6-8F63451E53E8}.Release|x86.ActiveCfg = Release|x86
 		{73B80FC0-34F1-429E-86A6-8F63451E53E8}.Release|x86.Build.0 = Release|x86
 		{F1F9C2BC-05A9-48B4-9730-4E0C94F372DF}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F1F9C2BC-05A9-48B4-9730-4E0C94F372DF}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{F1F9C2BC-05A9-48B4-9730-4E0C94F372DF}.Debug|ARM.ActiveCfg = Debug|ARM
 		{F1F9C2BC-05A9-48B4-9730-4E0C94F372DF}.Debug|ARM.Build.0 = Debug|ARM
 		{F1F9C2BC-05A9-48B4-9730-4E0C94F372DF}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -416,45 +417,45 @@ Global
 		SccProjectTopLevelParentUniqueName5 = Richman4L.sln
 		SccProjectName5 = ExternalLibrary/FoggyConsole/FoggyConsole
 		SccLocalPath5 = ExternalLibrary\\FoggyConsole\\FoggyConsole
-		SccProjectUniqueName6 = Apps\\Richman4LConsole\\Richman4LConsole.csproj
+		SccProjectUniqueName6 = Tools\\BuildingTypeDesigner\\BuildingTypeDesigner.csproj
 		SccProjectTopLevelParentUniqueName6 = Richman4L.sln
-		SccProjectName6 = Apps/Richman4LConsole
-		SccLocalPath6 = Apps\\Richman4LConsole
-		SccProjectUniqueName7 = Tools\\BuildingTypeDesigner\\BuildingTypeDesigner.csproj
+		SccProjectName6 = Tools/BuildingTypeDesigner
+		SccLocalPath6 = Tools\\BuildingTypeDesigner
+		SccProjectUniqueName7 = ExternalLibrary\\FIGlet.Net\\FIGlet.NetUnitTest\\FIGlet.NetUnitTest.csproj
 		SccProjectTopLevelParentUniqueName7 = Richman4L.sln
-		SccProjectName7 = Tools/BuildingTypeDesigner
-		SccLocalPath7 = Tools\\BuildingTypeDesigner
-		SccProjectUniqueName8 = ExternalLibrary\\FIGlet.Net\\FIGlet.NetUnitTest\\FIGlet.NetUnitTest.csproj
+		SccProjectName7 = ExternalLibrary/FIGlet.Net/FIGlet.NetUnitTest
+		SccLocalPath7 = ExternalLibrary\\FIGlet.Net\\FIGlet.NetUnitTest
+		SccProjectUniqueName8 = Apps\\XamlMapRenderers\\XamlMapRenderers.csproj
 		SccProjectTopLevelParentUniqueName8 = Richman4L.sln
-		SccProjectName8 = ExternalLibrary/FIGlet.Net/FIGlet.NetUnitTest
-		SccLocalPath8 = ExternalLibrary\\FIGlet.Net\\FIGlet.NetUnitTest
-		SccProjectUniqueName9 = Apps\\XamlMapRenderers\\XamlMapRenderers.csproj
+		SccProjectName8 = Apps/XamlMapRenderers
+		SccLocalPath8 = Apps\\XamlMapRenderers
+		SccProjectUniqueName9 = Apps\\Richman4LUni\\Richman4LUni.csproj
 		SccProjectTopLevelParentUniqueName9 = Richman4L.sln
-		SccProjectName9 = Apps/XamlMapRenderers
-		SccLocalPath9 = Apps\\XamlMapRenderers
-		SccProjectUniqueName10 = Apps\\Richman4LUni\\Richman4LUni.csproj
+		SccProjectName9 = Apps/Richman4LUni
+		SccLocalPath9 = Apps\\Richman4LUni
+		SccProjectUniqueName10 = Apps\\Richman4LWeb\\Richman4LWeb.csproj
 		SccProjectTopLevelParentUniqueName10 = Richman4L.sln
-		SccProjectName10 = Apps/Richman4LUni
-		SccLocalPath10 = Apps\\Richman4LUni
-		SccProjectUniqueName11 = Apps\\Richman4LWeb\\Richman4LWeb.csproj
+		SccProjectName10 = Apps/Richman4LWeb
+		SccLocalPath10 = Apps\\Richman4LWeb
+		SccProjectUniqueName11 = Apps\\Richman4LUniUnitTest\\Richman4LUniUnitTest.csproj
 		SccProjectTopLevelParentUniqueName11 = Richman4L.sln
-		SccProjectName11 = Apps/Richman4LWeb
-		SccLocalPath11 = Apps\\Richman4LWeb
-		SccProjectUniqueName12 = Apps\\Richman4LUniUnitTest\\Richman4LUniUnitTest.csproj
+		SccProjectName11 = Apps/Richman4LUniUnitTest
+		SccLocalPath11 = Apps\\Richman4LUniUnitTest
+		SccProjectUniqueName12 = Tools\\MapDesigner\\MapDesigner.csproj
 		SccProjectTopLevelParentUniqueName12 = Richman4L.sln
-		SccProjectName12 = Apps/Richman4LUniUnitTest
-		SccLocalPath12 = Apps\\Richman4LUniUnitTest
-		SccProjectUniqueName13 = Tools\\MapDesigner\\MapDesigner.csproj
+		SccProjectName12 = Tools/MapDesigner
+		SccLocalPath12 = Tools\\MapDesigner
+		SccProjectUniqueName13 = Apps\\Richman4LWpf\\Richman4LWpf.csproj
 		SccProjectTopLevelParentUniqueName13 = Richman4L.sln
-		SccProjectName13 = Tools/MapDesigner
-		SccLocalPath13 = Tools\\MapDesigner
-		SccProjectUniqueName14 = Apps\\Richman4LWpf\\Richman4LWpf.csproj
+		SccProjectName13 = Apps/Richman4LWpf
+		SccLocalPath13 = Apps\\Richman4LWpf
+		SccProjectUniqueName14 = Sockets\\RemoteClient\\RemoteClient.csproj
 		SccProjectTopLevelParentUniqueName14 = Richman4L.sln
-		SccProjectName14 = Apps/Richman4LWpf
-		SccLocalPath14 = Apps\\Richman4LWpf
-		SccProjectUniqueName15 = Sockets\\RemoteClient\\RemoteClient.csproj
+		SccProjectName14 = Sockets/RemoteClient
+		SccLocalPath14 = Sockets\\RemoteClient
+		SccProjectUniqueName15 = Apps\\Richman4LConsole\\Richman4LConsole.csproj
 		SccProjectTopLevelParentUniqueName15 = Richman4L.sln
-		SccProjectName15 = Sockets/RemoteClient
-		SccLocalPath15 = Sockets\\RemoteClient
+		SccProjectName15 = Apps/Richman4LConsole
+		SccLocalPath15 = Apps\\Richman4LConsole
 	EndGlobalSection
 EndGlobal

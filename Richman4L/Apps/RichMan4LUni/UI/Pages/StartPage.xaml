@@ -22,16 +22,6 @@
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:6" >
-					<DiscreteObjectKeyFrame.Value>
-						<Visibility>Visible</Visibility>
-					</DiscreteObjectKeyFrame.Value>
-				</DiscreteObjectKeyFrame>
-				<DiscreteObjectKeyFrame KeyTime="0:0:8" >
-					<DiscreteObjectKeyFrame.Value>
-						<Visibility>Visible</Visibility>
-					</DiscreteObjectKeyFrame.Value>
-				</DiscreteObjectKeyFrame>
 				<DiscreteObjectKeyFrame KeyTime="0:0:9" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Collapsed</Visibility>
@@ -53,7 +43,12 @@
 				<EasingDoubleKeyFrame KeyTime="0:0:5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="WenceyText" >
-				<DiscreteObjectKeyFrame KeyTime="0:0:4" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:1" >
 					<DiscreteObjectKeyFrame.Value>
 						<Visibility>Visible</Visibility>
 					</DiscreteObjectKeyFrame.Value>
@@ -69,14 +64,14 @@
 	</pages:AnimatePage.Resources>
 
 	<Grid>
-		<Rectangle x:Name="BackGroundRect" Fill="Black" />
+		<Rectangle x:Name="BackgroundRect" Fill="Black" />
 		<Grid x:Name="StartGrid" >
 			<TextBlock x:Name="WenceyText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Wencey Wang Present"
 						VerticalAlignment="Center" Foreground="{StaticResource WhiteBrush}"
 						FontFamily="ms-appx:/Fonts/LeviReBrushed.ttf#LeviReBrushed" FontSize="64" TextAlignment="Center"
-						Margin="20,0" />
+						Margin="20,0" Visibility="Collapsed" />
 			<Controls:DreamRecorderLogo x:Name="DrText" RenderTransformOrigin="0.5,0.5" MaxWidth="640" MaxHeight="320"
-										Margin="20,0" IsLight="False" />
+										Margin="20,0" IsLight="False" Visibility="Collapsed" />
 
 		</Grid>
 

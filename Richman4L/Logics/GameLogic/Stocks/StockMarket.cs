@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Properties ;
 
 namespace WenceyWang . Richman4L .Stocks
@@ -19,14 +19,17 @@ namespace WenceyWang . Richman4L .Stocks
 
 		private GameDate _movementChanging = Game . Current . Calendar . Today ;
 
+		[ConsoleVisable]
 		public List <Stock> Stocks { get ; } = new List <Stock> ( ) ;
 
 		public StockPriceMovement Movement { get ; internal set ; }
 
+		[ConsoleVisable]
 		public decimal DelegateFeeRate { get ; set ; }
 
 		//todo:event
 
+		[ConsoleVisable]
 		public List <StockBuff> Buffs { get ; private set ; } = new List <StockBuff> ( ) ;
 
 		public StockPrice SynthesizePrice

@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
@@ -117,9 +117,9 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 
 		public override void EndToday ( ) { }
 
-		public override void StartDay ( GameDate nextDate )
+		public override void StartDay ( GameDate thisDate )
 		{
-			if ( nextDate == MovementChanging )
+			if ( thisDate == MovementChanging )
 			{
 				ChangeMovement ( ) ;
 			}
@@ -130,7 +130,7 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 								( decimal )
 								GameRandom . Current . NextDoubleBetween ( 1 - Config . WaveTimeBase ,
 																			1 - Config . WaveTimeBase ) /
-								( MovementChanging - nextDate ) ;
+								( MovementChanging - thisDate ) ;
 
 			decimal openPrice = currentPrice +
 								( closePrice - currentPrice ) *

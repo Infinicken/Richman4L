@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -27,6 +26,12 @@ using WenceyWang . Richman4L . Properties ;
 
 namespace WenceyWang . Richman4L .Maps
 {
+
+	[AttributeUsage ( AttributeTargets . Property )]
+	public sealed class ConsoleVisableAttribute : Attribute
+	{
+
+	}
 
 	/// <summary>
 	///     代表地图上的元素

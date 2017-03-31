@@ -16,11 +16,10 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using NLog ;
+using Microsoft . Extensions . Logging ;
 
 using WenceyWang . FoggyConsole . Controls ;
 
@@ -38,7 +37,7 @@ namespace WenceyWang .FoggyConsole
 		private Frame Root { get ; }
 
 
-		public Logger CurrentLoger { get ; } = LogManager . GetCurrentClassLogger ( ) ;
+		public ILogger CurrentLoger { get ; } = Application . LoggerFactory . CreateLogger <FocusManager> ( ) ;
 
 		/// <summary>
 		///     Creates a new FocusManager
@@ -89,7 +88,7 @@ namespace WenceyWang .FoggyConsole
 				{
 					if ( control == null )
 					{
-						CurrentLoger . Warn ( $"{nameof ( controlList )} of {Root . Name} contains null" ) ;
+						CurrentLoger . LogWarning ( $"{nameof ( controlList )} of {Root . Name} contains null" ) ;
 						return false ;
 					}
 
