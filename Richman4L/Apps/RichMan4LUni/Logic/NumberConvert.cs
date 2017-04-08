@@ -17,12 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . UI . Xaml . Data ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	public class NumberConverter : IValueConverter

@@ -8,7 +8,7 @@ using WenceyWang . FoggyConsole ;
 using WenceyWang . FoggyConsole . Controls ;
 using WenceyWang . Richman4L . Apps . Console . Fonts ;
 
-namespace WenceyWang . Richman4L . Apps . Console .Pages
+namespace WenceyWang . Richman4L . Apps . Console . Pages
 {
 
 	public sealed class StartPage : Page

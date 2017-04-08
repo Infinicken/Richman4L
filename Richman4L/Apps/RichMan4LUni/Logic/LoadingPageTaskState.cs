@@ -1,13 +1,12 @@
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . ComponentModel ;
 using System . Linq ;
 using System . Runtime . CompilerServices ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	public class LoadingPageTaskState : INotifyPropertyChanged

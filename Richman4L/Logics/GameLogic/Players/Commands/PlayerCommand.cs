@@ -17,13 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Interoperability . Arguments ;
 
-namespace WenceyWang . Richman4L . Players .Commands
+namespace WenceyWang . Richman4L . Players . Commands
 {
 
 	/// <summary>

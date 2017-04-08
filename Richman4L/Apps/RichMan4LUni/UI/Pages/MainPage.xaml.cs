@@ -7,7 +7,7 @@ using Windows . UI . Xaml ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>
@@ -80,11 +80,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			//}
 			if ( e . NewSize . Height < e . NewSize . Width )
 			{
-				VisualStateManager . GoToState ( this , nameof ( Wide ) , false ) ;
+				VisualStateManager . GoToState ( this , nameof(Wide) , false ) ;
 			}
 			else
 			{
-				VisualStateManager . GoToState ( this , nameof ( Narrow ) , false ) ;
+				VisualStateManager . GoToState ( this , nameof(Narrow) , false ) ;
 			}
 		}
 

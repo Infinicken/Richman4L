@@ -17,10 +17,10 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	public static class BlockAzimuthExtensions
@@ -30,7 +30,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( thisBlock == null )
 			{
-				throw new ArgumentNullException ( nameof ( thisBlock ) ) ;
+				throw new ArgumentNullException ( nameof(thisBlock) ) ;
 			}
 
 			if ( anotherBlock == null )

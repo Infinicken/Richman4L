@@ -9,7 +9,7 @@ using Windows . Storage . Streams ;
 
 using WenceyWang . Richman4L . Security ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	public class UniReliableValue <T> : ReliableValue <T>

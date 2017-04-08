@@ -12,7 +12,7 @@ using WenceyWang . Richman4L . Apps . Uni . UI . Controls ;
 using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . Players . Models ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>

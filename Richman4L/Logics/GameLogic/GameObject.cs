@@ -19,23 +19,43 @@
 using System ;
 using System . Collections ;
 using System . Collections . Generic ;
+using System . ComponentModel ;
 using System . Linq ;
 using System . Reflection ;
+using System . Runtime . CompilerServices ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
-	public abstract class GameObject
+	public abstract class GameObject : INotifyPropertyChanged
 	{
 
 		[ConsoleVisable]
-		public Guid Guid { get ; set ; }
+		public Guid Guid { get ; }
 
-		public GameObject ( ) { Guid = Guid . NewGuid ( ) ; }
+		public GameObject ( )
+		{
+			Guid = Guid . NewGuid ( ) ;
+			PropertyChanged += GameObject_PropertyChanged ;
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged ;
+
+		private void GameObject_PropertyChanged ( object sender , PropertyChangedEventArgs e )
+		{
+			if ( GetType ( ) .
+					GetTypeInfo ( ) .
+					GetDeclaredProperty ( e . PropertyName ) .
+					GetCustomAttribute <ConsoleVisableAttribute> ( ) != null )
+			{
+				Game . Current . UpdateGameObject ( this ) ;
+			}
+		}
 
 		public void RequestUpdate ( ) { }
 
@@ -50,7 +70,8 @@ namespace WenceyWang .Richman4L
 			foreach (
 				PropertyInfo property in
 				typeInfo . DeclaredProperties . Where (
-					property => property . GetCustomAttribute ( typeof ( ConsoleVisableAttribute ) ) != null && property . CanRead ) )
+					property => property . GetCustomAttribute ( typeof ( ConsoleVisableAttribute ) ) != null &&
+								property . CanRead ) )
 			{
 				if ( typeof ( IEnumerable ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
 				{
@@ -91,11 +112,11 @@ namespace WenceyWang .Richman4L
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
 			if ( name == null )
 			{
-				throw new ArgumentNullException ( nameof ( name ) ) ;
+				throw new ArgumentNullException ( nameof(name) ) ;
 			}
 
 			string value = element . Attribute ( name ) ? . Value ;
@@ -112,11 +133,11 @@ namespace WenceyWang .Richman4L
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
 			if ( name == null )
 			{
-				throw new ArgumentNullException ( nameof ( name ) ) ;
+				throw new ArgumentNullException ( nameof(name) ) ;
 			}
 
 			string value = element . Attribute ( name ) ? . Value ;
@@ -127,6 +148,12 @@ namespace WenceyWang .Richman4L
 			}
 
 			return ( T ) Convert . ChangeType ( value , typeof ( T ) ) ;
+		}
+
+		[NotifyPropertyChangedInvocator]
+		protected void OnPropertyChanged ( [CallerMemberName] string propertyName = null )
+		{
+			PropertyChanged ? . Invoke ( this , new PropertyChangedEventArgs ( propertyName ) ) ;
 		}
 
 	}

@@ -3,7 +3,7 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Text ;
 
-namespace WenceyWang .FIGlet
+namespace WenceyWang . FIGlet
 {
 
 	public class AsciiArt
@@ -21,18 +21,16 @@ namespace WenceyWang .FIGlet
 
 		public int Width => Result . Max ( line => line ? . Length ?? 0 ) ;
 
-		public AsciiArt ( string text ) : this ( text , FIGletFont . Defult ) { }
-
-		public AsciiArt ( string text , FIGletFont font , CharacterWidth width = CharacterWidth . Fitted )
+		public AsciiArt ( string text , FIGletFont font = null , CharacterWidth width = CharacterWidth . Fitted )
 		{
 			if ( text == null )
 			{
-				throw new ArgumentNullException ( nameof ( text ) ) ;
+				throw new ArgumentNullException ( nameof(text) ) ;
 			}
 
 			if ( text . Contains ( Environment . NewLine ) )
 			{
-				throw new ArgumentException ( $"{nameof ( text )} can not contain multi line" ) ;
+				throw new ArgumentException ( $"{nameof(text)} can not contain multi line" ) ;
 			}
 
 			Text = text ;
@@ -125,9 +123,9 @@ namespace WenceyWang .FIGlet
 			return stringBuilder . ToString ( ) . TrimEnd ( ) ;
 		}
 
-		public static AsciiArt GenerateArtText ( string text ) => new AsciiArt ( text ) ;
+		public static AsciiArt GenerateArtText ( string text ) { return new AsciiArt ( text ) ; }
 
-		public static AsciiArt GenerateArtText ( string text , FIGletFont font ) => new AsciiArt ( text , font ) ;
+		public static AsciiArt GenerateArtText ( string text , FIGletFont font ) { return new AsciiArt ( text , font ) ; }
 
 	}
 

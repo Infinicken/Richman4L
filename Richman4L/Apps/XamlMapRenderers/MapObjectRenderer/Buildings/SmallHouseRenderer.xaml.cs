@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . Foundation ;
 
-namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer .Buildings
+namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer . Buildings
 {
 
 	public sealed partial class SmallHouseRenderer : MapObjectRenderer

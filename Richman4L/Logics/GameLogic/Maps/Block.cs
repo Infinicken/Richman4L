@@ -21,10 +21,10 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	/// <summary>
@@ -65,8 +65,8 @@ namespace WenceyWang . Richman4L .Maps
 		/// </summary>
 		public int UnburnedRatio
 			=>
-				Convert . ToInt32 ( Convert . ToDecimal ( BurnedAmount ) / Convert . ToDecimal ( CombustibleMaterialAmount ) * 10000 )
-		;
+				Convert . ToInt32 (
+					Convert . ToDecimal ( BurnedAmount ) / Convert . ToDecimal ( CombustibleMaterialAmount ) * 10000 ) ;
 
 		/// <summary>
 		///     指示当前块的可燃物总量
@@ -112,7 +112,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) ) ;
+				throw new ArgumentNullException ( nameof(resource) ) ;
 			}
 		}
 
@@ -164,6 +164,7 @@ namespace WenceyWang . Richman4L .Maps
 		public static long Calu ( int x , int y ) { return ( x + y ) * ( x + y + 1 ) / 2 + y ; }
 
 		//public static 
+
 	}
 
 }

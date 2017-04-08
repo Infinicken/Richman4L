@@ -17,10 +17,10 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Players
+namespace WenceyWang . Richman4L . Players
 {
 
 	public enum PlayerState
@@ -28,11 +28,9 @@ namespace WenceyWang . Richman4L .Players
 
 		Normal ,
 
-		入狱 ,
+		Imprisoned ,
 
-		住院 ,
-
-		Bankrupt
+		Hospitalized
 
 	}
 

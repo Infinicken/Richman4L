@@ -17,10 +17,10 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	public static class AreaBuffExtensions
@@ -30,7 +30,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( area == null )
 			{
-				throw new ArgumentNullException ( nameof ( area ) ) ;
+				throw new ArgumentNullException ( nameof(area) ) ;
 			}
 
 			return area . Buffs . Any ( item => item . BlockBuild ) ;
@@ -40,7 +40,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( area == null )
 			{
-				throw new ArgumentNullException ( nameof ( area ) ) ;
+				throw new ArgumentNullException ( nameof(area) ) ;
 			}
 
 			return area . Buffs . Any ( item => item . BlockBuy ) ;
@@ -50,7 +50,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( area == null )
 			{
-				throw new ArgumentNullException ( nameof ( area ) ) ;
+				throw new ArgumentNullException ( nameof(area) ) ;
 			}
 
 			return area . Buffs . Any ( item => item . BlockCharge ) ;

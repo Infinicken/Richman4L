@@ -2,7 +2,7 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
@@ -115,7 +115,9 @@ namespace WenceyWang .FoggyConsole
 
 
 		public bool Equals ( Rectangle other )
-			=> X == other . X && Y == other . Y && Height == other . Height && Width == other . Width ;
+		{
+			return X == other . X && Y == other . Y && Height == other . Height && Width == other . Width ;
+		}
 
 		public override bool Equals ( object obj )
 		{
@@ -139,9 +141,9 @@ namespace WenceyWang .FoggyConsole
 			}
 		}
 
-		public static bool operator == ( Rectangle left , Rectangle right ) => left . Equals ( right ) ;
+		public static bool operator == ( Rectangle left , Rectangle right ) { return left . Equals ( right ) ; }
 
-		public static bool operator != ( Rectangle left , Rectangle right ) => ! left . Equals ( right ) ;
+		public static bool operator != ( Rectangle left , Rectangle right ) { return ! left . Equals ( right ) ; }
 
 		/// <summary>
 		///     Creates a new rectangle
@@ -156,19 +158,19 @@ namespace WenceyWang .FoggyConsole
 
 			if ( left < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( left ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(left) ) ;
 			}
 			if ( top < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( top ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(top) ) ;
 			}
 			if ( width < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( width ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(width) ) ;
 			}
 			if ( height < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( height ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(height) ) ;
 			}
 
 			#endregion
@@ -245,7 +247,9 @@ namespace WenceyWang .FoggyConsole
 		///     Offset - return the result of offsetting rect by the offset provided
 		/// </summary>
 		public static Rectangle Offset ( Rectangle rect , Vector offsetVector )
-			=> rect . Offset ( offsetVector . X , offsetVector . Y ) ;
+		{
+			return rect . Offset ( offsetVector . X , offsetVector . Y ) ;
+		}
 
 		public Size Size => new Size ( Width , Height ) ;
 

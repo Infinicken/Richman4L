@@ -17,12 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	public class Park : Building
@@ -38,7 +38,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override void EndToday ( ) { }
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 		public override void Destoy ( BuildingDestroyReason reason ) { }
 

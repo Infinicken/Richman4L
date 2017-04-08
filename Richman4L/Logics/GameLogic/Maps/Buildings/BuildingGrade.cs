@@ -22,7 +22,7 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	/// <summary>
@@ -105,43 +105,43 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
-			if ( element . Name != nameof ( BuildingGrade ) )
+			if ( element . Name != nameof(BuildingGrade) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} do not perform a {nameof ( BuildingGrade )}" ,
-											nameof ( element ) ) ;
+				throw new ArgumentException ( $"{nameof(element)} do not perform a {nameof(BuildingGrade)}" ,
+											nameof(element) ) ;
 			}
 			if ( belongTo == null )
 			{
-				throw new ArgumentNullException ( nameof ( belongTo ) ) ;
+				throw new ArgumentNullException ( nameof(belongTo) ) ;
 			}
 
 			BelongTo = belongTo ;
 			try
 			{
-				Id = Convert . ToInt32 ( element . Attribute ( nameof ( Id ) ) . Value ) ;
-				Grade = Convert . ToInt32 ( element . Attribute ( nameof ( Grade ) ) . Value ) ;
-				Name = element . Attribute ( nameof ( Name ) ) . Value ;
-				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value ;
-				RecoverTime = Convert . ToInt64 ( element . Attribute ( nameof ( RecoverTime ) ) . Value ) ;
-				StartUpgradeCost = Convert . ToInt64 ( element . Attribute ( nameof ( StartUpgradeCost ) ) . Value ) ;
-				NormalUpgradeCost = Convert . ToInt64 ( element . Attribute ( nameof ( NormalUpgradeCost ) ) . Value ) ;
-				UpgradeTime = Convert . ToInt32 ( element . Attribute ( nameof ( UpgradeTime ) ) . Value ) ;
-				MaintenanceFee = Convert . ToInt64 ( element . Attribute ( nameof ( MaintenanceFee ) ) . Value ) ;
+				Id = Convert . ToInt32 ( element . Attribute ( nameof(Id) ) . Value ) ;
+				Grade = Convert . ToInt32 ( element . Attribute ( nameof(Grade) ) . Value ) ;
+				Name = element . Attribute ( nameof(Name) ) . Value ;
+				Introduction = element . Attribute ( nameof(Introduction) ) . Value ;
+				RecoverTime = Convert . ToInt64 ( element . Attribute ( nameof(RecoverTime) ) . Value ) ;
+				StartUpgradeCost = Convert . ToInt64 ( element . Attribute ( nameof(StartUpgradeCost) ) . Value ) ;
+				NormalUpgradeCost = Convert . ToInt64 ( element . Attribute ( nameof(NormalUpgradeCost) ) . Value ) ;
+				UpgradeTime = Convert . ToInt32 ( element . Attribute ( nameof(UpgradeTime) ) . Value ) ;
+				MaintenanceFee = Convert . ToInt64 ( element . Attribute ( nameof(MaintenanceFee) ) . Value ) ;
 				List <BuildingAccessory> accessories = new List <BuildingAccessory> ( ) ;
 				Accessories = new ReadOnlyCollection <BuildingAccessory> ( accessories ) ;
 
 				// ReSharper disable once PossibleNullReferenceException
-				foreach ( XElement accessory in element . Element ( nameof ( Accessories ) ) . Elements ( ) )
+				foreach ( XElement accessory in element . Element ( nameof(Accessories) ) . Elements ( ) )
 				{
-					if ( accessory . Name == nameof ( BuildingAccessory ) )
+					if ( accessory . Name == nameof(BuildingAccessory) )
 					{
 						accessories . Add ( new BuildingAccessory ( accessory , this ) ) ;
 					}
 					else
 					{
-						throw new ArgumentException ( $"{nameof ( element )} has wrong data" , nameof ( element ) ) ;
+						throw new ArgumentException ( $"{nameof(element)} has wrong data" , nameof(element) ) ;
 					}
 				}
 
@@ -149,34 +149,34 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 				// NullReferenceException will be caught later.
 				// ReSharper disable once PossibleNullReferenceException
-				foreach ( XElement grade in element . Element ( nameof ( CanUpgradeTo ) ) . Elements ( ) )
+				foreach ( XElement grade in element . Element ( nameof(CanUpgradeTo) ) . Elements ( ) )
 				{
-					if ( grade . Name == nameof ( BuildingGrade ) )
+					if ( grade . Name == nameof(BuildingGrade) )
 					{
-						CanUpdateToId . Add ( Convert . ToInt64 ( grade . Attribute ( nameof ( Id ) ) . Value ) ) ;
+						CanUpdateToId . Add ( Convert . ToInt64 ( grade . Attribute ( nameof(Id) ) . Value ) ) ;
 					}
 					else
 					{
-						throw new ArgumentException ( $"{nameof ( element )} has wrong data" , nameof ( element ) ) ;
+						throw new ArgumentException ( $"{nameof(element)} has wrong data" , nameof(element) ) ;
 					}
 				}
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof(element)} has wrong data or lack of data" , e ) ;
 			}
 
 			#region CheckIdUnique
 
 			if ( belongTo . Grades . Any ( grade => grade . Id == Id ) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} has ducipate {nameof ( Id )}" , nameof ( element ) ) ;
+				throw new ArgumentException ( $"{nameof(element)} has ducipate {nameof(Id)}" , nameof(element) ) ;
 			}
 
 			#endregion
 		}
 
-		public override string ToString ( ) => $"{Name}({Id}) in {BelongTo . Name}" ;
+		public override string ToString ( ) { return $"{Name}({Id}) in {BelongTo . Name}" ; }
 
 	}
 

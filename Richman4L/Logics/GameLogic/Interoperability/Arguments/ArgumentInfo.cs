@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains ;
 
-namespace WenceyWang . Richman4L . Interoperability .Arguments
+namespace WenceyWang . Richman4L . Interoperability . Arguments
 {
 
 	public class ArgumentInfo
@@ -25,19 +25,19 @@ namespace WenceyWang . Richman4L . Interoperability .Arguments
 		{
 			if ( name == null )
 			{
-				throw new ArgumentNullException ( nameof ( name ) ) ;
+				throw new ArgumentNullException ( nameof(name) ) ;
 			}
 			if ( introduction == null )
 			{
-				throw new ArgumentNullException ( nameof ( introduction ) ) ;
+				throw new ArgumentNullException ( nameof(introduction) ) ;
 			}
 			if ( type == null )
 			{
-				throw new ArgumentNullException ( nameof ( type ) ) ;
+				throw new ArgumentNullException ( nameof(type) ) ;
 			}
 			if ( defineDomain == null )
 			{
-				throw new ArgumentNullException ( nameof ( defineDomain ) ) ;
+				throw new ArgumentNullException ( nameof(defineDomain) ) ;
 			}
 
 

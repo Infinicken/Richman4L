@@ -1,12 +1,12 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . UI . Xaml . Media . Animation ;
 
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	internal class BlankNavigationTransitionInfo : NavigationTransitionInfo
@@ -20,18 +20,18 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		public static void NavigateTo <T> ( this AnimatePage page , object parameter = null ) where T : AnimatePage
 		{
 			ColorAnimationUsingKeyFrames ca = new ColorAnimationUsingKeyFrames ( ) ;
-			Storyboard . SetTargetName ( ca , "BackGroundRect" ) ;
+			Storyboard . SetTargetName ( ca , "BackgroundRect" ) ;
 			Storyboard . SetTargetProperty ( ca , "(Shape.Fill).(SolidColorBrush.Color)" ) ;
 			ca . KeyFrames . Add ( new EasingColorKeyFrame
 									{
-										KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 0.5 ) ) ,
+										KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 0.25 ) ) ,
 										Value = AnimatePage . GetPageColor ( page ) ,
 										EasingFunction = UI . XamlResources . Resources . EasingFunction
 									} ) ;
 
 			ca . KeyFrames . Add ( new EasingColorKeyFrame
 									{
-										KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 1 ) ) ,
+										KeyTime = KeyTime . FromTimeSpan ( TimeSpan . FromSeconds ( 0.5 ) ) ,
 										Value = AnimatePage . GetPageColor <T> ( ) ,
 										EasingFunction = UI . XamlResources . Resources . EasingFunction
 									} ) ;

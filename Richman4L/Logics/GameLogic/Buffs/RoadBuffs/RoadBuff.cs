@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Maps . Roads ;
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Buffs .RoadBuffs
+namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 {
 
 	/// <summary>

@@ -5,7 +5,7 @@ using System . Linq ;
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 {
 
 	/// <summary>
@@ -16,12 +16,12 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 
 		public GameSaying Saying
 		{
-			get { return ( GameSaying ) GetValue ( SayingProperty ) ; }
+			get => ( GameSaying ) GetValue ( SayingProperty ) ;
 			set
 			{
 				if ( value == null )
 				{
-					throw new ArgumentNullException ( nameof ( value ) ) ;
+					throw new ArgumentNullException ( nameof(value) ) ;
 				}
 
 				SetValue ( SayingProperty , value ) ;
@@ -75,20 +75,20 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 
 
 		public static readonly DependencyProperty SayingProperty =
-			DependencyProperty . Register ( nameof ( Saying ) ,
+			DependencyProperty . Register ( nameof(Saying) ,
 											typeof ( GameSaying ) ,
 											typeof ( SayingPresenter ) ,
 											new PropertyMetadata ( default ( GameSaying ) ) ) ;
 
-		public void Hide ( ) { VisualStateManager . GoToState ( this , nameof ( HideState ) , true ) ; }
+		public void Hide ( ) { VisualStateManager . GoToState ( this , nameof(HideState) , true ) ; }
 
-		public void Show ( ) { VisualStateManager . GoToState ( this , nameof ( ShowState ) , true ) ; }
+		public void Show ( ) { VisualStateManager . GoToState ( this , nameof(ShowState) , true ) ; }
 
-		public void ShowSaying ( ) { VisualStateManager . GoToState ( this , nameof ( ShowState ) , true ) ; }
+		public void ShowSaying ( ) { VisualStateManager . GoToState ( this , nameof(ShowState) , true ) ; }
 
 		private void SayingPresenter_Loaded ( object sender , RoutedEventArgs e )
 		{
-			VisualStateManager . GoToState ( this , nameof ( HideState ) , false ) ;
+			VisualStateManager . GoToState ( this , nameof(HideState) , false ) ;
 		}
 
 	}

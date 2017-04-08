@@ -25,7 +25,7 @@ using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Weathers ;
 
-namespace WenceyWang . Richman4L . Buffs .RoadBuffs
+namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 {
 
 	/// <summary>
@@ -48,7 +48,7 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			switch ( moveType )
@@ -70,7 +70,7 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 					break ;
 				default :
 				{
-					throw new ArgumentOutOfRangeException ( nameof ( moveType ) ) ;
+					throw new ArgumentOutOfRangeException ( nameof(moveType) ) ;
 				}
 			}
 
@@ -96,7 +96,9 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 		}
 
 		public bool IsKilled ( Weather weather )
-			=> weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37 ;
+		{
+			return weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37 ;
+		}
 
 		public void Bite ( Player player )
 		{
@@ -137,7 +139,7 @@ namespace WenceyWang . Richman4L . Buffs .RoadBuffs
 				}
 				default :
 				{
-					throw new ArgumentOutOfRangeException ( nameof ( moveType ) ) ;
+					throw new ArgumentOutOfRangeException ( nameof(moveType) ) ;
 				}
 			}
 

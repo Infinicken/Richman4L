@@ -20,7 +20,9 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Maps
+using WenceyWang . Richman4L . Annotations ;
+
+namespace WenceyWang . Richman4L . Maps
 {
 
 	/// <summary>
@@ -94,7 +96,25 @@ namespace WenceyWang . Richman4L .Maps
 			}
 		}
 
-		public override string ToString ( ) => $"({Width},{Height})" ;
+		public override string ToString ( ) { return $"({Width},{Height})" ; }
+
+		public static explicit operator MapSize ( [NotNull] string mapSize )
+		{
+			if ( mapSize == null )
+			{
+				throw new ArgumentNullException ( nameof(mapSize) ) ;
+			}
+
+			string [ ] numbers = mapSize . Split ( ',' ) ;
+
+			if ( numbers . LongCount ( ) != 2 )
+			{
+				//todo:Info?
+				throw new ArgumentException ( ) ;
+			}
+
+			return new MapSize ( Convert . ToInt32 ( numbers . First ( ) ) , Convert . ToInt32 ( numbers . Last ( ) ) ) ;
+		}
 
 		/// <summary>
 		///     创建新的MapSize

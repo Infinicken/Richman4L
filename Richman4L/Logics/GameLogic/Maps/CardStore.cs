@@ -17,19 +17,20 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
+using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Cards ;
 using WenceyWang . Richman4L . Maps . Roads ;
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
-	[MapObject]
+	[MapObject ( nameof(CardStore) , nameof(CardStore) )]
+	[Guid ( "0FFBE4CB-F194-4483-B99A-954CA4087786" )]
 	public class CardStore : NormalRoad
 	{
 

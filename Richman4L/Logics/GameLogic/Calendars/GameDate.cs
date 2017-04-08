@@ -4,7 +4,7 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Seasons ;
 
-namespace WenceyWang . Richman4L .Calendars
+namespace WenceyWang . Richman4L . Calendars
 {
 
 	public struct GameDate

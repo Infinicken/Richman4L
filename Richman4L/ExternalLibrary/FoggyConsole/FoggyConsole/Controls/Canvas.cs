@@ -22,7 +22,7 @@ using System . Linq ;
 using WenceyWang . FoggyConsole . Controls . Events ;
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -38,7 +38,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public Dictionary <Control , Point> Position { get ; } = new Dictionary <Control , Point> ( ) ;
 
-		public Point this [ Control control ] { get { return Position [ control ] ; } set { Position [ control ] = value ; } }
+		public Point this [ Control control ] { get => Position [ control ] ; set => Position [ control ] = value ; }
 
 		/// <summary>
 		///     Creates a new <code>Canvas</code>
@@ -51,7 +51,9 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public Canvas ( IControlRenderer renderer = null ) : base ( renderer ?? new CanvasRenderer ( ) ) { }
+		public Canvas ( IControlRenderer renderer = null ) : base ( renderer ?? new CanvasRenderer ( ) )
+		{
+		}
 
 		public override void AddChild ( Control control )
 		{

@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 using System . Windows ;
@@ -7,7 +7,7 @@ using System . Windows . Controls ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
+namespace WenceyWang . Richman4L . Tools . BuildingTypeDesigner
 {
 
 	/// <summary>
@@ -18,15 +18,15 @@ namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
 
 		public BuildingGrade Source
 		{
-			get { return ( BuildingGrade ) GetValue ( SourceProperty ) ; }
-			set { SetValue ( SourceProperty , value ) ; }
+			get => ( BuildingGrade ) GetValue ( SourceProperty ) ;
+			set => SetValue ( SourceProperty , value ) ;
 		}
 
 
 		public BuildingGradeVisualizer ( ) { InitializeComponent ( ) ; }
 
 		public static readonly DependencyProperty SourceProperty =
-			DependencyProperty . Register ( nameof ( Source ) ,
+			DependencyProperty . Register ( nameof(Source) ,
 											typeof ( BuildingGrade ) ,
 											typeof ( BuildingGradeVisualizer ) ,
 											new PropertyMetadata ( null ) ) ;

@@ -17,12 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Players .PayReasons
+namespace WenceyWang . Richman4L . Players . PayReasons
 {
 
 	public sealed class PayForCrossReason : PayReason

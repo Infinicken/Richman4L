@@ -21,7 +21,7 @@ using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -43,12 +43,12 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public int MinValue
 		{
-			get { return _minValue ; }
+			get => _minValue ;
 			set
 			{
 				if ( value > MaxValue )
 				{
-					throw new ArgumentOutOfRangeException ( nameof ( value ) ) ;
+					throw new ArgumentOutOfRangeException ( nameof(value) ) ;
 				}
 
 				if ( value != _minValue )
@@ -61,12 +61,12 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public int MaxValue
 		{
-			get { return _maxValue ; }
+			get => _maxValue ;
 			set
 			{
 				if ( value > MaxValue )
 				{
-					throw new ArgumentOutOfRangeException ( nameof ( value ) ) ;
+					throw new ArgumentOutOfRangeException ( nameof(value) ) ;
 				}
 
 				if ( value != _minValue )
@@ -82,13 +82,13 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		public int Value
 		{
-			get { return _value ; }
+			get => _value ;
 			set
 			{
 				if ( value < MinValue ||
 					value > MaxValue )
 				{
-					throw new ArgumentOutOfRangeException ( nameof ( value ) ) ;
+					throw new ArgumentOutOfRangeException ( nameof(value) ) ;
 				}
 
 				if ( _value != value )
@@ -132,7 +132,9 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// <summary>
 		///     Fires the ValueChanged-event and requests an redraw
 		/// </summary>
-		private void OnValueChanged ( ) { }
+		private void OnValueChanged ( )
+		{
+		}
 
 	}
 

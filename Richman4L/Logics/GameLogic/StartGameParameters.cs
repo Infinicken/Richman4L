@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -25,9 +24,7 @@ using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Players . Models ;
 
-using Environment = WenceyWang . Richman4L . GameEnviroment . Environment ;
-
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	public class StartGameParameters
@@ -52,7 +49,7 @@ namespace WenceyWang .Richman4L
 
 		public WinningCondition WinningCondition { get ; set ; }
 
-		public Environment Enviroment { get ; set ; }
+		public GameRule EnviromentSetting { get ; set ; }
 
 	}
 

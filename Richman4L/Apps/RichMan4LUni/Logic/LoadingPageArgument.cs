@@ -5,7 +5,7 @@ using System . Threading . Tasks ;
 
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	public sealed class LoadingPageArgument
@@ -36,11 +36,11 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		{
 			if ( taskToWait == null )
 			{
-				throw new ArgumentNullException ( nameof ( taskToWait ) ) ;
+				throw new ArgumentNullException ( nameof(taskToWait) ) ;
 			}
 			if ( toDoNext == null )
 			{
-				throw new ArgumentNullException ( nameof ( toDoNext ) ) ;
+				throw new ArgumentNullException ( nameof(toDoNext) ) ;
 			}
 
 			TaskToWait = taskToWait ;
@@ -51,7 +51,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		{
 			if ( newStatus == null )
 			{
-				throw new ArgumentNullException ( nameof ( newStatus ) ) ;
+				throw new ArgumentNullException ( nameof(newStatus) ) ;
 			}
 
 			LoadingStatusList . Add ( newStatus ) ;

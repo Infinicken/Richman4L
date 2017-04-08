@@ -4,4 +4,6 @@
 *.tfignore
 *.vssscc
 *.vspscc
+*.user
+*.props
 /.vs/

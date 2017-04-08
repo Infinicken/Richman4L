@@ -22,7 +22,7 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Maps . Roads ;
 
-namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer .Roads
+namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer . Roads
 {
 
 	public sealed class NormalRoadRenderer : CharacterMapObjectRenderer <NormalRoad>

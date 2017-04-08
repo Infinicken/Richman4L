@@ -1,10 +1,9 @@
 ﻿using System ;
-using System . Collections ;
-using System . ComponentModel ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Text ;
 
-namespace WenceyWang . Richman4L . Apps .Console
+namespace WenceyWang . Richman4L . Apps . Console
 {
 
 	public class SettingItemAttribute : Attribute
@@ -28,22 +27,22 @@ namespace WenceyWang . Richman4L . Apps .Console
 		{
 			if ( displayName == null )
 			{
-				throw new ArgumentNullException ( nameof ( displayName ) ) ;
+				throw new ArgumentNullException ( nameof(displayName) ) ;
 			}
 			if ( introduction == null )
 			{
-				throw new ArgumentNullException ( nameof ( introduction ) ) ;
+				throw new ArgumentNullException ( nameof(introduction) ) ;
 			}
 			if ( defultValue == null )
 			{
-				throw new ArgumentNullException ( nameof ( defultValue ) ) ;
+				throw new ArgumentNullException ( nameof(defultValue) ) ;
 			}
 			if ( ! Enum . IsDefined ( typeof ( SettingCategory ) , settingCategory ) )
 			{
-				throw new InvalidEnumArgumentException ( nameof ( settingCategory ) ,
-														( int ) settingCategory ,
-														typeof ( SettingCategory ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(settingCategory) ,
+														"Value should be defined in the SettingCategory enum." ) ;
 			}
+
 
 			SettingCategory = settingCategory ;
 			DisplayName = displayName ;

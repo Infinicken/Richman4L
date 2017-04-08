@@ -17,10 +17,10 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	public interface IMapObjectRenderer <T> : IMapObjectRenderer where T : MapObject

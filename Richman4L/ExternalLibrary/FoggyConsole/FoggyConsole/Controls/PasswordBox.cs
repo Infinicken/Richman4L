@@ -5,7 +5,7 @@ using System . Security ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	public class PasswordBox : Control
@@ -53,7 +53,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		public int CursorPosition
 		{
-			get { return _cursorPosition ; }
+			get => _cursorPosition ;
 			private set
 			{
 				_cursorPosition = value ;
@@ -81,7 +81,9 @@ namespace WenceyWang . FoggyConsole .Controls
 
 
 		public PasswordBox ( ControlRenderer <PasswordBox> renderer = null )
-			: base ( renderer ?? new PasswordBoxRenderer ( ) ) { }
+			: base ( renderer ?? new PasswordBoxRenderer ( ) )
+		{
+		}
 
 		/// <summary>
 		/// </summary>

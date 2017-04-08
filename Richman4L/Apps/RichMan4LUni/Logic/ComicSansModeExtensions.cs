@@ -1,5 +1,4 @@
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -9,7 +8,7 @@ using Windows . UI . Xaml . Media ;
 
 using Microsoft . CSharp . RuntimeBinder ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	internal static class ComicSansModeExtensions
@@ -34,7 +33,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		{
 			if ( panel == null )
 			{
-				throw new ArgumentNullException ( nameof ( panel ) ) ;
+				throw new ArgumentNullException ( nameof(panel) ) ;
 			}
 
 			random = random ?? new Random ( ) ;

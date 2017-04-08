@@ -1,8 +1,8 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Events
+namespace WenceyWang . FoggyConsole . Controls . Events
 {
 
 	///// <summary>
@@ -32,4 +32,5 @@ namespace WenceyWang . FoggyConsole . Controls .Events
 	//	ContentChanged
 
 	//}
+
 }

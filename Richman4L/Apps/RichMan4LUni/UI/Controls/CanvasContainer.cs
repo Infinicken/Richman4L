@@ -8,7 +8,7 @@ using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Media ;
 using Windows . UI . Xaml . Media . Animation ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 {
 
 	public class SlidePanel : ContentControl
@@ -16,93 +16,89 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 
 		public List <Tuple <UIElement , CompositeTransform>> HideTransforms
 		{
-			get { return ( List <Tuple <UIElement , CompositeTransform>> ) GetValue ( HideTransformsProperty ) ; }
-			set { SetValue ( HideTransformsProperty , value ) ; }
+			get => ( List <Tuple <UIElement , CompositeTransform>> ) GetValue ( HideTransformsProperty ) ;
+			set => SetValue ( HideTransformsProperty , value ) ;
 		}
 
 
-		public bool IsShow
-		{
-			get { return ( bool ) GetValue ( IsShowProperty ) ; }
-			set { SetValue ( IsShowProperty , value ) ; }
-		}
+		public bool IsShow { get => ( bool ) GetValue ( IsShowProperty ) ; set => SetValue ( IsShowProperty , value ) ; }
 
 
 		public CompositeTransform HideTransform
 		{
-			get { return ( CompositeTransform ) GetValue ( HideTransformProperty ) ; }
-			set { SetValue ( HideTransformProperty , value ) ; }
+			get => ( CompositeTransform ) GetValue ( HideTransformProperty ) ;
+			set => SetValue ( HideTransformProperty , value ) ;
 		}
 
 
 		public bool ChangeVisability
 		{
-			get { return ( bool ) GetValue ( ChangeVisabilityProperty ) ; }
-			set { SetValue ( ChangeVisabilityProperty , value ) ; }
+			get => ( bool ) GetValue ( ChangeVisabilityProperty ) ;
+			set => SetValue ( ChangeVisabilityProperty , value ) ;
 		}
 
 
 		public bool ChangeOpacity
 		{
-			get { return ( bool ) GetValue ( ChangeOpacityProperty ) ; }
-			set { SetValue ( ChangeOpacityProperty , value ) ; }
+			get => ( bool ) GetValue ( ChangeOpacityProperty ) ;
+			set => SetValue ( ChangeOpacityProperty , value ) ;
 		}
 
 
 		public Storyboard ShowStoryBoard
 		{
-			get { return ( Storyboard ) GetValue ( ShowStoryBoardProperty ) ; }
-			set { SetValue ( ShowStoryBoardProperty , value ) ; }
+			get => ( Storyboard ) GetValue ( ShowStoryBoardProperty ) ;
+			set => SetValue ( ShowStoryBoardProperty , value ) ;
 		}
 
 
 		public Storyboard HideStoryboard
 		{
-			get { return ( Storyboard ) GetValue ( HideStoryboardProperty ) ; }
-			set { SetValue ( HideStoryboardProperty , value ) ; }
+			get => ( Storyboard ) GetValue ( HideStoryboardProperty ) ;
+			set => SetValue ( HideStoryboardProperty , value ) ;
 		}
 
 
 		private FrameworkElement content => Content as FrameworkElement ;
 
 		public static readonly DependencyProperty HideTransformsProperty =
-			DependencyProperty . Register ( nameof ( HideTransforms ) ,
+			DependencyProperty . Register ( nameof(HideTransforms) ,
 											typeof ( List <Tuple <UIElement , CompositeTransform>> ) ,
 											typeof ( SlidePanel ) ,
 											new PropertyMetadata ( new List <Tuple <UIElement , CompositeTransform>> ( ) ) ) ;
 
 		public static readonly DependencyProperty ShowStoryBoardProperty =
-			DependencyProperty . Register ( nameof ( ShowStoryBoard ) ,
+			DependencyProperty . Register ( nameof(ShowStoryBoard) ,
 											typeof ( Storyboard ) ,
 											typeof ( CanvasContainer ) ,
 											new PropertyMetadata ( default ( Storyboard ) ) ) ;
 
 		public static readonly DependencyProperty HideStoryboardProperty =
-			DependencyProperty . Register ( nameof ( HideStoryboard ) ,
+			DependencyProperty . Register ( nameof(HideStoryboard) ,
 											typeof ( Storyboard ) ,
 											typeof ( CanvasContainer ) ,
 											new PropertyMetadata ( default ( Storyboard ) ) ) ;
 
 		public static readonly DependencyProperty IsShowProperty =
-			DependencyProperty . Register ( nameof ( IsShow ) ,
+			DependencyProperty . Register ( nameof(IsShow) ,
 											typeof ( bool ) ,
 											typeof ( SlidePanel ) ,
 											new PropertyMetadata ( true ) ) ;
 
 		public static readonly DependencyProperty HideTransformProperty =
-			DependencyProperty . Register ( nameof ( HideTransform ) ,
+			DependencyProperty . Register ( nameof(HideTransform) ,
 											typeof ( CompositeTransform ) ,
 											typeof ( SlidePanel ) ,
 											new PropertyMetadata ( default ( CompositeTransform ) ) ) ;
 
 		public static readonly DependencyProperty ChangeVisabilityProperty =
-			DependencyProperty . Register ( nameof ( ChangeVisability ) ,
+			DependencyProperty . Register ( nameof(ChangeVisability) ,
 											typeof ( bool ) ,
 											typeof ( SlidePanel ) ,
 											new PropertyMetadata ( false ) ) ;
 
 		public static readonly DependencyProperty ChangeOpacityProperty =
-			DependencyProperty . Register ( nameof ( ChangeOpacity ) ,
+			DependencyProperty . Register ( nameof(ChangeOpacity) ,
 											typeof ( bool ) ,
 											typeof ( SlidePanel ) ,
 											new PropertyMetadata ( false ) ) ;

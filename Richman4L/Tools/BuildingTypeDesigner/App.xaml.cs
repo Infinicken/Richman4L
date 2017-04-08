@@ -1,9 +1,9 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Windows ;
 
-namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
+namespace WenceyWang . Richman4L . Tools . BuildingTypeDesigner
 {
 
 	/// <summary>

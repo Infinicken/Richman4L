@@ -20,7 +20,7 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer .Roads
+namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer . Roads
 {
 
 	// ReSharper disable once InconsistentNaming
@@ -339,4 +339,5 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRende
 	//	}
 
 	//}
+
 }

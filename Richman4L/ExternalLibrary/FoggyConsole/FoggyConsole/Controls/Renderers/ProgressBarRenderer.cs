@@ -2,7 +2,7 @@
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>

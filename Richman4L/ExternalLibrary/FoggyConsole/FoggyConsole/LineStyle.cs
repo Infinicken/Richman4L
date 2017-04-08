@@ -19,7 +19,7 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>

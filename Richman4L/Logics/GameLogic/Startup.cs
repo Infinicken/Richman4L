@@ -1,11 +1,10 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 using System . Threading . Tasks ;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	/// <summary>

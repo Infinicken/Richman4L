@@ -21,12 +21,12 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps . Events ;
 using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	public class Map : GameObject
@@ -38,7 +38,7 @@ namespace WenceyWang . Richman4L .Maps
 		[NotNull]
 		public static Map Currnet { get ; set ; }
 
-		public Guid Guid { get ; private set ; }
+		public Guid Guid { get ; }
 
 		[NotNull]
 		public string Name { get ; set ; }
@@ -81,22 +81,24 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( document == null )
 			{
-				throw new ArgumentNullException ( nameof ( document ) ) ;
+				throw new ArgumentNullException ( nameof(document) ) ;
 			}
 
 			XElement ele = document . Root ;
-			if ( ele . Name != nameof ( Map ) )
+			if ( ele . Name != nameof(Map) )
 			{
-				throw new ArgumentException ( $"{nameof ( document )} do not perform a {nameof ( Map )}" ) ;
+				throw new ArgumentException ( $"{nameof(document)} do not perform a {nameof(Map)}" ) ;
 			}
 
 			try
 			{
-				Name = ele . Attribute ( nameof ( Name ) ) . Value ;
+				Name = ReadNecessaryValue <string> ( ele , nameof(Name) ) ;
 				Size = new MapSize ( Convert . ToInt32 ( ele . Attribute ( "SizeX" ) . Value ) ,
 									Convert . ToInt32 ( ele . Attribute ( "SizeY" ) . Value ) ) ;
-				Guid = Guid . Parse ( ele . Attribute ( nameof ( Guid ) ) . Value ) ;
-				foreach ( XElement item in ele . Element ( nameof ( Objects ) ) ? . Elements ( ) )
+				Guid = Guid . Parse ( ele . Attribute ( nameof(Guid) ) . Value ) ;
+
+
+				foreach ( XElement item in ele . Element ( nameof(Objects) ) ? . Elements ( ) )
 				{
 					Objects . Add (
 						Activator . CreateInstance (
@@ -106,7 +108,7 @@ namespace WenceyWang . Richman4L .Maps
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"Can not parse {nameof ( document )}" , e ) ;
+				throw new ArgumentException ( $"Can not parse {nameof(document)}" , e ) ;
 			}
 
 			for ( int y = 0 ; y < Size . Height ; y++ )
@@ -130,15 +132,23 @@ namespace WenceyWang . Richman4L .Maps
 		}
 
 		public Map ( [NotNull] string flieName )
-			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) ) { }
+			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) )
+		{
+		}
 
 		public static long Transform ( int x , int y ) { return ( x + y ) * ( x + y + 1 ) / 2 + y ; }
 
 		[CanBeNull]
-		public Road GetRoad ( long id ) => Objects . SingleOrDefault ( road => ( road as Road ) ? . Id == id ) as Road ;
+		public Road GetRoad ( long id )
+		{
+			return Objects . SingleOrDefault ( road => ( road as Road ) ? . Id == id ) as Road ;
+		}
 
 		[CanBeNull]
-		public Area GetArea ( long id ) => Objects . SingleOrDefault ( area => ( area as Area ) ? . Id == id ) as Area ;
+		public Area GetArea ( long id )
+		{
+			return Objects . SingleOrDefault ( area => ( area as Area ) ? . Id == id ) as Area ;
+		}
 
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }

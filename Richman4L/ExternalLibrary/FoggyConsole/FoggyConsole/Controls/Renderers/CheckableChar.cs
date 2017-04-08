@@ -1,8 +1,8 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	public struct CheckableChar : IEquatable <CheckableChar>
@@ -41,7 +41,7 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 				}
 				default :
 				{
-					throw new ArgumentOutOfRangeException ( nameof ( state ) , state , null ) ;
+					throw new ArgumentOutOfRangeException ( nameof(state) , state , null ) ;
 				}
 			}
 		}

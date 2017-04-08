@@ -1,10 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Resources ;
 
-namespace WenceyWang . Richman4L .Banks
+namespace WenceyWang . Richman4L . Banks
 {
 
 	/// <summary>
@@ -28,9 +29,9 @@ namespace WenceyWang . Richman4L .Banks
 		/// </summary>
 		public long MoneyToReturn => Convert . ToInt64 ( MoneyBorrowed * ( 1 + InterestRate ) ) ;
 
-		public override void StartDay ( GameDate nextDate )
+		public override void StartDay ( GameDate thisDate )
 		{
-			if ( nextDate >= EndDate )
+			if ( thisDate >= EndDate )
 			{
 				//todo
 				//Owner . PayForBorrowing ( this ) ;
@@ -38,7 +39,12 @@ namespace WenceyWang . Richman4L .Banks
 		}
 
 
-		public override string ToString ( ) { return $"{nameof ( BorrowingBankProof )} borrowed by {Owner}" ; }
+		public override string ToString ( )
+		{
+			return string . Format ( Resource . BorrowingBankProofToString ,
+									nameof(BorrowingBankProof) ,
+									Owner ) ;
+		}
 
 		public override void EndToday ( ) { }
 

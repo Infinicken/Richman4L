@@ -1,9 +1,9 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Web . Optimization ;
 
-namespace WenceyWang . Richman4L . Apps .Web
+namespace WenceyWang . Richman4L . Apps . Web
 {
 
 	public class BundleConfig

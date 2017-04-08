@@ -1,12 +1,12 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Media ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .Logic
+namespace WenceyWang . Richman4L . Apps . Uni . Logic
 {
 
 	internal static class OcdModeExtensions
@@ -16,7 +16,7 @@ namespace WenceyWang . Richman4L . Apps . Uni .Logic
 		{
 			if ( panel == null )
 			{
-				throw new ArgumentNullException ( nameof ( panel ) ) ;
+				throw new ArgumentNullException ( nameof(panel) ) ;
 			}
 
 			Random rand = random ?? GameRandom . Current ;

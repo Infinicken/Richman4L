@@ -11,7 +11,7 @@ using Windows . UI . Xaml . Navigation ;
 
 using Microsoft . VisualStudio . TestPlatform . TestExecutor ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .UnitTests
+namespace WenceyWang . Richman4L . Apps . Uni . UnitTests
 {
 
 	/// <summary>

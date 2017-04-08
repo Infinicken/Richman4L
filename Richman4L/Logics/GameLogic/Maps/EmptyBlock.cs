@@ -17,19 +17,21 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
+using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	/// <summary>
 	///     空的地块
 	/// </summary>
-	[MapObject]
+	[MapObject ( nameof(EmptyBlock) , nameof(EmptyBlock) )]
+	[Guid ( "E0AB2AC4-499B-4584-95FA-77C17E35A66E" )]
 	public sealed class EmptyBlock : Block
 	{
 
@@ -49,11 +51,11 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) ) ;
+				throw new ArgumentNullException ( nameof(resource) ) ;
 			}
 
 			ForestCoverRate = ReadUnnecessaryValue ( resource ,
-													nameof ( ForestCoverRate ) ,
+													nameof(ForestCoverRate) ,
 													GameRandom . Current . RandomGameValue ( ) ) ;
 		}
 

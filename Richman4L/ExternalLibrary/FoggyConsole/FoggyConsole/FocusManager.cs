@@ -23,7 +23,7 @@ using Microsoft . Extensions . Logging ;
 
 using WenceyWang . FoggyConsole . Controls ;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
@@ -48,7 +48,7 @@ namespace WenceyWang .FoggyConsole
 		{
 			if ( root == null )
 			{
-				throw new ArgumentNullException ( nameof ( root ) ) ;
+				throw new ArgumentNullException ( nameof(root) ) ;
 			}
 
 			Root = root ;
@@ -59,7 +59,7 @@ namespace WenceyWang .FoggyConsole
 		/// </summary>
 		public Control FocusedControl
 		{
-			get { return _focusedControl ; }
+			get => _focusedControl ;
 			private set
 			{
 				if ( _focusedControl != null )
@@ -83,17 +83,19 @@ namespace WenceyWang .FoggyConsole
 		/// <param name="args">The key-press to handle</param>
 		public void HandleKeyInput ( KeyPressedEventArgs args )
 		{
-			List <Control> controlList = Root . GetAllItem ( ) . Where (
-				control =>
-				{
-					if ( control == null )
-					{
-						CurrentLoger . LogWarning ( $"{nameof ( controlList )} of {Root . Name} contains null" ) ;
-						return false ;
-					}
+			List <Control> controlList = Root . GetAllItem ( ) .
+												Where (
+													control =>
+													{
+														if ( control == null )
+														{
+															CurrentLoger . LogWarning ( $"{nameof(controlList)} of {Root . Name} contains null" ) ;
+															return false ;
+														}
 
-					return control . CanFocus ;
-				} ) . ToList ( ) ;
+														return control . CanFocus ;
+													} ) .
+												ToList ( ) ;
 			if ( controlList . Count == 0 )
 			{
 				return ;
@@ -116,7 +118,8 @@ namespace WenceyWang .FoggyConsole
 					args . Handled = true ;
 					FocusedControl =
 						controlList [
-							( Math . Max ( controlList . IndexOf ( FocusedControl ) , 0 ) + controlList . Count - 1 ) % controlList . Count ] ;
+							( Math . Max ( controlList . IndexOf ( FocusedControl ) , 0 ) + controlList . Count - 1 ) %
+							controlList . Count ] ;
 					break ;
 				}
 

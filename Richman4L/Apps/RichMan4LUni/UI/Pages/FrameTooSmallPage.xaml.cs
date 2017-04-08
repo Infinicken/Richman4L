@@ -1,12 +1,12 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . UI ;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>

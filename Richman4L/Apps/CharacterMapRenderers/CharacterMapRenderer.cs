@@ -22,14 +22,14 @@ using System . Linq ;
 using System . Reflection ;
 using System . Threading . Tasks ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer ;
 using WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer . Roads ;
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Maps . Events ;
 using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
+namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 {
 
 	public class CharacterMapRenderer : IMapRenderer
@@ -55,7 +55,7 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 		{
 			if ( map == null )
 			{
-				throw new ArgumentNullException ( nameof ( map ) ) ;
+				throw new ArgumentNullException ( nameof(map) ) ;
 			}
 
 			Target = map ;
@@ -71,7 +71,7 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 			CharacterWeith = Target . Size . Width * MapUnit . Width ;
 			CharacterHeight = Target . Size . Height * MapUnit . Height ;
 
-			CurrentView = new ConsoleChar[ CharacterWeith, CharacterHeight ] ;
+			CurrentView = new ConsoleChar[ CharacterWeith , CharacterHeight ] ;
 
 			for ( int y = 0 ; y < CharacterHeight ; y++ )
 			{
@@ -114,9 +114,10 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 																renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
 															EntryType ??
 								MapObjectRendererTypeList . FirstOrDefault (
-									renderer =>
-										renderer . TargetType . GetTypeInfo ( ) .
-													IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? . EntryType ;
+																renderer =>
+																	renderer . TargetType . GetTypeInfo ( ) .
+																				IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? .
+															EntryType ;
 			ICharacterMapObjectRenderer objectRenderer =
 				( ICharacterMapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
 			objectRenderer . SetTarget ( mapObject ) ;
@@ -131,7 +132,7 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 			Update ( ) ;
 		}
 
-		[Startup ( nameof ( LoadMapObjectRenderers ) )]
+		[Startup ( nameof(LoadMapObjectRenderers) )]
 		public static void LoadMapObjectRenderers ( )
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) ) ;
@@ -146,11 +147,11 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 		{
 			if ( mapRendererType == null )
 			{
-				throw new ArgumentNullException ( nameof ( mapRendererType ) ) ;
+				throw new ArgumentNullException ( nameof(mapRendererType) ) ;
 			}
 			if ( targetType == null )
 			{
-				throw new ArgumentNullException ( nameof ( targetType ) ) ;
+				throw new ArgumentNullException ( nameof(targetType) ) ;
 			}
 
 			MapObjectRendererType type =

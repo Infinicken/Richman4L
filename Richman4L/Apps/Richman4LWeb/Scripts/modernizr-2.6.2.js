@@ -696,7 +696,8 @@ window.Modernizr = (function(window, document, undefined) {
 
 			// Webkit allows this media query to succeed only if the feature is enabled.
 			// `@media (transform-3d),(-webkit-transform-3d){ ... }`
-			injectElementWithStyles("@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}",
+			injectElementWithStyles(
+				"@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}",
 				function(node, rule) {
 					ret = node.offsetLeft === 9 && node.offsetHeight === 3;
 				});

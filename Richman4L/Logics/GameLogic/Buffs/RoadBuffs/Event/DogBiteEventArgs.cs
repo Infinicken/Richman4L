@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Buffs . RoadBuffs .Event
+namespace WenceyWang . Richman4L . Buffs . RoadBuffs . Event
 {
 
 	public class DogBiteEventArgs : EventArgs
@@ -18,7 +18,7 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs .Event
 		{
 			if ( victim == null )
 			{
-				throw new ArgumentNullException ( nameof ( victim ) ) ;
+				throw new ArgumentNullException ( nameof(victim) ) ;
 			}
 
 			Victim = victim ;

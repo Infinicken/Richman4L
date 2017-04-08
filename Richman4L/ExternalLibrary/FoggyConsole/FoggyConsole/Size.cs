@@ -21,7 +21,7 @@ using System . Collections . Generic ;
 using System . Globalization ;
 using System . Linq ;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	public struct Size

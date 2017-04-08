@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . UI . Xaml ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 {
 
 	public sealed partial class DreamRecorderLogo : CanvasContainer
@@ -12,15 +12,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 
 		public bool HaveColor
 		{
-			get { return ( bool ) GetValue ( HaveColorProperty ) ; }
-			set { SetValue ( HaveColorProperty , value ) ; }
+			get => ( bool ) GetValue ( HaveColorProperty ) ;
+			set => SetValue ( HaveColorProperty , value ) ;
 		}
 
-		public bool IsLight
-		{
-			get { return ( bool ) GetValue ( IsLightProperty ) ; }
-			set { SetValue ( IsLightProperty , value ) ; }
-		}
+		public bool IsLight { get => ( bool ) GetValue ( IsLightProperty ) ; set => SetValue ( IsLightProperty , value ) ; }
 
 		public bool UseColorLight => HaveColor && IsLight ;
 
@@ -33,13 +29,13 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 		public DreamRecorderLogo ( ) { InitializeComponent ( ) ; }
 
 		public static readonly DependencyProperty HaveColorProperty =
-			DependencyProperty . Register ( nameof ( HaveColor ) ,
+			DependencyProperty . Register ( nameof(HaveColor) ,
 											typeof ( bool ) ,
 											typeof ( DreamRecorderLogo ) ,
 											new PropertyMetadata ( true ) ) ;
 
 		public static readonly DependencyProperty IsLightProperty =
-			DependencyProperty . Register ( nameof ( IsLight ) ,
+			DependencyProperty . Register ( nameof(IsLight) ,
 											typeof ( bool ) ,
 											typeof ( DreamRecorderLogo ) ,
 											new PropertyMetadata ( true ) ) ;

@@ -19,12 +19,14 @@
 using System ;
 using System . Collections . Generic ;
 using System . Linq ;
+using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps .Roads
+namespace WenceyWang . Richman4L . Maps . Roads
 {
 
-	[MapObject]
+	[MapObject ( nameof(NormalRoad) , nameof(NormalRoad) )]
+	[Guid ( "C4D64F21-315F-4E82-A8A2-DF0F1B2603CE" )]
 	public class NormalRoad : Road
 	{
 
@@ -32,23 +34,23 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			try
 			{
-				XElement entrances = resource . Element ( nameof ( Entrances ) ) ;
+				XElement entrances = resource . Element ( nameof(Entrances) ) ;
 
 				foreach ( XElement road in entrances . Elements ( ) )
 				{
-					_entrancesId . Add ( Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value ) ) ;
+					_entrancesId . Add ( Convert . ToInt64 ( road . Attribute ( nameof(Id) ) . Value ) ) ;
 				}
 
-				XElement exits = resource . Element ( nameof ( Exits ) ) ;
+				XElement exits = resource . Element ( nameof(Exits) ) ;
 
 				foreach ( XElement road in exits . Elements ( ) )
 				{
-					_exitsId . Add ( Convert . ToInt64 ( resource . Attribute ( nameof ( Id ) ) . Value ) ) ;
+					_exitsId . Add ( Convert . ToInt64 ( road . Attribute ( nameof(Id) ) . Value ) ) ;
 				}
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof(resource)} has wrong data or lack of data" , e ) ;
 			}
 		}
 
@@ -57,15 +59,15 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			if ( previous == null )
 			{
-				throw new ArgumentNullException ( nameof ( previous ) ) ;
+				throw new ArgumentNullException ( nameof(previous) ) ;
 			}
 			if ( ! CanEnterFrom ( previous ) )
 			{
-				throw new ArgumentException ( $"无法通过{nameof ( previous )}进入此道路" , nameof ( previous ) ) ;
+				throw new ArgumentException ( $"无法通过{nameof(previous)}进入此道路" , nameof(previous) ) ;
 			}
 			if ( moveCount < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( moveCount ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(moveCount) ) ;
 			}
 			if ( ! Exits . Any ( ) )
 			{
@@ -88,7 +90,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 			return exits . RandomItem ( ) . Route ( this , moveCount - 1 , result ) ;
 		}
 
-		public override bool CanEnterFrom ( Road road ) => Entrances . Contains ( road ) ;
+		public override bool CanEnterFrom ( Road road ) { return Entrances . Contains ( road ) ; }
 
 		#region Entrances
 
@@ -162,6 +164,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		}
 
 		#endregion
+
 	}
 
 }

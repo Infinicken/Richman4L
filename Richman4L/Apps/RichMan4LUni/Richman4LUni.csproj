@@ -122,7 +122,6 @@
     </EmbeddedResource>
     <Content Include="License\AGPL.htm" />
     <Content Include="Fonts\ERASMD.TTF" />
-    <Content Include="Fonts\HYXinRenWenSongW.ttf" />
     <None Include="Package.StoreAssociation.xml">
       <SubType>Designer</SubType>
     </None>

@@ -22,7 +22,7 @@ using System . Linq ;
 using WenceyWang . FoggyConsole . Controls . Events ;
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -55,7 +55,10 @@ namespace WenceyWang . FoggyConsole .Controls
 		}
 
 		protected CheckableBase ( IControlRenderer renderer )
-			: base ( renderer ) { IsFocusedChanged += ( sender , args ) => Draw ( ) ; }
+			: base ( renderer )
+		{
+			IsFocusedChanged += ( sender , args ) => Draw ( ) ;
+		}
 
 		/// <summary>
 		///     Fired if the State-Property is going to change

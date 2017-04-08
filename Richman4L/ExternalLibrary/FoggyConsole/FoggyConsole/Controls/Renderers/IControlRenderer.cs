@@ -16,10 +16,10 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>

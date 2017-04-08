@@ -2,7 +2,7 @@
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	//Todo:可能的优化？
@@ -34,15 +34,15 @@ namespace WenceyWang .Richman4L
 		{
 			if ( random == null )
 			{
-				throw new ArgumentNullException ( nameof ( random ) ) ;
+				throw new ArgumentNullException ( nameof(random) ) ;
 			}
 			if ( sigma < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( sigma ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(sigma) ) ;
 			}
 			if ( minValue > maxValue )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( maxValue ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(maxValue) ) ;
 			}
 
 			double x ;
@@ -74,15 +74,15 @@ namespace WenceyWang .Richman4L
 		{
 			if ( random == null )
 			{
-				throw new ArgumentNullException ( nameof ( random ) ) ;
+				throw new ArgumentNullException ( nameof(random) ) ;
 			}
 			if ( sigma < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( sigma ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(sigma) ) ;
 			}
 			if ( minValue > maxValue )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( maxValue ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(maxValue) ) ;
 			}
 
 			double x ;

@@ -1,8 +1,8 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
@@ -14,13 +14,17 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 		/// <summary>
 		/// </summary>
 		/// <param name="control"></param>
-		public GroupBoxRenderer ( Groupbox control ) { }
+		public GroupBoxRenderer ( Groupbox control )
+		{
+		}
 
 
 		/// <summary>
 		///     Draws the Groupbox given in the Control-Property
 		/// </summary>
-		public override void Draw ( ) { }
+		public override void Draw ( )
+		{
+		}
 
 	}
 

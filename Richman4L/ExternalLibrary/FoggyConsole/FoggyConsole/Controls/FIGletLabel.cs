@@ -5,7 +5,7 @@ using System . Linq ;
 using WenceyWang . FIGlet ;
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	// ReSharper disable once InconsistentNaming
@@ -30,7 +30,7 @@ namespace WenceyWang . FoggyConsole .Controls
 				}
 				return _asciiArt ;
 			}
-			private set { _asciiArt = value ; }
+			private set => _asciiArt = value ;
 		}
 
 		/// <summary>
@@ -98,7 +98,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 				return base . Size ;
 			}
-			set { base . Size = value ; }
+			set => base . Size = value ;
 		}
 
 		public override bool CanFocus => false ;
@@ -116,7 +116,10 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Control assigned
 		/// </exception>
 		public FIGletLabel ( IControlRenderer renderer = null )
-			: base ( renderer ?? new FIGletLabelRenderer ( ) ) { TextChanged += FIGletLabel_TextChanged ; }
+			: base ( renderer ?? new FIGletLabelRenderer ( ) )
+		{
+			TextChanged += FIGletLabel_TextChanged ;
+		}
 
 		public override void Measure ( Size availableSize )
 		{

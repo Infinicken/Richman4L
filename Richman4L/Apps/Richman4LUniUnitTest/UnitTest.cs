@@ -1,5 +1,4 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -11,7 +10,7 @@ using WenceyWang . Richman4L . Apps . Uni . Logic ;
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
 using WenceyWang . Richman4L . Security ;
 
-namespace WenceyWang . Richman4L . Apps . Uni .UnitTests
+namespace WenceyWang . Richman4L . Apps . Uni . UnitTests
 {
 
 	[TestClass]
@@ -25,10 +24,10 @@ namespace WenceyWang . Richman4L . Apps . Uni .UnitTests
 																	Assembly . DefinedTypes . Where (
 																		info =>
 																			typeof ( AnimatePage ) . GetTypeInfo ( ) . IsAssignableFrom ( info ) &&
-																			info . Name != nameof ( AnimatePage ) ) ;
+																			info . Name != nameof(AnimatePage) ) ;
 
 			List <string> properties = new List <string> { "PageColor" } ;
-			List <string> fields = new List <string> { "LeaveStoryboard" , "BackGroundRect" } ;
+			List <string> fields = new List <string> { "LeaveStoryboard" , "BackgroundRect" } ;
 
 			bool passed = true ;
 			StringBuilder message = new StringBuilder ( ) ;

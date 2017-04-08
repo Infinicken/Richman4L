@@ -20,10 +20,10 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers .MapObjectRenderer
+namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer
 {
 
 	public abstract class CharacterMapObjectRenderer <T> : ICharacterMapObjectRenderer , IMapObjectRenderer <T>
@@ -36,7 +36,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers .MapObjectRender
 
 		public virtual void StartUp ( )
 		{
-			CurrentView = new ConsoleChar[ Unit . Width, Unit . Height ] ;
+			CurrentView = new ConsoleChar[ Unit . Width , Unit . Height ] ;
 			for ( int y = 0 ; y < Unit . Height ; y++ )
 			{
 				for ( int x = 0 ; x < Unit . Width ; x++ )
@@ -58,7 +58,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers .MapObjectRender
 		{
 			if ( target == null )
 			{
-				throw new ArgumentNullException ( nameof ( target ) ) ;
+				throw new ArgumentNullException ( nameof(target) ) ;
 			}
 
 			T targetArgument = target as T ;
@@ -68,7 +68,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers .MapObjectRender
 			}
 			else
 			{
-				throw new ArgumentException ( $"{nameof ( target )} is not {typeof ( T ) . Name}" ) ;
+				throw new ArgumentException ( $"{nameof(target)} is not {typeof ( T ) . Name}" ) ;
 			}
 		}
 

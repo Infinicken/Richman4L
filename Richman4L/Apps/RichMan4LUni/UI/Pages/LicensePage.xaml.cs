@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . UI ;
@@ -7,7 +7,7 @@ using Windows . UI . Xaml ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>
@@ -62,7 +62,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			//								null ,
 			//								"DarkBlueBrush" ,
 			//								LeaveStoryboard ,
-			//								BackGroundRect ,
+			//								BackgroundRect ,
 			//								Frame ,
 			//								RemoveControl ,
 			//								AddControl );

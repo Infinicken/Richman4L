@@ -24,7 +24,7 @@ using System . Xml . Linq ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Players .Models
+namespace WenceyWang . Richman4L . Players . Models
 {
 
 	public class PlayerModel : MapObject
@@ -53,34 +53,34 @@ namespace WenceyWang . Richman4L . Players .Models
 		{
 			if ( null == fileName )
 			{
-				throw new ArgumentNullException ( nameof ( fileName ) ) ;
+				throw new ArgumentNullException ( nameof(fileName) ) ;
 			}
 
-			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( Player )}. {nameof ( Model )}.Resources." + fileName ) ;
+			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(Player)}. {nameof(Model)}.Resources." + fileName ) ;
 
 
 			XElement modelNode = doc . Root ;
 
-			Name = modelNode . Attribute ( nameof ( Name ) ) . Value ;
+			Name = modelNode . Attribute ( nameof(Name) ) . Value ;
 
-			Introduction = modelNode . Attribute ( nameof ( Introduction ) ) . Value ;
+			Introduction = modelNode . Attribute ( nameof(Introduction) ) . Value ;
 
-			Model = new Uri ( modelNode . Attribute ( nameof ( Model ) ) . Value ?? "" ) ;
+			Model = new Uri ( modelNode . Attribute ( nameof(Model) ) . Value ?? "" ) ;
 
 			IEnumerable <PlayerSaying> tempSayingWhenGained =
-				from p in modelNode . Element ( nameof ( SayingWhenGained ) ) . Elements ( )
+				from p in modelNode . Element ( nameof(SayingWhenGained) ) . Elements ( )
 				select new PlayerSaying ( p ) ;
 			SayingWhenGained . AddRange ( tempSayingWhenGained ) ;
 
 			IEnumerable <PlayerSaying> tempSayingWhenHarmed =
-				from p in modelNode . Element ( nameof ( SayingWhenGained ) ) . Elements ( )
+				from p in modelNode . Element ( nameof(SayingWhenGained) ) . Elements ( )
 				select new PlayerSaying
 					( p ) ;
 
 			SayingWhenHarmed . AddRange ( tempSayingWhenHarmed ) ;
 
 			IEnumerable <PlayerSaying> tempSayingWhenMeet =
-				from p in modelNode . Element ( nameof ( SayingWhenMeet ) ) . Elements ( )
+				from p in modelNode . Element ( nameof(SayingWhenMeet) ) . Elements ( )
 				select new PlayerSaying ( p ) ;
 			SayingWhenMeet . AddRange ( tempSayingWhenMeet ) ;
 		}
@@ -131,7 +131,7 @@ namespace WenceyWang . Richman4L . Players .Models
 
 				if ( player == null )
 				{
-					throw new InvalidOperationException ( $"{nameof ( PlayerModel )} have no saying " ) ;
+					throw new InvalidOperationException ( $"{nameof(PlayerModel)} have no saying " ) ;
 				}
 
 				player = null ;

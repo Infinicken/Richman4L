@@ -1,10 +1,10 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 
-namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
+namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 {
 
 	public class MapObjectRendererType
@@ -20,11 +20,11 @@ namespace WenceyWang . Richman4L . Apps .CharacterMapRenderers
 		{
 			if ( entryType == null )
 			{
-				throw new ArgumentNullException ( nameof ( entryType ) ) ;
+				throw new ArgumentNullException ( nameof(entryType) ) ;
 			}
 			if ( targetType == null )
 			{
-				throw new ArgumentNullException ( nameof ( targetType ) ) ;
+				throw new ArgumentNullException ( nameof(targetType) ) ;
 			}
 
 			EntryType = entryType ;

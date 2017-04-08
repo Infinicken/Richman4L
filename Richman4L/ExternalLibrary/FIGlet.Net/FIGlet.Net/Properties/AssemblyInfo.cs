@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 using System . Runtime . InteropServices ;
@@ -9,11 +9,11 @@ using System . Runtime . InteropServices ;
 // associées à un assembly.
 
 [assembly : AssemblyTitle ( "FIGlet.Net" )]
-[assembly : AssemblyDescription ( "" )]
+[assembly : AssemblyDescription ( "library write in C# for generating Ascii-Art text and recognize this characters." )]
 [assembly : AssemblyConfiguration ( "" )]
-[assembly : AssemblyCompany ( "" )]
+[assembly : AssemblyCompany ( "Dream Recorder" )]
 [assembly : AssemblyProduct ( "FIGlet.Net" )]
-[assembly : AssemblyCopyright ( "Copyright © Wencey Wang 2014-2016" )]
+[assembly : AssemblyCopyright ( "Copyright © Wencey Wang 2014-2017" )]
 [assembly : AssemblyTrademark ( "" )]
 [assembly : AssemblyCulture ( "" )]
 
@@ -21,7 +21,8 @@ using System . Runtime . InteropServices ;
 // aux composants COM. Si vous devez accéder à un type dans cet assembly à partir de 
 // COM, affectez la valeur true à l'attribut ComVisible sur ce type.
 
-[assembly : ComVisible ( false )]
+[assembly : ComVisible ( true )]
+[assembly : CLSCompliant ( true )]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
 

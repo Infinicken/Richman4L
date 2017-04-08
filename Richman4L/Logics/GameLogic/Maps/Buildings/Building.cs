@@ -26,7 +26,7 @@ using WenceyWang . Richman4L . Maps . Buildings . Events ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . PayReasons ;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	//Todo:完善事件
@@ -127,36 +127,36 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 			if ( entryType == null )
 			{
-				throw new ArgumentNullException ( nameof ( entryType ) ) ;
+				throw new ArgumentNullException ( nameof(entryType) ) ;
 			}
 
 			if ( ! typeof ( Building ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 			{
-				throw new ArgumentException ( $"{nameof ( entryType )} should assignable from {nameof ( Building )}" ,
-											nameof ( entryType ) ) ;
+				throw new ArgumentException ( $"{nameof(entryType)} should assignable from {nameof(Building)}" ,
+											nameof(entryType) ) ;
 			}
 
 			if (
 				entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( BuildingAttribute ) , false ) . FirstOrDefault ( ) ==
 				null )
 			{
-				throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( BuildingAttribute )}" ,
-											nameof ( entryType ) ) ;
+				throw new ArgumentException ( $"{nameof(entryType)} should have atribute {nameof(BuildingAttribute)}" ,
+											nameof(entryType) ) ;
 			}
 
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
 
-			if ( element . Name != nameof ( BuildingType ) )
+			if ( element . Name != nameof(BuildingType) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
+				throw new ArgumentException ( $"{nameof(element)} should perform a building type" , nameof(element) ) ;
 			}
 
 			if ( BuildingTypes . Any ( type => type . EntryType == entryType ) )
 			{
-				throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" ) ;
+				throw new InvalidOperationException ( $"{nameof(entryType)} have regised" ) ;
 			}
 
 			#endregion
@@ -169,7 +169,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			return buildingType ;
 		}
 
-		[Startup ( nameof ( LoadBuildingTypes ) )]
+		[Startup ( nameof(LoadBuildingTypes) )]
 		public static void LoadBuildingTypes ( )
 		{
 			lock ( Locker )
@@ -191,27 +191,27 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 			if ( position == null )
 			{
-				throw new ArgumentNullException ( nameof ( position ) ) ;
+				throw new ArgumentNullException ( nameof(position) ) ;
 			}
 			if ( buildingType == null )
 			{
-				throw new ArgumentNullException ( nameof ( buildingType ) ) ;
+				throw new ArgumentNullException ( nameof(buildingType) ) ;
 			}
 			if ( ! BuildingTypes . Contains ( buildingType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( buildingType )} have not being registered" , nameof ( buildingType ) ) ;
+				throw new ArgumentException ( $"{nameof(buildingType)} have not being registered" , nameof(buildingType) ) ;
 			}
 			if ( ! position . IsBuildingAvailable ( buildingType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( buildingType )} is not aviliable for {nameof ( position )}" ) ;
+				throw new ArgumentException ( $"{nameof(buildingType)} is not aviliable for {nameof(position)}" ) ;
 			}
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 			if ( position . Owner != player )
 			{
-				throw new ArgumentException ( $"{nameof ( player )} should own the {nameof ( position )}" ) ;
+				throw new ArgumentException ( $"{nameof(player)} should own the {nameof(position)}" ) ;
 			}
 
 			#endregion
@@ -255,6 +255,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		#endregion
 
 		#endregion
+
 	}
 
 }

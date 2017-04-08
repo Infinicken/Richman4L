@@ -1,9 +1,9 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Web . Mvc ;
 
-namespace WenceyWang . Richman4L . Apps . Web .Controllers
+namespace WenceyWang . Richman4L . Apps . Web . Controllers
 {
 
 	public class HomeController : Controller

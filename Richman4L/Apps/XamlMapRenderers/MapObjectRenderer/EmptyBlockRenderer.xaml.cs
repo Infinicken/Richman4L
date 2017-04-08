@@ -1,14 +1,14 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . Foundation ;
 using Windows . UI . Xaml ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
+namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 {
 
 	public sealed partial class EmptyBlockRenderer : MapObjectRenderer , IMapObjectRenderer <EmptyBlock>
@@ -19,15 +19,15 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
 		public EmptyBlockRenderer ( ) { InitializeComponent ( ) ; }
 
 		public static readonly DependencyProperty TargetProperty =
-			DependencyProperty . Register ( nameof ( Target ) ,
+			DependencyProperty . Register ( nameof(Target) ,
 											typeof ( EmptyBlock ) ,
 											typeof ( EmptyBlockRenderer ) ,
 											new PropertyMetadata ( null ) ) ;
 
 		public EmptyBlock Target
 		{
-			get { return ( EmptyBlock ) GetValue ( TargetProperty ) ; }
-			private set { SetValue ( TargetProperty , value ) ; }
+			get => ( EmptyBlock ) GetValue ( TargetProperty ) ;
+			private set => SetValue ( TargetProperty , value ) ;
 		}
 
 		public void StartUp ( ) { }

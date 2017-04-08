@@ -17,12 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings .Events
+namespace WenceyWang . Richman4L . Maps . Buildings . Events
 {
 
 	public class BuildBuildingEventArgs : BuildingEventArgs
@@ -42,19 +42,19 @@ namespace WenceyWang . Richman4L . Maps . Buildings .Events
 
 			if ( building == null )
 			{
-				throw new ArgumentNullException ( nameof ( building ) ) ;
+				throw new ArgumentNullException ( nameof(building) ) ;
 			}
 			if ( position == null )
 			{
-				throw new ArgumentNullException ( nameof ( position ) ) ;
+				throw new ArgumentNullException ( nameof(position) ) ;
 			}
 			if ( buildingType == null )
 			{
-				throw new ArgumentNullException ( nameof ( buildingType ) ) ;
+				throw new ArgumentNullException ( nameof(buildingType) ) ;
 			}
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			#endregion

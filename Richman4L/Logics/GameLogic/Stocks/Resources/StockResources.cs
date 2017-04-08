@@ -1,8 +1,8 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Stocks .Resources
+namespace WenceyWang . Richman4L . Stocks . Resources
 {
 
 	public class StockResources
@@ -15,6 +15,7 @@ namespace WenceyWang . Richman4L . Stocks .Resources
 		//todo:受影响的因素？
 
 		//public 
+
 	}
 
 }

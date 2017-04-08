@@ -1,5 +1,4 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -9,7 +8,7 @@ using WenceyWang . Richman4L . Interoperability . Arguments ;
 using WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains ;
 using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L .Cards
+namespace WenceyWang . Richman4L . Cards
 {
 
 	[Card]
@@ -18,19 +17,18 @@ namespace WenceyWang . Richman4L .Cards
 
 		public override int PriceWhenBuy
 		{
-			get { throw new NotImplementedException ( ) ; }
-			set { throw new NotImplementedException ( ) ; }
+			get => throw new NotImplementedException ( ) ;
+			set => throw new NotImplementedException ( ) ;
 		}
 
 		public override int PriceWhenSell
 		{
-			get { throw new NotImplementedException ( ) ; }
-			set { throw new NotImplementedException ( ) ; }
+			get => throw new NotImplementedException ( ) ;
+			set => throw new NotImplementedException ( ) ;
 		}
 
 		static BlackCard ( )
 		{
-			//Todo:Resources
 			ArgumentInfo stock = new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
 			Arguments = new List <ArgumentInfo> { stock } ;
 		}
@@ -40,15 +38,13 @@ namespace WenceyWang . Richman4L .Cards
 		public override void Use ( ArgumentsContainer arguments )
 		{
 			ArgumentsInfo . CheckArgument ( arguments ) ;
-
-			//Todo:GameSettings?
-			int duration = 3 ;
-			BlackBuff buff = new BlackBuff ( ( Stock ) arguments . Arguments . Single ( ) , duration ) ;
+			BlackBuff buff = new BlackBuff ( ( Stock ) arguments . Arguments . Single ( ) ,
+											Game . Current . EnviromentSetting . BlackCardDuration ) ;
 		}
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
+		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
 	}
 

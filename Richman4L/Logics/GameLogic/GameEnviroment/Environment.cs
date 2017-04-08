@@ -17,29 +17,26 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Auctions ;
-
-namespace WenceyWang . Richman4L .GameEnviroment
+namespace WenceyWang . Richman4L . GameEnviroment
 {
 
 	/// <summary>
-	///     指示游戏的环境
+	///     提供各种设置，比如说各种常数，如何产生随机数之类的
 	/// </summary>
-	public abstract class Environment
+	public abstract class GameRule
 	{
 
-		public abstract ReadOnlyCollection <int> GetDice ( int number , DiceType diceType ) ;
+		public Func <DiceType , int , ReadOnlyCollection <int>> GetDice { get ; set ; }
 
-		public abstract AuctionResult PerformAuction ( AuctionRequest request ) ;
+		public int RedCardBuffDuration { get ; set ; }
 
+		public int BlackCardDuration { get ; set ; }
 
-		//public abstract 
-
-		public abstract void GameOver ( GameResult info ) ;
+		public int Dog { get ; set ; }
 
 	}
 

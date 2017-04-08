@@ -28,7 +28,7 @@ using Windows . UI . Xaml . Navigation ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>
@@ -68,7 +68,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 		public override void RemoveControl ( )
 		{
 			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
-													nameof ( HardwareButtons . BackPressed ) ) )
+													nameof(HardwareButtons . BackPressed) ) )
 			{
 				HardwareButtons . BackPressed -= SettingPageButton_Click ;
 			}
@@ -78,7 +78,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 		public override void AddControl ( )
 		{
 			if ( ApiInformation . IsEventPresent ( "Windows.Phone.UI.Input.HardwareButtons" ,
-													nameof ( HardwareButtons . BackPressed ) ) )
+													nameof(HardwareButtons . BackPressed) ) )
 			{
 				HardwareButtons . BackPressed += SettingPageButton_Click ;
 			}

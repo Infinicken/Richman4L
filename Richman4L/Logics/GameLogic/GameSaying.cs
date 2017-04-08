@@ -21,7 +21,7 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	//Todo:Add Custom Saying?
@@ -57,29 +57,29 @@ namespace WenceyWang .Richman4L
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
-			if ( element . Name != nameof ( GameSaying ) )
+			if ( element . Name != nameof(GameSaying) )
 			{
 				throw new ArgumentException ( string . Format ( "{0} do not perform a {1}" ,
-																nameof ( element ) ,
-																nameof ( GameSaying ) ) ) ;
+																nameof(element) ,
+																nameof(GameSaying) ) ) ;
 			}
 
-			Content = element . Attribute ( nameof ( Content ) ) ? . Value ;
-			People = element . Attribute ( nameof ( People ) ) ? . Value ;
-			Book = element . Attribute ( nameof ( Book ) ) ? . Value ;
-			Author = element . Attribute ( nameof ( Author ) ) ? . Value ;
-			Song = element . Attribute ( nameof ( Song ) ) ? . Value ;
+			Content = element . Attribute ( nameof(Content) ) ? . Value ;
+			People = element . Attribute ( nameof(People) ) ? . Value ;
+			Book = element . Attribute ( nameof(Book) ) ? . Value ;
+			Author = element . Attribute ( nameof(Author) ) ? . Value ;
+			Song = element . Attribute ( nameof(Song) ) ? . Value ;
 #if DEBUG
-			if ( element . Attribute ( nameof ( Guid ) ) ? . Value == null )
+			if ( element . Attribute ( nameof(Guid) ) ? . Value == null )
 			{
 				Guid = Guid . NewGuid ( ) ;
 			}
 			else
 			{
 #endif
-				Guid = Guid . Parse ( element . Attribute ( nameof ( Guid ) ) ? . Value ) ;
+				Guid = Guid . Parse ( element . Attribute ( nameof(Guid) ) ? . Value ) ;
 #if DEBUG
 			}
 #endif
@@ -101,18 +101,18 @@ namespace WenceyWang .Richman4L
 					string . Equals ( Author , other . Author ) && string . Equals ( Song , other . Song ) ;
 		}
 
-		public override string ToString ( ) => Content ;
+		public override string ToString ( ) { return Content ; }
 
 		public XElement ToXElement ( )
 		{
-			XElement result = new XElement ( nameof ( GameSaying ) ) ;
+			XElement result = new XElement ( nameof(GameSaying) ) ;
 
-			result . SetAttributeValue ( nameof ( Content ) , Content ) ;
-			result . SetAttributeValue ( nameof ( People ) , People ) ;
-			result . SetAttributeValue ( nameof ( Book ) , Book ) ;
-			result . SetAttributeValue ( nameof ( Author ) , Author ) ;
-			result . SetAttributeValue ( nameof ( Song ) , Song ) ;
-			result . SetAttributeValue ( nameof ( Guid ) , Guid . ToString ( ) ) ;
+			result . SetAttributeValue ( nameof(Content) , Content ) ;
+			result . SetAttributeValue ( nameof(People) , People ) ;
+			result . SetAttributeValue ( nameof(Book) , Book ) ;
+			result . SetAttributeValue ( nameof(Author) , Author ) ;
+			result . SetAttributeValue ( nameof(Song) , Song ) ;
+			result . SetAttributeValue ( nameof(Guid) , Guid . ToString ( ) ) ;
 
 			return result ;
 		}
@@ -141,7 +141,7 @@ namespace WenceyWang .Richman4L
 			{
 				if ( newSaying == null )
 				{
-					throw new ArgumentNullException ( nameof ( newSaying ) ) ;
+					throw new ArgumentNullException ( nameof(newSaying) ) ;
 				}
 
 				if ( Sayings . Contains ( newSaying ) )
@@ -151,8 +151,8 @@ namespace WenceyWang .Richman4L
 
 				if ( Sayings . Any ( saying => newSaying . Guid == saying . Guid ) )
 				{
-					throw new ArgumentException ( $"{nameof ( newSaying )} have same {nameof ( Guid )} with others" ,
-												nameof ( newSaying ) ) ;
+					throw new ArgumentException ( $"{nameof(newSaying)} have same {nameof(Guid)} with others" ,
+												nameof(newSaying) ) ;
 				}
 
 				Sayings . Add ( newSaying ) ;
@@ -195,7 +195,7 @@ namespace WenceyWang .Richman4L
 
 		public static bool operator != ( GameSaying left , GameSaying right ) { return ! Equals ( left , right ) ; }
 
-		[Startup ( nameof ( LoadSayings ) )]
+		[Startup ( nameof(LoadSayings) )]
 		public static void LoadSayings ( )
 		{
 			lock ( Locker )
@@ -207,7 +207,7 @@ namespace WenceyWang .Richman4L
 
 				Sayings = new List <GameSaying> ( ) ;
 
-				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameSaying )}Resources.xml" ) ;
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(GameSaying)}Resources.xml" ) ;
 
 				foreach ( XElement item in doc . Root . Elements ( ) )
 				{

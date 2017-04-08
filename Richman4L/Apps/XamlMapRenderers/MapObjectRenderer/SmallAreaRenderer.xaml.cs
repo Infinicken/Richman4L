@@ -1,13 +1,13 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . Foundation ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
+namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 {
 
 	public sealed partial class SmallAreaRenderer : MapObjectRenderer , IMapObjectRenderer <SmallArea>
@@ -80,6 +80,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
 		}
 
 		#endregion
+
 	}
 
 }

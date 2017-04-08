@@ -22,7 +22,7 @@ using System . Diagnostics ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	//Todo:Add custom title?
@@ -39,7 +39,7 @@ namespace WenceyWang .Richman4L
 
 		public string ContentWithSpace => $"{TitleRoot} 4 {TitleKey}" ;
 
-		public override string ToString ( ) => Content ;
+		public override string ToString ( ) { return Content ; }
 
 		public static implicit operator GameTitle ( string text )
 		{
@@ -67,7 +67,7 @@ namespace WenceyWang .Richman4L
 		{
 			if ( titleRoot == null )
 			{
-				throw new ArgumentNullException ( nameof ( titleRoot ) ) ;
+				throw new ArgumentNullException ( nameof(titleRoot) ) ;
 			}
 
 			if ( TitleRoots . Contains ( titleRoot ) )
@@ -125,7 +125,7 @@ namespace WenceyWang .Richman4L
 
 		private static object Locker { get ; } = new object ( ) ;
 
-		[Startup ( nameof ( LoadTitles ) )]
+		[Startup ( nameof(LoadTitles) )]
 		public static void LoadTitles ( )
 		{
 			lock ( Locker )
@@ -138,22 +138,22 @@ namespace WenceyWang .Richman4L
 				TitleRoots = new List <string> ( ) ;
 				TitleKeys = new List <string> ( ) ;
 
-				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( GameTitle )}Resources.xml" ) ;
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(GameTitle)}Resources.xml" ) ;
 
 				Debug . Assert ( doc . Root != null , "doc . Root != null" ) ;
 
 				//Let resource file error throw
 
 				// ReSharper disable once PossibleNullReferenceException
-				foreach ( XElement item in doc . Root . Element ( nameof ( TitleRoots ) ) . Elements ( ) )
+				foreach ( XElement item in doc . Root . Element ( nameof(TitleRoots) ) . Elements ( ) )
 				{
-					TitleRoots . Add ( item . Attribute ( nameof ( Content ) ) . Value ) ;
+					TitleRoots . Add ( item . Attribute ( nameof(Content) ) . Value ) ;
 				}
 
 				// ReSharper disable once PossibleNullReferenceException
-				foreach ( XElement item in doc . Root . Element ( nameof ( TitleKeys ) ) . Elements ( ) )
+				foreach ( XElement item in doc . Root . Element ( nameof(TitleKeys) ) . Elements ( ) )
 				{
-					TitleKeys . Add ( item . Attribute ( nameof ( Content ) ) . Value ) ;
+					TitleKeys . Add ( item . Attribute ( nameof(Content) ) . Value ) ;
 				}
 
 				Loaded = true ;

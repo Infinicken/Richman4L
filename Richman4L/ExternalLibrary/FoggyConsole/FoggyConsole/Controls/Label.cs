@@ -16,12 +16,12 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -59,8 +59,7 @@ namespace WenceyWang . FoggyConsole .Controls
 
 				return base . Size ;
 			}
-
-			set { base . Size = value ; }
+			set => base . Size = value ;
 		}
 
 		public override bool CanFocus => false ;
@@ -78,7 +77,9 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Control assigned
 		/// </exception>
 		public Label ( IControlRenderer renderer = null )
-			: base ( renderer ?? new LabelRenderer ( ) ) { }
+			: base ( renderer ?? new LabelRenderer ( ) )
+		{
+		}
 
 	}
 

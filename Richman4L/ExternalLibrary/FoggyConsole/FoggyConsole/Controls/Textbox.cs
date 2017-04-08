@@ -21,7 +21,7 @@ using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -38,7 +38,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		public int CursorPosition
 		{
-			get { return _cursorPosition ; }
+			get => _cursorPosition ;
 			private set
 			{
 				_cursorPosition = value ;
@@ -62,7 +62,10 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Control assigned
 		/// </exception>
 		public TextBox ( TextBoxRenderer renderer = null )
-			: base ( renderer ?? new TextBoxRenderer ( ) ) { IsFocusedChanged += OnFocusChanged ; }
+			: base ( renderer ?? new TextBoxRenderer ( ) )
+		{
+			IsFocusedChanged += OnFocusChanged ;
+		}
 
 
 		/// <summary>
@@ -73,7 +76,10 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="eventArgs"></param>
-		protected void OnFocusChanged ( object sender , EventArgs eventArgs ) { Draw ( ) ; }
+		protected void OnFocusChanged ( object sender , EventArgs eventArgs )
+		{
+			Draw ( ) ;
+		}
 
 		public override void KeyPressed ( KeyPressedEventArgs args )
 		{

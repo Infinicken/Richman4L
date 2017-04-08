@@ -1,11 +1,10 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L .Calendars
+namespace WenceyWang . Richman4L . Calendars
 {
 
 	public class CalendarEvent : GameObject
@@ -25,7 +24,7 @@ namespace WenceyWang . Richman4L .Calendars
 		{
 			if ( text == null )
 			{
-				throw new ArgumentNullException ( nameof ( text ) ) ;
+				throw new ArgumentNullException ( nameof(text) ) ;
 			}
 
 			Text = text ;
@@ -41,7 +40,7 @@ namespace WenceyWang . Richman4L .Calendars
 
 		public static CalendarEvent FromString ( string str ) { return new CalendarEvent ( str ) ; }
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 

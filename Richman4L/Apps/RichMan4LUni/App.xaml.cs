@@ -14,10 +14,10 @@ using Windows . UI . Xaml . Navigation ;
 
 using Microsoft . Graphics . Canvas . Effects ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Apps .Uni
+namespace WenceyWang . Richman4L . Apps . Uni
 {
 
 	/// <summary>
@@ -30,7 +30,7 @@ namespace WenceyWang . Richman4L . Apps .Uni
 
 		internal string WindowTitle
 		{
-			get { return ApplicationView . GetForCurrentView ( ) . Title ; }
+			get => ApplicationView . GetForCurrentView ( ) . Title ;
 			set
 			{
 				ApplicationView . GetForCurrentView ( ) . Title = value ;
@@ -40,8 +40,8 @@ namespace WenceyWang . Richman4L . Apps .Uni
 
 		public Panel ViewRoot
 		{
-			get { return Window . Current . Content as Panel ; }
-			private set { Window . Current . Content = value ; }
+			get => Window . Current . Content as Panel ;
+			private set => Window . Current . Content = value ;
 		}
 
 		public Frame WindowTooSmallFrame { get ; private set ; }
@@ -57,10 +57,10 @@ namespace WenceyWang . Richman4L . Apps .Uni
 			get
 			{
 				float temp ;
-				viewRootVisual . Properties . TryGetScalar ( nameof ( SaturationEffect . Saturation ) , out temp ) ;
+				viewRootVisual . Properties . TryGetScalar ( nameof(SaturationEffect . Saturation) , out temp ) ;
 				return temp ;
 			}
-			set { viewRootVisual . Properties . InsertScalar ( nameof ( SaturationEffect . Saturation ) , value ) ; }
+			set => viewRootVisual . Properties . InsertScalar ( nameof(SaturationEffect . Saturation) , value ) ;
 		}
 
 		/// <summary>
@@ -134,42 +134,42 @@ namespace WenceyWang . Richman4L . Apps .Uni
 
 				{
 					viewRootVisual = ElementCompositionPreview . GetElementVisual ( ViewRoot ) ;
-					viewRootVisual . Properties . InsertScalar ( nameof ( SaturationEffect . Saturation ) , 1f ) ;
+					viewRootVisual . Properties . InsertScalar ( nameof(SaturationEffect . Saturation) , 1f ) ;
 					Compositor compositor = viewRootVisual . Compositor ;
 
 					CompositionBackdropBrush backdropBrush = compositor . CreateBackdropBrush ( ) ;
 
 					SaturationEffect graphicsEffect = new SaturationEffect
 													{
-														Name = nameof ( SaturationEffect ) ,
-														Source = new CompositionEffectSourceParameter ( nameof ( backdropBrush ) )
+														Name = nameof(SaturationEffect) ,
+														Source = new CompositionEffectSourceParameter ( nameof(backdropBrush) )
 													} ;
 
 					CompositionEffectFactory effectFactory = compositor . CreateEffectFactory ( graphicsEffect ,
-																								new [ ] { $"{nameof ( SaturationEffect )}.{nameof ( graphicsEffect . Saturation )}" } ) ;
+																								new [ ] { $"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}" } ) ;
 					CompositionEffectBrush effectBrush = effectFactory . CreateBrush ( ) ;
 
 					effectBrush . Properties . InsertScalar (
-						$"{nameof ( SaturationEffect )}.{nameof ( graphicsEffect . Saturation )}" ,
+						$"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}" ,
 						0f ) ;
 
 					ExpressionAnimation bindSaturationAnimation =
-						compositor . CreateExpressionAnimation ( $"{nameof ( viewRootVisual )}.{nameof ( SaturationEffect . Saturation )}" ) ;
+						compositor . CreateExpressionAnimation ( $"{nameof(viewRootVisual)}.{nameof(SaturationEffect . Saturation)}" ) ;
 
-					bindSaturationAnimation . SetReferenceParameter ( $"{nameof ( viewRootVisual )}" , viewRootVisual ) ;
+					bindSaturationAnimation . SetReferenceParameter ( $"{nameof(viewRootVisual)}" , viewRootVisual ) ;
 
-					effectBrush . StartAnimation ( $"{nameof ( SaturationEffect )}.{nameof ( graphicsEffect . Saturation )}" ,
+					effectBrush . StartAnimation ( $"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}" ,
 													bindSaturationAnimation ) ;
-					effectBrush . SetSourceParameter ( nameof ( backdropBrush ) , backdropBrush ) ;
+					effectBrush . SetSourceParameter ( nameof(backdropBrush) , backdropBrush ) ;
 
 
 					SpriteVisual glassVisual = compositor . CreateSpriteVisual ( ) ;
 					glassVisual . Brush = effectBrush ;
 
 					ExpressionAnimation bindSizeAnimation =
-						compositor . CreateExpressionAnimation ( $"{nameof ( viewRootVisual )}.{nameof ( viewRootVisual . Size )}" ) ;
-					bindSizeAnimation . SetReferenceParameter ( $"{nameof ( viewRootVisual )}" , viewRootVisual ) ;
-					glassVisual . StartAnimation ( $"{nameof ( glassVisual . Size )}" , bindSizeAnimation ) ;
+						compositor . CreateExpressionAnimation ( $"{nameof(viewRootVisual)}.{nameof(viewRootVisual . Size)}" ) ;
+					bindSizeAnimation . SetReferenceParameter ( $"{nameof(viewRootVisual)}" , viewRootVisual ) ;
+					glassVisual . StartAnimation ( $"{nameof(glassVisual . Size)}" , bindSizeAnimation ) ;
 
 					ElementCompositionPreview . SetElementChildVisual ( ViewRoot , glassVisual ) ;
 				}

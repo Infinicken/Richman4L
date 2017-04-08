@@ -17,12 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L .InfomationCenter
+namespace WenceyWang . Richman4L . InfomationCenter
 {
 
 	public class Event

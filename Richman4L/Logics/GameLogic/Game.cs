@@ -22,6 +22,7 @@ using System . Collections . ObjectModel ;
 using System . IO ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . Buffs ;
 using WenceyWang . Richman4L . Calendars ;
@@ -30,12 +31,11 @@ using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . Events ;
 using WenceyWang . Richman4L . Players . Models ;
-using WenceyWang . Richman4L . Properties ;
 using WenceyWang . Richman4L . Resources ;
 using WenceyWang . Richman4L . Stocks ;
 using WenceyWang . Richman4L . Weathers ;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	public class Game
@@ -227,7 +227,6 @@ namespace WenceyWang .Richman4L
 			foreach ( Tuple <PlayerModelProxy , PlayerConsole> item in parameters . PlayerConfig )
 			{
 				Player player = new Player ( item . Item1 . Model , StartMoney ) ;
-				player . MoveEvent += OnPlayerMove ;
 				player . BankruptcyEvent += OnPlayerBankruptcy ;
 				GamePlayers . Add ( player ) ;
 				break ;
@@ -245,8 +244,6 @@ namespace WenceyWang .Richman4L
 		}
 
 		private void OnPlayerBankruptcy ( object sender , PlayerBankruptcyEventArgs e ) { }
-
-		private void OnPlayerMove ( object sender , PlayerMoveEventArgs e ) { throw new NotImplementedException ( ) ; }
 
 		public Game ( )
 		{
@@ -267,7 +264,7 @@ namespace WenceyWang .Richman4L
 		{
 			if ( stream == null )
 			{
-				throw new ArgumentNullException ( nameof ( stream ) ) ;
+				throw new ArgumentNullException ( nameof(stream) ) ;
 			}
 
 			//SharpSerializer serialier =
@@ -286,7 +283,7 @@ namespace WenceyWang .Richman4L
 		{
 			if ( stream == null )
 			{
-				throw new ArgumentNullException ( nameof ( stream ) ) ;
+				throw new ArgumentNullException ( nameof(stream) ) ;
 			}
 
 			//SharpSerializer serialier =
@@ -296,6 +293,7 @@ namespace WenceyWang .Richman4L
 		}
 
 		#endregion
+
 	}
 
 	public enum RemovePlayerReason

@@ -22,9 +22,9 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	[AttributeUsage ( AttributeTargets . Property )]
@@ -72,17 +72,17 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) ) ;
+				throw new ArgumentNullException ( nameof(resource) ) ;
 			}
 
 			try
 			{
-				X = Convert . ToInt32 ( resource . Attribute ( nameof ( X ) ) . Value ) ;
-				Y = Convert . ToInt32 ( resource . Attribute ( nameof ( Y ) ) . Value ) ;
+				X = Convert . ToInt32 ( resource . Attribute ( nameof(X) ) . Value ) ;
+				Y = Convert . ToInt32 ( resource . Attribute ( nameof(Y) ) . Value ) ;
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( resource )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof(resource)} has wrong data or lack of data" , e ) ;
 			}
 		}
 
@@ -91,7 +91,10 @@ namespace WenceyWang . Richman4L .Maps
 		/// <summary>
 		///     要求地图元素的视图更新
 		/// </summary>
-		public void UpdateView ( ) { UpdateViewEvent ? . Invoke ( this , EventArgs . Empty ) ; }
+		public void UpdateView ( )
+		{
+			UpdateViewEvent ? . Invoke ( this , EventArgs . Empty ) ;
+		}
 
 		[NotNull]
 		public event EventHandler UpdateViewEvent ;
@@ -101,7 +104,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		public static void CleanMapObjectType ( ) { MapObjectTypes = new List <MapObjectType> ( ) ; }
 
-		[Startup ( nameof ( LoadMapObjects ) )]
+		[Startup ( nameof(LoadMapObjects) )]
 		public static void LoadMapObjects ( )
 		{
 			lock ( Locker )
@@ -114,10 +117,11 @@ namespace WenceyWang . Richman4L .Maps
 				//Todo:Load All internal type
 				foreach (
 					TypeInfo type in
-					typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+					typeof ( Game ) . GetTypeInfo ( ) .
+									Assembly . DefinedTypes .
 									Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
 				{
-					RegisMapObjectType ( type . Name , type . AsType ( ) ) ;
+					RegisMapObjectType ( type . AsType ( ) ) ;
 				}
 
 				Loaded = true ;
@@ -133,7 +137,7 @@ namespace WenceyWang . Richman4L .Maps
 
 				if ( mapObjectType == null )
 				{
-					throw new ArgumentNullException ( nameof ( mapObjectType ) ) ;
+					throw new ArgumentNullException ( nameof(mapObjectType) ) ;
 				}
 
 				#endregion
@@ -156,36 +160,39 @@ namespace WenceyWang . Richman4L .Maps
 		/// <param name="entryType">要注册的类型类型</param>
 		/// <returns>生成的类型</returns>
 		[NotNull]
-		public static MapObjectType RegisMapObjectType ( [NotNull] XName name , [NotNull] Type entryType )
+		public static MapObjectType RegisMapObjectType ( [NotNull] Type entryType )
 		{
 			lock ( Locker )
 			{
 				#region Check Argument
 
-				if ( name == null )
-				{
-					throw new ArgumentNullException ( nameof ( name ) ) ;
-				}
 				if ( entryType == null )
 				{
-					throw new ArgumentNullException ( nameof ( entryType ) ) ;
-				}
-				if (
-					entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) ==
-					null )
-				{
-					throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( MapObjectAttribute )}" ,
-												nameof ( entryType ) ) ;
+					throw new ArgumentNullException ( nameof(entryType) ) ;
 				}
 
 				#endregion
 
-				if ( MapObjectTypes . Any ( type => type . Name == name ) )
+				#region Check Attributes
+
+				MapObjectAttribute attribute = entryType . GetTypeInfo ( ) .
+															GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) .
+															FirstOrDefault ( ) as MapObjectAttribute ;
+
+				if ( attribute == null )
 				{
-					return MapObjectTypes . Single ( type => type . Name == name ) ;
+					throw new ArgumentException ( $"{nameof(entryType)} should have attribute {nameof(MapObjectAttribute)}" ,
+												nameof(entryType) ) ;
 				}
 
-				MapObjectType mapObjectType = new MapObjectType ( name . ToString ( ) , entryType ) ;
+				#endregion
+
+				if ( MapObjectTypes . Any ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) )
+				{
+					return MapObjectTypes . Single ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) ;
+				}
+
+				MapObjectType mapObjectType = new MapObjectType ( entryType , attribute . Name , attribute . Introduction ) ;
 
 				MapObjectTypes . Add ( mapObjectType ) ;
 
@@ -195,7 +202,10 @@ namespace WenceyWang . Richman4L .Maps
 
 
 		[NotNull]
-		public override string ToString ( ) { return $"{GetType ( ) . Name} at {X},{Y}" ; }
+		public override string ToString ( )
+		{
+			return $"{GetType ( ) . Name} at {X},{Y}" ;
+		}
 
 	}
 

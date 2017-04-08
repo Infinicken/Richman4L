@@ -33,7 +33,8 @@ using System . Linq ;
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
-namespace WenceyWang . Richman4L .Properties
+// ReSharper disable once CheckNamespace
+namespace WenceyWang . Richman4L . Annotations
 {
 
 	/// <summary>
@@ -137,7 +138,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string FormatParameterName { get ; private set ; }
+		public string FormatParameterName { get ; }
 
 		/// <param name="formatParameterName">
 		///     Specifies which parameter of an annotated method should be treated as format-string
@@ -158,7 +159,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Name { get ; private set ; }
+		public string Name { get ; }
 
 		public ValueProviderAttribute ( [NotNull] string name ) { Name = name ; }
 
@@ -245,7 +246,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string ParameterName { get ; private set ; }
+		public string ParameterName { get ; }
 
 		public NotifyPropertyChangedInvocatorAttribute ( ) { }
 
@@ -313,9 +314,9 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Contract { get ; private set ; }
+		public string Contract { get ; }
 
-		public bool ForceFullStates { get ; private set ; }
+		public bool ForceFullStates { get ; }
 
 		public ContractAnnotationAttribute ( [NotNull] string contract )
 			: this ( contract , false )
@@ -345,7 +346,7 @@ namespace WenceyWang . Richman4L .Properties
 	public sealed class LocalizationRequiredAttribute : Attribute
 	{
 
-		public bool Required { get ; private set ; }
+		public bool Required { get ; }
 
 		public LocalizationRequiredAttribute ( ) : this ( true ) { }
 
@@ -400,7 +401,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public Type BaseType { get ; private set ; }
+		public Type BaseType { get ; }
 
 		public BaseTypeRequiredAttribute ( [NotNull] Type baseType ) { BaseType = baseType ; }
 
@@ -414,9 +415,9 @@ namespace WenceyWang . Richman4L .Properties
 	public sealed class UsedImplicitlyAttribute : Attribute
 	{
 
-		public ImplicitUseKindFlags UseKindFlags { get ; private set ; }
+		public ImplicitUseKindFlags UseKindFlags { get ; }
 
-		public ImplicitUseTargetFlags TargetFlags { get ; private set ; }
+		public ImplicitUseTargetFlags TargetFlags { get ; }
 
 		public UsedImplicitlyAttribute ( )
 			: this ( ImplicitUseKindFlags . Default , ImplicitUseTargetFlags . Default )
@@ -530,7 +531,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string Comment { get ; private set ; }
+		public string Comment { get ; }
 
 		public PublicAPIAttribute ( ) { }
 
@@ -576,7 +577,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string Justification { get ; private set ; }
+		public string Justification { get ; }
 
 		public MustUseReturnValueAttribute ( ) { }
 
@@ -619,7 +620,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string BasePath { get ; private set ; }
+		public string BasePath { get ; }
 
 		public PathReferenceAttribute ( ) { }
 
@@ -718,7 +719,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Format { get ; private set ; }
+		public string Format { get ; }
 
 		public AspMvcAreaMasterLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
@@ -729,7 +730,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Format { get ; private set ; }
+		public string Format { get ; }
 
 		public AspMvcAreaPartialViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
@@ -740,7 +741,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Format { get ; private set ; }
+		public string Format { get ; }
 
 		public AspMvcAreaViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
@@ -750,7 +751,7 @@ namespace WenceyWang . Richman4L .Properties
 	public sealed class AspMvcMasterLocationFormatAttribute : Attribute
 	{
 
-		public string Format { get ; private set ; }
+		public string Format { get ; }
 
 		public AspMvcMasterLocationFormatAttribute ( string format ) { Format = format ; }
 
@@ -761,7 +762,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Format { get ; private set ; }
+		public string Format { get ; }
 
 		public AspMvcPartialViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
@@ -772,7 +773,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Format { get ; private set ; }
+		public string Format { get ; }
 
 		public AspMvcViewLocationFormatAttribute ( [NotNull] string format ) { Format = format ; }
 
@@ -789,7 +790,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string AnonymousProperty { get ; private set ; }
+		public string AnonymousProperty { get ; }
 
 		public AspMvcActionAttribute ( ) { }
 
@@ -807,7 +808,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string AnonymousProperty { get ; private set ; }
+		public string AnonymousProperty { get ; }
 
 		public AspMvcAreaAttribute ( ) { }
 
@@ -826,7 +827,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string AnonymousProperty { get ; private set ; }
+		public string AnonymousProperty { get ; }
 
 		public AspMvcControllerAttribute ( ) { }
 
@@ -964,7 +965,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[CanBeNull]
-		public string Name { get ; private set ; }
+		public string Name { get ; }
 
 		public HtmlElementAttributesAttribute ( ) { }
 
@@ -977,7 +978,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Name { get ; private set ; }
+		public string Name { get ; }
 
 		public HtmlAttributeValueAttribute ( [NotNull] string name ) { Name = name ; }
 
@@ -1002,7 +1003,7 @@ namespace WenceyWang . Richman4L .Properties
 	public sealed class CollectionAccessAttribute : Attribute
 	{
 
-		public CollectionAccessType CollectionAccessType { get ; private set ; }
+		public CollectionAccessType CollectionAccessType { get ; }
 
 		public CollectionAccessAttribute ( CollectionAccessType collectionAccessType )
 		{
@@ -1049,7 +1050,7 @@ namespace WenceyWang . Richman4L .Properties
 	public sealed class AssertionConditionAttribute : Attribute
 	{
 
-		public AssertionConditionType ConditionType { get ; private set ; }
+		public AssertionConditionType ConditionType { get ; }
 
 		public AssertionConditionAttribute ( AssertionConditionType conditionType ) { ConditionType = conditionType ; }
 
@@ -1146,10 +1147,10 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string TagName { get ; private set ; }
+		public string TagName { get ; }
 
 		[NotNull]
-		public Type ControlType { get ; private set ; }
+		public Type ControlType { get ; }
 
 		public AspChildControlTypeAttribute ( [NotNull] string tagName , [NotNull] Type controlType )
 		{
@@ -1182,7 +1183,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Attribute { get ; private set ; }
+		public string Attribute { get ; }
 
 		public AspRequiredAttributeAttribute ( [NotNull] string attribute ) { Attribute = attribute ; }
 
@@ -1192,7 +1193,7 @@ namespace WenceyWang . Richman4L .Properties
 	public sealed class AspTypePropertyAttribute : Attribute
 	{
 
-		public bool CreateConstructorReferences { get ; private set ; }
+		public bool CreateConstructorReferences { get ; }
 
 		public AspTypePropertyAttribute ( bool createConstructorReferences )
 		{
@@ -1206,7 +1207,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Name { get ; private set ; }
+		public string Name { get ; }
 
 		public RazorImportNamespaceAttribute ( [NotNull] string name ) { Name = name ; }
 
@@ -1217,10 +1218,10 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Type { get ; private set ; }
+		public string Type { get ; }
 
 		[NotNull]
-		public string FieldName { get ; private set ; }
+		public string FieldName { get ; }
 
 		public RazorInjectionAttribute ( [NotNull] string type , [NotNull] string fieldName )
 		{
@@ -1235,7 +1236,7 @@ namespace WenceyWang . Richman4L .Properties
 	{
 
 		[NotNull]
-		public string Directive { get ; private set ; }
+		public string Directive { get ; }
 
 		public RazorDirectiveAttribute ( [NotNull] string directive ) { Directive = directive ; }
 

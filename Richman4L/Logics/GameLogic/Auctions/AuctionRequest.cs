@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L .Auctions
+namespace WenceyWang . Richman4L . Auctions
 {
 
 	/// <summary>
@@ -13,13 +13,15 @@ namespace WenceyWang . Richman4L .Auctions
 	public abstract class AuctionRequest
 	{
 
+		public Guid Id { get ; } = Guid . NewGuid ( ) ;
+
 		public abstract WithAssetObject Owner { get ; }
 
 		public long StartMoney { get ; }
 
-		public Player Beneficiary { get ; }
+		public WithAssetObject Beneficiary { get ; }
 
-		protected AuctionRequest ( long startMpney , Player beneficiary )
+		protected AuctionRequest ( long startMpney , WithAssetObject beneficiary )
 		{
 			Beneficiary = beneficiary ;
 			StartMoney = startMpney ;

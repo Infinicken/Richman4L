@@ -13,7 +13,7 @@ using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>
@@ -52,7 +52,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			Debug . WriteLine ( "Loaded" ) ;
 			Debug . WriteLine ( AnalyticsInfo . DeviceForm ) ;
 			Debug . WriteLine ( AnalyticsInfo . VersionInfo . DeviceFamily ) ;
-			if ( ApiInformation . IsMethodPresent ( typeof ( StatusBar ) . FullName , nameof ( StatusBar . HideAsync ) ) )
+			if ( ApiInformation . IsMethodPresent ( typeof ( StatusBar ) . FullName , nameof(StatusBar . HideAsync) ) )
 			{
 				await StatusBar . GetForCurrentView ( ) . HideAsync ( ) ;
 			}

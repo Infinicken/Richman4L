@@ -1,28 +1,17 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L .Cards
+using WenceyWang . Richman4L . Annotations ;
+
+namespace WenceyWang . Richman4L . Cards
 {
 
-	public sealed class CardType
+	public sealed class CardType : RegisterableTypeBase <Card>
 	{
 
-		public string Name { get ; }
-
-		public string Introduction { get ; }
-
-		public Type EntryType { get ; }
-
-		internal CardType ( Type entryType , XElement element )
-		{
-			EntryType = entryType ;
-
-			#region Load XML
-
-			#endregion
-		}
+		public CardType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }
 
 	}
 

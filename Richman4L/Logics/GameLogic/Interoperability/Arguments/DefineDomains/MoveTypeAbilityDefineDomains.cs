@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
+namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 {
 
 	public class MoveTypeAbilityDefineDomains : ArgumentValueDefineDomain
@@ -18,7 +18,7 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
 		{
 			if ( target == null )
 			{
-				throw new ArgumentNullException ( nameof ( target ) ) ;
+				throw new ArgumentNullException ( nameof(target) ) ;
 			}
 
 			Target = target ;

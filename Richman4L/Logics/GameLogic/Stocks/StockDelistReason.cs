@@ -1,8 +1,8 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Stocks
+namespace WenceyWang . Richman4L . Stocks
 {
 
 	//Todo:完善这个命名

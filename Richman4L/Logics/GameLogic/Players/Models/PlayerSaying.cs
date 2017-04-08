@@ -1,9 +1,9 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Players .Models
+namespace WenceyWang . Richman4L . Players . Models
 {
 
 	public class PlayerSaying
@@ -19,12 +19,12 @@ namespace WenceyWang . Richman4L . Players .Models
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
 
-			Text = element . Attribute ( nameof ( Text ) ) . Value ;
-			Expression = element . Attribute ( nameof ( Expression ) ) . Value ;
-			Player = element . Attribute ( nameof ( Player ) ) . Value ;
+			Text = element . Attribute ( nameof(Text) ) . Value ;
+			Expression = element . Attribute ( nameof(Expression) ) . Value ;
+			Player = element . Attribute ( nameof(Player) ) . Value ;
 		}
 
 	}

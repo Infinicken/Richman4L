@@ -1,8 +1,8 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
@@ -14,7 +14,9 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 		/// <summary>
 		/// </summary>
 		/// <param name="control"></param>
-		public PlayGroundRenderer ( PlayGround control ) { }
+		public PlayGroundRenderer ( PlayGround control )
+		{
+		}
 
 		/// <summary>
 		///     Draws all characters within the given playground

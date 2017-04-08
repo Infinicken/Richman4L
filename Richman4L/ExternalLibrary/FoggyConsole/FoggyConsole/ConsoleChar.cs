@@ -20,7 +20,7 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	public struct ConsoleChar
@@ -33,9 +33,10 @@ namespace WenceyWang .FoggyConsole
 		public readonly ConsoleColor BackgroundColor ;
 
 		public bool Equals ( ConsoleChar other )
-			=>
-				Character == other . Character && ForegroundColor == other . ForegroundColor &&
-				BackgroundColor == other . BackgroundColor ;
+		{
+			return Character == other . Character && ForegroundColor == other . ForegroundColor &&
+					BackgroundColor == other . BackgroundColor ;
+		}
 
 		public static implicit operator ConsoleChar ( char character )
 		{

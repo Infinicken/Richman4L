@@ -6,7 +6,7 @@ using System . Linq ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Weathers ;
 
-namespace WenceyWang . Richman4L .Calendars
+namespace WenceyWang . Richman4L . Calendars
 {
 
 	public class Calendar : GameObject
@@ -40,7 +40,7 @@ namespace WenceyWang . Richman4L .Calendars
 		{
 			if ( nextDate != Today + 1 )
 			{
-				throw new ArgumentException ( $"{nameof ( nextDate )} is not the day after yesterday" ) ;
+				throw new ArgumentException ( $"{nameof(nextDate)} is not the day after yesterday" ) ;
 			}
 
 			Today += 1 ;
@@ -69,7 +69,7 @@ namespace WenceyWang . Richman4L .Calendars
 		{
 			if ( date > Today )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( date ) , $"{nameof ( date )} is later than today" ) ;
+				throw new ArgumentOutOfRangeException ( nameof(date) , $"{nameof(date)} is later than today" ) ;
 			}
 
 			return EventList [ date . Date - 1 ] ;
@@ -88,6 +88,7 @@ namespace WenceyWang . Richman4L .Calendars
 		public long WinterLenth { get ; set ; }
 
 		#endregion
+
 	}
 
 }

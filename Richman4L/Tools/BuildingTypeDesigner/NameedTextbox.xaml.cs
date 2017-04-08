@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Windows ;
 using System . Windows . Controls ;
 
-namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
+namespace WenceyWang . Richman4L . Tools . BuildingTypeDesigner
 {
 
 	/// <summary>
@@ -15,7 +15,7 @@ namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
 
 		public string NameLabel
 		{
-			get { return ( string ) GetValue ( NameLabelProperty ) ; }
+			get => ( string ) GetValue ( NameLabelProperty ) ;
 			set
 			{
 				SetValue ( NameLabelProperty , value ) ;
@@ -25,7 +25,7 @@ namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
 
 		public string Value
 		{
-			get { return ( string ) GetValue ( ValueProperty ) ; }
+			get => ( string ) GetValue ( ValueProperty ) ;
 			set
 			{
 				SetValue ( ValueProperty , value ) ;
@@ -43,13 +43,13 @@ namespace WenceyWang . Richman4L . Tools .BuildingTypeDesigner
 		}
 
 		public static readonly DependencyProperty NameLabelProperty =
-			DependencyProperty . Register ( nameof ( NameLabel ) ,
+			DependencyProperty . Register ( nameof(NameLabel) ,
 											typeof ( string ) ,
 											typeof ( NameedTextbox ) ,
 											new PropertyMetadata ( string . Empty ) ) ;
 
 		public static readonly DependencyProperty ValueProperty =
-			DependencyProperty . Register ( nameof ( Value ) ,
+			DependencyProperty . Register ( nameof(Value) ,
 											typeof ( string ) ,
 											typeof ( NameedTextbox ) ,
 											new PropertyMetadata ( string . Empty ) ) ;

@@ -5,18 +5,24 @@ using System . Linq ;
 using System . Reflection ;
 using System . Text ;
 
-namespace WenceyWang . Richman4L . Apps .Console
+namespace WenceyWang . Richman4L . Apps . Console
 {
 
 	public class Settings
 	{
 
-		[SettingItem ( SettingCategory . General , "Allow random title" , "If true, game title will be a random value." ,
-			false , false )]
+		[SettingItem ( SettingCategory . General ,
+			"Allow random title" ,
+			"If true, game title will be a random value." ,
+			false ,
+			false )]
 		public bool AllowRandomTitle { get ; set ; }
 
-		[SettingItem ( SettingCategory . General , "Allow random title root" ,
-			"If true, the front part of the game title will be a random value." , false , false )]
+		[SettingItem ( SettingCategory . General ,
+			"Allow random title root" ,
+			"If true, the front part of the game title will be a random value." ,
+			false ,
+			false )]
 		public bool AllowRandomTitleRoot { get ; set ; }
 
 		[SettingItem ( SettingCategory . Display , "Console Width" , "Set the width of the console." , true , 80 )]

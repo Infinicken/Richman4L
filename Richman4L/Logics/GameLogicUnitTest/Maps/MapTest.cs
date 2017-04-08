@@ -28,7 +28,7 @@ using WenceyWang . Richman4L . Maps ;
 
 using ConsoleColor = System . ConsoleColor ;
 
-namespace WenceyWang . Richman4L . UnitTests .Maps
+namespace WenceyWang . Richman4L . UnitTests . Maps
 {
 
 	[TestClass]

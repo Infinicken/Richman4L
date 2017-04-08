@@ -17,13 +17,13 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L . Players .PayReasons
+namespace WenceyWang . Richman4L . Players . PayReasons
 {
 
 	public class PayForBuyStockReason : PayReason
@@ -38,7 +38,7 @@ namespace WenceyWang . Richman4L . Players .PayReasons
 		{
 			if ( stock == null )
 			{
-				throw new ArgumentNullException ( nameof ( stock ) ) ;
+				throw new ArgumentNullException ( nameof(stock) ) ;
 			}
 
 			Stock = stock ;

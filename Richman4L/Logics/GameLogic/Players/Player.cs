@@ -21,6 +21,7 @@ using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . Banks ;
 using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
@@ -33,10 +34,9 @@ using WenceyWang . Richman4L . Players . Commands ;
 using WenceyWang . Richman4L . Players . Events ;
 using WenceyWang . Richman4L . Players . Models ;
 using WenceyWang . Richman4L . Players . PayReasons ;
-using WenceyWang . Richman4L . Properties ;
 using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L .Players
+namespace WenceyWang . Richman4L . Players
 {
 
 	/// <summary>
@@ -94,7 +94,7 @@ namespace WenceyWang . Richman4L .Players
 	public class PayForGiveAsset : PayReason
 	{
 
-		public MoneyAsset Asset { get ; private set ; }
+		public MoneyAsset Asset { get ; }
 
 		public PayForGiveAsset ( MoneyAsset asset ) { Asset = asset ; }
 
@@ -240,7 +240,7 @@ namespace WenceyWang . Richman4L .Players
 
 		public long Money
 		{
-			get { return _money ; }
+			get => _money ;
 			private set
 			{
 				_money = value ;
@@ -267,11 +267,11 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( model == null )
 			{
-				throw new ArgumentNullException ( nameof ( model ) ) ;
+				throw new ArgumentNullException ( nameof(model) ) ;
 			}
 			if ( startMoney < 0 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( startMoney ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(startMoney) ) ;
 			}
 
 			Model = model ;
@@ -296,7 +296,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( buff == null )
 			{
-				throw new ArgumentNullException ( nameof ( buff ) ) ;
+				throw new ArgumentNullException ( nameof(buff) ) ;
 			}
 
 			Buffs . Add ( buff ) ;
@@ -310,11 +310,11 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( buff == null )
 			{
-				throw new ArgumentNullException ( nameof ( buff ) ) ;
+				throw new ArgumentNullException ( nameof(buff) ) ;
 			}
 			if ( ! Buffs . Contains ( buff ) )
 			{
-				throw new ArgumentException ( $"{nameof ( buff )} is not for this player" , nameof ( buff ) ) ;
+				throw new ArgumentException ( $"{nameof(buff)} is not for this player" , nameof(buff) ) ;
 			}
 
 			Buffs . Remove ( buff ) ;
@@ -336,24 +336,24 @@ namespace WenceyWang . Richman4L .Players
 
 			if ( position == null )
 			{
-				throw new ArgumentNullException ( nameof ( position ) ) ;
+				throw new ArgumentNullException ( nameof(position) ) ;
 			}
 			if ( buildingType == null )
 			{
-				throw new ArgumentNullException ( nameof ( buildingType ) ) ;
+				throw new ArgumentNullException ( nameof(buildingType) ) ;
 			}
 			if ( position . Owner != this )
 			{
-				throw new ArgumentException ( $"{nameof ( position )} should owned by player." , nameof ( position ) ) ;
+				throw new ArgumentException ( $"{nameof(position)} should owned by player." , nameof(position) ) ;
 			}
 			if ( ! Building . BuildingTypes . Contains ( buildingType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( buildingType )} have not been regis." , nameof ( buildingType ) ) ;
+				throw new ArgumentException ( $"{nameof(buildingType)} have not been regis." , nameof(buildingType) ) ;
 			}
 			if ( ! position . IsBuildingAvailable ( buildingType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( buildingType )} can not build in {nameof ( position )}." ,
-											nameof ( buildingType ) ) ;
+				throw new ArgumentException ( $"{nameof(buildingType)} can not build in {nameof(position)}." ,
+											nameof(buildingType) ) ;
 			}
 
 			#endregion
@@ -370,7 +370,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( duration < 1 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( duration ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(duration) ) ;
 			}
 
 			PlayerState oldState = State ;
@@ -418,7 +418,8 @@ namespace WenceyWang . Richman4L .Players
 			}
 			foreach ( Card item in Cards )
 			{
-				Game . Current . AuctionPerformer . PerformAuction ( new CardAuctionRequest ( item , item . PriceWhenSell * 100 ) ) ;
+				Game . Current . AuctionPerformer . PerformAuction (
+					new CardAuctionRequest ( item , item . PriceWhenSell * 100 ) ) ;
 			}
 
 			BankruptcyEvent ? . Invoke ( this , new PlayerBankruptcyEventArgs ( reason ) ) ;
@@ -429,9 +430,12 @@ namespace WenceyWang . Richman4L .Players
 
 
 		[NotNull]
-		public override string ToString ( ) => Name ;
+		public override string ToString ( )
+		{
+			return Name ;
+		}
 
-		public bool CanPay ( long money ) => Money >= money ;
+		public bool CanPay ( long money ) { return Money >= money ; }
 
 		/// <summary>
 		///     移动
@@ -442,7 +446,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( ! MoveTypeList . Contains ( moveType ) )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( moveType ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(moveType) ) ;
 			}
 
 			//Todo:Check if player can use this dice
@@ -481,7 +485,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( toBuy == null )
 			{
-				throw new ArgumentNullException ( nameof ( toBuy ) ) ;
+				throw new ArgumentNullException ( nameof(toBuy) ) ;
 			}
 
 
@@ -533,7 +537,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( stock == null )
 			{
-				throw new ArgumentNullException ( nameof ( stock ) ) ;
+				throw new ArgumentNullException ( nameof(stock) ) ;
 			}
 
 			if ( Stocks . ContainsKey ( stock ) )
@@ -558,7 +562,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( stock == null )
 			{
-				throw new ArgumentNullException ( nameof ( stock ) ) ;
+				throw new ArgumentNullException ( nameof(stock) ) ;
 			}
 
 			if ( Stocks . ContainsKey ( stock ) )
@@ -618,20 +622,20 @@ namespace WenceyWang . Richman4L .Players
 
 			if ( card == null )
 			{
-				throw new ArgumentNullException ( nameof ( card ) ) ;
+				throw new ArgumentNullException ( nameof(card) ) ;
 			}
 
 			if ( ! Cards . Contains ( card ) )
 			{
-				throw new ArgumentException ( $"this player do not have {nameof ( card )}" , nameof ( card ) ) ;
+				throw new ArgumentException ( $"this player do not have {nameof(card)}" , nameof(card) ) ;
 			}
 			if ( target == null )
 			{
-				throw new ArgumentNullException ( nameof ( target ) ) ;
+				throw new ArgumentNullException ( nameof(target) ) ;
 			}
 			if ( target == this )
 			{
-				throw new ArgumentException ( $"{nameof ( target )} can not be self" , nameof ( target ) ) ;
+				throw new ArgumentException ( $"{nameof(target)} can not be self" , nameof(target) ) ;
 			}
 
 			#endregion
@@ -652,20 +656,20 @@ namespace WenceyWang . Richman4L .Players
 
 			if ( card == null )
 			{
-				throw new ArgumentNullException ( nameof ( card ) ) ;
+				throw new ArgumentNullException ( nameof(card) ) ;
 			}
 
 			if ( Cards . Contains ( card ) )
 			{
-				throw new ArgumentException ( $"this player have {nameof ( card )}" , nameof ( card ) ) ;
+				throw new ArgumentException ( $"this player have {nameof(card)}" , nameof(card) ) ;
 			}
 			if ( source == null )
 			{
-				throw new ArgumentNullException ( nameof ( source ) ) ;
+				throw new ArgumentNullException ( nameof(source) ) ;
 			}
 			if ( source == this )
 			{
-				throw new ArgumentException ( $"{nameof ( source )} can not be self" , nameof ( source ) ) ;
+				throw new ArgumentException ( $"{nameof(source)} can not be self" , nameof(source) ) ;
 			}
 
 			#endregion
@@ -705,6 +709,7 @@ namespace WenceyWang . Richman4L .Players
 		}
 
 		#endregion
+
 	}
 
 }

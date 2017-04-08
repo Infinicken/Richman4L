@@ -4,7 +4,7 @@ using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	public class StackPanel : ItemsControl
@@ -18,8 +18,8 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public ContentAlign this [ Control control ]
 		{
-			get { return ControlAlign [ control ] ; }
-			set { ControlAlign [ control ] = value ; }
+			get => ControlAlign [ control ] ;
+			set => ControlAlign [ control ] = value ;
 		}
 
 		public StackPanel ( IControlRenderer renderer = null ) : base ( renderer ?? new StackPanelRanderer ( ) ) { }
@@ -36,7 +36,8 @@ namespace WenceyWang . FoggyConsole .Controls
 					{
 						control . Arrange ( new Rectangle ( finalRect . LeftTopPoint . Offset ( 0 , currentHeight ) ,
 															new Size ( Math . Min ( finalRect . Width , control . DesiredSize . Width ) ,
-																		Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) , control . DesiredSize . Height ) ) ) ) ;
+																		Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
+																					control . DesiredSize . Height ) ) ) ) ;
 						break ;
 					}
 					case ContentAlign . Center :

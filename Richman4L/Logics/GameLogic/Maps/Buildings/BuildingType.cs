@@ -22,7 +22,7 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	/// <summary>
@@ -30,16 +30,6 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 	/// </summary>
 	public sealed class BuildingType : MapObjectType
 	{
-
-		/// <summary>
-		///     建筑类型的名称
-		/// </summary>
-		public override string Name { get ; }
-
-		/// <summary>
-		///     建筑类型的简介
-		/// </summary>
-		public string Introduction { get ; }
 
 		/// <summary>
 		///     形容这个建筑类型的格言
@@ -52,11 +42,6 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		public MapSize Size { get ; }
 
 		/// <summary>
-		///     建筑的入口类型
-		/// </summary>
-		public override Type EntryType { get ; }
-
-		/// <summary>
 		///     建筑的初始等级
 		/// </summary>
 		public BuildingGrade EntryGrade { get ; }
@@ -67,21 +52,17 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		public ReadOnlyCollection <BuildingGrade> Grades { get ; }
 
 		internal BuildingType ( Type entryType , XElement element )
-			: base ( element . Attribute ( nameof ( Name ) ) . Value , entryType )
+			: base ( entryType , element )
 		{
-			EntryType = entryType ;
-
 			#region Load XML
 
 			try
 			{
-				Name = element . Attribute ( nameof ( Name ) ) . Value ;
-				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value ;
-				Size = new MapSize ( Convert . ToInt32 ( element . Attribute ( nameof ( MapSize . Width ) ) . Value ) ,
-									Convert . ToInt32 ( element . Attribute ( nameof ( MapSize . Height ) ) . Value ) ) ;
+				Size = new MapSize ( Convert . ToInt32 ( element . Attribute ( nameof(MapSize . Width) ) . Value ) ,
+									Convert . ToInt32 ( element . Attribute ( nameof(MapSize . Height) ) . Value ) ) ;
 				List <BuildingGrade> grades = new List <BuildingGrade> ( ) ;
 				Grades = new ReadOnlyCollection <BuildingGrade> ( grades ) ;
-				foreach ( XElement grade in element . Element ( nameof ( Grades ) ) . Elements ( ) )
+				foreach ( XElement grade in element . Element ( nameof(Grades) ) . Elements ( ) )
 				{
 					grades . Add ( new BuildingGrade ( grade , this ) ) ;
 				}
@@ -90,7 +71,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof(element)} has wrong data or lack of data" , e ) ;
 			}
 
 			#endregion

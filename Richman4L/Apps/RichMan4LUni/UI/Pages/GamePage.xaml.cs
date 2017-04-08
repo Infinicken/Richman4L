@@ -7,7 +7,7 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Media ;
 using Windows . UI . Xaml . Navigation ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>
@@ -40,7 +40,10 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 		///     Event data that describes how this page was reached.
 		///     This parameter is typically used to configure the page.
 		/// </param>
-		protected override void OnNavigatedTo ( NavigationEventArgs e ) { DataContext = e . Parameter as Game ; }
+		protected override void OnNavigatedTo ( NavigationEventArgs e )
+		{
+			DataContext = e . Parameter as Game ;
+		}
 
 		private void ShowPlayerGridButton_Click ( object sender , RoutedEventArgs e )
 		{

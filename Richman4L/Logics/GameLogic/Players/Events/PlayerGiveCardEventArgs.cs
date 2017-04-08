@@ -17,13 +17,13 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Cards ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players .Events
+namespace WenceyWang . Richman4L . Players . Events
 {
 
 	public class PlayerGiveCardEventArgs : PlayerEventArgs
@@ -45,11 +45,11 @@ namespace WenceyWang . Richman4L . Players .Events
 		{
 			if ( card == null )
 			{
-				throw new ArgumentNullException ( nameof ( card ) ) ;
+				throw new ArgumentNullException ( nameof(card) ) ;
 			}
 			if ( target == null )
 			{
-				throw new ArgumentNullException ( nameof ( target ) ) ;
+				throw new ArgumentNullException ( nameof(target) ) ;
 			}
 
 			Card = card ;

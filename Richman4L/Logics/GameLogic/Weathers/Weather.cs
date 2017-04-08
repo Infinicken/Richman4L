@@ -5,7 +5,7 @@ using System . Linq ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Seasons ;
 
-namespace WenceyWang . Richman4L .Weathers
+namespace WenceyWang . Richman4L . Weathers
 {
 
 	//Todo:完成天气模型

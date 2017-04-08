@@ -3,12 +3,12 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L .Stocks
+namespace WenceyWang . Richman4L . Stocks
 {
 
 	/// <summary>
@@ -30,7 +30,7 @@ namespace WenceyWang . Richman4L .Stocks
 		//todo:event
 
 		[ConsoleVisable]
-		public List <StockBuff> Buffs { get ; private set ; } = new List <StockBuff> ( ) ;
+		public List <StockBuff> Buffs { get ; } = new List <StockBuff> ( ) ;
 
 		public StockPrice SynthesizePrice
 		{
@@ -58,7 +58,7 @@ namespace WenceyWang . Richman4L .Stocks
 		{
 			if ( document == null )
 			{
-				throw new ArgumentNullException ( nameof ( document ) ) ;
+				throw new ArgumentNullException ( nameof(document) ) ;
 			}
 
 			try
@@ -70,7 +70,7 @@ namespace WenceyWang . Richman4L .Stocks
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( document )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof(document)} has wrong data or lack of data" , e ) ;
 			}
 
 			//ToDo LoadStocks
@@ -243,7 +243,7 @@ namespace WenceyWang . Richman4L .Stocks
 		{
 			if ( buyDelegate == null )
 			{
-				throw new ArgumentNullException ( nameof ( buyDelegate ) ) ;
+				throw new ArgumentNullException ( nameof(buyDelegate) ) ;
 			}
 
 			if ( ! BuyDelegateList . ContainsKey ( buyDelegate . Stock ) )
@@ -261,7 +261,7 @@ namespace WenceyWang . Richman4L .Stocks
 		{
 			if ( sellDelegate == null )
 			{
-				throw new ArgumentNullException ( nameof ( sellDelegate ) ) ;
+				throw new ArgumentNullException ( nameof(sellDelegate) ) ;
 			}
 
 			if ( ! SellDelegateList . ContainsKey ( sellDelegate . Stock ) )

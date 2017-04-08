@@ -1,9 +1,9 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 
-namespace WenceyWang . Richman4L .Security
+namespace WenceyWang . Richman4L . Security
 {
 
 	public abstract class ReliableValue <T>
@@ -32,7 +32,7 @@ namespace WenceyWang . Richman4L .Security
 		{
 			if ( implementType == null )
 			{
-				throw new ArgumentNullException ( nameof ( implementType ) ) ;
+				throw new ArgumentNullException ( nameof(implementType) ) ;
 			}
 			if (
 				! typeof ( ReliableValue <object> ) . GetTypeInfo ( ) .

@@ -1,12 +1,11 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
 using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
-namespace WenceyWang . Richman4L .UnitTests
+namespace WenceyWang . Richman4L . UnitTests
 {
 
 	[TestClass]
@@ -14,7 +13,10 @@ namespace WenceyWang . Richman4L .UnitTests
 	{
 
 		[TestMethod]
-		public void LoadTitleTest ( ) { GameTitle . LoadTitles ( ) ; }
+		public void LoadTitleTest ( )
+		{
+			GameTitle . LoadTitles ( ) ;
+		}
 
 		[TestMethod]
 		[Timeout ( 1000 )]

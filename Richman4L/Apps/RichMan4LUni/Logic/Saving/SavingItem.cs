@@ -17,7 +17,6 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Threading . Tasks ;
@@ -25,7 +24,7 @@ using System . Threading . Tasks ;
 using Windows . Storage ;
 using Windows . Storage . Search ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . Logic .Saving
+namespace WenceyWang . Richman4L . Apps . Uni . Logic . Saving
 {
 
 	internal class SavingItem

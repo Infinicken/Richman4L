@@ -2,7 +2,7 @@
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Stocks .PriceController
+namespace WenceyWang . Richman4L . Stocks . PriceController
 {
 
 	public struct NormalStockPriceControllerConfig
@@ -52,8 +52,7 @@ namespace WenceyWang . Richman4L . Stocks .PriceController
 																												0.7 ,
 																												7 ,
 																												60 ,
-																												0.3 )
-			;
+																												0.3 ) ;
 
 		public NormalStockPriceControllerConfig ( double govermentControlMax ,
 												double govermentControlMin ,

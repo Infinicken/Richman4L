@@ -1,9 +1,8 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Interoperability .Arguments
+namespace WenceyWang . Richman4L . Interoperability . Arguments
 {
 
 	internal static class ArgumentCheckHelper
@@ -13,11 +12,11 @@ namespace WenceyWang . Richman4L . Interoperability .Arguments
 		{
 			if ( info == null )
 			{
-				throw new ArgumentNullException ( nameof ( info ) ) ;
+				throw new ArgumentNullException ( nameof(info) ) ;
 			}
 			if ( container == null )
 			{
-				throw new ArgumentNullException ( nameof ( container ) ) ;
+				throw new ArgumentNullException ( nameof(container) ) ;
 			}
 
 			if ( info . Count != container . Arguments . Count )

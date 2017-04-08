@@ -16,10 +16,10 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Renderers
+namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
@@ -39,13 +39,13 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 		/// <exception cref="ArgumentException">Thrown if the Control which should be set already has an other renderer assigned</exception>
 		public T Control
 		{
-			get { return _control ; }
+			get => _control ;
 			set
 			{
 				if ( value . Renderer != null &&
 					value . Renderer != this )
 				{
-					throw new ArgumentException ( $"{nameof ( Control )} already has a Drawer assigned" , nameof ( value ) ) ;
+					throw new ArgumentException ( $"{nameof(Control)} already has a Drawer assigned" , nameof(value) ) ;
 				}
 
 				_control = value ;
@@ -56,13 +56,12 @@ namespace WenceyWang . FoggyConsole . Controls .Renderers
 
 		Control IControlRenderer . Control
 		{
-			get { return Control ; }
-
+			get => Control ;
 			set
 			{
 				if ( ! ( value is T ) )
 				{
-					throw new ArgumentException ( $"{nameof ( Control )} has to be of {typeof ( T ) . Name}" ) ;
+					throw new ArgumentException ( $"{nameof(Control)} has to be of {typeof ( T ) . Name}" ) ;
 				}
 
 				Control = ( T ) value ;

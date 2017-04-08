@@ -7,7 +7,7 @@ using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Players . Models ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 {
 
 	public sealed partial class PlayerConfigListItem : UserControl
@@ -32,7 +32,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 
 		public string PlayerModelName
 		{
-			get { return ( string ) ( PlayerModelNameButton . Content = ( string ) GetValue ( PlayerModelNameProperty ) ) ; }
+			get => ( string ) ( PlayerModelNameButton . Content = ( string ) GetValue ( PlayerModelNameProperty ) ) ;
 			set
 			{
 				PlayerModelNameButton . Content = value ;
@@ -42,7 +42,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 
 		public string Controller
 		{
-			get { return ( string ) ( ControllerButton . Content = ( string ) GetValue ( ControllerProperty ) ) ; }
+			get => ( string ) ( ControllerButton . Content = ( string ) GetValue ( ControllerProperty ) ) ;
 			set
 			{
 				ControllerButton . Content = value ;
@@ -60,19 +60,19 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
 		}
 
 		public static readonly DependencyProperty PlayerNameProperty =
-			DependencyProperty . Register ( nameof ( PlayerName ) ,
+			DependencyProperty . Register ( nameof(PlayerName) ,
 											typeof ( string ) ,
 											typeof ( PlayerConfigListItem ) ,
 											new PropertyMetadata ( "" ) ) ;
 
 		public static readonly DependencyProperty PlayerModelNameProperty =
-			DependencyProperty . Register ( nameof ( PlayerModelName ) ,
+			DependencyProperty . Register ( nameof(PlayerModelName) ,
 											typeof ( string ) ,
 											typeof ( PlayerConfigListItem ) ,
 											new PropertyMetadata ( "" ) ) ;
 
 		public static readonly DependencyProperty ControllerProperty =
-			DependencyProperty . Register ( nameof ( Controller ) ,
+			DependencyProperty . Register ( nameof(Controller) ,
 											typeof ( string ) ,
 											typeof ( PlayerConfigListItem ) ,
 											new PropertyMetadata ( "" ) ) ;

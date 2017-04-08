@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps .Events
+namespace WenceyWang . Richman4L . Maps . Events
 {
 
 	public class MapRemoveMapObjectEventArgs : EventArgs
@@ -17,7 +17,7 @@ namespace WenceyWang . Richman4L . Maps .Events
 		{
 			if ( pastObject == null )
 			{
-				throw new ArgumentNullException ( nameof ( pastObject ) ) ;
+				throw new ArgumentNullException ( nameof(pastObject) ) ;
 			}
 
 			PastObject = pastObject ;

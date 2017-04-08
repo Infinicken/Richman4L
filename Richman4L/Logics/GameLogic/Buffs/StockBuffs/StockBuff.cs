@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L . Buffs .StockBuffs
+namespace WenceyWang . Richman4L . Buffs . StockBuffs
 {
 
 	/// <summary>
@@ -18,12 +18,12 @@ namespace WenceyWang . Richman4L . Buffs .StockBuffs
 
 		public Stock Target
 		{
-			get { return _target ; }
+			get => _target ;
 			private set
 			{
 				if ( value == null )
 				{
-					throw new ArgumentNullException ( nameof ( value ) ) ;
+					throw new ArgumentNullException ( nameof(value) ) ;
 				}
 
 				if ( _target == null )
@@ -33,7 +33,7 @@ namespace WenceyWang . Richman4L . Buffs .StockBuffs
 				}
 				else
 				{
-					throw new InvalidOperationException ( $"Can not reset {nameof ( Target )}" ) ;
+					throw new InvalidOperationException ( $"Can not reset {nameof(Target)}" ) ;
 				}
 			}
 		}

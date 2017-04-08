@@ -21,7 +21,7 @@ using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -67,12 +67,12 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		public int Width
 		{
-			get { return Size . Width ; }
+			get => Size . Width ;
 			set
 			{
 				if ( value < 0 )
 				{
-					throw new ArgumentException ( $"{nameof ( Width )} has to be bigger than zero." ) ;
+					throw new ArgumentException ( $"{nameof(Width)} has to be bigger than zero." ) ;
 				}
 
 				if ( Width != value )
@@ -87,12 +87,12 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		public int Height
 		{
-			get { return Size . Height ; }
+			get => Size . Height ;
 			set
 			{
 				if ( value < 0 )
 				{
-					throw new ArgumentException ( $"{nameof ( Height )} has to be bigger than zero." ) ;
+					throw new ArgumentException ( $"{nameof(Height)} has to be bigger than zero." ) ;
 				}
 
 				if ( Height != value )
@@ -114,8 +114,8 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public int ActualHeight => ActualSize . Height ;
 
-		public ConsoleColor ActualBackgroundColor => _backgroundColor ?? Container ? . BackgroundColor ?? ConsoleColor . Black
-		;
+		public ConsoleColor ActualBackgroundColor => _backgroundColor ??
+													Container ? . BackgroundColor ?? ConsoleColor . Black ;
 
 		/// <summary>
 		///     The background-color
@@ -187,14 +187,14 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </exception>
 		public IControlRenderer Renderer
 		{
-			get { return _renderer ; }
+			get => _renderer ;
 			set
 			{
 				if ( value ? . Control != null &&
 					value . Control != this )
 				{
-					throw new ArgumentException ( $"{nameof ( Renderer )} already has an other {nameof ( Control )} assigned." ,
-												nameof ( value ) ) ;
+					throw new ArgumentException ( $"{nameof(Renderer)} already has an other {nameof(Control)} assigned." ,
+												nameof(value) ) ;
 				}
 
 				_renderer = value ;

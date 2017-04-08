@@ -21,7 +21,7 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	/// <summary>
@@ -60,29 +60,29 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
-			if ( element . Name != nameof ( BuildingAccessory ) )
+			if ( element . Name != nameof(BuildingAccessory) )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} do not perform a {nameof ( BuildingAccessory )}" ,
-											nameof ( element ) ) ;
+				throw new ArgumentException ( $"{nameof(element)} do not perform a {nameof(BuildingAccessory)}" ,
+											nameof(element) ) ;
 			}
 			if ( belongTo == null )
 			{
-				throw new ArgumentNullException ( nameof ( belongTo ) ) ;
+				throw new ArgumentNullException ( nameof(belongTo) ) ;
 			}
 
 			BelongTo = belongTo ;
 			try
 			{
-				Name = element . Attribute ( nameof ( Name ) ) . Value ;
-				Introduction = element . Attribute ( nameof ( Introduction ) ) . Value ;
-				Money = Convert . ToInt64 ( element . Attribute ( nameof ( Money ) ) . Value ) ;
-				InstallTime = Convert . ToInt32 ( element . Attribute ( nameof ( InstallTime ) ) . Value ) ;
+				Name = element . Attribute ( nameof(Name) ) . Value ;
+				Introduction = element . Attribute ( nameof(Introduction) ) . Value ;
+				Money = Convert . ToInt64 ( element . Attribute ( nameof(Money) ) . Value ) ;
+				InstallTime = Convert . ToInt32 ( element . Attribute ( nameof(InstallTime) ) . Value ) ;
 			}
 			catch ( NullReferenceException e )
 			{
-				throw new ArgumentException ( $"{nameof ( element )} has wrong data or lack of data" , e ) ;
+				throw new ArgumentException ( $"{nameof(element)} has wrong data or lack of data" , e ) ;
 			}
 		}
 

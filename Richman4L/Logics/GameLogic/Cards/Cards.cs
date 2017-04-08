@@ -25,7 +25,7 @@ using System . Xml . Linq ;
 using WenceyWang . Richman4L . Interoperability . Arguments ;
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L .Cards
+namespace WenceyWang . Richman4L . Cards
 {
 
 	public abstract class Card <T> : Card where T : Card <T>
@@ -70,11 +70,11 @@ namespace WenceyWang . Richman4L .Cards
 
 			if ( cardType == null )
 			{
-				throw new ArgumentNullException ( nameof ( cardType ) ) ;
+				throw new ArgumentNullException ( nameof(cardType) ) ;
 			}
 			if ( ! CardTypeList . Contains ( cardType ) )
 			{
-				throw new ArgumentException ( $"{nameof ( cardType )} have not being registered" , nameof ( cardType ) ) ;
+				throw new ArgumentException ( $"{nameof(cardType)} have not being registered" , nameof(cardType) ) ;
 			}
 
 			#endregion
@@ -85,7 +85,7 @@ namespace WenceyWang . Richman4L .Cards
 		}
 
 
-		[Startup ( nameof ( LoadCards ) )]
+		[Startup ( nameof(LoadCards) )]
 		public static void LoadCards ( )
 		{
 			lock ( Locker )
@@ -106,34 +106,34 @@ namespace WenceyWang . Richman4L .Cards
 
 				if ( entryType == null )
 				{
-					throw new ArgumentNullException ( nameof ( entryType ) ) ;
+					throw new ArgumentNullException ( nameof(entryType) ) ;
 				}
 
 				if ( ! typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 				{
-					throw new ArgumentException ( $"{nameof ( entryType )} should assignable from {nameof ( Card )}" ,
-												nameof ( entryType ) ) ;
+					throw new ArgumentException ( $"{nameof(entryType)} should assignable from {nameof(Card)}" ,
+												nameof(entryType) ) ;
 				}
 
 				if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Single ( ) == null )
 				{
-					throw new ArgumentException ( $"{nameof ( entryType )} should have atribute {nameof ( CardAttribute )}" ,
-												nameof ( entryType ) ) ;
+					throw new ArgumentException ( $"{nameof(entryType)} should have atribute {nameof(CardAttribute)}" ,
+												nameof(entryType) ) ;
 				}
 
 				if ( element == null )
 				{
-					throw new ArgumentNullException ( nameof ( element ) ) ;
+					throw new ArgumentNullException ( nameof(element) ) ;
 				}
 
-				if ( element . Name != nameof ( entryType ) )
+				if ( element . Name != nameof(entryType) )
 				{
-					throw new ArgumentException ( $"{nameof ( element )} should perform a building type" , nameof ( element ) ) ;
+					throw new ArgumentException ( $"{nameof(element)} should perform a building type" , nameof(element) ) ;
 				}
 
 				if ( CardTypeList . Any ( type => type . EntryType == entryType ) )
 				{
-					throw new InvalidOperationException ( $"{nameof ( entryType )} have regised" ) ;
+					throw new InvalidOperationException ( $"{nameof(entryType)} have regised" ) ;
 				}
 
 				#endregion

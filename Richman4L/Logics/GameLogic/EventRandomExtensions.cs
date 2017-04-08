@@ -1,8 +1,8 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang .Richman4L
+namespace WenceyWang . Richman4L
 {
 
 	public static class EventRandomExtensions
@@ -12,12 +12,12 @@ namespace WenceyWang .Richman4L
 		{
 			if ( random == null )
 			{
-				throw new ArgumentNullException ( nameof ( random ) ) ;
+				throw new ArgumentNullException ( nameof(random) ) ;
 			}
 			if ( possibility <= 0 ||
 				possibility > 10000 )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( possibility ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(possibility) ) ;
 			}
 
 			return random . Next ( 10000 ) <= possibility ;

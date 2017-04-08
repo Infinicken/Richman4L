@@ -6,7 +6,7 @@ using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . PayReasons ;
 
-namespace WenceyWang . Richman4L .Banks
+namespace WenceyWang . Richman4L . Banks
 {
 
 	/// <summary>
@@ -42,11 +42,11 @@ namespace WenceyWang . Richman4L .Banks
 		{
 			if ( owner == null )
 			{
-				throw new ArgumentNullException ( nameof ( owner ) ) ;
+				throw new ArgumentNullException ( nameof(owner) ) ;
 			}
 			if ( Game . Current . Calendar . Today . Date + takeTime >= Game . Current . GameLenth )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( takeTime ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(takeTime) ) ;
 			}
 
 			return new SavingBankProof

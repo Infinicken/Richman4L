@@ -31,7 +31,7 @@ using WenceyWang . FoggyConsole ;
 using WenceyWang . FoggyConsole . Controls ;
 using WenceyWang . Richman4L . Apps . Console . Pages ;
 
-namespace WenceyWang . Richman4L . Apps .Console
+namespace WenceyWang . Richman4L . Apps . Console
 {
 
 	public static class Program
@@ -43,7 +43,7 @@ namespace WenceyWang . Richman4L . Apps .Console
 
 		public static Settings CurrentSetting { get ; set ; }
 
-		public static ILoggerFactory LoggerFactory = new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
+		public static ILoggerFactory LoggerFactory { get ; set ; } = new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
 
 		/// <summary>
 		///     Program.exe <-g|-- greeting|-$ <greeting>
@@ -215,7 +215,8 @@ namespace WenceyWang . Richman4L . Apps .Console
 			StreamWriter writer = new StreamWriter ( licenseFile ) ;
 			writer . WriteLine ( GetLicense ( ) ) ;
 			writer . WriteLine ( ) ;
-			writer . WriteLine ( "To accept this license, you should write \"I accept this License.\" at the end of this file." ) ;
+			writer . WriteLine (
+				"To accept this license, you should write \"I accept this License.\" at the end of this file." ) ;
 			writer . Dispose ( ) ;
 		}
 

@@ -26,7 +26,7 @@ using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Stats ;
 
-namespace WenceyWang . Richman4L . Maps .Roads
+namespace WenceyWang . Richman4L . Maps . Roads
 {
 
 	/// <summary>
@@ -55,7 +55,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			foreach ( RoadBuff buff in Buffs )
@@ -70,7 +70,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			foreach ( RoadBuff buff in Buffs )
@@ -109,7 +109,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			if ( buff == null )
 			{
-				throw new ArgumentNullException ( nameof ( buff ) ) ;
+				throw new ArgumentNullException ( nameof(buff) ) ;
 			}
 
 			Buffs . Add ( buff ) ;
@@ -162,6 +162,7 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		#endregion
 
 		#endregion
+
 	}
 
 }

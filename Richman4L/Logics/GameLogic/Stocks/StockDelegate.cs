@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L .Stocks
+namespace WenceyWang . Richman4L . Stocks
 {
 
 	/// <summary>
@@ -24,11 +24,11 @@ namespace WenceyWang . Richman4L .Stocks
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 			if ( stock == null )
 			{
-				throw new ArgumentNullException ( nameof ( stock ) ) ;
+				throw new ArgumentNullException ( nameof(stock) ) ;
 			}
 
 			Player = player ;

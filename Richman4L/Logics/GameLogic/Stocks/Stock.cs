@@ -21,12 +21,12 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Properties ;
 using WenceyWang . Richman4L . Stocks . PriceController ;
 
-namespace WenceyWang . Richman4L .Stocks
+namespace WenceyWang . Richman4L . Stocks
 {
 
 	/// <summary>
@@ -114,7 +114,10 @@ namespace WenceyWang . Richman4L .Stocks
 		///     使这个股票退市
 		/// </summary>
 		/// <param name="reason">退市的原因</param>
-		public void Delist ( StockDelistReason reason ) { DelistEvent ? . Invoke ( this , EventArgs . Empty ) ; }
+		public void Delist ( StockDelistReason reason )
+		{
+			DelistEvent ? . Invoke ( this , EventArgs . Empty ) ;
+		}
 
 		public event EventHandler DelistEvent ;
 
@@ -135,9 +138,9 @@ namespace WenceyWang . Richman4L .Stocks
 			{
 				throw new ArgumentException (
 					string . Format ( "{0} should less than {1}.{2}" ,
-									nameof ( lowerPrice ) ,
-									nameof ( Price ) ,
-									nameof ( Price . TodaysLow ) ) ) ;
+									nameof(lowerPrice) ,
+									nameof(Price) ,
+									nameof(Price . TodaysLow) ) ) ;
 			}
 
 			Price = new StockPrice ( Price . OpenPrice ,
@@ -154,9 +157,9 @@ namespace WenceyWang . Richman4L .Stocks
 			{
 				throw new ArgumentException (
 					string . Format ( "{0} should greater than {1}.{2}" ,
-									nameof ( higherPrice ) ,
-									nameof ( Price ) ,
-									nameof ( Price . TodaysHigh ) ) ) ;
+									nameof(higherPrice) ,
+									nameof(Price) ,
+									nameof(Price . TodaysHigh) ) ) ;
 			}
 
 			Price = new StockPrice ( Price . OpenPrice ,
@@ -171,24 +174,25 @@ namespace WenceyWang . Richman4L .Stocks
 		{
 			if ( buff == null )
 			{
-				throw new ArgumentNullException ( nameof ( buff ) ) ;
+				throw new ArgumentNullException ( nameof(buff) ) ;
 			}
 
 			Buffs . Add ( buff ) ;
 		}
 
-		//protected override void Dispose ( bool disposing )
-		//{
-		//	if ( ! DisposedValue )
-		//	{
-		//		if ( disposing )
-		//		{
-		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
-		//		}
-		//		base . Dispose ( disposing ) ;
-		//	}
-
 		//}
+		//	}
+		//		base . Dispose ( disposing ) ;
+		//		}
+		//			Game . Current ? . StockMarket ? . Stocks ? . Remove ( this ) ;
+		//		{
+		//		if ( disposing )
+		//	{
+		//	if ( ! DisposedValue )
+		//{
+
+		//protected override void Dispose ( bool disposing )
+
 	}
 
 }

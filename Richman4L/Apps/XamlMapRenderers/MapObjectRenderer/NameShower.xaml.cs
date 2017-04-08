@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Windows . Foundation ;
@@ -7,7 +7,7 @@ using Windows . UI . Xaml ;
 
 using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
+namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 {
 
 	public sealed partial class NameShower : MapObjectRenderer , IMapObjectRenderer <MapObject>
@@ -15,7 +15,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
 
 		public string Text
 		{
-			get { return ( string ) GetValue ( TextProperty ) ; }
+			get => ( string ) GetValue ( TextProperty ) ;
 			set
 			{
 				SetValue ( TextProperty , value ) ;
@@ -25,7 +25,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
 
 		public double TextSize
 		{
-			get { return ( double ) GetValue ( TextSizeProperty ) ; }
+			get => ( double ) GetValue ( TextSizeProperty ) ;
 			set
 			{
 				SetValue ( TextSizeProperty , value ) ;
@@ -43,7 +43,10 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
 			DependencyProperty . Register ( "Text" , typeof ( string ) , typeof ( NameShower ) , new PropertyMetadata ( "" ) ) ;
 
 		public static readonly DependencyProperty TextSizeProperty =
-			DependencyProperty . Register ( "TextSize" , typeof ( double ) , typeof ( NameShower ) , new PropertyMetadata ( 24 ) ) ;
+			DependencyProperty . Register ( "TextSize" ,
+											typeof ( double ) ,
+											typeof ( NameShower ) ,
+											new PropertyMetadata ( 24 ) ) ;
 
 		public MapObject Target { get ; private set ; }
 
@@ -52,14 +55,14 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
 		public void StartUp ( )
 		{
 			Text = Target . GetType ( ) . Name ;
-			VisualStateManager . GoToState ( this , nameof ( HideState ) , false ) ;
+			VisualStateManager . GoToState ( this , nameof(HideState) , false ) ;
 		}
 
 		public void SetTarget ( MapObject target ) { Target = target ; }
 
-		public override void Show ( ) { VisualStateManager . GoToState ( this , nameof ( ShowState ) , true ) ; }
+		public override void Show ( ) { VisualStateManager . GoToState ( this , nameof(ShowState) , true ) ; }
 
-		public override void Hide ( ) { VisualStateManager . GoToState ( this , nameof ( ShowState ) , true ) ; }
+		public override void Hide ( ) { VisualStateManager . GoToState ( this , nameof(ShowState) , true ) ; }
 
 	}
 

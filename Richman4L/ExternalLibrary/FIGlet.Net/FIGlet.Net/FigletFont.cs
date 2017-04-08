@@ -5,35 +5,35 @@ using System . Linq ;
 using System . Reflection ;
 using System . Text ;
 
-namespace WenceyWang .FIGlet
+namespace WenceyWang . FIGlet
 {
 
 	public class FIGletFont
 	{
 
-		public string Signature { get ; private set ; }
+		public string Signature { get ; }
 
 		public char HardBlank { get ; }
 
 		public int Height { get ; }
 
-		public int BaseLine { get ; private set ; }
+		public int BaseLine { get ; }
 
-		public int MaxLength { get ; private set ; }
+		public int MaxLength { get ; }
 
-		public int OldLayout { get ; private set ; }
+		public int OldLayout { get ; }
 
 		public int CommentLines { get ; }
 
-		public int PrintDirection { get ; private set ; }
+		public int PrintDirection { get ; }
 
-		public int FullLayout { get ; private set ; }
+		public int FullLayout { get ; }
 
-		public int CodeTagCount { get ; private set ; }
+		public int CodeTagCount { get ; }
 
 		public string [ ] [ ] Lines { get ; }
 
-		public string Commit { get ; private set ; }
+		public string Commit { get ; }
 
 		public static FIGletFont Defult
 		{
@@ -45,7 +45,8 @@ namespace WenceyWang .FIGlet
 					DefultFont ? . TryGetTarget ( out defult ) ;
 					if ( defult == null )
 					{
-						Stream stream = typeof ( FIGletFont ) . GetTypeInfo ( ) . Assembly .
+						Stream stream = typeof ( FIGletFont ) . GetTypeInfo ( ) .
+																Assembly .
 																GetManifestResourceStream ( typeof ( FIGletFont ) . Namespace + "." +
 																							@"Fonts.standard.flf" ) ;
 						defult = new FIGletFont ( stream ) ;
@@ -64,7 +65,7 @@ namespace WenceyWang .FIGlet
 				string [ ] configs = reader . ReadLine ( ) . Split ( ' ' ) ;
 				if ( ! configs [ 0 ] . StartsWith ( @"flf2a" ) )
 				{
-					throw new ArgumentException ( $"{nameof ( fontStream )} missing signature" , nameof ( fontStream ) ) ;
+					throw new ArgumentException ( $"{nameof(fontStream)} missing signature" , nameof(fontStream) ) ;
 				}
 
 				Signature = @"flf2a" ;
@@ -127,8 +128,6 @@ namespace WenceyWang .FIGlet
 			}
 		}
 
-		private static readonly object Locker = new object ( ) ;
-
 		private static readonly WeakReference <FIGletFont> DefultFont = new WeakReference <FIGletFont> ( null ) ;
 
 		private static T TryGetMember <T> ( T [ ] array , int index )
@@ -146,7 +145,7 @@ namespace WenceyWang .FIGlet
 			if ( line < 0 ||
 				line >= Height )
 			{
-				throw new ArgumentOutOfRangeException ( nameof ( line ) ) ;
+				throw new ArgumentOutOfRangeException ( nameof(line) ) ;
 			}
 
 			if ( Lines [ Convert . ToInt16 ( sourceChar ) ] == null )
@@ -157,24 +156,24 @@ namespace WenceyWang .FIGlet
 			return Lines [ Convert . ToInt16 ( sourceChar ) ] [ line ] ;
 		}
 
-		//private void LoadLines ( List<string> fontLines )
-		//{
-		//	Lines = fontLines;
-		//	string configString = Lines . First ( );
-		//	string [ ] configArray = configString . Split ( ' ' );
-		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
-		//	if ( Signature == "flf2a" )
-		//	{
-		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
-		//Height = configArray . GetIntValue ( 1 );
-		//BaseLine = configArray . GetIntValue ( 2 );
-		//MaxLength = configArray . GetIntValue ( 3 );
-		//OldLayout = configArray . GetIntValue ( 4 );
-		//CommentLines = configArray . GetIntValue ( 5 );
-		//PrintDirection = configArray . GetIntValue ( 6 );
-		//FullLayout = configArray . GetIntValue ( 7 );
-
 		//CodeTagCount = configArray . GetIntValue ( 8 );
+		//FullLayout = configArray . GetIntValue ( 7 );
+		//PrintDirection = configArray . GetIntValue ( 6 );
+		//CommentLines = configArray . GetIntValue ( 5 );
+		//OldLayout = configArray . GetIntValue ( 4 );
+		//MaxLength = configArray . GetIntValue ( 3 );
+		//BaseLine = configArray . GetIntValue ( 2 );
+		//Height = configArray . GetIntValue ( 1 );
+		//HardBlank = configArray . First ( ) . Last ( ) . ToString ( );
+		//	{
+		//	if ( Signature == "flf2a" )
+		//	Signature = configArray . First ( ) . Remove ( configArray . First ( ) . Length - 1 );
+		//	string [ ] configArray = configString . Split ( ' ' );
+		//	string configString = Lines . First ( );
+		//	Lines = fontLines;
+		//{
+
+		//private void LoadLines ( List<string> fontLines )
 
 		//	}
 		//}
@@ -194,6 +193,7 @@ namespace WenceyWang .FIGlet
 
 		//	LoadLines ( fontData );
 		//}
+
 	}
 
 }

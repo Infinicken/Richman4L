@@ -8,7 +8,7 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Media ;
 using Windows . UI . Xaml . Media . Animation ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .XamlResources
+namespace WenceyWang . Richman4L . Apps . Uni . UI . XamlResources
 {
 
 	public static class Resources
@@ -114,6 +114,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .XamlResources
 		public static Thickness WideMargin => GetValue <Thickness> ( ) ;
 
 		#endregion
+
 	}
 
 }

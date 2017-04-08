@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="600" height="600" viewBox="-300 -320 600 600" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <desc>Umbrella Revolution icon 3</desc>
+  <rect x="-400" y="-400" width="800" height="800" fill="#fdd017"/>
+  <g stroke="#000000" stroke-linecap="round" stroke-width="40">
+    <path d="M0,-250 L0,150 A50 50 180 0 1 -100 150" fill="none"/>
+    <path d="M-200,0 A200 200 90 0 1 200 0" fill="#fdd017"/>
+    <g fill="none">
+      <path d="M-200,0 L200,0"/>
+      <path d="M0,-200 A200 200 30 0 1 100 0"/>
+      <path d="M0,-200 A200 200 30 0 0 -100 0"/>
+    </g>
+  </g>
+</svg>

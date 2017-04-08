@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 
@@ -8,7 +8,7 @@ using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
+namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 {
 
 	//public abstract class MapObjectRenderer<T> : UserControl, IMapObjectRenderer<T> where T : MapObject
@@ -46,21 +46,21 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers .MapObjectRenderer
 		public int Y => ( ( IMapObjectRenderer ) this ) . Target . Y ;
 
 		MapObject IMapObjectRenderer . Target
-			=> ( MapObject ) GetType ( ) . GetProperty ( nameof ( IMapObjectRenderer . Target ) ) . GetValue ( this ) ;
+			=> ( MapObject ) GetType ( ) . GetProperty ( nameof(IMapObjectRenderer . Target) ) . GetValue ( this ) ;
 
 		void IMapObjectRenderer . Update ( )
 		{
-			GetType ( ) . GetMethod ( nameof ( IMapObjectRenderer . Update ) ) . Invoke ( this , new object [ ] { } ) ;
+			GetType ( ) . GetMethod ( nameof(IMapObjectRenderer . Update) ) . Invoke ( this , new object [ ] { } ) ;
 		}
 
 		void IMapObjectRenderer . StartUp ( )
 		{
-			GetType ( ) . GetMethod ( nameof ( IMapObjectRenderer . StartUp ) ) . Invoke ( this , new object [ ] { } ) ;
+			GetType ( ) . GetMethod ( nameof(IMapObjectRenderer . StartUp) ) . Invoke ( this , new object [ ] { } ) ;
 		}
 
 		void IMapObjectRenderer . SetTarget ( MapObject target )
 		{
-			GetType ( ) . GetMethod ( nameof ( IMapObjectRenderer . SetTarget ) ) . Invoke ( this , new object [ ] { target } ) ;
+			GetType ( ) . GetMethod ( nameof(IMapObjectRenderer . SetTarget) ) . Invoke ( this , new object [ ] { target } ) ;
 		}
 
 		public abstract void Show ( ) ;

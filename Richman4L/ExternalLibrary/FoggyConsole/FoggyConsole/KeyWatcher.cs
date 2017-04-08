@@ -16,11 +16,12 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
+using System . IO ;
 using System . Linq ;
 using System . Threading ;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
@@ -53,8 +54,10 @@ namespace WenceyWang .FoggyConsole
 			while ( IsRunning )
 			{
 				ConsoleKeyInfo keyInfo = Console . ReadKey ( true ) ;
-
-				KeyPressed ? . Invoke ( null , new KeyPressedEventArgs ( keyInfo ) ) ;
+				if ( IsRunning )
+				{
+					KeyPressed ? . Invoke ( null , new KeyPressedEventArgs ( keyInfo ) ) ;
+				}
 			}
 		}
 
@@ -64,7 +67,10 @@ namespace WenceyWang .FoggyConsole
 		public static void Stop ( )
 		{
 			IsRunning = false ;
-			WatcherThread . Abort ( ) ;
+
+			//Todo: 我不知道这么写行不行哦
+			StreamWriter stopWriter = new StreamWriter ( Console . OpenStandardInput ( ) ) ;
+			stopWriter . Write ( Environment . NewLine ) ;
 		}
 
 	}

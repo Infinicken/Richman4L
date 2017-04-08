@@ -1,10 +1,10 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer .Roads
+namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer . Roads
 {
 
 	public class EmptyBlockRenderer : CharacterMapObjectRenderer <EmptyBlock>

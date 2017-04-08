@@ -1,19 +1,15 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 using System . Resources ;
-
-// 有关程序集的一般信息由以下
-// 控制。更改这些特性值可修改
-// 与程序集关联的信息。
 
 [assembly : AssemblyTitle ( "CharacterMapRenderer" )]
 [assembly : AssemblyDescription ( "" )]
 [assembly : AssemblyConfiguration ( "" )]
 [assembly : AssemblyCompany ( "" )]
 [assembly : AssemblyProduct ( "CharacterMapRenderer" )]
-[assembly : AssemblyCopyright ( "版权所有(C)  2016" )]
+[assembly : AssemblyCopyright ( "版权所有(C)  2017" )]
 [assembly : AssemblyTrademark ( "" )]
 [assembly : AssemblyCulture ( "" )]
 [assembly : NeutralResourcesLanguage ( "zh-Hans" )]
@@ -29,5 +25,6 @@ using System . Resources ;
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
 
+[assembly : CLSCompliant ( true )]
 [assembly : AssemblyVersion ( "1.0.0.0" )]
 [assembly : AssemblyFileVersion ( "1.0.0.0" )]

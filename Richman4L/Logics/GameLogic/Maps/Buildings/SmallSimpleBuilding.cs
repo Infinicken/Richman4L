@@ -25,14 +25,14 @@ using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . PayReasons ;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	[Building]
 	public class SmallSimpleBuilding : SmallBuilding
 	{
 
-		public long MoneyCostWhenCrossed { get { throw new NotImplementedException ( ) ; } }
+		public long MoneyCostWhenCrossed => throw new NotImplementedException ( ) ;
 
 
 		public override bool IsEasyToDestroy => true ;
@@ -46,7 +46,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			//Todo:加入对是否收费的判断
@@ -61,7 +61,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			if ( player != Owner )
@@ -125,10 +125,7 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override void EndToday ( ) { }
 
-		public override string ToString ( )
-		{
-			return $"{nameof ( SmallSimpleBuilding )} named {Name} in {Grade} at ({X},{Y})" ;
-		}
+		public override string ToString ( ) { return $"{nameof(SmallSimpleBuilding)} named {Name} in {Grade} at ({X},{Y})" ; }
 
 	}
 

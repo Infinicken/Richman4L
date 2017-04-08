@@ -1,10 +1,10 @@
-﻿using System ;
-using System . Collections ;
+﻿// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+
+using System ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Controls
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 {
 
 	public sealed partial class MoneySymbol : CanvasContainer

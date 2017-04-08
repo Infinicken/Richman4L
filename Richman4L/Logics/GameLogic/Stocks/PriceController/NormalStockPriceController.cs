@@ -4,7 +4,7 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L . Stocks .PriceController
+namespace WenceyWang . Richman4L . Stocks . PriceController
 {
 
 	public class NormalStockPriceController : StockPriceController

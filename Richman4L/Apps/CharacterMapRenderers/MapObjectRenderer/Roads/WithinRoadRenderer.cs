@@ -20,7 +20,7 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer .Roads
+namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRenderer . Roads
 {
 
 	//public sealed class WithinRoadRenderer : CharacterMapObjectRenderer <WithInRoad>
@@ -330,4 +330,5 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRende
 	//	}
 
 	//}
+
 }

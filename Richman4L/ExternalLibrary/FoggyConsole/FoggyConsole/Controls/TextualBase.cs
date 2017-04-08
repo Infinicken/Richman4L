@@ -16,12 +16,12 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -38,12 +38,12 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		public string Text
 		{
-			get { return _text ; }
+			get => _text ;
 			set
 			{
 				if ( value == null )
 				{
-					throw new ArgumentNullException ( nameof ( value ) ) ;
+					throw new ArgumentNullException ( nameof(value) ) ;
 				}
 
 				if ( _text != value )
@@ -56,7 +56,9 @@ namespace WenceyWang . FoggyConsole .Controls
 		}
 
 		protected TextualBase ( IControlRenderer renderer )
-			: base ( renderer ) { }
+			: base ( renderer )
+		{
+		}
 
 		public event EventHandler TextChanged ;
 

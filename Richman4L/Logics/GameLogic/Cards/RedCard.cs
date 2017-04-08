@@ -10,7 +10,7 @@ using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L .Cards
+namespace WenceyWang . Richman4L . Cards
 {
 
 	[Card]
@@ -19,14 +19,14 @@ namespace WenceyWang . Richman4L .Cards
 
 		public override int PriceWhenBuy
 		{
-			get { throw new NotImplementedException ( ) ; }
-			set { throw new NotImplementedException ( ) ; }
+			get => throw new NotImplementedException ( ) ;
+			set => throw new NotImplementedException ( ) ;
 		}
 
 		public override int PriceWhenSell
 		{
-			get { throw new NotImplementedException ( ) ; }
-			set { throw new NotImplementedException ( ) ; }
+			get => throw new NotImplementedException ( ) ;
+			set => throw new NotImplementedException ( ) ;
 		}
 
 		static RedCard ( )

@@ -1,8 +1,8 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Apps .Console
+namespace WenceyWang . Richman4L . Apps . Console
 {
 
 	internal enum ProgramExitCode
@@ -10,7 +10,9 @@ namespace WenceyWang . Richman4L . Apps .Console
 
 		Success = 0 ,
 
-		LicenseNotAccepted = 1
+		LicenseNotAccepted = 1 ,
+
+		ExceptionUnhandled = 2
 
 	}
 

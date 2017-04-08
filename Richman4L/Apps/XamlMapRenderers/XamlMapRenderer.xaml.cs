@@ -7,14 +7,14 @@ using System . Threading . Tasks ;
 using Windows . Foundation ;
 using Windows . UI . Xaml . Controls ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer ;
 using WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer . Roads ;
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Maps . Events ;
 using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
+namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 {
 
 	public sealed partial class XamlMapRenderer : UserControl , IMapRenderer
@@ -37,7 +37,7 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 		{
 			if ( Target != null )
 			{
-				throw new InvalidOperationException ( $"this {nameof ( XamlMapRenderer )} have {nameof ( Target )} now." ) ;
+				throw new InvalidOperationException ( $"this {nameof(XamlMapRenderer)} have {nameof(Target)} now." ) ;
 			}
 
 			Target = map ;
@@ -69,9 +69,10 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 							MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
 														EntryType ??
 							MapObjectRendererTypeList . FirstOrDefault (
-								renderer =>
-									renderer . TargetType . GetTypeInfo ( ) .
-												IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? . EntryType ;
+															renderer =>
+																renderer . TargetType . GetTypeInfo ( ) .
+																			IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? .
+														EntryType ;
 						MapObjectRenderer . MapObjectRenderer objectRenderer =
 							( MapObjectRenderer . MapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
 						objectRenderer . RenderTransform =
@@ -101,7 +102,7 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 
 		private void Map_RemoveMapObjectEvent ( object sender , MapRemoveMapObjectEventArgs e ) { }
 
-		[Startup ( nameof ( RegisDefultRenderer ) )]
+		[Startup ( nameof(RegisDefultRenderer) )]
 		public static void RegisDefultRenderer ( )
 		{
 			lock ( Locker )
@@ -124,11 +125,11 @@ namespace WenceyWang . Richman4L . Apps .XamlMapRenderers
 		{
 			if ( mapRendererType == null )
 			{
-				throw new ArgumentNullException ( nameof ( mapRendererType ) ) ;
+				throw new ArgumentNullException ( nameof(mapRendererType) ) ;
 			}
 			if ( targetType == null )
 			{
-				throw new ArgumentNullException ( nameof ( targetType ) ) ;
+				throw new ArgumentNullException ( nameof(targetType) ) ;
 			}
 
 			MapObjectRendererType type =

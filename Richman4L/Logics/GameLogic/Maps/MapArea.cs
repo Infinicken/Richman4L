@@ -1,8 +1,8 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	public abstract class MapArea
@@ -32,10 +32,12 @@ namespace WenceyWang . Richman4L .Maps
 		}
 
 		public override bool IsInArea ( MapObject mapObject )
-			=> mapObject . X >= X &&
-				mapObject . X + mapObject . Size . Width <= X + Width &&
-				mapObject . Y >= Y &&
-				mapObject . Y + mapObject . Size . Height <= Y + Height ;
+		{
+			return mapObject . X >= X &&
+					mapObject . X + mapObject . Size . Width <= X + Width &&
+					mapObject . Y >= Y &&
+					mapObject . Y + mapObject . Size . Height <= Y + Height ;
+		}
 
 	}
 

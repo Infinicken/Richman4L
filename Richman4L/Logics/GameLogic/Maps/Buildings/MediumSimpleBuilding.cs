@@ -17,12 +17,12 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L . Maps .Buildings
+namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	[Building]
@@ -33,11 +33,11 @@ namespace WenceyWang . Richman4L . Maps .Buildings
 
 		public override long MaintenanceFee { get ; }
 
-		public override int NoncombustiblePartRatio { get { throw new NotImplementedException ( ) ; } }
+		public override int NoncombustiblePartRatio => throw new NotImplementedException ( ) ;
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
 
-		public override void StartDay ( GameDate nextDate ) { throw new NotImplementedException ( ) ; }
+		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
 		public override void Destoy ( BuildingDestroyReason reason ) { throw new NotImplementedException ( ) ; }
 

@@ -2,7 +2,7 @@
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Stocks
+namespace WenceyWang . Richman4L . Stocks
 {
 
 	/// <summary>

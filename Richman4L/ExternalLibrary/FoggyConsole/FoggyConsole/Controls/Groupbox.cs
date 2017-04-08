@@ -21,7 +21,7 @@ using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -54,12 +54,12 @@ namespace WenceyWang . FoggyConsole .Controls
 		/// </summary>
 		public string Header
 		{
-			get { return _header ; }
+			get => _header ;
 			set
 			{
 				if ( value . Contains ( Environment . NewLine ) )
 				{
-					throw new ArgumentException ( $"{nameof ( Header )} can't contain linefeeds or carriage returns." ) ;
+					throw new ArgumentException ( $"{nameof(Header)} can't contain linefeeds or carriage returns." ) ;
 				}
 
 				if ( _header != value )

@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Stocks ;
 
-namespace WenceyWang . Richman4L . Buffs .StockBuffs
+namespace WenceyWang . Richman4L . Buffs . StockBuffs
 {
 
 	public class RedBuff : StockBuff
@@ -13,7 +13,7 @@ namespace WenceyWang . Richman4L . Buffs .StockBuffs
 
 		public RedBuff ( Stock target , int duration ) : base ( target , duration ) { }
 
-		public override void StartDay ( GameDate nextDate ) { base . StartDay ( nextDate ) ; }
+		public override void StartDay ( GameDate thisDate ) { base . StartDay ( thisDate ) ; }
 
 	}
 

@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	public class Frame : ContentControl
@@ -12,15 +12,15 @@ namespace WenceyWang . FoggyConsole .Controls
 
 		public override Size Size
 		{
-			get { return Application . Current . WindowSize ; }
-			set { Application . Current . WindowSize = value ; }
+			get => Application . Current . WindowSize ;
+			set => Application . Current . WindowSize = value ;
 		}
 
 		public override bool CanFocus => false ;
 
 		public Page CurrentPage { get ; private set ; }
 
-		public override Control Content { get { return CurrentPage ; } set { throw new InvalidOperationException ( ) ; } }
+		public override Control Content { get => CurrentPage ; set => throw new InvalidOperationException ( ) ; }
 
 		public Frame ( IControlRenderer renderer = null ) : base ( renderer ?? new FrameRanderer ( ) ) { }
 
@@ -41,7 +41,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		{
 			if ( page == null )
 			{
-				throw new ArgumentNullException ( nameof ( page ) ) ;
+				throw new ArgumentNullException ( nameof(page) ) ;
 			}
 
 			if ( CurrentPage != page )

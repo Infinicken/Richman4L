@@ -21,7 +21,7 @@ using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -81,7 +81,10 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Control assigned
 		/// </exception>
 		public Checkbox ( CheckboxRenderer renderer = null )
-			: base ( renderer ?? new CheckboxRenderer ( ) ) { State = CheckState . Indeterminate ; }
+			: base ( renderer ?? new CheckboxRenderer ( ) )
+		{
+			State = CheckState . Indeterminate ;
+		}
 
 	}
 

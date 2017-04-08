@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L .Stocks
+namespace WenceyWang . Richman4L . Stocks
 {
 
 	public class StockProof : GameObject , IAsset
@@ -36,7 +36,7 @@ namespace WenceyWang . Richman4L .Stocks
 
 		public override void EndToday ( ) { }
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 
 		private void Stock_DelistEvent ( object sender , EventArgs e ) { throw new NotImplementedException ( ) ; }

@@ -1,5 +1,5 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 using System . Runtime . InteropServices ;
@@ -11,17 +11,17 @@ using System . Runtime . InteropServices ;
 [assembly : AssemblyTitle ( "FoggyConsole" )]
 [assembly : AssemblyDescription ( "" )]
 [assembly : AssemblyConfiguration ( "" )]
-[assembly : AssemblyCompany ( "Microsoft" )]
+[assembly : AssemblyCompany ( "Dream Recorder" )]
 [assembly : AssemblyProduct ( "FoggyConsole" )]
-[assembly : AssemblyCopyright ( "Copyright © Microsoft 2012" )]
+[assembly : AssemblyCopyright ( "Copyright © Wencey Wang 2017" )]
 [assembly : AssemblyTrademark ( "" )]
 [assembly : AssemblyCulture ( "" )]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-
-[assembly : ComVisible ( false )]
+[assembly : CLSCompliant ( true )]
+[assembly : ComVisible ( true )]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 

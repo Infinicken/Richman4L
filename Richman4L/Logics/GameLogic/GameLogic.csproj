@@ -123,6 +123,7 @@
     <Compile Include="Maps\MapObjectType.cs" />
     <Compile Include="Maps\MapSize.cs" />
     <Compile Include="Maps\Police.cs" />
+    <Compile Include="RegisterableTypeBase.cs" />
     <Compile Include="Maps\Roads\NormalRoad.cs" />
     <Compile Include="Maps\Roads\Road.cs" />
     <Compile Include="Maps\Roads\AreaRoad.cs" />

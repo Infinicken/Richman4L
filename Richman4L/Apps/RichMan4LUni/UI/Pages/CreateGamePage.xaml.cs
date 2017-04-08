@@ -31,7 +31,7 @@ using Windows . UI . Xaml . Navigation ;
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 using WenceyWang . Richman4L . Maps ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>
@@ -52,7 +52,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 		{
 			Parameters = e . Parameter as StartGameParameters ?? new StartGameParameters ( ) ;
 			if ( ApiInformation . IsEventPresent ( typeof ( HardwareButtons ) . FullName ,
-													nameof ( HardwareButtons . BackPressed ) ) )
+													nameof(HardwareButtons . BackPressed) ) )
 			{
 				HardwareButtons . BackPressed += MainPageButton_Click ;
 			}

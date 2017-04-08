@@ -16,12 +16,12 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . FoggyConsole . Controls . Renderers ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
@@ -49,7 +49,9 @@ namespace WenceyWang . FoggyConsole .Controls
 		///     Control assigned
 		/// </exception>
 		public Button ( ControlRenderer <Button> renderer = null )
-			: base ( renderer ?? new ButtonRenderer ( ) ) { }
+			: base ( renderer ?? new ButtonRenderer ( ) )
+		{
+		}
 
 		/// <summary>
 		///     Fired if the button is focused and the user presses the space bar

@@ -21,13 +21,15 @@ using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Auctions ;
+using WenceyWang . Richman4L . Cards ;
 using WenceyWang . Richman4L . InfomationCenter ;
 using WenceyWang . Richman4L . Interoperability . Arguments ;
+using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . Commands ;
 using WenceyWang . Richman4L . Players . Models ;
 
-namespace WenceyWang . Richman4L .GameEnviroment
+namespace WenceyWang . Richman4L . GameEnviroment
 {
 
 	public class DiceWithValue
@@ -43,7 +45,7 @@ namespace WenceyWang . Richman4L .GameEnviroment
 			Value = value ;
 		}
 
-		public override string ToString ( ) { return $"{nameof ( DiceType )}: {DiceType}, {nameof ( Value )}: {Value}" ; }
+		public override string ToString ( ) { return $"{nameof(DiceType)}: {DiceType}, {nameof(Value)}: {Value}" ; }
 
 	}
 
@@ -75,13 +77,15 @@ namespace WenceyWang . Richman4L .GameEnviroment
 
 		public abstract void StartAuction ( AuctionRequest request ) ;
 
-		public abstract void UpdateAuction ( Player buyer , long priceRised ) ;
+		public abstract void UpdateAuction ( AuctionRequest request , Player buyer , long priceRised ) ;
 
 		public abstract void ShowDice ( DiceType diceType , int value ) ;
 
-		public void RiseAuctionPrice ( long priceRised ) { }
+		public void RiseAuctionPrice ( AuctionRequest request , long priceRised ) { }
 
-		public abstract void ShowAuctionResult ( ) ;
+		public abstract void ShowAuctionResult ( AuctionRequest request , AuctionResult result ) ;
+
+		public abstract PlayerConsoleAbility GetAbility ( ) ;
 
 		//Todo:这点事件得慢慢生成啊
 		//public event EventHandler<>
@@ -91,6 +95,15 @@ namespace WenceyWang . Richman4L .GameEnviroment
 		public void ApplyPlayerCommand ( PlayerCommand command , ArgumentsContainer arguments ) { }
 
 		public void SendChatMessage ( string message ) { }
+
+	}
+
+	public struct PlayerConsoleAbility
+	{
+
+		public List <MapObjectType> SupportedMapObjectTypes { get ; set ; }
+
+		public List <CardType> SupportedCardTypes { get ; set ; }
 
 	}
 

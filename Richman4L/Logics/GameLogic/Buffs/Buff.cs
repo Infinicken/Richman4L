@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L .Buffs
+namespace WenceyWang . Richman4L . Buffs
 {
 
 	public abstract class Buff : GameObject
@@ -30,7 +30,7 @@ namespace WenceyWang . Richman4L .Buffs
 
 		public event EventHandler MaturityEvent ;
 
-		public override void StartDay ( GameDate nextDate ) { }
+		public override void StartDay ( GameDate thisDate ) { }
 
 		public override void EndToday ( )
 		{

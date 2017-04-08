@@ -10,7 +10,7 @@ using Windows . UI . Xaml . Navigation ;
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 using WenceyWang . Richman4L . Apps . Uni . UI . Controls ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	/// <summary>

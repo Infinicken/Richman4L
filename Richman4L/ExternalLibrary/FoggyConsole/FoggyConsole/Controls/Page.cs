@@ -1,12 +1,12 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
 using WenceyWang . FoggyConsole . Properties ;
 
-namespace WenceyWang . FoggyConsole .Controls
+namespace WenceyWang . FoggyConsole . Controls
 {
 
 	public abstract class Page : ContentControl
@@ -19,7 +19,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		[CanBeNull]
 		public override Control Content
 		{
-			get { return _content ; }
+			get => _content ;
 			set
 			{
 				_content = value ;
@@ -36,7 +36,7 @@ namespace WenceyWang . FoggyConsole .Controls
 		{
 			if ( page == null )
 			{
-				throw new ArgumentNullException ( nameof ( page ) ) ;
+				throw new ArgumentNullException ( nameof(page) ) ;
 			}
 
 			Content = CrateControle ( page . Elements ( ) . Single ( ) ) ;
@@ -70,7 +70,7 @@ namespace WenceyWang . FoggyConsole .Controls
 			Control currentControl = ( Control ) Activator . CreateInstance ( controlType ) ;
 			foreach ( XAttribute attribute in control . Attributes ( ) )
 			{
-				PropertyInfo property = controlType . GetProperty ( attribute . Name . LocalName ) ;
+				PropertyInfo property = controlType . GetRuntimeProperty ( attribute . Name . LocalName ) ;
 				property . SetValue ( currentControl , Convert . ChangeType ( attribute . Value , property . PropertyType ) ) ;
 			}
 

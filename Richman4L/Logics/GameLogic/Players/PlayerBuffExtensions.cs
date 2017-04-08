@@ -20,7 +20,7 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L .Players
+namespace WenceyWang . Richman4L . Players
 {
 
 	public static class PlayerBuffExtensions
@@ -30,7 +30,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			return player . Buffs . Any ( item => item . BlockBuyArea ) ;
@@ -40,7 +40,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			return player . Buffs . Any ( item => item . BlockBuyStock ) ;
@@ -51,7 +51,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			return player . Buffs . Any ( item => item . BlockGetCharge ) ;
@@ -62,7 +62,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			return player . Buffs . Any ( item => item . BlockMoving ) ;
@@ -72,7 +72,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			return player . Buffs . Any ( item => item . BlockSellStock ) ;
@@ -82,7 +82,7 @@ namespace WenceyWang . Richman4L .Players
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			return player . Buffs . Any ( item => item . FreeOfCharge ) ;

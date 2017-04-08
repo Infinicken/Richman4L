@@ -4,11 +4,11 @@ using System . Linq ;
 
 using Windows . Foundation ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Maps ;
 using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer .Roads
+namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer . Roads
 {
 
 	public sealed partial class NormalRoadRenderer : MapObjectRenderer , IMapObjectRenderer <NormalRoad>

@@ -17,18 +17,18 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L . Players .PayReasons
+namespace WenceyWang . Richman4L . Players . PayReasons
 {
 
 	public sealed class PayForMaintainBuildingReason : PayReason
 	{
 
-		public Building Building { get ; private set ; }
+		public Building Building { get ; }
 
 		public PayForMaintainBuildingReason ( Building building ) { Building = building ; }
 

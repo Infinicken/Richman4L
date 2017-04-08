@@ -17,38 +17,28 @@
 */
 
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
+using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L .Maps
+using WenceyWang . Richman4L . Annotations ;
+
+namespace WenceyWang . Richman4L . Maps
 {
 
-	public class MapObjectType
+	public class MapObjectType : RegisterableTypeBase <MapObject>
 	{
 
-		public Guid Guid { get ; }
-
-		public virtual string Name { get ; }
-
-		public virtual Type EntryType { get ; }
-
-		protected internal MapObjectType ( string name , Type entryType )
+		protected internal MapObjectType ( [NotNull] Type entryType , [NotNull] XElement element ) : base (
+			entryType ,
+			element )
 		{
-			#region Check Argument
+		}
 
-			if ( name == null )
-			{
-				throw new ArgumentNullException ( nameof ( name ) ) ;
-			}
-			if ( entryType == null )
-			{
-				throw new ArgumentNullException ( nameof ( entryType ) ) ;
-			}
-
-			#endregion
-
-			Name = name ;
-			EntryType = entryType ;
+		protected internal MapObjectType ( [NotNull] Type entryType ,
+											[NotNull] string name ,
+											[NotNull] string introduction ) : base ( entryType , name , introduction )
+		{
 		}
 
 	}

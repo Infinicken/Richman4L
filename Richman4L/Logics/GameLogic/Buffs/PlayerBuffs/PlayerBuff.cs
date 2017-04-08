@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
 
-namespace WenceyWang . Richman4L . Buffs .PlayerBuffs
+namespace WenceyWang . Richman4L . Buffs . PlayerBuffs
 {
 
 	/// <summary>
@@ -52,13 +52,13 @@ namespace WenceyWang . Richman4L . Buffs .PlayerBuffs
 			Target = target ;
 		}
 
-		public override void StartDay ( GameDate nextDate )
+		public override void StartDay ( GameDate thisDate )
 		{
 			if ( Game . Current . Calendar . Today == StartDate + Duration )
 			{
 				Target . RemoveBuff ( this ) ;
 			}
-			base . StartDay ( nextDate ) ;
+			base . StartDay ( thisDate ) ;
 		}
 
 	}

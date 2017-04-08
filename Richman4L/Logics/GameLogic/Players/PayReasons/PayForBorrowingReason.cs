@@ -1,11 +1,11 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Banks ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L . Players .PayReasons
+namespace WenceyWang . Richman4L . Players . PayReasons
 {
 
 	public class PayForBorrowingReason : PayReason
@@ -18,7 +18,7 @@ namespace WenceyWang . Richman4L . Players .PayReasons
 		{
 			if ( proof == null )
 			{
-				throw new ArgumentNullException ( nameof ( proof ) ) ;
+				throw new ArgumentNullException ( nameof(proof) ) ;
 			}
 
 			Proof = proof ;

@@ -1,12 +1,12 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using Microsoft . VisualStudio . TestTools . UnitTesting ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L . UnitTests . Maps .Buildings
+namespace WenceyWang . Richman4L . UnitTests . Maps . Buildings
 {
 
 	[TestClass]
@@ -18,8 +18,8 @@ namespace WenceyWang . Richman4L . UnitTests . Maps .Buildings
 		{
 			Building . RegisBuildingType ( typeof ( SmallSimpleBuilding ) ,
 											ResourceHelper . LoadXmlDocument (
-																$"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.SmallSimpleBuilding.xml" )
-															. Root ) ;
+																$"{nameof(Maps)}.{nameof(Buildings)}.Resources.SmallSimpleBuilding.xml" ) .
+															Root ) ;
 		}
 
 		//[TestMethod]
@@ -29,6 +29,7 @@ namespace WenceyWang . Richman4L . UnitTests . Maps .Buildings
 		//		ResourceHelper . LoadXmlDocument ( $"{nameof ( Maps )}.{nameof ( Buildings )}.Resources.MediumSimpleBuilding.xml" )
 		//			. Root );
 		//}
+
 	}
 
 }

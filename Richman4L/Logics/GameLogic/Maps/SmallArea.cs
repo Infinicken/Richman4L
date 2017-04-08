@@ -17,18 +17,19 @@
 */
 
 using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
+using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
-	[MapObject]
+	[MapObject ( nameof(SmallArea) , nameof(SmallArea) )]
+	[Guid ( "33F035E3-0DA6-41BB-BEB2-67BD4214CF31" )]
 	public class SmallArea : Area
 	{
 

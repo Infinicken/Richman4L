@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
 using System . Reflection ;
 
-namespace WenceyWang . Richman4L . Apps .Console
+namespace WenceyWang . Richman4L . Apps . Console
 {
 
 	public class LanguageResources

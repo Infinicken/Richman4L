@@ -1,10 +1,10 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 
-namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
+namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 {
 
 	public sealed class FloatIntervalDefineDomain : ArgumentValueDefineDomain
@@ -19,7 +19,10 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
 
 		public bool IsRightClosed { get ; }
 
-		public FloatIntervalDefineDomain ( double leftEndpoint , bool isLeftClosed , double rightEndpoint , bool isRightClosed )
+		public FloatIntervalDefineDomain ( double leftEndpoint ,
+											bool isLeftClosed ,
+											double rightEndpoint ,
+											bool isRightClosed )
 		{
 			LeftEndpoint = leftEndpoint ;
 			IsLeftClosed = isLeftClosed ;

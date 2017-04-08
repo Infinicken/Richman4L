@@ -1,12 +1,12 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . FoggyConsole ;
 using WenceyWang . FoggyConsole . Controls ;
 using WenceyWang . Richman4L . Apps . Console . Fonts ;
 
-namespace WenceyWang . Richman4L . Apps . Console .Pages
+namespace WenceyWang . Richman4L . Apps . Console . Pages
 {
 
 	public class MainPage : Page
@@ -16,18 +16,14 @@ namespace WenceyWang . Richman4L . Apps . Console .Pages
 
 		public FIGletLabel GameTitleLabel { get ; } = new FIGletLabel ( ) ;
 
-		public Button NewGameButton { get ; private set ; } = new Button ( ) ;
+		public Button NewGameButton { get ; } = new Button ( ) ;
 
 		public Button LoadGameButton { get ; set ; } = new Button ( ) ;
 
 		public Button SettingButton { get ; set ; } = new Button ( ) ;
 
 
-		public string CurrentGameTitle
-		{
-			get { return GameTitleLabel . Text ; }
-			private set { GameTitleLabel . Text = value ; }
-		}
+		public string CurrentGameTitle { get => GameTitleLabel . Text ; private set => GameTitleLabel . Text = value ; }
 
 		public MainPage ( )
 		{

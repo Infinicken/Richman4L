@@ -23,7 +23,7 @@ using Microsoft . Extensions . Logging ;
 
 using WenceyWang . FoggyConsole . Controls ;
 
-namespace WenceyWang .FoggyConsole
+namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
@@ -62,12 +62,13 @@ namespace WenceyWang .FoggyConsole
 		/// </summary>
 		public FocusManager FocusManager
 		{
-			get { return _focusManager ; }
+			get => _focusManager ;
 			set
 			{
 				if ( IsRunning )
 				{
-					throw new InvalidOperationException ( "The FocusManager can't be changed once the Application has been started." ) ;
+					throw new InvalidOperationException (
+						"The FocusManager can't be changed once the Application has been started." ) ;
 				}
 
 				_focusManager = value ;
@@ -83,13 +84,7 @@ namespace WenceyWang .FoggyConsole
 
 		public Size WindowSize
 		{
-			get
-			{
-				// Size dedection will work on windows and on most unix-systems
-				// mono uses the same values for Window- and Buffer-Properties,
-				// so it doesn't matter which values are used.
-				return new Size ( Console . WindowWidth , Console . WindowHeight ) ;
-			}
+			get => new Size ( Console . WindowWidth , Console . WindowHeight ) ;
 			set
 			{
 				Console . SetWindowSize ( value . Width , value . Height ) ;
@@ -114,7 +109,7 @@ namespace WenceyWang .FoggyConsole
 			viewRoot = viewRoot ?? new Frame ( ) ;
 			if ( viewRoot . Container != null )
 			{
-				throw new ArgumentException ( "The root-container can't have the Container-Property set." , nameof ( viewRoot ) ) ;
+				throw new ArgumentException ( "The root-container can't have the Container-Property set." , nameof(viewRoot) ) ;
 			}
 
 			Current = this ;

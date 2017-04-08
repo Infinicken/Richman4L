@@ -1,10 +1,10 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Properties ;
+using WenceyWang . Richman4L . Annotations ;
 
-namespace WenceyWang . Richman4L . Interoperability . Arguments .DefineDomains
+namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 {
 
 	public abstract class ArgumentValueDefineDomain

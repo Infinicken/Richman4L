@@ -6,19 +6,25 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:pages="using:WenceyWang.Richman4L.Apps.Uni.UI.Pages"
 	mc:Ignorable="d" >
-
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-		<Grid.RowDefinitions>
-			<RowDefinition Height="40" />
-			<RowDefinition />
-			<RowDefinition Height="40" />
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="40" />
-			<ColumnDefinition />
-			<ColumnDefinition Width="40" />
-		</Grid.ColumnDefinitions>
-		<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="TooSmallToShow" VerticalAlignment="Center"
-					FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Grid.Column="1" Grid.Row="1" />
+	<Page.Resources>
+		<Storyboard x:Name="StartStoryboard" />
+		<Storyboard x:Name="LeaveStoryboard" />
+	</Page.Resources>
+	<Grid>
+		<Rectangle x:Name="BackgroundRect" Fill="{StaticResource BlackBrush}" />
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40" />
+				<RowDefinition />
+				<RowDefinition Height="40" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="40" />
+			</Grid.ColumnDefinitions>
+			<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="TooSmallToShow" VerticalAlignment="Center"
+						FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" Grid.Column="1" Grid.Row="1" />
+		</Grid>
 	</Grid>
 </pages:AnimatePage>

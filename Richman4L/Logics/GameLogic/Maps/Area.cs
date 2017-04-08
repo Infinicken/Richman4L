@@ -22,14 +22,14 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Buffs . AreaBuffs ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps . Buildings ;
 using WenceyWang . Richman4L . Maps . Roads ;
 using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Properties ;
 
-namespace WenceyWang . Richman4L .Maps
+namespace WenceyWang . Richman4L . Maps
 {
 
 	public abstract class Area : Block , IAsset
@@ -49,7 +49,7 @@ namespace WenceyWang . Richman4L .Maps
 
 		public AreaRoad Position
 		{
-			get { return _position ?? ( _position = ( AreaRoad ) Map . Currnet . GetRoad ( _positionId ) ) ; }
+			get => _position ?? ( _position = ( AreaRoad ) Map . Currnet . GetRoad ( _positionId ) ) ;
 			set
 			{
 				_positionId = value . Id ;
@@ -76,12 +76,12 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( resource == null )
 			{
-				throw new ArgumentNullException ( nameof ( resource ) ) ;
+				throw new ArgumentNullException ( nameof(resource) ) ;
 			}
 
-			_positionId = ReadNecessaryValue <long> ( resource , nameof ( Position ) ) ;
+			_positionId = ReadNecessaryValue <long> ( resource , nameof(Position) ) ;
 			ForestCoverRate = ReadUnnecessaryValue ( resource ,
-													nameof ( ForestCoverRate ) ,
+													nameof(ForestCoverRate) ,
 													GameRandom . Current . RandomGameValue ( ) ) ;
 		}
 
@@ -93,7 +93,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( newOwner == null )
 			{
-				throw new ArgumentNullException ( nameof ( newOwner ) ) ;
+				throw new ArgumentNullException ( nameof(newOwner) ) ;
 			}
 
 			Owner = newOwner ;
@@ -103,7 +103,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			Building ? . Stay ( player ) ;
@@ -113,7 +113,7 @@ namespace WenceyWang . Richman4L .Maps
 		{
 			if ( player == null )
 			{
-				throw new ArgumentNullException ( nameof ( player ) ) ;
+				throw new ArgumentNullException ( nameof(player) ) ;
 			}
 
 			Building ? . Pass ( player ) ;
@@ -122,7 +122,9 @@ namespace WenceyWang . Richman4L .Maps
 		public override void StartDay ( GameDate thisDate ) { }
 
 		public bool IsBuildingAvailable ( [NotNull] BuildingType buildingType )
-			=> AvailableBuildings . Contains ( buildingType ) ;
+		{
+			return AvailableBuildings . Contains ( buildingType ) ;
+		}
 
 		public void BuildBuildiing ( [NotNull] Building building )
 		{
@@ -130,12 +132,12 @@ namespace WenceyWang . Richman4L .Maps
 
 			if ( building == null )
 			{
-				throw new ArgumentNullException ( nameof ( building ) ) ;
+				throw new ArgumentNullException ( nameof(building) ) ;
 			}
 
 			if ( ! IsBuildingAvailable ( building . Type ) )
 			{
-				throw new ArgumentException ( $"{nameof ( building )} is not valid for this area" , nameof ( building ) ) ;
+				throw new ArgumentException ( $"{nameof(building)} is not valid for this area" , nameof(building) ) ;
 			}
 			if ( Building != null )
 			{

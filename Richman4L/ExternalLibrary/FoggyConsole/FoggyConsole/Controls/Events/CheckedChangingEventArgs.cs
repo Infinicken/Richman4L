@@ -1,8 +1,8 @@
 using System ;
-using System . Collections ;
+using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . FoggyConsole . Controls .Events
+namespace WenceyWang . FoggyConsole . Controls . Events
 {
 
 	/// <summary>
@@ -14,7 +14,7 @@ namespace WenceyWang . FoggyConsole . Controls .Events
 		/// <summary>
 		///     The state the Checkbox is going to have
 		/// </summary>
-		public CheckState State { get ; private set ; }
+		public CheckState State { get ; }
 
 		/// <summary>
 		///     True if the change should be canceled, otherwise false

@@ -1,10 +1,9 @@
 ﻿using System ;
-using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Players .Models
+namespace WenceyWang . Richman4L . Players . Models
 {
 
 	public class PlayerModelProxy
@@ -31,12 +30,12 @@ namespace WenceyWang . Richman4L . Players .Models
 		{
 			if ( element == null )
 			{
-				throw new ArgumentNullException ( nameof ( element ) ) ;
+				throw new ArgumentNullException ( nameof(element) ) ;
 			}
 
-			Name = element . Attribute ( nameof ( Name ) ) ? . Value ;
-			FileName = element . Attribute ( nameof ( FileName ) ) ? . Value ;
-			Image = new Uri ( element . Attribute ( nameof ( Image ) ) ? . Value ?? "" ) ;
+			Name = element . Attribute ( nameof(Name) ) ? . Value ;
+			FileName = element . Attribute ( nameof(FileName) ) ? . Value ;
+			Image = new Uri ( element . Attribute ( nameof(Image) ) ? . Value ?? "" ) ;
 		}
 
 		private static List <PlayerModelProxy> _playerModels ;
@@ -51,7 +50,7 @@ namespace WenceyWang . Richman4L . Players .Models
 			return _playerModels ;
 		}
 
-		[Startup ( nameof ( LoadPlayerModels ) )]
+		[Startup ( nameof(LoadPlayerModels) )]
 		public static void LoadPlayerModels ( )
 		{
 			lock ( Locker )
@@ -63,7 +62,7 @@ namespace WenceyWang . Richman4L . Players .Models
 
 				_playerModels = new List <PlayerModelProxy> ( ) ;
 
-				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof ( Players )}.{nameof ( Models )}.Resources.Index.xml" ) ;
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(Players)}.{nameof(Models)}.Resources.Index.xml" ) ;
 
 				if ( doc . Root == null )
 				{

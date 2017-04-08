@@ -22,7 +22,7 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Calendars ;
 
-namespace WenceyWang . Richman4L . Maps .Roads
+namespace WenceyWang . Richman4L . Maps . Roads
 {
 
 	/// <summary>
@@ -63,11 +63,11 @@ namespace WenceyWang . Richman4L . Maps .Roads
 		{
 			if ( road == null )
 			{
-				throw new ArgumentNullException ( nameof ( road ) ) ;
+				throw new ArgumentNullException ( nameof(road) ) ;
 			}
 			if ( ! road . CanEnterFrom ( Terminal ) )
 			{
-				throw new ArgumentException ( $"{nameof ( road )} can not enter from {nameof ( Terminal )}" ) ;
+				throw new ArgumentException ( $"{nameof(road)} can not enter from {nameof(Terminal)}" ) ;
 			}
 
 			Route . Add ( road ) ;

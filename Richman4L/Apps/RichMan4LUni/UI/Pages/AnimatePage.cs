@@ -1,5 +1,6 @@
 ﻿using System ;
-using System . Collections ;
+using System . Collections . Generic ;
+using System . Diagnostics ;
 using System . Linq ;
 using System . Reflection ;
 
@@ -8,7 +9,7 @@ using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Media . Animation ;
 using Windows . UI . Xaml . Shapes ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
 	public abstract class AnimatePage : Page
@@ -17,8 +18,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 		public Storyboard GetLeaveStoryboard => ( Storyboard )
 			GetType ( ) . GetTypeInfo ( ) . GetDeclaredField ( "LeaveStoryboard" ) . GetValue ( this ) ;
 
-		public Rectangle GetBackGroundRect => ( Rectangle )
-			GetType ( ) . GetTypeInfo ( ) . GetDeclaredField ( "BackGroundRect" ) . GetValue ( this ) ;
+		public Rectangle GetBackgroundRect => ( Rectangle )
+			GetType ( ) . GetTypeInfo ( ) . GetDeclaredField ( "BackgroundRect" ) . GetValue ( this ) ;
 
 		public static Color GetPageColor <T> ( ) where T : AnimatePage
 		{
@@ -30,17 +31,13 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI .Pages
 			return ( Color ) page . GetType ( ) . GetTypeInfo ( ) . GetDeclaredProperty ( "PageColor" ) . GetValue ( null ) ;
 		}
 
-
+		[DebuggerStepThrough]
 		protected void SetEventArgsHandled ( object args )
 		{
-			dynamic e = args ;
-			try
+			PropertyInfo property = args . GetType ( ) . GetTypeInfo ( ) . GetDeclaredProperty ( "Handled" ) ;
+			if ( property ? . CanWrite == true )
 			{
-				e . Handled = true ;
-			}
-			catch ( Exception )
-			{
-				// ignored
+				property . SetValue ( args , true ) ;
 			}
 		}
 
