@@ -106,31 +106,31 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 #if !DEBUG
 
-						if ( !File . Exists ( FileNameConst . LicenseFile ) )
-						{
-							System . Console . WriteLine ( @"License file not found" );
-							Logger . Info ( "License file not found, will generate it." );
-							GenerateNewLicenseFile ( );
-							Exit ( ProgramExitCode . LicenseNotAccepted );
-						}
-						else
-						{
-							FileStream licenseFile = File . OpenRead ( FileNameConst . LicenseFile );
-							StreamReader reader = new StreamReader ( licenseFile );
-							Logger . Info ( "License file found, reading it." );
-							string licenseFileContent = reader . ReadToEnd ( );
-							reader . Close ( );
-							if ( !licenseFileContent . EndsWith ( "I accept this License." ) )
-							{
-								Logger . Info ( "License check error." );
-								System . Console . WriteLine ( @"You should read the License.txt and accept it before use this program." );
-								Exit ( ProgramExitCode . LicenseNotAccepted );
-							}
-							else
-							{
-								Logger . Info ( "License check pass." );
-							}
-						}
+			if (!File.Exists(FileNameConst.LicenseFile))
+			{
+				System.Console.WriteLine(@"License file not found");
+				Logger.LogInformation("License file not found, will generate it.");
+				GenerateNewLicenseFile();
+				Exit(ProgramExitCode.LicenseNotAccepted);
+			}
+			else
+			{
+				FileStream licenseFile = File.OpenRead(FileNameConst.LicenseFile);
+				StreamReader reader = new StreamReader(licenseFile);
+				Logger.LogInformation("License file found, reading it.");
+				string licenseFileContent = reader.ReadToEnd();
+				reader.Dispose();
+				if (!licenseFileContent.EndsWith("I accept this License."))
+				{
+					Logger.LogInformation("License check error.");
+					System.Console.WriteLine(@"You should read the License.txt and accept it before use this program.");
+					Exit(ProgramExitCode.LicenseNotAccepted);
+				}
+				else
+				{
+					Logger.LogInformation("License check pass.");
+				}
+			}
 
 #endif
 
@@ -160,26 +160,17 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 			List <Task> startUpTasks = new List <Task> ( ) ;
 
-			startUpTasks . Add ( Task . Run ( ( ) =>
-											{
-												Logger . LogDebug ( "Loading titles." ) ;
-												GameTitle . LoadTitles ( ) ;
-												Logger . LogDebug ( "Loading titles complete." ) ;
-											} ) ) ;
+			startUpTasks . Add ( Startup . RunAllTask ( ) ) ;
 
-			startUpTasks . Add ( Task . Run ( ( ) =>
-											{
-												Logger . LogDebug ( "Loading sayings." ) ;
-												GameSaying . LoadSayings ( ) ;
-												Logger . LogDebug ( "Loading sayings complete." ) ;
-											} ) ) ;
+			startUpTasks . Add ( CharacterMapRenderers . Startup . RunAllTask ( ) ) ;
 
 			CurrentApplication = new Application ( new Frame ( ) ) ;
-			Task . WaitAll ( startUpTasks . ToArray ( ) ) ;
 
 			CurrentApplication . Run ( ) ;
 
 			CurrentApplication . ViewRoot . NavigateTo ( new StartPage ( ) ) ;
+
+			Task . WaitAll ( startUpTasks . ToArray ( ) ) ;
 		}
 
 

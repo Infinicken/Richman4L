@@ -14,7 +14,19 @@ namespace WenceyWang . Richman4L . Apps . Uni . UnitTests
 {
 
 	[TestClass]
-	public class UnitTest
+	public class GameLogicPerformanceTests
+	{
+
+		[TestMethod]
+		public void LoadSayingTest ( )
+		{
+			GameSaying . LoadSayings ( ) ;
+		}
+
+	}
+
+	[TestClass]
+	public class UnitTests
 	{
 
 		[TestMethod]

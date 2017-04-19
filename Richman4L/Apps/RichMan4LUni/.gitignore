@@ -5,3 +5,5 @@
 *.pfx
 *.StoreAssociation.xml
 *.vspscc
+/AppPackages/
+/BundleArtifacts/

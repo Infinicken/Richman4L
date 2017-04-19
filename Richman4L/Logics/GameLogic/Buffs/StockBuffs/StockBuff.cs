@@ -60,10 +60,10 @@ namespace WenceyWang . Richman4L . Buffs . StockBuffs
 			Target = target ;
 		}
 
-		public override void Maturity ( )
+		public override void Expire ( )
 		{
 			Target ? . Buffs ? . Remove ( this ) ;
-			base . Maturity ( ) ;
+			base . Expire ( ) ;
 		}
 
 	}

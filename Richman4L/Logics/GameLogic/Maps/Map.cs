@@ -63,20 +63,25 @@ namespace WenceyWang . Richman4L . Maps
 			get
 			{
 				return
-					( Block ) Objects . FirstOrDefault ( mapobject => mapobject is Block &&
-																	( mapobject . X == x ||
-																	mapobject . X < x && mapobject . X + mapobject . Size . Width - 1 >= x ) &&
-																	( mapobject . Y == y ||
-																	mapobject . Y < y && mapobject . Y + mapobject . Size . Height - 1 >= y ) ) ;
+					( Block ) Objects . SingleOrDefault ( mapobject => mapobject is Block &&
+																		( mapobject . X == x ||
+																		mapobject . X < x && mapobject . X + mapobject . Size . Width - 1 >= x ) &&
+																		( mapobject . Y == y ||
+																		mapobject . Y < y && mapobject . Y + mapobject . Size . Height - 1 >= y ) ) ;
 			}
 		}
 
 		/// <summary>
+		///     s
 		///     地图的排水基数
 		/// </summary>
 		[ConsoleVisable]
 		public int PondingDecreaseBase { get ; }
 
+		/// <summary>
+		///     Create A map from Xml document
+		/// </summary>
+		/// <param name="document"></param>
 		public Map ( [NotNull] XDocument document ) : this ( )
 		{
 			if ( document == null )
@@ -84,26 +89,38 @@ namespace WenceyWang . Richman4L . Maps
 				throw new ArgumentNullException ( nameof(document) ) ;
 			}
 
-			XElement ele = document . Root ;
-			if ( ele . Name != nameof(Map) )
-			{
-				throw new ArgumentException ( $"{nameof(document)} do not perform a {nameof(Map)}" ) ;
-			}
-
 			try
 			{
-				Name = ReadNecessaryValue <string> ( ele , nameof(Name) ) ;
-				Size = new MapSize ( Convert . ToInt32 ( ele . Attribute ( "SizeX" ) . Value ) ,
-									Convert . ToInt32 ( ele . Attribute ( "SizeY" ) . Value ) ) ;
-				Guid = Guid . Parse ( ele . Attribute ( nameof(Guid) ) . Value ) ;
+				XElement mapSource = document . Root ;
+
+				if ( mapSource . Name != nameof(Map) )
+				{
+					throw new ArgumentException ( $"{nameof(document)} do not perform a {nameof(Map)}" ) ;
+				}
+
+				Name = ReadNecessaryValue <string> ( mapSource , nameof(Name) ) ;
+				Size = ReadNecessaryValue <MapSize> ( mapSource , nameof(Size) ) ;
+				Guid = ReadNecessaryValue <Guid> ( mapSource , nameof(Guid) ) ;
 
 
-				foreach ( XElement item in ele . Element ( nameof(Objects) ) ? . Elements ( ) )
+				IEnumerable <XElement> typeMapSource = mapSource . Element ( "MapObjectTypes" ) . Elements ( ) ;
+
+				Dictionary <string , Type> typeMapResult = new Dictionary <string , Type> ( typeMapSource . Count ( ) ) ;
+
+				foreach ( XElement element in typeMapSource )
+				{
+					string name = ReadNecessaryValue <string> ( element , nameof(Name) ) ;
+					Guid guid = ReadNecessaryValue <Guid> ( element , nameof(Guid) ) ;
+
+					typeMapResult . Add ( name , MapObject . MapObjectTypes . Single ( type => type . Guid == guid ) . EntryType ) ;
+				}
+
+				foreach ( XElement mapObjectSource in mapSource . Element ( nameof(Objects) ) . Elements ( ) )
 				{
 					Objects . Add (
 						Activator . CreateInstance (
-							MapObject . MapObjectTypes . Single ( type => type . Name == item . Name ) . EntryType ,
-							item ) as MapObject ) ;
+							typeMapResult [ mapObjectSource . Name . LocalName ] ,
+							mapObjectSource ) as MapObject ) ;
 				}
 			}
 			catch ( NullReferenceException e )

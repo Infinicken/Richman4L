@@ -22,10 +22,10 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 
 		public virtual void DoWhenPass ( Player player , MoveType moveType ) { }
 
-		public override void Maturity ( )
+		public override void Expire ( )
 		{
+			base . Expire ( ) ;
 			Target ? . Buffs ? . Remove ( this ) ;
-			base . Maturity ( ) ;
 		}
 
 	}

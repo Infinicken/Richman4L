@@ -82,7 +82,26 @@ namespace WenceyWang . Richman4L . Apps . Uni
 
 		private void OnResuming ( object sender , object e ) { }
 
-		private void OnUnhandledException ( object sender , UnhandledExceptionEventArgs e ) { e . Handled = false ; }
+		private async void OnUnhandledException ( object sender , UnhandledExceptionEventArgs e )
+		{
+#if !DEBUG
+
+			ContentDialog debugDialog = new ContentDialog
+										{
+											Title = "发生了没有被处理的异常" ,
+											Content = "异常的细节：" ,
+											PrimaryButtonText = "我认命了" ,
+											SecondaryButtonText = "让我离开这里"
+										} ;
+
+			ContentDialogResult result = await debugDialog . ShowAsync ( ) ;
+
+			if ( result != ContentDialogResult . Primary )
+			{
+				Current . Exit ( ) ;
+			}
+#endif
+		}
 
 		/// <summary>
 		///     在应用程序由最终用户正常启动时进行调用。
@@ -100,9 +119,7 @@ namespace WenceyWang . Richman4L . Apps . Uni
 
 			if ( RootFrame == null )
 			{
-				RootFrame = new Frame ( ) ;
-
-				RootFrame . CacheSize = 0 ;
+				RootFrame = new Frame { CacheSize = 0 } ;
 
 				RootFrame . NavigationFailed += OnNavigationFailed ;
 				RootFrame . SizeChanged += Frame_SizeChanged ;

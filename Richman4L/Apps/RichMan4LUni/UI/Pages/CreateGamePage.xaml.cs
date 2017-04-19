@@ -66,6 +66,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 
 			Parameters . Map = new Map ( "Test.xml" ) ;
 
+
 			StartStoryboard . Begin ( ) ;
 			StartStoryboard . Completed += StartStoryboard_Completed ;
 		}

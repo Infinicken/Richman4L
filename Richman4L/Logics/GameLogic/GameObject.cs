@@ -126,7 +126,8 @@ namespace WenceyWang . Richman4L
 				throw new ArgumentException ( $"" ) ;
 			}
 
-			return ( T ) Convert . ChangeType ( value , typeof ( T ) ) ;
+			TypeConverter typeConverter = TypeDescriptor . GetConverter ( typeof ( T ) ) ;
+			return ( T ) typeConverter . ConvertFromString ( value ) ;
 		}
 
 		public static T ReadUnnecessaryValue <T> ( XElement element , string name , T defaultValue )
@@ -147,7 +148,8 @@ namespace WenceyWang . Richman4L
 				return defaultValue ;
 			}
 
-			return ( T ) Convert . ChangeType ( value , typeof ( T ) ) ;
+			TypeConverter typeConverter = TypeDescriptor . GetConverter ( typeof ( T ) ) ;
+			return ( T ) typeConverter . ConvertFromString ( value ) ;
 		}
 
 		[NotifyPropertyChangedInvocator]

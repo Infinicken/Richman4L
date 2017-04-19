@@ -53,6 +53,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			SetValue ( value ) ;
 		}
 
+		// The hash provider will not change because the type of T
 		// ReSharper disable once StaticMemberInGenericType
 		private static readonly HashAlgorithmProvider HashProvider ;
 

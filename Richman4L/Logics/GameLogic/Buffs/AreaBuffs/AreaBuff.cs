@@ -23,10 +23,10 @@ namespace WenceyWang . Richman4L . Buffs . AreaBuffs
 
 		public AreaBuff ( Area target ) { Target = target ; }
 
-		public override void Maturity ( )
+		public override void Expire ( )
 		{
 			Target ? . Buffs ? . Remove ( this ) ;
-			base . Maturity ( ) ;
+			base . Expire ( ) ;
 		}
 
 	}

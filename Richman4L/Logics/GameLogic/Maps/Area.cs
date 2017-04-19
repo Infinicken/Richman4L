@@ -35,9 +35,32 @@ namespace WenceyWang . Richman4L . Maps
 	public abstract class Area : Block , IAsset
 	{
 
-		private AreaRoad _position ;
+		private readonly List <long> _adjacentRoadsId = new List <long> ( ) ;
 
-		private long _positionId ;
+		private List <AreaRoad> _adjacentRoads ;
+
+		private BlockAzimuth ? previousMainAzimuth ;
+
+		public virtual List <AreaRoad> AdjacentRoads
+		{
+			get
+			{
+				if ( _adjacentRoads == null &&
+					_adjacentRoadsId == null )
+				{
+					return null ;
+				}
+
+				return _adjacentRoads ??
+						( _adjacentRoads = _adjacentRoadsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) as AreaRoad ) .
+															Where ( road => road != null ) .
+															ToList ( ) ) ;
+			}
+		}
+
+		[ConsoleVisable]
+		public BlockAzimuth MainAzimuth => previousMainAzimuth ??
+											( previousMainAzimuth = this . GetAzimuth ( AdjacentRoads . RandomItem ( ) ) ) . Value ;
 
 		[NotNull]
 		[ItemNotNull]
@@ -46,16 +69,6 @@ namespace WenceyWang . Richman4L . Maps
 		public abstract long MoneyCostWhenCrossed { get ; protected set ; }
 
 		public abstract double BuildingResistance { get ; protected set ; }
-
-		public AreaRoad Position
-		{
-			get => _position ?? ( _position = ( AreaRoad ) Map . Currnet . GetRoad ( _positionId ) ) ;
-			set
-			{
-				_positionId = value . Id ;
-				_position = value ;
-			}
-		}
 
 		public override int PondingDecrease { get ; }
 
@@ -79,7 +92,13 @@ namespace WenceyWang . Richman4L . Maps
 				throw new ArgumentNullException ( nameof(resource) ) ;
 			}
 
-			_positionId = ReadNecessaryValue <long> ( resource , nameof(Position) ) ;
+			XElement adjacentRoads = resource . Element ( nameof(AdjacentRoads) ) ;
+
+			foreach ( XElement road in adjacentRoads . Elements ( ) )
+			{
+				_adjacentRoadsId . Add ( ReadNecessaryValue <long> ( road , nameof(Id) ) ) ;
+			}
+
 			ForestCoverRate = ReadUnnecessaryValue ( resource ,
 													nameof(ForestCoverRate) ,
 													GameRandom . Current . RandomGameValue ( ) ) ;

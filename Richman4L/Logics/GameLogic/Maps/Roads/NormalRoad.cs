@@ -38,14 +38,14 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 				foreach ( XElement road in entrances . Elements ( ) )
 				{
-					_entrancesId . Add ( Convert . ToInt64 ( road . Attribute ( nameof(Id) ) . Value ) ) ;
+					_entrancesId . Add ( ReadNecessaryValue <long> ( road , nameof(Id) ) ) ;
 				}
 
 				XElement exits = resource . Element ( nameof(Exits) ) ;
 
 				foreach ( XElement road in exits . Elements ( ) )
 				{
-					_exitsId . Add ( Convert . ToInt64 ( road . Attribute ( nameof(Id) ) . Value ) ) ;
+					_exitsId . Add ( ReadNecessaryValue <long> ( road , nameof(Id) ) ) ;
 				}
 			}
 			catch ( NullReferenceException e )
@@ -94,7 +94,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 		#region Entrances
 
-		private List <Road> _entrances = new List <Road> ( ) ;
+		private List <Road> _entrances ;
 
 		private readonly List <long> _entrancesId = new List <long> ( ) ;
 
@@ -145,7 +145,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 		#region Exits
 
-		private List <Road> _exits = new List <Road> ( ) ;
+		private List <Road> _exits ;
 
 		private readonly List <long> _exitsId = new List <long> ( ) ;
 

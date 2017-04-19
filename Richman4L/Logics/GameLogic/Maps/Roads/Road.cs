@@ -21,6 +21,7 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Buffs . RoadBuffs ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Players ;
@@ -37,6 +38,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 		public bool BlockMoving => Buffs . Any ( buff => buff . BlockMoving ) ;
 
+		[NotNull]
 		public List <RoadBuff> Buffs { get ; } = new List <RoadBuff> ( ) ;
 
 		public override MapSize Size => MapSize . Small ;

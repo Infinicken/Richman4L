@@ -38,31 +38,37 @@ namespace WenceyWang . Richman4L . Maps
 		/// <summary>
 		///     表示当前区块的积水量
 		/// </summary>
+		[ConsoleVisable]
 		public virtual int PondingAmount { get ; set ; }
 
 		/// <summary>
 		///     表示每天能够减少的积水量
 		/// </summary>
+		[ConsoleVisable]
 		public abstract int PondingDecrease { get ; }
 
 		/// <summary>
 		///     指示当前块是否覆盖了水
 		/// </summary>
+		[ConsoleVisable]
 		public bool IsWet => PondingAmount != 0 ;
 
 		/// <summary>
 		///     指示可燃性
 		/// </summary>
+		[ConsoleVisable]
 		public abstract int Flammability { get ; }
 
 		/// <summary>
 		///     指示当前的火焰强度
 		/// </summary>
+		[ConsoleVisable]
 		public int FlameStrength { get ; set ; }
 
 		/// <summary>
 		///     指示没有被燃烧的比率
 		/// </summary>
+		[ConsoleVisable]
 		public int UnburnedRatio
 			=>
 				Convert . ToInt32 (
@@ -71,41 +77,49 @@ namespace WenceyWang . Richman4L . Maps
 		/// <summary>
 		///     指示当前块的可燃物总量
 		/// </summary>
+		[ConsoleVisable]
 		public abstract int CombustibleMaterialAmount { get ; }
 
 		/// <summary>
 		///     指示当前块已经被烧毁的量
 		/// </summary>
+		[ConsoleVisable]
 		public int BurnedAmount { get ; set ; }
 
 		/// <summary>
 		///     指示当前块的森林覆盖率
 		/// </summary>
+		[ConsoleVisable]
 		public abstract int ForestCoverRate { get ; set ; }
 
 		/// <summary>
 		///     指示当前块是否正在燃烧
 		/// </summary>
+		[ConsoleVisable]
 		public bool IsFiring => FlameStrength != 0 ;
 
 		/// <summary>
 		///     指示当前块是否覆盖了冰
 		/// </summary>
+		[ConsoleVisable]
 		public bool IsFrozen => IceThickness != 0 ;
 
 		/// <summary>
 		///     指示当前块覆盖冰的厚度
 		/// </summary>
+		[ConsoleVisable]
 		public int IceThickness { get ; protected set ; }
 
 		/// <summary>
 		///     指示当前块是否覆盖了雪
 		/// </summary>
+		[ConsoleVisable]
 		public bool IsBearSnow => SnowThickness != 0 ;
 
 		/// <summary>
 		///     指示当前块覆盖雪的厚度
 		/// </summary>
+		[ConsoleVisable]
 		public int SnowThickness { get ; protected set ; }
 
 		public Block ( [NotNull] XElement resource ) : base ( resource )

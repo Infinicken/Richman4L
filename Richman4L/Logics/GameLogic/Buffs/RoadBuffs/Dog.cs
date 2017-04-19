@@ -105,7 +105,7 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 			int days = GameRandom . Current . Next ( 1 , 4 ) ;
 			player . ChangeState ( PlayerState . Hospitalized , days ) ;
 			BiteEvent ? . Invoke ( this , new DogBiteEventArgs ( player , days ) ) ;
-			Maturity ( ) ;
+			Expire ( ) ;
 		}
 
 		public event EventHandler <DogBiteEventArgs> BiteEvent ;
@@ -146,7 +146,7 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 			Kill ( ) ;
 		}
 
-		private void Kill ( ) { Maturity ( ) ; }
+		private void Kill ( ) { Expire ( ) ; }
 
 	}
 

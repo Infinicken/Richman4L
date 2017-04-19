@@ -137,6 +137,11 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRende
 			}
 			else if ( Unit == ConsoleSize . Large )
 			{
+				if ( Target . UpExit &&
+					Target . UpEntrance )
+				{
+				}
+
 				//#region 断头路
 
 				//if ( Target . GetAzimuth ( Target . ForwardRoad ) == BlockAzimuth . None &&
@@ -172,7 +177,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . MapObjectRende
 				//			{
 				//				CurrentView [ x , 0 ] = new ConsoleChar ( "┃ ┋ ┃" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
 				//				CurrentView [ x , 1 ] = new ConsoleChar ( "┗━━━┛" [ x ] , ConsoleColor . White , ConsoleColor . DarkGray ) ;
-				//				CurrentView [ x , 2 ] = new ConsoleChar ( ' ' , ConsoleColor . White , ConsoleColor . DarkGreen ) ;
+				//				CurrentView [ x , 2 ] = new ConsoleChar ( '     ' , ConsoleColor . White , ConsoleColor . DarkGreen ) ;
 				//			}
 
 				//			break ;

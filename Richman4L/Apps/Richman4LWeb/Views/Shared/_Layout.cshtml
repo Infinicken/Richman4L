@@ -32,15 +32,14 @@
 	@{ GameSaying saying = GameSaying . GetSaying ( ) ; }
 	<blockquote>
 		<p>@( saying . Content )</p>
-		@{
-			if ( saying . People != null ||
-				( saying . Song ?? saying . Book ) != null )
-			{
-			}
+
+		@if ( saying . People != null ||
+			( saying . Song ?? saying . Book ) != null )
+		{
+			<footer>
+				@( saying . People )@( ( saying . Song ?? saying . Book ) == null ? "" : " in " )<cite title="Source Title">@( saying . Song ?? saying . Book )</cite>@( saying . Author == null ? "" : " by " )@( saying . Author )
+			</footer>
 		}
-		<footer>
-			@( saying . People )@( ( saying . Song ?? saying . Book ) == null ? "" : " in " )<cite title="Source Title">@( saying . Song ?? saying . Book )</cite>@( saying . Author == null ? "" : " by " )@( saying . Author )
-		</footer>
 	</blockquote>
 
 	<footer>

@@ -18,9 +18,9 @@
 
 using System ;
 using System . Collections . Generic ;
+using System . ComponentModel ;
+using System . Globalization ;
 using System . Linq ;
-
-using WenceyWang . Richman4L . Annotations ;
 
 namespace WenceyWang . Richman4L . Maps
 {
@@ -28,6 +28,7 @@ namespace WenceyWang . Richman4L . Maps
 	/// <summary>
 	///     指示地图或地图元素的尺寸
 	/// </summary>
+	[TypeConverter ( typeof ( MapSizeConverter ) )]
 	public struct MapSize
 	{
 
@@ -98,7 +99,7 @@ namespace WenceyWang . Richman4L . Maps
 
 		public override string ToString ( ) { return $"({Width},{Height})" ; }
 
-		public static explicit operator MapSize ( [NotNull] string mapSize )
+		public static explicit operator MapSize ( string mapSize )
 		{
 			if ( mapSize == null )
 			{
@@ -125,6 +126,53 @@ namespace WenceyWang . Richman4L . Maps
 		{
 			Width = width ;
 			Height = height ;
+		}
+
+	}
+
+	public class MapSizeConverter : TypeConverter
+	{
+
+		// Overrides the CanConvertFrom method of TypeConverter.
+		// The ITypeDescriptorContext interface provides the context for the
+		// conversion. Typically, this interface is used at design time to 
+		// provide information about the design-time container.
+		public override bool CanConvertFrom ( ITypeDescriptorContext context ,
+											Type sourceType )
+		{
+			if ( sourceType == typeof ( string ) )
+			{
+				return true ;
+			}
+
+			return base . CanConvertFrom ( context , sourceType ) ;
+		}
+
+		// Overrides the ConvertFrom method of TypeConverter.
+		public override object ConvertFrom ( ITypeDescriptorContext context ,
+											CultureInfo culture ,
+											object value )
+		{
+			if ( value is string stringValue )
+			{
+				return ( MapSize ) stringValue ;
+			}
+
+			return base . ConvertFrom ( context , culture , value ) ;
+		}
+
+		// Overrides the ConvertTo method of TypeConverter.
+		public override object ConvertTo ( ITypeDescriptorContext context ,
+											CultureInfo culture ,
+											object value ,
+											Type destinationType )
+		{
+			if ( destinationType == typeof ( string ) )
+			{
+				return ( ( MapSize ) value ) . ToString ( ) ;
+			}
+
+			return base . ConvertTo ( context , culture , value , destinationType ) ;
 		}
 
 	}

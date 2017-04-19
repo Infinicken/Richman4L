@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . Buffs
 			Duration = duration ;
 		}
 
-		public event EventHandler MaturityEvent ;
+		public event EventHandler ExpiredEvent ;
 
 		public override void StartDay ( GameDate thisDate ) { }
 
@@ -36,14 +36,14 @@ namespace WenceyWang . Richman4L . Buffs
 		{
 			if ( Game . Current . Calendar . Today == StartDate + Duration )
 			{
-				Maturity ( ) ;
+				Expire ( ) ;
 			}
 		}
 
-		public virtual void Maturity ( )
+		public virtual void Expire ( )
 		{
+			ExpiredEvent ? . Invoke ( this , EventArgs . Empty ) ;
 			Game . Current . GameBuffs . Remove ( this ) ;
-			MaturityEvent ? . Invoke ( this , EventArgs . Empty ) ;
 		}
 
 	}

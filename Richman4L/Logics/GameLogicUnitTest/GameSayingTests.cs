@@ -48,7 +48,7 @@ namespace WenceyWang . Richman4L . UnitTests
 
 											return contentLenthDiff ;
 										} ) ;
-			string lastSaying = "" ;
+			string lastSaying = string . Empty ;
 			foreach ( GameSaying saying in GameSaying . Sayings )
 			{
 				if ( saying . Content != lastSaying )

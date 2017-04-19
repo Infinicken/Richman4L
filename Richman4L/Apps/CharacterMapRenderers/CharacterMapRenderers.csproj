@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="CharacterMapRenderer.cs" />
     <Compile Include="ConsoleChar.cs" />
-    <Compile Include="ConsoleColor.cs" />
     <Compile Include="ConsoleSize.cs" />
     <Compile Include="MapObjectRendererType.cs" />
     <Compile Include="MapObjectRenderer\CharacterMapObjectRenderer.cs" />

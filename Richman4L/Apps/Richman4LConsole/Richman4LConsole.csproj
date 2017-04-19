@@ -36,5 +36,6 @@
     <ProjectReference Include="..\..\ExternalLibrary\FoggyConsole\FoggyConsole\FoggyConsole.csproj" />
     <ProjectReference Include="..\..\Logics\GameLogic\GameLogic.csproj" />
     <ProjectReference Include="..\CharacterMapRenderers\CharacterMapRenderers.csproj" />
+    <ProjectReference Include="..\FoggyMapRenderers\FoggyMapRenderers.csproj" />
   </ItemGroup>
 </Project>
