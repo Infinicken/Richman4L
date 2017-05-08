@@ -39,6 +39,7 @@ namespace WenceyWang . Richman4L . Tools . MapDesigner
 			if ( Debugger . IsAttached )
 			{
 				DebugSettings . EnableFrameRateCounter = true ;
+				DebugSettings . EnableRedrawRegions = false ;
 			}
 #endif
 			Frame rootFrame = Window . Current . Content as Frame ;

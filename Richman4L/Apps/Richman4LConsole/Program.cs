@@ -92,7 +92,7 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 			//ConsoleArguments arguments = new ConsoleArguments();
 
-			CommandLineApplication commandLineApplication = new CommandLineApplication ( true ) ;
+			CommandLineApplication commandLineApplication = new CommandLineApplication ( ) ;
 
 			//var noLogoCommand = commandLineApplication . Option ( @"-nologo|--nologo" , "Show no logo" , CommandOptionType . NoValue ,) ;
 

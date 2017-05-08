@@ -22,6 +22,7 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Buffs . RoadBuffs . Event ;
 using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Weathers ;
 
@@ -37,12 +38,30 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		/// <summary>
 		///     指示狗咬经过的行人的概率的10000倍
 		/// </summary>
-		public int BiteWalkerPossibility => 3333 ;
+		[GameRuleItem ( 3333 )]
+		public static int BiteWalkerPossibility { get ; internal set ; }
 
 		/// <summary>
 		///     指示在此停止的人被狗咬的概率的10000倍
 		/// </summary>
-		public int BiteStayerPossibility => 6666 ;
+		[GameRuleItem ( 6666 )]
+		public static int BiteStayerPossibility { get ; internal set ; }
+
+		[GameRuleItem ( 800 )]
+		public static int HighestTolerableWindStrength { get ; set ; }
+
+		[GameRuleItem ( 0 )]
+		public static int LowestTolerableTemperature { get ; set ; }
+
+		[GameRuleItem ( 37 )]
+		public static int HighestTolerableTemperature { get ; set ; }
+
+		[GameRuleItem ( 4 )]
+		public static int MaxLiveDuration { get ; set ; }
+
+
+		[GameRuleItem ( 1 )]
+		public static int MinLiveDuration { get ; set ; }
 
 		public override void DoWhenPass ( Player player , MoveType moveType )
 		{
@@ -66,8 +85,8 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 				case MoveType . DrivingCar :
 				{
 					Kill ( player , moveType ) ;
-				}
 					break ;
+				}
 				default :
 				{
 					throw new ArgumentOutOfRangeException ( nameof(moveType) ) ;
@@ -97,7 +116,8 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 
 		public bool IsKilled ( Weather weather )
 		{
-			return weather . Wind . Strength >= 800 || weather . Temperature <= 0 || weather . Temperature >= 37 ;
+			return weather . Wind . Strength >= HighestTolerableWindStrength ||
+					weather . Temperature <= LowestTolerableTemperature || weather . Temperature >= HighestTolerableTemperature ;
 		}
 
 		public void Bite ( Player player )

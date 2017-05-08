@@ -16,7 +16,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 
 		public string Title
 		{
-			get { return TitleTextBlock ? . Text ; }
+			get => TitleTextBlock ? . Text ;
 			set
 			{
 				if ( TitleTextBlock != null )
@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 
 		public string Text
 		{
-			get { return TextTextBlock ? . Text ; }
+			get => TextTextBlock ? . Text ;
 			set
 			{
 				if ( TextTextBlock != null )
@@ -40,7 +40,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 
 		public ImageSource Image
 		{
-			get { return ImageImage . Source ; }
+			get => ImageImage . Source ;
 			set
 			{
 				if ( TextTextBlock != null )

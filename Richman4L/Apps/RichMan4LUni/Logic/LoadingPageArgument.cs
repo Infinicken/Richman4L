@@ -19,7 +19,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 
 		public int LoadingProcess
 		{
-			get { return _loadingProcess ; }
+			get => _loadingProcess ;
 			set
 			{
 				if ( _loadingProcess != value )
@@ -82,7 +82,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 
 		public int LoadingProcess
 		{
-			get { return _loadingProcess ; }
+			get => _loadingProcess ;
 			set
 			{
 				if ( _loadingProcess != value )

@@ -48,7 +48,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// <seealso cref="AutoRedraw" />
 		public ConsoleChar this [ int top , int left ]
 		{
-			get { return _field [ top , left ] ; }
+			get => _field [ top , left ] ;
 			set
 			{
 				if ( _field [ top , left ] != value )

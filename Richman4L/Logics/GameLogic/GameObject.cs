@@ -35,6 +35,7 @@ namespace WenceyWang . Richman4L
 	public abstract class GameObject : INotifyPropertyChanged
 	{
 
+		[PublicAPI]
 		[ConsoleVisable]
 		public Guid Guid { get ; }
 

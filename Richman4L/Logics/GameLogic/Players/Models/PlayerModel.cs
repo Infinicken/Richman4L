@@ -30,18 +30,27 @@ namespace WenceyWang . Richman4L . Players . Models
 	public class PlayerModel : MapObject
 	{
 
+		[ConsoleVisable]
 		public string Name { get ; set ; }
 
+		[ConsoleVisable]
 		public string Introduction { get ; set ; }
 
+		[ConsoleVisable]
 		public Uri Model { get ; set ; }
 
+		[ConsoleVisable]
 		public DateTime BirthDay { get ; set ; }
 
 		public List <PlayerSaying> SayingWhenGained { get ; } = new List <PlayerSaying> ( ) ;
 
 		public List <PlayerSaying> SayingWhenHarmed { get ; } = new List <PlayerSaying> ( ) ;
 
+		[ConsoleVisable]
+		public int LuckyDegree { get ; }
+
+		[ConsoleVisable]
+		public int Resistance { get ; }
 
 		public List <PlayerSaying> SayingWhenMeet { get ; } = new List <PlayerSaying> ( ) ;
 

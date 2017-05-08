@@ -51,7 +51,7 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public virtual Size Size
 		{
-			get { return _size ; }
+			get => _size ;
 			set
 			{
 				if ( _size != value )
@@ -122,7 +122,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public ConsoleColor ? BackgroundColor
 		{
-			get { return _backgroundColor ; }
+			get => _backgroundColor ;
 			set
 			{
 				if ( _backgroundColor != value )
@@ -140,7 +140,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public ConsoleColor ? ForegroundColor
 		{
-			get { return _foregroundColor ; }
+			get => _foregroundColor ;
 			set
 			{
 				if ( _foregroundColor != value )
@@ -156,7 +156,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public bool IsFocused
 		{
-			get { return _isFocused ; }
+			get => _isFocused ;
 			set
 			{
 				if ( _isFocused != value )
@@ -206,7 +206,7 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public bool Enabled
 		{
-			get { return _enabled ; }
+			get => _enabled ;
 			set
 			{
 				if ( _enabled != value )

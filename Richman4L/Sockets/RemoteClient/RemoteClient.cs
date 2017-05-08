@@ -13,7 +13,7 @@ using WenceyWang . Richman4L . Players . Models ;
 namespace WenceyWang . Richman4L . RemoteClient
 {
 
-	public enum PackageType
+	public enum PackageType : short
 	{
 
 		Event ,
@@ -27,12 +27,22 @@ namespace WenceyWang . Richman4L . RemoteClient
 	public class Package
 	{
 
+		public PackageType Type { get ; set ; }
+
+		public byte [ ] Data { get ; set ; }
+
 	}
 
+
+	/// <summary>
+	///     为服务器抽象的远程客户端
+	/// </summary>
 	public class RemoteClient : PlayerConsole
 	{
 
 		public TcpClient Client = new TcpClient ( ) ;
+
+		public Guid Guid { get ; set ; }
 
 		public override void ShowEvent ( Event @event ) { throw new NotImplementedException ( ) ; }
 

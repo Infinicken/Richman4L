@@ -38,7 +38,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public ContentAlign Align
 		{
-			get { return _align ; }
+			get => _align ;
 			set
 			{
 				if ( _align != value )
@@ -51,7 +51,7 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public CharacterWidth CharacterWidth
 		{
-			get { return _characterWidth ; }
+			get => _characterWidth ;
 			set
 			{
 				if ( _characterWidth != value )
@@ -64,7 +64,7 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public FIGletFont Font
 		{
-			get { return _font ; }
+			get => _font ;
 			set
 			{
 				if ( _font != value )

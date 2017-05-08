@@ -63,8 +63,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 
 		private void ShowPlayerGridStoryBoard_Completed ( object sender , object e )
 		{
-			ShowPlayerGridButton . Visibility = Visibility . Collapsed ;
-			ShowPlayerGridButton . RenderTransform = new CompositeTransform { Rotation = 180 } ;
+			//ShowPlayerGridButton . Visibility = Visibility . Collapsed ;
+			//ShowPlayerGridButton . RenderTransform = new CompositeTransform { Rotation = 180 } ;
 
 			//PlayerGrid . Visibility = Visibility . Visible;
 			//PlayerGrid . Opacity = 100;
@@ -165,17 +165,17 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 
 		private void HideMenuGridStoryBoard_Completed ( object sender , object e )
 		{
-			MenuGrid . Visibility = Visibility . Collapsed ;
-			MenuGrid . Opacity = 0 ;
-			MenuGrid . RenderTransform = new CompositeTransform { TranslateY = 600 } ;
+			//MenuGrid . Visibility = Visibility . Collapsed ;
+			//MenuGrid . Opacity = 0 ;
+			//MenuGrid . RenderTransform = new CompositeTransform { TranslateY = 600 } ;
 			AddMenuControl ( ) ;
 		}
 
 		private void ShowMenuGridStoryBoard_Completed ( object sender , object e )
 		{
-			MenuGrid . Visibility = Visibility . Visible ;
-			MenuGrid . Opacity = 100 ;
-			MenuGrid . RenderTransform = new CompositeTransform { TranslateY = 0 } ;
+			//MenuGrid . Visibility = Visibility . Visible ;
+			//MenuGrid . Opacity = 100 ;
+			//MenuGrid . RenderTransform = new CompositeTransform { TranslateY = 0 } ;
 			AddMenuControl ( ) ;
 		}
 
@@ -215,7 +215,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 
 		private void GoButton_Click ( object sender , RoutedEventArgs e ) { }
 
-		private void MenuButton_Click ( object sender , RoutedEventArgs e ) { MenuPanel . Show ( ) ; }
+		private void MenuButton_Click ( object sender , RoutedEventArgs e )
+		{
+			ShowMenuGridStoryBoard . Begin ( ) ;
+			RemoveMenuControl ( ) ;
+		}
 
 		private void ZoomInButton_Click ( object sender , RoutedEventArgs e ) { }
 

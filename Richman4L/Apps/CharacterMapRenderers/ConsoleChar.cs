@@ -40,7 +40,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 
 		public static implicit operator ConsoleChar ( char character )
 		{
-			return new ConsoleChar ( character , ConsoleColor . Gray , ConsoleColor . Black ) ;
+			return new ConsoleChar ( character , ConsoleColor . Gray ) ;
 		}
 
 		public override bool Equals ( object obj )

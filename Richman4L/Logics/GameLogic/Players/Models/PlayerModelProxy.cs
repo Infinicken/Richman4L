@@ -17,8 +17,6 @@ namespace WenceyWang . Richman4L . Players . Models
 
 		public string Introduction { get ; set ; }
 
-		public Uri Image { get ; set ; }
-
 		public PlayerModel Model => _model ?? ( _model = new PlayerModel ( FileName ) ) ;
 
 		private static bool Loaded { get ; set ; }
@@ -35,7 +33,6 @@ namespace WenceyWang . Richman4L . Players . Models
 
 			Name = element . Attribute ( nameof(Name) ) ? . Value ;
 			FileName = element . Attribute ( nameof(FileName) ) ? . Value ;
-			Image = new Uri ( element . Attribute ( nameof(Image) ) ? . Value ?? "" ) ;
 		}
 
 		private static List <PlayerModelProxy> _playerModels ;

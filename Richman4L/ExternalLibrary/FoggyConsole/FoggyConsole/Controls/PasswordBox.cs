@@ -21,7 +21,7 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public ConsoleColor HintTextColor
 		{
-			get { return _hintTextColor ; }
+			get => _hintTextColor ;
 			set
 			{
 				if ( _hintTextColor != value )
@@ -34,7 +34,7 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public string HintText
 		{
-			get { return _hintText ; }
+			get => _hintText ;
 			set
 			{
 				if ( _hintText != value )
@@ -66,7 +66,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public char PasswordChar
 		{
-			get { return _passwordChar ; }
+			get => _passwordChar ;
 			set
 			{
 				if ( _passwordChar != value )

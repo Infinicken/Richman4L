@@ -9,7 +9,7 @@ using WenceyWang . Richman4L . Annotations ;
 namespace WenceyWang . Richman4L
 {
 
-	public abstract class RegisterableTypeBase <T>
+	public abstract class RegisterableTypeBase <T> where T : GameObject
 	{
 
 		public string Introduction { get ; }
@@ -71,13 +71,9 @@ namespace WenceyWang . Richman4L
 
 			EntryType = entryType ;
 
-			#region Load XML
-
 			Name = name ;
 
 			Introduction = introduction ;
-
-			#endregion
 		}
 
 		public override string ToString ( ) { return Guid . ToString ( ) ; }

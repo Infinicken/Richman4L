@@ -15,7 +15,7 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 
 		public CheckableChar CheckableChar
 		{
-			get { return _checkableChar ; }
+			get => _checkableChar ;
 			set
 			{
 				if ( _checkableChar != value )

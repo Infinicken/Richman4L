@@ -19,6 +19,7 @@
 using System ;
 using System . Collections . Generic ;
 using System . Linq ;
+using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . Cards ;
@@ -32,15 +33,28 @@ using WenceyWang . Richman4L . Players . Models ;
 namespace WenceyWang . Richman4L . GameEnviroment
 {
 
-	public class DiceWithValue
+	/// <summary>
+	///     骰子和它的值
+	/// </summary>
+	public struct DiceWithValue
 	{
 
-		public DiceType DiceType { get ; set ; }
+		public DiceType DiceType { get ; }
 
-		public int Value { get ; set ; }
+		public int Value { get ; }
 
 		public DiceWithValue ( DiceType diceType , int value )
 		{
+			if ( ! Enum . IsDefined ( typeof ( DiceType ) , diceType ) )
+			{
+				throw new ArgumentOutOfRangeException ( nameof(diceType) , "Value should be defined in the DiceType enum." ) ;
+			}
+			if ( value <= 0 ||
+				value > ( int ) diceType )
+			{
+				throw new ArgumentOutOfRangeException ( nameof(value) ) ;
+			}
+
 			DiceType = diceType ;
 			Value = value ;
 		}
@@ -54,6 +68,8 @@ namespace WenceyWang . Richman4L . GameEnviroment
 	/// </summary>
 	public abstract class PlayerConsole
 	{
+
+		public Guid Guid { get ; set ; }
 
 		public Player Target { get ; internal set ; }
 
@@ -87,6 +103,8 @@ namespace WenceyWang . Richman4L . GameEnviroment
 
 		public abstract PlayerConsoleAbility GetAbility ( ) ;
 
+		public event EventHandler Disconntcted ;
+
 		//Todo:这点事件得慢慢生成啊
 		//public event EventHandler<>
 
@@ -98,12 +116,23 @@ namespace WenceyWang . Richman4L . GameEnviroment
 
 	}
 
-	public struct PlayerConsoleAbility
+	public class PlayerConsoleAbility
 	{
 
-		public List <MapObjectType> SupportedMapObjectTypes { get ; set ; }
+		public Version SupportVersion { get ; }
 
-		public List <CardType> SupportedCardTypes { get ; set ; }
+		public List <MapObjectType> SupportedMapObjectTypes { get ; } = new List <MapObjectType> ( ) ;
+
+		public List <CardType> SupportedCardTypes { get ; } = new List <CardType> ( ) ;
+
+		public List <SmallGameType> SupportSmallGameType { get ; } = new List <SmallGameType> ( ) ;
+
+		public XElement ToXElement ( )
+		{
+			XElement result = new XElement ( nameof(PlayerConsoleAbility) ) ;
+
+			return result ;
+		}
 
 	}
 

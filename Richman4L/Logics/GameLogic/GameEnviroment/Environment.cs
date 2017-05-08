@@ -20,9 +20,20 @@ using System ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
+using System . Runtime . CompilerServices ;
 
 namespace WenceyWang . Richman4L . GameEnviroment
 {
+
+	[AttributeUsage ( AttributeTargets . Property )]
+	public sealed class GameRuleItemAttribute : Attribute
+	{
+
+		public object DefaultValue { get ; }
+
+		public GameRuleItemAttribute ( object defaultValue ) { DefaultValue = defaultValue ; }
+
+	}
 
 	/// <summary>
 	///     提供各种设置，比如说各种常数，如何产生随机数之类的
@@ -32,11 +43,26 @@ namespace WenceyWang . Richman4L . GameEnviroment
 
 		public Func <DiceType , int , ReadOnlyCollection <int>> GetDice { get ; set ; }
 
-		public int RedCardBuffDuration { get ; set ; }
-
 		public int BlackCardDuration { get ; set ; }
 
-		public int Dog { get ; set ; }
+		public Dictionary <string , object> Rules { get ; } = new Dictionary <string , object> ( ) ;
+
+		//public static void RegisSaying(GameSaying newSaying)
+		//{
+		//	lock (Locker)
+		//	{
+		//	}
+		//}
+
+		public T GetResult <T> ( Type type , [CallerMemberName] string name = null )
+		{
+			if ( name == null )
+			{
+				throw new ArgumentNullException ( nameof(name) ) ;
+			}
+
+			return ( T ) Rules [ $"{type . Name}.{name}" ] ;
+		}
 
 	}
 

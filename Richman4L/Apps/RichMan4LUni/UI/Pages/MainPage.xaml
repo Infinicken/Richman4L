@@ -3,10 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
-	xmlns:xamlMapRenderers="using:WenceyWang.Richman4L.Apps.XamlMapRenderers"
 	xmlns:pages="using:WenceyWang.Richman4L.Apps.Uni.UI.Pages"
-	xmlns:Controls="using:WenceyWang.Richman4L.Apps.Uni.UI.Controls"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Pages.MainPage"
 	mc:Ignorable="d" Height="Auto" Width="Auto" >
 

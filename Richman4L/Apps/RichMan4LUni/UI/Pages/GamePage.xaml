@@ -185,11 +185,6 @@
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
 			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
-											Storyboard.TargetName="HidePropertyGridButton" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="180" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
 				Storyboard.TargetName="PropertyGrid" >
@@ -241,11 +236,6 @@
 					</DiscreteObjectKeyFrame.Value>
 				</DiscreteObjectKeyFrame>
 			</ObjectAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
-											Storyboard.TargetName="HidePropertyGridButton" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="180" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="360" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
 			<DoubleAnimationUsingKeyFrames
 				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
 				Storyboard.TargetName="PropertyGrid" >
@@ -322,12 +312,6 @@
 				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MenuGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="600" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Name="ShowMenuGridStoryBoard" Completed="ShowMenuGridStoryBoard_Completed" >
 			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MenuGrid" >
@@ -345,12 +329,6 @@
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MenuGrid" >
 				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
-			</DoubleAnimationUsingKeyFrames>
-			<DoubleAnimationUsingKeyFrames
-				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-				Storyboard.TargetName="MenuGrid" >
-				<EasingDoubleKeyFrame KeyTime="0" Value="600" EasingFunction="{StaticResource EasingFunction}" />
-				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 		<Storyboard x:Name="ShowFlagTrue" >
@@ -400,7 +378,7 @@
 
 	<Grid>
 
-		<Rectangle x:Name="BackgroundRect" Fill="#FF13B3D6" Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsLocked="True" />
+		<Rectangle x:Name="BackgroundRect" Fill="#FF40C1CE" Grid.RowSpan="2" Grid.ColumnSpan="3" />
 		<Grid x:Name="MapFrame" >
 			<XamlMapRenderers:XamlMapRenderer x:Name="MapRenderer" />
 			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
@@ -452,7 +430,7 @@
 						Style="{StaticResource UpArrowTextBlockButtonStyle}" Content="投资" FontFamily="{StaticResource Font}"
 						FontSize="{StaticResource SmallFontSize}" />
 				<StackPanel x:Name="ControlsPanel" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left"
-							RenderTransformOrigin="0,0" Grid.Column="1" >
+							RenderTransformOrigin="0.5,0.5" Grid.Column="1" >
 					<StackPanel.RenderTransform>
 						<CompositeTransform TranslateX="-6" />
 					</StackPanel.RenderTransform>
@@ -477,8 +455,8 @@
 									FontSize="16" Width="16" Height="16" TextAlignment="Center" />
 					</Button>
 				</StackPanel>
-				<Grid x:Name="PropertyGrid" Grid.Row="9" Background="#66000000" Grid.ColumnSpan="2" VerticalAlignment="Bottom"
-					Height="400" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" >
+				<Grid x:Name="PropertyGrid" Background="#66000000" Grid.ColumnSpan="2" VerticalAlignment="Bottom"
+					Height="510" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="10" >
 					<Grid.RenderTransform>
 						<CompositeTransform />
 					</Grid.RenderTransform>
@@ -499,7 +477,7 @@
 					</ScrollViewer>
 				</Grid>
 				<Grid x:Name="CardGrid" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="6" Background="#FFFF4D4D" Grid.RowSpan="4"
-					RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" >
+					RenderTransformOrigin="0.5,0.5" >
 					<Grid.RenderTransform>
 						<CompositeTransform />
 					</Grid.RenderTransform>
@@ -515,10 +493,12 @@
 						<RowDefinition Height="10" />
 						<RowDefinition />
 					</Grid.RowDefinitions>
-					<TextBlock TextWrapping="Wrap" Text="卡片" FontFamily="{StaticResource Font}" FontSize="18.667" Grid.Column="1"
+					<TextBlock TextWrapping="Wrap" Text="卡片" FontFamily="{StaticResource Font}"
+								FontSize="{StaticResource SmallFontSize}" Grid.Column="1"
 								Grid.Row="1" />
 					<TextBlock x:Name="GamePointTextBlock" Grid.Column="2" HorizontalAlignment="Right" TextWrapping="Wrap"
-								Text="点数:1000" FontFamily="{StaticResource Font}" FontSize="16" VerticalAlignment="Center" Grid.Row="1" />
+								Text="点数:1000" FontFamily="{StaticResource Font}" VerticalAlignment="Center" Grid.Row="1"
+								FontSize="{StaticResource ExtraSmallFontSize}" />
 					<ScrollViewer Grid.Row="3" Grid.ColumnSpan="4" >
 						<StackPanel x:Name="CardListStackPanel" />
 					</ScrollViewer>
@@ -577,11 +557,9 @@
 					<Button x:Name="HidePropertyGridButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4"
 							Style="{StaticResource TextBlockButtonStyle}" Grid.ColumnSpan="3" Grid.RowSpan="3" Visibility="Collapsed"
 							RenderTransformOrigin="0.5,0.5" Click="HidePropertyGridButton_Click" >
-						<Button.RenderTransform>
-							<CompositeTransform />
-						</Button.RenderTransform>
 						<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="&#xF106;" VerticalAlignment="Center"
-									FontSize="18.667" RenderTransformOrigin="0.45,0.6" UseLayoutRounding="False" d:LayoutRounding="Auto"
+									FontSize="{StaticResource SmallFontSize}" RenderTransformOrigin="0.45,0.6" UseLayoutRounding="False"
+									d:LayoutRounding="Auto"
 									FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" />
 					</Button>
 				</Grid>
@@ -609,45 +587,39 @@
 					<controls:FlagSymbol x:Name="FlagSymbol" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
 										Width="20" Height="20" RenderTransformOrigin="0.5,0.5" />
 				</Grid>
+				<StackPanel Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Top" Grid.Row="8" />
 
 			</Grid>
-			<controls:SlidePanel x:Name="MenuPanel" HorizontalAlignment="Left" VerticalAlignment="Top"
-								HideStoryboard="{StaticResource HideMenuGridStoryBoard}"
-								ShowStoryBoard="{StaticResource ShowMenuGridStoryBoard}" Visibility="Collapsed" >
-				<Grid x:Name="MenuGrid" Background="#66000000"
-					RenderTransformOrigin="0.5,0.5" Height="640" Width="360" >
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-						<ColumnDefinition Width="2*" />
-						<ColumnDefinition />
-					</Grid.ColumnDefinitions>
-					<Grid.RenderTransform>
-						<CompositeTransform TranslateY="600" />
-					</Grid.RenderTransform>
-					<StackPanel VerticalAlignment="Center" Grid.Column="1" Margin="0" >
-						<Button x:Name="ResumeButton" Content="恢复游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
-								FontFamily="{StaticResource Font}" FontWeight="Normal" Click="ResumeButton_Click" FontSize="24"
-								Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-								Background="{StaticResource TransparentCranBrush}"
-								MinWidth="0" MinHeight="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
-						<Button x:Name="SaveButton" Content="储存游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-								FontFamily="{StaticResource Font}" FontWeight="Normal" Click="SaveButton_Click"
-								Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-								Background="{StaticResource TransparentCranBrush}"
-								MinHeight="0" MinWidth="0" FontSize="24" Margin="0,20,0,0"
-								Style="{StaticResource RoundedRectangleButtonStyle}" />
-						<Button x:Name="DevButton" Content="开发模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-								Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="DevButton_Click"
-								BorderBrush="{x:Null}" Background="{StaticResource TransparentCranBrush}"
-								Padding="{StaticResource ButtonPadding}"
-								FontSize="24" MinHeight="0" MinWidth="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
-						<Button x:Name="MainPageButton" Content="主选单" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-								Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="MainPageButton_Click"
-								MinWidth="0" MinHeight="0" FontSize="24" Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
-								Background="{StaticResource TransparentCranBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
-					</StackPanel>
-				</Grid>
-			</controls:SlidePanel>
+			<Grid x:Name="MenuGrid" Background="#66000000"
+				RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition Width="2*" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel VerticalAlignment="Center" Grid.Column="1" Margin="0" >
+					<Button x:Name="ResumeButton" Content="恢复游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
+							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="ResumeButton_Click" FontSize="24"
+							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+							Background="{StaticResource TransparentCranBrush}"
+							MinWidth="0" MinHeight="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
+					<Button x:Name="SaveButton" Content="储存游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="SaveButton_Click"
+							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+							Background="{StaticResource TransparentCranBrush}"
+							MinHeight="0" MinWidth="0" FontSize="24" Margin="0,20,0,0"
+							Style="{StaticResource RoundedRectangleButtonStyle}" />
+					<Button x:Name="DevButton" Content="开发模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="DevButton_Click"
+							BorderBrush="{x:Null}" Background="{StaticResource TransparentCranBrush}"
+							Padding="{StaticResource ButtonPadding}"
+							FontSize="24" MinHeight="0" MinWidth="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
+					<Button x:Name="MainPageButton" Content="主选单" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="MainPageButton_Click"
+							MinWidth="0" MinHeight="0" FontSize="24" Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+							Background="{StaticResource TransparentCranBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
+				</StackPanel>
+			</Grid>
 		</Grid>
 		<Grid x:Name="StockFrame" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"
 			Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsHidden="True" >

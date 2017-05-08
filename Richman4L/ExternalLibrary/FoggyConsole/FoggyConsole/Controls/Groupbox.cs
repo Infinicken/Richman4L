@@ -37,7 +37,7 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public LineStyle BoarderStyle
 		{
-			get { return _boarderStyle ; }
+			get => _boarderStyle ;
 			set
 			{
 				if ( _boarderStyle != value )

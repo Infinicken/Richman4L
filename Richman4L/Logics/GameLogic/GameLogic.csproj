@@ -63,6 +63,11 @@
     <Compile Include="Cards\BlackCard.cs" />
     <Compile Include="Cards\CardAttribute.cs" />
     <Compile Include="Cards\CardType.cs" />
+    <Compile Include="Cards\DangerBuildingCard.cs" />
+    <Compile Include="Cards\MapAreaDefineDomain.cs" />
+    <Compile Include="Cards\NullDefinDomain.cs" />
+    <Compile Include="Cards\PlayerPositionAreaDefineDomain.cs" />
+    <Compile Include="IMod.cs" />
     <Compile Include="Interoperability\Arguments\DefineDomains\MoveTypeAbilityDefineDomains.cs" />
     <Compile Include="Interoperability\Arguments\DefineDomains\StockTransactDefineDomain.cs" />
     <Compile Include="DiceType.cs" />

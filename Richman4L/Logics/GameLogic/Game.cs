@@ -53,7 +53,7 @@ namespace WenceyWang . Richman4L
 		[ConsoleVisable]
 		public WinningCondition WinningCondition { get ; set ; }
 
-		public GameRule EnviromentSetting { get ; set ; }
+		public GameRule GameRule { get ; set ; }
 
 		public static Game Current { get ; private set ; }
 
@@ -218,7 +218,7 @@ namespace WenceyWang . Richman4L
 		{
 			Calendar = new Calendar ( ) ;
 
-			EnviromentSetting = parameters . EnviromentSetting ;
+			GameRule = parameters . EnviromentSetting ;
 
 			StartMoney = parameters . StartMoney ;
 
@@ -296,6 +296,9 @@ namespace WenceyWang . Richman4L
 
 	}
 
+	/// <summary>
+	///     指示移除玩家可能的理由
+	/// </summary>
 	public enum RemovePlayerReason
 	{
 

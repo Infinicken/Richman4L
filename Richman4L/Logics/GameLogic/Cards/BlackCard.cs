@@ -4,6 +4,7 @@ using System . Linq ;
 
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . Interoperability . Arguments ;
 using WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains ;
 using WenceyWang . Richman4L . Stocks ;
@@ -14,6 +15,9 @@ namespace WenceyWang . Richman4L . Cards
 	[Card]
 	public class BlackCard : Card <BlackCard>
 	{
+
+		[GameRuleItem ( 5 )]
+		public static int Duration { get ; set ; }
 
 		public override int PriceWhenBuy
 		{
@@ -39,7 +43,7 @@ namespace WenceyWang . Richman4L . Cards
 		{
 			ArgumentsInfo . CheckArgument ( arguments ) ;
 			BlackBuff buff = new BlackBuff ( ( Stock ) arguments . Arguments . Single ( ) ,
-											Game . Current . EnviromentSetting . BlackCardDuration ) ;
+											Game . Current . GameRule . BlackCardDuration ) ;
 		}
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }

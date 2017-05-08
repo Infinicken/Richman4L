@@ -38,7 +38,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public CheckState State
 		{
-			get { return _state ; }
+			get => _state ;
 			set
 			{
 				if ( _state != value )

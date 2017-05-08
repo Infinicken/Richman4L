@@ -6,8 +6,8 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:mapObjectRenderer="using:WenceyWang.Richman4L.Apps.XamlMapRenderers.MapObjectRenderer"
 	mc:Ignorable="d"
-	d:DesignHeight="56.25"
-	d:DesignWidth="100.75" >
+	d:DesignHeight="30"
+	d:DesignWidth="65" >
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -20,39 +20,134 @@
 		<Grid Height="112" Width="112" RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource MapObjTransform}"
 			Margin="{StaticResource MapObjMargin}" UseLayoutRounding="False" d:LayoutRounding="Auto"
 			HorizontalAlignment="Center" VerticalAlignment="Center" >
-			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" Background="Gray" Grid.ColumnSpan="3" >
-				<Grid.RenderTransform>
-					<CompositeTransform />
-				</Grid.RenderTransform>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="2*" />
-					<RowDefinition Height="3*" />
-					<RowDefinition Height="4*" />
-					<RowDefinition Height="3*" />
-					<RowDefinition Height="2*" />
-				</Grid.RowDefinitions>
+			<Grid x:Name="MainGrid" d:LayoutOverrides="TopPosition, BottomPosition" >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
-					<ColumnDefinition Width="2*" />
-					<ColumnDefinition />
-					<ColumnDefinition Width="2*" />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
-				<Rectangle Fill="White" Grid.Column="2" />
-				<Rectangle Fill="White" Grid.Column="2" Grid.Row="2" />
-				<Rectangle Fill="White" Grid.Column="2" Grid.Row="4" />
-				<Rectangle Fill="DarkGray" Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" />
-				<Rectangle Fill="DarkGray" Grid.Row="0" Grid.RowSpan="5" Grid.Column="4" />
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid Grid.ColumnSpan="2" Grid.Row="1" RenderTransformOrigin="0.5,0" >
+					<Grid.RenderTransform>
+						<CompositeTransform ScaleY="-1" />
+					</Grid.RenderTransform>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="3*" />
+						<ColumnDefinition Width="1*" />
+						<ColumnDefinition Width="3*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="2*" />
+						<RowDefinition Height="3*" />
+						<RowDefinition Height="2*" />
+					</Grid.RowDefinitions>
+					<Path Data="M1,1 L0,2 L2,2 z" Fill="Gray" Stretch="Fill" d:LayoutOverrides="LeftPosition, RightPosition"
+						Height="56" VerticalAlignment="Bottom" Grid.RowSpan="3" Grid.ColumnSpan="3" />
+					<Rectangle Fill="White" Grid.Column="1" Grid.Row="2" />
+					<Path Grid.ColumnSpan="3" Data="M1,0 L6,0 L7,1 L0,1 z" Fill="DarkGray" Height="16" Grid.Row="2" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" d:IsHidden="True" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L2,2 L0,2 L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" />
+					<Path Data="M16,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Left" Height="16" Grid.Row="2"
+						Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="2" Data="M0,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Right" Height="16"
+						Grid.Row="2" Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L1,2  L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" />
+				</Grid>
+				<Grid Grid.ColumnSpan="2" Grid.Row="1" RenderTransformOrigin="0.5,0" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="3*" />
+						<ColumnDefinition Width="1*" />
+						<ColumnDefinition Width="3*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="2*" />
+						<RowDefinition Height="3*" />
+						<RowDefinition Height="2*" />
+					</Grid.RowDefinitions>
+					<Path Data="M1,1 L0,2 L2,2 z" Fill="Gray" Stretch="Fill" d:LayoutOverrides="LeftPosition, RightPosition"
+						Height="56" VerticalAlignment="Bottom" Grid.RowSpan="3" Grid.ColumnSpan="3" />
+					<Rectangle Fill="White" Grid.Column="1" Grid.Row="2" />
+					<Path Grid.ColumnSpan="3" Data="M1,0 L6,0 L7,1 L0,1 z" Fill="DarkGray" Grid.Row="2" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L2,2 L0,2 L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" />
+					<Path Data="M16,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Left" Height="16" Grid.Row="2"
+						Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="2" Data="M0,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Right" Height="16"
+						Grid.Row="2" Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L1,2  L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" />
+				</Grid>
+				<Grid Grid.ColumnSpan="2" Grid.Row="1" RenderTransformOrigin="0.5,0" >
+					<Grid.RenderTransform>
+						<CompositeTransform Rotation="90" />
+					</Grid.RenderTransform>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="3*" />
+						<ColumnDefinition Width="1*" />
+						<ColumnDefinition Width="3*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="2*" />
+						<RowDefinition Height="3*" />
+						<RowDefinition Height="2*" />
+					</Grid.RowDefinitions>
+					<Path Data="M1,1 L0,2 L2,2 z" Fill="Gray" Stretch="Fill" d:LayoutOverrides="LeftPosition, RightPosition"
+						Height="56" VerticalAlignment="Bottom" Grid.RowSpan="3" Grid.ColumnSpan="3" />
+					<Rectangle Fill="White" Grid.Column="1" Grid.Row="2" />
+					<Path Grid.ColumnSpan="3" Data="M1,0 L6,0 L7,1 L0,1 z" Fill="DarkGray" Height="16" Grid.Row="2" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" d:IsHidden="True" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L2,2 L0,2 L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" />
+					<Path Data="M16,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Left" Height="16" Grid.Row="2"
+						Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="2" Data="M0,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Right" Height="16"
+						Grid.Row="2" Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L1,2  L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" />
+				</Grid>
+				<Grid Grid.ColumnSpan="2" Grid.Row="1" RenderTransformOrigin="0.5,0" >
+					<Grid.RenderTransform>
+						<CompositeTransform Rotation="-90" />
+					</Grid.RenderTransform>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="3*" />
+						<ColumnDefinition Width="1*" />
+						<ColumnDefinition Width="3*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="2*" />
+						<RowDefinition Height="3*" />
+						<RowDefinition Height="2*" />
+					</Grid.RowDefinitions>
+					<Path Data="M1,1 L0,2 L2,2 z" Fill="Gray" Stretch="Fill" d:LayoutOverrides="LeftPosition, RightPosition"
+						Height="56" VerticalAlignment="Bottom" Grid.RowSpan="3" Grid.ColumnSpan="3" />
+					<Rectangle Fill="White" Grid.Column="1" Grid.Row="2" />
+					<Path Grid.ColumnSpan="3" Data="M1,0 L6,0 L7,1 L0,1 z" Fill="DarkGray" Height="16" Grid.Row="2" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" d:IsHidden="True" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L2,2 L0,2 L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" />
+					<Path Data="M16,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Left" Height="16" Grid.Row="2"
+						Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="2" Data="M0,0 L16,16 L0,16 z" Fill="DarkGray" HorizontalAlignment="Right" Height="16"
+						Grid.Row="2" Stretch="Fill" VerticalAlignment="Bottom" Width="16" />
+					<Path Grid.Column="1" Data="M1,0 L2,1 L1,2  L0,1 z" Fill="White" Height="16" Stretch="Fill"
+						VerticalAlignment="Bottom" />
+				</Grid>
 			</Grid>
 		</Grid>
-		<Rectangle Fill="White" Opacity="0.8" Height="112" Width="112" Margin="0,-28" RenderTransformOrigin="0.5,0.5"
-					Visibility="Collapsed" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+		<Rectangle Fill="White" Opacity="0.8" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False"
+					d:LayoutRounding="Auto" Width="112" Height="112" Margin="{StaticResource MapObjMargin}" d:IsHidden="True" >
 			<Rectangle.RenderTransform>
-				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-0.5" />
+				<CompositeTransform SkewX="-45" ScaleY="0.5" />
 			</Rectangle.RenderTransform>
 		</Rectangle>
-		<Rectangle Fill="#FF0080FF" Opacity="0.2" Margin="0,-28" Width="112" Height="112" RenderTransformOrigin="0.5,0.5"
-					Visibility="Collapsed" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+		<Rectangle Fill="#FF0080FF" Opacity="0.2" Margin="{StaticResource MapObjMargin}" Width="112" Height="112"
+					RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:IsHidden="True" >
 			<Rectangle.RenderTransform>
 				<CompositeTransform SkewX="-45" ScaleY="0.5" TranslateY="-5" />
 			</Rectangle.RenderTransform>

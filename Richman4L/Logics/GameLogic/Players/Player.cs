@@ -454,7 +454,7 @@ namespace WenceyWang . Richman4L . Players
 			if ( CanMove )
 			{
 				HaveMoveToday = true ;
-				ReadOnlyCollection <int> diceResult = Game . Current . EnviromentSetting . GetDice ( diceType , ( int ) moveType ) ;
+				ReadOnlyCollection <int> diceResult = Game . Current . GameRule . GetDice ( diceType , ( int ) moveType ) ;
 				Path route = Position . Route ( PreviousPosition , diceResult . Sum ( ) ) ;
 				foreach ( Road item in route . Route )
 				{

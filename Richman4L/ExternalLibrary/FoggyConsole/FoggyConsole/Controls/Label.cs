@@ -37,7 +37,7 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		public ContentAlign Align
 		{
-			get { return _align ; }
+			get => _align ;
 			set
 			{
 				if ( _align != value )
