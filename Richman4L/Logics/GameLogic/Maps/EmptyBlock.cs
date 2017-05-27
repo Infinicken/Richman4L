@@ -40,9 +40,9 @@ namespace WenceyWang . Richman4L . Maps
 		public override int PondingDecrease => Map . Currnet . PondingDecreaseBase ;
 
 		//todo:转化率
-		public override int Flammability => ForestCoverRate * 1 ;
+		public override GameValue Flammability => ForestCoverRate * 1 ;
 
-		public override int ForestCoverRate { get ; set ; }
+		public override GameValue ForestCoverRate { get ; set ; }
 
 		//todo:转化率
 		public override int CombustibleMaterialAmount => ForestCoverRate * 1 ;

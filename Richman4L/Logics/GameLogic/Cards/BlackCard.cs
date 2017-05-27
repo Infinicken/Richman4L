@@ -13,31 +13,21 @@ namespace WenceyWang . Richman4L . Cards
 {
 
 	[Card]
-	public class BlackCard : Card <BlackCard>
+	public class BlackCard : StaticCard <BlackCard>
 	{
 
 		[GameRuleItem ( 5 )]
 		public static int Duration { get ; set ; }
 
-		public override int PriceWhenBuy
-		{
-			get => throw new NotImplementedException ( ) ;
-			set => throw new NotImplementedException ( ) ;
-		}
 
-		public override int PriceWhenSell
-		{
-			get => throw new NotImplementedException ( ) ;
-			set => throw new NotImplementedException ( ) ;
-		}
+		public override bool CanUse => Game . Current . StockMarket . State == StockMarketState . Running ;
+
 
 		static BlackCard ( )
 		{
 			ArgumentInfo stock = new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
 			Arguments = new List <ArgumentInfo> { stock } ;
 		}
-
-		public override bool CanUse ( ) { return Game . Current . StockMarket . State == StockMarketState . Running ; }
 
 		public override void Use ( ArgumentsContainer arguments )
 		{

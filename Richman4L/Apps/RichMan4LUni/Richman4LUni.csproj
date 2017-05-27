@@ -167,8 +167,14 @@
     <Compile Include="Logic\UniReliableValue.cs" />
     <Compile Include="Logic\VisibilityBooleanConverter.cs" />
     <Compile Include="UI\Controls\CanvasContainer.cs" />
+    <Compile Include="UI\Controls\DiceControl.xaml.cs">
+      <DependentUpon>DiceControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\FlagSymbol.xaml.cs">
       <DependentUpon>FlagSymbol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\StockInfoControl.xaml.cs">
+      <DependentUpon>StockInfoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -207,7 +213,7 @@
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\AnimatePage.cs" />
-    <Compile Include="UI\Pages\LicensePage.xaml.cs">
+    <Compile Include="UI\Pages\Initialization\LicensePage.xaml.cs">
       <DependentUpon>LicensePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\LoadGamePage.xaml.cs">
@@ -219,10 +225,10 @@
     <Compile Include="UI\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pages\MyWishPage.xaml.cs">
+    <Compile Include="UI\Pages\Initialization\MyWishPage.xaml.cs">
       <DependentUpon>MyWishPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pages\PhotosensitiveSeizureWarningPage.xaml.cs">
+    <Compile Include="UI\Pages\Initialization\PhotosensitiveSeizureWarningPage.xaml.cs">
       <DependentUpon>PhotosensitiveSeizureWarningPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\PlayerConfigPage.xaml.cs">
@@ -260,7 +266,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UI\Controls\DiceControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Controls\FlagSymbol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\StockInfoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,7 +326,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pages\LicensePage.xaml">
+    <Page Include="UI\Pages\Initialization\LicensePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -328,11 +342,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pages\MyWishPage.xaml">
+    <Page Include="UI\Pages\Initialization\MyWishPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pages\PhotosensitiveSeizureWarningPage.xaml">
+    <Page Include="UI\Pages\Initialization\PhotosensitiveSeizureWarningPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -42,8 +42,10 @@ namespace WenceyWang . Richman4L . Players . Models
 		[ConsoleVisable]
 		public DateTime BirthDay { get ; set ; }
 
+		[ConsoleVisable]
 		public List <PlayerSaying> SayingWhenGained { get ; } = new List <PlayerSaying> ( ) ;
 
+		[ConsoleVisable]
 		public List <PlayerSaying> SayingWhenHarmed { get ; } = new List <PlayerSaying> ( ) ;
 
 		[ConsoleVisable]
@@ -52,6 +54,7 @@ namespace WenceyWang . Richman4L . Players . Models
 		[ConsoleVisable]
 		public int Resistance { get ; }
 
+		[ConsoleVisable]
 		public List <PlayerSaying> SayingWhenMeet { get ; } = new List <PlayerSaying> ( ) ;
 
 		public override MapSize Size => MapSize . Small ;

@@ -13,24 +13,13 @@ namespace WenceyWang . Richman4L . Cards
 {
 
 	[Card]
-	public class RedCard : Card <RedCard>
+	public class RedCard : StaticCard <RedCard>
 	{
 
 		[GameRuleItem ( 5 )]
 		public static int Duration => Game . Current . GameRule . GetResult <int> ( typeof ( RedCard ) ) ;
 
-
-		public override int PriceWhenBuy
-		{
-			get => throw new NotImplementedException ( ) ;
-			set => throw new NotImplementedException ( ) ;
-		}
-
-		public override int PriceWhenSell
-		{
-			get => throw new NotImplementedException ( ) ;
-			set => throw new NotImplementedException ( ) ;
-		}
+		public override bool CanUse => Game . Current . StockMarket . State == StockMarketState . Running ;
 
 		static RedCard ( )
 		{
@@ -38,8 +27,6 @@ namespace WenceyWang . Richman4L . Cards
 
 			Arguments = new List <ArgumentInfo> { stock } ;
 		}
-
-		public override bool CanUse ( ) { return Game . Current . StockMarket . State == StockMarketState . Running ; }
 
 		public override void Use ( ArgumentsContainer arguments )
 		{

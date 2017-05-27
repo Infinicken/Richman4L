@@ -38,8 +38,6 @@ namespace WenceyWang . Richman4L . Maps
 		[NotNull]
 		public static Map Currnet { get ; set ; }
 
-		public Guid Guid { get ; }
-
 		[NotNull]
 		public string Name { get ; set ; }
 
@@ -112,7 +110,7 @@ namespace WenceyWang . Richman4L . Maps
 					string name = ReadNecessaryValue <string> ( element , nameof(Name) ) ;
 					Guid guid = ReadNecessaryValue <Guid> ( element , nameof(Guid) ) ;
 
-					typeMapResult . Add ( name , MapObject . MapObjectTypes . Single ( type => type . Guid == guid ) . EntryType ) ;
+					typeMapResult . Add ( name , MapObject . TypeList . Single ( type => type . Guid == guid ) . EntryType ) ;
 				}
 
 				foreach ( XElement mapObjectSource in mapSource . Element ( nameof(Objects) ) . Elements ( ) )

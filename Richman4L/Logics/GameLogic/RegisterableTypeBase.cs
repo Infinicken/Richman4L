@@ -9,7 +9,10 @@ using WenceyWang . Richman4L . Annotations ;
 namespace WenceyWang . Richman4L
 {
 
-	public abstract class RegisterableTypeBase <T> where T : GameObject
+	public abstract class RegisterableTypeBase <TType , TAttribute , T>
+		where T : NeedRegisTypeBase <TType , TAttribute , T>
+		where TType : RegisterableTypeBase <TType , TAttribute , T>
+		where TAttribute : Attribute
 	{
 
 		public string Introduction { get ; }

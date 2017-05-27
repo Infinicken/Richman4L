@@ -27,16 +27,10 @@ using WenceyWang . Richman4L . Annotations ;
 namespace WenceyWang . Richman4L . Maps
 {
 
-	[AttributeUsage ( AttributeTargets . Property )]
-	public sealed class ConsoleVisableAttribute : Attribute
-	{
-
-	}
-
 	/// <summary>
 	///     代表地图上的元素
 	/// </summary>
-	public abstract class MapObject : GameObject
+	public abstract class MapObject : NeedRegisTypeBase <MapObjectType , MapObjectAttribute , MapObject>
 	{
 
 		/// <summary>
@@ -54,14 +48,6 @@ namespace WenceyWang . Richman4L . Maps
 		/// </summary>
 		public abstract MapSize Size { get ; }
 
-		public MapObjectType Type => MapObjectTypes . Single ( type => type . EntryType == GetType ( ) ) ;
-
-		[NotNull]
-		[ItemNotNull]
-		public static List <MapObjectType> MapObjectTypes { get ; private set ; } = new List <MapObjectType> ( ) ;
-
-		private static object Locker { get ; } = new object ( ) ;
-
 		private static bool Loaded { get ; set ; }
 
 		/// <summary>
@@ -77,8 +63,8 @@ namespace WenceyWang . Richman4L . Maps
 
 			try
 			{
-				X = Convert . ToInt32 ( resource . Attribute ( nameof(X) ) . Value ) ;
-				Y = Convert . ToInt32 ( resource . Attribute ( nameof(Y) ) . Value ) ;
+				X = ReadNecessaryValue <int> ( resource , nameof(X) ) ;
+				Y = ReadNecessaryValue <int> ( resource , nameof(Y) ) ;
 			}
 			catch ( NullReferenceException e )
 			{
@@ -102,7 +88,6 @@ namespace WenceyWang . Richman4L . Maps
 
 		public event EventHandler DisposeEvent ;
 
-		public static void CleanMapObjectType ( ) { MapObjectTypes = new List <MapObjectType> ( ) ; }
 
 		[Startup ( nameof(LoadMapObjects) )]
 		public static void LoadMapObjects ( )
@@ -119,35 +104,13 @@ namespace WenceyWang . Richman4L . Maps
 					TypeInfo type in
 					typeof ( Game ) . GetTypeInfo ( ) .
 									Assembly . DefinedTypes .
-									Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) ) )
+									Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) &&
+													typeof ( MapObject ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
 				{
 					RegisMapObjectType ( type . AsType ( ) ) ;
 				}
 
 				Loaded = true ;
-			}
-		}
-
-		[NotNull]
-		protected static void RegisMapObjectType <T> ( T mapObjectType ) where T : MapObjectType
-		{
-			lock ( Locker )
-			{
-				#region Check Argument
-
-				if ( mapObjectType == null )
-				{
-					throw new ArgumentNullException ( nameof(mapObjectType) ) ;
-				}
-
-				#endregion
-
-				if ( MapObjectTypes . Any ( type => type . Name == mapObjectType . Name ) )
-				{
-					throw new Exception ( "Name is Invilable" ) ;
-				}
-
-				MapObjectTypes . Add ( mapObjectType ) ;
 			}
 		}
 
@@ -187,14 +150,14 @@ namespace WenceyWang . Richman4L . Maps
 
 				#endregion
 
-				if ( MapObjectTypes . Any ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) )
+				if ( TypeList . Any ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) )
 				{
-					return MapObjectTypes . Single ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) ;
+					return TypeList . Single ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) ;
 				}
 
 				MapObjectType mapObjectType = new MapObjectType ( entryType , attribute . Name , attribute . Introduction ) ;
 
-				MapObjectTypes . Add ( mapObjectType ) ;
+				TypeList . Add ( mapObjectType ) ;
 
 				return mapObjectType ;
 			}

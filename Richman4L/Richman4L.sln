@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{6FC8DA3E-DE22-4C74-B70C-39819C441EE0}"
 EndProject
@@ -51,6 +51,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Richman4LWeb", "Apps\Richman4LWeb\Richman4LWeb.csproj", "{10205FEE-6020-4237-94EC-B68C0CD682C3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FAC43E22-00F1-48A9-B1F4-1831F3ED9CDB} = {FAC43E22-00F1-48A9-B1F4-1831F3ED9CDB}
+		{2F5D6278-4E89-46E8-A4C6-089262BA2CD4} = {2F5D6278-4E89-46E8-A4C6-089262BA2CD4}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB5CE489-12A8-451F-B1F9-6CC91B676173}"
@@ -98,6 +99,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoggyMapRenderers", "Apps\FoggyMapRenderers\FoggyMapRenderers.csproj", "{EE64CC1C-68C5-4DC4-B72C-F106D7296FD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoggyConsoleTest", "ExternalLibrary\FoggyConsole\FoggyConsoleTest\FoggyConsoleTest.csproj", "{8CA99CDB-9DCC-4A57-A91D-1E2B234A4EF6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{232E460F-DAE6-4578-B3E4-7CC3444DB376} = {232E460F-DAE6-4578-B3E4-7CC3444DB376}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostedServer", "Apps\HostedServer\HostedServer.csproj", "{2F5D6278-4E89-46E8-A4C6-089262BA2CD4}"
 EndProject

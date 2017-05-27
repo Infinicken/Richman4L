@@ -153,7 +153,7 @@ namespace WenceyWang . Richman4L . Apps . Uni
 
 				{
 					viewRootVisual = ElementCompositionPreview . GetElementVisual ( ViewRoot ) ;
-					viewRootVisual . Properties . InsertScalar ( nameof(SaturationEffect . Saturation) , 0.5f ) ;
+					viewRootVisual . Properties . InsertScalar ( nameof(SaturationEffect . Saturation) , 1f ) ;
 					Compositor compositor = viewRootVisual . Compositor ;
 
 					CompositionBackdropBrush backdropBrush = compositor . CreateBackdropBrush ( ) ;

@@ -8,7 +8,7 @@ namespace WenceyWang . Richman4L
 	public static class EventRandomExtensions
 	{
 
-		public static bool InvokeEvent ( this Random random , int possibility )
+		public static bool InvokeEvent ( this Random random , GameValue possibility )
 		{
 			if ( random == null )
 			{
@@ -23,7 +23,7 @@ namespace WenceyWang . Richman4L
 			return random . Next ( 10000 ) <= possibility ;
 		}
 
-		public static int RandomGameValue ( this Random random ) { return random . Next ( 10001 ) ; }
+		public static GameValue RandomGameValue ( this Random random ) { return random . Next ( 10001 ) ; }
 
 	}
 

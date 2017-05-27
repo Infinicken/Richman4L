@@ -27,7 +27,7 @@ namespace WenceyWang . Richman4L . Cards
 				ArgumentValueDefineDomain defineDomain ;
 				if ( owner == null )
 				{
-					defineDomain = new NullDefinDomain ( ) ;
+					defineDomain = new NullDefineDomain ( ) ;
 				}
 				else
 				{
@@ -38,12 +38,12 @@ namespace WenceyWang . Richman4L . Cards
 			}
 		}
 
+
+		public override bool CanUse => Owner is Player ;
+
 		public override void EndToday ( ) { }
 
 		public override void StartDay ( GameDate thisDate ) { }
-
-
-		public override bool CanUse ( ) { return Owner is Player ; }
 
 		public override void Use ( ArgumentsContainer arguments ) { }
 

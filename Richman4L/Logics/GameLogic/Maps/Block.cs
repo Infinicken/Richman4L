@@ -57,7 +57,7 @@ namespace WenceyWang . Richman4L . Maps
 		///     指示可燃性
 		/// </summary>
 		[ConsoleVisable]
-		public abstract int Flammability { get ; }
+		public abstract GameValue Flammability { get ; }
 
 		/// <summary>
 		///     指示当前的火焰强度
@@ -90,7 +90,7 @@ namespace WenceyWang . Richman4L . Maps
 		///     指示当前块的森林覆盖率
 		/// </summary>
 		[ConsoleVisable]
-		public abstract int ForestCoverRate { get ; set ; }
+		public abstract GameValue ForestCoverRate { get ; set ; }
 
 		/// <summary>
 		///     指示当前块是否正在燃烧
@@ -177,7 +177,14 @@ namespace WenceyWang . Richman4L . Maps
 
 		public static long Calu ( int x , int y ) { return ( x + y ) * ( x + y + 1 ) / 2 + y ; }
 
-		//public static 
+		public static (int , int) Calu ( long value )
+		{
+			decimal w = Convert . ToDecimal (
+				Math . Floor ( ( Math . Sqrt ( Convert . ToDouble ( 8m * value + 1 ) ) - 1 ) / 2 ) ) ;
+			decimal t = ( w * w + w ) / 2 ;
+
+			return (Convert . ToInt32 ( w - value + t ) , Convert . ToInt32 ( value - t )) ;
+		}
 
 	}
 

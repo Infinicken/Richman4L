@@ -44,7 +44,7 @@ namespace WenceyWang . Richman4L
 					}
 					catch ( Exception e )
 					{
-						throw ; //todo:
+						throw new ModLoadFailedException ( "" , e ) ; //Todo:Message
 					}
 
 					loadedMods . Add ( mod ) ;
@@ -57,6 +57,15 @@ namespace WenceyWang . Richman4L
 				throw new Exception ( ) ; //todo:show the exception
 			}
 		}
+
+	}
+
+	public class ModLoadFailedException : Exception
+	{
+
+		public ModLoadFailedException ( ) { }
+
+		public ModLoadFailedException ( string message , Exception inner ) : base ( message , inner ) { }
 
 	}
 

@@ -121,11 +121,15 @@ namespace WenceyWang . Richman4L . GameEnviroment
 
 		public Version SupportVersion { get ; }
 
+		public List <(Guid , Version)> SupportMod { get ; } = new List <(Guid , Version)> ( ) ;
+
 		public List <MapObjectType> SupportedMapObjectTypes { get ; } = new List <MapObjectType> ( ) ;
 
 		public List <CardType> SupportedCardTypes { get ; } = new List <CardType> ( ) ;
 
 		public List <SmallGameType> SupportSmallGameType { get ; } = new List <SmallGameType> ( ) ;
+
+		//public List<>
 
 		public XElement ToXElement ( )
 		{

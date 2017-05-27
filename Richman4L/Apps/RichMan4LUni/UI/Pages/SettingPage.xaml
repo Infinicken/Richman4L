@@ -66,7 +66,7 @@
 			<Grid.RenderTransform>
 				<CompositeTransform />
 			</Grid.RenderTransform>
-			<ScrollViewer d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Grid.ColumnSpan="3" >
+			<ScrollViewer Grid.ColumnSpan="3" Padding="{StaticResource ScrollViewerPadding}" >
 				<StackPanel RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Margin="0,0,0,40" >
 					<TextBlock x:Name="PageTitle" Margin="{StaticResource WideMargin}" TextWrapping="Wrap" Text="设置"
 								FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" />
@@ -176,8 +176,9 @@
 							Margin="{StaticResource WideMargin}" FontSize="{StaticResource ExtraSmallTitle}" />
 				</StackPanel>
 			</ScrollViewer>
-			<Button x:Name="MainPageButton" HorizontalAlignment="Left" VerticalAlignment="Stretch"
-					Style="{StaticResource LeftArrowTextBlockButtonStyle}" FontFamily="{StaticResource Font}" FontSize="21.333"
+			<Button x:Name="MainPageButton" HorizontalAlignment="Left"
+					Style="{StaticResource LeftArrowTextBlockButtonStyle}" FontFamily="{StaticResource Font}"
+					FontSize="{StaticResource FontSize}"
 					d:LayoutOverrides="HorizontalAlignment" Grid.Column="1" Grid.Row="2" Content="主界面" />
 		</Grid>
 

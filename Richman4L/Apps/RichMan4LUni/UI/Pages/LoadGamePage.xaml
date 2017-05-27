@@ -50,7 +50,7 @@
 		<Rectangle x:Name="BackgroundRect" Fill="#FF0064A9" Stroke="Black" />
 
 		<Image x:Name="LoadGamePageDownImage" Source="ImageResources/LoadGamePageDown.png" VerticalAlignment="Bottom"
-				Stretch="UniformToFill" />
+				Stretch="UniformToFill" d:IsLocked="True" />
 
 		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 			<Grid.RenderTransform>
@@ -77,7 +77,7 @@
 			<TextBlock x:Name="textBlock1" Grid.Column="1" Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="存档们"
 						FontFamily="{StaticResource Font}" d:LayoutOverrides="Height, TopPosition, BottomPosition" FontSize="24" />
 			<StackPanel Grid.Column="1" Grid.Row="5" />
-			<Button x:Name="MainPageButton" Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="6"
+			<Button x:Name="MainPageButton" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="6"
 					VerticalAlignment="Stretch" Style="{StaticResource LeftArrowTextBlockButtonStyle}"
 					FontFamily="{StaticResource Font}"
 					FontSize="{StaticResource FontSize}" Click="MainPageButton_Click" d:LayoutOverrides="HorizontalAlignment"

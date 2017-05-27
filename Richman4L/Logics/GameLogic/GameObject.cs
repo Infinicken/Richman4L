@@ -25,6 +25,8 @@ using System . Reflection ;
 using System . Runtime . CompilerServices ;
 using System . Xml . Linq ;
 
+using PropertyChanged ;
+
 using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps ;
@@ -32,12 +34,13 @@ using WenceyWang . Richman4L . Maps ;
 namespace WenceyWang . Richman4L
 {
 
-	public abstract class GameObject : INotifyPropertyChanged
+	[ImplementPropertyChanged]
+	public abstract class GameObject : INotifyPropertyChanged , IEquatable <GameObject>
 	{
 
 		[PublicAPI]
 		[ConsoleVisable]
-		public Guid Guid { get ; }
+		public Guid Guid { get ; protected set ; }
 
 		public GameObject ( )
 		{
@@ -45,24 +48,35 @@ namespace WenceyWang . Richman4L
 			PropertyChanged += GameObject_PropertyChanged ;
 		}
 
+		public bool Equals ( GameObject other )
+		{
+			if ( ReferenceEquals ( null , other ) )
+			{
+				return false ;
+			}
+			if ( ReferenceEquals ( this , other ) )
+			{
+				return true ;
+			}
+
+			return Guid . Equals ( other . Guid ) ;
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged ;
 
 		private void GameObject_PropertyChanged ( object sender , PropertyChangedEventArgs e )
 		{
 			if ( GetType ( ) .
-					GetTypeInfo ( ) .
-					GetDeclaredProperty ( e . PropertyName ) .
+					GetRuntimeProperty ( e . PropertyName ) .
 					GetCustomAttribute <ConsoleVisableAttribute> ( ) != null )
 			{
-				Game . Current . UpdateGameObject ( this ) ;
+				Game . Current ? . UpdateGameObject ( this ) ;
 			}
 		}
 
-		public void RequestUpdate ( ) { }
+		public virtual void EndToday ( ) { }
 
-		public abstract void EndToday ( ) ;
-
-		public abstract void StartDay ( GameDate nextDate ) ;
+		public virtual void StartDay ( GameDate nextDate ) { }
 
 		public virtual XElement ToXElement ( )
 		{
@@ -125,6 +139,8 @@ namespace WenceyWang . Richman4L
 			if ( value == null )
 			{
 				throw new ArgumentException ( $"" ) ;
+
+				//todo:String Resources
 			}
 
 			TypeConverter typeConverter = TypeDescriptor . GetConverter ( typeof ( T ) ) ;
@@ -152,6 +168,30 @@ namespace WenceyWang . Richman4L
 			TypeConverter typeConverter = TypeDescriptor . GetConverter ( typeof ( T ) ) ;
 			return ( T ) typeConverter . ConvertFromString ( value ) ;
 		}
+
+		public override bool Equals ( object obj )
+		{
+			if ( ReferenceEquals ( null , obj ) )
+			{
+				return false ;
+			}
+			if ( ReferenceEquals ( this , obj ) )
+			{
+				return true ;
+			}
+			if ( obj . GetType ( ) != GetType ( ) )
+			{
+				return false ;
+			}
+
+			return Equals ( ( GameObject ) obj ) ;
+		}
+
+		public override int GetHashCode ( ) { return Guid . GetHashCode ( ) ; }
+
+		public static bool operator == ( GameObject left , GameObject right ) { return Equals ( left , right ) ; }
+
+		public static bool operator != ( GameObject left , GameObject right ) { return ! Equals ( left , right ) ; }
 
 		[NotifyPropertyChangedInvocator]
 		protected void OnPropertyChanged ( [CallerMemberName] string propertyName = null )

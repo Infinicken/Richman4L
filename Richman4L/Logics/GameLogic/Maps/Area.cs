@@ -41,6 +41,7 @@ namespace WenceyWang . Richman4L . Maps
 
 		private BlockAzimuth ? previousMainAzimuth ;
 
+		[ConsoleVisable]
 		public virtual List <AreaRoad> AdjacentRoads
 		{
 			get
@@ -66,17 +67,22 @@ namespace WenceyWang . Richman4L . Maps
 		[ItemNotNull]
 		public List <AreaBuff> Buffs { get ; set ; } = new List <AreaBuff> ( ) ;
 
+		[ConsoleVisable]
 		public abstract long MoneyCostWhenCrossed { get ; protected set ; }
 
-		public abstract double BuildingResistance { get ; protected set ; }
+		/// <summary>
+		///     建筑抗性，表示在这个地方建造建筑的难度，
+		/// </summary>
+		[ConsoleVisable]
+		public abstract GameValue BuildingResistance { get ; protected set ; }
 
 		public override int PondingDecrease { get ; }
 
-		public override int Flammability { get ; }
+		public override GameValue Flammability { get ; }
 
 		public override int CombustibleMaterialAmount { get ; }
 
-		public sealed override int ForestCoverRate { get ; set ; }
+		public sealed override GameValue ForestCoverRate { get ; set ; }
 
 		public Building Building { get ; private set ; }
 

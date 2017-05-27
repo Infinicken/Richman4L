@@ -2,8 +2,6 @@
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Seasons ;
-
 namespace WenceyWang . Richman4L . Calendars
 {
 

@@ -39,7 +39,7 @@ namespace WenceyWang . Richman4L . Maps
 
 		public override long MoneyCostWhenCrossed { get ; protected set ; }
 
-		public override double BuildingResistance { get ; protected set ; }
+		public override GameValue BuildingResistance { get ; protected set ; }
 
 		public override long Price { get ; protected set ; }
 

@@ -19,8 +19,8 @@
 using System ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
-using System . IO ;
 using System . Linq ;
+using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Auctions ;
@@ -38,11 +38,12 @@ using WenceyWang . Richman4L . Weathers ;
 namespace WenceyWang . Richman4L
 {
 
-	public class Game
+	public class Game : GameObject
 	{
 
 		private List <Guid> previousGameId { get ; }
 
+		[ConsoleVisable]
 		public ReadOnlyCollection <Guid> PreviousGameId { get ; }
 
 		[ConsoleVisable]
@@ -53,6 +54,7 @@ namespace WenceyWang . Richman4L
 		[ConsoleVisable]
 		public WinningCondition WinningCondition { get ; set ; }
 
+		[ConsoleVisable]
 		public GameRule GameRule { get ; set ; }
 
 		public static Game Current { get ; private set ; }
@@ -92,7 +94,7 @@ namespace WenceyWang . Richman4L
 		[ConsoleVisable]
 		public GovermentControl GovermentControl { get ; set ; }
 
-
+		[ConsoleVisable ( PropertyVisability . Cheater )]
 		internal GameDate GovermentControlChanging { get ; set ; }
 
 		/// <summary>
@@ -105,6 +107,17 @@ namespace WenceyWang . Richman4L
 
 		[ConsoleVisable]
 		public StockMarket StockMarket { get ; set ; }
+
+		public Game ( )
+		{
+			if ( Current != null )
+			{
+				throw new InvalidOperationException ( Resource . CurrentGameExists ) ;
+			}
+
+			Status = GameStatus . NotStart ;
+			Current = this ;
+		}
 
 
 		public virtual void NextDay ( )
@@ -136,7 +149,10 @@ namespace WenceyWang . Richman4L
 				info . Winers = winners ;
 				GameOver ( info ) ;
 			}
+		}
 
+		protected void StartDay ( )
+		{
 			#region Start Next Day
 
 			Weather = Weather . Random ( Calendar . Today + 1 ) ;
@@ -199,20 +215,6 @@ namespace WenceyWang . Richman4L
 
 		public void RemovePlayer ( Player player , RemovePlayerReason reason ) { }
 
-		#region Starting
-
-		public long StartMoney { get ; private set ; }
-
-		/// <summary>
-		///     游戏可以持续的时间（天）
-		/// </summary>
-		public long GameLenth { get ; private set ; }
-
-		public AuctionPerformer AuctionPerformer { get ; set ; }
-
-		#endregion
-
-		#region Initialize
 
 		public virtual void Start ( StartGameParameters parameters )
 		{
@@ -243,54 +245,23 @@ namespace WenceyWang . Richman4L
 			Status = GameStatus . Playing ;
 		}
 
+
 		private void OnPlayerBankruptcy ( object sender , PlayerBankruptcyEventArgs e ) { }
 
-		public Game ( )
-		{
-			if ( Current != null )
-			{
-				throw new InvalidOperationException ( Resource . CurrentGameExists ) ;
-			}
+		public XElement Save ( ) { throw new NotImplementedException ( ) ; }
 
-			Status = GameStatus . NotStart ;
-			Current = this ;
-		}
+		public static Game Load ( XElement element ) { throw new NotImplementedException ( ) ; }
+
+		#region Starting
+
+		public long StartMoney { get ; private set ; }
 
 		/// <summary>
-		///     序列化当前的游戏
+		///     游戏可以持续的时间（天）
 		/// </summary>
-		/// <param name="stream"></param>
-		public void Save ( MemoryStream stream )
-		{
-			if ( stream == null )
-			{
-				throw new ArgumentNullException ( nameof(stream) ) ;
-			}
+		public long GameLenth { get ; private set ; }
 
-			//SharpSerializer serialier =
-			//	new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
-
-			//serialier . Serialize ( this , stream ) ;
-			throw new NotImplementedException ( ) ;
-		}
-
-		/// <summary>
-		///     从指定的内存流反序列化游戏
-		/// </summary>
-		/// <param name="stream">反序列化的内存流</param>
-		/// <returns></returns>
-		public static Game Load ( MemoryStream stream )
-		{
-			if ( stream == null )
-			{
-				throw new ArgumentNullException ( nameof(stream) ) ;
-			}
-
-			//SharpSerializer serialier =
-			//	new SharpSerializer ( new SharpSerializerBinarySettings { Mode = BinarySerializationMode . SizeOptimized } ) ;
-			//return Current = serialier . Deserialize ( stream ) as Game ;
-			throw new NotImplementedException ( ) ;
-		}
+		public AuctionPerformer AuctionPerformer { get ; set ; }
 
 		#endregion
 

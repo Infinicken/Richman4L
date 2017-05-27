@@ -8,7 +8,7 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 {
 
-	public class DiceOwnerDefineDomains : ArgumentValueDefineDomain
+	public class DiceOwnerDefineDomains : ArgumentValueDefineDomain <DiceType>
 	{
 
 		[NotNull]
@@ -24,17 +24,7 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 			Target = target ;
 		}
 
-		public override bool IsValid ( object value )
-		{
-			try
-			{
-				return Target . IsDiceAviliable ( ( DiceType ) value ) ;
-			}
-			catch ( Exception )
-			{
-				return false ;
-			}
-		}
+		public override bool IsValid ( DiceType value ) { return Target . IsDiceAviliable ( value ) ; }
 
 	}
 

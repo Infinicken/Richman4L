@@ -7,7 +7,7 @@ using Windows . UI . Xaml ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 
-namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
+namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages . Initialization
 {
 
 	/// <summary>

@@ -12,6 +12,7 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
+using WenceyWang . Richman4L . Apps . Uni . UI . Pages . Initialization ;
 
 namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {

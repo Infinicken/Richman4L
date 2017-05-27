@@ -21,6 +21,8 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
+
 namespace WenceyWang . Richman4L
 {
 
@@ -117,6 +119,7 @@ namespace WenceyWang . Richman4L
 			return result ;
 		}
 
+		[PublicAPI]
 		public static GameSaying GetSaying ( Guid guid )
 		{
 			if ( ! Loaded )
@@ -126,6 +129,7 @@ namespace WenceyWang . Richman4L
 			return Sayings . FirstOrDefault ( saying => saying . Guid == guid ) ;
 		}
 
+		[PublicAPI]
 		public static GameSaying GetSaying ( )
 		{
 			if ( ! Loaded )
@@ -135,6 +139,7 @@ namespace WenceyWang . Richman4L
 			return Sayings . RandomItem ( GameRandom . Current ) ;
 		}
 
+		[PublicAPI]
 		public static void RegisSaying ( GameSaying newSaying )
 		{
 			lock ( Locker )

@@ -2,12 +2,10 @@ using System ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-
 namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 {
 
-	public class IntegerIntervalDefineDomain : ArgumentValueDefineDomain
+	public class IntegerIntervalDefineDomain : ArgumentValueDefineDomain <long>
 	{
 
 		public long LeftEndpoint { get ; }
@@ -28,13 +26,8 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 		}
 
 
-		public override bool IsValid ( [NotNull] object value )
+		public override bool IsValid ( long value )
 		{
-			if ( value == null )
-			{
-				return false ;
-			}
-
 			try
 			{
 				long number = Convert . ToInt64 ( value ) ;

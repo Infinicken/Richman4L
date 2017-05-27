@@ -7,7 +7,7 @@ using WenceyWang . Richman4L . Annotations ;
 namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 {
 
-	public sealed class FloatIntervalDefineDomain : ArgumentValueDefineDomain
+	public sealed class FloatIntervalDefineDomain : ArgumentValueDefineDomain <double>
 	{
 
 		public double LeftEndpoint { get ; }
@@ -31,13 +31,8 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 		}
 
 
-		public override bool IsValid ( [NotNull] object value )
+		public override bool IsValid ( [NotNull] double value )
 		{
-			if ( value == null )
-			{
-				return false ;
-			}
-
 			try
 			{
 				double number = Convert . ToDouble ( value ) ;

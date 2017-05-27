@@ -26,7 +26,7 @@ using WenceyWang . Richman4L . Annotations ;
 namespace WenceyWang . Richman4L . Maps
 {
 
-	public class MapObjectType : RegisterableTypeBase <MapObject>
+	public class MapObjectType : RegisterableTypeBase <MapObjectType , MapObjectAttribute , MapObject>
 	{
 
 		protected internal MapObjectType ( [NotNull] Type entryType , [NotNull] XElement element ) : base (

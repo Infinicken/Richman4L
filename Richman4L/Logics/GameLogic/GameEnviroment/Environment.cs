@@ -47,12 +47,6 @@ namespace WenceyWang . Richman4L . GameEnviroment
 
 		public Dictionary <string , object> Rules { get ; } = new Dictionary <string , object> ( ) ;
 
-		//public static void RegisSaying(GameSaying newSaying)
-		//{
-		//	lock (Locker)
-		//	{
-		//	}
-		//}
 
 		public T GetResult <T> ( Type type , [CallerMemberName] string name = null )
 		{

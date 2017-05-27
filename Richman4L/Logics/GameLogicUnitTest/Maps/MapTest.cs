@@ -43,13 +43,13 @@ namespace WenceyWang . Richman4L . UnitTests . Maps
 		[TestMethod]
 		public void SerializationMapTest ( )
 		{
+			Map map = new Map ( "Test.xml" ) ;
+			Console . WriteLine ( map . ToXElement ( ) ) ;
 		}
 
 		[TestMethod]
 		public void LoadMapTest ( )
 		{
-			Startup . RunAllTask ( ) . Wait ( ) ;
-
 			Map map = new Map ( "Test.xml" ) ;
 		}
 

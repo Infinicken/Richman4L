@@ -59,8 +59,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="40" />
 			</Grid.RowDefinitions>
-			<Grid x:Name="SayingPresentGrid" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,-100,0,6" Grid.Column="1"
-				Grid.RowSpan="5" >
+			<Grid x:Name="SayingPresentGrid" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,-100" Grid.Column="1" >
 				<controls:SayingPresenter x:Name="ASayibgPresenter" VerticalAlignment="Center" HorizontalAlignment="Center" />
 				<controls:SayingPresenter x:Name="BSayibgPresenter" VerticalAlignment="Center" HorizontalAlignment="Center"
 										Foreground="{StaticResource WhiteBrush}" RenderTransformOrigin="0.5,0.5" />

@@ -4,6 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:pages="using:WenceyWang.Richman4L.Apps.Uni.UI.Pages"
+	xmlns:Controls="using:WenceyWang.Richman4L.Apps.Uni.UI.Controls"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Pages.MainPage"
 	mc:Ignorable="d" Height="Auto" Width="Auto" >
 
@@ -137,6 +138,9 @@
 					</SymbolIcon.RenderTransform>
 				</SymbolIcon>
 			</Button>
+			<TextBlock x:Name="VersionTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom"
+						Margin="40,0,0,40" FontSize="{StaticResource FontSize}" FontFamily="{StaticResource Font}" Grid.RowSpan="10"
+						Grid.ColumnSpan="3" />
 
 		</Grid>
 	</Grid>

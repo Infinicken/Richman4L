@@ -58,8 +58,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 			try
 			{
-				Size = new MapSize ( Convert . ToInt32 ( element . Attribute ( nameof(MapSize . Width) ) . Value ) ,
-									Convert . ToInt32 ( element . Attribute ( nameof(MapSize . Height) ) . Value ) ) ;
+				Size = GameObject . ReadNecessaryValue <MapSize> ( element , nameof(Size) ) ;
 				List <BuildingGrade> grades = new List <BuildingGrade> ( ) ;
 				Grades = new ReadOnlyCollection <BuildingGrade> ( grades ) ;
 				foreach ( XElement grade in element . Element ( nameof(Grades) ) . Elements ( ) )

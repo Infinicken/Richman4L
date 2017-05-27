@@ -7,6 +7,9 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L
 {
 
+	/// <summary>
+	///     与
+	/// </summary>
 	public class VersusWinningCondition : WinningCondition
 	{
 

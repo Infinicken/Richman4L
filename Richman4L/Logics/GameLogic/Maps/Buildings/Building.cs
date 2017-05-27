@@ -67,7 +67,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		/// <summary>
 		///     指示建筑类型
 		/// </summary>
-		public new BuildingType Type { get ; private set ; }
+		public new BuildingType Type => base . Type as BuildingType ;
 
 		/// <summary>
 		///     指示建筑是否易于摧毁
@@ -81,8 +81,6 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		public abstract long MaintenanceFee { get ; }
 
 		public static List <BuildingType> BuildingTypes { get ; private set ; } = new List <BuildingType> ( ) ;
-
-		private static object Locker { get ; } = new object ( ) ;
 
 		private static bool Loaded { get ; set ; }
 
@@ -216,8 +214,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 			#endregion
 
-			Building building = ( Building ) Activator . CreateInstance ( buildingType . EntryType ) ;
-			building . Type = buildingType ;
+			Building building = ( Building ) Crate ( buildingType ) ;
 			building . Build ( position , player ) ;
 			position . BuildBuildiing ( building ) ;
 

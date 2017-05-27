@@ -3,8 +3,9 @@
 	"dependencies": {
 		"Microsoft.NETCore.Portable.Compatibility": "1.0.2",
 		"NETStandard.Library": "1.6.1",
+		"PropertyChanged.Fody": "1.53.0",
 		"System.ComponentModel.TypeConverter": "4.3.0",
-		"System.ValueTuple": "4.3.0"
+		"System.ValueTuple": "4.3.1"
 	},
 	"frameworks": {
 		"netstandard1.4": {}

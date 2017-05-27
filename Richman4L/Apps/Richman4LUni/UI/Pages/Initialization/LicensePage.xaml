@@ -1,5 +1,5 @@
 ﻿<pages:AnimatePage
-	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Pages.LicensePage"
+	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Pages.Initialization.LicensePage"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -97,13 +97,14 @@
 					d:LayoutOverrides="Width, Height, TopPosition, BottomPosition" Grid.Row="3" />
 			<Grid Grid.Column="1" d:LayoutOverrides="Width" Grid.Row="5" >
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="1*" />
-					<ColumnDefinition Width="12" />
-					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
-				<Button x:Name="DisagreeButton" Content="不同意" VerticalAlignment="Stretch" HorizontalAlignment="Center"
+				<Button x:Name="DisagreeButton" Content="不同意"
 						Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}"
-						FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}" />
+						FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}" HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch" />
 				<Button x:Name="AgreeButton" Content="同意" VerticalAlignment="Stretch" Grid.Column="2" HorizontalAlignment="Center"
 						Style="{StaticResource RoundedRectangleButtonStyle}" FontFamily="{StaticResource Font}"
 						FontSize="{StaticResource FontSize}" Padding="{StaticResource ButtonPadding}" />

@@ -22,7 +22,6 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . Banks ;
 using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
 using WenceyWang . Richman4L . Calendars ;
@@ -91,6 +90,9 @@ namespace WenceyWang . Richman4L . Players
 
 	}
 
+	/// <summary>
+	///     钱被作为资产给出的原因
+	/// </summary>
 	public class PayForGiveAsset : PayReason
 	{
 
@@ -122,6 +124,15 @@ namespace WenceyWang . Richman4L . Players
 
 	}
 
+	public class User
+	{
+
+		public string Name { get ; set ; }
+
+		public Guid Guid { get ; set ; }
+
+	}
+
 	//Todo:玩家破产了怎么办？
 	//Todo:玩家希望退出游戏怎么办？
 	public class Player : WithAssetObject
@@ -129,10 +140,12 @@ namespace WenceyWang . Richman4L . Players
 
 		private long _money ;
 
+		public User User { get ; }
+
 		/// <summary>
 		///     玩家所拥有的前进类型
 		/// </summary>
-		[ConsoleVisable]
+		[ConsoleVisable ( PropertyVisability . Owner )]
 		public List <MoveType> MoveTypeList { get ; } = new List <MoveType> ( ) ;
 
 		/// <summary>
@@ -140,7 +153,7 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		[NotNull]
 		[ConsoleVisable]
-		public string Name => Model . Name ;
+		public string Name => $"{User . Name} Play {Model . Name}" ;
 
 		/// <summary>
 		///     玩家的模型
@@ -159,7 +172,7 @@ namespace WenceyWang . Richman4L . Players
 		/// <summary>
 		///     玩家的游戏点数
 		/// </summary>
-		[ConsoleVisable]
+		[ConsoleVisable ( PropertyVisability . Owner )]
 		public long GamePoint { get ; set ; } = 0 ;
 
 		/// <summary>
@@ -412,15 +425,17 @@ namespace WenceyWang . Richman4L . Players
 		{
 			State = PlayerState . Normal ;
 
-			foreach ( AreaAuctionRequest request in Areas . Select ( item => new AreaAuctionRequest ( item , item . Price ) ) )
-			{
-				Game . Current . AuctionPerformer . PerformAuction ( request ) ;
-			}
-			foreach ( Card item in Cards )
-			{
-				Game . Current . AuctionPerformer . PerformAuction (
-					new CardAuctionRequest ( item , item . PriceWhenSell * 100 ) ) ;
-			}
+
+			//todo:Fix this
+			//foreach ( AreaAuctionRequest request in Areas . Select ( item => new AreaAuctionRequest ( item , item . Price ) ) )
+			//{
+			//	Game . Current . AuctionPerformer . PerformAuction ( request ) ;
+			//}
+			//foreach ( Card item in Cards )
+			//{
+			//	Game . Current . AuctionPerformer . PerformAuction (
+			//		new AuctionRequest ( item , item . PriceWhenSell * 100 ) ) ;
+			//}
 
 			BankruptcyEvent ? . Invoke ( this , new PlayerBankruptcyEventArgs ( reason ) ) ;
 		}

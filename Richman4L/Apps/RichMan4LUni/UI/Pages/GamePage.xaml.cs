@@ -7,6 +7,13 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Media ;
 using Windows . UI . Xaml . Navigation ;
 
+using WenceyWang . Richman4L . Auctions ;
+using WenceyWang . Richman4L . GameEnviroment ;
+using WenceyWang . Richman4L . InfomationCenter ;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . Commands ;
+using WenceyWang . Richman4L . Players . Models ;
+
 namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 {
 
@@ -14,6 +21,9 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 	/// </summary>
 	public sealed partial class GamePage : AnimatePage
 	{
+
+		private GamePlayerConsole console = new GamePlayerConsole ( ) ;
+
 
 		private bool CardGridShow { get ; set ; }
 
@@ -25,6 +35,13 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 		{
 			InitializeComponent ( ) ;
 			Loaded += GamePage_Loaded ;
+		}
+
+		public void ShowDices ( List <DiceWithValue> dices )
+		{
+			foreach ( DiceWithValue dice in dices )
+			{
+			}
 		}
 
 		private void GamePage_Loaded ( object sender , RoutedEventArgs e )
@@ -240,6 +257,48 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 		public override void AddControl ( ) { }
 
 		public override void RemoveControl ( ) { }
+
+		public class GamePlayerConsole : PlayerConsole
+		{
+
+			public override void ShowDices ( List <DiceWithValue> dices ) { }
+
+			public override void ShowEvent ( Event @event ) { throw new NotImplementedException ( ) ; }
+
+			public override void PlayerSay ( Player player , PlayerSaying saying ) { throw new NotImplementedException ( ) ; }
+
+			public override void ShowFlag ( bool flaged ) { throw new NotImplementedException ( ) ; }
+
+			public override void UpdateGame ( GameObject gameObject ) { throw new NotImplementedException ( ) ; }
+
+			public override void UpdatePlayerCommand ( List <PlayerCommand> commands )
+			{
+				throw new NotImplementedException ( ) ;
+			}
+
+			public override void ShowChatMessage ( Player source , string message ) { throw new NotImplementedException ( ) ; }
+
+			public override void StartSmallGame ( SmallGameType gameType ) { throw new NotImplementedException ( ) ; }
+
+			public override void ShowGameOver ( GameResult info ) { throw new NotImplementedException ( ) ; }
+
+			public override void StartAuction ( AuctionRequest request ) { throw new NotImplementedException ( ) ; }
+
+			public override void UpdateAuction ( AuctionRequest request , Player buyer , long priceRised )
+			{
+				throw new NotImplementedException ( ) ;
+			}
+
+			public override void ShowDice ( DiceType diceType , int value ) { throw new NotImplementedException ( ) ; }
+
+			public override void ShowAuctionResult ( AuctionRequest request , AuctionResult result )
+			{
+				throw new NotImplementedException ( ) ;
+			}
+
+			public override PlayerConsoleAbility GetAbility ( ) { throw new NotImplementedException ( ) ; }
+
+		}
 
 	}
 

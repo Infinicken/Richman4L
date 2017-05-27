@@ -89,7 +89,7 @@
 			<Grid.RenderTransform>
 				<CompositeTransform />
 			</Grid.RenderTransform>
-			<ScrollViewer RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" >
+			<ScrollViewer RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Padding="{StaticResource ScrollViewerPadding}" >
 				<ScrollViewer.RenderTransform>
 					<CompositeTransform />
 				</ScrollViewer.RenderTransform>
@@ -97,7 +97,7 @@
 					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="关于" FontFamily="{StaticResource Font}"
 								FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}" />
 					<StackPanel Padding="0" Margin="{StaticResource WideMargin}" >
-						<Controls:DreamRecorderLogo IsLight="False" HaveColor="False" Width="Auto" />
+						<Controls:DreamRecorderLogo HaveColor="False" Width="Auto" MaxWidth="640" MaxHeight="320" />
 						<TextBlock x:Name="DRText" TextWrapping="Wrap" FontSize="68" Text="Dream Recorder"
 									FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" TextAlignment="Center" Margin="0" />
 						<TextBlock TextWrapping="Wrap" Text="知识 自由 美德" FontFamily="{StaticResource Font}"
@@ -105,7 +105,7 @@
 						<TextBlock Margin="0,10,0,0" TextWrapping="Wrap" Text="展现美" FontFamily="{StaticResource Font}"
 									FontSize="{StaticResource ExtraSmallTitle}" TextAlignment="Center" />
 					</StackPanel>
-					<StackPanel Margin="40,80,40,0" Padding="0" >
+					<StackPanel Margin="{StaticResource WideMargin}" Padding="0" >
 						<TextBlock TextWrapping="Wrap" Text="Wencey Wang" FontSize="{StaticResource SmallTitle}" Margin="0"
 									FontFamily="{StaticResource Font}" />
 						<TextBlock TextWrapping="Wrap" Text="衡自超" Margin="0" FontSize="{StaticResource SmallFontSize}"
