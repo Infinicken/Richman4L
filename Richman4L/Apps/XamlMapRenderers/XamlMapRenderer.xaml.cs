@@ -66,18 +66,24 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 					else
 					{
 						Type rendererType =
-							MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
+							MapObjectRendererTypeList . FirstOrDefault (
+															renderer => renderer . TargetType ==
+																		mapObject . GetType ( ) ) ? .
 														EntryType ??
 							MapObjectRendererTypeList . FirstOrDefault (
 															renderer =>
 																renderer . TargetType . GetTypeInfo ( ) .
-																			IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? .
+																			IsAssignableFrom (
+																				mapObject . GetType ( ) .
+																							GetTypeInfo ( ) ) ) ? .
 														EntryType ;
 						MapObjectRenderer . MapObjectRenderer objectRenderer =
 							( MapObjectRenderer . MapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
 						objectRenderer . RenderTransform =
-							objectRenderer . Size . TransformTo ( new Size ( ObjectRendererSize . Width * mapObject . Size . Width ,
-																			ObjectRendererSize . Height * mapObject . Size . Height ) ) ;
+							objectRenderer . Size . TransformTo (
+								new Size ( ObjectRendererSize . Width * mapObject . Size . Width ,
+											ObjectRendererSize . Height *
+											mapObject . Size . Height ) ) ;
 
 						objectRenderer . Width = objectRenderer . Size . Width * mapObject . Size . Width ;
 						objectRenderer . Height = objectRenderer . Size . Width * mapObject . Size . Height ;
@@ -86,8 +92,10 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 
 
 						Canvas . SetLeft ( objectRenderer ,
-											ObjectRendererSize . Width * 0.25 + mapObject . X * ObjectRendererSize . Width +
-											( Target . Size . Width - mapObject . Y ) * ObjectRendererSize . Width * 0.5 ) ;
+											ObjectRendererSize . Width * 0.25 +
+											mapObject . X * ObjectRendererSize . Width +
+											( Target . Size . Width - mapObject . Y ) * ObjectRendererSize . Width *
+											0.5 ) ;
 						Canvas . SetTop ( objectRenderer , mapObject . Y * ObjectRendererSize . Height ) ;
 
 						( ( IMapObjectRenderer ) objectRenderer ) . SetTarget ( mapObject ) ;
@@ -102,7 +110,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 
 		private void Map_RemoveMapObjectEvent ( object sender , MapRemoveMapObjectEventArgs e ) { }
 
-		[Startup ( nameof(RegisDefultRenderer) )]
+		[Startup]
 		public static void RegisDefultRenderer ( )
 		{
 			lock ( Locker )

@@ -114,7 +114,8 @@ namespace WenceyWang . Richman4L . Maps
 				throw new ArgumentException ( ) ;
 			}
 
-			return new MapSize ( Convert . ToInt32 ( numbers . First ( ) ) , Convert . ToInt32 ( numbers . Last ( ) ) ) ;
+			return new MapSize ( Convert . ToInt32 ( numbers . First ( ) ) ,
+								Convert . ToInt32 ( numbers . Last ( ) ) ) ;
 		}
 
 		/// <summary>

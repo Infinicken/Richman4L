@@ -36,7 +36,9 @@ namespace WenceyWang . Richman4L . UnitTests
 																	y . ContentLenth ;
 											if ( contentLenthDiff == 0 )
 											{
-												int lenthDiff = x . ToXElement ( ) . ToString ( ) . Length - y . ToXElement ( ) . ToString ( ) . Length ;
+												int lenthDiff =
+													x . ToXElement ( ) . ToString ( ) . Length -
+													y . ToXElement ( ) . ToString ( ) . Length ;
 												if ( lenthDiff == 0 )
 												{
 													return string . CompareOrdinal ( x . Content ,

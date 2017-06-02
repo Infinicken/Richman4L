@@ -9,7 +9,7 @@ using WenceyWang . Richman4L . Calendars ;
 namespace WenceyWang . Richman4L . Players . PayReasons
 {
 
-	public class PayReason : NeedRegisTypeBase <PayReasonType , PayReasonAttribute , PayReason>
+	public class PayReason : NeedRegisBase <PayReasonType , PayReasonAttribute , PayReason>
 	{
 
 		public string Reason { get ; }
@@ -29,12 +29,14 @@ namespace WenceyWang . Richman4L . Players . PayReasons
 
 	}
 
-	public class PayReasonType : RegisterableTypeBase <PayReasonType , PayReasonAttribute , PayReason>
+	public class PayReasonType : RegisType <PayReasonType , PayReasonAttribute , PayReason>
 	{
 
 		public PayReasonType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }
 
-		public PayReasonType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) : base (
+		public PayReasonType ( [NotNull] Type entryType ,
+								[NotNull] string name ,
+								[NotNull] string introduction ) : base (
 			entryType ,
 			name ,
 			introduction )

@@ -71,7 +71,8 @@ namespace WenceyWang . FoggyConsole . Controls
 			foreach ( XAttribute attribute in control . Attributes ( ) )
 			{
 				PropertyInfo property = controlType . GetRuntimeProperty ( attribute . Name . LocalName ) ;
-				property . SetValue ( currentControl , Convert . ChangeType ( attribute . Value , property . PropertyType ) ) ;
+				property . SetValue ( currentControl ,
+									Convert . ChangeType ( attribute . Value , property . PropertyType ) ) ;
 			}
 
 			Container container = currentControl as Container ;

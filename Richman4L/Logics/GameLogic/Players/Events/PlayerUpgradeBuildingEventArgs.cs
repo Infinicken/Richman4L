@@ -34,7 +34,9 @@ namespace WenceyWang . Richman4L . Players . Events
 
 		public BuildingGrade TargetGrade { get ; }
 
-		public PlayerUpgradeBuildingEventArgs ( Building building , BuildingGrade sourceGrade , BuildingGrade targetGrade )
+		public PlayerUpgradeBuildingEventArgs ( Building building ,
+												BuildingGrade sourceGrade ,
+												BuildingGrade targetGrade )
 		{
 			Building = building ;
 			SourceGrade = sourceGrade ;

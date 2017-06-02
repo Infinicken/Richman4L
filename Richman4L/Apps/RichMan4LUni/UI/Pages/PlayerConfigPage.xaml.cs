@@ -62,7 +62,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 																					{
 																						new Game ( ) ;
 
-																						Game . Current . Start ( Parameters ) ;
+																						Game . Current . Start (
+																							Parameters ) ;
 																					} ) ,
 																		currentPage => { currentPage . NavigateTo <GamePage> ( ) ; } ) ;
 

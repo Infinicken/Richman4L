@@ -63,9 +63,11 @@ namespace WenceyWang . Richman4L . Maps
 				return
 					( Block ) Objects . SingleOrDefault ( mapobject => mapobject is Block &&
 																		( mapobject . X == x ||
-																		mapobject . X < x && mapobject . X + mapobject . Size . Width - 1 >= x ) &&
+																		mapobject . X < x && mapobject . X +
+																		mapobject . Size . Width - 1 >= x ) &&
 																		( mapobject . Y == y ||
-																		mapobject . Y < y && mapobject . Y + mapobject . Size . Height - 1 >= y ) ) ;
+																		mapobject . Y < y && mapobject . Y +
+																		mapobject . Size . Height - 1 >= y ) ) ;
 			}
 		}
 
@@ -103,14 +105,16 @@ namespace WenceyWang . Richman4L . Maps
 
 				IEnumerable <XElement> typeMapSource = mapSource . Element ( "MapObjectTypes" ) . Elements ( ) ;
 
-				Dictionary <string , Type> typeMapResult = new Dictionary <string , Type> ( typeMapSource . Count ( ) ) ;
+				Dictionary <string , Type> typeMapResult =
+					new Dictionary <string , Type> ( typeMapSource . Count ( ) ) ;
 
 				foreach ( XElement element in typeMapSource )
 				{
 					string name = ReadNecessaryValue <string> ( element , nameof(Name) ) ;
 					Guid guid = ReadNecessaryValue <Guid> ( element , nameof(Guid) ) ;
 
-					typeMapResult . Add ( name , MapObject . TypeList . Single ( type => type . Guid == guid ) . EntryType ) ;
+					typeMapResult . Add ( name ,
+										MapObject . TypeList . Single ( type => type . Guid == guid ) . EntryType ) ;
 				}
 
 				foreach ( XElement mapObjectSource in mapSource . Element ( nameof(Objects) ) . Elements ( ) )

@@ -110,7 +110,8 @@ namespace WenceyWang . Richman4L . Annotations
 	///     in particular scope where this annotation is used (type declaration or whole assembly).
 	/// </summary>
 	[AttributeUsage (
-		AttributeTargets . Class | AttributeTargets . Struct | AttributeTargets . Interface | AttributeTargets . Assembly )]
+		AttributeTargets . Class | AttributeTargets . Struct | AttributeTargets . Interface |
+		AttributeTargets . Assembly )]
 	public sealed class ImplicitNotNullAttribute : Attribute
 	{
 
@@ -603,7 +604,8 @@ namespace WenceyWang . Richman4L . Annotations
 	/// </code>
 	/// </example>
 	[AttributeUsage (
-		AttributeTargets . Field | AttributeTargets . Property | AttributeTargets . Parameter | AttributeTargets . Method |
+		AttributeTargets . Field | AttributeTargets . Property | AttributeTargets . Parameter |
+		AttributeTargets . Method |
 		AttributeTargets . Class | AttributeTargets . Interface | AttributeTargets . Struct |
 		AttributeTargets . GenericParameter )]
 	public sealed class ProvidesContextAttribute : Attribute

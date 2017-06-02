@@ -15,12 +15,7 @@ namespace WenceyWang . Richman4L . Maps . Events
 
 		public MapRemoveMapObjectEventArgs ( [NotNull] MapObject pastObject )
 		{
-			if ( pastObject == null )
-			{
-				throw new ArgumentNullException ( nameof(pastObject) ) ;
-			}
-
-			PastObject = pastObject ;
+			PastObject = pastObject ?? throw new ArgumentNullException ( nameof(pastObject) ) ;
 		}
 
 	}

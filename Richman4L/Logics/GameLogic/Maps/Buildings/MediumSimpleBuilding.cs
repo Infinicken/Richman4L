@@ -26,7 +26,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	[Building]
-	public class MediumSimpleBuilding : MediumBuilding
+	public class MediumSimpleBuilding : Building
 	{
 
 		public override bool IsEasyToDestroy { get ; }

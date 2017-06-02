@@ -18,17 +18,8 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 
 		internal MapObjectRendererType ( [NotNull] Type entryType , [NotNull] Type targetType )
 		{
-			if ( entryType == null )
-			{
-				throw new ArgumentNullException ( nameof(entryType) ) ;
-			}
-			if ( targetType == null )
-			{
-				throw new ArgumentNullException ( nameof(targetType) ) ;
-			}
-
-			EntryType = entryType ;
-			TargetType = targetType ;
+			EntryType = entryType ?? throw new ArgumentNullException ( nameof(entryType) ) ;
+			TargetType = targetType ?? throw new ArgumentNullException ( nameof(targetType) ) ;
 		}
 
 	}

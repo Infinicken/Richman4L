@@ -43,7 +43,8 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 		public static Settings CurrentSetting { get ; set ; }
 
-		public static ILoggerFactory LoggerFactory { get ; set ; } = new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
+		public static ILoggerFactory LoggerFactory { get ; set ; } =
+			new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
 
 		/// <summary>
 		///     Program.exe <-g|-- greeting|-$ <greeting>
@@ -229,7 +230,8 @@ namespace WenceyWang . Richman4L . Apps . Console
 		public static string GetLicense ( )
 		{
 			Assembly assembly = typeof ( Program ) . GetTypeInfo ( ) . Assembly ;
-			Stream stream = assembly . GetManifestResourceStream ( typeof ( Program ) . Namespace + @".License.AGPL.txt" ) ;
+			Stream stream =
+				assembly . GetManifestResourceStream ( typeof ( Program ) . Namespace + @".License.AGPL.txt" ) ;
 			StreamReader reader = new StreamReader ( stream ) ;
 			string license = reader . ReadToEnd ( ) ;
 			reader . Dispose ( ) ;

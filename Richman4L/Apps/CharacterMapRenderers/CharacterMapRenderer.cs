@@ -53,12 +53,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 
 		public void SetMap ( [NotNull] Map map )
 		{
-			if ( map == null )
-			{
-				throw new ArgumentNullException ( nameof(map) ) ;
-			}
-
-			Target = map ;
+			Target = map ?? throw new ArgumentNullException ( nameof(map) ) ;
 			Target . RegisMapRenderer ( this ) ;
 		}
 
@@ -111,12 +106,15 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 		private void DrawObject ( MapObject mapObject )
 		{
 			Type rendererType = MapObjectRendererTypeList . FirstOrDefault (
-																renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
+																renderer => renderer . TargetType ==
+																			mapObject . GetType ( ) ) ? .
 															EntryType ??
 								MapObjectRendererTypeList . FirstOrDefault (
 																renderer =>
 																	renderer . TargetType . GetTypeInfo ( ) .
-																				IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? .
+																				IsAssignableFrom (
+																					mapObject . GetType ( ) .
+																								GetTypeInfo ( ) ) ) ? .
 															EntryType ;
 			ICharacterMapObjectRenderer objectRenderer =
 				( ICharacterMapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
@@ -132,7 +130,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 			Update ( ) ;
 		}
 
-		[Startup ( nameof(LoadMapObjectRenderers) )]
+		[Startup]
 		public static void LoadMapObjectRenderers ( )
 		{
 			RegisMapObjectRenderer ( typeof ( NormalRoadRenderer ) , typeof ( NormalRoad ) ) ;

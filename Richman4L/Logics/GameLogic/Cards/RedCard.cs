@@ -23,7 +23,8 @@ namespace WenceyWang . Richman4L . Cards
 
 		static RedCard ( )
 		{
-			ArgumentInfo stock = new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
+			ArgumentInfo stock =
+				new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
 
 			Arguments = new List <ArgumentInfo> { stock } ;
 		}

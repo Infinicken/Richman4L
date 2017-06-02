@@ -15,7 +15,8 @@ namespace WenceyWang . Richman4L . Security
 		{
 			ReliableValue <T> temp =
 				( ReliableValue <T> )
-				Activator . CreateInstance ( ReliableValue . ImplemrntType . MakeGenericType ( typeof ( T ) ) , value ) ;
+				Activator . CreateInstance ( ReliableValue . ImplemrntType . MakeGenericType ( typeof ( T ) ) ,
+											value ) ;
 			return temp ;
 		}
 
@@ -36,7 +37,9 @@ namespace WenceyWang . Richman4L . Security
 			}
 			if (
 				! typeof ( ReliableValue <object> ) . GetTypeInfo ( ) .
-													IsAssignableFrom ( implementType . MakeGenericType ( typeof ( object ) ) . GetTypeInfo ( ) ) )
+													IsAssignableFrom (
+														implementType . MakeGenericType ( typeof ( object ) ) .
+																		GetTypeInfo ( ) ) )
 			{
 				throw new ArgumentException ( ) ;
 			}

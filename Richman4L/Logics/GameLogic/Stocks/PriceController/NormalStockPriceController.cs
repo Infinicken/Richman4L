@@ -74,7 +74,8 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDoubleBetween ( 0 ,
-																						Config . StockMarketMovementMax *
+																						Config .
+																							StockMarketMovementMax *
 																						Config .
 																							StockMarketMovementPower ) ) ;
 					break ;
@@ -94,7 +95,8 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 				{
 					times +=
 						Convert . ToDecimal ( GameRandom . Current . NextDoubleBetween ( 0 ,
-																						Config . StockMarketMovementMax ) *
+																						Config .
+																							StockMarketMovementMax ) *
 											Config . GovermentControlPower ) ;
 					break ;
 				}

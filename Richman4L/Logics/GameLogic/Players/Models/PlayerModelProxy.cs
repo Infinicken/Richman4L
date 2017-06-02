@@ -47,7 +47,7 @@ namespace WenceyWang . Richman4L . Players . Models
 			return _playerModels ;
 		}
 
-		[Startup ( nameof(LoadPlayerModels) )]
+		[Startup]
 		public static void LoadPlayerModels ( )
 		{
 			lock ( Locker )
@@ -59,7 +59,8 @@ namespace WenceyWang . Richman4L . Players . Models
 
 				_playerModels = new List <PlayerModelProxy> ( ) ;
 
-				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(Players)}.{nameof(Models)}.Resources.Index.xml" ) ;
+				XDocument doc =
+					ResourceHelper . LoadXmlDocument ( $"{nameof(Players)}.{nameof(Models)}.Resources.Index.xml" ) ;
 
 				if ( doc . Root == null )
 				{

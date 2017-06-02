@@ -67,16 +67,12 @@ namespace WenceyWang . Richman4L . GameEnviroment
 
 		internal SmallGameType ( [NotNull] Type entryType , [NotNull] XElement element )
 		{
-			if ( entryType == null )
-			{
-				throw new ArgumentNullException ( nameof(entryType) ) ;
-			}
 			if ( element == null )
 			{
 				throw new ArgumentNullException ( nameof(element) ) ;
 			}
 
-			EntryType = entryType ;
+			EntryType = entryType ?? throw new ArgumentNullException ( nameof(entryType) ) ;
 
 			#region Load XML
 

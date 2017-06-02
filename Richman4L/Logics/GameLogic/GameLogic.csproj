@@ -70,7 +70,7 @@
     <Compile Include="Cards\MapAreaDefineDomain.cs" />
     <Compile Include="GameValue.cs" />
     <Compile Include="Maps\ConsoleVisableAttribute.cs" />
-    <Compile Include="NeedRegisTypeBase.cs" />
+    <Compile Include="NeedRegisBase.cs" />
     <Compile Include="Cards\NullDefinDomain.cs" />
     <Compile Include="Cards\PlayerPositionAreaDefineDomain.cs" />
     <Compile Include="IMod.cs" />
@@ -134,7 +134,7 @@
     <Compile Include="Maps\MapObjectType.cs" />
     <Compile Include="Maps\MapSize.cs" />
     <Compile Include="Maps\Police.cs" />
-    <Compile Include="RegisterableTypeBase.cs" />
+    <Compile Include="RegisType.cs" />
     <Compile Include="Maps\Roads\NormalRoad.cs" />
     <Compile Include="Maps\Roads\Road.cs" />
     <Compile Include="Maps\Roads\AreaRoad.cs" />

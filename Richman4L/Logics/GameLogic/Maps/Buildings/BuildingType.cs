@@ -28,7 +28,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 	/// <summary>
 	///     指示建筑类型
 	/// </summary>
-	public sealed class BuildingType : MapObjectType
+	public sealed class BuildingType : RegisType <BuildingType , BuildingAttribute , Building>
 	{
 
 		/// <summary>

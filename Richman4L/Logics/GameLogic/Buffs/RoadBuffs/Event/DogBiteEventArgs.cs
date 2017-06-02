@@ -16,12 +16,7 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs . Event
 
 		public DogBiteEventArgs ( Player victim , int days )
 		{
-			if ( victim == null )
-			{
-				throw new ArgumentNullException ( nameof(victim) ) ;
-			}
-
-			Victim = victim ;
+			Victim = victim ?? throw new ArgumentNullException ( nameof(victim) ) ;
 			Days = days ;
 		}
 

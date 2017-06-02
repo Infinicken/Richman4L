@@ -717,7 +717,7 @@
 	<Grid>
 
 		<Rectangle x:Name="BackgroundRect" Fill="#FF40C1CE" Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsLocked="True" />
-		<Grid x:Name="MapFrame" d:IsHidden="True" >
+		<Grid x:Name="MapFrame" >
 			<xamlMapRenderers:XamlMapRenderer x:Name="MapRenderer" />
 			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 				<Grid.RenderTransform>
@@ -929,13 +929,13 @@
 
 			</Grid>
 			<Grid x:Name="MenuGrid"
-				RenderTransformOrigin="0.5,0.5" d:IsHidden="True" >
+				RenderTransformOrigin="0.5,0.5" >
 				<Grid.Background>
 					<SolidColorBrush Color="{StaticResource TransparentBlack}" />
 				</Grid.Background>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
-					<ColumnDefinition Width="2*" />
+					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 				<StackPanel VerticalAlignment="Center" Grid.Column="1" Margin="0" >
@@ -948,22 +948,24 @@
 							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="SaveButton_Click"
 							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
 							Background="{StaticResource TransparentCranBrush}"
-							MinHeight="0" MinWidth="0" FontSize="24" Margin="0,20,0,0"
+							MinHeight="0" MinWidth="0" FontSize="24" Margin="{StaticResource WideMargin}"
 							Style="{StaticResource RoundedRectangleButtonStyle}" />
 					<Button x:Name="DevButton" Content="开发模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="DevButton_Click"
+							Margin="{StaticResource WideMargin}" FontFamily="{StaticResource Font}" FontWeight="Normal"
+							Click="DevButton_Click"
 							BorderBrush="{x:Null}" Background="{StaticResource TransparentCranBrush}"
 							Padding="{StaticResource ButtonPadding}"
 							FontSize="24" MinHeight="0" MinWidth="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
-					<Button x:Name="MainPageButton" Content="主选单" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-							Margin="0,20,0,0" FontFamily="{StaticResource Font}" FontWeight="Normal" Click="MainPageButton_Click"
+					<Button x:Name="MainPageButton" Content="离开游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Margin="{StaticResource WideMargin}" FontFamily="{StaticResource Font}" FontWeight="Normal"
+							Click="MainPageButton_Click"
 							MinWidth="0" MinHeight="0" FontSize="24" Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
 							Background="{StaticResource TransparentCranBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
 				</StackPanel>
 			</Grid>
 		</Grid>
 		<Grid x:Name="StockFrame" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"
-			Grid.RowSpan="2" Grid.ColumnSpan="3" RenderTransformOrigin="0.5,0.5" >
+			Grid.RowSpan="2" Grid.ColumnSpan="3" RenderTransformOrigin="0.5,0.5" d:IsHidden="True" >
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="40" />
 				<ColumnDefinition />
@@ -1006,7 +1008,8 @@
 						<Grid.RowDefinitions>
 							<RowDefinition />
 						</Grid.RowDefinitions>
-						<myToolKitCintrols:DataGrid myToolKitCintrols:DataGridExtensions.UseSingleSelectionAndDeselection="true" >
+						<myToolKitCintrols:DataGrid myToolKitCintrols:DataGridExtensions.UseSingleSelectionAndDeselection="true"
+													FontFamily="{StaticResource Font}" >
 							<myToolKitCintrols:DataGrid.Columns>
 								<myToolKitCintrols:DataGridTextColumn Header="代号" />
 							</myToolKitCintrols:DataGrid.Columns>

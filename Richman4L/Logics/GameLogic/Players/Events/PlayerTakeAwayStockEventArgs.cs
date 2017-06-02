@@ -18,12 +18,7 @@ namespace WenceyWang . Richman4L . Players . Events
 
 		public PlayerTakeAwayStockEventArgs ( [NotNull] Stock stock , int number )
 		{
-			if ( stock == null )
-			{
-				throw new ArgumentNullException ( nameof(stock) ) ;
-			}
-
-			Stock = stock ;
+			Stock = stock ?? throw new ArgumentNullException ( nameof(stock) ) ;
 			Number = number ;
 		}
 

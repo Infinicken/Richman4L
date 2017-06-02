@@ -40,7 +40,10 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 		public NameShower ( ) { InitializeComponent ( ) ; }
 
 		public static readonly DependencyProperty TextProperty =
-			DependencyProperty . Register ( "Text" , typeof ( string ) , typeof ( NameShower ) , new PropertyMetadata ( "" ) ) ;
+			DependencyProperty . Register ( "Text" ,
+											typeof ( string ) ,
+											typeof ( NameShower ) ,
+											new PropertyMetadata ( "" ) ) ;
 
 		public static readonly DependencyProperty TextSizeProperty =
 			DependencyProperty . Register ( "TextSize" ,

@@ -48,7 +48,7 @@ namespace WenceyWang . Richman4L . Cards
 
 	}
 
-	public abstract class Card : NeedRegisTypeBase <CardType , CardAttribute , Card> , IAsset
+	public abstract class Card : NeedRegisBase <CardType , CardAttribute , Card> , IAsset
 	{
 
 		public abstract int PriceWhenBuy { get ; set ; }
@@ -72,7 +72,7 @@ namespace WenceyWang . Richman4L . Cards
 		public abstract void Use ( ArgumentsContainer arguments ) ;
 
 
-		[Startup ( nameof(LoadCards) )]
+		[Startup]
 		public static void LoadCards ( )
 		{
 			lock ( Locker )
@@ -86,7 +86,8 @@ namespace WenceyWang . Richman4L . Cards
 					TypeInfo type in
 					typeof ( Game ) . GetTypeInfo ( ) .
 									Assembly . DefinedTypes .
-									Where ( type => type . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Any ( ) &&
+									Where ( type => type . GetCustomAttributes ( typeof ( CardAttribute ) , false ) .
+															Any ( ) &&
 													typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
 				{
 					RegisType ( type . AsType ( ) , type . Name , "" ) ; //Todo:resources?

@@ -8,7 +8,7 @@ using WenceyWang . Richman4L . Annotations ;
 namespace WenceyWang . Richman4L . Cards
 {
 
-	public sealed class CardType : RegisterableTypeBase <CardType , CardAttribute , Card>
+	public sealed class CardType : RegisType <CardType , CardAttribute , Card>
 	{
 
 		public CardType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }

@@ -20,14 +20,12 @@ namespace WenceyWang . Richman4L . Calendars
 
 		public List <Player> HarmedPlayer { get ; set ; } = new List <Player> ( ) ;
 
-		public CalendarEvent ( string text , string title = null , Player gainedPlayer = null , Player harmedPlayer = null )
+		public CalendarEvent ( string text ,
+								string title = null ,
+								Player gainedPlayer = null ,
+								Player harmedPlayer = null )
 		{
-			if ( text == null )
-			{
-				throw new ArgumentNullException ( nameof(text) ) ;
-			}
-
-			Text = text ;
+			Text = text ?? throw new ArgumentNullException ( nameof(text) ) ;
 			Title = title ;
 			GainedPlayer . Add ( gainedPlayer ) ;
 			HarmedPlayer . Add ( harmedPlayer ) ;

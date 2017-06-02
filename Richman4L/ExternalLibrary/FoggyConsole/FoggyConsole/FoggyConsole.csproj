@@ -150,14 +150,6 @@
       <Name>FIGlet.Net</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Logging">
-      <HintPath>..\..\..\..\..\..\..\Users\Wencey Wang\.nuget\packages\microsoft.extensions.logging\1.1.0\lib\netstandard1.1\Microsoft.Extensions.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Thread">
-      <HintPath>..\..\..\..\..\..\..\Users\Wencey Wang\.nuget\packages\system.threading.thread\4.3.0\ref\netstandard1.3\System.Threading.Thread.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

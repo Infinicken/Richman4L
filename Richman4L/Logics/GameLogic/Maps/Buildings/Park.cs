@@ -28,8 +28,6 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 	public class Park : Building
 	{
 
-		public override MapSize Size { get ; }
-
 		public override bool IsEasyToDestroy => true ;
 
 		public override long MaintenanceFee { get ; }

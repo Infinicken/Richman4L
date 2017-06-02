@@ -17,7 +17,10 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 
 		public bool IsRightClosed { get ; }
 
-		public IntegerIntervalDefineDomain ( long leftEndpoint , bool isLeftClosed , long rightEndpoint , bool isRightClosed )
+		public IntegerIntervalDefineDomain ( long leftEndpoint ,
+											bool isLeftClosed ,
+											long rightEndpoint ,
+											bool isRightClosed )
 		{
 			LeftEndpoint = leftEndpoint ;
 			IsLeftClosed = isLeftClosed ;

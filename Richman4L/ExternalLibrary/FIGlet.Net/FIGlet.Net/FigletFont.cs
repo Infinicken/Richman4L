@@ -47,8 +47,9 @@ namespace WenceyWang . FIGlet
 					{
 						Stream stream = typeof ( FIGletFont ) . GetTypeInfo ( ) .
 																Assembly .
-																GetManifestResourceStream ( typeof ( FIGletFont ) . Namespace + "." +
-																							@"Fonts.standard.flf" ) ;
+																GetManifestResourceStream (
+																	typeof ( FIGletFont ) . Namespace + "." +
+																	@"Fonts.standard.flf" ) ;
 						defult = new FIGletFont ( stream ) ;
 						stream ? . Dispose ( ) ;
 						DefultFont . SetTarget ( defult ) ;

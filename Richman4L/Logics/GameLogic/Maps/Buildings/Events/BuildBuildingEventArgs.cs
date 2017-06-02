@@ -40,29 +40,12 @@ namespace WenceyWang . Richman4L . Maps . Buildings . Events
 		{
 			#region Chenck Argument
 
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof(building) ) ;
-			}
-			if ( position == null )
-			{
-				throw new ArgumentNullException ( nameof(position) ) ;
-			}
-			if ( buildingType == null )
-			{
-				throw new ArgumentNullException ( nameof(buildingType) ) ;
-			}
-			if ( player == null )
-			{
-				throw new ArgumentNullException ( nameof(player) ) ;
-			}
-
 			#endregion
 
-			Building = building ;
-			Position = position ;
-			Type = buildingType ;
-			Player = player ;
+			Building = building ?? throw new ArgumentNullException ( nameof(building) ) ;
+			Position = position ?? throw new ArgumentNullException ( nameof(position) ) ;
+			Type = buildingType ?? throw new ArgumentNullException ( nameof(buildingType) ) ;
+			Player = player ?? throw new ArgumentNullException ( nameof(player) ) ;
 		}
 
 	}

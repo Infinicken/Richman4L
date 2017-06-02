@@ -30,7 +30,7 @@ namespace WenceyWang . Richman4L . Maps
 	/// <summary>
 	///     代表地图上的元素
 	/// </summary>
-	public abstract class MapObject : NeedRegisTypeBase <MapObjectType , MapObjectAttribute , MapObject>
+	public abstract class MapObject : NeedRegisBase <MapObjectType , MapObjectAttribute , MapObject>
 	{
 
 		/// <summary>
@@ -89,7 +89,7 @@ namespace WenceyWang . Richman4L . Maps
 		public event EventHandler DisposeEvent ;
 
 
-		[Startup ( nameof(LoadMapObjects) )]
+		[Startup]
 		public static void LoadMapObjects ( )
 		{
 			lock ( Locker )
@@ -104,8 +104,10 @@ namespace WenceyWang . Richman4L . Maps
 					TypeInfo type in
 					typeof ( Game ) . GetTypeInfo ( ) .
 									Assembly . DefinedTypes .
-									Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( ) &&
-													typeof ( MapObject ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
+									Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) ,
+																				false ) . Any ( ) &&
+													typeof ( MapObject ) . GetTypeInfo ( ) .
+																			IsAssignableFrom ( type ) ) )
 				{
 					RegisMapObjectType ( type . AsType ( ) ) ;
 				}
@@ -139,13 +141,16 @@ namespace WenceyWang . Richman4L . Maps
 				#region Check Attributes
 
 				MapObjectAttribute attribute = entryType . GetTypeInfo ( ) .
-															GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) .
+															GetCustomAttributes (
+																typeof ( MapObjectAttribute ) ,
+																false ) .
 															FirstOrDefault ( ) as MapObjectAttribute ;
 
 				if ( attribute == null )
 				{
-					throw new ArgumentException ( $"{nameof(entryType)} should have attribute {nameof(MapObjectAttribute)}" ,
-												nameof(entryType) ) ;
+					throw new ArgumentException (
+						$"{nameof(entryType)} should have attribute {nameof(MapObjectAttribute)}" ,
+						nameof(entryType) ) ;
 				}
 
 				#endregion
@@ -155,20 +160,13 @@ namespace WenceyWang . Richman4L . Maps
 					return TypeList . Single ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) ;
 				}
 
-				MapObjectType mapObjectType = new MapObjectType ( entryType , attribute . Name , attribute . Introduction ) ;
 
-				TypeList . Add ( mapObjectType ) ;
-
-				return mapObjectType ;
+				return RegisType ( entryType , attribute . Name , attribute . Introduction ) ;
 			}
 		}
 
 
-		[NotNull]
-		public override string ToString ( )
-		{
-			return $"{GetType ( ) . Name} at {X},{Y}" ;
-		}
+		public override string ToString ( ) { return $"{GetType ( ) . Name} at {X},{Y}" ; }
 
 	}
 

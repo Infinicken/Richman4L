@@ -63,15 +63,43 @@ namespace WenceyWang . Richman4L . Players
 	public sealed class AssetTransactionAgreement
 	{
 
-		public WithAssetObject PartyA { get ; private set ; }
+		public WithAssetObject PartyA { get ; set ; }
 
-		public IAsset PartyAProvide { get ; private set ; }
+		public IAsset PartyAProvide { get ; set ; }
 
-		public WithAssetObject PartyB { get ; private set ; }
+		public WithAssetObject PartyB { get ; set ; }
 
 		public IAsset PartyBProvide { get ; set ; }
 
+
+		/// <summary>
+		///     被用于希望卖东西
+		/// </summary>
+		/// <param name="partyA"></param>
+		/// <param name="partyAProvide"></param>
+		/// <param name="partyB"></param>
+		public AssetTransactionAgreement ( WithAssetObject partyA , IAsset partyAProvide , WithAssetObject partyB )
+		{
+			PartyA = partyA ;
+			PartyAProvide = partyAProvide ;
+			PartyB = partyB ;
+		}
+
+		/// <summary>
+		///     被用于希望买东西
+		/// </summary>
+		/// <param name="partyA"></param>
+		/// <param name="partyB"></param>
+		/// <param name="partyBProvide"></param>
+		public AssetTransactionAgreement ( WithAssetObject partyA , WithAssetObject partyB , IAsset partyBProvide )
+		{
+			PartyA = partyA ;
+			PartyB = partyB ;
+			PartyBProvide = partyBProvide ;
+		}
+
 	}
+
 
 	public class MoneyAsset : IAsset
 	{
@@ -110,13 +138,15 @@ namespace WenceyWang . Richman4L . Players
 
 		public decimal DemandDeposits { get ; protected set ; }
 
-		public abstract decimal ReceiveBuyAssertRequest ( IAsset asset ) ;
+		public abstract void ReceiveTransactionRequest ( AssetTransactionAgreement request ) ;
+
+		//public abstract 
 
 		public abstract void RequestPay ( WithAssetObject source , decimal amount , PayReason reason ) ;
 
 		public abstract void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason ) ;
 
-		public abstract void ReceiveCash ( WithAssetObject source , PayReason reason , decimal amount ) ;
+		public abstract void ReceiveCash ( WithAssetObject source , decimal amount , PayReason reason ) ;
 
 		public abstract void ReceiveCheck ( WithAssetObject source , decimal amount , PayReason reason ) ;
 
@@ -128,6 +158,7 @@ namespace WenceyWang . Richman4L . Players
 	{
 
 		public string Name { get ; set ; }
+
 
 		public Guid Guid { get ; set ; }
 
@@ -278,16 +309,12 @@ namespace WenceyWang . Richman4L . Players
 
 		public Player ( [NotNull] PlayerModel model , long startMoney )
 		{
-			if ( model == null )
-			{
-				throw new ArgumentNullException ( nameof(model) ) ;
-			}
 			if ( startMoney < 0 )
 			{
 				throw new ArgumentOutOfRangeException ( nameof(startMoney) ) ;
 			}
 
-			Model = model ;
+			Model = model ?? throw new ArgumentNullException ( nameof(model) ) ;
 			Money = startMoney ;
 		}
 
@@ -469,7 +496,8 @@ namespace WenceyWang . Richman4L . Players
 			if ( CanMove )
 			{
 				HaveMoveToday = true ;
-				ReadOnlyCollection <int> diceResult = Game . Current . GameRule . GetDice ( diceType , ( int ) moveType ) ;
+				ReadOnlyCollection <int> diceResult =
+					Game . Current . GameRule . GetDice ( diceType , ( int ) moveType ) ;
 				Path route = Position . Route ( PreviousPosition , diceResult . Sum ( ) ) ;
 				foreach ( Road item in route . Route )
 				{
@@ -484,7 +512,9 @@ namespace WenceyWang . Richman4L . Players
 			else
 			{
 				MoveEvent ? . Invoke ( this ,
-										new PlayerMoveEventArgs ( new Path ( ) , new ReadOnlyCollection <int> ( new List <int> ( ) ) ) ) ;
+										new PlayerMoveEventArgs ( new Path ( ) ,
+																new ReadOnlyCollection <int> (
+																	new List <int> ( ) ) ) ) ;
 			}
 		}
 
@@ -696,7 +726,11 @@ namespace WenceyWang . Richman4L . Players
 		[CanBeNull]
 		public event EventHandler <PlayerReceiveCardEventArgs> ReceiveCardEvent ;
 
-		public override decimal ReceiveBuyAssertRequest ( IAsset asset ) { throw new NotImplementedException ( ) ; }
+
+		public override void ReceiveTransactionRequest ( AssetTransactionAgreement request )
+		{
+			throw new NotImplementedException ( ) ;
+		}
 
 		public override void RequestPay ( WithAssetObject source , decimal amount , PayReason reason )
 		{
@@ -708,7 +742,7 @@ namespace WenceyWang . Richman4L . Players
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void ReceiveCash ( WithAssetObject source , PayReason reason , decimal amount )
+		public override void ReceiveCash ( WithAssetObject source , decimal amount , PayReason reason )
 		{
 			throw new NotImplementedException ( ) ;
 		}

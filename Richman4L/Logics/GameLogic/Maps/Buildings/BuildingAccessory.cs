@@ -67,12 +67,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 				throw new ArgumentException ( $"{nameof(element)} do not perform a {nameof(BuildingAccessory)}" ,
 											nameof(element) ) ;
 			}
-			if ( belongTo == null )
-			{
-				throw new ArgumentNullException ( nameof(belongTo) ) ;
-			}
 
-			BelongTo = belongTo ;
+			BelongTo = belongTo ?? throw new ArgumentNullException ( nameof(belongTo) ) ;
 			try
 			{
 				Name = element . Attribute ( nameof(Name) ) . Value ;

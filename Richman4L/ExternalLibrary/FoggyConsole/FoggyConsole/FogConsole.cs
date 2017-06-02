@@ -45,7 +45,8 @@ namespace WenceyWang . FoggyConsole
 			StringBuilder stringBuilder = new StringBuilder ( ) ;
 			for ( int y = Math . Max ( - position . Y , 0 ) ; y < position . Height ; y++ )
 			{
-				Console . SetCursorPosition ( Math . Max ( position . Left , 0 ) , Math . Max ( position . Top + y , 0 ) ) ;
+				Console . SetCursorPosition ( Math . Max ( position . Left , 0 ) ,
+											Math . Max ( position . Top + y , 0 ) ) ;
 				for ( int x = Math . Max ( - position . X , 0 ) ; x < position . Width ; x++ )
 				{
 					ConsoleColor targetBackgroundColor = content [ x , y ] . BackgroundColor ;

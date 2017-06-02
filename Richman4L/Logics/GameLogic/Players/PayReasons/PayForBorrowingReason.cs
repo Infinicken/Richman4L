@@ -16,12 +16,7 @@ namespace WenceyWang . Richman4L . Players . PayReasons
 
 		public PayForBorrowingReason ( [NotNull] BorrowingBankProof proof )
 		{
-			if ( proof == null )
-			{
-				throw new ArgumentNullException ( nameof(proof) ) ;
-			}
-
-			Proof = proof ;
+			Proof = proof ?? throw new ArgumentNullException ( nameof(proof) ) ;
 		}
 
 	}

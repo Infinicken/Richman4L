@@ -42,12 +42,7 @@ namespace WenceyWang . Richman4L . Players . Commands
 		[PublicAPI]
 		public UseCardCommand ( Player performer , [NotNull] Card card ) : base ( performer )
 		{
-			if ( card == null )
-			{
-				throw new ArgumentNullException ( nameof(card) ) ;
-			}
-
-			Card = card ;
+			Card = card ?? throw new ArgumentNullException ( nameof(card) ) ;
 		}
 
 		public override void Apply ( ArgumentsContainer arguments ) { Card . Use ( arguments ) ; }

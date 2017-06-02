@@ -26,7 +26,6 @@ using WenceyWang . Richman4L . Annotations ;
 namespace WenceyWang . Richman4L
 {
 
-	//Todo:Add Custom Saying?
 	public class GameSaying : IEquatable <GameSaying>
 	{
 
@@ -200,7 +199,7 @@ namespace WenceyWang . Richman4L
 
 		public static bool operator != ( GameSaying left , GameSaying right ) { return ! Equals ( left , right ) ; }
 
-		[Startup ( nameof(LoadSayings) )]
+		[Startup]
 		public static void LoadSayings ( )
 		{
 			lock ( Locker )

@@ -109,7 +109,8 @@ namespace WenceyWang . FoggyConsole
 			viewRoot = viewRoot ?? new Frame ( ) ;
 			if ( viewRoot . Container != null )
 			{
-				throw new ArgumentException ( "The root-container can't have the Container-Property set." , nameof(viewRoot) ) ;
+				throw new ArgumentException ( "The root-container can't have the Container-Property set." ,
+											nameof(viewRoot) ) ;
 			}
 
 			Current = this ;

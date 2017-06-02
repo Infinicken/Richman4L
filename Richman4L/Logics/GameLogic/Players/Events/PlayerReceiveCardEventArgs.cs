@@ -43,17 +43,8 @@ namespace WenceyWang . Richman4L . Players . Events
 
 		public PlayerReceiveCardEventArgs ( [NotNull] Card card , [NotNull] Player source )
 		{
-			if ( card == null )
-			{
-				throw new ArgumentNullException ( nameof(card) ) ;
-			}
-			if ( source == null )
-			{
-				throw new ArgumentNullException ( nameof(source) ) ;
-			}
-
-			Card = card ;
-			Source = source ;
+			Card = card ?? throw new ArgumentNullException ( nameof(card) ) ;
+			Source = source ?? throw new ArgumentNullException ( nameof(source) ) ;
 		}
 
 	}

@@ -116,7 +116,8 @@ namespace WenceyWang . Richman4L . Stocks
 						if ( ! stock . IsBlockBuy ( ) )
 						{
 							buyVolume +=
-								BuyDelegateList [ stock ] . Where ( dele => dele . Price > minSellPrice ) . Sum ( dele => dele . Number ) ;
+								BuyDelegateList [ stock ] . Where ( dele => dele . Price > minSellPrice ) .
+															Sum ( dele => dele . Number ) ;
 						}
 
 						foreach ( SellStockDelegate dele in sellDelegates )

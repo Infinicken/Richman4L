@@ -30,11 +30,13 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 		{
 			ConsoleArea result = new ConsoleArea ( Control . ActualSize , Control . ActualBackgroundColor ) ;
 
-			result [ 0 , 0 ] = new ConsoleChar ( '[' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
+			result [ 0 , 0 ] =
+				new ConsoleChar ( '[' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
 			result [ 1 , 0 ] = new ConsoleChar ( CheckableChar . GetStateChar ( Control . State ) ,
 												Control . ActualForegroundColor ,
 												Control . ActualBackgroundColor ) ;
-			result [ 2 , 0 ] = new ConsoleChar ( ']' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
+			result [ 2 , 0 ] =
+				new ConsoleChar ( ']' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
 
 			if ( Control . ActualHeight == 1 )
 			{

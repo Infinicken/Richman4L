@@ -47,7 +47,7 @@ namespace WenceyWang . Richman4L . Players . Commands
 	/// <summary>
 	///     指示玩家可以采取的指令
 	/// </summary>
-	public abstract class PlayerCommand : NeedRegisTypeBase <PlayerCommandType , PlayerCommandAttribute , PlayerCommand>
+	public abstract class PlayerCommand : NeedRegisBase <PlayerCommandType , PlayerCommandAttribute , PlayerCommand>
 	{
 
 		public virtual bool CanPerform { get ; }
@@ -78,12 +78,17 @@ namespace WenceyWang . Richman4L . Players . Commands
 
 	}
 
-	public class PlayerCommandType : RegisterableTypeBase <PlayerCommandType , PlayerCommandAttribute , PlayerCommand>
+	public class PlayerCommandType : RegisType <PlayerCommandType , PlayerCommandAttribute , PlayerCommand>
 	{
 
-		public PlayerCommandType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }
+		public PlayerCommandType ( [NotNull] Type entryType , [NotNull] XElement element ) :
+			base ( entryType , element )
+		{
+		}
 
-		public PlayerCommandType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) : base (
+		public PlayerCommandType ( [NotNull] Type entryType ,
+									[NotNull] string name ,
+									[NotNull] string introduction ) : base (
 			entryType ,
 			name ,
 			introduction )

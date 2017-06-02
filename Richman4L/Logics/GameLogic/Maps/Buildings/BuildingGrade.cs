@@ -97,7 +97,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		///     指示能升级到的建筑等级
 		/// </summary>
 		public ReadOnlyCollection <BuildingGrade> CanUpgradeTo
-			=> _canUpgradeToCache ?? ( _canUpgradeToCache = new ReadOnlyCollection <BuildingGrade> ( GetCanUpgradeTo ) ) ;
+			=> _canUpgradeToCache ?? ( _canUpgradeToCache =
+											new ReadOnlyCollection <BuildingGrade> ( GetCanUpgradeTo ) ) ;
 
 		public ReadOnlyCollection <BuildingAccessory> Accessories { get ; }
 
@@ -112,12 +113,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 				throw new ArgumentException ( $"{nameof(element)} do not perform a {nameof(BuildingGrade)}" ,
 											nameof(element) ) ;
 			}
-			if ( belongTo == null )
-			{
-				throw new ArgumentNullException ( nameof(belongTo) ) ;
-			}
 
-			BelongTo = belongTo ;
+			BelongTo = belongTo ?? throw new ArgumentNullException ( nameof(belongTo) ) ;
 			try
 			{
 				Id = Convert . ToInt32 ( element . Attribute ( nameof(Id) ) . Value ) ;

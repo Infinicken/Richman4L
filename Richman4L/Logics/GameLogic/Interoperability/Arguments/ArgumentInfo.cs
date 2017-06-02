@@ -23,28 +23,10 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments
 							Type type ,
 							ArgumentValueDefineDomain defineDomain )
 		{
-			if ( name == null )
-			{
-				throw new ArgumentNullException ( nameof(name) ) ;
-			}
-			if ( introduction == null )
-			{
-				throw new ArgumentNullException ( nameof(introduction) ) ;
-			}
-			if ( type == null )
-			{
-				throw new ArgumentNullException ( nameof(type) ) ;
-			}
-			if ( defineDomain == null )
-			{
-				throw new ArgumentNullException ( nameof(defineDomain) ) ;
-			}
-
-
-			Name = name ;
-			Introduction = introduction ;
-			Type = type ;
-			DefineDomain = defineDomain ;
+			Name = name ?? throw new ArgumentNullException ( nameof(name) ) ;
+			Introduction = introduction ?? throw new ArgumentNullException ( nameof(introduction) ) ;
+			Type = type ?? throw new ArgumentNullException ( nameof(type) ) ;
+			DefineDomain = defineDomain ?? throw new ArgumentNullException ( nameof(defineDomain) ) ;
 		}
 
 	}

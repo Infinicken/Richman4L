@@ -51,8 +51,9 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 		public override int Y { get { return Route . Min ( road => road . Y ) ; } protected set { } }
 
-		public override MapSize Size => new MapSize ( Route . Max ( road => road . X ) - Route . Min ( road => road . X ) ,
-													Route . Max ( road => road . Y ) - Route . Min ( road => road . Y ) ) ;
+		public override MapSize Size => new MapSize (
+			Route . Max ( road => road . X ) - Route . Min ( road => road . X ) ,
+			Route . Max ( road => road . Y ) - Route . Min ( road => road . Y ) ) ;
 
 
 		/// <summary>

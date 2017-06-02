@@ -52,7 +52,8 @@ namespace WenceyWang . Richman4L . Maps
 					return _availableBuilding ??
 							( _availableBuilding =
 								new ReadOnlyCollection <BuildingType> (
-									Building . BuildingTypes . Where ( type => type . Size == MapSize . Small ) . ToList ( ) ) ) ;
+									Building . BuildingTypes . Where ( type => type . Size == MapSize . Small ) .
+												ToList ( ) ) ) ;
 				}
 
 				return new ReadOnlyCollection <BuildingType> ( new List <BuildingType> ( ) ) ;

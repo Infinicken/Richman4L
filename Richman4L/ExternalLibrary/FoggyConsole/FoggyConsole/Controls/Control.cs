@@ -133,7 +133,8 @@ namespace WenceyWang . FoggyConsole . Controls
 			}
 		}
 
-		public ConsoleColor ActualForegroundColor => _foregroundColor ?? Container . ForegroundColor ?? ConsoleColor . Gray ;
+		public ConsoleColor ActualForegroundColor => _foregroundColor ??
+													Container . ForegroundColor ?? ConsoleColor . Gray ;
 
 		/// <summary>
 		///     The foreground-color
@@ -193,8 +194,9 @@ namespace WenceyWang . FoggyConsole . Controls
 				if ( value ? . Control != null &&
 					value . Control != this )
 				{
-					throw new ArgumentException ( $"{nameof(Renderer)} already has an other {nameof(Control)} assigned." ,
-												nameof(value) ) ;
+					throw new ArgumentException (
+						$"{nameof(Renderer)} already has an other {nameof(Control)} assigned." ,
+						nameof(value) ) ;
 				}
 
 				_renderer = value ;

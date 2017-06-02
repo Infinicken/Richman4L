@@ -143,7 +143,8 @@ namespace WenceyWang . Richman4L . Maps
 				//降水量造成的影响
 				//Todo:改名字以及定义
 				int 降水量造成的影响的系数 = 1 ;
-				FlameStrength = Math . Max ( FlameStrength - Game . Current . Weather . Precipitation * 降水量造成的影响的系数 , 0 ) ;
+				FlameStrength = Math . Max ( FlameStrength - Game . Current . Weather . Precipitation * 降水量造成的影响的系数 ,
+											0 ) ;
 
 				//判断是否扩散
 

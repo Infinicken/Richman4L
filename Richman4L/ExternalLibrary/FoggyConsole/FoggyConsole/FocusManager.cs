@@ -46,12 +46,7 @@ namespace WenceyWang . FoggyConsole
 		/// <exception cref="ArgumentException">Is thrown if <paramref name="root" /> has an container</exception>
 		public FocusManager ( Frame root )
 		{
-			if ( root == null )
-			{
-				throw new ArgumentNullException ( nameof(root) ) ;
-			}
-
-			Root = root ;
+			Root = root ?? throw new ArgumentNullException ( nameof(root) ) ;
 		}
 
 		/// <summary>
@@ -89,7 +84,8 @@ namespace WenceyWang . FoggyConsole
 													{
 														if ( control == null )
 														{
-															CurrentLoger . LogWarning ( $"{nameof(controlList)} of {Root . Name} contains null" ) ;
+															CurrentLoger . LogWarning (
+																$"{nameof(controlList)} of {Root . Name} contains null" ) ;
 															return false ;
 														}
 
@@ -109,7 +105,8 @@ namespace WenceyWang . FoggyConsole
 				{
 					args . Handled = true ;
 					FocusedControl =
-						controlList [ ( Math . Max ( controlList . IndexOf ( FocusedControl ) , 0 ) + 1 ) % controlList . Count ] ;
+						controlList [ ( Math . Max ( controlList . IndexOf ( FocusedControl ) , 0 ) + 1 ) %
+									controlList . Count ] ;
 					break ;
 				}
 				case ConsoleKey . UpArrow :

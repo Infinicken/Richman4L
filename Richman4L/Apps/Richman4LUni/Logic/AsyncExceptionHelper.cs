@@ -56,7 +56,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			SynchronizationContext syncContext = Current ;
 			if ( syncContext == null )
 			{
-				throw new InvalidOperationException ( "Ensure a synchronization context exists before calling this method." ) ;
+				throw new InvalidOperationException (
+					"Ensure a synchronization context exists before calling this method." ) ;
 			}
 
 

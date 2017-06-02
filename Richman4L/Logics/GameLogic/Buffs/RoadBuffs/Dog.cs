@@ -117,7 +117,8 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		public bool IsKilled ( Weather weather )
 		{
 			return weather . Wind . Strength >= HighestTolerableWindStrength ||
-					weather . Temperature <= LowestTolerableTemperature || weather . Temperature >= HighestTolerableTemperature ;
+					weather . Temperature <= LowestTolerableTemperature ||
+					weather . Temperature >= HighestTolerableTemperature ;
 		}
 
 		public void Bite ( Player player )

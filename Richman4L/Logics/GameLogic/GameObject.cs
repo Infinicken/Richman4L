@@ -25,8 +25,6 @@ using System . Reflection ;
 using System . Runtime . CompilerServices ;
 using System . Xml . Linq ;
 
-using PropertyChanged ;
-
 using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps ;
@@ -34,13 +32,19 @@ using WenceyWang . Richman4L . Maps ;
 namespace WenceyWang . Richman4L
 {
 
-	[ImplementPropertyChanged]
 	public abstract class GameObject : INotifyPropertyChanged , IEquatable <GameObject>
 	{
 
 		[PublicAPI]
 		[ConsoleVisable]
 		public Guid Guid { get ; protected set ; }
+
+		protected static object Locker { get ; } = new object ( ) ;
+
+
+		public GameObjectType Type { get ; set ; }
+
+		public static List <GameObjectType> TypeList { get ; } = new List <GameObjectType> ( ) ;
 
 		public GameObject ( )
 		{
@@ -78,6 +82,27 @@ namespace WenceyWang . Richman4L
 
 		public virtual void StartDay ( GameDate nextDate ) { }
 
+		protected static GameObject Crate ( GameObjectType type )
+		{
+			#region Check Argument
+
+			if ( type == null )
+			{
+				throw new ArgumentNullException ( nameof(type) ) ;
+			}
+			if ( ! TypeList . Contains ( type ) )
+			{
+				throw new ArgumentException ( $"{nameof(type)} have not being registered" , nameof(type) ) ;
+			}
+
+			#endregion
+
+			GameObject instance = ( GameObject ) Activator . CreateInstance ( type . EntryType ) ;
+
+			return instance ;
+		}
+
+
 		public virtual XElement ToXElement ( )
 		{
 			TypeInfo typeInfo = GetType ( ) . GetTypeInfo ( ) ;
@@ -85,10 +110,12 @@ namespace WenceyWang . Richman4L
 			foreach (
 				PropertyInfo property in
 				typeInfo . DeclaredProperties . Where (
-					property => property . GetCustomAttribute ( typeof ( ConsoleVisableAttribute ) ) != null &&
+					property => property . GetCustomAttribute ( typeof ( ConsoleVisableAttribute ) ) !=
+								null &&
 								property . CanRead ) )
 			{
-				if ( typeof ( IEnumerable ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				if ( typeof ( IEnumerable ) . GetTypeInfo ( ) .
+											IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
 				{
 					XElement propertyContainer = new XElement ( property . Name ) ;
 
@@ -107,7 +134,8 @@ namespace WenceyWang . Richman4L
 						}
 					}
 				}
-				else if ( typeof ( GameObject ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				else if ( typeof ( GameObject ) . GetTypeInfo ( ) .
+												IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
 				{
 					XElement propertyContainer = new XElement ( property . Name ) ;
 					XElement propertyValue = ( ( GameObject ) property . GetValue ( this ) ) . ToXElement ( ) ;
@@ -197,6 +225,66 @@ namespace WenceyWang . Richman4L
 		protected void OnPropertyChanged ( [CallerMemberName] string propertyName = null )
 		{
 			PropertyChanged ? . Invoke ( this , new PropertyChangedEventArgs ( propertyName ) ) ;
+		}
+
+		[PublicAPI]
+		protected static void RegisType ( GameObjectType subType )
+		{
+			lock ( Locker )
+			{
+				if ( subType == null )
+				{
+					throw new ArgumentNullException ( nameof(subType) ) ;
+				}
+
+				if ( TypeList . Any ( type => type . Name == subType . Name ) )
+				{
+					throw new Exception ( "Name is Invilable" ) ;
+				}
+
+
+				TypeList . Add ( subType ) ;
+			}
+		}
+
+	}
+
+	public class GameObjectType
+	{
+
+		public string Introduction { get ; }
+
+		public Guid Guid => EntryType . GetTypeInfo ( ) . GUID ;
+
+		public string Name { get ; }
+
+		public Type EntryType { get ; }
+
+		protected GameObjectType ( [NotNull] Type entryType , [NotNull] XElement element )
+		{
+			if ( element == null )
+			{
+				throw new ArgumentNullException ( nameof(element) ) ;
+			}
+
+			EntryType = entryType ?? throw new ArgumentNullException ( nameof(entryType) ) ;
+
+			#region Load XML
+
+			Name = GameObject . ReadNecessaryValue <string> ( element , nameof(Name) ) ;
+
+			Introduction = GameObject . ReadNecessaryValue <string> ( element , nameof(Introduction) ) ;
+
+			#endregion
+		}
+
+		protected GameObjectType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction )
+		{
+			EntryType = entryType ?? throw new ArgumentNullException ( nameof(entryType) ) ;
+
+			Name = name ?? throw new ArgumentNullException ( nameof(name) ) ;
+
+			Introduction = introduction ?? throw new ArgumentNullException ( nameof(introduction) ) ;
 		}
 
 	}

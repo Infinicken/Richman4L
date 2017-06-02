@@ -29,7 +29,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
 	[Building]
-	public class SmallSimpleBuilding : SmallBuilding
+	public class SmallSimpleBuilding : Building
 	{
 
 		public long MoneyCostWhenCrossed => throw new NotImplementedException ( ) ;
@@ -109,7 +109,9 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			{
 				case BuildingState . Working :
 				{
-					Owner ? . RequestPay ( Bank . Current , MaintenanceFee , new PayForMaintainBuildingReason ( this ) ) ;
+					Owner ? . RequestPay ( Bank . Current ,
+											MaintenanceFee ,
+											new PayForMaintainBuildingReason ( this ) ) ;
 					break ;
 				}
 				case BuildingState . Closed :

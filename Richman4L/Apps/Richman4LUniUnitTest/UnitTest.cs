@@ -35,7 +35,9 @@ namespace WenceyWang . Richman4L . Apps . Uni . UnitTests
 			IEnumerable <TypeInfo> types = typeof ( AnimatePage ) . GetTypeInfo ( ) .
 																	Assembly . DefinedTypes . Where (
 																		info =>
-																			typeof ( AnimatePage ) . GetTypeInfo ( ) . IsAssignableFrom ( info ) &&
+																			typeof ( AnimatePage ) . GetTypeInfo ( ) .
+																									IsAssignableFrom (
+																										info ) &&
 																			info . Name != nameof(AnimatePage) ) ;
 
 			List <string> properties = new List <string> { "PageColor" } ;

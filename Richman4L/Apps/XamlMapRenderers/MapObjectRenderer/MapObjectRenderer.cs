@@ -60,7 +60,8 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 
 		void IMapObjectRenderer . SetTarget ( MapObject target )
 		{
-			GetType ( ) . GetMethod ( nameof(IMapObjectRenderer . SetTarget) ) . Invoke ( this , new object [ ] { target } ) ;
+			GetType ( ) . GetMethod ( nameof(IMapObjectRenderer . SetTarget) ) .
+						Invoke ( this , new object [ ] { target } ) ;
 		}
 
 		public abstract void Show ( ) ;

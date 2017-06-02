@@ -15,12 +15,7 @@ namespace WenceyWang . Richman4L . Maps . Events
 
 		public MapAddMapObjectEventArgs ( [NotNull] MapObject newObject )
 		{
-			if ( newObject == null )
-			{
-				throw new ArgumentNullException ( nameof(newObject) ) ;
-			}
-
-			NewObject = newObject ;
+			NewObject = newObject ?? throw new ArgumentNullException ( nameof(newObject) ) ;
 		}
 
 	}

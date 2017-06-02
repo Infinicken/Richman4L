@@ -14,10 +14,6 @@ namespace WenceyWang . Richman4L
 	public sealed class StartupAttribute : Attribute
 	{
 
-		private string TaskName { get ; }
-
-		public StartupAttribute ( string taskName ) { TaskName = taskName ; }
-
 	}
 
 	public static class Startup

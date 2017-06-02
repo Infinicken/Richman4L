@@ -9,7 +9,7 @@ using WenceyWang . Richman4L . Calendars ;
 namespace WenceyWang . Richman4L . Buffs
 {
 
-	public abstract class Buff : NeedRegisTypeBase <BuffType , BuffAttribute , Buff>
+	public abstract class Buff : NeedRegisBase <BuffType , BuffAttribute , Buff>
 	{
 
 		public virtual string Name { get ; protected set ; }
@@ -56,7 +56,7 @@ namespace WenceyWang . Richman4L . Buffs
 
 	}
 
-	public class BuffType : RegisterableTypeBase <BuffType , BuffAttribute , Buff>
+	public class BuffType : RegisType <BuffType , BuffAttribute , Buff>
 	{
 
 		public BuffType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }

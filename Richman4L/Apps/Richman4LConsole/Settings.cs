@@ -35,7 +35,8 @@ namespace WenceyWang . Richman4L . Apps . Console
 		{
 			StringBuilder [ ] stringBuilders =
 				new StringBuilder[
-					Enum . GetValues ( typeof ( SettingCategory ) ) . OfType <SettingCategory> ( ) . Max ( type => ( int ) type ) ] ;
+					Enum . GetValues ( typeof ( SettingCategory ) ) . OfType <SettingCategory> ( ) .
+							Max ( type => ( int ) type ) ] ;
 
 			foreach ( SettingCategory type in Enum . GetValues ( typeof ( SettingCategory ) ) )
 			{
@@ -85,7 +86,8 @@ namespace WenceyWang . Richman4L . Apps . Console
 			Settings settings = new Settings ( ) ;
 
 			foreach (
-				string line in source . Split ( new [ ] { Environment . NewLine } , StringSplitOptions . RemoveEmptyEntries ) )
+				string line in source . Split ( new [ ] { Environment . NewLine } ,
+												StringSplitOptions . RemoveEmptyEntries ) )
 			{
 				if ( ! string . IsNullOrWhiteSpace ( line ) &&
 					! line . StartsWith ( "#" ) )
@@ -93,7 +95,8 @@ namespace WenceyWang . Richman4L . Apps . Console
 					string [ ] setCommand = line . Split ( '=' ) ;
 
 					PropertyInfo property = settings . GetType ( ) .
-														GetProperty ( setCommand [ 0 ] . Trim ( ) , BindingFlags . IgnoreCase ) ;
+														GetProperty ( setCommand [ 0 ] . Trim ( ) ,
+																	BindingFlags . IgnoreCase ) ;
 					object value = Convert . ChangeType ( setCommand [ 1 ] . Trim ( ) , property . PropertyType ) ;
 
 					property . SetValue ( settings , value ) ;
@@ -119,7 +122,8 @@ namespace WenceyWang . Richman4L . Apps . Console
 					string [ ] setCommand = line . Split ( '=' ) ;
 
 					PropertyInfo property = settings . GetType ( ) .
-														GetProperty ( setCommand [ 0 ] . Trim ( ) , BindingFlags . IgnoreCase ) ;
+														GetProperty ( setCommand [ 0 ] . Trim ( ) ,
+																	BindingFlags . IgnoreCase ) ;
 					object value = Convert . ChangeType ( setCommand [ 1 ] . Trim ( ) , property . PropertyType ) ;
 
 					property . SetValue ( settings , value ) ;

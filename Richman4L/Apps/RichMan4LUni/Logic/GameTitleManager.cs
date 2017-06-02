@@ -12,7 +12,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 		{
 			if ( AppSettings . Current . AllowRandomTitle )
 			{
-				AppSettings . Current . GameTitle = GameTitle . GetTitle ( AppSettings . Current . AllowRandomTitleRoot ) ;
+				AppSettings . Current . GameTitle =
+					GameTitle . GetTitle ( AppSettings . Current . AllowRandomTitleRoot ) ;
 			}
 			else
 			{

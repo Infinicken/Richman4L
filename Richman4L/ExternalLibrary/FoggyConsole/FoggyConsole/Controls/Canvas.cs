@@ -65,8 +65,9 @@ namespace WenceyWang . FoggyConsole . Controls
 		{
 			foreach ( Control control in Items )
 			{
-				control . Arrange ( new Rectangle ( finalRect . LeftTopPoint . Offset ( new Vector ( Position [ control ] ) ) ,
-													control . DesiredSize ) ) ;
+				control . Arrange ( new Rectangle (
+										finalRect . LeftTopPoint . Offset ( new Vector ( Position [ control ] ) ) ,
+										control . DesiredSize ) ) ;
 			}
 
 			base . Arrange ( finalRect ) ;

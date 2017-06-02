@@ -161,11 +161,15 @@ namespace WenceyWang . Richman4L . Apps . Uni
 					SaturationEffect graphicsEffect = new SaturationEffect
 													{
 														Name = nameof(SaturationEffect) ,
-														Source = new CompositionEffectSourceParameter ( nameof(backdropBrush) )
+														Source = new CompositionEffectSourceParameter (
+															nameof(backdropBrush) )
 													} ;
 
 					CompositionEffectFactory effectFactory = compositor . CreateEffectFactory ( graphicsEffect ,
-																								new [ ] { $"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}" } ) ;
+																								new [ ]
+																								{
+																									$"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}"
+																								} ) ;
 					CompositionEffectBrush effectBrush = effectFactory . CreateBrush ( ) ;
 
 					effectBrush . Properties . InsertScalar (
@@ -173,7 +177,8 @@ namespace WenceyWang . Richman4L . Apps . Uni
 						0f ) ;
 
 					ExpressionAnimation bindSaturationAnimation =
-						compositor . CreateExpressionAnimation ( $"{nameof(viewRootVisual)}.{nameof(SaturationEffect . Saturation)}" ) ;
+						compositor . CreateExpressionAnimation (
+							$"{nameof(viewRootVisual)}.{nameof(SaturationEffect . Saturation)}" ) ;
 
 					bindSaturationAnimation . SetReferenceParameter ( $"{nameof(viewRootVisual)}" , viewRootVisual ) ;
 
@@ -186,7 +191,8 @@ namespace WenceyWang . Richman4L . Apps . Uni
 					glassVisual . Brush = effectBrush ;
 
 					ExpressionAnimation bindSizeAnimation =
-						compositor . CreateExpressionAnimation ( $"{nameof(viewRootVisual)}.{nameof(viewRootVisual . Size)}" ) ;
+						compositor . CreateExpressionAnimation (
+							$"{nameof(viewRootVisual)}.{nameof(viewRootVisual . Size)}" ) ;
 					bindSizeAnimation . SetReferenceParameter ( $"{nameof(viewRootVisual)}" , viewRootVisual ) ;
 					glassVisual . StartAnimation ( $"{nameof(glassVisual . Size)}" , bindSizeAnimation ) ;
 

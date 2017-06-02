@@ -19,7 +19,6 @@
 using System ;
 using System . Collections . Generic ;
 using System . Linq ;
-using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . Cards ;
@@ -47,7 +46,8 @@ namespace WenceyWang . Richman4L . GameEnviroment
 		{
 			if ( ! Enum . IsDefined ( typeof ( DiceType ) , diceType ) )
 			{
-				throw new ArgumentOutOfRangeException ( nameof(diceType) , "Value should be defined in the DiceType enum." ) ;
+				throw new ArgumentOutOfRangeException ( nameof(diceType) ,
+														"Value should be defined in the DiceType enum." ) ;
 			}
 			if ( value <= 0 ||
 				value > ( int ) diceType )
@@ -130,13 +130,6 @@ namespace WenceyWang . Richman4L . GameEnviroment
 		public List <SmallGameType> SupportSmallGameType { get ; } = new List <SmallGameType> ( ) ;
 
 		//public List<>
-
-		public XElement ToXElement ( )
-		{
-			XElement result = new XElement ( nameof(PlayerConsoleAbility) ) ;
-
-			return result ;
-		}
 
 	}
 

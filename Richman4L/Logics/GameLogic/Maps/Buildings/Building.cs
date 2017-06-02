@@ -34,7 +34,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 	/// <summary>
 	///     表示建筑
 	/// </summary>
-	public abstract class Building : MapObject , IAsset
+	public abstract class Building : NeedRegisBase <BuildingType , BuildingAttribute , Building> , IAsset
 	{
 
 		/// <summary>
@@ -65,14 +65,14 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		public virtual BuildingGrade Grade { get ; protected set ; }
 
 		/// <summary>
-		///     指示建筑类型
-		/// </summary>
-		public new BuildingType Type => base . Type as BuildingType ;
-
-		/// <summary>
 		///     指示建筑是否易于摧毁
 		/// </summary>
 		public abstract bool IsEasyToDestroy { get ; }
+
+
+		public int X => Position . X ;
+
+		public int Y => Position . Y ;
 
 
 		/// <summary>
@@ -112,7 +112,9 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			Position = position ;
 			Grade = Type . EntryGrade ;
 			State = BuildingState . Building ;
-			player . RequestPay ( player , Type . EntryGrade . StartUpgradeCost , new PayForBuildBuildingReason ( this ) ) ;
+			player . RequestPay ( player ,
+								Type . EntryGrade . StartUpgradeCost ,
+								new PayForBuildBuildingReason ( this ) ) ;
 			UpgradeTo = null ;
 			UpgradeProcess = null ;
 
@@ -135,7 +137,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			}
 
 			if (
-				entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( BuildingAttribute ) , false ) . FirstOrDefault ( ) ==
+				entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( BuildingAttribute ) , false ) .
+							FirstOrDefault ( ) ==
 				null )
 			{
 				throw new ArgumentException ( $"{nameof(entryType)} should have atribute {nameof(BuildingAttribute)}" ,
@@ -162,12 +165,12 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			BuildingType buildingType = new BuildingType ( entryType , element ) ;
 
 			BuildingTypes . Add ( buildingType ) ;
-			RegisMapObjectType ( buildingType ) ;
+			RegisType ( buildingType ) ;
 
 			return buildingType ;
 		}
 
-		[Startup ( nameof(LoadBuildingTypes) )]
+		[Startup]
 		public static void LoadBuildingTypes ( )
 		{
 			lock ( Locker )
@@ -197,7 +200,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			}
 			if ( ! BuildingTypes . Contains ( buildingType ) )
 			{
-				throw new ArgumentException ( $"{nameof(buildingType)} have not being registered" , nameof(buildingType) ) ;
+				throw new ArgumentException ( $"{nameof(buildingType)} have not being registered" ,
+											nameof(buildingType) ) ;
 			}
 			if ( ! position . IsBuildingAvailable ( buildingType ) )
 			{
@@ -214,12 +218,16 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 			#endregion
 
-			Building building = ( Building ) Crate ( buildingType ) ;
+			Building building = Crate ( buildingType ) ;
 			building . Build ( position , player ) ;
 			position . BuildBuildiing ( building ) ;
 
 			BuildBuildingEvent ? . Invoke ( typeof ( Building ) ,
-											new BuildBuildingEventArgs ( building , position , buildingType , player ) ) ;
+											new BuildBuildingEventArgs (
+												building ,
+												position ,
+												buildingType ,
+												player ) ) ;
 		}
 
 		#region State

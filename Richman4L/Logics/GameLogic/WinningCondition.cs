@@ -10,7 +10,7 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L
 {
 
-	public abstract class WinningCondition : NeedRegisTypeBase <WinningConditionType , WinningConditionAttribute ,
+	public abstract class WinningCondition : NeedRegisBase <WinningConditionType , WinningConditionAttribute ,
 		WinningCondition>
 	{
 
@@ -22,11 +22,12 @@ namespace WenceyWang . Richman4L
 
 	}
 
-	public class WinningConditionType : RegisterableTypeBase <WinningConditionType , WinningConditionAttribute ,
+	public class WinningConditionType : RegisType <WinningConditionType , WinningConditionAttribute ,
 		WinningCondition>
 	{
 
-		public WinningConditionType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element )
+		public WinningConditionType ( [NotNull] Type entryType , [NotNull] XElement element ) :
+			base ( entryType , element )
 		{
 		}
 

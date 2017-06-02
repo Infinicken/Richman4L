@@ -19,7 +19,8 @@ namespace WenceyWang . Richman4L . Calendars
 			{
 				long currentDays = Date %
 									( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth +
-									Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
+									Game . Current . Calendar . AutumnLenth +
+									Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return Season . Spring ;
@@ -50,7 +51,8 @@ namespace WenceyWang . Richman4L . Calendars
 			{
 				long currentDays = Date %
 									( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth +
-									Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
+									Game . Current . Calendar . AutumnLenth +
+									Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return currentDays ;
@@ -81,7 +83,8 @@ namespace WenceyWang . Richman4L . Calendars
 			{
 				long currentDays = Date %
 									( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth +
-									Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
+									Game . Current . Calendar . AutumnLenth +
+									Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return Game . Current . Calendar . SpringLenth ;

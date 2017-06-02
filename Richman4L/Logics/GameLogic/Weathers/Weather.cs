@@ -47,7 +47,8 @@ namespace WenceyWang . Richman4L . Weathers
 		{
 			if ( Wind . Strength > 600 )
 			{
-				return Convert . ToInt32 ( Math . Floor ( moveCount * ( Convert . ToDouble ( Wind . Strength - 600 ) / 350d ) ) ) ;
+				return Convert . ToInt32 (
+					Math . Floor ( moveCount * ( Convert . ToDouble ( Wind . Strength - 600 ) / 350d ) ) ) ;
 			}
 
 			return 0 ;
@@ -57,7 +58,8 @@ namespace WenceyWang . Richman4L . Weathers
 		{
 			if ( Wind . Strength > 600 )
 			{
-				return Convert . ToInt64 ( Convert . ToDouble ( price ) * Convert . ToDouble ( Wind . Strength - 600 ) / 300d ) ;
+				return Convert . ToInt64 ( Convert . ToDouble ( price ) * Convert . ToDouble ( Wind . Strength - 600 ) /
+											300d ) ;
 			}
 
 			return 0 ;
@@ -79,7 +81,8 @@ namespace WenceyWang . Richman4L . Weathers
 		{
 			Weather weather = new Weather ( ) ;
 
-			double seasonProcessNet = Convert . ToDouble ( date . SeasonProcess ) / Convert . ToDouble ( date . SeasonLenth ) ;
+			double seasonProcessNet = Convert . ToDouble ( date . SeasonProcess ) /
+									Convert . ToDouble ( date . SeasonLenth ) ;
 
 			double windAngle = 0 ;
 			int windStrength = 0 ;

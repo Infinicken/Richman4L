@@ -25,18 +25,6 @@ namespace WenceyWang . Richman4L . Apps . Console
 									bool restartRequired ,
 									object defultValue )
 		{
-			if ( displayName == null )
-			{
-				throw new ArgumentNullException ( nameof(displayName) ) ;
-			}
-			if ( introduction == null )
-			{
-				throw new ArgumentNullException ( nameof(introduction) ) ;
-			}
-			if ( defultValue == null )
-			{
-				throw new ArgumentNullException ( nameof(defultValue) ) ;
-			}
 			if ( ! Enum . IsDefined ( typeof ( SettingCategory ) , settingCategory ) )
 			{
 				throw new ArgumentOutOfRangeException ( nameof(settingCategory) ,
@@ -45,10 +33,10 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 
 			SettingCategory = settingCategory ;
-			DisplayName = displayName ;
-			Introduction = introduction ;
+			DisplayName = displayName ?? throw new ArgumentNullException ( nameof(displayName) ) ;
+			Introduction = introduction ?? throw new ArgumentNullException ( nameof(introduction) ) ;
 			RestartRequired = restartRequired ;
-			DefultValue = defultValue ;
+			DefultValue = defultValue ?? throw new ArgumentNullException ( nameof(defultValue) ) ;
 		}
 
 		public override string ToString ( )

@@ -32,7 +32,9 @@ namespace WenceyWang . Richman4L . Apps . Console
 					string [ ] setCommand = line . Split ( '=' ) ;
 
 					PropertyInfo property = languageResources . GetType ( ) .
-																GetProperty ( setCommand [ 0 ] . Trim ( ) , BindingFlags . IgnoreCase ) ;
+																GetProperty (
+																	setCommand [ 0 ] . Trim ( ) ,
+																	BindingFlags . IgnoreCase ) ;
 					object value = Convert . ChangeType ( setCommand [ 1 ] . Trim ( ) , property . PropertyType ) ;
 
 					property . SetValue ( languageResources , value ) ;

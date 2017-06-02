@@ -47,7 +47,11 @@ namespace WenceyWang . Richman4L . Buffs . StockBuffs
 		/// </summary>
 		public virtual double ImpactOnPrices { get ; }
 
-		public StockBuff ( Stock target , int duration ) : this ( target , Game . Current . Calendar . Today , duration ) { }
+		public StockBuff ( Stock target , int duration ) : this ( target ,
+																Game . Current . Calendar . Today ,
+																duration )
+		{
+		}
 
 		/// <summary>
 		///     创建新的指向股票的效果

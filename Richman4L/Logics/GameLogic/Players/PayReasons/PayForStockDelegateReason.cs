@@ -16,12 +16,7 @@ namespace WenceyWang . Richman4L . Players . PayReasons
 
 		public PayForStockDelegateReason ( [NotNull] StockDelegate stockDelegate )
 		{
-			if ( stockDelegate == null )
-			{
-				throw new ArgumentNullException ( nameof(stockDelegate) ) ;
-			}
-
-			StockDelegate = stockDelegate ;
+			StockDelegate = stockDelegate ?? throw new ArgumentNullException ( nameof(stockDelegate) ) ;
 		}
 
 	}

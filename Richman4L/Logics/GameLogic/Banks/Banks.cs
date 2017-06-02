@@ -61,18 +61,17 @@ namespace WenceyWang . Richman4L . Banks
 
 		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
-		public override void RequestPay ( WithAssetObject source , decimal amount , PayReason reason )
+		public override void ReceiveTransactionRequest ( AssetTransactionAgreement request )
 		{
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason )
-		{
-			throw new NotImplementedException ( ) ;
-		}
+		public override void RequestPay ( WithAssetObject source , decimal amount , PayReason reason ) { }
 
+		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason ) { }
 
-		public override void ReceiveCash ( WithAssetObject source , PayReason reason , decimal amount ) { }
+		public override void ReceiveCash ( WithAssetObject source , decimal amount , PayReason reason ) { }
+
 
 		public override void ReceiveCheck ( WithAssetObject source , decimal amount , PayReason reason ) { }
 
@@ -80,10 +79,11 @@ namespace WenceyWang . Richman4L . Banks
 
 		public override void EndToday ( ) { }
 
-		public override decimal ReceiveBuyAssertRequest ( IAsset asset )
-		{
-			return asset . MinimumValue * GameRandom . Current . NextDecimalBetween ( 1.0m , 1.2m ) ;
-		}
+		//}
+		//	return asset . MinimumValue * GameRandom . Current . NextDecimalBetween ( 1.0m , 1.2m ) ;
+		//{
+
+		//public override decimal ReceiveBuyAssertRequest ( IAsset asset )
 
 	}
 

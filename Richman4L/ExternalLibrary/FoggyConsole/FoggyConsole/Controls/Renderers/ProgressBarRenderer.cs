@@ -27,12 +27,14 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 
 			if ( Control . ActualHeight == 1 )
 			{
-				result [ 0 , 0 ] = new ConsoleChar ( '[' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
+				result [ 0 , 0 ] =
+					new ConsoleChar ( '[' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
 				result [ Control . ActualWidth - 1 , 0 ] = new ConsoleChar ( ']' ,
 																			Control . ActualForegroundColor ,
 																			Control . ActualBackgroundColor ) ;
 				int barWidth = Control . ActualWidth -
-								2 * ( Control . Value - Control . MinValue / ( Control . MaxValue - Control . MinValue ) ) ;
+								2 * ( Control . Value - Control . MinValue /
+									( Control . MaxValue - Control . MinValue ) ) ;
 				for ( int x = 0 ; x < barWidth ; x++ )
 				{
 					result [ x + 1 , 0 ] = new ConsoleChar ( ProgressChar ,
@@ -42,7 +44,8 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 			}
 			else
 			{
-				result [ 0 , 0 ] = new ConsoleChar ( '┌' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
+				result [ 0 , 0 ] =
+					new ConsoleChar ( '┌' , Control . ActualForegroundColor , Control . ActualBackgroundColor ) ;
 				result [ Control . ActualWidth - 1 , 0 ] = new ConsoleChar ( '┐' ,
 																			Control . ActualForegroundColor ,
 																			Control . ActualBackgroundColor ) ;
@@ -50,11 +53,14 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 																			Control . ActualForegroundColor ,
 																			Control . ActualBackgroundColor ) ;
 				result [ Control . ActualWidth - 1 , Control . ActualHeight - 1 ] = new ConsoleChar ( '┘' ,
-																									Control . ActualForegroundColor ,
-																									Control . ActualBackgroundColor ) ;
+																									Control .
+																										ActualForegroundColor ,
+																									Control .
+																										ActualBackgroundColor ) ;
 
 				int barWidth = Control . ActualWidth -
-								2 * ( Control . Value - Control . MinValue / ( Control . MaxValue - Control . MinValue ) ) ;
+								2 * ( Control . Value - Control . MinValue /
+									( Control . MaxValue - Control . MinValue ) ) ;
 
 				for ( int y = 0 ; y < Control . ActualHeight ; y++ )
 				{

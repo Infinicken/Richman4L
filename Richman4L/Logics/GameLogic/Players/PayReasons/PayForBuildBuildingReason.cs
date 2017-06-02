@@ -34,12 +34,7 @@ namespace WenceyWang . Richman4L . Players . PayReasons
 
 		public PayForBuildBuildingReason ( [NotNull] Building building )
 		{
-			if ( building == null )
-			{
-				throw new ArgumentNullException ( nameof(building) ) ;
-			}
-
-			Building = building ;
+			Building = building ?? throw new ArgumentNullException ( nameof(building) ) ;
 		}
 
 	}

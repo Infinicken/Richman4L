@@ -1,13 +1,14 @@
 ﻿using System ;
 using System . Collections . Generic ;
 using System . Linq ;
-using System . Reflection ;
 
 namespace WenceyWang . Richman4L
 {
 
 	public interface IMods
 	{
+
+		Guid Guid { get ; }
 
 		IReadOnlyCollection <Guid> Dependencies { get ; }
 
@@ -32,7 +33,7 @@ namespace WenceyWang . Richman4L
 
 				foreach ( IMods mod in modsToLoad . Where (
 					mod => mod . Dependencies . All (
-						dependency => loadedMods . Any ( loadedMod => loadedMod . GetType ( ) . GetTypeInfo ( ) . GUID ==
+						dependency => loadedMods . Any ( loadedMod => loadedMod . Guid ==
 																	dependency ) ) ) )
 				{
 					currentCircleLoadModCount++ ;
@@ -44,7 +45,7 @@ namespace WenceyWang . Richman4L
 					}
 					catch ( Exception e )
 					{
-						throw new ModLoadFailedException ( "" , e ) ; //Todo:Message
+						throw new ModLoadFailedException ( $"Mod {mod . Guid} failed to load" , e ) ; //Todo:Message
 					}
 
 					loadedMods . Add ( mod ) ;

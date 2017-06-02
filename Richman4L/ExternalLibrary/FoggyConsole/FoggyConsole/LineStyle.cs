@@ -51,7 +51,8 @@ namespace WenceyWang . FoggyConsole
 					ConnectionHorizontalUp == other . ConnectionHorizontalUp &&
 					ConnectionHorizontalDown == other . ConnectionHorizontalDown &&
 					ConnectionVerticalRight == other . ConnectionVerticalRight &&
-					ConnectionVerticalLeft == other . ConnectionVerticalLeft && ConnectionCross == other . ConnectionCross &&
+					ConnectionVerticalLeft == other . ConnectionVerticalLeft &&
+					ConnectionCross == other . ConnectionCross &&
 					EmptyChar == other . EmptyChar ;
 		}
 

@@ -14,7 +14,8 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		public override IList <Control> Items { get ; } = new List <Control> ( ) ;
 
-		public Dictionary <Control , ContentAlign> ControlAlign { get ; } = new Dictionary <Control , ContentAlign> ( ) ;
+		public Dictionary <Control , ContentAlign> ControlAlign { get ; } =
+			new Dictionary <Control , ContentAlign> ( ) ;
 
 		public ContentAlign this [ Control control ]
 		{
@@ -35,9 +36,13 @@ namespace WenceyWang . FoggyConsole . Controls
 					case ContentAlign . Left :
 					{
 						control . Arrange ( new Rectangle ( finalRect . LeftTopPoint . Offset ( 0 , currentHeight ) ,
-															new Size ( Math . Min ( finalRect . Width , control . DesiredSize . Width ) ,
-																		Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
-																					control . DesiredSize . Height ) ) ) ) ;
+															new Size ( Math . Min ( finalRect . Width ,
+																					control . DesiredSize . Width ) ,
+																		Math . Min (
+																			Math . Max (
+																				finalRect . Height - currentHeight ,
+																				0 ) ,
+																			control . DesiredSize . Height ) ) ) ) ;
 						break ;
 					}
 					case ContentAlign . Center :
@@ -45,9 +50,12 @@ namespace WenceyWang . FoggyConsole . Controls
 						int controlWidth = Math . Min ( finalRect . Width , control . DesiredSize . Width ) ;
 						control . Arrange (
 							new Rectangle (
-								finalRect . LeftTopPoint . Offset ( ( control . DesiredSize . Width - controlWidth ) / 2 , currentHeight ) ,
+								finalRect . LeftTopPoint . Offset (
+									( control . DesiredSize . Width - controlWidth ) / 2 ,
+									currentHeight ) ,
 								new Size ( controlWidth ,
-											Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) , control . DesiredSize . Height ) ) ) ) ;
+											Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
+														control . DesiredSize . Height ) ) ) ) ;
 						break ;
 					}
 					case ContentAlign . Right :
@@ -55,9 +63,11 @@ namespace WenceyWang . FoggyConsole . Controls
 						int controlWidth = Math . Min ( finalRect . Width , control . DesiredSize . Width ) ;
 						control . Arrange (
 							new Rectangle (
-								finalRect . LeftTopPoint . Offset ( control . DesiredSize . Width - controlWidth , currentHeight ) ,
+								finalRect . LeftTopPoint . Offset ( control . DesiredSize . Width - controlWidth ,
+																	currentHeight ) ,
 								new Size ( controlWidth ,
-											Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) , control . DesiredSize . Height ) ) ) ) ;
+											Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
+														control . DesiredSize . Height ) ) ) ) ;
 						break ;
 					}
 				}
@@ -72,7 +82,8 @@ namespace WenceyWang . FoggyConsole . Controls
 		{
 			foreach ( Control control in Items )
 			{
-				control . Measure ( new Size ( Math . Min ( availableSize . Width , control . Width ) , control . Height ) ) ;
+				control . Measure ( new Size ( Math . Min ( availableSize . Width , control . Width ) ,
+												control . Height ) ) ;
 			}
 
 			base . Measure ( availableSize ) ;

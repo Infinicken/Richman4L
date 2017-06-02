@@ -53,15 +53,17 @@ namespace WenceyWang . Richman4L . Maps
 				}
 
 				return _adjacentRoads ??
-						( _adjacentRoads = _adjacentRoadsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) as AreaRoad ) .
-															Where ( road => road != null ) .
-															ToList ( ) ) ;
+						( _adjacentRoads =
+							_adjacentRoadsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) as AreaRoad ) .
+												Where ( road => road != null ) .
+												ToList ( ) ) ;
 			}
 		}
 
 		[ConsoleVisable]
 		public BlockAzimuth MainAzimuth => previousMainAzimuth ??
-											( previousMainAzimuth = this . GetAzimuth ( AdjacentRoads . RandomItem ( ) ) ) . Value ;
+											( previousMainAzimuth =
+												this . GetAzimuth ( AdjacentRoads . RandomItem ( ) ) ) . Value ;
 
 		[NotNull]
 		[ItemNotNull]
@@ -116,12 +118,7 @@ namespace WenceyWang . Richman4L . Maps
 
 		public void GiveTo ( WithAssetObject newOwner )
 		{
-			if ( newOwner == null )
-			{
-				throw new ArgumentNullException ( nameof(newOwner) ) ;
-			}
-
-			Owner = newOwner ;
+			Owner = newOwner ?? throw new ArgumentNullException ( nameof(newOwner) ) ;
 		}
 
 		public void Stay ( [NotNull] Player player )

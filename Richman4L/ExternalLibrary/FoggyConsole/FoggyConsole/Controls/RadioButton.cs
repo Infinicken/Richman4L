@@ -59,9 +59,10 @@ namespace WenceyWang . FoggyConsole . Controls
 
 		private void OnCheckedChanging ( object sender , CheckedChangingEventArgs checkedChangingEventArgs )
 		{
-			IEnumerable <RadioButton> radioButtons = ( Page . Container as ItemsControl ) ? . Items ? . OfType <RadioButton>
-																							( ) ? .
-																							Where ( cb => cb . ComboBoxGroup == ComboBoxGroup ) ;
+			IEnumerable <RadioButton> radioButtons =
+				( Page . Container as ItemsControl ) ? . Items ? . OfType <RadioButton>
+														( ) ? .
+														Where ( cb => cb . ComboBoxGroup == ComboBoxGroup ) ;
 			if ( radioButtons != null )
 			{
 				foreach ( RadioButton radioButton in radioButtons )

@@ -49,9 +49,10 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 				{
 					for ( int x = 0 ; x < Control . ActualWidth && x < Control . Text . Length ; x++ )
 					{
-						result [ Control . ActualWidth - Control . Text . Length + x , 0 ] = new ConsoleChar ( Control . Text [ x ] ,
-																												Control . ActualForegroundColor ,
-																												Control . ActualBackgroundColor ) ;
+						result [ Control . ActualWidth - Control . Text . Length + x , 0 ] = new ConsoleChar (
+							Control . Text [ x ] ,
+							Control . ActualForegroundColor ,
+							Control . ActualBackgroundColor ) ;
 					}
 
 					break ;

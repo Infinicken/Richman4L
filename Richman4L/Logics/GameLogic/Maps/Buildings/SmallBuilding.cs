@@ -23,15 +23,4 @@ using System . Linq ;
 namespace WenceyWang . Richman4L . Maps . Buildings
 {
 
-	public abstract class SmallBuilding : Building
-	{
-
-		public override int X { get { return Position . X ; } protected set { } }
-
-		public override int Y { get { return Position . Y ; } protected set { } }
-
-		public override MapSize Size => MapSize . Small ;
-
-	}
-
 }

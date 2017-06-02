@@ -11,7 +11,7 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 	/// <summary>
 	///     指示股票价格的控制器
 	/// </summary>
-	public abstract class StockPriceController : NeedRegisTypeBase <StockPriceControllerType , Attribute ,
+	public abstract class StockPriceController : NeedRegisBase <StockPriceControllerType , Attribute ,
 		StockPriceController>
 	{
 
@@ -23,7 +23,7 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 
 	}
 
-	public class StockPriceControllerType : RegisterableTypeBase <StockPriceControllerType , Attribute ,
+	public class StockPriceControllerType : RegisType <StockPriceControllerType , Attribute ,
 		StockPriceController>
 	{
 

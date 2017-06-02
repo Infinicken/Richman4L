@@ -50,7 +50,8 @@ namespace WenceyWang . Richman4L . Maps
 
 		public override bool IsInArea ( MapObject mapObject )
 		{
-			return Math . Max ( Math . Abs ( Object . X - mapObject . X ) , Math . Abs ( Object . Y - mapObject . Y ) ) <
+			return Math . Max ( Math . Abs ( Object . X - mapObject . X ) ,
+								Math . Abs ( Object . Y - mapObject . Y ) ) <
 					Distance ;
 		}
 

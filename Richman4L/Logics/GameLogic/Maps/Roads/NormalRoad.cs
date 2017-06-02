@@ -109,7 +109,8 @@ namespace WenceyWang . Richman4L . Maps . Roads
 				}
 
 				return _entrances ??
-						( _entrances = _entrancesId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ) ;
+						( _entrances = _entrancesId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) .
+													ToList ( ) ) ;
 			}
 		}
 
@@ -145,22 +146,12 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 		#region Exits
 
-		private List <Road> _exits ;
-
 		private readonly List <long> _exitsId = new List <long> ( ) ;
 
+		//Todo:Add Lazy
 		public virtual List <Road> Exits
 		{
-			get
-			{
-				if ( _exits == null &&
-					_exitsId == null )
-				{
-					return null ;
-				}
-
-				return _exits ?? ( _exits = _exitsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ) ;
-			}
+			get { return _exitsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ; }
 		}
 
 		#endregion

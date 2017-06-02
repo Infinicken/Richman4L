@@ -22,17 +22,8 @@ namespace WenceyWang . Richman4L . Stocks
 
 		public StockDelegate ( [NotNull] Player player , [NotNull] Stock stock )
 		{
-			if ( player == null )
-			{
-				throw new ArgumentNullException ( nameof(player) ) ;
-			}
-			if ( stock == null )
-			{
-				throw new ArgumentNullException ( nameof(stock) ) ;
-			}
-
-			Player = player ;
-			Stock = stock ;
+			Player = player ?? throw new ArgumentNullException ( nameof(player) ) ;
+			Stock = stock ?? throw new ArgumentNullException ( nameof(stock) ) ;
 		}
 
 	}

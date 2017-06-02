@@ -68,7 +68,8 @@ namespace WenceyWang . Richman4L . Players . Models
 				throw new ArgumentNullException ( nameof(fileName) ) ;
 			}
 
-			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(Player)}. {nameof(Model)}.Resources." + fileName ) ;
+			XDocument doc =
+				ResourceHelper . LoadXmlDocument ( $"{nameof(Player)}. {nameof(Model)}.Resources." + fileName ) ;
 
 
 			XElement modelNode = doc . Root ;
@@ -102,7 +103,8 @@ namespace WenceyWang . Richman4L . Players . Models
 			while ( true )
 			{
 				List <PlayerSaying> temp =
-					new List <PlayerSaying> ( SayingWhenGained . Where ( saying => saying . Player == harmed ? . Name ) ) ;
+					new List <PlayerSaying> (
+						SayingWhenGained . Where ( saying => saying . Player == harmed ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{
@@ -118,7 +120,8 @@ namespace WenceyWang . Richman4L . Players . Models
 			while ( true )
 			{
 				List <PlayerSaying> temp =
-					new List <PlayerSaying> ( SayingWhenHarmed . Where ( saying => saying . Player == gained ? . Name ) ) ;
+					new List <PlayerSaying> (
+						SayingWhenHarmed . Where ( saying => saying . Player == gained ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{
@@ -134,7 +137,8 @@ namespace WenceyWang . Richman4L . Players . Models
 			while ( true )
 			{
 				List <PlayerSaying> temp =
-					new List <PlayerSaying> ( SayingWhenMeet . Where ( saying => saying . Player == player ? . Name ) ) ;
+					new List <PlayerSaying> (
+						SayingWhenMeet . Where ( saying => saying . Player == player ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{

@@ -98,7 +98,8 @@ namespace WenceyWang . Richman4L
 
 		public bool Equals ( GameTitle other )
 		{
-			return string . Equals ( TitleRoot , other . TitleRoot ) && string . Equals ( TitleKey , other . TitleKey ) ;
+			return string . Equals ( TitleRoot , other . TitleRoot ) &&
+					string . Equals ( TitleKey , other . TitleKey ) ;
 		}
 
 		public override bool Equals ( object obj )
@@ -125,7 +126,7 @@ namespace WenceyWang . Richman4L
 
 		private static object Locker { get ; } = new object ( ) ;
 
-		[Startup ( nameof(LoadTitles) )]
+		[Startup]
 		public static void LoadTitles ( )
 		{
 			lock ( Locker )

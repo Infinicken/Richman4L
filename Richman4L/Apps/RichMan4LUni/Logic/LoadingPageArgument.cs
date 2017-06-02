@@ -34,17 +34,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 
 		public LoadingPageArgument ( Task taskToWait , Action <LoadingPage> toDoNext )
 		{
-			if ( taskToWait == null )
-			{
-				throw new ArgumentNullException ( nameof(taskToWait) ) ;
-			}
-			if ( toDoNext == null )
-			{
-				throw new ArgumentNullException ( nameof(toDoNext) ) ;
-			}
-
-			TaskToWait = taskToWait ;
-			ToDoNext = toDoNext ;
+			TaskToWait = taskToWait ?? throw new ArgumentNullException ( nameof(taskToWait) ) ;
+			ToDoNext = toDoNext ?? throw new ArgumentNullException ( nameof(toDoNext) ) ;
 		}
 
 		public void UpdateStatus ( LoadingStatus newStatus )

@@ -16,12 +16,7 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 
 		public MoveTypeAbilityDefineDomains ( Player target )
 		{
-			if ( target == null )
-			{
-				throw new ArgumentNullException ( nameof(target) ) ;
-			}
-
-			Target = target ;
+			Target = target ?? throw new ArgumentNullException ( nameof(target) ) ;
 		}
 
 		public override bool IsValid ( object value )
