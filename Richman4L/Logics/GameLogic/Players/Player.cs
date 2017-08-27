@@ -1,27 +1,11 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . Annotations ;
+using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . Banks ;
 using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
 using WenceyWang . Richman4L . Calendars ;
@@ -37,28 +21,6 @@ using WenceyWang . Richman4L . Stocks ;
 
 namespace WenceyWang . Richman4L . Players
 {
-
-	/// <summary>
-	/// </summary>
-	public class BuyAssertRequest
-	{
-
-		public IAsset Asset { get ; }
-
-		public decimal Price { get ; }
-
-	}
-
-	public interface IAsset
-	{
-
-		WithAssetObject Owner { get ; }
-
-		decimal MinimumValue { get ; }
-
-		void GiveTo ( WithAssetObject newOwner ) ;
-
-	}
 
 	public sealed class AssetTransactionAgreement
 	{
@@ -100,69 +62,28 @@ namespace WenceyWang . Richman4L . Players
 
 	}
 
-
+	/// <summary>
+	///     钱被作为资产给出
+	/// </summary>
 	public class MoneyAsset : IAsset
 	{
 
-		public decimal Amount { get ; }
+		public long Amount { get ; }
 
 		public WithAssetObject Owner { get ; private set ; }
 
-		public decimal MinimumValue => Amount ;
+		public long MinimumValue => Amount ;
+
+		public bool CanGive { get ; }
 
 		public void GiveTo ( WithAssetObject newOwner )
 		{
-			Owner . RequestPay ( newOwner , Amount , new PayForGiveAsset ( this ) ) ;
+			newOwner . ReceivePayReason ( new PayMoneyForGiveMoneyAsset ( this , Owner ) ) ;
 			Owner = newOwner ;
 		}
 
 	}
 
-	/// <summary>
-	///     钱被作为资产给出的原因
-	/// </summary>
-	public class PayForGiveAsset : PayReason
-	{
-
-		public MoneyAsset Asset { get ; }
-
-		public PayForGiveAsset ( MoneyAsset asset ) { Asset = asset ; }
-
-	}
-
-
-	public abstract class WithAssetObject : GameObject
-	{
-
-		public decimal Cash { get ; protected set ; }
-
-		public decimal DemandDeposits { get ; protected set ; }
-
-		public abstract void ReceiveTransactionRequest ( AssetTransactionAgreement request ) ;
-
-		//public abstract 
-
-		public abstract void RequestPay ( WithAssetObject source , decimal amount , PayReason reason ) ;
-
-		public abstract void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason ) ;
-
-		public abstract void ReceiveCash ( WithAssetObject source , decimal amount , PayReason reason ) ;
-
-		public abstract void ReceiveCheck ( WithAssetObject source , decimal amount , PayReason reason ) ;
-
-		public abstract void ReceiveTransfer ( WithAssetObject source , decimal amount , PayReason reason ) ;
-
-	}
-
-	public class User
-	{
-
-		public string Name { get ; set ; }
-
-
-		public Guid Guid { get ; set ; }
-
-	}
 
 	//Todo:玩家破产了怎么办？
 	//Todo:玩家希望退出游戏怎么办？
@@ -171,25 +92,33 @@ namespace WenceyWang . Richman4L . Players
 
 		private long _money ;
 
-		public User User { get ; }
+		public PlayerOnMap MapObject { get ; set ; }
+
+		[Own]
+		[CanBeNull]
+		public IUser User { get ; }
 
 		/// <summary>
 		///     玩家所拥有的前进类型
 		/// </summary>
-		[ConsoleVisable ( PropertyVisability . Owner )]
+		[Own ( PropertyVisability . Owner )]
 		public List <MoveType> MoveTypeList { get ; } = new List <MoveType> ( ) ;
 
 		/// <summary>
 		///     玩家的名称
 		/// </summary>
 		[NotNull]
-		[ConsoleVisable]
-		public string Name => $"{User . Name} Play {Model . Name}" ;
+		[Own]
+		public string Name => $"{User ? . DisplayName ?? "No One"} Play as {Model . Name}" ;
+
+		[Own]
+		public int Health { get ; set ; }
 
 		/// <summary>
 		///     玩家的模型
 		/// </summary>
 		[NotNull]
+		[Own]
 		public PlayerModel Model { get ; }
 
 		[NotNull]
@@ -198,12 +127,13 @@ namespace WenceyWang . Richman4L . Players
 
 		[NotNull]
 		[ItemNotNull]
+		[Own ( PropertyVisability . Owner )]
 		public ReadOnlyDictionary <DiceType , int> DiceList { get ; }
 
 		/// <summary>
 		///     玩家的游戏点数
 		/// </summary>
-		[ConsoleVisable ( PropertyVisability . Owner )]
+		[Own ( PropertyVisability . Owner )]
 		public long GamePoint { get ; set ; } = 0 ;
 
 		/// <summary>
@@ -211,20 +141,16 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
-		private Dictionary <Stock , int> stocks { get ; }
+		public Dictionary <Stock , int> Stocks { get ; }
 
-		public ReadOnlyDictionary <Stock , int> Stocks { get ; }
 
 		/// <summary>
 		///     玩家的地块
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
-		public List <Area> Areas
-			=>
-				Map . Currnet . Objects . Where ( mapObject => ( mapObject as Area ) ? . Owner == this ) .
-					Select ( mapObject => ( Area ) mapObject ) .
-					ToList ( ) ;
+		public List <Area> Areas => Map . Currnet . Objects . Where ( mapObject => ( mapObject as Area ) ? . Owner == this ) .
+										Select ( mapObject => ( Area ) mapObject ) . ToList ( ) ;
 
 		/// <summary>
 		///     玩家当前的位置
@@ -243,28 +169,11 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
-		[ConsoleVisable]
+		[Own]
 		public List <PlayerBuff> Buffs { get ; } = new List <PlayerBuff> ( ) ;
 
-		[ConsoleVisable]
+		[Own]
 		public bool HaveMoveToday { get ; protected set ; }
-
-		/// <summary>
-		///     玩家的状态
-		/// </summary>
-		[ConsoleVisable]
-		public PlayerState State { get ; protected set ; }
-
-		/// <summary>
-		///     当前状态将会持续的时间
-		/// </summary>
-		[CanBeNull]
-		[ConsoleVisable]
-		public int StateDuration { get ; protected set ; }
-
-
-		[CanBeNull]
-		public GameDate StateStartDate { get ; protected set ; }
 
 		/// <summary>
 		///     指示玩家能否获得收益
@@ -274,14 +183,17 @@ namespace WenceyWang . Richman4L . Players
 		/// <summary>
 		///     指示玩家当前是否能移动
 		/// </summary>
+		[Own]
 		public bool CanMove => ! HaveMoveToday && State == PlayerState . Normal && this . IsBlockMoving ( ) ;
 
 		[NotNull]
+		[Own ( PropertyVisability . Owner )]
 		public ReadOnlyCollection <long> MoneyHistory { get ; }
 
 		[NotNull]
 		private List <long> moneyHistory { get ; }
 
+		[Own]
 		public long Money
 		{
 			get => _money ;
@@ -290,16 +202,21 @@ namespace WenceyWang . Richman4L . Players
 				_money = value ;
 				if ( _money < 0 )
 				{
+					//理论上这个情况不该发生
+					//要求付款的时候会要求那个CanPay,否则会直接触发破产
+
 					Bankruptcy ( PlayerBankruptcyReason . CanNotPay ) ; //Todo:Money Not Enough?
 				}
 			}
 		}
 
-		public decimal PropertiesInMoney => Money + SavedMoney . Sum ( proof => proof . MoneyToGet ) -
-											BorrowedMoney . Sum ( proof => proof . MoneyToReturn ) ;
+		[Own]
+		public decimal PropertiesInMoney => Money + SavedMoney . Sum ( proof => proof . MoneyToGet )
+											- BorrowedMoney . Sum ( proof => proof . MoneyToReturn ) ;
 
 		[NotNull]
 		[ItemNotNull]
+		[Own ( PropertyVisability . Owner )]
 		public List <SavingBankProof> SavedMoney { get ; } = new List <SavingBankProof> ( ) ;
 
 		[NotNull]
@@ -318,9 +235,34 @@ namespace WenceyWang . Richman4L . Players
 			Money = startMoney ;
 		}
 
-		public void Pay ( long money ) { }
+		public int GetStockNumber ( [NotNull] Stock stock )
+		{
+			if ( stock == null )
+			{
+				throw new ArgumentNullException ( nameof(stock) ) ;
+			}
 
-		public void ReceiveMoney ( long money ) { }
+			if ( Stocks . ContainsKey ( stock ) )
+			{
+				return Stocks [ stock ] ;
+			}
+			else
+			{
+				return 0 ;
+			}
+		}
+
+		public void TakeHarm ( HarmType type , int volume ) { }
+
+		public void Pay ( long money )
+		{
+			//Todo:
+		}
+
+		public void ReceiveMoney ( long money )
+		{
+			//Todo:
+		}
 
 		[NotNull]
 		public ReadOnlyCollection <PlayerCommand> GetAviliableCommands ( )
@@ -331,21 +273,7 @@ namespace WenceyWang . Richman4L . Players
 			return new ReadOnlyCollection <PlayerCommand> ( commands ) ;
 		}
 
-		[CanBeNull]
-		public void GetBuff ( [NotNull] PlayerBuff buff )
-		{
-			if ( buff == null )
-			{
-				throw new ArgumentNullException ( nameof(buff) ) ;
-			}
-
-			Buffs . Add ( buff ) ;
-			GetBuffEvent ? . Invoke ( this , new PlayerGetBuffEventArgs ( buff ) ) ;
-		}
-
-		[CanBeNull]
-		public event EventHandler <PlayerGetBuffEventArgs> GetBuffEvent ;
-
+		[PublicAPI]
 		public void RemoveBuff ( [NotNull] PlayerBuff buff )
 		{
 			if ( buff == null )
@@ -398,7 +326,7 @@ namespace WenceyWang . Richman4L . Players
 
 			#endregion
 
-			Building . Build ( position , buildingType , this ) ;
+			position . BuildBuildiing ( buildingType ) ;
 			BuildBuildingEvent ? . Invoke ( this , new EventArgs ( ) ) ;
 		}
 
@@ -427,8 +355,8 @@ namespace WenceyWang . Richman4L . Players
 		{
 			#region Change State
 
-			if ( State != PlayerState . Normal &&
-				StateStartDate + StateDuration >= thisDate )
+			if ( State != PlayerState . Normal
+				&& StateStartDate + StateDuration >= thisDate )
 			{
 				StateStartDate = thisDate ;
 				StateDuration = 0 ;
@@ -450,19 +378,14 @@ namespace WenceyWang . Richman4L . Players
 		/// <param name="reason">破产的原因</param>
 		public void Bankruptcy ( PlayerBankruptcyReason reason )
 		{
-			State = PlayerState . Normal ;
-
+			//State = PlayerState . Normal ; //Why Normal? What if player is in jail or hospital
 
 			//todo:Fix this
-			//foreach ( AreaAuctionRequest request in Areas . Select ( item => new AreaAuctionRequest ( item , item . Price ) ) )
-			//{
-			//	Game . Current . AuctionPerformer . PerformAuction ( request ) ;
-			//}
-			//foreach ( Card item in Cards )
-			//{
-			//	Game . Current . AuctionPerformer . PerformAuction (
-			//		new AuctionRequest ( item , item . PriceWhenSell * 100 ) ) ;
-			//}
+			foreach ( IAsset asset in Assets )
+			{
+				AuctionRequest request = new AuctionRequest ( asset . MinimumValue , this , asset ) ;
+				Game . Current . AuctionPerformer . PerformAuction ( request ) ;
+			}
 
 			BankruptcyEvent ? . Invoke ( this , new PlayerBankruptcyEventArgs ( reason ) ) ;
 		}
@@ -496,8 +419,7 @@ namespace WenceyWang . Richman4L . Players
 			if ( CanMove )
 			{
 				HaveMoveToday = true ;
-				ReadOnlyCollection <int> diceResult =
-					Game . Current . GameRule . GetDice ( diceType , ( int ) moveType ) ;
+				ReadOnlyCollection <int> diceResult = Game . Current . GameRule . GetDice ( diceType , ( int ) moveType ) ;
 				Path route = Position . Route ( PreviousPosition , diceResult . Sum ( ) ) ;
 				foreach ( Road item in route . Route )
 				{
@@ -512,69 +434,152 @@ namespace WenceyWang . Richman4L . Players
 			else
 			{
 				MoveEvent ? . Invoke ( this ,
-										new PlayerMoveEventArgs ( new Path ( ) ,
-																new ReadOnlyCollection <int> (
-																	new List <int> ( ) ) ) ) ;
+										new PlayerMoveEventArgs ( new Path ( ) , new ReadOnlyCollection <int> ( new List <int> ( ) ) ) ) ;
 			}
 		}
 
 		[CanBeNull]
 		public event EventHandler <PlayerMoveEventArgs> MoveEvent ;
 
-		/// <summary>
-		///     购买某个区域
-		/// </summary>
-		/// <param name="toBuy">要购买的区域</param>
-		/// <returns></returns>
-		public BuyAreaResult BuyArea ( [NotNull] Area toBuy )
-		{
-			if ( toBuy == null )
-			{
-				throw new ArgumentNullException ( nameof(toBuy) ) ;
-			}
+		//看起来没必要
+		///// <summary>
+		/////     购买某个区域
+		///// </summary>
+		///// <param name="toBuy">要购买的区域</param>
+		///// <returns></returns>
+		//public BuyAreaResult BuyArea ( [NotNull] Area toBuy )
+		//{
+		//	if ( toBuy == null )
+		//	{
+		//		throw new ArgumentNullException ( nameof(toBuy) ) ;
+		//	}
 
+		//	BuyAreaResult result = BuyAreaResult . Crate ( toBuy ) ;
 
-			BuyAreaResult result = BuyAreaResult . Crate ( toBuy ) ;
-
-			if ( ! toBuy . IsBlockBuy ( ) )
-			{
-				if ( ! this . IsBlockBuyArea ( ) )
-				{
-					if ( toBuy . Owner == null )
-					{
-						if ( Money >= toBuy . Price )
-						{
-							Money -= toBuy . Price ;
-							result . Area = toBuy ;
-							toBuy . Owner = this ;
-							result . StatusCode = BuyAreaStatusCode . Success ;
-							result . CostMoney = toBuy . Price ;
-						}
-						else
-						{
-							result . StatusCode = BuyAreaStatusCode . MoneyNotEnough ;
-						}
-					}
-					else
-					{
-						result . StatusCode = BuyAreaStatusCode . NotBuyable ;
-					}
-				}
-				else
-				{
-					result . StatusCode = BuyAreaStatusCode . PlayerDebuff ;
-				}
-			}
-			else
-			{
-				result . StatusCode = BuyAreaStatusCode . AreaDebuff ;
-			}
-			BuyAreaEvent ? . Invoke ( this , new PlayerBuyAreaEventArgs ( result ) ) ;
-			return result ;
-		}
+		//	if ( ! toBuy . IsBlockBuy ( ) )
+		//	{
+		//		if ( ! this . IsBlockBuyArea ( ) )
+		//		{
+		//			if ( toBuy . Owner == null )
+		//			{
+		//				if ( Money >= toBuy . Price )
+		//				{
+		//					Money -= toBuy . Price ;
+		//					result . Area = toBuy ;
+		//					toBuy . Owner = this ;
+		//					result . StatusCode = BuyAreaStatusCode . Success ;
+		//					result . CostMoney = toBuy . Price ;
+		//				}
+		//				else
+		//				{
+		//					result . StatusCode = BuyAreaStatusCode . MoneyNotEnough ;
+		//				}
+		//			}
+		//			else
+		//			{
+		//				result . StatusCode = BuyAreaStatusCode . NotBuyable ;
+		//			}
+		//		}
+		//		else
+		//		{
+		//			result . StatusCode = BuyAreaStatusCode . PlayerDebuff ;
+		//		}
+		//	}
+		//	else
+		//	{
+		//		result . StatusCode = BuyAreaStatusCode . AreaDebuff ;
+		//	}
+		//	BuyAreaEvent ? . Invoke ( this , new PlayerBuyAreaEventArgs ( result ) ) ;
+		//	return result ;
+		//}
 
 		[CanBeNull]
 		public event EventHandler <PlayerBuyAreaEventArgs> BuyAreaEvent ;
+
+		#region TakeAwayStock
+
+		//public void TakeAwayStock([NotNull] Stock stock, int number)
+		//{
+		//	if (stock == null)
+		//	{
+		//		throw new ArgumentNullException(nameof(stock));
+		//	}
+
+		//	if (Stocks.ContainsKey(stock))
+		//	{
+		//		if (GetStockNumber(stock) > number)
+		//		{
+		//			GetStockNumber(stock) -= number;
+		//		}
+		//		else
+		//		{
+		//			if (GetStockNumber(stock) == number)
+		//			{
+		//				Stocks.Remove(stock);
+		//			}
+		//			else
+		//			{
+		//				if (GetStockNumber(stock) < number)
+		//				{
+		//					Bankruptcy(PlayerBankruptcyReason.OversoldStock);
+		//				}
+		//			}
+		//		}
+		//	}
+		//	else
+		//	{
+		//		Bankruptcy(PlayerBankruptcyReason.OversoldStock);
+		//	}
+
+		//	TakeAwayStockEvent?.Invoke(this, new PlayerTakeAwayStockEventArgs(stock, number));
+		//}
+
+		[CanBeNull]
+		public event EventHandler <PlayerTakeAwayStockEventArgs> TakeAwayStockEvent ;
+
+		#endregion
+
+		#region State
+
+		/// <summary>
+		///     玩家的状态
+		/// </summary>
+		[Own]
+		public PlayerState State { get ; protected set ; }
+
+		/// <summary>
+		///     当前状态将会持续的时间
+		/// </summary>
+		[CanBeNull]
+		[Own]
+		public int StateDuration { get ; protected set ; }
+
+
+		[CanBeNull]
+		[Own]
+		public GameDate StateStartDate { get ; protected set ; }
+
+		#endregion
+
+
+		#region Get Buff
+
+		[CanBeNull]
+		public void AddBuff ( [NotNull] PlayerBuff newBuff )
+		{
+			if ( newBuff == null )
+			{
+				throw new ArgumentNullException ( nameof(newBuff) ) ;
+			}
+
+			Buffs . Add ( newBuff ) ;
+			GetBuffEvent ? . Invoke ( this , new PlayerGetBuffEventArgs ( newBuff ) ) ;
+		}
+
+		[CanBeNull]
+		public event EventHandler <PlayerGetBuffEventArgs> GetBuffEvent ;
+
+		#endregion
 
 		#region ReceiveStock
 
@@ -587,60 +592,17 @@ namespace WenceyWang . Richman4L . Players
 
 			if ( Stocks . ContainsKey ( stock ) )
 			{
-				stocks [ stock ] += number ;
+				Stocks [ stock ] += number ;
 			}
 			else
 			{
-				stocks . Add ( stock , number ) ;
+				Stocks . Add ( stock , number ) ;
 			}
 			ReceiveStockEvent ? . Invoke ( this , new PlayerReceiveStockEventArgs ( stock , number ) ) ;
 		}
 
 		[CanBeNull]
 		public event EventHandler <PlayerReceiveStockEventArgs> ReceiveStockEvent ;
-
-		#endregion
-
-		#region TakeAwayStock
-
-		public void TakeAwayStock ( [NotNull] Stock stock , int number )
-		{
-			if ( stock == null )
-			{
-				throw new ArgumentNullException ( nameof(stock) ) ;
-			}
-
-			if ( Stocks . ContainsKey ( stock ) )
-			{
-				if ( Stocks [ stock ] > number )
-				{
-					stocks [ stock ] -= number ;
-				}
-				else
-				{
-					if ( Stocks [ stock ] == number )
-					{
-						stocks . Remove ( stock ) ;
-					}
-					else
-					{
-						if ( Stocks [ stock ] < number )
-						{
-							Bankruptcy ( PlayerBankruptcyReason . OversoldStock ) ;
-						}
-					}
-				}
-			}
-			else
-			{
-				Bankruptcy ( PlayerBankruptcyReason . OversoldStock ) ;
-			}
-
-			TakeAwayStockEvent ? . Invoke ( this , new PlayerTakeAwayStockEventArgs ( stock , number ) ) ;
-		}
-
-		[CanBeNull]
-		public event EventHandler <PlayerTakeAwayStockEventArgs> TakeAwayStockEvent ;
 
 		#endregion
 
@@ -651,11 +613,9 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
-		public ReadOnlyCollection <Card> Cards { get ; }
+		[Own]
+		public List <Card> Cards { get ; } = new List <Card> ( ) ;
 
-		[NotNull]
-		[ItemNotNull]
-		private List <Card> cards { get ; }
 
 		/// <summary>
 		///     将某张卡片给某个玩家
@@ -685,7 +645,7 @@ namespace WenceyWang . Richman4L . Players
 
 			#endregion
 
-			cards . Remove ( card ) ;
+			Cards . Remove ( card ) ;
 
 			target . ReceiveCard ( card , this ) ;
 
@@ -719,7 +679,7 @@ namespace WenceyWang . Richman4L . Players
 
 			#endregion
 
-			cards . Add ( card ) ;
+			Cards . Add ( card ) ;
 			ReceiveCardEvent ? . Invoke ( this , new PlayerReceiveCardEventArgs ( card , source ) ) ;
 		}
 
@@ -732,32 +692,60 @@ namespace WenceyWang . Richman4L . Players
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void RequestPay ( WithAssetObject source , decimal amount , PayReason reason )
+		public override IEnumerable <IAsset> Assets { get ; }
+
+		public override void RequestPay ( WithAssetObject source , PayMoneyReason reason )
 		{
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason )
+		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayMoneyReason reason )
 		{
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void ReceiveCash ( WithAssetObject source , decimal amount , PayReason reason )
+		public override void ReceiveCash ( WithAssetObject source , decimal amount , PayMoneyReason reason )
 		{
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void ReceiveCheck ( WithAssetObject source , decimal amount , PayReason reason )
+		public override void ReceiveCheck ( WithAssetObject source , decimal amount , PayMoneyReason reason )
 		{
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void ReceiveTransfer ( WithAssetObject source , decimal amount , PayReason reason )
+		public override void ReceiveTransfer ( WithAssetObject source , decimal amount , PayMoneyReason reason )
 		{
 			throw new NotImplementedException ( ) ;
 		}
+
+		public override void ReceivePayReason ( PayMoneyReason reason ) { throw new NotImplementedException ( ) ; }
 
 		#endregion
+
+	}
+
+	public enum HarmType
+	{
+
+		Physics ,
+
+		mind , //rename
+
+		chem ,
+
+		ridu
+
+	}
+
+	public enum PayType
+	{
+
+		Cash ,
+
+		Check ,
+
+		Transfer
 
 	}
 

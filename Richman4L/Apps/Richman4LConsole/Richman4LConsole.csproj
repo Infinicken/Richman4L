@@ -12,7 +12,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <RootNamespace>WenceyWang.Richman4L.Apps.Console</RootNamespace>
     <Authors>Wencey Wang</Authors>
     <Company>Dream Recorder</Company>

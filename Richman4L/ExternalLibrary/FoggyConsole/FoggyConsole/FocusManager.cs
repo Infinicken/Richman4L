@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -27,7 +28,9 @@ namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
-	///     Basic <code>IFocusManager</code> which just cycles through all controls when the user presses TAB
+	///     Basic
+	///     <code>IFocusManager</code>
+	///     which just cycles through all controls when the user presses TAB
 	/// </summary>
 	public class FocusManager : IFocusManager
 	{
@@ -43,7 +46,11 @@ namespace WenceyWang . FoggyConsole
 		///     Creates a new FocusManager
 		/// </summary>
 		/// <param name="root">The control which represents</param>
-		/// <exception cref="ArgumentException">Is thrown if <paramref name="root" /> has an container</exception>
+		/// <exception cref="ArgumentException">
+		///     Is thrown if
+		///     <paramref name="root" />
+		///     has an container
+		/// </exception>
 		public FocusManager ( Frame root )
 		{
 			Root = root ?? throw new ArgumentNullException ( nameof(root) ) ;
@@ -72,7 +79,8 @@ namespace WenceyWang . FoggyConsole
 		public void ControlTreeChanged ( ) { }
 
 		/// <summary>
-		///     Handles the key user input which is given in <paramref name="args" />
+		///     Handles the key user input which is given in
+		///     <paramref name="args" />
 		/// </summary>
 		/// <returns>true if the key-press was handled, otherwise false</returns>
 		/// <param name="args">The key-press to handle</param>
@@ -80,17 +88,17 @@ namespace WenceyWang . FoggyConsole
 		{
 			List <Control> controlList = Root . GetAllItem ( ) .
 												Where (
-													control =>
-													{
-														if ( control == null )
-														{
-															CurrentLoger . LogWarning (
-																$"{nameof(controlList)} of {Root . Name} contains null" ) ;
-															return false ;
-														}
+													 control =>
+													 {
+														 if ( control == null )
+														 {
+															 CurrentLoger . LogWarning (
+																						 $"{nameof(controlList)} of {Root . Name} contains null" ) ;
+															 return false ;
+														 }
 
-														return control . CanFocus ;
-													} ) .
+														 return control . CanFocus ;
+													 } ) .
 												ToList ( ) ;
 			if ( controlList . Count == 0 )
 			{
@@ -115,8 +123,8 @@ namespace WenceyWang . FoggyConsole
 					args . Handled = true ;
 					FocusedControl =
 						controlList [
-							( Math . Max ( controlList . IndexOf ( FocusedControl ) , 0 ) + controlList . Count - 1 ) %
-							controlList . Count ] ;
+									 ( Math . Max ( controlList . IndexOf ( FocusedControl ) , 0 ) + controlList . Count - 1 ) %
+									 controlList . Count ] ;
 					break ;
 				}
 

@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -35,11 +36,9 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Controls
 			FrameworkElement frameworkElement = Content as FrameworkElement ;
 			if ( frameworkElement != null )
 			{
-				Content . Arrange (
-					new Rect (
-						new Point ( ( finalSize . Width - frameworkElement . Width ) / 2 ,
-									( finalSize . Height - frameworkElement . Height ) / 2 ) ,
-						new Size ( frameworkElement . Width , frameworkElement . Height ) ) ) ;
+				Content . Arrange ( new Rect ( new Point ( ( finalSize . Width - frameworkElement . Width ) / 2 ,
+															( finalSize . Height - frameworkElement . Height ) / 2 ) ,
+												new Size ( frameworkElement . Width , frameworkElement . Height ) ) ) ;
 			}
 			Content . RenderTransform = Content . DesiredSize . OrginalTransformTo ( finalSize ) ;
 

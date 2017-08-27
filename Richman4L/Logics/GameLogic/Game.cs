@@ -1,22 +1,5 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
@@ -24,6 +7,7 @@ using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Auctions ;
+using WenceyWang . Richman4L . Banks ;
 using WenceyWang . Richman4L . Buffs ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . GameEnviroment ;
@@ -38,23 +22,26 @@ using WenceyWang . Richman4L . Weathers ;
 namespace WenceyWang . Richman4L
 {
 
-	public class Game : GameObject
+	public class Game : GameObject , IDisposable
 	{
 
 		private List <Guid> previousGameId { get ; }
 
-		[ConsoleVisable]
+		[Own]
 		public ReadOnlyCollection <Guid> PreviousGameId { get ; }
 
-		[ConsoleVisable]
+		[Own]
 		public Guid GameId { get ; private set ; }
 
 		public GameStatus Status { get ; set ; }
 
-		[ConsoleVisable]
+		[Own]
 		public WinningCondition WinningCondition { get ; set ; }
 
-		[ConsoleVisable]
+		[Own]
+		public Bank Bank { get ; set ; }
+
+		[Own]
 		public GameRule GameRule { get ; set ; }
 
 		public static Game Current { get ; private set ; }
@@ -73,42 +60,42 @@ namespace WenceyWang . Richman4L
 		/// <summary>
 		///     游戏的日历
 		/// </summary>
-		[ConsoleVisable]
+		[Own]
 		public Calendar Calendar { get ; private set ; }
 
 		/// <summary>
 		///     今天的天气
 		/// </summary>
-		[ConsoleVisable]
+		[Own]
 		public Weather Weather { get ; set ; }
 
 		/// <summary>
 		///     当前游戏的地图
 		/// </summary>
-		[ConsoleVisable]
-		public Map Map { get ; private set ; }
+		[Own]
+		public Map Map { get ; internal set ; }
 
 		/// <summary>
 		///     政府对经济的态度
 		/// </summary>
-		[ConsoleVisable]
+		[Own]
 		public GovermentControl GovermentControl { get ; set ; }
 
-		[ConsoleVisable ( PropertyVisability . Cheater )]
+		[Own ( PropertyVisability . God )]
 		internal GameDate GovermentControlChanging { get ; set ; }
 
 		/// <summary>
 		/// </summary>
-		[ConsoleVisable]
+		[Own]
 		public List <Buff> GameBuffs { get ; } = new List <Buff> ( ) ;
 
-		[ConsoleVisable]
+		[Own]
 		public List <Player> GamePlayers { get ; } = new List <Player> ( ) ;
 
-		[ConsoleVisable]
+		[Own]
 		public StockMarket StockMarket { get ; set ; }
 
-		public Game ( )
+		private Game ( )
 		{
 			if ( Current != null )
 			{
@@ -117,6 +104,29 @@ namespace WenceyWang . Richman4L
 
 			Status = GameStatus . NotStart ;
 			Current = this ;
+		}
+
+		public void Dispose ( ) { }
+
+		/// <summary>
+		///     Clean Current State
+		/// </summary>
+		public static void Clean ( )
+		{
+			Current . Status = GameStatus . Disposed ;
+
+			Current = new Game ( ) ;
+		}
+
+		/// <summary>
+		///     Prepare state of Game singlection
+		/// </summary>
+		public static void PeapareNew ( )
+		{
+			if ( Current == null )
+			{
+				Current = new Game ( ) ;
+			}
 		}
 
 
@@ -145,8 +155,7 @@ namespace WenceyWang . Richman4L
 			List <Player> winners = GamePlayers . Where ( player => WinningCondition . IsWin ( player ) ) . ToList ( ) ;
 			if ( winners . Any ( ) )
 			{
-				GameResult info = new GameResult ( ) ;
-				info . Winers = winners ;
+				GameResult info = new GameResult { Winers = winners } ;
 				GameOver ( info ) ;
 			}
 		}

@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -22,8 +23,7 @@ namespace WenceyWang . Richman4L
 		public static Task RunAllTask ( )
 		{
 			List <Task> tasks = new List <Task> ( ) ;
-			foreach ( TypeInfo type in
-				typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
+			foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
 			{
 				foreach ( MethodInfo method in type . DeclaredMethods )
 				{

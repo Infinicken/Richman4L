@@ -6,11 +6,12 @@
 	xmlns:logic="using:WenceyWang.Richman4L.Apps.Uni.Logic"
 	xmlns:pages="using:WenceyWang.Richman4L.Apps.Uni.UI.Pages"
 	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.UI.Controls"
+	xmlns:converters="using:Edi.UWP.Helpers.Converters"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Pages.SettingPage"
 	mc:Ignorable="d" Loaded="Page_Loaded" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="Auto"
 	Height="Auto" >
 	<Page.Resources>
-		<logic:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
+		<converters:BooleanToVisibilityConverter x:Key="BooleanVisibilityConverter" />
 		<logic:AppSettings x:Key="Settings" />
 		<SolidColorBrush x:Key="SliderBorderThemeBrush" Color="Transparent" />
 		<Thickness x:Key="SliderBorderThemeThickness" >0</Thickness>
@@ -172,6 +173,9 @@
 						</Grid>
 					</StackPanel>
 					<Button x:Name="AboutPageButton" Content="关于" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Style="{StaticResource TextBlockButtonStyle}" FontFamily="{StaticResource Font}"
+							Margin="{StaticResource WideMargin}" FontSize="{StaticResource ExtraSmallTitle}" />
+					<Button x:Name="ThrowExceptionButton" Content="丢一个异常" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 							Style="{StaticResource TextBlockButtonStyle}" FontFamily="{StaticResource Font}"
 							Margin="{StaticResource WideMargin}" FontSize="{StaticResource ExtraSmallTitle}" />
 				</StackPanel>

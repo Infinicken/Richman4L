@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Web . Http ;
@@ -13,11 +14,7 @@ namespace WenceyWang . Richman4L . Apps . Web
 		{
 			config . MapHttpAttributeRoutes ( ) ;
 
-			config . Routes . MapHttpRoute (
-				"DefaultApi" ,
-				"api/{controller}/{id}" ,
-				new { id = RouteParameter . Optional }
-			) ;
+			config . Routes . MapHttpRoute ( "DefaultApi" , "api/{controller}/{id}" , new { id = RouteParameter . Optional } ) ;
 		}
 
 	}

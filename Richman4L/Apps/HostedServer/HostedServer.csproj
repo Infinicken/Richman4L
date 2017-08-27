@@ -11,12 +11,19 @@
     <OldToolsVersion>2.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <OutputType>exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <ApplicationIcon />
     <OutputTypeEx>exe</OutputTypeEx>
     <StartupObject />
+    <AssemblyName>WenceyWang.Richman4L.Apps.HostedServer</AssemblyName>
+    <RootNamespace>WenceyWang.Richman4L.Apps.HostedServer</RootNamespace>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile />
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="HostedServer.csproj.vspscc" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Logics\GameLogic\GameLogic.csproj" />
     <ProjectReference Include="..\..\Sockets\RemoteClient\RemoteClient.csproj" />

@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -57,15 +58,16 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 
 		public override void AddControl ( )
 		{
-			NewGameButton . Click += NewGameButton_Click ;
-			LoadGameButton . Click += LoadGameButton_Click ;
+			PlayButton . Click += NewGameButton_Click ;
+
+			//LoadGameButton . Click += LoadGameButton_Click ;
 			SettingButton . Click += SettingButton_Click ;
 		}
 
 		public override void RemoveControl ( )
 		{
-			NewGameButton . Click -= NewGameButton_Click ;
-			LoadGameButton . Click -= LoadGameButton_Click ;
+			//NewGameButton . Click -= NewGameButton_Click ;
+			//LoadGameButton . Click -= LoadGameButton_Click ;
 			SettingButton . Click -= SettingButton_Click ;
 		}
 

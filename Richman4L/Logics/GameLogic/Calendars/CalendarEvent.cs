@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -20,10 +21,7 @@ namespace WenceyWang . Richman4L . Calendars
 
 		public List <Player> HarmedPlayer { get ; set ; } = new List <Player> ( ) ;
 
-		public CalendarEvent ( string text ,
-								string title = null ,
-								Player gainedPlayer = null ,
-								Player harmedPlayer = null )
+		public CalendarEvent ( string text , string title = null , Player gainedPlayer = null , Player harmedPlayer = null )
 		{
 			Text = text ?? throw new ArgumentNullException ( nameof(text) ) ;
 			Title = title ;

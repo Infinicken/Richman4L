@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -14,18 +15,11 @@ namespace WenceyWang . Richman4L . Stocks
 	public class BuyStockDelegate : StockDelegate
 	{
 
-		public int Number { get ; }
-
-		public decimal Price { get ; }
-
 		public BuyStockDelegateState State { get ; internal set ; }
 
-		public BuyStockDelegate ( [NotNull] Player player , [NotNull] Stock stock , int number , decimal price )
-			: base ( player , stock )
+		public BuyStockDelegate ( [NotNull] Player player , [NotNull] Stock stock , int number , decimal price ) :
+			base ( player , stock , number , price )
 		{
-			Number = number ;
-			Price = price ;
-
 			State = BuyStockDelegateState . Waiting ;
 		}
 

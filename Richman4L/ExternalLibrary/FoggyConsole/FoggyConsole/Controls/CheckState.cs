@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -6,7 +7,8 @@ namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
-	///     All possible states for <code>Checkbox</code>
+	///     All possible states for
+	///     <code>Checkbox</code>
 	/// </summary>
 	public enum CheckState
 	{

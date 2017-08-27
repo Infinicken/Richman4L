@@ -1,28 +1,11 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 
+using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . Interoperability . Arguments ;
-using WenceyWang . Richman4L . Players ;
 
 namespace WenceyWang . Richman4L . Cards
 {
@@ -30,19 +13,21 @@ namespace WenceyWang . Richman4L . Cards
 	public abstract class StaticCard <T> : Card where T : StaticCard <T>
 	{
 
+		// Every Card Type Have It's StaticCard<T>
+		// ReSharper disable once StaticMemberInGenericType
 		public static List <ArgumentInfo> Arguments { get ; protected set ; }
 
 		public sealed override List <ArgumentInfo> ArgumentsInfo => Arguments ;
 
 		public sealed override int PriceWhenBuy
 		{
-			get => Game . Current . GameRule . GetResult <int> ( GetType ( ) ) ;
+			get => GameRule . GetResult <int> ( GetType ( ) ) ;
 			set => throw new NotSupportedException ( ) ;
 		}
 
 		public sealed override int PriceWhenSell
 		{
-			get => Game . Current . GameRule . GetResult <int> ( GetType ( ) ) ;
+			get => GameRule . GetResult <int> ( GetType ( ) ) ;
 			set => throw new NotSupportedException ( ) ;
 		}
 
@@ -65,7 +50,9 @@ namespace WenceyWang . Richman4L . Cards
 
 		public WithAssetObject Owner { get ; private set ; }
 
-		public decimal MinimumValue { get ; } //Todo：Finish this
+		public long MinimumValue { get ; } //Todo：Finish this
+
+		public bool CanGive { get ; }
 
 		public void GiveTo ( WithAssetObject newOwner ) { Owner = newOwner ; }
 
@@ -82,13 +69,9 @@ namespace WenceyWang . Richman4L . Cards
 					return ;
 				}
 
-				foreach (
-					TypeInfo type in
-					typeof ( Game ) . GetTypeInfo ( ) .
-									Assembly . DefinedTypes .
-									Where ( type => type . GetCustomAttributes ( typeof ( CardAttribute ) , false ) .
-															Any ( ) &&
-													typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
+				foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+															Where ( type => type . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Any ( )
+																			&& typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
 				{
 					RegisType ( type . AsType ( ) , type . Name , "" ) ; //Todo:resources?
 				}
@@ -98,9 +81,6 @@ namespace WenceyWang . Richman4L . Cards
 
 			//Todo:Load All internal type
 		}
-
-
-		public static void BuyCard ( CardType type , Player player ) { }
 
 	}
 

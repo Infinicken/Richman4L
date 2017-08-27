@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
@@ -22,8 +23,7 @@ namespace WenceyWang . Richman4L . Apps . Console . Fonts
 			Assembly assembly = typeof ( Program ) . GetTypeInfo ( ) . Assembly ;
 
 			Stream stream =
-				assembly . GetManifestResourceStream ( typeof ( Program ) . Namespace + ".Fonts." + fontName +
-														".flf" ) ;
+				assembly . GetManifestResourceStream ( typeof ( Program ) . Namespace + ".Fonts." + fontName + ".flf" ) ;
 
 			if ( stream == null )
 			{

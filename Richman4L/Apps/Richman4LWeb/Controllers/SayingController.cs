@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Web ;
@@ -25,8 +26,8 @@ namespace WenceyWang . Richman4L . Apps . Web . Controllers
 			}
 
 			Guid guid ;
-			if ( Guid . TryParse ( id , out guid ) &&
-				GameSaying . GetSaying ( guid ) != null )
+			if ( Guid . TryParse ( id , out guid )
+				&& GameSaying . GetSaying ( guid ) != null )
 			{
 				return Content ( GameSaying . GetSaying ( guid ) . ToXElement ( ) . ToString ( ) , "text/xml" ) ;
 			}

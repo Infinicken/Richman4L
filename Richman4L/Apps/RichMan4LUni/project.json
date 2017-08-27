@@ -9,7 +9,7 @@
 		"RateMyApp.UWP": "2.1.0",
 		"System.ComponentModel.TypeConverter": "4.3.0",
 		"System.ValueTuple": "4.3.1",
-		"Win2D.uwp": "1.20.0"
+		"Win2D.uwp": "1.21.0"
 	},
 	"frameworks": {
 		"uap10.0": {}

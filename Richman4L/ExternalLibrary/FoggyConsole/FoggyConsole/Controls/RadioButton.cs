@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -43,11 +44,16 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		/// <param name="text">The text to display</param>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of
-		///     <code>RadioButtonRenderer</code> will be used.
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>RadioButtonRenderer</code>
+		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
 		public RadioButton ( ControlRenderer <RadioButton> renderer = null )
@@ -67,8 +73,8 @@ namespace WenceyWang . FoggyConsole . Controls
 			{
 				foreach ( RadioButton radioButton in radioButtons )
 				{
-					if ( radioButton != this &&
-						radioButton . State != CheckState . Unchecked )
+					if ( radioButton != this
+						&& radioButton . State != CheckState . Unchecked )
 					{
 						radioButton . State = CheckState . Unchecked ;
 					}

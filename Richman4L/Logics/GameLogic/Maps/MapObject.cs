@@ -1,22 +1,5 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -33,20 +16,16 @@ namespace WenceyWang . Richman4L . Maps
 	public abstract class MapObject : NeedRegisBase <MapObjectType , MapObjectAttribute , MapObject>
 	{
 
-		/// <summary>
-		///     元素的起始X值
-		/// </summary>
-		public virtual int X { get ; protected set ; }
-
-		/// <summary>
-		///     元素的起始Y值
-		/// </summary>
-		public virtual int Y { get ; protected set ; }
+		[Own]
+		public virtual MapPosition Position { get ; protected set ; }
 
 		/// <summary>
 		///     元素的尺寸
 		/// </summary>
+		[Own]
 		public abstract MapSize Size { get ; }
+
+		public abstract MapArea TakeUpArea { get ; }
 
 		private static bool Loaded { get ; set ; }
 
@@ -63,8 +42,7 @@ namespace WenceyWang . Richman4L . Maps
 
 			try
 			{
-				X = ReadNecessaryValue <int> ( resource , nameof(X) ) ;
-				Y = ReadNecessaryValue <int> ( resource , nameof(Y) ) ;
+				Position = ReadNecessaryValue <MapPosition> ( resource , nameof(Position) ) ;
 			}
 			catch ( NullReferenceException e )
 			{
@@ -100,14 +78,9 @@ namespace WenceyWang . Richman4L . Maps
 				}
 
 				//Todo:Load All internal type
-				foreach (
-					TypeInfo type in
-					typeof ( Game ) . GetTypeInfo ( ) .
-									Assembly . DefinedTypes .
-									Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) ,
-																				false ) . Any ( ) &&
-													typeof ( MapObject ) . GetTypeInfo ( ) .
-																			IsAssignableFrom ( type ) ) )
+				foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+															Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( )
+																			&& typeof ( MapObject ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
 				{
 					RegisMapObjectType ( type . AsType ( ) ) ;
 				}
@@ -140,17 +113,14 @@ namespace WenceyWang . Richman4L . Maps
 
 				#region Check Attributes
 
-				MapObjectAttribute attribute = entryType . GetTypeInfo ( ) .
-															GetCustomAttributes (
-																typeof ( MapObjectAttribute ) ,
-																false ) .
-															FirstOrDefault ( ) as MapObjectAttribute ;
+				MapObjectAttribute attribute =
+					entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) as
+						MapObjectAttribute ;
 
 				if ( attribute == null )
 				{
-					throw new ArgumentException (
-						$"{nameof(entryType)} should have attribute {nameof(MapObjectAttribute)}" ,
-						nameof(entryType) ) ;
+					throw new ArgumentException ( $"{nameof(entryType)} should have attribute {nameof(MapObjectAttribute)}" ,
+												nameof(entryType) ) ;
 				}
 
 				#endregion
@@ -160,13 +130,12 @@ namespace WenceyWang . Richman4L . Maps
 					return TypeList . Single ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) ;
 				}
 
-
 				return RegisType ( entryType , attribute . Name , attribute . Introduction ) ;
 			}
 		}
 
 
-		public override string ToString ( ) { return $"{GetType ( ) . Name} at {X},{Y}" ; }
+		public override string ToString ( ) { return $"{GetType ( ) . Name} at {Position}" ; }
 
 	}
 

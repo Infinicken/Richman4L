@@ -1,22 +1,5 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -36,23 +19,30 @@ namespace WenceyWang . Richman4L . Maps
 		///     This prop should always return Game.Current.Map
 		/// </summary>
 		[NotNull]
-		public static Map Currnet { get ; set ; }
+		public static Map Currnet => Game . Current . Map ;
 
 		[NotNull]
+		[Own]
 		public string Name { get ; set ; }
 
+		[Own]
+		public Guid MapGuid { get ; }
+
+		[Own]
 		public MapSize Size { get ; set ; }
 
 		[NotNull]
 		[ItemNotNull]
-		[ConsoleVisable]
+		[Own]
 		public List <MapObject> Objects { get ; } = new List <MapObject> ( ) ;
 
 		[NotNull]
 		[ItemNotNull]
+		[Own]
 		public List <WinningCondition> AviliableWinningConditions { get ; } = new List <WinningCondition> ( ) ;
 
-		public List <Road> StartPoints { get ; set ; }
+		[Reference]
+		public List <Road> StartPoints { get ; set ; } = new List <Road> ( ) ;
 
 
 		[CanBeNull]
@@ -60,22 +50,21 @@ namespace WenceyWang . Richman4L . Maps
 		{
 			get
 			{
-				return
-					( Block ) Objects . SingleOrDefault ( mapobject => mapobject is Block &&
-																		( mapobject . X == x ||
-																		mapobject . X < x && mapobject . X +
-																		mapobject . Size . Width - 1 >= x ) &&
-																		( mapobject . Y == y ||
-																		mapobject . Y < y && mapobject . Y +
-																		mapobject . Size . Height - 1 >= y ) ) ;
+				return ( Block ) Objects . SingleOrDefault ( mapobject => mapobject is Block
+																		&& ( mapobject . Position . X == x || mapobject . Position . X < x
+																			&& mapobject . Position . X + mapobject . Size . Width - 1 >= x )
+																		&& ( mapobject . Position . Y == y || mapobject . Position . Y < y
+																			&& mapobject . Position . Y + mapobject . Size . Height - 1 >= y ) ) ;
 			}
 		}
 
+		public List <Block> Blocks
+			=> Objects . TakeWhile ( mapobject => mapobject is Block ) . Cast <Block> ( ) . ToList ( ) ;
+
 		/// <summary>
-		///     s
 		///     地图的排水基数
 		/// </summary>
-		[ConsoleVisable]
+		[Own]
 		public int PondingDecreaseBase { get ; }
 
 		/// <summary>
@@ -100,29 +89,25 @@ namespace WenceyWang . Richman4L . Maps
 
 				Name = ReadNecessaryValue <string> ( mapSource , nameof(Name) ) ;
 				Size = ReadNecessaryValue <MapSize> ( mapSource , nameof(Size) ) ;
-				Guid = ReadNecessaryValue <Guid> ( mapSource , nameof(Guid) ) ;
+				MapGuid = ReadNecessaryValue <Guid> ( mapSource , nameof(Guid) ) ;
+				PondingDecreaseBase = ReadNecessaryValue <int> ( mapSource , nameof(PondingDecreaseBase) ) ;
 
+				List <XElement> typeMapSource = mapSource . Element ( "MapObjectTypes" ) . Elements ( ) . ToList ( ) ;
 
-				IEnumerable <XElement> typeMapSource = mapSource . Element ( "MapObjectTypes" ) . Elements ( ) ;
-
-				Dictionary <string , Type> typeMapResult =
-					new Dictionary <string , Type> ( typeMapSource . Count ( ) ) ;
+				Dictionary <string , Type> typeMapResult = new Dictionary <string , Type> ( typeMapSource . Count ) ;
 
 				foreach ( XElement element in typeMapSource )
 				{
 					string name = ReadNecessaryValue <string> ( element , nameof(Name) ) ;
 					Guid guid = ReadNecessaryValue <Guid> ( element , nameof(Guid) ) ;
 
-					typeMapResult . Add ( name ,
-										MapObject . TypeList . Single ( type => type . Guid == guid ) . EntryType ) ;
+					typeMapResult . Add ( name , MapObject . TypeList . Single ( type => type . Guid == guid ) . EntryType ) ;
 				}
 
 				foreach ( XElement mapObjectSource in mapSource . Element ( nameof(Objects) ) . Elements ( ) )
 				{
-					Objects . Add (
-						Activator . CreateInstance (
-							typeMapResult [ mapObjectSource . Name . LocalName ] ,
-							mapObjectSource ) as MapObject ) ;
+					Objects . Add ( Activator . CreateInstance ( typeMapResult [ mapObjectSource . Name . LocalName ] ,
+																mapObjectSource ) as MapObject ) ;
 				}
 			}
 			catch ( NullReferenceException e )
@@ -136,26 +121,20 @@ namespace WenceyWang . Richman4L . Maps
 				{
 					if ( this [ x , y ] == null )
 					{
-						Objects . Add ( new EmptyBlock ( x , y ) ) ;
+						Objects . Add ( new EmptyBlock ( new MapPosition ( x , y ) ) ) ;
 					}
 				}
 			}
+
+			Objects . Sort ( ( x , y ) => ( int ) ( x . Position . ContorId - y . Position . ContorId ) ) ;
 		}
 
-		public Map ( )
-		{
-			//todo:the line under is a test code, Current should return Game.Current.Map or something else.
-			Currnet = this ;
+		public Map ( ) { }
 
-			//todo
-		}
-
-		public Map ( [NotNull] string flieName )
-			: this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) )
+		public Map ( [NotNull] string flieName ) : this ( ResourceHelper . LoadXmlDocument ( @"Maps.Resources." + flieName ) )
 		{
 		}
 
-		public static long Transform ( int x , int y ) { return ( x + y ) * ( x + y + 1 ) / 2 + y ; }
 
 		[CanBeNull]
 		public Road GetRoad ( long id )
@@ -170,9 +149,23 @@ namespace WenceyWang . Richman4L . Maps
 		}
 
 
-		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
+		public override void EndToday ( )
+		{
+			foreach ( Block block in Blocks )
+			{
+				block . EndToday ( ) ;
+			}
+		}
 
-		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
+		public override void StartDay ( GameDate thisDate )
+		{
+			//todo:Finish ch
+
+			foreach ( Block block in Blocks )
+			{
+				block . StartDay ( thisDate ) ;
+			}
+		}
 
 		[CanBeNull]
 		public event EventHandler <MapAddMapObjectEventArgs> AddMapObjectEvent ;

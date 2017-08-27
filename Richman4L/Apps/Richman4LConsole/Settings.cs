@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
@@ -34,9 +35,8 @@ namespace WenceyWang . Richman4L . Apps . Console
 		public string Save ( )
 		{
 			StringBuilder [ ] stringBuilders =
-				new StringBuilder[
-					Enum . GetValues ( typeof ( SettingCategory ) ) . OfType <SettingCategory> ( ) .
-							Max ( type => ( int ) type ) ] ;
+				new StringBuilder[ Enum . GetValues ( typeof ( SettingCategory ) ) . OfType <SettingCategory> ( ) .
+										Max ( type => ( int ) type ) ] ;
 
 			foreach ( SettingCategory type in Enum . GetValues ( typeof ( SettingCategory ) ) )
 			{
@@ -85,18 +85,16 @@ namespace WenceyWang . Richman4L . Apps . Console
 		{
 			Settings settings = new Settings ( ) ;
 
-			foreach (
-				string line in source . Split ( new [ ] { Environment . NewLine } ,
-												StringSplitOptions . RemoveEmptyEntries ) )
+			foreach ( string line in source . Split ( new [ ] { Environment . NewLine } ,
+													StringSplitOptions . RemoveEmptyEntries ) )
 			{
-				if ( ! string . IsNullOrWhiteSpace ( line ) &&
-					! line . StartsWith ( "#" ) )
+				if ( ! string . IsNullOrWhiteSpace ( line )
+					&& ! line . StartsWith ( "#" ) )
 				{
 					string [ ] setCommand = line . Split ( '=' ) ;
 
 					PropertyInfo property = settings . GetType ( ) .
-														GetProperty ( setCommand [ 0 ] . Trim ( ) ,
-																	BindingFlags . IgnoreCase ) ;
+														GetProperty ( setCommand [ 0 ] . Trim ( ) , BindingFlags . IgnoreCase ) ;
 					object value = Convert . ChangeType ( setCommand [ 1 ] . Trim ( ) , property . PropertyType ) ;
 
 					property . SetValue ( settings , value ) ;
@@ -116,14 +114,13 @@ namespace WenceyWang . Richman4L . Apps . Console
 			{
 				string line = reader . ReadLine ( ) ;
 
-				if ( ! string . IsNullOrWhiteSpace ( line ) &&
-					! line . StartsWith ( "#" ) )
+				if ( ! string . IsNullOrWhiteSpace ( line )
+					&& ! line . StartsWith ( "#" ) )
 				{
 					string [ ] setCommand = line . Split ( '=' ) ;
 
 					PropertyInfo property = settings . GetType ( ) .
-														GetProperty ( setCommand [ 0 ] . Trim ( ) ,
-																	BindingFlags . IgnoreCase ) ;
+														GetProperty ( setCommand [ 0 ] . Trim ( ) , BindingFlags . IgnoreCase ) ;
 					object value = Convert . ChangeType ( setCommand [ 1 ] . Trim ( ) , property . PropertyType ) ;
 
 					property . SetValue ( settings , value ) ;

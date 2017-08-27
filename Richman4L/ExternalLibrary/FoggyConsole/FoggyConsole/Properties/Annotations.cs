@@ -21,6 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -37,8 +38,12 @@ namespace WenceyWang . FoggyConsole . Properties
 {
 
 	/// <summary>
-	///     Indicates that the value of the marked element could be <c>null</c> sometimes,
-	///     so the check for <c>null</c> is necessary before its usage.
+	///     Indicates that the value of the marked element could be
+	///     <c>null</c>
+	///     sometimes,
+	///     so the check for
+	///     <c>null</c>
+	///     is necessary before its usage.
 	/// </summary>
 	/// <example>
 	///     <code>
@@ -60,7 +65,9 @@ namespace WenceyWang . FoggyConsole . Properties
 	}
 
 	/// <summary>
-	///     Indicates that the value of the marked element could never be <c>null</c>.
+	///     Indicates that the value of the marked element could never be
+	///     <c>null</c>
+	///     .
 	/// </summary>
 	/// <example>
 	///     <code>
@@ -119,7 +126,9 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     Indicates that the marked method builds string by format pattern and (optional) arguments.
 	///     Parameter, which contains format string, should be given in constructor. The format string
-	///     should be in <see cref="string.Format(IFormatProvider,string,object[])" />-like form.
+	///     should be in
+	///     <see cref="string.Format(IFormatProvider,string,object[])" />
+	///     -like form.
 	/// </summary>
 	/// <example>
 	///     <code>
@@ -168,7 +177,9 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     Indicates that the function argument should be string literal and match one
 	///     of the parameters of the caller function. For example, ReSharper annotates
-	///     the parameter of <see cref="System.ArgumentNullException" />.
+	///     the parameter of
+	///     <see cref="System.ArgumentNullException" />
+	///     .
 	/// </summary>
 	/// <example>
 	///     <code>
@@ -186,7 +197,8 @@ namespace WenceyWang . FoggyConsole . Properties
 
 	/// <summary>
 	///     Indicates that the method is contained in a type that implements
-	///     <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
+	///     <c>System.ComponentModel.INotifyPropertyChanged</c>
+	///     interface and this method
 	///     is used to notify that some property value changed.
 	/// </summary>
 	/// <remarks>
@@ -266,12 +278,25 @@ namespace WenceyWang . FoggyConsole . Properties
 	///         <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
 	///         <item>Value    ::= true | false | null | notnull | canbenull</item>
 	///     </list>
-	///     If method has single input parameter, it's name could be omitted.<br />
-	///     Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same)
-	///     for method output means that the methos doesn't return normally.<br />
-	///     <c>canbenull</c> annotation is only applicable for output parameters.<br />
-	///     You can use multiple <c>[ContractAnnotation]</c> for each FDT row,
-	///     or use single attribute with rows separated by semicolon.<br />
+	///     If method has single input parameter, it's name could be omitted.
+	///     <br />
+	///     Using
+	///     <c>halt</c>
+	///     (or
+	///     <c>void</c>
+	///     /
+	///     <c>nothing</c>
+	///     , which is the same)
+	///     for method output means that the methos doesn't return normally.
+	///     <br />
+	///     <c>canbenull</c>
+	///     annotation is only applicable for output parameters.
+	///     <br />
+	///     You can use multiple
+	///     <c>[ContractAnnotation]</c>
+	///     for each FDT row,
+	///     or use single attribute with rows separated by semicolon.
+	///     <br />
 	/// </syntax>
 	/// <examples>
 	///     <list>
@@ -356,9 +381,12 @@ namespace WenceyWang . FoggyConsole . Properties
 
 	/// <summary>
 	///     Indicates that the value of the marked type (or its derivatives)
-	///     cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+	///     cannot be compared using '==' or '!=' operators and
+	///     <c>Equals()</c>
 	///     should be used instead. However, using '==' or '!=' for comparison
-	///     with <c>null</c> is always permitted.
+	///     with
+	///     <c>null</c>
+	///     is always permitted.
 	/// </summary>
 	/// <example>
 	///     <code>
@@ -504,7 +532,11 @@ namespace WenceyWang . FoggyConsole . Properties
 
 	/// <summary>
 	///     Specify what is considered used implicitly when marked
-	///     with <see cref="MeansImplicitUseAttribute" /> or <see cref="UsedImplicitlyAttribute" />.
+	///     with
+	///     <see cref="MeansImplicitUseAttribute" />
+	///     or
+	///     <see cref="UsedImplicitlyAttribute" />
+	///     .
 	/// </summary>
 	[Flags]
 	public enum ImplicitUseTargetFlags
@@ -552,7 +584,9 @@ namespace WenceyWang . FoggyConsole . Properties
 
 	/// <summary>
 	///     Indicates that a method does not make any observable state changes.
-	///     The same as <c>System.Diagnostics.Contracts.PureAttribute</c>.
+	///     The same as
+	///     <c>System.Diagnostics.Contracts.PureAttribute</c>
+	///     .
 	/// </summary>
 	/// <example>
 	///     <code>
@@ -638,7 +672,9 @@ namespace WenceyWang . FoggyConsole . Properties
 	///     Template method body can contain valid source code and/or special comments starting with '$'.
 	///     Text inside these comments is added as source code when the template is applied. Template parameters
 	///     can be used either as additional method parameters or as identifiers wrapped in two '$' signs.
-	///     Use the <see cref="MacroAttribute" /> attribute to specify macros for parameters.
+	///     Use the
+	///     <see cref="MacroAttribute" />
+	///     attribute to specify macros for parameters.
 	/// </remarks>
 	/// <example>
 	///     In this example, the 'forEach' method is a source template available over all values
@@ -659,13 +695,21 @@ namespace WenceyWang . FoggyConsole . Properties
 	}
 
 	/// <summary>
-	///     Allows specifying a macro for a parameter of a <see cref="SourceTemplateAttribute">source template</see>.
+	///     Allows specifying a macro for a parameter of a
+	///     <see cref="SourceTemplateAttribute">source template</see>
+	///     .
 	/// </summary>
 	/// <remarks>
 	///     You can apply the attribute on the whole method or on any of its additional parameters. The macro expression
-	///     is defined in the <see cref="MacroAttribute.Expression" /> property. When applied on a method, the target
-	///     template parameter is defined in the <see cref="MacroAttribute.Target" /> property. To apply the macro silently
-	///     for the parameter, set the <see cref="MacroAttribute.Editable" /> property value = -1.
+	///     is defined in the
+	///     <see cref="MacroAttribute.Expression" />
+	///     property. When applied on a method, the target
+	///     template parameter is defined in the
+	///     <see cref="MacroAttribute.Target" />
+	///     property. To apply the macro silently
+	///     for the parameter, set the
+	///     <see cref="MacroAttribute.Editable" />
+	///     property value = -1.
 	/// </remarks>
 	/// <example>
 	///     Applying the attribute on a source template method:
@@ -691,7 +735,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	{
 
 		/// <summary>
-		///     Allows specifying a macro that will be executed for a <see cref="SourceTemplateAttribute">source template</see>
+		///     Allows specifying a macro that will be executed for a
+		///     <see cref="SourceTemplateAttribute">source template</see>
 		///     parameter when the template is expanded.
 		/// </summary>
 		public string Expression { get ; set ; }
@@ -708,8 +753,11 @@ namespace WenceyWang . FoggyConsole . Properties
 		public int Editable { get ; set ; }
 
 		/// <summary>
-		///     Identifies the target parameter of a <see cref="SourceTemplateAttribute">source template</see> if the
-		///     <see cref="MacroAttribute" /> is applied on a template method.
+		///     Identifies the target parameter of a
+		///     <see cref="SourceTemplateAttribute">source template</see>
+		///     if the
+		///     <see cref="MacroAttribute" />
+		///     is applied on a template method.
 		/// </summary>
 		public string Target { get ; set ; }
 
@@ -784,7 +832,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
 	///     is an MVC action. If applied to a method, the MVC action name is calculated
 	///     implicitly from the context. Use this attribute for custom wrappers similar to
-	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcActionAttribute : Attribute
@@ -802,7 +851,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
 	///     Use this attribute for custom wrappers similar to
-	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcAreaAttribute : Attribute
@@ -821,7 +871,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is
 	///     an MVC controller. If applied to a method, the MVC controller name is calculated
 	///     implicitly from the context. Use this attribute for custom wrappers similar to
-	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>.
+	///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcControllerAttribute : Attribute
@@ -838,7 +889,9 @@ namespace WenceyWang . FoggyConsole . Properties
 
 	/// <summary>
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
-	///     for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
+	///     for custom wrappers similar to
+	///     <c>System.Web.Mvc.Controller.View(String, String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcMasterAttribute : Attribute
@@ -848,7 +901,9 @@ namespace WenceyWang . FoggyConsole . Properties
 
 	/// <summary>
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
-	///     for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
+	///     for custom wrappers similar to
+	///     <c>System.Web.Mvc.Controller.View(String, Object)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcModelTypeAttribute : Attribute
@@ -860,7 +915,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is an MVC
 	///     partial view. If applied to a method, the MVC partial view name is calculated implicitly
 	///     from the context. Use this attribute for custom wrappers similar to
-	///     <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>.
+	///     <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcPartialViewAttribute : Attribute
@@ -880,7 +936,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
 	///     Use this attribute for custom wrappers similar to
-	///     <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>.
+	///     <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcDisplayTemplateAttribute : Attribute
@@ -891,7 +948,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
 	///     Use this attribute for custom wrappers similar to
-	///     <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>.
+	///     <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcEditorTemplateAttribute : Attribute
@@ -902,7 +960,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
 	///     Use this attribute for custom wrappers similar to
-	///     <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>.
+	///     <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter )]
 	public sealed class AspMvcTemplateAttribute : Attribute
@@ -914,7 +973,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
 	///     is an MVC view component. If applied to a method, the MVC view name is calculated implicitly
 	///     from the context. Use this attribute for custom wrappers similar to
-	///     <c>System.Web.Mvc.Controller.View(Object)</c>.
+	///     <c>System.Web.Mvc.Controller.View(Object)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class AspMvcViewAttribute : Attribute
@@ -988,7 +1048,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     Razor attribute. Indicates that a parameter or a method is a Razor section.
 	///     Use this attribute for custom wrappers similar to
-	///     <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>.
+	///     <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>
+	///     .
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter | AttributeTargets . Method )]
 	public sealed class RazorSectionAttribute : Attribute
@@ -1034,7 +1095,8 @@ namespace WenceyWang . FoggyConsole . Properties
 	/// <summary>
 	///     Indicates that the marked method is assertion method, i.e. it halts control flow if
 	///     one of the conditions is satisfied. To set the condition, mark one of the parameters with
-	///     <see cref="AssertionConditionAttribute" /> attribute.
+	///     <see cref="AssertionConditionAttribute" />
+	///     attribute.
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Method )]
 	public sealed class AssertionMethodAttribute : Attribute
@@ -1044,7 +1106,9 @@ namespace WenceyWang . FoggyConsole . Properties
 
 	/// <summary>
 	///     Indicates the condition parameter of the assertion method. The method itself should be
-	///     marked by <see cref="AssertionMethodAttribute" /> attribute. The mandatory argument of
+	///     marked by
+	///     <see cref="AssertionMethodAttribute" />
+	///     attribute. The mandatory argument of
 	///     the attribute is the assertion type.
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Parameter )]
@@ -1119,8 +1183,14 @@ namespace WenceyWang . FoggyConsole . Properties
 	}
 
 	/// <summary>
-	///     XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
-	///     as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
+	///     XAML attribute. Indicates the type that has
+	///     <c>ItemsSource</c>
+	///     property and should be treated
+	///     as
+	///     <c>ItemsControl</c>
+	///     -derived type, to enable inner items
+	///     <c>DataContext</c>
+	///     type resolve.
 	/// </summary>
 	[AttributeUsage ( AttributeTargets . Class )]
 	public sealed class XamlItemsControlAttribute : Attribute
@@ -1129,13 +1199,23 @@ namespace WenceyWang . FoggyConsole . Properties
 	}
 
 	/// <summary>
-	///     XAML attribute. Indicates the property of some <c>BindingBase</c>-derived type, that
-	///     is used to bind some item of <c>ItemsControl</c>-derived type. This annotation will
-	///     enable the <c>DataContext</c> type resolve for XAML bindings for such properties.
+	///     XAML attribute. Indicates the property of some
+	///     <c>BindingBase</c>
+	///     -derived type, that
+	///     is used to bind some item of
+	///     <c>ItemsControl</c>
+	///     -derived type. This annotation will
+	///     enable the
+	///     <c>DataContext</c>
+	///     type resolve for XAML bindings for such properties.
 	/// </summary>
 	/// <remarks>
-	///     Property should have the tree ancestor of the <c>ItemsControl</c> type or
-	///     marked with the <see cref="XamlItemsControlAttribute" /> attribute.
+	///     Property should have the tree ancestor of the
+	///     <c>ItemsControl</c>
+	///     type or
+	///     marked with the
+	///     <see cref="XamlItemsControlAttribute" />
+	///     attribute.
 	/// </remarks>
 	[AttributeUsage ( AttributeTargets . Property )]
 	public sealed class XamlItemBindingOfItemsControlAttribute : Attribute

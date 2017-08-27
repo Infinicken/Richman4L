@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
@@ -12,6 +13,9 @@ namespace WenceyWang . Richman4L . Calendars
 	public class Calendar : GameObject
 	{
 
+		public static Calendar Current => Game . Current . Calendar ;
+
+		[Own]
 		public ReadOnlyCollection <Weather> WeatherList { get ; }
 
 		private List <Weather> weatherList { get ; }
@@ -26,6 +30,7 @@ namespace WenceyWang . Richman4L . Calendars
 			weatherList = new List <Weather> ( ) ;
 			WeatherList = new ReadOnlyCollection <Weather> ( weatherList ) ;
 		}
+
 
 		public void PostEvent ( string text ) { todayEventList . Add ( new CalendarEvent ( text ) ) ; }
 
@@ -72,7 +77,7 @@ namespace WenceyWang . Richman4L . Calendars
 				throw new ArgumentOutOfRangeException ( nameof(date) , $"{nameof(date)} is later than today" ) ;
 			}
 
-			return EventList [ date . Date - 1 ] ;
+			return EventList [ Convert . ToInt32 ( date . Date - 1 ) ] ;
 		}
 
 		#endregion

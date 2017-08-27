@@ -118,12 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BorrowingBankProofToString" xml:space="preserve">
-    <value>"{0} borrowed by {1}"</value>
+    <value>{0} borrowed by {1}</value>
   </data>
   <data name="CalenderNextDayCheckFailed" xml:space="preserve">
     <value>{0} is not the day after yesterday</value>
   </data>
   <data name="CurrentGameExists" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NecessaryValueNotFound" xml:space="preserve">
     <value />
   </data>
   <data name="XmlWrongData" xml:space="preserve">

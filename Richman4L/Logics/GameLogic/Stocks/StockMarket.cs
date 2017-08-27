@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -6,7 +7,8 @@ using System . Xml . Linq ;
 using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Buffs . StockBuffs ;
 using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Players . PayReasons ;
 
 namespace WenceyWang . Richman4L . Stocks
 {
@@ -14,24 +16,27 @@ namespace WenceyWang . Richman4L . Stocks
 	/// <summary>
 	///     表示股票市场
 	/// </summary>
-	public class StockMarket : GameObject
+	public class StockMarket : WithAssetObject
 	{
 
 		private GameDate _movementChanging = Game . Current . Calendar . Today ;
 
-		[ConsoleVisable]
+		[Own]
 		public List <Stock> Stocks { get ; } = new List <Stock> ( ) ;
 
 		public StockPriceMovement Movement { get ; internal set ; }
 
-		[ConsoleVisable]
+		[Own]
 		public decimal DelegateFeeRate { get ; set ; }
 
 		//todo:event
 
-		[ConsoleVisable]
+		[Own]
 		public List <StockBuff> Buffs { get ; } = new List <StockBuff> ( ) ;
 
+		/// <summary>
+		///     市场的总值
+		/// </summary>
 		public StockPrice SynthesizePrice
 		{
 			get
@@ -52,6 +57,8 @@ namespace WenceyWang . Richman4L . Stocks
 		private Dictionary <Stock , List <SellStockDelegate>> SellDelegateList { get ; set ; }
 
 		public StockMarketState State { get ; set ; }
+
+		public override IEnumerable <IAsset> Assets { get ; }
 
 
 		private StockMarket ( [NotNull] XDocument document ) : this ( )
@@ -80,10 +87,15 @@ namespace WenceyWang . Richman4L . Stocks
 
 		public override void EndToday ( )
 		{
+			//	1. Let stock end it's day
+
 			foreach ( Stock item in Stocks )
 			{
 				item . EndToday ( ) ;
 			}
+
+
+			// 2. Process every delegate
 
 			List <Stock> toProcess = BuyDelegateList . Keys . Union ( SellDelegateList . Keys ) . ToList ( ) ;
 
@@ -115,9 +127,8 @@ namespace WenceyWang . Richman4L . Stocks
 
 						if ( ! stock . IsBlockBuy ( ) )
 						{
-							buyVolume +=
-								BuyDelegateList [ stock ] . Where ( dele => dele . Price > minSellPrice ) .
-															Sum ( dele => dele . Number ) ;
+							buyVolume += BuyDelegateList [ stock ] . Where ( dele => dele . Price > minSellPrice ) .
+																	Sum ( dele => dele . Number ) ;
 						}
 
 						foreach ( SellStockDelegate dele in sellDelegates )
@@ -127,13 +138,15 @@ namespace WenceyWang . Richman4L . Stocks
 								if ( buyVolume > dele . Number )
 								{
 									buyVolume -= dele . Number ;
-									dele . Player . TakeAwayStock ( stock , dele . Number ) ;
+
+									//dele . Player . TakeAwayStock ( stock , dele . Number ) ;
 									dele . State = SellStockDelegateState . Completed ;
 								}
 								else
 								{
 									buyVolume -= buyVolume ;
-									dele . Player . TakeAwayStock ( stock , buyVolume ) ;
+
+									//dele . Player . TakeAwayStock ( stock , buyVolume ) ;
 									dele . State = SellStockDelegateState . VolumeNotEnough ;
 									break ;
 								}
@@ -192,6 +205,12 @@ namespace WenceyWang . Richman4L . Stocks
 
 				foreach ( SellStockDelegate deles in sellDelegates )
 				{
+					PayMoneyForStockDelegateReason reason =
+						new PayMoneyForStockDelegateReason ( deles ,
+															( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) ,
+															this ) ;
+
+					//deles.Player.ReceivePayReason()
 					//todo
 					//deles . Player . PayForStockDelegate ( deles ,
 					//( deles . Price * deles . Number * DelegateFeeRate ) . ToLongCelling ( ) ) ;
@@ -278,6 +297,38 @@ namespace WenceyWang . Richman4L . Stocks
 
 			//Todo:Compele this;			
 		}
+
+		public override void ReceiveTransactionRequest ( AssetTransactionAgreement request )
+		{
+			throw new NotImplementedException ( ) ;
+		}
+
+		public override void RequestPay ( WithAssetObject source , PayMoneyReason reason )
+		{
+			throw new NotImplementedException ( ) ;
+		}
+
+		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayMoneyReason reason )
+		{
+			throw new NotImplementedException ( ) ;
+		}
+
+		public override void ReceiveCash ( WithAssetObject source , decimal amount , PayMoneyReason reason )
+		{
+			throw new NotImplementedException ( ) ;
+		}
+
+		public override void ReceiveCheck ( WithAssetObject source , decimal amount , PayMoneyReason reason )
+		{
+			throw new NotImplementedException ( ) ;
+		}
+
+		public override void ReceiveTransfer ( WithAssetObject source , decimal amount , PayMoneyReason reason )
+		{
+			throw new NotImplementedException ( ) ;
+		}
+
+		public override void ReceivePayReason ( PayMoneyReason reason ) { throw new NotImplementedException ( ) ; }
 
 	}
 

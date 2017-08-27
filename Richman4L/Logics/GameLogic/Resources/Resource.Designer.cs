@@ -62,7 +62,7 @@ namespace WenceyWang.Richman4L.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;{0} borrowed by {1}&quot;.
+        ///   Looks up a localized string similar to {0} borrowed by {1}.
         /// </summary>
         internal static string BorrowingBankProofToString {
             get {
@@ -85,6 +85,15 @@ namespace WenceyWang.Richman4L.Resources {
         internal static string CurrentGameExists {
             get {
                 return ResourceManager.GetString("CurrentGameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string NecessaryValueNotFound {
+            get {
+                return ResourceManager.GetString("NecessaryValueNotFound", resourceCulture);
             }
         }
         

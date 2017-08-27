@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Diagnostics ;
 using System . Linq ;
@@ -15,11 +16,11 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 	public abstract class AnimatePage : Page
 	{
 
-		public Storyboard GetLeaveStoryboard => ( Storyboard )
-			GetType ( ) . GetTypeInfo ( ) . GetDeclaredField ( "LeaveStoryboard" ) . GetValue ( this ) ;
+		public Storyboard GetLeaveStoryboard
+			=> ( Storyboard ) GetType ( ) . GetTypeInfo ( ) . GetDeclaredField ( "LeaveStoryboard" ) . GetValue ( this ) ;
 
-		public Rectangle GetBackgroundRect => ( Rectangle )
-			GetType ( ) . GetTypeInfo ( ) . GetDeclaredField ( "BackgroundRect" ) . GetValue ( this ) ;
+		public Rectangle GetBackgroundRect
+			=> ( Rectangle ) GetType ( ) . GetTypeInfo ( ) . GetDeclaredField ( "BackgroundRect" ) . GetValue ( this ) ;
 
 		public static Color GetPageColor <T> ( ) where T : AnimatePage
 		{
@@ -28,8 +29,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 
 		public static Color GetPageColor <T> ( T page ) where T : AnimatePage
 		{
-			return ( Color ) page . GetType ( ) . GetTypeInfo ( ) . GetDeclaredProperty ( "PageColor" ) .
-									GetValue ( null ) ;
+			return ( Color ) page . GetType ( ) . GetTypeInfo ( ) . GetDeclaredProperty ( "PageColor" ) . GetValue ( null ) ;
 		}
 
 		[DebuggerStepThrough]

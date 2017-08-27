@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Security ;
@@ -62,7 +63,9 @@ namespace WenceyWang . FoggyConsole . Controls
 		}
 
 		/// <summary>
-		///     The char as which all characters should be rendered if <code>PasswordMode</code> is true
+		///     The char as which all characters should be rendered if
+		///     <code>PasswordMode</code>
+		///     is true
 		/// </summary>
 		public char PasswordChar
 		{
@@ -80,8 +83,8 @@ namespace WenceyWang . FoggyConsole . Controls
 		public override bool CanFocus => Enabled ;
 
 
-		public PasswordBox ( ControlRenderer <PasswordBox> renderer = null )
-			: base ( renderer ?? new PasswordBoxRenderer ( ) )
+		public PasswordBox ( ControlRenderer <PasswordBox> renderer = null ) :
+			base ( renderer ?? new PasswordBoxRenderer ( ) )
 		{
 		}
 
@@ -130,8 +133,8 @@ namespace WenceyWang . FoggyConsole . Controls
 				case ConsoleKey . Backspace :
 				{
 					args . Handled = true ;
-					if ( Text . Length != 0 &&
-						CursorPosition > 0 )
+					if ( Text . Length != 0
+						&& CursorPosition > 0 )
 					{
 						Text . RemoveAt ( CursorPosition - 1 ) ;
 						CursorPosition-- ;
@@ -141,8 +144,8 @@ namespace WenceyWang . FoggyConsole . Controls
 				case ConsoleKey . Delete :
 				{
 					args . Handled = true ;
-					if ( Text . Length != 0 &&
-						CursorPosition < Text . Length )
+					if ( Text . Length != 0
+						&& CursorPosition < Text . Length )
 					{
 						Text . RemoveAt ( CursorPosition + 1 ) ;
 					}

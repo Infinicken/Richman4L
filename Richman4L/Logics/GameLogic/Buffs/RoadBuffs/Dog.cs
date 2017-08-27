@@ -1,25 +1,9 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
 using WenceyWang . Richman4L . Buffs . RoadBuffs . Event ;
 using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . GameEnviroment ;
@@ -38,30 +22,32 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		/// <summary>
 		///     指示狗咬经过的行人的概率的10000倍
 		/// </summary>
-		[GameRuleItem ( 3333 )]
+		[GameRuleValue ( 3333 )]
 		public static int BiteWalkerPossibility { get ; internal set ; }
 
 		/// <summary>
 		///     指示在此停止的人被狗咬的概率的10000倍
 		/// </summary>
-		[GameRuleItem ( 6666 )]
+		[GameRuleValue ( 6666 )]
 		public static int BiteStayerPossibility { get ; internal set ; }
 
-		[GameRuleItem ( 800 )]
+		[GameRuleValue ( 800 )]
 		public static int HighestTolerableWindStrength { get ; set ; }
 
-		[GameRuleItem ( 0 )]
+		[GameRuleValue ( - 5 )]
 		public static int LowestTolerableTemperature { get ; set ; }
 
-		[GameRuleItem ( 37 )]
+		[GameRuleValue ( 37 )]
 		public static int HighestTolerableTemperature { get ; set ; }
 
-		[GameRuleItem ( 4 )]
+		[GameRuleValue ( 4 )]
 		public static int MaxLiveDuration { get ; set ; }
 
 
-		[GameRuleItem ( 1 )]
+		[GameRuleValue ( 1 )]
 		public static int MinLiveDuration { get ; set ; }
+
+		public Dog ( int duration ) : base ( duration ) { }
 
 		public override void DoWhenPass ( Player player , MoveType moveType )
 		{
@@ -116,16 +102,16 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 
 		public bool IsKilled ( Weather weather )
 		{
-			return weather . Wind . Strength >= HighestTolerableWindStrength ||
-					weather . Temperature <= LowestTolerableTemperature ||
-					weather . Temperature >= HighestTolerableTemperature ;
+			return weather . Wind . Strength >= HighestTolerableWindStrength
+					|| weather . Temperature <= LowestTolerableTemperature || weather . Temperature >= HighestTolerableTemperature ;
 		}
 
 		public void Bite ( Player player )
 		{
 			int days = GameRandom . Current . Next ( 1 , 4 ) ;
-			player . ChangeState ( PlayerState . Hospitalized , days ) ;
 			BiteEvent ? . Invoke ( this , new DogBiteEventArgs ( player , days ) ) ;
+			player . AddBuff ( new DogBitedBuff ( player ) ) ;
+
 			Expire ( ) ;
 		}
 
@@ -168,6 +154,27 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		}
 
 		private void Kill ( ) { Expire ( ) ; }
+
+	}
+
+	//todo:should rename but i am too tired and you should fix this ingore thzose spell error and naming error ,yousghoulf fix these or i eill do this after those days.
+
+	public class DogBitedBuff : PlayerBuff
+	{
+
+		[GameRuleValue ( 20 )]
+		public int Harm { get ; set ; }
+
+
+		public DogBitedBuff ( Player target ) : base ( target , 1 )
+		{
+			//todo:
+
+			//	if ( target.Model. Strong )
+			{
+			}
+			target . Health -= Harm ;
+		}
 
 	}
 

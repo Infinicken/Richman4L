@@ -1,28 +1,12 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Annotations ;
+using WenceyWang . Richman4L . GameEnviroment ;
 
 namespace WenceyWang . Richman4L . Maps
 {
@@ -37,14 +21,25 @@ namespace WenceyWang . Richman4L . Maps
 
 		public override MapSize Size => MapSize . Small ;
 
+		public override GameValue CrossDifficulty { get ; }
+
 		public override int PondingDecrease => Map . Currnet . PondingDecreaseBase ;
 
 		//todo:转化率
-		public override GameValue Flammability => ForestCoverRate * 1 ;
+		//Todo:Write a Fody Addin to finish this state.
+		[GameRuleExpression ( "Convert.ToInt32((Math.Tanh((ForestCoverRate.ToInt32() - 4000d)/1200d)+1d)*4200d)" ,
+			typeof ( GameValue ) )]
+		public override GameValue Flammability
+			=> GameRule . GetExpression <EmptyBlock , int> ( this ) .
+						Invoke ( this ) ; //( GameValue ) ( ( Math . Tanh ( ( ForestCoverRate - 4000d ) / 1200d ) + 1d )
+
+		//				* 4200d ) ;
+
 
 		public override GameValue ForestCoverRate { get ; set ; }
 
 		//todo:转化率
+		[GameRuleExpression ( "ForestCoverRate" , typeof ( int ) )]
 		public override int CombustibleMaterialAmount => ForestCoverRate * 1 ;
 
 		public EmptyBlock ( [NotNull] XElement resource ) : base ( resource )
@@ -54,15 +49,13 @@ namespace WenceyWang . Richman4L . Maps
 				throw new ArgumentNullException ( nameof(resource) ) ;
 			}
 
-			ForestCoverRate = ReadUnnecessaryValue ( resource ,
-													nameof(ForestCoverRate) ,
-													GameRandom . Current . RandomGameValue ( ) ) ;
+			ForestCoverRate =
+				ReadUnnecessaryValue ( resource , nameof(ForestCoverRate) , GameRandom . Current . RandomGameValue ( ) ) ;
 		}
 
-		public EmptyBlock ( int x , int y )
+		public EmptyBlock ( MapPosition position )
 		{
-			X = x ;
-			Y = y ;
+			Position = position ;
 			ForestCoverRate = GameRandom . Current . RandomGameValue ( ) ;
 		}
 

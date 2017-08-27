@@ -8,7 +8,7 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WenceyWang.Richman4L.Apps.Uni.UnitTests</RootNamespace>
-    <AssemblyName>Richman4LUniUnitTest</AssemblyName>
+    <AssemblyName>WenceyWang.Richman4L.Apps.Uni.UnitTests</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>

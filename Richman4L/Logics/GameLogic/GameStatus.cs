@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -12,6 +13,11 @@ namespace WenceyWang . Richman4L
 	{
 
 		/// <summary>
+		///     游戏还没被初始化
+		/// </summary>
+		NotInitialize ,
+
+		/// <summary>
 		///     游戏还没开始
 		/// </summary>
 		NotStart ,
@@ -22,9 +28,14 @@ namespace WenceyWang . Richman4L
 		Playing ,
 
 		/// <summary>
-		///     游戏已经结束
+		///     游戏已经结束而未被清理
 		/// </summary>
-		Over
+		Over ,
+
+		/// <summary>
+		///     游戏已经被清理
+		/// </summary>
+		Disposed
 
 	}
 

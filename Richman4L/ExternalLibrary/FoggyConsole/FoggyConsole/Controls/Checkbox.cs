@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -31,7 +32,9 @@ namespace WenceyWang . FoggyConsole . Controls
 	{
 
 		/// <summary>
-		///     Handles the key-userinput which is given in <paramref name="keyInfo" />.
+		///     Handles the key-userinput which is given in
+		///     <paramref name="keyInfo" />
+		///     .
 		///     The State-State will flip if the user presses the spacebar.
 		/// </summary>
 		/// <returns>true if the keypress was handled, otherwise false</returns>
@@ -73,11 +76,16 @@ namespace WenceyWang . FoggyConsole . Controls
 		/// </summary>
 		/// <param name="text">The text to display</param>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of <code>CheckboxRenderer</code>
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>CheckboxRenderer</code>
 		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
 		public Checkbox ( CheckboxRenderer renderer = null )

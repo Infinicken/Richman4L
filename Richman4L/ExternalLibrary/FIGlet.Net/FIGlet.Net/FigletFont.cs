@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
@@ -48,8 +49,8 @@ namespace WenceyWang . FIGlet
 						Stream stream = typeof ( FIGletFont ) . GetTypeInfo ( ) .
 																Assembly .
 																GetManifestResourceStream (
-																	typeof ( FIGletFont ) . Namespace + "." +
-																	@"Fonts.standard.flf" ) ;
+																						 typeof ( FIGletFont ) . Namespace + "." +
+																						 @"Fonts.standard.flf" ) ;
 						defult = new FIGletFont ( stream ) ;
 						stream ? . Dispose ( ) ;
 						DefultFont . SetTarget ( defult ) ;
@@ -143,8 +144,8 @@ namespace WenceyWang . FIGlet
 
 		public string GetCharacter ( char sourceChar , int line )
 		{
-			if ( line < 0 ||
-				line >= Height )
+			if ( line < 0
+				|| line >= Height )
 			{
 				throw new ArgumentOutOfRangeException ( nameof(line) ) ;
 			}

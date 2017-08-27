@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -28,7 +29,11 @@ namespace WenceyWang . FoggyConsole
 
 	/// <summary>
 	///     The actual Application.
-	///     It contains a <code>RootControl</code> in which all other <code>Control</code> instances are stored in a
+	///     It contains a
+	///     <code>RootControl</code>
+	///     in which all other
+	///     <code>Control</code>
+	///     instances are stored in a
 	///     tree-format.
 	///     It also manages userinput and drawing.
 	/// </summary>
@@ -68,7 +73,7 @@ namespace WenceyWang . FoggyConsole
 				if ( IsRunning )
 				{
 					throw new InvalidOperationException (
-						"The FocusManager can't be changed once the Application has been started." ) ;
+														 "The FocusManager can't be changed once the Application has been started." ) ;
 				}
 
 				_focusManager = value ;
@@ -96,9 +101,21 @@ namespace WenceyWang . FoggyConsole
 		/// <summary>
 		///     Creates a new Application
 		/// </summary>
-		/// <param name="viewRoot">A <code>Container</code> which is at the root of the </param>
-		/// <exception cref="ArgumentNullException">Thrown when <paramref name="viewRoot" /> is null.</exception>
-		/// <exception cref="ArgumentException">Thrown when the Container-Property of <paramref name="viewRoot" /> is set.</exception>
+		/// <param name="viewRoot">
+		///     A
+		///     <code>Container</code>
+		///     which is at the root of the
+		/// </param>
+		/// <exception cref="ArgumentNullException">
+		///     Thrown when
+		///     <paramref name="viewRoot" />
+		///     is null.
+		/// </exception>
+		/// <exception cref="ArgumentException">
+		///     Thrown when the Container-Property of
+		///     <paramref name="viewRoot" />
+		///     is set.
+		/// </exception>
 		public Application ( Frame viewRoot = null )
 		{
 			if ( Current != null )
@@ -123,7 +140,9 @@ namespace WenceyWang . FoggyConsole
 		public static Application Current ;
 
 		/// <summary>
-		///     Starts this <code>Application</code>.
+		///     Starts this
+		///     <code>Application</code>
+		///     .
 		/// </summary>
 		public void Run ( )
 		{
@@ -147,7 +166,9 @@ namespace WenceyWang . FoggyConsole
 		}
 
 		/// <summary>
-		///     Stops this <code>Application</code>.
+		///     Stops this
+		///     <code>Application</code>
+		///     .
 		/// </summary>
 		public void Stop ( )
 		{

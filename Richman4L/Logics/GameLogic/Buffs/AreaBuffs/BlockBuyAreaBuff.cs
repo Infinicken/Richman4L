@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -12,7 +13,7 @@ namespace WenceyWang . Richman4L . Buffs . AreaBuffs
 
 		public override bool BlockBuy => true ;
 
-		public BlockBuyAreaBuff ( Area target ) : base ( target ) { }
+		public BlockBuyAreaBuff ( Area target , int duration ) : base ( target , duration ) { }
 
 	}
 

@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -18,10 +19,7 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments
 
 		public ArgumentValueDefineDomain DefineDomain { get ; }
 
-		public ArgumentInfo ( string name ,
-							string introduction ,
-							Type type ,
-							ArgumentValueDefineDomain defineDomain )
+		public ArgumentInfo ( string name , string introduction , Type type , ArgumentValueDefineDomain defineDomain )
 		{
 			Name = name ?? throw new ArgumentNullException ( nameof(name) ) ;
 			Introduction = introduction ?? throw new ArgumentNullException ( nameof(introduction) ) ;

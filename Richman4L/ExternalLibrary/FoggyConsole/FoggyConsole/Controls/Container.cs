@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -25,7 +26,9 @@ namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
-	///     A <code>Control</code> which can contain other Controls.
+	///     A
+	///     <code>Control</code>
+	///     which can contain other Controls.
 	/// </summary>
 	public abstract class Container : Control
 	{

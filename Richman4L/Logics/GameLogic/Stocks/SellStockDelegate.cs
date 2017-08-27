@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -13,16 +14,12 @@ namespace WenceyWang . Richman4L . Stocks
 	public sealed class SellStockDelegate : StockDelegate
 	{
 
-		public int Number { get ; set ; }
-
-		public decimal Price { get ; set ; }
-
 		public SellStockDelegateState State { get ; internal set ; }
 
-		public SellStockDelegate ( Player player , Stock stock , int number , decimal price ) : base ( player , stock )
+
+		public SellStockDelegate ( Player player , Stock stock , int number , decimal price ) :
+			base ( player , stock , number , price )
 		{
-			Number = number ;
-			Price = price ;
 			State = SellStockDelegateState . Waiting ;
 		}
 

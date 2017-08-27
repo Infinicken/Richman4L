@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -48,8 +49,7 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 
 		public bool Equals ( CheckableChar other )
 		{
-			return Checked == other . Checked && Unchecked == other . Unchecked &&
-					Indeterminate == other . Indeterminate ;
+			return Checked == other . Checked && Unchecked == other . Unchecked && Indeterminate == other . Indeterminate ;
 		}
 
 		public override bool Equals ( object obj )

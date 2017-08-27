@@ -5,4 +5,5 @@
 	<Thickness x:Key="ButtonPadding" >40,10</Thickness>
 	<Thickness x:Key="WideMargin" >0,40,0,0</Thickness>
 	<Thickness x:Key="ScrollViewerPadding" >40,0</Thickness>
+	<Thickness x:Key="NormalMargin" >0,10,0,0</Thickness>
 </ResourceDictionary>

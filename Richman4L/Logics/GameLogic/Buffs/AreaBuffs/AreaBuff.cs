@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -21,7 +22,7 @@ namespace WenceyWang . Richman4L . Buffs . AreaBuffs
 
 		public virtual bool BlockCharge => false ;
 
-		public AreaBuff ( Area target ) { Target = target ; }
+		public AreaBuff ( Area target , int duration ) : base ( duration ) { Target = target ; }
 
 		public override void Expire ( )
 		{

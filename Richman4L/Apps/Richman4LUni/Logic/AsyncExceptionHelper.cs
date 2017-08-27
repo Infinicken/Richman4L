@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Diagnostics ;
 using System . Linq ;
@@ -56,8 +57,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			SynchronizationContext syncContext = Current ;
 			if ( syncContext == null )
 			{
-				throw new InvalidOperationException (
-					"Ensure a synchronization context exists before calling this method." ) ;
+				throw new InvalidOperationException ( "Ensure a synchronization context exists before calling this method." ) ;
 			}
 
 
@@ -151,10 +151,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 				return false ;
 			}
 
-			UnhandledExceptionEventArgs exWrapper = new UnhandledExceptionEventArgs
-													{
-														Exception = exception
-													} ;
+			UnhandledExceptionEventArgs exWrapper = new UnhandledExceptionEventArgs { Exception = exception } ;
 
 			UnhandledException ( this , exWrapper ) ;
 

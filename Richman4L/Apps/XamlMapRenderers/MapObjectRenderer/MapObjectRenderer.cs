@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -41,9 +42,8 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 
 		public abstract Size Size { get ; }
 
-		public int X => ( ( IMapObjectRenderer ) this ) . Target . X ;
+		public MapPosition Position => ( ( IMapObjectRenderer ) this ) . Target . Position ;
 
-		public int Y => ( ( IMapObjectRenderer ) this ) . Target . Y ;
 
 		MapObject IMapObjectRenderer . Target
 			=> ( MapObject ) GetType ( ) . GetProperty ( nameof(IMapObjectRenderer . Target) ) . GetValue ( this ) ;
@@ -60,8 +60,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers . MapObjectRenderer
 
 		void IMapObjectRenderer . SetTarget ( MapObject target )
 		{
-			GetType ( ) . GetMethod ( nameof(IMapObjectRenderer . SetTarget) ) .
-						Invoke ( this , new object [ ] { target } ) ;
+			GetType ( ) . GetMethod ( nameof(IMapObjectRenderer . SetTarget) ) . Invoke ( this , new object [ ] { target } ) ;
 		}
 
 		public abstract void Show ( ) ;

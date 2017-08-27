@@ -1,27 +1,12 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
 using System . Reflection ;
 using System . Threading . Tasks ;
+
+using AutoLazy ;
 
 using Microsoft . Extensions . CommandLineUtils ;
 using Microsoft . Extensions . Logging ;
@@ -43,11 +28,12 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 		public static Settings CurrentSetting { get ; set ; }
 
-		public static ILoggerFactory LoggerFactory { get ; set ; } =
-			new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
+		[Lazy]
+		public static ILoggerFactory LoggerFactory { get ; } = new LoggerFactory ( ) . AddConsole ( ) . AddDebug ( ) ;
 
 		/// <summary>
-		///     Program.exe <-g|-- greeting|-$ <greeting>
+		///     Program.exe
+		///     <-g|-- greeting|-$ <greeting>
 		///         > [name
 		///         <fullname>
 		///             ]
@@ -207,8 +193,7 @@ namespace WenceyWang . Richman4L . Apps . Console
 			StreamWriter writer = new StreamWriter ( licenseFile ) ;
 			writer . WriteLine ( GetLicense ( ) ) ;
 			writer . WriteLine ( ) ;
-			writer . WriteLine (
-				"To accept this license, you should write \"I accept this License.\" at the end of this file." ) ;
+			writer . WriteLine ( "To accept this license, you should write \"I accept this License.\" at the end of this file." ) ;
 			writer . Dispose ( ) ;
 		}
 
@@ -216,22 +201,22 @@ namespace WenceyWang . Richman4L . Apps . Console
 
 		public static void ShowLogo ( )
 		{
-			System . Console . WriteLine ( new AsciiArt ( GameTitle . Defult . ContentWithSpace ) ) ;
+			System . Console . WriteLine ( new AsciiArt ( GameTitle . Defult . ContentWithSpace ,
+														width : CharacterWidth . Smush ) ) ;
 		}
 
 		public static void ShowCopyright ( )
 		{
 			System . Console . WriteLine ( @"Richman4L Copyright (C) 2010 - 2016 Wencey Wang" ) ;
 			System . Console . WriteLine ( @"This program comes with ABSOLUTELY NO WARRANTY." ) ;
-			System . Console . WriteLine (
-				@"This is free software, and you are welcome to redistribute it under certain conditions; read License.txt for ditails." ) ;
+			System . Console .
+					WriteLine ( @"This is free software, and you are welcome to redistribute it under certain conditions; read License.txt for ditails." ) ;
 		}
 
 		public static string GetLicense ( )
 		{
 			Assembly assembly = typeof ( Program ) . GetTypeInfo ( ) . Assembly ;
-			Stream stream =
-				assembly . GetManifestResourceStream ( typeof ( Program ) . Namespace + @".License.AGPL.txt" ) ;
+			Stream stream = assembly . GetManifestResourceStream ( typeof ( Program ) . Namespace + @".License.AGPL.txt" ) ;
 			StreamReader reader = new StreamReader ( stream ) ;
 			string license = reader . ReadToEnd ( ) ;
 			reader . Dispose ( ) ;

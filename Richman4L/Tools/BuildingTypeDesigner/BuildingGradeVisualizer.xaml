@@ -8,19 +8,19 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="20" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="10" />
+			<RowDefinition Height="4" />
 
 			<RowDefinition Height="29*" />
-			<RowDefinition Height="10" />
+			<RowDefinition Height="16" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="10" />
+			<RowDefinition Height="4" />
 			<RowDefinition Height="50*" />
 			<RowDefinition Height="20" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="20" />
 			<ColumnDefinition />
-			<ColumnDefinition Width="10" />
+			<ColumnDefinition Width="8" />
 			<ColumnDefinition Width="3*" />
 			<ColumnDefinition Width="20" />
 		</Grid.ColumnDefinitions>

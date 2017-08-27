@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <BuildingType Name="Parks" Introduction="一系列占地不大的公园" SizeX="1" SizeY="1" >
-	<BuildingGrade ID="1" Grade="1" Name="街区公共花园" Introduction="一个政府建设的小公园，夜间歌声洋溢" RecoverTime="0"
-					StarUpgradeMoney="100" />
+    <BuildingGrade ID="1" Grade="1" Name="街区公共花园" Introduction="一个政府建设的小公园，夜间歌声洋溢" RecoverTime="0"
+                   StarUpgradeMoney="100" />
 </BuildingType>

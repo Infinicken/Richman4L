@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -10,8 +11,8 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L
 {
 
-	public abstract class WinningCondition : NeedRegisBase <WinningConditionType , WinningConditionAttribute ,
-		WinningCondition>
+	public abstract class WinningCondition
+		: NeedRegisBase <WinningConditionType , WinningConditionAttribute , WinningCondition>
 	{
 
 		public abstract bool IsWin ( Player player ) ;
@@ -22,18 +23,15 @@ namespace WenceyWang . Richman4L
 
 	}
 
-	public class WinningConditionType : RegisType <WinningConditionType , WinningConditionAttribute ,
-		WinningCondition>
+	public class WinningConditionType : RegisType <WinningConditionType , WinningConditionAttribute , WinningCondition>
 	{
 
-		public WinningConditionType ( [NotNull] Type entryType , [NotNull] XElement element ) :
-			base ( entryType , element )
+		public WinningConditionType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element )
 		{
 		}
 
-		public WinningConditionType ( [NotNull] Type entryType ,
-									[NotNull] string name ,
-									[NotNull] string introduction ) : base ( entryType , name , introduction )
+		public WinningConditionType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
+			base ( entryType , name , introduction )
 		{
 		}
 

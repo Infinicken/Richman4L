@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -6,13 +7,17 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
-	///     Draws a <code>Label</code>-Control
+	///     Draws a
+	///     <code>Label</code>
+	///     -Control
 	/// </summary>
 	public class LabelRenderer : ControlRenderer <Label>
 	{
 
 		/// <summary>
-		///     Draws the <code>Label</code> given in the Control-Property.
+		///     Draws the
+		///     <code>Label</code>
+		///     given in the Control-Property.
 		/// </summary>
 		/// <exception cref="InvalidOperationException">Is thrown if the Control-Property isn't set.</exception>
 		/// <exception cref="InvalidOperationException">Is thrown if the CalculateBoundary-Method hasn't been called.</exception>
@@ -50,9 +55,9 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 					for ( int x = 0 ; x < Control . ActualWidth && x < Control . Text . Length ; x++ )
 					{
 						result [ Control . ActualWidth - Control . Text . Length + x , 0 ] = new ConsoleChar (
-							Control . Text [ x ] ,
-							Control . ActualForegroundColor ,
-							Control . ActualBackgroundColor ) ;
+																											 Control . Text [ x ] ,
+																											 Control . ActualForegroundColor ,
+																											 Control . ActualBackgroundColor ) ;
 					}
 
 					break ;

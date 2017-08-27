@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -12,9 +13,9 @@ namespace WenceyWang . Richman4L . Players . Events
 
 		public virtual long Money { get ; }
 
-		public PayReason Reason { get ; }
+		public PayMoneyReason Reason { get ; }
 
-		public PlayerPayEventArgs ( long money , PayReason reason )
+		public PlayerPayEventArgs ( long money , PayMoneyReason reason )
 		{
 			Money = money ;
 			Reason = reason ;

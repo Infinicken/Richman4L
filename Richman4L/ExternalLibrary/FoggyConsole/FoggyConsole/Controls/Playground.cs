@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -39,8 +40,14 @@ namespace WenceyWang . FoggyConsole . Controls
 		private readonly ConsoleArea _field ;
 
 		/// <summary>
-		///     Gets or sets the char at (<paramref name="top" />|<paramref name="left" />).
-		///     Setting triggers an redraw if <code>Playground.AutoRedaw</code> is true.
+		///     Gets or sets the char at (
+		///     <paramref name="top" />
+		///     |
+		///     <paramref name="left" />
+		///     ).
+		///     Setting triggers an redraw if
+		///     <code>Playground.AutoRedaw</code>
+		///     is true.
 		/// </summary>
 		/// <param name="top"></param>
 		/// <param name="left"></param>
@@ -72,16 +79,22 @@ namespace WenceyWang . FoggyConsole . Controls
 		public override bool CanFocus => false ;
 
 		/// <summary>
-		///     Creates a new <code>Playground</code>
+		///     Creates a new
+		///     <code>Playground</code>
 		/// </summary>
 		/// <param name="height">The height of this Playground</param>
 		/// <param name="width">The width of this Playground</param>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of
-		///     <code>PlayGroundRenderer</code> will be used.
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>PlayGroundRenderer</code>
+		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
 		public PlayGround ( int height , int width , ControlRenderer <PlayGround> renderer = null )

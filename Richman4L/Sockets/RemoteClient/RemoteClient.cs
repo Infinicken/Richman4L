@@ -1,7 +1,8 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
-using System . Net . Sockets ;
+using System . Net . Security ;
 
 using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . GameEnviroment ;
@@ -20,19 +21,24 @@ namespace WenceyWang . Richman4L . RemoteClient
 
 		PlayerSay ,
 
-		ShowDices
+		ShowDices ,
+
+		ShowFlag
 
 	}
 
-	public class Package
+	public abstract class NetworkPackage
 	{
-
-		public PackageType Type { get ; set ; }
 
 		public byte [ ] Data { get ; set ; }
 
 	}
 
+
+	public class Server
+	{
+
+	}
 
 	/// <summary>
 	///     为服务器抽象的远程客户端
@@ -40,7 +46,8 @@ namespace WenceyWang . Richman4L . RemoteClient
 	public class RemoteClient : PlayerConsole
 	{
 
-		public TcpClient Client = new TcpClient ( ) ;
+		public SslStream stream { get ; }
+
 
 		public Guid Guid { get ; set ; }
 

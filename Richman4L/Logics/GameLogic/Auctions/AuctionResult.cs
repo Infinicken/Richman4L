@@ -1,9 +1,9 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
 using WenceyWang . Richman4L . GameEnviroment ;
-using WenceyWang . Richman4L . Players ;
 
 namespace WenceyWang . Richman4L . Auctions
 {
@@ -23,6 +23,8 @@ namespace WenceyWang . Richman4L . Auctions
 
 	public class AuctionPerformer
 	{
+
+		public static AuctionPerformer Current => Game . Current . AuctionPerformer ;
 
 		public void PerformAuction ( AuctionRequest request )
 		{

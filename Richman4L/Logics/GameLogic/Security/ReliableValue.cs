@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -15,8 +16,7 @@ namespace WenceyWang . Richman4L . Security
 		{
 			ReliableValue <T> temp =
 				( ReliableValue <T> )
-				Activator . CreateInstance ( ReliableValue . ImplemrntType . MakeGenericType ( typeof ( T ) ) ,
-											value ) ;
+				Activator . CreateInstance ( ReliableValue . ImplemrntType . MakeGenericType ( typeof ( T ) ) , value ) ;
 			return temp ;
 		}
 
@@ -35,11 +35,8 @@ namespace WenceyWang . Richman4L . Security
 			{
 				throw new ArgumentNullException ( nameof(implementType) ) ;
 			}
-			if (
-				! typeof ( ReliableValue <object> ) . GetTypeInfo ( ) .
-													IsAssignableFrom (
-														implementType . MakeGenericType ( typeof ( object ) ) .
-																		GetTypeInfo ( ) ) )
+			if ( ! typeof ( ReliableValue <object> ) . GetTypeInfo ( ) .
+														IsAssignableFrom ( implementType . MakeGenericType ( typeof ( object ) ) . GetTypeInfo ( ) ) )
 			{
 				throw new ArgumentException ( ) ;
 			}

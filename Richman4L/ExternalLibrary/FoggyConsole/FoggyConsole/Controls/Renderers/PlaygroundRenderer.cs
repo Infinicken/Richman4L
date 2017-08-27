@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -6,7 +7,8 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
-	///     Draws an <code>Playground</code>
+	///     Draws an
+	///     <code>Playground</code>
 	/// </summary>
 	public class PlayGroundRenderer : ControlRenderer <PlayGround>
 	{

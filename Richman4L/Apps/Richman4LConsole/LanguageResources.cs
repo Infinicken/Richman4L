@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
@@ -26,15 +27,13 @@ namespace WenceyWang . Richman4L . Apps . Console
 			{
 				string line = reader . ReadLine ( ) ;
 
-				if ( ! string . IsNullOrWhiteSpace ( line ) &&
-					! line . StartsWith ( "#" ) )
+				if ( ! string . IsNullOrWhiteSpace ( line )
+					&& ! line . StartsWith ( "#" ) )
 				{
 					string [ ] setCommand = line . Split ( '=' ) ;
 
 					PropertyInfo property = languageResources . GetType ( ) .
-																GetProperty (
-																	setCommand [ 0 ] . Trim ( ) ,
-																	BindingFlags . IgnoreCase ) ;
+																GetProperty ( setCommand [ 0 ] . Trim ( ) , BindingFlags . IgnoreCase ) ;
 					object value = Convert . ChangeType ( setCommand [ 1 ] . Trim ( ) , property . PropertyType ) ;
 
 					property . SetValue ( languageResources , value ) ;

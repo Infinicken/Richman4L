@@ -1,9 +1,12 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Text ;
 
 using Microsoft . VisualStudio . TestTools . UnitTesting ;
+
+using WenceyWang . Richman4L . Maps ;
 
 namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . UnitTest
 {
@@ -25,7 +28,9 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . UnitTest
 		{
 			CharacterMapRenderer renderer = new CharacterMapRenderer ( ) ;
 
-			//renderer.SetMap(map);
+			Map map = new Map ( "Test.xml" ) ;
+
+			renderer . SetMap ( map ) ;
 			renderer . SetUnit ( ConsoleSize . Large ) ;
 			renderer . StartUp ( ) ;
 
@@ -42,8 +47,8 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . UnitTest
 				{
 					ConsoleColor targetBackgroundColor = renderer . CurrentView [ x , y ] . BackgroundColor ;
 					ConsoleColor targetForegroundColor = renderer . CurrentView [ x , y ] . ForegroundColor ;
-					if ( currentBackgroundColor != targetBackgroundColor ||
-						currentForegroundColor != targetForegroundColor )
+					if ( currentBackgroundColor != targetBackgroundColor
+						|| currentForegroundColor != targetForegroundColor )
 					{
 						outCount++ ;
 						Console . Write ( stringBuilder . ToString ( ) ) ;
@@ -60,6 +65,8 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers . UnitTest
 
 			Console . Write ( stringBuilder . ToString ( ) ) ;
 			Console . ResetColor ( ) ;
+			Console . WriteLine ( outBlock ) ;
+			Console . WriteLine ( outCount ) ;
 		}
 
 	}

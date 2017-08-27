@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -59,8 +60,7 @@ namespace WenceyWang . Richman4L . Players . Models
 
 				_playerModels = new List <PlayerModelProxy> ( ) ;
 
-				XDocument doc =
-					ResourceHelper . LoadXmlDocument ( $"{nameof(Players)}.{nameof(Models)}.Resources.Index.xml" ) ;
+				XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(Players)}.{nameof(Models)}.Resources.Index.xml" ) ;
 
 				if ( doc . Root == null )
 				{

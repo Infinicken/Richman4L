@@ -1,22 +1,4 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
 using System . Collections ;
 using System . Collections . Generic ;
 using System . ComponentModel ;
@@ -27,7 +9,7 @@ using System . Xml . Linq ;
 
 using WenceyWang . Richman4L . Annotations ;
 using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Resources ;
 
 namespace WenceyWang . Richman4L
 {
@@ -36,13 +18,12 @@ namespace WenceyWang . Richman4L
 	{
 
 		[PublicAPI]
-		[ConsoleVisable]
-		public Guid Guid { get ; protected set ; }
+		[Own]
+		public Guid Guid { get ; }
 
 		protected static object Locker { get ; } = new object ( ) ;
 
-
-		public GameObjectType Type { get ; set ; }
+		public GameObjectType Type => TypeList . Single ( type => type . EntryType == GetType ( ) ) ;
 
 		public static List <GameObjectType> TypeList { get ; } = new List <GameObjectType> ( ) ;
 
@@ -70,9 +51,7 @@ namespace WenceyWang . Richman4L
 
 		private void GameObject_PropertyChanged ( object sender , PropertyChangedEventArgs e )
 		{
-			if ( GetType ( ) .
-					GetRuntimeProperty ( e . PropertyName ) .
-					GetCustomAttribute <ConsoleVisableAttribute> ( ) != null )
+			if ( GetType ( ) . GetRuntimeProperty ( e . PropertyName ) . GetCustomAttribute <OwnAttribute> ( ) != null )
 			{
 				Game . Current ? . UpdateGameObject ( this ) ;
 			}
@@ -105,21 +84,23 @@ namespace WenceyWang . Richman4L
 
 		public virtual XElement ToXElement ( )
 		{
-			TypeInfo typeInfo = GetType ( ) . GetTypeInfo ( ) ;
-			XElement result = new XElement ( typeInfo . Name ) ;
-			foreach (
-				PropertyInfo property in
-				typeInfo . DeclaredProperties . Where (
-					property => property . GetCustomAttribute ( typeof ( ConsoleVisableAttribute ) ) !=
-								null &&
-								property . CanRead ) )
+			Type type = GetType ( ) ;
+
+			XElement result = new XElement ( type . FullName ) ;
+
+			List <PropertyInfo> properties = type . GetRuntimeProperties ( ) .
+													Where ( property => property . GetCustomAttribute ( typeof ( OwnAttribute ) ) != null
+																		&& property . CanRead ) . ToList ( ) ;
+
+			properties . Sort ( ( propA , propB ) => string . CompareOrdinal ( propA . Name , propB . Name ) ) ;
+
+			foreach ( PropertyInfo property in properties )
 			{
-				if ( typeof ( IEnumerable ) . GetTypeInfo ( ) .
-											IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				if ( typeof ( ICollection ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
 				{
 					XElement propertyContainer = new XElement ( property . Name ) ;
 
-					IEnumerable enumerable = ( IEnumerable ) property . GetValue ( this ) ;
+					ICollection enumerable = ( ICollection ) property . GetValue ( this ) ;
 					foreach ( object item in enumerable )
 					{
 						if ( item is GameObject gameObject )
@@ -133,9 +114,10 @@ namespace WenceyWang . Richman4L
 							propertyContainer . Add ( element ) ;
 						}
 					}
+
+					result . Add ( propertyContainer ) ;
 				}
-				else if ( typeof ( GameObject ) . GetTypeInfo ( ) .
-												IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				else if ( typeof ( GameObject ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
 				{
 					XElement propertyContainer = new XElement ( property . Name ) ;
 					XElement propertyValue = ( ( GameObject ) property . GetValue ( this ) ) . ToXElement ( ) ;
@@ -147,6 +129,7 @@ namespace WenceyWang . Richman4L
 					result . SetAttributeValue ( property . Name , property . GetValue ( this ) ) ;
 				}
 			}
+
 
 			return result ;
 		}
@@ -166,9 +149,7 @@ namespace WenceyWang . Richman4L
 
 			if ( value == null )
 			{
-				throw new ArgumentException ( $"" ) ;
-
-				//todo:String Resources
+				throw new ArgumentException ( string . Format ( Resource . NecessaryValueNotFound , element , name ) ) ;
 			}
 
 			TypeConverter typeConverter = TypeDescriptor . GetConverter ( typeof ( T ) ) ;
@@ -237,54 +218,19 @@ namespace WenceyWang . Richman4L
 					throw new ArgumentNullException ( nameof(subType) ) ;
 				}
 
+				if ( TypeList . Contains ( subType ) )
+				{
+					//Todo:Log warning in debug or throw in Realease
+				}
+
 				if ( TypeList . Any ( type => type . Name == subType . Name ) )
 				{
-					throw new Exception ( "Name is Invilable" ) ;
+					throw new Exception ( "Name is Invilable" ) ; //Todo:Resources
 				}
 
 
 				TypeList . Add ( subType ) ;
 			}
-		}
-
-	}
-
-	public class GameObjectType
-	{
-
-		public string Introduction { get ; }
-
-		public Guid Guid => EntryType . GetTypeInfo ( ) . GUID ;
-
-		public string Name { get ; }
-
-		public Type EntryType { get ; }
-
-		protected GameObjectType ( [NotNull] Type entryType , [NotNull] XElement element )
-		{
-			if ( element == null )
-			{
-				throw new ArgumentNullException ( nameof(element) ) ;
-			}
-
-			EntryType = entryType ?? throw new ArgumentNullException ( nameof(entryType) ) ;
-
-			#region Load XML
-
-			Name = GameObject . ReadNecessaryValue <string> ( element , nameof(Name) ) ;
-
-			Introduction = GameObject . ReadNecessaryValue <string> ( element , nameof(Introduction) ) ;
-
-			#endregion
-		}
-
-		protected GameObjectType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction )
-		{
-			EntryType = entryType ?? throw new ArgumentNullException ( nameof(entryType) ) ;
-
-			Name = name ?? throw new ArgumentNullException ( nameof(name) ) ;
-
-			Introduction = introduction ?? throw new ArgumentNullException ( nameof(introduction) ) ;
 		}
 
 	}

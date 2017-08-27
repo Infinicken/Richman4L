@@ -16,6 +16,7 @@
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Text ;
@@ -24,9 +25,14 @@ namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
-	///     Abstracts all calls on the <code>System.Console</code> class.
-	///     Ensures that expensive operations like setting <code>Console.CursorLeft</code> or
-	///     <code>Console.ForegroundColor</code> are only executed if neccessary.
+	///     Abstracts all calls on the
+	///     <code>System.Console</code>
+	///     class.
+	///     Ensures that expensive operations like setting
+	///     <code>Console.CursorLeft</code>
+	///     or
+	///     <code>Console.ForegroundColor</code>
+	///     are only executed if neccessary.
 	/// </summary>
 	internal static class FogConsole
 	{
@@ -51,8 +57,8 @@ namespace WenceyWang . FoggyConsole
 				{
 					ConsoleColor targetBackgroundColor = content [ x , y ] . BackgroundColor ;
 					ConsoleColor targetForegroundColor = content [ x , y ] . ForegroundColor ;
-					if ( CurrentBackgroundColor != targetBackgroundColor ||
-						CurrentForegroundColor != targetForegroundColor )
+					if ( CurrentBackgroundColor != targetBackgroundColor
+						|| CurrentForegroundColor != targetForegroundColor )
 					{
 						Console . Write ( stringBuilder . ToString ( ) ) ;
 						stringBuilder . Clear ( ) ;

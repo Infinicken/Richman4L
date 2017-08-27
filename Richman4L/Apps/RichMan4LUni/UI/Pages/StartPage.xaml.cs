@@ -1,15 +1,16 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Diagnostics ;
 using System . Linq ;
 using System . Threading . Tasks ;
 
-using Windows . Foundation . Metadata ;
 using Windows . System . Profile ;
 using Windows . UI ;
-using Windows . UI . ViewManagement ;
 using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
+
+using Edi . UWP . Helpers ;
 
 using WenceyWang . Richman4L . Apps . Uni . Logic ;
 using WenceyWang . Richman4L . Apps . Uni . UI . Pages . Initialization ;
@@ -33,6 +34,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 		{
 #if DEBUG
 
+
 			ContentDialog debugDialog = new ContentDialog
 										{
 											Title = "这是一个不稳定的预发布软件" ,
@@ -53,10 +55,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 			Debug . WriteLine ( "Loaded" ) ;
 			Debug . WriteLine ( AnalyticsInfo . DeviceForm ) ;
 			Debug . WriteLine ( AnalyticsInfo . VersionInfo . DeviceFamily ) ;
-			if ( ApiInformation . IsMethodPresent ( typeof ( StatusBar ) . FullName , nameof(StatusBar . HideAsync) ) )
-			{
-				await StatusBar . GetForCurrentView ( ) . HideAsync ( ) ;
-			}
+
+			await Mobile . HideWindowsMobileStatusBar ( ) ;
 
 			StartStoryboard . Completed += StartStoryboard_Completed ;
 			StartStoryboard . Begin ( ) ;

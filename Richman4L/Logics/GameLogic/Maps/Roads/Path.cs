@@ -1,26 +1,7 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
-
-using WenceyWang . Richman4L . Calendars ;
 
 namespace WenceyWang . Richman4L . Maps . Roads
 {
@@ -28,7 +9,7 @@ namespace WenceyWang . Richman4L . Maps . Roads
 	/// <summary>
 	///     指示游戏中由一些道路顺次连接构成的路径
 	/// </summary>
-	public sealed class Path : MapObject
+	public sealed class Path
 	{
 
 		/// <summary>
@@ -46,14 +27,6 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		///     指示整个路径
 		/// </summary>
 		public List <Road> Route { get ; } = new List <Road> ( ) ;
-
-		public override int X { get { return Route . Min ( road => road . X ) ; } protected set { } }
-
-		public override int Y { get { return Route . Min ( road => road . Y ) ; } protected set { } }
-
-		public override MapSize Size => new MapSize (
-			Route . Max ( road => road . X ) - Route . Min ( road => road . X ) ,
-			Route . Max ( road => road . Y ) - Route . Min ( road => road . Y ) ) ;
 
 
 		/// <summary>
@@ -73,10 +46,6 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 			Route . Add ( road ) ;
 		}
-
-		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
-
-		public override void StartDay ( GameDate thisDate ) { throw new NotImplementedException ( ) ; }
 
 	}
 

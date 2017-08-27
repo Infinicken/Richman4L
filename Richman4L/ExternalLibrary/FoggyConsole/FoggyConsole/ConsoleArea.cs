@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -14,14 +15,14 @@ namespace WenceyWang . FoggyConsole
 		{
 			get
 			{
-				if ( x < 0 ||
-					x >= Content . GetLength ( 0 ) )
+				if ( x < 0
+					|| x >= Content . GetLength ( 0 ) )
 				{
 					throw new ArgumentOutOfRangeException ( nameof(x) ) ;
 				}
 
-				if ( y < 0 ||
-					y >= Content . GetLength ( 1 ) )
+				if ( y < 0
+					|| y >= Content . GetLength ( 1 ) )
 				{
 					throw new ArgumentOutOfRangeException ( nameof(y) ) ;
 				}
@@ -33,8 +34,8 @@ namespace WenceyWang . FoggyConsole
 
 		public ConsoleChar [ , ] Content { get ; }
 
-		public ConsoleArea ( Size size , ConsoleColor color )
-			: this ( size , new ConsoleChar ( ' ' , backgroundColor : color ) )
+		public ConsoleArea ( Size size , ConsoleColor color ) : this ( size ,
+																		new ConsoleChar ( ' ' , backgroundColor : color ) )
 		{
 		}
 

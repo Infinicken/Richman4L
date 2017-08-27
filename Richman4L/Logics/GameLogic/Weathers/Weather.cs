@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -47,8 +48,7 @@ namespace WenceyWang . Richman4L . Weathers
 		{
 			if ( Wind . Strength > 600 )
 			{
-				return Convert . ToInt32 (
-					Math . Floor ( moveCount * ( Convert . ToDouble ( Wind . Strength - 600 ) / 350d ) ) ) ;
+				return Convert . ToInt32 ( Math . Floor ( moveCount * ( Convert . ToDouble ( Wind . Strength - 600 ) / 350d ) ) ) ;
 			}
 
 			return 0 ;
@@ -58,8 +58,7 @@ namespace WenceyWang . Richman4L . Weathers
 		{
 			if ( Wind . Strength > 600 )
 			{
-				return Convert . ToInt64 ( Convert . ToDouble ( price ) * Convert . ToDouble ( Wind . Strength - 600 ) /
-											300d ) ;
+				return Convert . ToInt64 ( Convert . ToDouble ( price ) * Convert . ToDouble ( Wind . Strength - 600 ) / 300d ) ;
 			}
 
 			return 0 ;
@@ -81,8 +80,7 @@ namespace WenceyWang . Richman4L . Weathers
 		{
 			Weather weather = new Weather ( ) ;
 
-			double seasonProcessNet = Convert . ToDouble ( date . SeasonProcess ) /
-									Convert . ToDouble ( date . SeasonLenth ) ;
+			double seasonProcessNet = Convert . ToDouble ( date . SeasonProcess ) / Convert . ToDouble ( date . SeasonLenth ) ;
 
 			double windAngle = 0 ;
 			int windStrength = 0 ;
@@ -94,8 +92,8 @@ namespace WenceyWang . Richman4L . Weathers
 				{
 					if ( GameRandom . Current . Next ( 2 ) == 1 ) //和煦的，南风，升温
 					{
-						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25 - 4.8 +
-												GameRandom . Current . NextNormalDouble ( 0 , 4 , 0 , 10 ) ;
+						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25 - 4.8
+												+ GameRandom . Current . NextNormalDouble ( 0 , 4 , 0 , 10 ) ;
 
 						windAngle = GameRandom . Current . NextNormalDouble ( 180 , 100 , 90 , 270 ) ;
 						windStrength = GameRandom . Current . NextNormal ( 350 , 200 , 0 , 600 ) ;
@@ -138,8 +136,8 @@ namespace WenceyWang . Richman4L . Weathers
 					}
 					else //犀利的，北风，降温
 					{
-						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25 - 4.8 +
-												GameRandom . Current . NextNormalDouble ( 0 , 4 , - 10 , 0 ) ;
+						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25 - 4.8
+												+ GameRandom . Current . NextNormalDouble ( 0 , 4 , - 10 , 0 ) ;
 						windAngle = GameRandom . Current . NextNormalDouble ( 0 , 100 , - 90 , 90 ) ;
 						if ( weather . Wind . Angle < 0 )
 						{
@@ -154,8 +152,7 @@ namespace WenceyWang . Richman4L . Weathers
 							{
 								weather . Precipitation = GameRandom . Current . NextNormal ( 300 , 50 , 20 , 500 ) ;
 								weather . Precipitation = GameRandom . Current . NextNormal ( 300 , 50 , 20 , 500 ) ;
-								weather . SunshineStrength =
-									GameRandom . Current . NextNormal ( 100 , 50 , 20 , 200 ) ;
+								weather . SunshineStrength = GameRandom . Current . NextNormal ( 100 , 50 , 20 , 200 ) ;
 								if ( weather . Temperature >= 5 )
 								{
 									weather . PrecipitationType = PrecipitationType . Rainy ;
@@ -215,7 +212,7 @@ namespace WenceyWang . Richman4L . Weathers
 
 		public static Weather GetWeather ( GameDate date )
 		{
-			return Game . Current . Calendar . WeatherList [ date . Date ] ;
+			return Game . Current . Calendar . WeatherList [ Convert . ToInt32 ( date . Date ) ] ;
 		}
 
 	}

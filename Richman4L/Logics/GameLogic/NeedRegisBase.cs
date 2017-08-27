@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -19,8 +20,7 @@ namespace WenceyWang . Richman4L
 
 		public new static IEnumerable <TType> TypeList => GameObject . TypeList . OfType <TType> ( ) ;
 
-
-		public static T Crate ( TType type )
+		protected static T Crate ( TType type )
 		{
 			#region Check Argument
 
@@ -48,7 +48,8 @@ namespace WenceyWang . Richman4L
 			}
 		}
 
-		public static TType RegisType ( Type entryType , [NotNull] string name , [NotNull] string introduction )
+		[PublicAPI]
+		protected static TType RegisType ( Type entryType , [NotNull] string name , [NotNull] string introduction )
 		{
 			lock ( Locker )
 			{
@@ -69,12 +70,10 @@ namespace WenceyWang . Richman4L
 
 				if ( ! typeof ( T ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 				{
-					throw new ArgumentException ( $"{nameof(entryType)} should assignable from {nameof(T)}" ,
-												nameof(entryType) ) ;
+					throw new ArgumentException ( $"{nameof(entryType)} should assignable from {nameof(T)}" , nameof(entryType) ) ;
 				}
 
-				if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( TAttribute ) , false ) . Single ( ) ==
-					null )
+				if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( TAttribute ) , false ) . Single ( ) == null )
 				{
 					throw new ArgumentException ( $"{nameof(entryType)} should have atribute {nameof(TAttribute)}" ,
 												nameof(entryType) ) ;
@@ -87,8 +86,7 @@ namespace WenceyWang . Richman4L
 
 				#endregion
 
-				TType instance =
-					( TType ) Activator . CreateInstance ( typeof ( TType ) , entryType , name , introduction ) ;
+				TType instance = ( TType ) Activator . CreateInstance ( typeof ( TType ) , entryType , name , introduction ) ;
 
 				GameObject . RegisType ( instance ) ;
 
@@ -96,7 +94,7 @@ namespace WenceyWang . Richman4L
 			}
 		}
 
-		public static TType RegisType ( Type entryType , XElement element )
+		protected static TType RegisType ( Type entryType , XElement element )
 		{
 			lock ( Locker )
 			{
@@ -109,12 +107,10 @@ namespace WenceyWang . Richman4L
 
 				if ( ! typeof ( T ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 				{
-					throw new ArgumentException ( $"{nameof(entryType)} should assignable from {nameof(T)}" ,
-												nameof(entryType) ) ;
+					throw new ArgumentException ( $"{nameof(entryType)} should assignable from {nameof(T)}" , nameof(entryType) ) ;
 				}
 
-				if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( TAttribute ) , false ) . Single ( ) ==
-					null )
+				if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( TAttribute ) , false ) . Single ( ) == null )
 				{
 					throw new ArgumentException ( $"{nameof(entryType)} should have atribute {nameof(TAttribute)}" ,
 												nameof(entryType) ) ;
@@ -127,8 +123,7 @@ namespace WenceyWang . Richman4L
 
 				if ( element . Name != nameof(entryType) )
 				{
-					throw new ArgumentException ( $"{nameof(element)} should perform a {typeof ( TType ) . Name}" ,
-												nameof(element) ) ;
+					throw new ArgumentException ( $"{nameof(element)} should perform a {typeof ( TType ) . Name}" , nameof(element) ) ;
 				}
 
 				if ( TypeList . Any ( type => type . EntryType == entryType ) )
@@ -145,6 +140,9 @@ namespace WenceyWang . Richman4L
 				return instance ;
 			}
 		}
+
+		//Todo:
+		public static void LoadAll ( ) { }
 
 	}
 

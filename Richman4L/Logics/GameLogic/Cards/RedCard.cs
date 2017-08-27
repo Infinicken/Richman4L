@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -16,15 +17,14 @@ namespace WenceyWang . Richman4L . Cards
 	public class RedCard : StaticCard <RedCard>
 	{
 
-		[GameRuleItem ( 5 )]
-		public static int Duration => Game . Current . GameRule . GetResult <int> ( typeof ( RedCard ) ) ;
+		[GameRuleValue ( 5 )]
+		public static int Duration => GameRule . GetResult <int> ( typeof ( RedCard ) ) ;
 
 		public override bool CanUse => Game . Current . StockMarket . State == StockMarketState . Running ;
 
 		static RedCard ( )
 		{
-			ArgumentInfo stock =
-				new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
+			ArgumentInfo stock = new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
 
 			Arguments = new List <ArgumentInfo> { stock } ;
 		}
@@ -33,8 +33,7 @@ namespace WenceyWang . Richman4L . Cards
 		{
 			ArgumentsInfo . CheckArgument ( arguments ) ;
 
-			RedBuff buff = new RedBuff ( ( Stock ) arguments . Arguments . Single ( ) ,
-										Duration ) ;
+			RedBuff buff = new RedBuff ( ( Stock ) arguments . Arguments . Single ( ) , Duration ) ;
 		}
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }

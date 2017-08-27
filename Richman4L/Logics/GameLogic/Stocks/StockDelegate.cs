@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -20,10 +21,26 @@ namespace WenceyWang . Richman4L . Stocks
 		[NotNull]
 		public Stock Stock { get ; }
 
-		public StockDelegate ( [NotNull] Player player , [NotNull] Stock stock )
+
+		public int Number { get ; set ; }
+
+		public decimal Price { get ; set ; }
+
+		public StockDelegate ( [NotNull] Player player , [NotNull] Stock stock , int number , decimal price )
 		{
+			if ( number <= 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof(number) ) ;
+			}
+			if ( price <= 0 )
+			{
+				throw new ArgumentOutOfRangeException ( nameof(price) ) ;
+			}
+
 			Player = player ?? throw new ArgumentNullException ( nameof(player) ) ;
 			Stock = stock ?? throw new ArgumentNullException ( nameof(stock) ) ;
+			Number = number ;
+			Price = price ;
 		}
 
 	}

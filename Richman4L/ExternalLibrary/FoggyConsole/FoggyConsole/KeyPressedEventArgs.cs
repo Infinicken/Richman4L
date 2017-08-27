@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -19,7 +20,9 @@ namespace WenceyWang . FoggyConsole
 		public ConsoleKeyInfo KeyInfo { get ; }
 
 		/// <summary>
-		///     Creates a new <code>KeyPressedEventArgs</code> instance
+		///     Creates a new
+		///     <code>KeyPressedEventArgs</code>
+		///     instance
 		/// </summary>
 		/// <param name="keyInfo">The key which was pressed</param>
 		public KeyPressedEventArgs ( ConsoleKeyInfo keyInfo )

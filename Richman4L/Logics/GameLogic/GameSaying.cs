@@ -1,22 +1,5 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -43,10 +26,8 @@ namespace WenceyWang . Richman4L
 
 		public int ContentLenth => Content . Length ;
 
-		public int ActualLength
-			=>
-				Content . Length + ( People ? . Length ?? 0 ) + ( Book ? . Length ?? 0 ) + ( Author ? . Length ?? 0 ) +
-				( Song ? . Length ?? 0 ) ;
+		public int ActualLength => Content . Length + ( People ? . Length ?? 0 ) + ( Book ? . Length ?? 0 )
+									+ ( Author ? . Length ?? 0 ) + ( Song ? . Length ?? 0 ) ;
 
 		internal static List <GameSaying> Sayings { get ; set ; }
 
@@ -67,6 +48,7 @@ namespace WenceyWang . Richman4L
 																nameof(GameSaying) ) ) ;
 			}
 
+			//Todo:Read Nessery Value
 			Content = element . Attribute ( nameof(Content) ) ? . Value ;
 			People = element . Attribute ( nameof(People) ) ? . Value ;
 			Book = element . Attribute ( nameof(Book) ) ? . Value ;
@@ -97,9 +79,9 @@ namespace WenceyWang . Richman4L
 				return true ;
 			}
 
-			return string . Equals ( Content , other . Content ) && string . Equals ( People , other . People ) &&
-					string . Equals ( Book , other . Book ) && Guid . Equals ( other . Guid ) &&
-					string . Equals ( Author , other . Author ) && string . Equals ( Song , other . Song ) ;
+			return string . Equals ( Content , other . Content ) && string . Equals ( People , other . People )
+					&& string . Equals ( Book , other . Book ) && Guid . Equals ( other . Guid )
+					&& string . Equals ( Author , other . Author ) && string . Equals ( Song , other . Song ) ;
 		}
 
 		public override string ToString ( ) { return Content ; }
@@ -155,8 +137,7 @@ namespace WenceyWang . Richman4L
 
 				if ( Sayings . Any ( saying => newSaying . Guid == saying . Guid ) )
 				{
-					throw new ArgumentException ( $"{nameof(newSaying)} have same {nameof(Guid)} with others" ,
-												nameof(newSaying) ) ;
+					throw new ArgumentException ( $"{nameof(newSaying)} have same {nameof(Guid)} with others" , nameof(newSaying) ) ;
 				}
 
 				Sayings . Add ( newSaying ) ;

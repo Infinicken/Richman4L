@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Text ;
@@ -86,8 +87,8 @@ namespace WenceyWang . FIGlet
 						{
 							char currentChar = Text [ currentCharIndex ] ;
 							string currentCharacterLine = Font . GetCharacter ( currentChar , currentLine ) ;
-							if ( lastChar != ' ' &&
-								currentChar != ' ' )
+							if ( lastChar != ' '
+								&& currentChar != ' ' )
 							{
 								if ( lineBuilder [ lineBuilder . Length - 1 ] == ' ' )
 								{

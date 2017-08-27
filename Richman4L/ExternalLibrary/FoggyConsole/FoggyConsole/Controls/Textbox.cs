@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -54,11 +55,16 @@ namespace WenceyWang . FoggyConsole . Controls
 		///     Creates a new textbox
 		/// </summary>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of <code>TextboxRenderer</code>
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>TextboxRenderer</code>
 		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
 		public TextBox ( TextBoxRenderer renderer = null )

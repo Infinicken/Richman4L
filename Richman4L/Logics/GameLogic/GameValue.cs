@@ -1,5 +1,7 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
+using System . Globalization ;
 using System . Linq ;
 
 namespace WenceyWang . Richman4L
@@ -12,11 +14,16 @@ namespace WenceyWang . Richman4L
 
 		public static implicit operator int ( GameValue value ) { return value . Value ; }
 
+
 		public override bool Equals ( object obj ) { return Value . Equals ( obj ) ; }
 
 		public override int GetHashCode ( ) { return Value . GetHashCode ( ) ; }
 
-		public override string ToString ( ) { return Value . ToString ( ) ; }
+		public static GameValue MaxValue { get ; } = 10000 ;
+
+		public static GameValue MinValue { get ; } = 0 ;
+
+		public override string ToString ( ) { return Value . ToString ( CultureInfo . InvariantCulture ) ; }
 
 		public bool Equals ( GameValue other ) { return Value == other . Value ; }
 
@@ -26,7 +33,17 @@ namespace WenceyWang . Richman4L
 
 		public static GameValue operator * ( GameValue left , GameValue right )
 		{
-			return left . Value * right . Value / 10000 ;
+			return left . Value * right . Value / MaxValue ;
+		}
+
+		public static explicit operator GameValue ( decimal value )
+		{
+			return new GameValue ( Convert . ToInt32 ( value * MaxValue ) ) ;
+		}
+
+		public static explicit operator GameValue ( double value )
+		{
+			return new GameValue ( Convert . ToInt32 ( value * MaxValue ) ) ;
 		}
 
 		private sealed class ValueEqualityComparer : IEqualityComparer <GameValue>
@@ -39,6 +56,8 @@ namespace WenceyWang . Richman4L
 		}
 
 		public static IEqualityComparer <GameValue> ValueComparer { get ; } = new ValueEqualityComparer ( ) ;
+
+		public int ToInt32 ( ) { return this ; }
 
 		public GameValue ( int value ) { Value = Math . Min ( Math . Max ( value , 0 ) , 10000 ) ; }
 

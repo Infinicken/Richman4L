@@ -82,10 +82,11 @@
 		<Rectangle x:Name="BackgroundRect" Fill="{StaticResource CyanBrush}" />
 		<Image x:Name="MainPageUpImage" Source="ImageResources/MainPageUp.png"
 				d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin, TopPosition, BottomPosition"
-				Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="1,0" />
+				Stretch="UniformToFill" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="1,0"
+				d:IsLocked="True" />
 		<Image x:Name="MainPageDownImage" Source="ImageResources/MainPageDown.png" Stretch="UniformToFill"
 				VerticalAlignment="Bottom"
-				HorizontalAlignment="Left" RenderTransformOrigin="0,1" />
+				HorizontalAlignment="Left" RenderTransformOrigin="0,1" d:IsLocked="True" />
 		<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
 			<Grid.RenderTransform>
 				<CompositeTransform />
@@ -107,36 +108,27 @@
 						FontFamily="{StaticResource Font}"
 						Foreground="{StaticResource WhiteBrush}" TextAlignment="Center" Text="Richman 4 L" />
 			<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" >
-				<Button x:Name="NewGameButton" Content="进行游戏" VerticalAlignment="Stretch" Margin="{StaticResource WideMargin}"
+				<Button x:Name="PlayButton" Content="进行游戏" VerticalAlignment="Stretch"
 						HorizontalAlignment="Stretch"
-						MinWidth="0" MinHeight="0"
 						FontFamily="{StaticResource Font}" FontSize="{StaticResource BigFontSize}"
 						Padding="{StaticResource ButtonPadding}" Background="{StaticResource TransparentCranBrush}"
 						BorderBrush="{x:Null}"
 						Foreground="{StaticResource WhiteBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
-				<Button x:Name="LoadGameButton" Content="进行创作" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-						Margin="{StaticResource WideMargin}"
-						MinWidth="0" MinHeight="0" Padding="{StaticResource ButtonPadding}"
+				<Button x:Name="CreateButton" Content="进行创作" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+						Margin="{StaticResource WideMargin}" Padding="{StaticResource ButtonPadding}"
 						Background="{StaticResource TransparentCranBrush}" BorderBrush="{x:Null}" FontFamily="{StaticResource Font}"
 						FontSize="{StaticResource BigFontSize}" Style="{StaticResource RoundedRectangleButtonStyle}"
 						Foreground="{StaticResource WhiteBrush}" />
-				<Button x:Name="ListButton" Content="管理组件" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-						Margin="{StaticResource WideMargin}"
-						MinWidth="0" MinHeight="0" Padding="{StaticResource ButtonPadding}"
-						Background="{StaticResource TransparentCranBrush}" BorderBrush="{x:Null}" FontFamily="{StaticResource Font}"
-						FontSize="{StaticResource BigFontSize}" Style="{StaticResource RoundedRectangleButtonStyle}"
-						Foreground="{StaticResource WhiteBrush}" />
-				<Button x:Name="ListButton_Copy" Content="" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-						Margin="{StaticResource WideMargin}"
-						MinWidth="0" MinHeight="0" Padding="{StaticResource ButtonPadding}"
+				<Button x:Name="ExploreButton" Content="探索社区" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+						Margin="{StaticResource WideMargin}" Padding="{StaticResource ButtonPadding}"
 						Background="{StaticResource TransparentCranBrush}" BorderBrush="{x:Null}" FontFamily="{StaticResource Font}"
 						FontSize="{StaticResource BigFontSize}" Style="{StaticResource RoundedRectangleButtonStyle}"
 						Foreground="{StaticResource WhiteBrush}" />
 			</StackPanel>
 			<Button x:Name="SettingButton" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,40,40"
-					Grid.Row="8" MinWidth="0" MinHeight="0" Grid.Column="1" Background="{StaticResource TransparentCranBrush}"
+					Grid.Row="8" Grid.Column="1" Background="{StaticResource TransparentCranBrush}"
 					BorderBrush="{x:Null}" FontFamily="{StaticResource Font}" FontSize="32"
-					d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Width="45" Height="45"
+					d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"
 					Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource RoundedRectangleButtonStyle}"
 					Foreground="{StaticResource WhiteBrush}" >
 				<SymbolIcon Symbol="Setting" RenderTransformOrigin="0.5,0.5" >

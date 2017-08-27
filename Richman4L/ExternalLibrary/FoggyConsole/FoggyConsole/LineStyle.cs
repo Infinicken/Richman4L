@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -106,31 +107,62 @@ namespace WenceyWang . FoggyConsole
 		public char HorizontalEdge { get ; set ; }
 
 		/// <summary>
-		///     A character representing a connection between a <code>HorizontalEdge</code> and a <code>VerticalEdge</code>,
-		///     in which the <code>VerticalEdge</code> is above the <code>HorizontalEdge</code>
+		///     A character representing a connection between a
+		///     <code>HorizontalEdge</code>
+		///     and a
+		///     <code>VerticalEdge</code>
+		///     ,
+		///     in which the
+		///     <code>VerticalEdge</code>
+		///     is above the
+		///     <code>HorizontalEdge</code>
 		/// </summary>
 		public char ConnectionHorizontalUp { get ; set ; }
 
 		/// <summary>
-		///     A character representing a connection between a <code>HorizontalEdge</code> and a <code>VerticalEdge</code>,
-		///     in which the <code>VerticalEdge</code> is below the <code>HorizontalEdge</code>
+		///     A character representing a connection between a
+		///     <code>HorizontalEdge</code>
+		///     and a
+		///     <code>VerticalEdge</code>
+		///     ,
+		///     in which the
+		///     <code>VerticalEdge</code>
+		///     is below the
+		///     <code>HorizontalEdge</code>
 		/// </summary>
 		public char ConnectionHorizontalDown { get ; set ; }
 
 		/// <summary>
-		///     A character representing a connection between a <code>VerticalEdge</code> and a <code>HorizontalEdge</code>,
-		///     in which the <code>HorizontalEdge</code> is on the left side of the <code>VerticalEdge</code>
+		///     A character representing a connection between a
+		///     <code>VerticalEdge</code>
+		///     and a
+		///     <code>HorizontalEdge</code>
+		///     ,
+		///     in which the
+		///     <code>HorizontalEdge</code>
+		///     is on the left side of the
+		///     <code>VerticalEdge</code>
 		/// </summary>
 		public char ConnectionVerticalRight { get ; set ; }
 
 		/// <summary>
-		///     A character representing a connection between a <code>VerticalEdge</code> and a <code>HorizontalEdge</code>,
-		///     in which the <code>HorizontalEdge</code> is on the right side of the <code>VerticalEdge</code>
+		///     A character representing a connection between a
+		///     <code>VerticalEdge</code>
+		///     and a
+		///     <code>HorizontalEdge</code>
+		///     ,
+		///     in which the
+		///     <code>HorizontalEdge</code>
+		///     is on the right side of the
+		///     <code>VerticalEdge</code>
 		/// </summary>
 		public char ConnectionVerticalLeft { get ; set ; }
 
 		/// <summary>
-		///     A characer representing a connection between two <code>VerticalEdge</code> and two <code>HorizontalEdge</code>
+		///     A characer representing a connection between two
+		///     <code>VerticalEdge</code>
+		///     and two
+		///     <code>HorizontalEdge</code>
 		/// </summary>
 		public char ConnectionCross { get ; set ; }
 
@@ -140,7 +172,9 @@ namespace WenceyWang . FoggyConsole
 		public char EmptyChar { get ; set ; }
 
 		/// <summary>
-		///     A <code>LineStyle</code> which uses single-lined box-drawing-characters
+		///     A
+		///     <code>LineStyle</code>
+		///     which uses single-lined box-drawing-characters
 		/// </summary>
 		/// <returns></returns>
 		public static LineStyle Empty => new LineStyle
@@ -161,7 +195,9 @@ namespace WenceyWang . FoggyConsole
 
 
 		/// <summary>
-		///     A very simple <code>LineStyle</code>.
+		///     A very simple
+		///     <code>LineStyle</code>
+		///     .
 		/// </summary>
 		public static LineStyle GetSimpleSet { get ; } = new LineStyle
 														{
@@ -180,7 +216,9 @@ namespace WenceyWang . FoggyConsole
 														} ;
 
 		/// <summary>
-		///     A <code>LineStyle</code> which uses single-lined box-drawing-characters
+		///     A
+		///     <code>LineStyle</code>
+		///     which uses single-lined box-drawing-characters
 		/// </summary>
 		/// <returns></returns>
 		public static LineStyle SingleLinesSet => new LineStyle
@@ -200,7 +238,9 @@ namespace WenceyWang . FoggyConsole
 												} ;
 
 		/// <summary>
-		///     A <code>LineStyle</code> which uses double-lined box-drawing-characters
+		///     A
+		///     <code>LineStyle</code>
+		///     which uses double-lined box-drawing-characters
 		/// </summary>
 		public static LineStyle DoubleLinesSet => new LineStyle
 												{

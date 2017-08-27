@@ -1,27 +1,13 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
+using WenceyWang . Richman4L . Annotations ;
+using WenceyWang . Richman4L . Banks ;
+using WenceyWang . Richman4L . Cards ;
 using WenceyWang . Richman4L . Maps . Buildings . Events ;
 using WenceyWang . Richman4L . Players ;
 using WenceyWang . Richman4L . Players . PayReasons ;
@@ -47,37 +33,40 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		/// </summary>
 		public Area Position { get ; protected set ; }
 
+		public List <BuildingBuff> Buffs { get ; } //todo 
+
 		/// <summary>
 		///     指示建筑的完成度的10000倍
 		/// </summary>
-		public int CompletedDgree { get ; set ; }
+		[Own]
+		public GameValue CompletedDgree { get ; set ; } = 0 ;
 
 		/// <summary>
 		///     指示建筑的维护水平的10000倍
 		/// </summary>
-		public int MaintenanceDegree { get ; set ; }
+		[Own]
+		public GameValue MaintenanceDegree { get ; set ; } = 0 ;
 
+		[Own]
 		public abstract int NoncombustiblePartRatio { get ; }
 
 		/// <summary>
 		///     指示当前建筑所处的等级
 		/// </summary>
+		[Own]
 		public virtual BuildingGrade Grade { get ; protected set ; }
 
 		/// <summary>
 		///     指示建筑是否易于摧毁
 		/// </summary>
+		[Own]
 		public abstract bool IsEasyToDestroy { get ; }
-
-
-		public int X => Position . X ;
-
-		public int Y => Position . Y ;
 
 
 		/// <summary>
 		///     指示建筑今天所需的维持费
 		/// </summary>
+		[Own]
 		public abstract long MaintenanceFee { get ; }
 
 		public static List <BuildingType> BuildingTypes { get ; private set ; } = new List <BuildingType> ( ) ;
@@ -86,41 +75,56 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 		//Todo:complete this event arg
 
-
-		protected Building ( )
-		{
-			CompletedDgree = 0 ;
-			MaintenanceDegree = 0 ;
-		}
-
+		[Own]
 		public WithAssetObject Owner { get ; private set ; }
 
 		public virtual void Upgrade ( BuildingGrade targetGrade ) { }
 
-		public virtual void Pass ( Player player ) { }
+		[PublicAPI]
+		public virtual void Pass ( Player player )
+		{
+		}
 
-		public virtual void Stay ( Player player ) { }
+		[PublicAPI]
+		public virtual void Stay ( Player player )
+		{
+		}
 
+		/// <summary>
+		///     外来的摧毁房子
+		/// </summary>
+		/// <param name="reason"></param>
 		public abstract void Destoy ( BuildingDestroyReason reason ) ;
 
+		[PublicAPI]
 		public event EventHandler Destroied ;
 
 		public static event EventHandler <BuildBuildingEventArgs> BuildBuildingEvent ;
 
-		protected virtual void Build ( Area position , Player player )
+		/// <summary>
+		///     由Area调用,开始建造这个建筑
+		/// </summary>
+		/// <param name="position"></param>
+		/// <param name="player"></param>
+		public virtual void Build ( Area position , WithAssetObject player )
 		{
 			Position = position ;
 			Grade = Type . EntryGrade ;
 			State = BuildingState . Building ;
-			player . RequestPay ( player ,
-								Type . EntryGrade . StartUpgradeCost ,
-								new PayForBuildBuildingReason ( this ) ) ;
-			UpgradeTo = null ;
-			UpgradeProcess = null ;
+			Bank . Current . ReceivePayReason ( new PayMoneyForBuildBuildingReason ( this ,
+																					Type . EntryGrade . StartUpgradeCost ,
+																					Owner ) ) ;
+
+			//player.RequestPay(player,
+			//					Type.EntryGrade.StartUpgradeCost,
+			//					new PayMoneyForBuildBuildingReason(this));
+			UpgradeTo = Type . EntryGrade ;
+			UpgradeProcess = 0 ;
 
 			//Todo:完善这个
 		}
 
+		[PublicAPI]
 		public static BuildingType RegisBuildingType ( Type entryType , XElement element )
 		{
 			#region Check Argument
@@ -136,10 +140,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 											nameof(entryType) ) ;
 			}
 
-			if (
-				entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( BuildingAttribute ) , false ) .
-							FirstOrDefault ( ) ==
-				null )
+			if ( entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( BuildingAttribute ) , false ) . FirstOrDefault ( )
+				== null )
 			{
 				throw new ArgumentException ( $"{nameof(entryType)} should have atribute {nameof(BuildingAttribute)}" ,
 											nameof(entryType) ) ;
@@ -171,6 +173,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		}
 
 		[Startup]
+		[PublicAPI]
 		public static void LoadBuildingTypes ( )
 		{
 			lock ( Locker )
@@ -186,48 +189,35 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			}
 		}
 
-		public static void Build ( Area position , BuildingType buildingType , Player player )
+		/// <summary>
+		///     由Area调用,创造一个Building以供建造
+		///     <see
+		///         cref="https://onedrive.live.com/edit.aspx/Documents/RichMan4L?cid=cb060fe3721bc584&id=documents&wd=target%28%E8%AE%BE%E8%AE%A1.one%7C65029F20-EC36-470D-A8A6-CAFE5DAB8F08%2F%E6%88%91%E4%BB%AC%E5%A6%82%E4%BD%95%E5%BB%BA%E6%88%BF%E5%AD%90%7C1A21558A-DE44-409F-9F49-9DDC048D6661%2F%29" />
+		/// </summary>
+		/// <param name="buildingType"></param>
+		/// <returns>被创造出的Building对象</returns>
+		[PublicAPI]
+		public static Building Build ( BuildingType buildingType )
 		{
 			#region Check Argument
 
-			if ( position == null )
-			{
-				throw new ArgumentNullException ( nameof(position) ) ;
-			}
 			if ( buildingType == null )
 			{
 				throw new ArgumentNullException ( nameof(buildingType) ) ;
 			}
+
+			//Todo: Use resources
 			if ( ! BuildingTypes . Contains ( buildingType ) )
 			{
-				throw new ArgumentException ( $"{nameof(buildingType)} have not being registered" ,
-											nameof(buildingType) ) ;
-			}
-			if ( ! position . IsBuildingAvailable ( buildingType ) )
-			{
-				throw new ArgumentException ( $"{nameof(buildingType)} is not aviliable for {nameof(position)}" ) ;
-			}
-			if ( player == null )
-			{
-				throw new ArgumentNullException ( nameof(player) ) ;
-			}
-			if ( position . Owner != player )
-			{
-				throw new ArgumentException ( $"{nameof(player)} should own the {nameof(position)}" ) ;
+				throw new ArgumentException ( $"{nameof(buildingType)} have not being registered" , nameof(buildingType) ) ;
 			}
 
 			#endregion
 
 			Building building = Crate ( buildingType ) ;
-			building . Build ( position , player ) ;
-			position . BuildBuildiing ( building ) ;
 
-			BuildBuildingEvent ? . Invoke ( typeof ( Building ) ,
-											new BuildBuildingEventArgs (
-												building ,
-												position ,
-												buildingType ,
-												player ) ) ;
+			BuildBuildingEvent ? . Invoke ( typeof ( Building ) , new BuildBuildingEventArgs ( building ) ) ;
+			return building ;
 		}
 
 		#region State
@@ -235,6 +225,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		/// <summary>
 		///     指示当前建筑的状态
 		/// </summary>
+		[Own]
 		public BuildingState State { get ; protected set ; } = BuildingState . NotBuild ;
 
 		#region	Upgrade
@@ -247,9 +238,14 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		/// <summary>
 		///     指示建筑的升级进程的10000倍
 		/// </summary>
-		public virtual int ? UpgradeProcess { get ; protected set ; }
+		public virtual GameValue UpgradeProcess { get ; protected set ; }
 
-		public decimal MinimumValue { get ; }
+		/// <summary>
+		///     指示这个建筑应当拥有的最小价值
+		/// </summary>
+		public abstract long MinimumValue { get ; }
+
+		public bool CanGive { get ; }
 
 		public void GiveTo ( WithAssetObject newOwner ) { throw new NotImplementedException ( ) ; }
 

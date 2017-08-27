@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -8,7 +9,7 @@ using WenceyWang . Richman4L . Players ;
 namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 {
 
-	public class MoveTypeAbilityDefineDomains : ArgumentValueDefineDomain
+	public class MoveTypeAbilityDefineDomains : ArgumentValueDefineDomain <MoveType>
 	{
 
 		[NotNull]
@@ -19,11 +20,11 @@ namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
 			Target = target ?? throw new ArgumentNullException ( nameof(target) ) ;
 		}
 
-		public override bool IsValid ( object value )
+		public override bool IsValid ( MoveType value )
 		{
 			try
 			{
-				return Target . IsMoveTypeAvilibale ( ( MoveType ) value ) ;
+				return Target . IsMoveTypeAvilibale ( value ) ;
 			}
 			catch ( Exception )
 			{

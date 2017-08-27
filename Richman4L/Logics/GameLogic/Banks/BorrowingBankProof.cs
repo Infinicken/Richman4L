@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -41,9 +42,7 @@ namespace WenceyWang . Richman4L . Banks
 
 		public override string ToString ( )
 		{
-			return string . Format ( Resource . BorrowingBankProofToString ,
-									nameof(BorrowingBankProof) ,
-									Owner ) ;
+			return string . Format ( Resource . BorrowingBankProofToString , nameof(BorrowingBankProof) , Owner ) ;
 		}
 
 		public override void EndToday ( ) { }

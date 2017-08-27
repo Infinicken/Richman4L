@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -175,12 +176,16 @@ namespace WenceyWang . FoggyConsole . Controls
 		public int TabIndex { get ; set ; }
 
 		/// <summary>
-		///     The <code>Container</code> in which this Control is placed in
+		///     The
+		///     <code>Container</code>
+		///     in which this Control is placed in
 		/// </summary>
 		public Container Container { get ; set ; }
 
 		/// <summary>
-		///     An instance of a subclass of <code>ControlRenderer</code> which is able to draw this specific type of Control
+		///     An instance of a subclass of
+		///     <code>ControlRenderer</code>
+		///     which is able to draw this specific type of Control
 		/// </summary>
 		/// <exception cref="ArgumentException">
 		///     Thrown if the ControlRenderer which should be set already has an other Control
@@ -191,12 +196,12 @@ namespace WenceyWang . FoggyConsole . Controls
 			get => _renderer ;
 			set
 			{
-				if ( value ? . Control != null &&
-					value . Control != this )
+				if ( value ? . Control != null
+					&& value . Control != this )
 				{
 					throw new ArgumentException (
-						$"{nameof(Renderer)} already has an other {nameof(Control)} assigned." ,
-						nameof(value) ) ;
+												 $"{nameof(Renderer)} already has an other {nameof(Control)} assigned." ,
+												 nameof(value) ) ;
 				}
 
 				_renderer = value ;
@@ -220,9 +225,14 @@ namespace WenceyWang . FoggyConsole . Controls
 		}
 
 		/// <summary>
-		///     Creates a new <code>Control</code>
+		///     Creates a new
+		///     <code>Control</code>
 		/// </summary>
-		/// <param name="renderer">The <code>ControlRenderer</code> to set</param>
+		/// <param name="renderer">
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to set
+		/// </param>
 		/// <exception cref="ArgumentException">
 		///     Thrown if the ControlRenderer which should be set already has an other Control
 		///     assigned
@@ -235,7 +245,9 @@ namespace WenceyWang . FoggyConsole . Controls
 
 
 		/// <summary>
-		///     Fired if the <code>IsFocused</code>-Property has been changed
+		///     Fired if the
+		///     <code>IsFocused</code>
+		///     -Property has been changed
 		/// </summary>
 		public event EventHandler IsFocusedChanged ;
 

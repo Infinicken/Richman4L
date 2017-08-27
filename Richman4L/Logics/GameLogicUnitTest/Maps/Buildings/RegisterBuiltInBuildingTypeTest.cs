@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -17,9 +18,9 @@ namespace WenceyWang . Richman4L . UnitTests . Maps . Buildings
 		public void RegisterSmallSimpleBuildingTypeTest ( )
 		{
 			Building . RegisBuildingType ( typeof ( SmallSimpleBuilding ) ,
-											ResourceHelper . LoadXmlDocument (
-																$"{nameof(Maps)}.{nameof(Buildings)}.Resources.SmallSimpleBuilding.xml" ) .
-															Root ) ;
+											ResourceHelper .
+												LoadXmlDocument ( $"{nameof(Maps)}.{nameof(Buildings)}.Resources.SmallSimpleBuilding.xml" ) .
+												Root ) ;
 		}
 
 		//[TestMethod]

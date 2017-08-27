@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -13,6 +14,8 @@ namespace WenceyWang . Richman4L
 
 		public long MoneyLimit { get ; }
 
+		public CashMoreThanCondition ( long moneyLimit ) { MoneyLimit = moneyLimit ; }
+
 		public override bool IsWin ( Player player ) { return player . Money >= MoneyLimit ; }
 
 	}
@@ -23,6 +26,17 @@ namespace WenceyWang . Richman4L
 		public MapArea Area { get ; }
 
 		public StayInAreaCondition ( MapArea area ) { Area = area ; }
+
+		public override bool IsWin ( Player player ) { throw new NotImplementedException ( ) ; }
+
+	}
+
+	public class ExpressionCondition : WinningCondition
+	{
+
+		///
+		public string Expression { get ; set ; }
+
 
 		public override bool IsWin ( Player player ) { throw new NotImplementedException ( ) ; }
 

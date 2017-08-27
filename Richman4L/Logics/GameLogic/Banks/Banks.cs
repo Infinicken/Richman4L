@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -32,7 +33,9 @@ namespace WenceyWang . Richman4L . Banks
 
 		public double BorrowingInterestRateIncrease { get ; set ; }
 
-		public static Bank Current { get ; } = new Bank ( ) ;
+		public static Bank Current => Game . Current . Bank ;
+
+		public override IEnumerable <IAsset> Assets { get ; }
 
 		private Bank ( ) { }
 
@@ -66,16 +69,16 @@ namespace WenceyWang . Richman4L . Banks
 			throw new NotImplementedException ( ) ;
 		}
 
-		public override void RequestPay ( WithAssetObject source , decimal amount , PayReason reason ) { }
+		public override void RequestPay ( WithAssetObject source , PayMoneyReason reason ) { }
 
-		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayReason reason ) { }
+		public override void RequestAsset ( WithAssetObject source , IAsset asset , PayMoneyReason reason ) { }
 
-		public override void ReceiveCash ( WithAssetObject source , decimal amount , PayReason reason ) { }
+		public override void ReceiveCash ( WithAssetObject source , decimal amount , PayMoneyReason reason ) { }
 
 
-		public override void ReceiveCheck ( WithAssetObject source , decimal amount , PayReason reason ) { }
+		public override void ReceiveCheck ( WithAssetObject source , decimal amount , PayMoneyReason reason ) { }
 
-		public override void ReceiveTransfer ( WithAssetObject source , decimal amount , PayReason reason ) { }
+		public override void ReceiveTransfer ( WithAssetObject source , decimal amount , PayMoneyReason reason ) { }
 
 		public override void EndToday ( ) { }
 
@@ -84,6 +87,8 @@ namespace WenceyWang . Richman4L . Banks
 		//{
 
 		//public override decimal ReceiveBuyAssertRequest ( IAsset asset )
+
+		public override void ReceivePayReason ( PayMoneyReason reason ) { throw new NotImplementedException ( ) ; }
 
 	}
 

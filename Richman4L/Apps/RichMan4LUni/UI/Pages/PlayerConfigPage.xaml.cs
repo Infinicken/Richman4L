@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Threading . Tasks ;
@@ -60,10 +61,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 		{
 			LoadingPageArgument parameters = new LoadingPageArgument ( Task . Run ( ( ) =>
 																					{
-																						new Game ( ) ;
-
-																						Game . Current . Start (
-																							Parameters ) ;
+																						Game . PeapareNew ( ) ;
+																						Game . Current . Start ( Parameters ) ;
 																					} ) ,
 																		currentPage => { currentPage . NavigateTo <GamePage> ( ) ; } ) ;
 

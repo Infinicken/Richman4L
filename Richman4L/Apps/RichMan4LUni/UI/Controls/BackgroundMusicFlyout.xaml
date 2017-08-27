@@ -1,0 +1,57 @@
+﻿<UserControl x:Name="userControl"
+			x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Controls.BackgroundMusicFlyout"
+			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			xmlns:local="using:WenceyWang.Richman4L.Apps.Uni.UI.Controls"
+			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			mc:Ignorable="d" Height="150" Width="340" >
+	<UserControl.Background>
+		<SolidColorBrush Color="{StaticResource TransparentBlack}" />
+	</UserControl.Background>
+
+	<Grid Background="{Binding Background, ElementName=userControl}" >
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="12" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="4" />
+			<ColumnDefinition />
+			<ColumnDefinition Width="12" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="12" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="12" />
+			<RowDefinition />
+			<RowDefinition Height="12" />
+		</Grid.RowDefinitions>
+		<Button HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource TextBlockButtonStyle}"
+				Grid.Column="1" Grid.Row="1" >
+			<SymbolIcon HorizontalAlignment="Left" Symbol="MusicInfo" Margin="0,0,0,0.41" Height="20" />
+		</Button>
+		<Grid Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="1" >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Button HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource RoundedRectangleButtonStyle}"
+					Width="45" Height="45" >
+				<SymbolIcon HorizontalAlignment="Left" Symbol="Previous" Height="21" />
+			</Button>
+			<Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"
+					Style="{StaticResource RoundedRectangleButtonStyle}" >
+				<SymbolIcon HorizontalAlignment="Left" Symbol="Play" Height="21" />
+			</Button>
+			<Button HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"
+					Style="{StaticResource RoundedRectangleButtonStyle}" >
+				<SymbolIcon HorizontalAlignment="Left" Symbol="Next" Height="21" />
+			</Button>
+		</Grid>
+		<StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="3" >
+			<TextBlock TextWrapping="Wrap" Text="Remuse" FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" />
+			<TextBlock TextWrapping="Wrap" Text="by Wencey" FontFamily="{StaticResource Font}"
+						FontSize="{StaticResource ExtraSmallFontSize}" VerticalAlignment="Bottom" Margin="8,0,0,0" />
+		</StackPanel>
+	</Grid>
+</UserControl>

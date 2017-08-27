@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -11,8 +12,8 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 	/// <summary>
 	///     指示股票价格的控制器
 	/// </summary>
-	public abstract class StockPriceController : NeedRegisBase <StockPriceControllerType , Attribute ,
-		StockPriceController>
+	public abstract class StockPriceController
+		: NeedRegisBase <StockPriceControllerType , Attribute , StockPriceController>
 	{
 
 		public Stock Target { get ; }
@@ -23,8 +24,7 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 
 	}
 
-	public class StockPriceControllerType : RegisType <StockPriceControllerType , Attribute ,
-		StockPriceController>
+	public class StockPriceControllerType : RegisType <StockPriceControllerType , Attribute , StockPriceController>
 	{
 
 		public StockPriceControllerType ( [NotNull] Type entryType , [NotNull] XElement element ) :
@@ -32,9 +32,8 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 		{
 		}
 
-		public StockPriceControllerType ( [NotNull] Type entryType ,
-										[NotNull] string name ,
-										[NotNull] string introduction ) : base ( entryType , name , introduction )
+		public StockPriceControllerType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
+			base ( entryType , name , introduction )
 		{
 		}
 

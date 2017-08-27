@@ -1,9 +1,10 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Windows ;
 
-namespace Richman4LWpf
+namespace WenceyWang . Richman4L . Apps . Wpf
 {
 
 	/// <summary>

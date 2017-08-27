@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -32,13 +33,10 @@ namespace WenceyWang . Richman4L . Apps . Uni . UnitTests
 		[TestMethod]
 		public void PageColorTest ( )
 		{
-			IEnumerable <TypeInfo> types = typeof ( AnimatePage ) . GetTypeInfo ( ) .
-																	Assembly . DefinedTypes . Where (
-																		info =>
-																			typeof ( AnimatePage ) . GetTypeInfo ( ) .
-																									IsAssignableFrom (
-																										info ) &&
-																			info . Name != nameof(AnimatePage) ) ;
+			IEnumerable <TypeInfo> types =
+				typeof ( AnimatePage ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+										Where ( info => typeof ( AnimatePage ) . GetTypeInfo ( ) . IsAssignableFrom ( info )
+														&& info . Name != nameof(AnimatePage) ) ;
 
 			List <string> properties = new List <string> { "PageColor" } ;
 			List <string> fields = new List <string> { "LeaveStoryboard" , "BackgroundRect" } ;

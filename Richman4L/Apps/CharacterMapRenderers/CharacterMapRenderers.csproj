@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WenceyWang.Richman4L.Apps.CharacterMapRenderers</RootNamespace>
-    <AssemblyName>CharacterMapRenderers</AssemblyName>
+    <AssemblyName>WenceyWang.Richman4L.Apps.CharacterMapRenderers</AssemblyName>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

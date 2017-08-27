@@ -96,69 +96,78 @@
 				<StackPanel RenderTransformOrigin="0.5,0.5" Padding="0" Margin="0,0,0,40" >
 					<TextBlock x:Name="Title" TextWrapping="Wrap" Text="关于" FontFamily="{StaticResource Font}"
 								FontSize="{StaticResource LargeTitle}" Margin="{StaticResource WideMargin}" />
-					<StackPanel Padding="0" Margin="{StaticResource WideMargin}" >
-						<Controls:DreamRecorderLogo HaveColor="False" Width="Auto" MaxWidth="640" MaxHeight="320" />
-						<TextBlock x:Name="DRText" TextWrapping="Wrap" FontSize="68" Text="Dream Recorder"
-									FontFamily="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" TextAlignment="Center" Margin="0" />
-						<TextBlock TextWrapping="Wrap" Text="知识 自由 美德" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource SmallTitle}" TextAlignment="Center" Margin="0,10,0,0" />
-						<TextBlock Margin="0,10,0,0" TextWrapping="Wrap" Text="展现美" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource ExtraSmallTitle}" TextAlignment="Center" />
-					</StackPanel>
-					<StackPanel Margin="{StaticResource WideMargin}" Padding="0" >
-						<TextBlock TextWrapping="Wrap" Text="Wencey Wang" FontSize="{StaticResource SmallTitle}" Margin="0"
-									FontFamily="{StaticResource Font}" />
-						<TextBlock TextWrapping="Wrap" Text="衡自超" Margin="0" FontSize="{StaticResource SmallFontSize}"
-									FontFamily="{StaticResource Font}" />
-						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontSize="{StaticResource FontSize}"
-									FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}" >
-							<Run Text="写程序的，玩电脑的，拍照片的，弹琴玩，想发展成全能，胡写小文章，玩微博勾搭妹子，自以为怀着伟大梦想其实是妄想，高喊着微软人类希望的人类耻辱。" />
-						</TextBlock>
-						<TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontFamily="{StaticResource Font}" FontSize="21.333" >
-							<Run Text="勾搭我：" />
-							<Hyperlink NavigateUri="mailto:wencey@outlook.com" >
-								<Run Text="wencey@outlook.com" FontStyle="Italic" />
-							</Hyperlink>
-						</TextBlock>
-						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}" FontSize="21.333" >
-							<Run Text="来微博勾搭我：" />
-							<Hyperlink NavigateUri="http://weibo.com/hengzichao" >
-								<Run Text="@38d285a8d928ad60" FontStyle="Italic" />
-							</Hyperlink>
-						</TextBlock>
-					</StackPanel>
-					<StackPanel Margin="{StaticResource WideMargin}" >
-						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource SmallTitle}" Text="这个项目" />
-						<TextBlock TextWrapping="Wrap" Text="RichMan4L" Margin="0" FontSize="{StaticResource SmallFontSize}"
-									FontFamily="{StaticResource Font}" />
-						<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" >
-							<Run Text="没什么好说的其实，就是一个项目，希望能够送给她的礼物，一个简单的小游戏，伴随着破灭的梦想和幻灭之后的失望。或许迎接我的就会是新的世界，阳光明媚，鸟语花香，但是只会有我自己。" />
-							<LineBreak />
-							<Run
-								Text="每个人的看似无私付出都其实有限度的，当然，这个例子很多，我也不想再举，而随着年龄的增长很多东西变了而且完全变了。毕竟你其实不理解我的，和一个难以相互理解的人即使在一起也对双方没有什么好处，我的想法图样图森破了，我应该找到一个至少能理解我的人，可能根本就不会有，那就算了，我或许注定是要孤独的，而孤独可能也正是对我的洗礼。" />
-							<LineBreak />
-							<Run Text="是啊，这是个悲惨的世界，比我想象的更加悲惨。" />
-							<LineBreak />
-							<Run Text="所以笑着写这个东西，谢谢你看到这里，其实也没什么用，希望你玩的高兴，至于这个项目的名字啊什么的都不要在意了。" />
-							<LineBreak />
-							<Run Text="这个项目的源代码可以在l4ljl.codeplex.com找到，协议是GPLv3，就这样了。" />
-						</TextBlock>
-					</StackPanel>
-					<StackPanel Margin="{StaticResource WideMargin}" >
-						<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource SmallTitle}" Text="感谢" />
-						<TextBlock TextWrapping="Wrap" Text="Special Thank" Margin="0" FontSize="{StaticResource SmallFontSize}"
-									FontFamily="{StaticResource Font}" />
-						<TextBlock TextWrapping="Wrap" Margin="0,20,0,40" FontFamily="{StaticResource Font}"
-									FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" >
-							<Run Text="先是感谢Senty Font，字体非常漂亮，为这个项目增色不少。" />
-							<LineBreak />
-							<Run Text="然后是CodePlex。这个项目寄存在上面。" />
-							<LineBreak />
-							<Run Text="就这样吧，真的没了。" />
-						</TextBlock>
+					<StackPanel x:Name="Richman4L" >
+						<StackPanel x:Name="DreamRecorder" Padding="0" Margin="{StaticResource WideMargin}" >
+							<TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Richman4L 由" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource SmallTitle}" />
+							<Controls:DreamRecorderLogo HaveColor="False" Width="Auto" MaxWidth="640" MaxHeight="320" IsLight="False"
+														Margin="0,10,0,0" />
+							<TextBlock x:Name="textBlock_Copy" TextWrapping="Wrap" Text="开发和维护。" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource SmallTitle}" Margin="0,20,0,0" TextAlignment="Right" />
+						</StackPanel>
+						<StackPanel x:Name="DreamRecorder_Copy" Padding="0" Margin="{StaticResource WideMargin}" >
+							<TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="游戏社区由" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource SmallTitle}" />
+							<Controls:DreamRecorderLogo HaveColor="False" Width="Auto" MaxWidth="640" MaxHeight="320" IsLight="False"
+														Margin="0,10,0,0" />
+							<TextBlock x:Name="textBlock_Copy1" TextWrapping="Wrap" Text="运行。" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource SmallTitle}" Margin="0,20,0,0" TextAlignment="Right" />
+						</StackPanel>
+						<StackPanel x:Name="WenceyWang" Margin="{StaticResource WideMargin}" Padding="0" >
+							<TextBlock TextWrapping="Wrap" Text="Wencey Wang" FontSize="{StaticResource SmallTitle}" Margin="0"
+										FontFamily="{StaticResource Font}" />
+							<TextBlock TextWrapping="Wrap" Text="衡自超" Margin="0" FontSize="{StaticResource SmallFontSize}"
+										FontFamily="{StaticResource Font}" />
+							<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontSize="{StaticResource FontSize}"
+										FontFamily="{StaticResource Font}" LineHeight="{StaticResource LineHeight}" >
+								<Run Text="写程序的，玩电脑的，拍照片的，弹琴玩，想发展成全能，胡写小文章，玩微博勾搭妹子，自以为怀着伟大梦想其实是妄想，高喊着微软人类希望的人类耻辱。" />
+							</TextBlock>
+							<TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontFamily="{StaticResource Font}" FontSize="21.333" >
+								<Run Text="勾搭我：" />
+								<Hyperlink NavigateUri="mailto:wencey@outlook.com" >
+									<Run Text="wencey@outlook.com" FontStyle="Italic" />
+								</Hyperlink>
+							</TextBlock>
+							<TextBlock TextWrapping="Wrap" Margin="0,4,0,0" FontFamily="{StaticResource Font}" FontSize="21.333" >
+								<Run Text="来微博勾搭我：" />
+								<Hyperlink NavigateUri="http://weibo.com/hengzichao" >
+									<Run Text="@38d285a8d928ad60" FontStyle="Italic" />
+								</Hyperlink>
+							</TextBlock>
+						</StackPanel>
+						<StackPanel Margin="{StaticResource WideMargin}" >
+							<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource SmallTitle}" Text="这个项目" />
+							<TextBlock TextWrapping="Wrap" Text="Richman4L" Margin="0" FontSize="{StaticResource SmallFontSize}"
+										FontFamily="{StaticResource Font}" />
+							<TextBlock TextWrapping="Wrap" Margin="0,20,0,0" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" >
+								<Run Text="没什么好说的其实，就是一个项目，希望能够送给她的礼物，一个简单的小游戏，伴随着破灭的梦想和幻灭之后的失望。或许迎接我的就会是新的世界，阳光明媚，鸟语花香，但是只会有我自己。" />
+								<LineBreak />
+								<Run
+									Text="每个人的看似无私付出都其实有限度的，当然，这个例子很多，我也不想再举，而随着年龄的增长很多东西变了而且完全变了。毕竟你其实不理解我的，和一个难以相互理解的人即使在一起也对双方没有什么好处，我的想法图样图森破了，我应该找到一个至少能理解我的人，可能根本就不会有，那就算了，我或许注定是要孤独的，而孤独可能也正是对我的洗礼。" />
+								<LineBreak />
+								<Run Text="是啊，这是个悲惨的世界，比我想象的更加悲惨。" />
+								<LineBreak />
+								<Run Text="所以笑着写这个东西，谢谢你看到这里，其实也没什么用，希望你玩的高兴，至于这个项目的名字啊什么的都不要在意了。" />
+								<LineBreak />
+								<Run Text="这个项目的源代码可以在l4ljl.codeplex.com找到，协议是GPLv3，就这样了。" />
+							</TextBlock>
+						</StackPanel>
+						<StackPanel Margin="{StaticResource WideMargin}" >
+							<TextBlock TextWrapping="Wrap" Margin="0" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource SmallTitle}" Text="感谢" />
+							<TextBlock TextWrapping="Wrap" Text="Special Thank" Margin="0" FontSize="{StaticResource SmallFontSize}"
+										FontFamily="{StaticResource Font}" />
+							<TextBlock TextWrapping="Wrap" Margin="0,20,0,40" FontFamily="{StaticResource Font}"
+										FontSize="{StaticResource FontSize}" LineHeight="{StaticResource LineHeight}" >
+								<Run Text="先是感谢Senty Font，字体非常漂亮，为这个项目增色不少。" />
+								<LineBreak />
+								<Run Text="然后是CodePlex。这个项目寄存在上面。" />
+								<LineBreak />
+								<Run Text="就这样吧，真的没了。" />
+							</TextBlock>
+						</StackPanel>
 					</StackPanel>
 				</StackPanel>
 			</ScrollViewer>

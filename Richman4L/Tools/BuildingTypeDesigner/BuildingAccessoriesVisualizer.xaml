@@ -7,7 +7,7 @@
 	<Grid Background="#FFACECE3" >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="10" />
+			<RowDefinition Height="4" />
 			<RowDefinition />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>

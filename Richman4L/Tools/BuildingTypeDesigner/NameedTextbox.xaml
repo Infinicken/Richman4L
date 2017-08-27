@@ -7,7 +7,7 @@
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
-			<ColumnDefinition Width="10" />
+			<ColumnDefinition Width="4" />
 			<ColumnDefinition Width="3*" />
 		</Grid.ColumnDefinitions>
 		<TextBlock x:Name="NameTextBlock" TextWrapping="Wrap" Text="Name" />

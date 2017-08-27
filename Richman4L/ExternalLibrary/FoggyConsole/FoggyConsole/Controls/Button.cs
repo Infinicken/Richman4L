@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -25,10 +26,14 @@ namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
-	///     A <code>Control</code> that can be triggered when focused.
+	///     A
+	///     <code>Control</code>
+	///     that can be triggered when focused.
 	///     The standard look is:
 	///     <example>[ Button Name ]</example>
-	///     (drawn by <code>ButtonRenderer</code>).
+	///     (drawn by
+	///     <code>ButtonRenderer</code>
+	///     ).
 	///     If Width is zero, the button will use as much space as required.
 	/// </summary>
 	public class Button : TextualBase
@@ -37,15 +42,21 @@ namespace WenceyWang . FoggyConsole . Controls
 		public override bool CanFocus => Enabled ;
 
 		/// <summary>
-		///     Creates a new <code>Button</code>
+		///     Creates a new
+		///     <code>Button</code>
 		/// </summary>
 		/// <param name="text">The text which is drawn onto the Button.</param>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of <code>ButtonRenderer</code>
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>ButtonRenderer</code>
 		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
 		public Button ( ControlRenderer <Button> renderer = null )

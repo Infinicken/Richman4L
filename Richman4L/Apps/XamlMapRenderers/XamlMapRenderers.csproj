@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WenceyWang.Richman4L.Apps.XamlMapRenderers</RootNamespace>
-    <AssemblyName>XamlMapRenderers</AssemblyName>
+    <AssemblyName>WenceyWang.Richman4L.Apps.XamlMapRenderers</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>

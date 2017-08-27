@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -7,6 +8,7 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Media ;
 using Windows . UI . Xaml . Navigation ;
 
+using WenceyWang . Richman4L . Apps . Uni . UI . Controls ;
 using WenceyWang . Richman4L . Auctions ;
 using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . InfomationCenter ;
@@ -41,6 +43,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 		{
 			foreach ( DiceWithValue dice in dices )
 			{
+				DiceControl diceControl = new DiceControl ( ) ;
 			}
 		}
 

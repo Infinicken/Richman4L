@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WenceyWang.Richman4L</RootNamespace>
-    <AssemblyName>GameLogic</AssemblyName>
+    <AssemblyName>WenceyWang.Richman4L</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -32,6 +32,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>
     </DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,7 +41,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\GameLogic.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\WenceyWang.Richman4L.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
@@ -67,12 +68,21 @@
     <Compile Include="Cards\CardAttribute.cs" />
     <Compile Include="Cards\CardType.cs" />
     <Compile Include="Cards\DangerBuildingCard.cs" />
-    <Compile Include="Cards\MapAreaDefineDomain.cs" />
+    <Compile Include="GameEnviroment\DiceWithValue.cs" />
+    <Compile Include="GameEnviroment\GameRule.cs" />
+    <Compile Include="GameObjectType.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\AssetOwnerDefineDomain.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\MapAreaDefineDomain.cs" />
     <Compile Include="GameValue.cs" />
-    <Compile Include="Maps\ConsoleVisableAttribute.cs" />
+    <Compile Include="Maps\Buildings\FireStation.cs" />
+    <Compile Include="IAsset.cs" />
+    <Compile Include="Players\IUser.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForGiveMoneyAsset.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForStayReason.cs" />
+    <Compile Include="OwnAttribute.cs" />
+    <Compile Include="Maps\MapPosition.cs" />
     <Compile Include="NeedRegisBase.cs" />
-    <Compile Include="Cards\NullDefinDomain.cs" />
-    <Compile Include="Cards\PlayerPositionAreaDefineDomain.cs" />
+    <Compile Include="Interoperability\Arguments\DefineDomains\NullDefinDomain.cs" />
     <Compile Include="IMod.cs" />
     <Compile Include="Interoperability\Arguments\DefineDomains\MoveTypeAbilityDefineDomains.cs" />
     <Compile Include="Interoperability\Arguments\DefineDomains\StockTransactDefineDomain.cs" />
@@ -98,7 +108,7 @@
     <Compile Include="Cards\Cards.cs" />
     <Compile Include="Cards\RedCard.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameEnviroment\Environment.cs" />
+    <Compile Include="GameEnviroment\GameRuleAttribute.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GovermentControl.cs" />
     <Compile Include="InfomationCenter\Event.cs" />
@@ -116,7 +126,6 @@
     <Compile Include="Maps\Buildings\Events\BuildingEventArgs.cs" />
     <Compile Include="Maps\Buildings\Events\BuildingUpgradeEventArgs.cs" />
     <Compile Include="Maps\Buildings\DestoyReason.cs" />
-    <Compile Include="Maps\Buildings\MediumBuilding.cs" />
     <Compile Include="Maps\Buildings\MediumSimpleBuilding.cs" />
     <Compile Include="Maps\Buildings\Park.cs" />
     <Compile Include="Maps\CardStore.cs" />
@@ -134,7 +143,6 @@
     <Compile Include="Maps\MapObjectType.cs" />
     <Compile Include="Maps\MapSize.cs" />
     <Compile Include="Maps\Police.cs" />
-    <Compile Include="RegisType.cs" />
     <Compile Include="Maps\Roads\NormalRoad.cs" />
     <Compile Include="Maps\Roads\Road.cs" />
     <Compile Include="Maps\Roads\AreaRoad.cs" />
@@ -149,20 +157,23 @@
     <Compile Include="Players\Commands\PlayerMoveCommand.cs" />
     <Compile Include="Players\Events\PlayerGetEventArgs.cs" />
     <Compile Include="Players\Events\PlayerGetFromSellStockEventArgs.cs" />
-    <Compile Include="Players\PayReasons\PayReason.cs" />
-    <Compile Include="Players\PayReasons\PayForBorrowingReason.cs" />
-    <Compile Include="Players\PayReasons\PayForBuildBuildingReason.cs" />
-    <Compile Include="Players\PayReasons\PayForBuyStockReason.cs" />
-    <Compile Include="Players\PayReasons\PayForCrossReason.cs" />
-    <Compile Include="Players\PayReasons\PayForMaintainBuildingReason.cs" />
-    <Compile Include="Players\PayReasons\PayForStockDelegateReason.cs" />
-    <Compile Include="Players\PayReasons\PayForUpgradeBuildingReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForBorrowingReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForBuildBuildingReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForBuyStockReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForCrossReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForMaintainBuildingReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForStockDelegateReason.cs" />
+    <Compile Include="Players\PayReasons\PayMoneyForUpgradeBuildingReason.cs" />
     <Compile Include="Players\Events\PlayerPayEventArgs.cs" />
     <Compile Include="Players\Events\PlayerReceiveStockEventArgs.cs" />
     <Compile Include="Players\Events\PlayerGiveCardEventArgs.cs" />
     <Compile Include="Players\Events\PlayerReceiveCardEventArgs.cs" />
     <Compile Include="Players\Events\PlayerTakeAwayStockEventArgs.cs" />
+    <Compile Include="Maps\PlayerOnMap.cs" />
+    <Compile Include="WithAssetObject.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="RegisType.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -181,9 +192,8 @@
     <Compile Include="Security\ReliableValue.cs" />
     <Compile Include="Security\ValueCheckFailedException.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Stats\PlayerCount.cs" />
+    <Compile Include="Statistics\PlayerCount.cs" />
     <Compile Include="Maps\SmallArea.cs" />
-    <Compile Include="Maps\Buildings\SmallBuilding.cs" />
     <Compile Include="Maps\Buildings\SmallSimpleBuilding.cs" />
     <Compile Include="Newspapers\News.cs" />
     <Compile Include="Newspapers\Newspaper.cs" />
@@ -288,6 +298,7 @@
     <EmbeddedResource Include="GameTitleResources.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="FodyWeavers.xml" />
     <Content Include="Maps\Buildings\Resources\Park.xml" />
     <EmbeddedResource Include="Maps\Resources\Index.xml">
       <SubType>Designer</SubType>

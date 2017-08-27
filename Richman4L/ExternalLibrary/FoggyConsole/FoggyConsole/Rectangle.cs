@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -184,8 +185,9 @@ namespace WenceyWang . FoggyConsole
 		/// <summary>
 		///     Constructor which sets the initial values to the values of the parameters
 		/// </summary>
-		public Rectangle ( Point location ,
-							Size size )
+		public Rectangle
+		( Point location ,
+		Size size )
 		{
 			X = location . X ;
 			Y = location . Y ;
@@ -197,8 +199,9 @@ namespace WenceyWang . FoggyConsole
 		/// <summary>
 		///     Constructor which sets the initial values to bound the two points provided.
 		/// </summary>
-		public Rectangle ( Point point1 ,
-							Point point2 )
+		public Rectangle
+		( Point point1 ,
+		Point point2 )
 		{
 			X = Math . Min ( point1 . X , point2 . X ) ;
 			Y = Math . Min ( point1 . Y , point2 . Y ) ;
@@ -212,8 +215,9 @@ namespace WenceyWang . FoggyConsole
 		///     Constructor which sets the initial values to bound the point provided and the point
 		///     which results from point + vector.
 		/// </summary>
-		public Rectangle ( Point point ,
-							Vector vector ) : this ( point , point + vector )
+		public Rectangle
+		( Point point ,
+		Vector vector ) : this ( point , point + vector )
 		{
 		}
 

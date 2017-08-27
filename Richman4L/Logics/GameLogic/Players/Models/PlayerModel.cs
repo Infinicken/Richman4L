@@ -1,65 +1,45 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Maps ;
-
 namespace WenceyWang . Richman4L . Players . Models
 {
 
-	public class PlayerModel : MapObject
+	//Todo:Totally over write
+
+	public class PlayerModel
 	{
 
-		[ConsoleVisable]
+		[Own]
+		public List <Character> Characters { get ; set ; }
+
+
+		[Own]
 		public string Name { get ; set ; }
 
-		[ConsoleVisable]
+		[Own]
 		public string Introduction { get ; set ; }
 
-		[ConsoleVisable]
-		public Uri Model { get ; set ; }
-
-		[ConsoleVisable]
+		[Own]
 		public DateTime BirthDay { get ; set ; }
 
-		[ConsoleVisable]
+		[Own]
 		public List <PlayerSaying> SayingWhenGained { get ; } = new List <PlayerSaying> ( ) ;
 
-		[ConsoleVisable]
+		[Own]
 		public List <PlayerSaying> SayingWhenHarmed { get ; } = new List <PlayerSaying> ( ) ;
 
-		[ConsoleVisable]
-		public int LuckyDegree { get ; }
+		[Own]
+		public GameValue LuckyDegree { get ; }
 
-		[ConsoleVisable]
-		public int Resistance { get ; }
+		[Own]
+		public GameValue Resistance { get ; }
 
-		[ConsoleVisable]
+		[Own]
 		public List <PlayerSaying> SayingWhenMeet { get ; } = new List <PlayerSaying> ( ) ;
 
-		public override MapSize Size => MapSize . Small ;
-
-		public PlayerModel ( XElement saving ) : base ( saving ) { }
 
 		public PlayerModel ( string fileName )
 		{
@@ -68,33 +48,27 @@ namespace WenceyWang . Richman4L . Players . Models
 				throw new ArgumentNullException ( nameof(fileName) ) ;
 			}
 
-			XDocument doc =
-				ResourceHelper . LoadXmlDocument ( $"{nameof(Player)}. {nameof(Model)}.Resources." + fileName ) ;
+
+			XDocument doc = ResourceHelper . LoadXmlDocument ( $"{nameof(Player)}.Model.Resources." + fileName ) ;
 
 
 			XElement modelNode = doc . Root ;
 
-			Name = modelNode . Attribute ( nameof(Name) ) . Value ;
+			Name = GameObject . ReadNecessaryValue <string> ( modelNode , nameof(Name) ) ;
 
-			Introduction = modelNode . Attribute ( nameof(Introduction) ) . Value ;
-
-			Model = new Uri ( modelNode . Attribute ( nameof(Model) ) . Value ?? "" ) ;
+			Introduction = GameObject . ReadNecessaryValue <string> ( modelNode , nameof(Introduction) ) ;
 
 			IEnumerable <PlayerSaying> tempSayingWhenGained =
-				from p in modelNode . Element ( nameof(SayingWhenGained) ) . Elements ( )
-				select new PlayerSaying ( p ) ;
+				modelNode . Element ( nameof(SayingWhenGained) ) . Elements ( ) . Select ( p => new PlayerSaying ( p ) ) ;
 			SayingWhenGained . AddRange ( tempSayingWhenGained ) ;
 
 			IEnumerable <PlayerSaying> tempSayingWhenHarmed =
-				from p in modelNode . Element ( nameof(SayingWhenGained) ) . Elements ( )
-				select new PlayerSaying
-					( p ) ;
+				modelNode . Element ( nameof(SayingWhenGained) ) . Elements ( ) . Select ( p => new PlayerSaying ( p ) ) ;
 
 			SayingWhenHarmed . AddRange ( tempSayingWhenHarmed ) ;
 
 			IEnumerable <PlayerSaying> tempSayingWhenMeet =
-				from p in modelNode . Element ( nameof(SayingWhenMeet) ) . Elements ( )
-				select new PlayerSaying ( p ) ;
+				modelNode . Element ( nameof(SayingWhenMeet) ) . Elements ( ) . Select ( p => new PlayerSaying ( p ) ) ;
 			SayingWhenMeet . AddRange ( tempSayingWhenMeet ) ;
 		}
 
@@ -103,8 +77,7 @@ namespace WenceyWang . Richman4L . Players . Models
 			while ( true )
 			{
 				List <PlayerSaying> temp =
-					new List <PlayerSaying> (
-						SayingWhenGained . Where ( saying => saying . Player == harmed ? . Name ) ) ;
+					new List <PlayerSaying> ( SayingWhenGained . Where ( saying => saying . Player == harmed ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{
@@ -120,8 +93,7 @@ namespace WenceyWang . Richman4L . Players . Models
 			while ( true )
 			{
 				List <PlayerSaying> temp =
-					new List <PlayerSaying> (
-						SayingWhenHarmed . Where ( saying => saying . Player == gained ? . Name ) ) ;
+					new List <PlayerSaying> ( SayingWhenHarmed . Where ( saying => saying . Player == gained ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{
@@ -137,8 +109,7 @@ namespace WenceyWang . Richman4L . Players . Models
 			while ( true )
 			{
 				List <PlayerSaying> temp =
-					new List <PlayerSaying> (
-						SayingWhenMeet . Where ( saying => saying . Player == player ? . Name ) ) ;
+					new List <PlayerSaying> ( SayingWhenMeet . Where ( saying => saying . Player == player ? . Name ) ) ;
 
 				if ( temp . Count != 0 )
 				{
@@ -154,9 +125,10 @@ namespace WenceyWang . Richman4L . Players . Models
 			}
 		}
 
-		public override void StartDay ( GameDate thisDate ) { }
+	}
 
-		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }
+	public class Character
+	{
 
 	}
 

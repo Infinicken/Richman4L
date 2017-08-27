@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -6,7 +7,9 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
-	///     Draws a <code>Checkbox</code>-Control
+	///     Draws a
+	///     <code>Checkbox</code>
+	///     -Control
 	/// </summary>
 	public class CheckboxRenderer : ControlRenderer <Checkbox>
 	{

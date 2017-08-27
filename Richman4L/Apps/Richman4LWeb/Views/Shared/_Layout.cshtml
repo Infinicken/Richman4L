@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@( ViewBag . Title ) - @( nameof ( WenceyWang . Richman4L ) )</title>
+	<title>@( ViewBag . Title ) - Richman4L</title>
 	@( Styles . Render ( "~/Content/css" ) )
 	@( Scripts . Render ( "~/bundles/modernizr" ) )
 </head>
@@ -16,7 +16,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			@( Html . ActionLink ( nameof ( WenceyWang . Richman4L ) , "Index" , "Home" , new { area = "" } , new { @class = "navbar-brand" } ) )
+			@( Html . ActionLink ( "Richman4L" , "Index" , "Home" , new { area = "" } , new { @class = "navbar-brand" } ) )
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
@@ -33,11 +33,11 @@
 	<blockquote>
 		<p>@( saying . Content )</p>
 
-		@if ( saying . People != null ||
-			( saying . Song ?? saying . Book ) != null )
+		@if ( saying . People != null
+			|| ( saying . Song ?? saying . Book ) != null )
 		{
 			<footer>
-				@( saying . People )@( ( saying . Song ?? saying . Book ) == null ? "" : " in " )<cite title="Source Title">@( saying . Song ?? saying . Book )</cite>@( saying . Author == null ? "" : " by " )@( saying . Author )
+				@( saying . People )@( ( saying . Song ?? saying . Book ) == null ? "": " in " )<cite title="Source Title">@( saying . Song ?? saying . Book )</cite>@( saying . Author == null ? "": " by " )@( saying . Author )
 			</footer>
 		}
 	</blockquote>

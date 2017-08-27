@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -39,9 +40,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 			page . GetLeaveStoryboard . Children . Add ( ca ) ;
 			page . GetLeaveStoryboard . Completed += ( obj , ev ) =>
 													{
-														page . Frame . Navigate ( typeof ( T ) ,
-																				parameter ,
-																				new BlankNavigationTransitionInfo ( ) ) ;
+														page . Frame . Navigate ( typeof ( T ) , parameter , new BlankNavigationTransitionInfo ( ) ) ;
 														page . GetLeaveStoryboard . Stop ( ) ;
 														page . GetLeaveStoryboard . Children . Remove ( ca ) ;
 														page . AddControl ( ) ;

@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -38,21 +39,22 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 
 		public double WaveTimeBase { get ; }
 
-		public static NormalStockPriceControllerConfig Default { get ; } = new NormalStockPriceControllerConfig ( 0.2 ,
-																												- 0.2 ,
-																												0.1 ,
-																												0.5 ,
-																												- 0.5 ,
-																												0.2 ,
-																												1.0 ,
-																												- 1.0 ,
-																												0.7 ,
-																												0.3 ,
-																												1.3 ,
-																												0.7 ,
-																												7 ,
-																												60 ,
-																												0.3 ) ;
+		public static NormalStockPriceControllerConfig Default { get ; } =
+			new NormalStockPriceControllerConfig ( 0.2 ,
+													- 0.2 ,
+													0.1 ,
+													0.5 ,
+													- 0.5 ,
+													0.2 ,
+													1.0 ,
+													- 1.0 ,
+													0.7 ,
+													0.3 ,
+													1.3 ,
+													0.7 ,
+													7 ,
+													60 ,
+													0.3 ) ;
 
 		public NormalStockPriceControllerConfig ( double govermentControlMax ,
 												double govermentControlMin ,

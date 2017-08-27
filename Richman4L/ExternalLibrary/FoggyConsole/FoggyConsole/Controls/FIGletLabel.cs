@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -104,19 +105,24 @@ namespace WenceyWang . FoggyConsole . Controls
 		public override bool CanFocus => false ;
 
 		/// <summary>
-		///     Creates a new <code>Label</code>
+		///     Creates a new
+		///     <code>Label</code>
 		/// </summary>
 		/// <param name="text">The text on the Label</param>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of <code>LabelRenderer</code>
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>LabelRenderer</code>
 		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
-		public FIGletLabel ( IControlRenderer renderer = null )
-			: base ( renderer ?? new FIGletLabelRenderer ( ) )
+		public FIGletLabel ( IControlRenderer renderer = null ) : base ( renderer ?? new FIGletLabelRenderer ( ) )
 		{
 			TextChanged += FIGletLabel_TextChanged ;
 		}

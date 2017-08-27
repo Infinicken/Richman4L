@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -16,7 +17,7 @@ namespace WenceyWang . Richman4L . Cards
 	public class BlackCard : StaticCard <BlackCard>
 	{
 
-		[GameRuleItem ( 5 )]
+		[GameRuleValue ( 5 )]
 		public static int Duration { get ; set ; }
 
 
@@ -25,16 +26,14 @@ namespace WenceyWang . Richman4L . Cards
 
 		static BlackCard ( )
 		{
-			ArgumentInfo stock =
-				new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
+			ArgumentInfo stock = new ArgumentInfo ( "" , "" , typeof ( Stock ) , new StockTransactDefineDomain ( true ) ) ;
 			Arguments = new List <ArgumentInfo> { stock } ;
 		}
 
 		public override void Use ( ArgumentsContainer arguments )
 		{
 			ArgumentsInfo . CheckArgument ( arguments ) ;
-			BlackBuff buff = new BlackBuff ( ( Stock ) arguments . Arguments . Single ( ) ,
-											Game . Current . GameRule . BlackCardDuration ) ;
+			BlackBuff buff = new BlackBuff ( ( Stock ) arguments . Arguments . Single ( ) , Duration ) ;
 		}
 
 		public override void EndToday ( ) { throw new NotImplementedException ( ) ; }

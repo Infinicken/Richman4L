@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -27,7 +28,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 
 		private static object Locker { get ; } = new object ( ) ;
 
-		private static bool Loaded { get ; set ; }
+		private static bool IsLoaded { get ; set ; }
 
 		public XamlMapRenderer ( ) { InitializeComponent ( ) ; }
 
@@ -66,24 +67,15 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 					else
 					{
 						Type rendererType =
-							MapObjectRendererTypeList . FirstOrDefault (
-															renderer => renderer . TargetType ==
-																		mapObject . GetType ( ) ) ? .
-														EntryType ??
-							MapObjectRendererTypeList . FirstOrDefault (
-															renderer =>
-																renderer . TargetType . GetTypeInfo ( ) .
-																			IsAssignableFrom (
-																				mapObject . GetType ( ) .
-																							GetTypeInfo ( ) ) ) ? .
-														EntryType ;
+							MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
+														EntryType ?? MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType .
+																																		GetTypeInfo ( ) . IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? .
+																								EntryType ;
 						MapObjectRenderer . MapObjectRenderer objectRenderer =
 							( MapObjectRenderer . MapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
 						objectRenderer . RenderTransform =
-							objectRenderer . Size . TransformTo (
-								new Size ( ObjectRendererSize . Width * mapObject . Size . Width ,
-											ObjectRendererSize . Height *
-											mapObject . Size . Height ) ) ;
+							objectRenderer . Size . TransformTo ( new Size ( ObjectRendererSize . Width * mapObject . Size . Width ,
+																			ObjectRendererSize . Height * mapObject . Size . Height ) ) ;
 
 						objectRenderer . Width = objectRenderer . Size . Width * mapObject . Size . Width ;
 						objectRenderer . Height = objectRenderer . Size . Width * mapObject . Size . Height ;
@@ -92,11 +84,9 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 
 
 						Canvas . SetLeft ( objectRenderer ,
-											ObjectRendererSize . Width * 0.25 +
-											mapObject . X * ObjectRendererSize . Width +
-											( Target . Size . Width - mapObject . Y ) * ObjectRendererSize . Width *
-											0.5 ) ;
-						Canvas . SetTop ( objectRenderer , mapObject . Y * ObjectRendererSize . Height ) ;
+											ObjectRendererSize . Width * 0.25 + mapObject . Position . X * ObjectRendererSize . Width
+											+ ( Target . Size . Width - mapObject . Position . Y ) * ObjectRendererSize . Width * 0.5 ) ;
+						Canvas . SetTop ( objectRenderer , mapObject . Position . Y * ObjectRendererSize . Height ) ;
 
 						( ( IMapObjectRenderer ) objectRenderer ) . SetTarget ( mapObject ) ;
 						( ( IMapObjectRenderer ) objectRenderer ) . StartUp ( ) ;
@@ -115,7 +105,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 		{
 			lock ( Locker )
 			{
-				if ( Loaded )
+				if ( IsLoaded )
 				{
 					return ;
 				}
@@ -125,6 +115,8 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 
 				RegisMapObjectRenderer ( typeof ( EmptyBlockRenderer ) , typeof ( EmptyBlock ) ) ;
 				RegisMapObjectRenderer ( typeof ( NameShower ) , typeof ( MapObject ) ) ;
+
+				IsLoaded = true ;
 			}
 		}
 
@@ -141,8 +133,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 			}
 
 			MapObjectRendererType type =
-				MapObjectRendererTypeList . Find (
-					typ => typ . EntryType == mapRendererType && typ . TargetType == targetType ) ;
+				MapObjectRendererTypeList . Find ( typ => typ . EntryType == mapRendererType && typ . TargetType == targetType ) ;
 
 			if ( type != null )
 			{
@@ -151,10 +142,8 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 
 			type = new MapObjectRendererType ( mapRendererType , targetType ) ;
 			MapObjectRendererTypeList . Add ( type ) ;
-			MapObjectRendererTypeList . Sort (
-				( x , y ) =>
-					y . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) -
-					x . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) ) ;
+			MapObjectRendererTypeList . Sort ( ( x , y ) => y . TargetType . GetInheritanceDepth ( typeof ( MapObject ) )
+															- x . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) ) ;
 
 			return type ;
 		}
@@ -170,8 +159,7 @@ namespace WenceyWang . Richman4L . Apps . XamlMapRenderers
 		public static Task RunAllTask ( )
 		{
 			List <Task> tasks = new List <Task> ( ) ;
-			foreach ( TypeInfo type in
-				typeof ( XamlMapRenderer ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
+			foreach ( TypeInfo type in typeof ( XamlMapRenderer ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
 			{
 				foreach ( MethodInfo method in type . DeclaredMethods )
 				{

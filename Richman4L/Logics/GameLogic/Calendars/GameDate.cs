@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -8,7 +9,7 @@ namespace WenceyWang . Richman4L . Calendars
 	public struct GameDate
 	{
 
-		public int Date { get ; }
+		public long Date { get ; }
 
 		/// <summary>
 		///     当前的季节
@@ -17,10 +18,8 @@ namespace WenceyWang . Richman4L . Calendars
 		{
 			get
 			{
-				long currentDays = Date %
-									( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth +
-									Game . Current . Calendar . AutumnLenth +
-									Game . Current . Calendar . WinterLenth ) ;
+				long currentDays = Date % ( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth
+											+ Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return Season . Spring ;
@@ -38,7 +37,7 @@ namespace WenceyWang . Richman4L . Calendars
 					return Season . Winter ;
 				}
 
-				return Season . Winter ;
+				return Season . Summer ;
 			}
 		}
 
@@ -49,10 +48,8 @@ namespace WenceyWang . Richman4L . Calendars
 		{
 			get
 			{
-				long currentDays = Date %
-									( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth +
-									Game . Current . Calendar . AutumnLenth +
-									Game . Current . Calendar . WinterLenth ) ;
+				long currentDays = Date % ( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth
+											+ Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return currentDays ;
@@ -81,10 +78,8 @@ namespace WenceyWang . Richman4L . Calendars
 		{
 			get
 			{
-				long currentDays = Date %
-									( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth +
-									Game . Current . Calendar . AutumnLenth +
-									Game . Current . Calendar . WinterLenth ) ;
+				long currentDays = Date % ( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth
+											+ Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return Game . Current . Calendar . SpringLenth ;
@@ -108,10 +103,7 @@ namespace WenceyWang . Richman4L . Calendars
 
 		#region 运算符重载
 
-		public override bool Equals ( object obj )
-		{
-			return obj != null && obj is GameDate && ( ( GameDate ) obj ) . Date == Date ;
-		}
+		public override bool Equals ( object obj ) { return obj is GameDate && ( ( GameDate ) obj ) . Date == Date ; }
 
 		public override int GetHashCode ( ) { return Date . GetHashCode ( ) ; }
 
@@ -137,7 +129,7 @@ namespace WenceyWang . Richman4L . Calendars
 
 		#endregion
 
-		public GameDate ( int date ) { Date = date ; }
+		public GameDate ( long date ) { Date = date ; }
 
 	}
 

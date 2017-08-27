@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -27,10 +28,8 @@ namespace WenceyWang . Richman4L
 			}
 		}
 
-		public RegisType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) : base (
-			entryType ,
-			name ,
-			introduction )
+		public RegisType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
+			base ( entryType , name , introduction )
 		{
 			if ( ! typeof ( T ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 			{

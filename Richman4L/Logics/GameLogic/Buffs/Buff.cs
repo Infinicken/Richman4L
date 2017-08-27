@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
@@ -20,9 +21,8 @@ namespace WenceyWang . Richman4L . Buffs
 
 		public int Duration { get ; }
 
-		public Buff ( ) { }
 
-		public Buff ( int duration ) : this ( Game . Current . Calendar . Today , duration ) { }
+		protected Buff ( int duration ) : this ( Game . Current . Calendar . Today , duration ) { }
 
 		public Buff ( GameDate startDate , int duration )
 		{
@@ -42,6 +42,7 @@ namespace WenceyWang . Richman4L . Buffs
 			}
 		}
 
+		[PublicAPI]
 		public virtual void Expire ( )
 		{
 			ExpiredEvent ? . Invoke ( this , EventArgs . Empty ) ;
@@ -61,10 +62,8 @@ namespace WenceyWang . Richman4L . Buffs
 
 		public BuffType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }
 
-		public BuffType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) : base (
-			entryType ,
-			name ,
-			introduction )
+		public BuffType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
+			base ( entryType , name , introduction )
 		{
 		}
 

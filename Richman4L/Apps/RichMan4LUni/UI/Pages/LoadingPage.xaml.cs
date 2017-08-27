@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -127,8 +128,8 @@ namespace WenceyWang . Richman4L . Apps . Uni . UI . Pages
 
 		private void TimerTick ( object sender , object e )
 		{
-			if ( Argument . TaskToWait . IsFaulted ||
-				Argument . TaskToWait . IsCanceled )
+			if ( Argument . TaskToWait . IsFaulted
+				|| Argument . TaskToWait . IsCanceled )
 			{
 				throw Argument . TaskToWait . Exception ;
 			}

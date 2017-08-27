@@ -8,7 +8,7 @@
     <ProjectGuid>{EE64CC1C-68C5-4DC4-B72C-F106D7296FD8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>WenceyWang.Richman4L.Apps.FoggyMapRenderers</RootNamespace>
-    <AssemblyName>FoggyMapRenderers</AssemblyName>
+    <AssemblyName>WenceyWang.Richman4L.Apps.FoggyMapRenderers</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

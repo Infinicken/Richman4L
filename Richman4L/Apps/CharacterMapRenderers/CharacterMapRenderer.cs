@@ -1,22 +1,5 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
@@ -95,9 +78,8 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 				{
 					for ( int x = 0 ; x < renderer . Target . Size . Width * MapUnit . Width ; x++ )
 					{
-						CurrentView [
-							renderer . Target . X * MapUnit . Width + x ,
-							renderer . Target . Y * MapUnit . Height + y ] = renderer . CurrentView [ x , y ] ;
+						CurrentView [ renderer . Target . Position . X * MapUnit . Width + x ,
+									renderer . Target . Position . Y * MapUnit . Height + y ] = renderer . CurrentView [ x , y ] ;
 					}
 				}
 			}
@@ -105,17 +87,11 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 
 		private void DrawObject ( MapObject mapObject )
 		{
-			Type rendererType = MapObjectRendererTypeList . FirstOrDefault (
-																renderer => renderer . TargetType ==
-																			mapObject . GetType ( ) ) ? .
-															EntryType ??
-								MapObjectRendererTypeList . FirstOrDefault (
-																renderer =>
-																	renderer . TargetType . GetTypeInfo ( ) .
-																				IsAssignableFrom (
-																					mapObject . GetType ( ) .
-																								GetTypeInfo ( ) ) ) ? .
-															EntryType ;
+			Type rendererType =
+				MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType == mapObject . GetType ( ) ) ? .
+											EntryType ?? MapObjectRendererTypeList . FirstOrDefault ( renderer => renderer . TargetType .
+																															GetTypeInfo ( ) . IsAssignableFrom ( mapObject . GetType ( ) . GetTypeInfo ( ) ) ) ? .
+																					EntryType ;
 			ICharacterMapObjectRenderer objectRenderer =
 				( ICharacterMapObjectRenderer ) Activator . CreateInstance ( rendererType ) ;
 			objectRenderer . SetTarget ( mapObject ) ;
@@ -153,8 +129,8 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 			}
 
 			MapObjectRendererType type =
-				MapObjectRendererTypeList . FirstOrDefault (
-					typ => typ . EntryType == mapRendererType && typ . TargetType == targetType ) ;
+				MapObjectRendererTypeList . FirstOrDefault ( typ => typ . EntryType == mapRendererType
+																	&& typ . TargetType == targetType ) ;
 
 			if ( type != null )
 			{
@@ -163,10 +139,8 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 
 			type = new MapObjectRendererType ( mapRendererType , targetType ) ;
 			MapObjectRendererTypeList . Add ( type ) ;
-			MapObjectRendererTypeList . Sort (
-				( x , y ) =>
-					y . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) -
-					x . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) ) ;
+			MapObjectRendererTypeList . Sort ( ( x , y ) => y . TargetType . GetInheritanceDepth ( typeof ( MapObject ) )
+															- x . TargetType . GetInheritanceDepth ( typeof ( MapObject ) ) ) ;
 
 
 			return type ;
@@ -180,8 +154,7 @@ namespace WenceyWang . Richman4L . Apps . CharacterMapRenderers
 		public static Task RunAllTask ( )
 		{
 			List <Task> tasks = new List <Task> ( ) ;
-			foreach ( TypeInfo type in
-				typeof ( CharacterMapRenderer ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
+			foreach ( TypeInfo type in typeof ( CharacterMapRenderer ) . GetTypeInfo ( ) . Assembly . DefinedTypes )
 			{
 				foreach ( MethodInfo method in type . DeclaredMethods )
 				{

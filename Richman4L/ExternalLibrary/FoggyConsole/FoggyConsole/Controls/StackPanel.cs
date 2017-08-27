@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -17,11 +18,8 @@ namespace WenceyWang . FoggyConsole . Controls
 		public Dictionary <Control , ContentAlign> ControlAlign { get ; } =
 			new Dictionary <Control , ContentAlign> ( ) ;
 
-		public ContentAlign this [ Control control ]
-		{
-			get => ControlAlign [ control ] ;
-			set => ControlAlign [ control ] = value ;
-		}
+		public ContentAlign this
+			[ Control control ] { get => ControlAlign [ control ] ; set => ControlAlign [ control ] = value ; }
 
 		public StackPanel ( IControlRenderer renderer = null ) : base ( renderer ?? new StackPanelRanderer ( ) ) { }
 
@@ -39,35 +37,35 @@ namespace WenceyWang . FoggyConsole . Controls
 															new Size ( Math . Min ( finalRect . Width ,
 																					control . DesiredSize . Width ) ,
 																		Math . Min (
-																			Math . Max (
-																				finalRect . Height - currentHeight ,
-																				0 ) ,
-																			control . DesiredSize . Height ) ) ) ) ;
+																					 Math . Max (
+																								 finalRect . Height - currentHeight ,
+																								 0 ) ,
+																					 control . DesiredSize . Height ) ) ) ) ;
 						break ;
 					}
 					case ContentAlign . Center :
 					{
 						int controlWidth = Math . Min ( finalRect . Width , control . DesiredSize . Width ) ;
 						control . Arrange (
-							new Rectangle (
-								finalRect . LeftTopPoint . Offset (
-									( control . DesiredSize . Width - controlWidth ) / 2 ,
-									currentHeight ) ,
-								new Size ( controlWidth ,
-											Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
-														control . DesiredSize . Height ) ) ) ) ;
+										 new Rectangle (
+														 finalRect . LeftTopPoint . Offset (
+																							 ( control . DesiredSize . Width - controlWidth ) / 2 ,
+																							 currentHeight ) ,
+														 new Size ( controlWidth ,
+																	Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
+																				control . DesiredSize . Height ) ) ) ) ;
 						break ;
 					}
 					case ContentAlign . Right :
 					{
 						int controlWidth = Math . Min ( finalRect . Width , control . DesiredSize . Width ) ;
 						control . Arrange (
-							new Rectangle (
-								finalRect . LeftTopPoint . Offset ( control . DesiredSize . Width - controlWidth ,
-																	currentHeight ) ,
-								new Size ( controlWidth ,
-											Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
-														control . DesiredSize . Height ) ) ) ) ;
+										 new Rectangle (
+														 finalRect . LeftTopPoint . Offset ( control . DesiredSize . Width - controlWidth ,
+																							currentHeight ) ,
+														 new Size ( controlWidth ,
+																	Math . Min ( Math . Max ( finalRect . Height - currentHeight , 0 ) ,
+																				control . DesiredSize . Height ) ) ) ) ;
 						break ;
 					}
 				}

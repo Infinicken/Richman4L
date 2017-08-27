@@ -1,7 +1,10 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Diagnostics ;
 using System . Linq ;
+using System . Reflection ;
+using System . Text ;
 
 using Windows . ApplicationModel ;
 using Windows . ApplicationModel . Activation ;
@@ -11,6 +14,8 @@ using Windows . UI . Xaml ;
 using Windows . UI . Xaml . Controls ;
 using Windows . UI . Xaml . Hosting ;
 using Windows . UI . Xaml . Navigation ;
+
+using AutoLazy ;
 
 using Microsoft . Graphics . Canvas . Effects ;
 
@@ -26,7 +31,25 @@ namespace WenceyWang . Richman4L . Apps . Uni
 	public sealed partial class App : Application
 	{
 
-		public new static App Current { get ; private set ; }
+		[Lazy]
+		private string Version
+		{
+			get
+			{
+				StringBuilder result = new StringBuilder ( ) ;
+
+				result . Append ( "Richman4L Universal" ) ;
+				result . Append ( " " ) ;
+				result . Append ( typeof ( App ) . GetTypeInfo ( ) . Assembly . GetName ( ) . Version ) ;
+
+				result . Append ( "Richman4L" ) ;
+
+				return result . ToString ( ) ;
+			}
+		}
+
+
+		public new static App Current => Application . Current as App ;
 
 		internal string WindowTitle
 		{
@@ -69,8 +92,6 @@ namespace WenceyWang . Richman4L . Apps . Uni
 		/// </summary>
 		public App ( )
 		{
-			Current = this ;
-
 			InitializeComponent ( ) ;
 			Suspending += OnSuspending ;
 			UnhandledException += OnUnhandledException ;
@@ -85,20 +106,24 @@ namespace WenceyWang . Richman4L . Apps . Uni
 		private async void OnUnhandledException ( object sender , UnhandledExceptionEventArgs e )
 		{
 #if !DEBUG
-
-			ContentDialog debugDialog = new ContentDialog
+			e.Handled = true;
+			ContentDialog dialog = new ContentDialog
 										{
 											Title = "发生了没有被处理的异常" ,
 											Content = "异常的细节：" ,
 											PrimaryButtonText = "我认命了" ,
-											SecondaryButtonText = "让我离开这里"
+											SecondaryButtonText = "我觉得我还可以抢救一下"
 										} ;
 
-			ContentDialogResult result = await debugDialog . ShowAsync ( ) ;
+			ContentDialogResult result = await dialog . ShowAsync ( ) ;
 
-			if ( result != ContentDialogResult . Primary )
+			if ( result == ContentDialogResult . Primary )
 			{
 				Current . Exit ( ) ;
+			}
+			else
+			{
+				dialog = new ContentDialog { Title = "未定义的行为", Content = "我们无法预测程序接下来的行为，" };
 			}
 #endif
 		}
@@ -136,10 +161,7 @@ namespace WenceyWang . Richman4L . Apps . Uni
 
 			if ( WindowTooSmallFrame == null )
 			{
-				WindowTooSmallFrame = new Frame ( ) ;
-
-				WindowTooSmallFrame . CacheSize = 0 ;
-
+				WindowTooSmallFrame = new Frame { CacheSize = 0 } ;
 				WindowTooSmallFrame . SizeChanged += Frame_SizeChanged ;
 
 				WindowTooSmallFrame . Navigate ( typeof ( FrameTooSmallPage ) ) ;
@@ -161,24 +183,19 @@ namespace WenceyWang . Richman4L . Apps . Uni
 					SaturationEffect graphicsEffect = new SaturationEffect
 													{
 														Name = nameof(SaturationEffect) ,
-														Source = new CompositionEffectSourceParameter (
-															nameof(backdropBrush) )
+														Source = new CompositionEffectSourceParameter ( nameof(backdropBrush) )
 													} ;
 
-					CompositionEffectFactory effectFactory = compositor . CreateEffectFactory ( graphicsEffect ,
-																								new [ ]
-																								{
-																									$"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}"
-																								} ) ;
+					CompositionEffectFactory effectFactory =
+						compositor . CreateEffectFactory ( graphicsEffect ,
+															new [ ] { $"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}" } ) ;
 					CompositionEffectBrush effectBrush = effectFactory . CreateBrush ( ) ;
 
-					effectBrush . Properties . InsertScalar (
-						$"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}" ,
-						0f ) ;
+					effectBrush . Properties . InsertScalar ( $"{nameof(SaturationEffect)}.{nameof(graphicsEffect . Saturation)}" ,
+															0f ) ;
 
 					ExpressionAnimation bindSaturationAnimation =
-						compositor . CreateExpressionAnimation (
-							$"{nameof(viewRootVisual)}.{nameof(SaturationEffect . Saturation)}" ) ;
+						compositor . CreateExpressionAnimation ( $"{nameof(viewRootVisual)}.{nameof(SaturationEffect . Saturation)}" ) ;
 
 					bindSaturationAnimation . SetReferenceParameter ( $"{nameof(viewRootVisual)}" , viewRootVisual ) ;
 
@@ -191,8 +208,7 @@ namespace WenceyWang . Richman4L . Apps . Uni
 					glassVisual . Brush = effectBrush ;
 
 					ExpressionAnimation bindSizeAnimation =
-						compositor . CreateExpressionAnimation (
-							$"{nameof(viewRootVisual)}.{nameof(viewRootVisual . Size)}" ) ;
+						compositor . CreateExpressionAnimation ( $"{nameof(viewRootVisual)}.{nameof(viewRootVisual . Size)}" ) ;
 					bindSizeAnimation . SetReferenceParameter ( $"{nameof(viewRootVisual)}" , viewRootVisual ) ;
 					glassVisual . StartAnimation ( $"{nameof(glassVisual . Size)}" , bindSizeAnimation ) ;
 
@@ -213,8 +229,8 @@ namespace WenceyWang . Richman4L . Apps . Uni
 
 		private void SetVisibility ( )
 		{
-			if ( ( Math . Max ( ViewRoot . RenderSize . Height , ViewRoot . RenderSize . Width ) < 640 ) |
-				( Math . Min ( ViewRoot . RenderSize . Height , ViewRoot . RenderSize . Width ) < 360 ) )
+			if ( ( Math . Max ( ViewRoot . RenderSize . Height , ViewRoot . RenderSize . Width ) < 640 )
+				| ( Math . Min ( ViewRoot . RenderSize . Height , ViewRoot . RenderSize . Width ) < 360 ) )
 			{
 				//Too small to display
 				if ( ! IsInTooSmallState )

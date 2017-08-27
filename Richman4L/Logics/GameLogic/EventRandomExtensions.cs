@@ -1,4 +1,5 @@
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -14,8 +15,8 @@ namespace WenceyWang . Richman4L
 			{
 				throw new ArgumentNullException ( nameof(random) ) ;
 			}
-			if ( possibility <= 0 ||
-				possibility > 10000 )
+			if ( possibility <= 0
+				|| possibility > 10000 )
 			{
 				throw new ArgumentOutOfRangeException ( nameof(possibility) ) ;
 			}

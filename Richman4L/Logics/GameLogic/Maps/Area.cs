@@ -1,22 +1,5 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
@@ -39,43 +22,40 @@ namespace WenceyWang . Richman4L . Maps
 
 		private List <AreaRoad> _adjacentRoads ;
 
-		private BlockAzimuth ? previousMainAzimuth ;
+		private BlockAzimuth ? _previousMainAzimuth ;
 
-		[ConsoleVisable]
+		[Own]
 		public virtual List <AreaRoad> AdjacentRoads
 		{
 			get
 			{
-				if ( _adjacentRoads == null &&
-					_adjacentRoadsId == null )
+				if ( _adjacentRoads == null
+					&& _adjacentRoadsId == null )
 				{
 					return null ;
 				}
 
-				return _adjacentRoads ??
-						( _adjacentRoads =
-							_adjacentRoadsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) as AreaRoad ) .
-												Where ( road => road != null ) .
-												ToList ( ) ) ;
+				return _adjacentRoads ?? ( _adjacentRoads =
+												_adjacentRoadsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) as AreaRoad ) .
+																	Where ( road => road != null ) . ToList ( ) ) ;
 			}
 		}
 
-		[ConsoleVisable]
-		public BlockAzimuth MainAzimuth => previousMainAzimuth ??
-											( previousMainAzimuth =
-												this . GetAzimuth ( AdjacentRoads . RandomItem ( ) ) ) . Value ;
+		[Own]
+		public BlockAzimuth MainAzimuth => _previousMainAzimuth
+											?? ( _previousMainAzimuth = this . GetAzimuth ( AdjacentRoads . RandomItem ( ) ) ) . Value ;
 
 		[NotNull]
 		[ItemNotNull]
 		public List <AreaBuff> Buffs { get ; set ; } = new List <AreaBuff> ( ) ;
 
-		[ConsoleVisable]
+		[Own]
 		public abstract long MoneyCostWhenCrossed { get ; protected set ; }
 
 		/// <summary>
 		///     建筑抗性，表示在这个地方建造建筑的难度，
 		/// </summary>
-		[ConsoleVisable]
+		[Own]
 		public abstract GameValue BuildingResistance { get ; protected set ; }
 
 		public override int PondingDecrease { get ; }
@@ -107,14 +87,15 @@ namespace WenceyWang . Richman4L . Maps
 				_adjacentRoadsId . Add ( ReadNecessaryValue <long> ( road , nameof(Id) ) ) ;
 			}
 
-			ForestCoverRate = ReadUnnecessaryValue ( resource ,
-													nameof(ForestCoverRate) ,
-													GameRandom . Current . RandomGameValue ( ) ) ;
+			ForestCoverRate =
+				ReadUnnecessaryValue ( resource , nameof(ForestCoverRate) , GameRandom . Current . RandomGameValue ( ) ) ;
 		}
 
 		public WithAssetObject Owner { get ; set ; }
 
-		public decimal MinimumValue { get ; }
+		public long MinimumValue { get ; }
+
+		public bool CanGive { get ; }
 
 		public void GiveTo ( WithAssetObject newOwner )
 		{
@@ -148,18 +129,24 @@ namespace WenceyWang . Richman4L . Maps
 			return AvailableBuildings . Contains ( buildingType ) ;
 		}
 
-		public void BuildBuildiing ( [NotNull] Building building )
+		/// <summary>
+		///     由Player調用,在自身建造一個建築
+		///     <see
+		///         cref="https://onedrive.live.com/edit.aspx/Documents/RichMan4L?cid=cb060fe3721bc584&id=documents&wd=target%28%E8%AE%BE%E8%AE%A1.one%7C65029F20-EC36-470D-A8A6-CAFE5DAB8F08%2F%E6%88%91%E4%BB%AC%E5%A6%82%E4%BD%95%E5%BB%BA%E6%88%BF%E5%AD%90%7C1A21558A-DE44-409F-9F49-9DDC048D6661%2F%29" />
+		/// </summary>
+		/// <param name="buildingType"></param>
+		public void BuildBuildiing ( [NotNull] BuildingType buildingType )
 		{
 			#region Check Argument
 
-			if ( building == null )
+			if ( buildingType == null )
 			{
-				throw new ArgumentNullException ( nameof(building) ) ;
+				throw new ArgumentNullException ( nameof(buildingType) ) ;
 			}
 
-			if ( ! IsBuildingAvailable ( building . Type ) )
+			if ( ! IsBuildingAvailable ( buildingType ) )
 			{
-				throw new ArgumentException ( $"{nameof(building)} is not valid for this area" , nameof(building) ) ;
+				throw new ArgumentException ( $"{nameof(buildingType)} is not valid for this area" , nameof(buildingType) ) ;
 			}
 			if ( Building != null )
 			{
@@ -168,7 +155,12 @@ namespace WenceyWang . Richman4L . Maps
 
 			#endregion
 
-			Building = building ;
+			Building = Building . Build ( buildingType ) ;
+
+			Building . Build ( this , Owner ) ;
+
+			//building . Build ( position , player ) ;
+			//position . BuildBuildiing ( building ) ;
 		}
 
 	}

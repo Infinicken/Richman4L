@@ -1,7 +1,9 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
+using WenceyWang . Richman4L . Calendars ;
 using WenceyWang . Richman4L . Maps . Roads ;
 using WenceyWang . Richman4L . Players ;
 
@@ -17,6 +19,10 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		public Road Target { get ; set ; }
 
 		public virtual bool BlockMoving { get ; }
+
+		public RoadBuff ( int duration ) : base ( duration ) { }
+
+		public RoadBuff ( GameDate startDate , int duration ) : base ( startDate , duration ) { }
 
 		public virtual void DoWhenStay ( Player player , MoveType moveType ) { }
 

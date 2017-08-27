@@ -4,8 +4,8 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="using:WenceyWang.Richman4L.Apps.Uni" >
 	<Style x:Name="RoundedRectangleButtonStyle" TargetType="ButtonBase" >
-		<Setter Property="MinWidth" Value="0" />
-		<Setter Property="MinHeight" Value="0" />
+		<Setter Property="MinWidth" Value="45" />
+		<Setter Property="MinHeight" Value="45" />
 		<Setter Property="Template" >
 			<Setter.Value>
 				<ControlTemplate TargetType="ButtonBase" >

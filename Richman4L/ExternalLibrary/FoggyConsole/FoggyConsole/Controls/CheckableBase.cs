@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -26,7 +27,10 @@ namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
-	///     Base class for <code>Checkbox</code> and <code>RadioButton</code>
+	///     Base class for
+	///     <code>Checkbox</code>
+	///     and
+	///     <code>RadioButton</code>
 	/// </summary>
 	public abstract class CheckableBase : TextualBase
 	{

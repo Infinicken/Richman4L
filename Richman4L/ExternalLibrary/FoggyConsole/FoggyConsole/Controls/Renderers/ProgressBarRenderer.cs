@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -6,7 +7,9 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
-	///     Draws a <code>Progressbar</code>-control
+	///     Draws a
+	///     <code>Progressbar</code>
+	///     -control
 	/// </summary>
 	public class ProgressBarRenderer : ControlRenderer <Progressbar>
 	{

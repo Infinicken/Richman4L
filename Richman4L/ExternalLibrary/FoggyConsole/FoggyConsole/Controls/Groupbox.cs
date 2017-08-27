@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -25,7 +26,9 @@ namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
-	///     A <code>Container</code> which has a border.
+	///     A
+	///     <code>Container</code>
+	///     which has a border.
 	/// </summary>
 	public class Groupbox : ItemsControl
 	{
@@ -75,14 +78,20 @@ namespace WenceyWang . FoggyConsole . Controls
 		public override IList <Control> Items { get ; }
 
 		/// <summary>
-		///     Creates a new <code>Groupbox</code>
+		///     Creates a new
+		///     <code>Groupbox</code>
 		/// </summary>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of <code>GroupBoxRenderer</code>
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>GroupBoxRenderer</code>
 		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
 		public Groupbox ( GroupBoxRenderer renderer = null ) : base ( renderer )

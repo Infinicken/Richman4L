@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -32,17 +33,13 @@ namespace WenceyWang . Richman4L . UnitTests
 			GameSaying . LoadSayings ( ) ;
 			GameSaying . Sayings . Sort ( ( x , y ) =>
 										{
-											int contentLenthDiff = x . ContentLenth -
-																	y . ContentLenth ;
+											int contentLenthDiff = x . ContentLenth - y . ContentLenth ;
 											if ( contentLenthDiff == 0 )
 											{
-												int lenthDiff =
-													x . ToXElement ( ) . ToString ( ) . Length -
-													y . ToXElement ( ) . ToString ( ) . Length ;
+												int lenthDiff = x . ToXElement ( ) . ToString ( ) . Length - y . ToXElement ( ) . ToString ( ) . Length ;
 												if ( lenthDiff == 0 )
 												{
-													return string . CompareOrdinal ( x . Content ,
-																					y . Content ) ;
+													return string . CompareOrdinal ( x . Content , y . Content ) ;
 												}
 
 												return lenthDiff ;

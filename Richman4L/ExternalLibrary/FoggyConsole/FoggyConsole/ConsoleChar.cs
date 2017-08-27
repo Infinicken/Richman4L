@@ -17,6 +17,7 @@
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -70,9 +71,10 @@ namespace WenceyWang . FoggyConsole
 
 		public override string ToString ( ) { return new string ( Character , 1 ) ; }
 
-		public ConsoleChar ( char character ,
-							ConsoleColor foregroundColor = ConsoleColor . White ,
-							ConsoleColor backgroundColor = ConsoleColor . Black )
+		public ConsoleChar
+		( char character ,
+		ConsoleColor foregroundColor = ConsoleColor . White ,
+		ConsoleColor backgroundColor = ConsoleColor . Black )
 		{
 			Character = character ;
 			ForegroundColor = foregroundColor ;

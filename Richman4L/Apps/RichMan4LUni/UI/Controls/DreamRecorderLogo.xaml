@@ -4,22 +4,84 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:controls="using:WenceyWang.Richman4L.Apps.Uni.UI.Controls"
-	xmlns:Logic="using:WenceyWang.Richman4L.Apps.Uni.Logic" x:Name="LogoContainer"
+	xmlns:converters="using:Edi.UWP.Helpers.Converters"
+	x:Name="LogoContainer"
 	x:Class="WenceyWang.Richman4L.Apps.Uni.UI.Controls.DreamRecorderLogo"
 	mc:Ignorable="d" >
 	<controls:CanvasContainer.Resources>
-		<Logic:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
+		<converters:BooleanToVisibilityConverter x:Key="BooleanVisibilityConverter" />
 	</controls:CanvasContainer.Resources>
 	<Canvas Width="1636.824" Height="501.932" HorizontalAlignment="Center" VerticalAlignment="Center"
 			RenderTransformOrigin="0.5,0.5" >
 		<Canvas x:Name="MonoLightLogo" Width="1636.824" Height="501.932"
 				Visibility="{Binding UseMonoLight, Converter={StaticResource BooleanVisibilityConverter}, ElementName=LogoContainer, Mode=OneWay}" >
 			<Canvas>
-
-				<Path Data="M83.658,250.967 L158.615,274.726 L259.172,448.895 z M0,0 L100.559,174.172 L83.658,250.967 z"
-					Fill="#af000000" Height="448.895" Stretch="Fill" Canvas.Top="53.037" UseLayoutRounding="False" Width="259.172" />
-				<Path Data="M16.9009,0 L74.9567,100.555 L0,76.7954 z" Fill="#9F000000" Height="100.554" Canvas.Left="83.658"
-					Stretch="Fill" Canvas.Top="227.209" UseLayoutRounding="False" Width="74.957" />
+				<Path Fill="#af000000" Data=" M 0.000,53.073 L 83.714,304.216 L 100.628,227.365 L 0.000,53.073 L 0.000,53.073 Z" />
+				<Path Fill="#9F000000"
+					Data=" M 100.628,227.365 L 158.725,327.993 L 83.714,304.216 L 100.628,227.365 L 100.628,227.365 Z" />
+				<Path Fill="#af000000"
+					Data=" M 158.725,327.993 L 259.353,502.286 L 83.714,304.216 L 158.725,327.993 L 158.725,327.993 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 201.512,341.556 L 259.353,359.891 L 170.121,254.329 L 201.512,341.556 L 201.512,341.556 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 201.512,341.556 L 259.353,502.286 L 259.353,359.891 L 201.512,341.556 L 201.512,341.556 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 100.628,227.365 L 110.275,183.530 L 0.000,53.073 L 100.628,227.365 L 100.628,227.365 Z" />
+				<Path Fill="#ff983200" Data=" M 0.000,53.073 L 110.275,183.530 L 123.318,124.270 L 0.000,53.073 L 0.000,53.073 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 123.318,124.270 L 170.121,254.329 L 110.275,183.530 L 123.318,124.270 L 123.318,124.270 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 170.121,254.329 L 259.353,359.891 L 123.318,124.270 L 170.121,254.329 L 170.121,254.329 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 259.353,359.891 L 259.353,202.811 L 123.318,124.270 L 259.353,359.891 L 259.353,359.891 Z" />
+				<Path Fill="#ff983200" Data=" M 0.000,53.073 L 123.318,124.270 L 168.117,83.345 L 0.000,53.073 L 0.000,53.073 Z" />
+				<Path Fill="#ff983200" Data=" M 0.000,53.073 L 168.117,83.345 L 201.256,53.073 L 0.000,53.073 L 0.000,53.073 Z" />
+				<Path Fill="#ff983200" Data=" M 0.000,53.073 L 201.256,53.073 L 259.353,0.000 L 0.000,53.073 L 0.000,53.073 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 201.256,53.073 L 317.451,53.073 L 259.353,0.000 L 201.256,53.073 L 201.256,53.073 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 201.256,53.073 L 168.117,83.345 L 259.353,99.774 L 350.590,83.345 L 317.451,53.073 L 201.256,53.073 L 201.256,53.073 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 168.117,83.345 L 123.318,124.270 L 259.353,99.774 L 168.117,83.345 L 168.117,83.345 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 259.353,99.774 L 350.590,83.345 L 395.389,124.270 L 259.353,99.774 L 259.353,99.774 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 123.318,124.270 L 395.389,124.270 L 259.353,99.774 L 123.318,124.270 L 123.318,124.270 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 259.353,202.811 L 395.389,124.270 L 123.318,124.270 L 259.353,202.811 L 259.353,202.811 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 395.389,124.270 L 518.707,53.073 L 350.590,83.345 L 395.389,124.270 L 395.389,124.270 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 350.590,83.345 L 518.707,53.073 L 317.451,53.073 L 350.590,83.345 L 350.590,83.345 Z" />
+				<Path Fill="#ff983200" Data=" M 259.353,0.000 L 317.451,53.073 L 518.707,53.073 L 259.353,0.000 L 259.353,0.000 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 518.707,53.073 L 408.431,183.530 L 395.389,124.270 L 518.707,53.073 L 518.707,53.073 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 408.431,183.530 L 418.079,227.365 L 518.707,53.073 L 408.431,183.530 L 408.431,183.530 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 395.389,124.270 L 259.353,359.891 L 259.353,202.811 L 395.389,124.270 L 395.389,124.270 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 395.389,124.270 L 348.585,254.329 L 259.353,359.891 L 395.389,124.270 L 395.389,124.270 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 395.389,124.270 L 348.585,254.329 L 408.431,183.530 L 395.389,124.270 L 395.389,124.270 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 408.431,183.530 L 348.585,254.329 L 317.195,341.556 L 359.981,327.993 L 418.079,227.365 L 408.431,183.530 L 408.431,183.530 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 418.079,227.365 L 359.981,327.993 L 434.993,304.216 L 418.079,227.365 L 418.079,227.365 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 418.079,227.365 L 518.707,53.073 L 434.993,304.216 L 418.079,227.365 L 418.079,227.365 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 434.993,304.216 L 359.981,327.993 L 259.353,502.286 L 434.993,304.216 L 434.993,304.216 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 359.981,327.993 L 259.353,502.286 L 317.195,341.556 L 359.981,327.993 L 359.981,327.993 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 348.585,254.329 L 259.353,359.891 L 317.195,341.556 L 348.585,254.329 L 348.585,254.329 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 259.353,359.891 L 259.353,502.286 L 317.195,341.556 L 259.353,359.891 L 259.353,359.891 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 110.275,183.530 L 100.628,227.365 L 158.725,327.993 L 201.512,341.556 L 170.121,254.329 L 110.275,183.530 L 110.275,183.530 Z" />
+				<Path Fill="#ff983200"
+					Data=" M 158.725,327.993 L 259.353,502.286 L 201.512,341.556 L 158.725,327.993 L 158.725,327.993 Z" />
 				<Path Data="M158.615,274.726 L201.372,288.279 L259.172,448.895 z M0,0 L110.2,130.366 L100.559,174.172 z"
 					Fill="#a0000000" Height="448.895" Stretch="Fill" Canvas.Top="53.037" UseLayoutRounding="False" Width="259.172" />
 				<Path Data="M9.64062,0 L69.4471,70.751 L100.813,157.913 L58.0557,144.36 L0,43.8056 z" Fill="#8E000000"

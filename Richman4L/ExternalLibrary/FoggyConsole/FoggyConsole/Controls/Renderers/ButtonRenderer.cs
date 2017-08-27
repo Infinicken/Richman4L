@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -6,13 +7,17 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 {
 
 	/// <summary>
-	///     Draws a <code>Button</code>-Control
+	///     Draws a
+	///     <code>Button</code>
+	///     -Control
 	/// </summary>
 	public class ButtonRenderer : ControlRenderer <Button>
 	{
 
 		/// <summary>
-		///     Draws the <code>Button</code> given in the Control-Property.
+		///     Draws the
+		///     <code>Button</code>
+		///     given in the Control-Property.
 		/// </summary>
 		/// <exception cref="InvalidOperationException">Is thrown if the Control-Property isn't set.</exception>
 		/// <exception cref="InvalidOperationException">Is thrown if the CalculateBoundary-Method hasn't been called.</exception>

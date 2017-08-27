@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -30,7 +31,9 @@ namespace WenceyWang . Richman4L . Stocks
 
 		public WithAssetObject Owner { get ; set ; }
 
-		public decimal MinimumValue => Stock . Price . TodaysLow ;
+		public long MinimumValue => ( long ) Math . Floor ( Stock . Price . TodaysLow * Number ) ;
+
+		public bool CanGive { get ; }
 
 		public void GiveTo ( WithAssetObject newOwner ) { Owner = newOwner ; }
 

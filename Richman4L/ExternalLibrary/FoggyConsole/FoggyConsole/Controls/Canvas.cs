@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -26,7 +27,8 @@ namespace WenceyWang . FoggyConsole . Controls
 {
 
 	/// <summary>
-	///     A very basic <code>Container</code>
+	///     A very basic
+	///     <code>Container</code>
 	///     It has no appearance, controls within it are aligned using thier top and left values.
 	/// </summary>
 	public class Canvas : ItemsControl
@@ -41,14 +43,20 @@ namespace WenceyWang . FoggyConsole . Controls
 		public Point this [ Control control ] { get => Position [ control ] ; set => Position [ control ] = value ; }
 
 		/// <summary>
-		///     Creates a new <code>Canvas</code>
+		///     Creates a new
+		///     <code>Canvas</code>
 		/// </summary>
 		/// <param name="renderer">
-		///     The <code>ControlRenderer</code> to use. If null a new instance of <code>PanelRenderer</code>
+		///     The
+		///     <code>ControlRenderer</code>
+		///     to use. If null a new instance of
+		///     <code>PanelRenderer</code>
 		///     will be used.
 		/// </param>
 		/// <exception cref="ArgumentException">
-		///     Thrown if the <code>ControlRenderer</code> which should be set already has an other
+		///     Thrown if the
+		///     <code>ControlRenderer</code>
+		///     which should be set already has an other
 		///     Control assigned
 		/// </exception>
 		public Canvas ( IControlRenderer renderer = null ) : base ( renderer ?? new CanvasRenderer ( ) )
@@ -66,8 +74,8 @@ namespace WenceyWang . FoggyConsole . Controls
 			foreach ( Control control in Items )
 			{
 				control . Arrange ( new Rectangle (
-										finalRect . LeftTopPoint . Offset ( new Vector ( Position [ control ] ) ) ,
-										control . DesiredSize ) ) ;
+												 finalRect . LeftTopPoint . Offset ( new Vector ( Position [ control ] ) ) ,
+												 control . DesiredSize ) ) ;
 			}
 
 			base . Arrange ( finalRect ) ;

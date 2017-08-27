@@ -1,4 +1,5 @@
 ﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Runtime . InteropServices ;
@@ -61,8 +62,7 @@ namespace WenceyWang . Richman4L . Apps . Uni . Logic
 		{
 			lock ( this )
 			{
-				_salt = CryptographicBuffer . GenerateRandom (
-					CryptographicBuffer . GenerateRandomNumber ( ) % 64 + 64 ) ;
+				_salt = CryptographicBuffer . GenerateRandom ( CryptographicBuffer . GenerateRandomNumber ( ) % 64 + 64 ) ;
 
 				_hash . Append ( _salt ) ;
 

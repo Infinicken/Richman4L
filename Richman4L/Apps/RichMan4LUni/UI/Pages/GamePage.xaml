@@ -929,10 +929,7 @@
 
 			</Grid>
 			<Grid x:Name="MenuGrid"
-				RenderTransformOrigin="0.5,0.5" >
-				<Grid.Background>
-					<SolidColorBrush Color="{StaticResource TransparentBlack}" />
-				</Grid.Background>
+				RenderTransformOrigin="0.5,0.5" Background="{ThemeResource SystemControlAcrylicElementBrush}" >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
 					<ColumnDefinition Width="Auto" />
@@ -1008,8 +1005,7 @@
 						<Grid.RowDefinitions>
 							<RowDefinition />
 						</Grid.RowDefinitions>
-						<myToolKitCintrols:DataGrid myToolKitCintrols:DataGridExtensions.UseSingleSelectionAndDeselection="true"
-													FontFamily="{StaticResource Font}" >
+						<myToolKitCintrols:DataGrid myToolKitCintrols:DataGridExtensions.UseSingleSelectionAndDeselection="true" >
 							<myToolKitCintrols:DataGrid.Columns>
 								<myToolKitCintrols:DataGridTextColumn Header="代号" />
 							</myToolKitCintrols:DataGrid.Columns>

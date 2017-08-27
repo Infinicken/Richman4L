@@ -16,6 +16,7 @@
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . IO ;
 using System . Linq ;
@@ -25,7 +26,10 @@ namespace WenceyWang . FoggyConsole
 {
 
 	/// <summary>
-	///     Watches out of userinput using <code>Console.KeyAvailable</code> and <code>Code.ReadKey</code>
+	///     Watches out of userinput using
+	///     <code>Console.KeyAvailable</code>
+	///     and
+	///     <code>Code.ReadKey</code>
 	/// </summary>
 	internal static class KeyWatcher
 	{

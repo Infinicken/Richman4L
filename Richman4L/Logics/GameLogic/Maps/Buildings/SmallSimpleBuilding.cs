@@ -1,29 +1,11 @@
-﻿/*
-* Richman4L: A free game with a rule like Richman4Fun.
-* Copyright (C) 2010-2016 Wencey Wang
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
-*
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-using System ;
+﻿using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Banks ;
 using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . GameEnviroment ;
 using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Players . PayReasons ;
 
 namespace WenceyWang . Richman4L . Maps . Buildings
 {
@@ -42,6 +24,9 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 		public override int NoncombustiblePartRatio { get ; }
 
+		[GameRuleExpression ( "500d" , typeof ( decimal ) )]
+		public override long MinimumValue { get ; }
+
 		public override void Pass ( Player player )
 		{
 			if ( player == null )
@@ -50,8 +35,8 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			}
 
 			//Todo:加入对是否收费的判断
-			if ( State == BuildingState . Working &&
-				player != Owner )
+			if ( State == BuildingState . Working
+				&& player != Owner )
 			{
 			}
 			base . Pass ( player ) ;
@@ -77,7 +62,7 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 					}
 					{
 						//todo
-						player . RequestPay ( Owner , MoneyCostWhenCrossed , new PayForStayReason ( Position ) ) ;
+						//player . RequestPay ( Owner , MoneyCostWhenCrossed , new PayMoneyForStayReason ( Position ) ) ;
 					}
 				}
 			}
@@ -109,9 +94,9 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 			{
 				case BuildingState . Working :
 				{
-					Owner ? . RequestPay ( Bank . Current ,
-											MaintenanceFee ,
-											new PayForMaintainBuildingReason ( this ) ) ;
+					//Owner ? . RequestPay ( Bank . Current ,
+					//						MaintenanceFee ,
+					//						new PayMoneyForMaintainBuildingReason ( this ) ) ;
 					break ;
 				}
 				case BuildingState . Closed :
@@ -127,16 +112,10 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 
 		public override void EndToday ( ) { }
 
-		public override string ToString ( ) { return $"{nameof(SmallSimpleBuilding)} named {Name} in {Grade} at ({X},{Y})" ; }
-
-	}
-
-	public class PayForStayReason : PayReason
-	{
-
-		public Area Area { get ; }
-
-		public PayForStayReason ( Area area ) { Area = area ; }
+		public override string ToString ( )
+		{
+			return $"{nameof(SmallSimpleBuilding)} named {Name} in {Grade} at ({Position})" ;
+		}
 
 	}
 

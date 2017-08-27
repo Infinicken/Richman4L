@@ -16,6 +16,7 @@ along with FoggyConsole.  If not, see <http://www.gnu.org/licenses/lgpl.html>.
 */
 
 using System ;
+using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
@@ -42,8 +43,8 @@ namespace WenceyWang . FoggyConsole . Controls . Renderers
 			get => _control ;
 			set
 			{
-				if ( value . Renderer != null &&
-					value . Renderer != this )
+				if ( value . Renderer != null
+					&& value . Renderer != this )
 				{
 					throw new ArgumentException ( $"{nameof(Control)} already has a Drawer assigned" , nameof(value) ) ;
 				}
