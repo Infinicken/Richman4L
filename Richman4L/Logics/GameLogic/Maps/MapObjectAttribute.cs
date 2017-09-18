@@ -3,22 +3,12 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	[AttributeUsage ( AttributeTargets . Class )]
-	public sealed class MapObjectAttribute : Attribute
+	public sealed class MapObjectAttribute : NeedRegisAttributeBase
 	{
-
-		public string Name { get ; }
-
-		public string Introduction { get ; }
-
-		public MapObjectAttribute ( string name , string introduction )
-		{
-			Name = name ;
-			Introduction = introduction ;
-		}
 
 	}
 

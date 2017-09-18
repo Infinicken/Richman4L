@@ -3,13 +3,14 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Auctions ;
-using WenceyWang . Richman4L . Cards ;
-using WenceyWang . Richman4L . Interoperability . Arguments ;
-using WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Players . Commands
+using WenceyWang . Richman4L . Logics . Auctions ;
+using WenceyWang . Richman4L . Logics . Cards ;
+using WenceyWang . Richman4L . Logics . Interoperability . Arguments ;
+using WenceyWang . Richman4L . Logics . Interoperability . Arguments . DefineDomains ;
+
+namespace WenceyWang . Richman4L . Logics . Players . Commands
 {
 
 	[PlayerCommand]

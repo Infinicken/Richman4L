@@ -2,19 +2,20 @@
 using System . Collections ;
 using System . Collections . Generic ;
 using System . ComponentModel ;
+using System . Diagnostics ;
 using System . Linq ;
 using System . Reflection ;
-using System . Runtime . CompilerServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Resources ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Resources ;
+
+namespace WenceyWang . Richman4L . Logics
 {
 
-	public abstract class GameObject : INotifyPropertyChanged , IEquatable <GameObject>
+	public abstract class GameObject : INotifyPropertyChanged , IEquatable <GameObject> , ISelfSerializeable
 	{
 
 		[PublicAPI]
@@ -27,7 +28,13 @@ namespace WenceyWang . Richman4L
 
 		public static List <GameObjectType> TypeList { get ; } = new List <GameObjectType> ( ) ;
 
-		public GameObject ( )
+		public static Dictionary <GameObjectType , List <(PropertyInfo , PropertySerializationAttributeBase)>>
+			TypeProperties { get ; } =
+			new Dictionary <GameObjectType , List <(PropertyInfo , PropertySerializationAttributeBase)>> ( ) ;
+
+		private static bool Loaded { get ; set ; }
+
+		protected GameObject ( )
 		{
 			Guid = Guid . NewGuid ( ) ;
 			PropertyChanged += GameObject_PropertyChanged ;
@@ -49,6 +56,8 @@ namespace WenceyWang . Richman4L
 
 		public event PropertyChangedEventHandler PropertyChanged ;
 
+		XElement ISelfSerializeable . ToXElement ( ) { return ToXElement ( ) ; }
+
 		private void GameObject_PropertyChanged ( object sender , PropertyChangedEventArgs e )
 		{
 			if ( GetType ( ) . GetRuntimeProperty ( e . PropertyName ) . GetCustomAttribute <OwnAttribute> ( ) != null )
@@ -61,7 +70,7 @@ namespace WenceyWang . Richman4L
 
 		public virtual void StartDay ( GameDate nextDate ) { }
 
-		protected static GameObject Crate ( GameObjectType type )
+		protected static GameObject Crate ( GameObjectType type , params object [ ] arguments )
 		{
 			#region Check Argument
 
@@ -76,57 +85,200 @@ namespace WenceyWang . Richman4L
 
 			#endregion
 
-			GameObject instance = ( GameObject ) Activator . CreateInstance ( type . EntryType ) ;
+			GameObject instance = ( GameObject ) Activator . CreateInstance ( type . EntryType , arguments ) ;
 
 			return instance ;
 		}
 
 
-		public virtual XElement ToXElement ( )
+		[Startup]
+		public static void LoadGameObjects ( )
 		{
-			Type type = GetType ( ) ;
-
-			XElement result = new XElement ( type . FullName ) ;
-
-			List <PropertyInfo> properties = type . GetRuntimeProperties ( ) .
-													Where ( property => property . GetCustomAttribute ( typeof ( OwnAttribute ) ) != null
-																		&& property . CanRead ) . ToList ( ) ;
-
-			properties . Sort ( ( propA , propB ) => string . CompareOrdinal ( propA . Name , propB . Name ) ) ;
-
-			foreach ( PropertyInfo property in properties )
+			lock ( Locker )
 			{
-				if ( typeof ( ICollection ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				if ( Loaded )
 				{
-					XElement propertyContainer = new XElement ( property . Name ) ;
+					return ;
+				}
 
-					ICollection enumerable = ( ICollection ) property . GetValue ( this ) ;
-					foreach ( object item in enumerable )
+				foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) .
+															Assembly . DefinedTypes .
+															Where ( type => type . GetCustomAttributes ( typeof ( GameObjectAttribute ) , false ) . Any ( )
+																			&& typeof ( GameObject ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
+				{
+					RegisType ( new GameObjectType ( type . AsType ( ) ) ) ; //Todo:resources?
+				}
+
+				Loaded = true ;
+			}
+
+			//Todo:Load All internal type
+		}
+
+		public virtual XElement ToXElement ( SerializationMode mode = SerializationMode . Full ,
+											ConsoleVision currentVision = ConsoleVision . God ,
+											int depth = 50 )
+		{
+			XElement result = new XElement ( Type . Name ) ;
+
+			if ( depth < 0 )
+			{
+				throw new Exception ( "Infin Loop?" ) ;
+			}
+
+			switch ( mode )
+			{
+				case SerializationMode . Full :
+				{
+					List <(PropertyInfo , PropertySerializationAttributeBase)> properties = TypeProperties [ Type ] ;
+
+					foreach ( (PropertyInfo info , PropertySerializationAttributeBase attribute) property in properties )
 					{
-						if ( item is GameObject gameObject )
+						object value = property . info . GetValue ( this ) ;
+
+						switch ( value )
 						{
-							propertyContainer . Add ( gameObject . ToXElement ( ) ) ;
-						}
-						else
-						{
-							XElement element = new XElement ( item . GetType ( ) . Name ) ;
-							element . SetAttributeValue ( "Value" , item ) ;
-							propertyContainer . Add ( element ) ;
+							case GameObject gameObject :
+							{
+								XElement propertyContainer = new XElement ( property . info . Name ) ;
+								XElement propertyValue = gameObject . ToXElement ( property . attribute . Rule , depth : depth - 1 ) ;
+								propertyContainer . Add ( propertyValue ) ;
+								result . Add ( propertyContainer ) ;
+								break ;
+							}
+							case ISelfSerializeable selfSerializeable :
+							{
+								XElement propertyContainer = new XElement ( property . info . Name ) ;
+								XElement propertyValue = selfSerializeable . ToXElement ( ) ;
+								propertyContainer . Add ( propertyValue ) ;
+								result . Add ( propertyContainer ) ;
+								break ;
+							}
+							case IDictionary dictionary :
+							{
+								XElement propertyContainer = new XElement ( property . info . Name ) ;
+
+								IDictionaryEnumerator enumerator = dictionary . GetEnumerator ( ) ;
+
+								do
+								{
+									XElement pairContainer = new XElement ( "Data" ) ;
+
+									object itemKey = enumerator . Key ;
+
+									switch ( itemKey )
+									{
+										case GameObject gameObjectItem :
+										{
+											XElement keyContainer = new XElement ( "Key" ) ;
+											XElement keyValue = gameObjectItem . ToXElement ( property . attribute . Rule , depth : depth - 1 ) ;
+											keyContainer . Add ( keyValue ) ;
+											pairContainer . Add ( keyContainer ) ;
+											break ;
+										}
+										case ISelfSerializeable selfSerializeableItem :
+										{
+											XElement keyContainer = new XElement ( "Key" ) ;
+											XElement keyValue = selfSerializeableItem . ToXElement ( ) ;
+											keyContainer . Add ( keyValue ) ;
+											pairContainer . Add ( keyContainer ) ;
+											break ;
+										}
+										default :
+										{
+											XElement element = new XElement ( itemKey . GetType ( ) . FullName ) ;
+											element . SetAttributeValue ( "Key" , itemKey ) ;
+											pairContainer . Add ( element ) ;
+											break ;
+										}
+									}
+
+									object itemValue = enumerator . Value ;
+
+									switch ( itemValue )
+									{
+										case GameObject gameObjectItem :
+										{
+											XElement valueContainer = new XElement ( "Value" ) ;
+											XElement valueValue = gameObjectItem . ToXElement ( property . attribute . Rule , depth : depth - 1 ) ;
+											valueContainer . Add ( valueValue ) ;
+											pairContainer . Add ( valueContainer ) ;
+											break ;
+										}
+										case ISelfSerializeable selfSerializeableItem :
+										{
+											XElement valueContainer = new XElement ( "Value" ) ;
+											XElement valueValue = selfSerializeableItem . ToXElement ( ) ;
+											valueContainer . Add ( valueValue ) ;
+											pairContainer . Add ( valueContainer ) ;
+											break ;
+										}
+										default :
+										{
+											XElement element = new XElement ( itemKey . GetType ( ) . FullName ) ;
+											element . SetAttributeValue ( "Value" , itemKey ) ;
+											pairContainer . Add ( element ) ;
+											break ;
+										}
+									}
+
+									propertyContainer . Add ( pairContainer ) ;
+								}
+								while ( enumerator . MoveNext ( ) ) ;
+
+								break ;
+							}
+							case ICollection collection :
+							{
+								XElement propertyContainer = new XElement ( property . info . Name ) ;
+
+								foreach ( object item in collection )
+								{
+									switch ( item )
+									{
+										case GameObject gameObjectItem :
+										{
+											XElement itemValue = gameObjectItem . ToXElement ( property . attribute . Rule , depth : depth - 1 ) ;
+											propertyContainer . Add ( itemValue ) ;
+											break ;
+										}
+										case ISelfSerializeable selfSerializeableItem :
+										{
+											XElement itemValue = selfSerializeableItem . ToXElement ( ) ;
+											propertyContainer . Add ( itemValue ) ;
+											break ;
+										}
+										default :
+										{
+											XElement element = new XElement ( item . GetType ( ) . FullName ) ;
+											element . SetAttributeValue ( "Value" , item ) ;
+											propertyContainer . Add ( element ) ;
+											break ;
+										}
+									}
+								}
+
+								result . Add ( propertyContainer ) ;
+								break ;
+							}
+							default :
+							{
+								result . SetAttributeValue ( property . info . Name , property . info . GetValue ( this ) ) ;
+								break ;
+							}
 						}
 					}
 
-					result . Add ( propertyContainer ) ;
+					break ;
 				}
-				else if ( typeof ( GameObject ) . GetTypeInfo ( ) . IsAssignableFrom ( property . PropertyType . GetTypeInfo ( ) ) )
+				case SerializationMode . Reference :
 				{
-					XElement propertyContainer = new XElement ( property . Name ) ;
-					XElement propertyValue = ( ( GameObject ) property . GetValue ( this ) ) . ToXElement ( ) ;
-					propertyContainer . Add ( propertyValue ) ;
-					result . Add ( propertyContainer ) ;
+					result . SetAttributeValue ( nameof(Guid) , Guid ) ;
+					break ;
 				}
-				else
+				default :
 				{
-					result . SetAttributeValue ( property . Name , property . GetValue ( this ) ) ;
+					throw new ArgumentOutOfRangeException ( nameof(mode) , mode , null ) ;
 				}
 			}
 
@@ -202,12 +354,6 @@ namespace WenceyWang . Richman4L
 
 		public static bool operator != ( GameObject left , GameObject right ) { return ! Equals ( left , right ) ; }
 
-		[NotifyPropertyChangedInvocator]
-		protected void OnPropertyChanged ( [CallerMemberName] string propertyName = null )
-		{
-			PropertyChanged ? . Invoke ( this , new PropertyChangedEventArgs ( propertyName ) ) ;
-		}
-
 		[PublicAPI]
 		protected static void RegisType ( GameObjectType subType )
 		{
@@ -220,6 +366,14 @@ namespace WenceyWang . Richman4L
 
 				if ( TypeList . Contains ( subType ) )
 				{
+#if DEBUG
+					Debug . Assert ( false ) ;
+
+#endif
+#if RELEASE //Todo:Finish this
+//throw new Not
+#endif
+
 					//Todo:Log warning in debug or throw in Realease
 				}
 
@@ -230,6 +384,17 @@ namespace WenceyWang . Richman4L
 
 
 				TypeList . Add ( subType ) ;
+
+				List <(PropertyInfo , PropertySerializationAttributeBase)> properties =
+					subType . EntryType . GetRuntimeProperties ( ) .
+							Where ( property => property . GetCustomAttribute <PropertySerializationAttributeBase> ( ) != null
+												&& property . CanRead ) .
+							Select ( property => (property , property . GetCustomAttribute <PropertySerializationAttributeBase> ( )) ) .
+							ToList ( ) ;
+
+				properties . Sort ( ( propA , propB ) => string . CompareOrdinal ( propA . Item1 . Name , propB . Item1 . Name ) ) ;
+
+				TypeProperties . Add ( subType , properties ) ;
 			}
 		}
 

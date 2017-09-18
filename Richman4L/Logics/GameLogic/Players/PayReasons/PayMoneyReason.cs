@@ -4,10 +4,11 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Calendars ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Players . PayReasons
+using WenceyWang . Richman4L . Logics . Calendars ;
+
+namespace WenceyWang . Richman4L . Logics . Players . PayReasons
 {
 
 	/// <summary>
@@ -39,7 +40,7 @@ namespace WenceyWang . Richman4L . Players . PayReasons
 
 	}
 
-	public class PayMoneyReasonAttribute : Attribute
+	public class PayMoneyReasonAttribute : NeedRegisAttributeBase
 	{
 
 	}
@@ -50,10 +51,7 @@ namespace WenceyWang . Richman4L . Players . PayReasons
 
 		public PayMoneyReasonType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }
 
-		public PayMoneyReasonType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
-			base ( entryType , name , introduction )
-		{
-		}
+		public PayMoneyReasonType ( [NotNull] Type entryType ) : base ( entryType ) { }
 
 	}
 

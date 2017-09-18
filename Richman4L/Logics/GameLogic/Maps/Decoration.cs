@@ -4,9 +4,9 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Logics . Calendars ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	/// <summary>

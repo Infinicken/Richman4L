@@ -2,16 +2,17 @@
 using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
+using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Logics . Players ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	/// <summary>
 	///     表示已经结束的游戏的信息
 	/// </summary>
-	public sealed class GameResult
+	public sealed class GameResult : ISelfSerializeable
 	{
 
 		/// <summary>
@@ -22,6 +23,8 @@ namespace WenceyWang . Richman4L
 		internal GameResult ( ) { }
 
 		//Todo:添加其他信息
+
+		public XElement ToXElement ( ) { throw new NotImplementedException ( ) ; }
 
 	}
 

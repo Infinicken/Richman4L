@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Maps ;
+using WenceyWang . Richman4L . Logics . Maps ;
 
-namespace WenceyWang . Richman4L . Players
+namespace WenceyWang . Richman4L . Logics . Players
 {
 
 	public class BuyAreaResult

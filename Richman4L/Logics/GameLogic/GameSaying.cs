@@ -4,12 +4,12 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
-	public class GameSaying : IEquatable <GameSaying>
+	public class GameSaying : IEquatable <GameSaying> , ISelfSerializeable
 	{
 
 		public string Content { get ; }
@@ -26,8 +26,11 @@ namespace WenceyWang . Richman4L
 
 		public int ContentLenth => Content . Length ;
 
-		public int ActualLength => Content . Length + ( People ? . Length ?? 0 ) + ( Book ? . Length ?? 0 )
-									+ ( Author ? . Length ?? 0 ) + ( Song ? . Length ?? 0 ) ;
+		public int ActualLength => Content . Length
+									+ ( People ? . Length ?? 0 )
+									+ ( Book ? . Length ?? 0 )
+									+ ( Author ? . Length ?? 0 )
+									+ ( Song ? . Length ?? 0 ) ;
 
 		internal static List <GameSaying> Sayings { get ; set ; }
 
@@ -79,12 +82,13 @@ namespace WenceyWang . Richman4L
 				return true ;
 			}
 
-			return string . Equals ( Content , other . Content ) && string . Equals ( People , other . People )
-					&& string . Equals ( Book , other . Book ) && Guid . Equals ( other . Guid )
-					&& string . Equals ( Author , other . Author ) && string . Equals ( Song , other . Song ) ;
+			return string . Equals ( Content , other . Content )
+					&& string . Equals ( People , other . People )
+					&& string . Equals ( Book , other . Book )
+					&& Guid . Equals ( other . Guid )
+					&& string . Equals ( Author , other . Author )
+					&& string . Equals ( Song , other . Song ) ;
 		}
-
-		public override string ToString ( ) { return Content ; }
 
 		public XElement ToXElement ( )
 		{
@@ -99,6 +103,8 @@ namespace WenceyWang . Richman4L
 
 			return result ;
 		}
+
+		public override string ToString ( ) { return Content ; }
 
 		[PublicAPI]
 		public static GameSaying GetSaying ( Guid guid )

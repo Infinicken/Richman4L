@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Logics . Calendars ;
 
-namespace WenceyWang . Richman4L . Stocks . PriceController
+namespace WenceyWang . Richman4L . Logics . Stocks . PriceController
 {
 
 	public class NormalStockPriceController : StockPriceController
@@ -118,7 +118,8 @@ namespace WenceyWang . Richman4L . Stocks . PriceController
 								* ( decimal ) GameRandom . Current . NextDoubleBetween ( 1 - Config . WaveTimeBase , 1 - Config . WaveTimeBase )
 								/ ( MovementChanging - thisDate ) ;
 
-			decimal openPrice = currentPrice + ( closePrice - currentPrice )
+			decimal openPrice = currentPrice
+								+ ( closePrice - currentPrice )
 								* ( decimal ) GameRandom . Current . NextDoubleBetween ( - Config . StockOpenPricePower ,
 																						Config . StockOpenPricePower ) ;
 

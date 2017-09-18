@@ -5,7 +5,7 @@ using System . ComponentModel ;
 using System . Globalization ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	[TypeConverter ( typeof ( MapPositionConverter ) )]

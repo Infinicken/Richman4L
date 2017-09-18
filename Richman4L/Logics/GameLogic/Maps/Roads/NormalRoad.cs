@@ -5,10 +5,12 @@ using System . Linq ;
 using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+using AutoLazy ;
+
+namespace WenceyWang . Richman4L . Logics . Maps . Roads
 {
 
-	[MapObject ( nameof(NormalRoad) , nameof(NormalRoad) )]
+	[MapObject]
 	[Guid ( "C4D64F21-315F-4E82-A8A2-DF0F1B2603CE" )]
 	public class NormalRoad : Road
 	{
@@ -79,23 +81,13 @@ namespace WenceyWang . Richman4L . Maps . Roads
 
 		#region Entrances
 
-		private List <Road> _entrances ;
-
 		private readonly List <long> _entrancesId = new List <long> ( ) ;
 
+		[Reference]
+		[Lazy]
 		public virtual List <Road> Entrances
 		{
-			get
-			{
-				if ( _entrances == null
-					&& _entrancesId == null )
-				{
-					return null ;
-				}
-
-				return _entrances ?? ( _entrances =
-											_entrancesId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ) ;
-			}
+			get { return _entrancesId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ; }
 		}
 
 		#endregion
@@ -133,6 +125,8 @@ namespace WenceyWang . Richman4L . Maps . Roads
 		private readonly List <long> _exitsId = new List <long> ( ) ;
 
 		//Todo:Add Lazy
+		[Reference]
+		[Lazy]
 		public virtual List <Road> Exits
 		{
 			get { return _exitsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) ) . ToList ( ) ; }

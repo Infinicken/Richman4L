@@ -5,15 +5,15 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public abstract class RegisType <TType , TAttribute , T> : GameObjectType
 		where T : NeedRegisBase <TType , TAttribute , T>
 		where TType : RegisType <TType , TAttribute , T>
-		where TAttribute : Attribute
+		where TAttribute : NeedRegisAttributeBase
 	{
 
 		public RegisType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element )
@@ -28,8 +28,7 @@ namespace WenceyWang . Richman4L
 			}
 		}
 
-		public RegisType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
-			base ( entryType , name , introduction )
+		public RegisType ( [NotNull] Type entryType ) : base ( entryType )
 		{
 			if ( ! typeof ( T ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
 			{

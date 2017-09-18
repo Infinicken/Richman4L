@@ -1,6 +1,6 @@
 # Richman4L
 
-[![Building Status](https://ci.appveyor.com/api/projects/status/m4o0e1d7kv7tb4s1?svg=true)](https://ci.appveyor.com/project/WenceyWang/richman4l)
+[![Build status](https://ci.appveyor.com/api/projects/status/drlqwko7xlhsct6u?svg=true)](https://ci.appveyor.com/project/WenceyWang/richman4l)
 
 Richman4L is a game which is like Richman4Fun.
 
@@ -12,6 +12,6 @@ I use TFS, and this repo is only a mirror.
 
 There are some documentations on the Wiki Page.
 
-I have spent 80+ week on this project, and I will try my best to finish this project.
+I have spent 100+ week on this project, and I will try my best to finish this project.
 
 If you want to help me finish this project, just leave me an e-mail: wencey@outlook.com

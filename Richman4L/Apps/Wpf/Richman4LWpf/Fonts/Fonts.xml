@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Fonts>
+	<Font Name="LeviReBrushed" Type="English" Path="ms-appx:/Fonts/LeviReBrushed.ttf#LeviReBrushed" />
+	<Font Name="Eternal Call" Type="English" Path="ms-appx:/Fonts/Eternal Call.ttf#Eternal Call" />
+	<Font Name="Dynasty" Type="English" Path="ms-appx:/Fonts/Dynasty.ttf#Dynasty" />
+	<Font Name="BankGothic" Type="English" Path="ms-appx:/Fonts/bgothl.ttf#BankGothic Lt BT" />
+	<Font Name="SentyBrush" Type="English" Path="ms-appx:/Fonts/SentyBrush-lowercase.otf#SentyBrush" />
+	<Font Name="SentyCHALK" Type="Nature" Path="ms-appx:/Fonts/SentyChalk.ttf#SentyCHALK" />
+	<Font Name="SentyPaperCut" Type="Nature" Path="ms-appx:/Fonts/SentyPaperCut.ttf#SentyPaperCut" />
+	<Font Name="SentyTEA" Type="Nature" Path="ms-appx:/Fonts/SentyTEA.ttf#SentyTEA 新蒂下午茶体" />
+	<Font Name="FZShaoEr" Type="Nature" Path="ms-appx:/Fonts/ComicSansChinese1.ttf#FZShaoEr-M11" />
+	<Font Name="FZMiaoWuS" Type="Nature" Path="ms-appx:/Fonts/ComicSansChinese3.ttf#FZMiaoWuS-GB" />
+	<Font Name="DFPShaoNvW" Type="Nature" Path="ms-appx:/Fonts/ComicSansChinese2.ttf#DFPShaoNvW5-GB" />
+</Fonts>

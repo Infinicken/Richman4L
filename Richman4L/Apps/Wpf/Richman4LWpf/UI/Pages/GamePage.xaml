@@ -1,0 +1,1021 @@
+﻿<pages:AnimatePage
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:xamlMapRenderers="using:WenceyWang.Richman4L.Apps.XamlMapRenderers"
+	xmlns:pages="clr-namespace:WenceyWang.Richman4L.Apps.Wpf.UI.Pages"
+	xmlns:controls="clr-namespace:WenceyWang.Richman4L.Apps.Wpf.UI.Controls"
+	xmlns:myToolKitCintrols="using:MyToolkit.Controls"
+	x:Class="WenceyWang.Richman4L.Apps.Wpf.UI.Pages.GamePage"
+	mc:Ignorable="d"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="Auto" Height="Auto" Loaded="Page_Loaded" >
+	<pages:AnimatePage.Resources>
+
+		<Style x:Key="Windows8PivotStyle" TargetType="Pivot" >
+			<Setter Property="Margin" Value="0" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="Foreground" Value="{ThemeResource PivotForegroundThemeBrush}" />
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="ItemsPanel" >
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<Grid />
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Template" >
+				<Setter.Value>
+					<ControlTemplate TargetType="Pivot" >
+						<Grid x:Name="RootElement" Background="{TemplateBinding Background}"
+							HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+							VerticalAlignment="{TemplateBinding VerticalAlignment}" >
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="Orientation" >
+									<VisualState x:Name="Portrait" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin"
+																			Storyboard.TargetName="TitleContentControl" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPortraitThemePadding}" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Landscape" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin"
+																			Storyboard.TargetName="TitleContentControl" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotLandscapeThemePadding}" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<ContentControl x:Name="TitleContentControl" ContentTemplate="{TemplateBinding TitleTemplate}"
+											Content="{TemplateBinding Title}" Style="{StaticResource PivotTitleContentControlStyle}" />
+							<ScrollViewer x:Name="ScrollViewer" HorizontalSnapPointsAlignment="Center"
+										HorizontalSnapPointsType="MandatorySingle" HorizontalScrollBarVisibility="Hidden"
+										Margin="{TemplateBinding Padding}" Grid.Row="1" Template="{StaticResource ScrollViewerScrollBarlessTemplate}"
+										VerticalSnapPointsType="None" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled"
+										VerticalContentAlignment="Stretch" ZoomMode="Disabled" >
+								<PivotPanel x:Name="Panel" VerticalAlignment="Stretch" >
+									<PivotHeaderPanel x:Name="Header" Background="{TemplateBinding BorderBrush}" />
+									<ItemsPresenter x:Name="PivotItemPresenter" >
+										<ItemsPresenter.RenderTransform>
+											<TranslateTransform x:Name="ItemsPresenterTranslateTransform" X="0" />
+										</ItemsPresenter.RenderTransform>
+									</ItemsPresenter>
+								</PivotPanel>
+							</ScrollViewer>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Storyboard x:Name="StartStoryboard" Completed="StartStoryboard_Completed" >
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="MainGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="600" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="LeaveStoryboard" Completed="StartStoryboard_Completed" >
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="MainGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="600" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MainGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="ShowPlayerGridStoryBoard" Completed="ShowPlayerGridStoryBoard_Completed" >
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayerGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
+											Storyboard.TargetName="ShowPlayerGridButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="180" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="ShowPlayerGridButton" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PlayerGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
+											Storyboard.TargetName="HidePlayerGridButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="180" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="PlayerGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="-300" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="HidePlayerGridButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="300" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="HidePlayerGridStoryBoard" Completed="HidePlayerGridStoryBoard_Completed" >
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayerGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
+											Storyboard.TargetName="ShowPlayerGridButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="180" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="360" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="ShowPlayerGridButton" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PlayerGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
+											Storyboard.TargetName="HidePlayerGridButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="180" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="360" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="PlayerGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-300" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="HidePlayerGridButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="300" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="ShowPropertyGridStoryBoard" Completed="ShowPropertyGridStoryBoard_Completed" >
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="PropertyGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PropertyGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="ShowPropertyGridButton" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="HidePropertyGridButton" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="PropertyGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="300" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="HidePropertyGridStoryBoard" Completed="HidePropertyGridStoryBoard_Completed" >
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="PropertyGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PropertyGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="ShowPropertyGridButton" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+											Storyboard.TargetName="HidePropertyGridButton" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
+				Storyboard.TargetName="PropertyGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="300" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="ShowCardGridStoryBoard" Completed="ShowCardGridStoryBoard_Completed" >
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+				Storyboard.TargetName="CardButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-160" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CardGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+				Storyboard.TargetName="CardGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="160" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="HideCardGridStoryBoard" Completed="HideCardGridStoryBoard_Completed" >
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+				Storyboard.TargetName="CardButton" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="-160" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CardGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+				Storyboard.TargetName="CardGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="160" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="HideMenuGridStoryBoard" Completed="HideMenuGridStoryBoard_Completed" >
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MenuGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Collapsed</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MenuGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="ShowMenuGridStoryBoard" Completed="ShowMenuGridStoryBoard_Completed" >
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MenuGrid" >
+				<DiscreteObjectKeyFrame KeyTime="0" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.5" >
+					<DiscreteObjectKeyFrame.Value>
+						<Visibility>Visible</Visibility>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MenuGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="ShowFlagTrue" >
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+				Storyboard.TargetName="FlagGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="-64" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-64" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
+											Storyboard.TargetName="FlagSymbol" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="-45" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="FlagSymbol" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="ShowFlagFalse" >
+			<DoubleAnimationUsingKeyFrames
+				Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+				Storyboard.TargetName="FlagGrid" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="-64" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="-64" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="FlagSymbol" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)"
+											Storyboard.TargetName="FlagSymbol" >
+				<EasingDoubleKeyFrame KeyTime="0" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" EasingFunction="{StaticResource EasingFunction}" />
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="-45" EasingFunction="{StaticResource EasingFunction}" />
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Style x:Key="PivotStyle" TargetType="Pivot" >
+			<Setter Property="Margin" Value="0" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="Background" Value="{ThemeResource PivotBackground}" />
+			<Setter Property="IsTabStop" Value="False" />
+			<Setter Property="ItemsPanel" >
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<Grid />
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Template" >
+				<Setter.Value>
+					<ControlTemplate TargetType="Pivot" >
+						<Grid x:Name="RootElement" Background="{TemplateBinding Background}"
+							HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+							VerticalAlignment="{TemplateBinding VerticalAlignment}" >
+							<Grid.Resources>
+								<Style x:Key="BaseContentControlStyle" TargetType="ContentControl" >
+									<Setter Property="FontFamily" Value="XamlAutoFontFamily" />
+									<Setter Property="FontWeight" Value="SemiBold" />
+									<Setter Property="FontSize" Value="15" />
+									<Setter Property="Template" >
+										<Setter.Value>
+											<ControlTemplate TargetType="ContentControl" >
+												<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+																ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}"
+																HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+																OpticalMarginAlignment="TrimSideBearings"
+																VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+											</ControlTemplate>
+										</Setter.Value>
+									</Setter>
+								</Style>
+								<Style x:Key="TitleContentControlStyle" BasedOn="{StaticResource BaseContentControlStyle}"
+										TargetType="ContentControl" >
+									<Setter Property="FontFamily" Value="{ThemeResource PivotTitleFontFamily}" />
+									<Setter Property="FontWeight" Value="{ThemeResource PivotTitleThemeFontWeight}" />
+									<Setter Property="FontSize" Value="{ThemeResource PivotTitleFontSize}" />
+								</Style>
+							</Grid.Resources>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="Orientation" >
+									<VisualState x:Name="Portrait" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin"
+																			Storyboard.TargetName="TitleContentControl" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPortraitThemePadding}" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Landscape" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin"
+																			Storyboard.TargetName="TitleContentControl" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotLandscapeThemePadding}" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="NavigationButtonsVisibility" >
+									<VisualState x:Name="NavigationButtonsHidden" />
+									<VisualState x:Name="NavigationButtonsVisible" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="NextButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Storyboard.TargetName="NextButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="True" />
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PreviousButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Storyboard.TargetName="PreviousButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="True" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="PreviousButtonVisible" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PreviousButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Storyboard.TargetName="PreviousButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="True" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="NextButtonVisible" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="NextButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="1" />
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="IsEnabled" Storyboard.TargetName="NextButton" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="True" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="HeaderStates" >
+									<VisualState x:Name="HeaderDynamic" />
+									<VisualState x:Name="HeaderStatic" >
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Header" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="StaticHeader" >
+												<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<ContentControl x:Name="TitleContentControl" ContentTemplate="{TemplateBinding TitleTemplate}"
+											Content="{TemplateBinding Title}" IsTabStop="False" Margin="{StaticResource PivotPortraitThemePadding}"
+											Style="{StaticResource TitleContentControlStyle}" Visibility="Collapsed" />
+							<Grid Grid.Row="1" >
+								<Grid.Resources>
+									<ControlTemplate x:Key="NextTemplate" TargetType="Button" >
+										<Border x:Name="Root" BorderBrush="{ThemeResource PivotNextButtonBorderBrush}"
+												BorderThickness="{ThemeResource PivotNavButtonBorderThemeThickness}"
+												Background="{ThemeResource PivotNextButtonBackground}" >
+											<VisualStateManager.VisualStateGroups>
+												<VisualStateGroup x:Name="CommonStates" >
+													<VisualState x:Name="Normal" />
+													<VisualState x:Name="PointerOver" >
+														<Storyboard>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotNextButtonBackgroundPointerOver}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotNextButtonBorderBrushPointerOver}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Arrow" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotNextButtonForegroundPointerOver}" />
+															</ObjectAnimationUsingKeyFrames>
+														</Storyboard>
+													</VisualState>
+													<VisualState x:Name="Pressed" >
+														<Storyboard>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotNextButtonBackgroundPressed}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotNextButtonBorderBrushPressed}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Arrow" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotNextButtonForegroundPressed}" />
+															</ObjectAnimationUsingKeyFrames>
+														</Storyboard>
+													</VisualState>
+												</VisualStateGroup>
+											</VisualStateManager.VisualStateGroups>
+											<FontIcon x:Name="Arrow" Foreground="{ThemeResource PivotNextButtonForeground}" FontSize="12"
+													FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE0E3;" HorizontalAlignment="Center"
+													MirroredWhenRightToLeft="True" UseLayoutRounding="False" VerticalAlignment="Center" />
+										</Border>
+									</ControlTemplate>
+									<ControlTemplate x:Key="PreviousTemplate" TargetType="Button" >
+										<Border x:Name="Root" BorderBrush="{ThemeResource PivotPreviousButtonBorderBrush}"
+												BorderThickness="{ThemeResource PivotNavButtonBorderThemeThickness}"
+												Background="{ThemeResource PivotPreviousButtonBackground}" >
+											<VisualStateManager.VisualStateGroups>
+												<VisualStateGroup x:Name="CommonStates" >
+													<VisualState x:Name="Normal" />
+													<VisualState x:Name="PointerOver" >
+														<Storyboard>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPreviousButtonBackgroundPointerOver}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPreviousButtonBorderBrushPointerOver}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Arrow" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPreviousButtonForegroundPointerOver}" />
+															</ObjectAnimationUsingKeyFrames>
+														</Storyboard>
+													</VisualState>
+													<VisualState x:Name="Pressed" >
+														<Storyboard>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPreviousButtonBackgroundPressed}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Root" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPreviousButtonBorderBrushPressed}" />
+															</ObjectAnimationUsingKeyFrames>
+															<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Arrow" >
+																<DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource PivotPreviousButtonForegroundPressed}" />
+															</ObjectAnimationUsingKeyFrames>
+														</Storyboard>
+													</VisualState>
+												</VisualStateGroup>
+											</VisualStateManager.VisualStateGroups>
+											<FontIcon x:Name="Arrow" Foreground="{ThemeResource PivotPreviousButtonForeground}" FontSize="12"
+													FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE0E2;" HorizontalAlignment="Center"
+													MirroredWhenRightToLeft="True" UseLayoutRounding="False" VerticalAlignment="Center" />
+										</Border>
+									</ControlTemplate>
+								</Grid.Resources>
+								<ScrollViewer x:Name="ScrollViewer" BringIntoViewOnFocusChange="False" HorizontalSnapPointsAlignment="Center"
+											HorizontalSnapPointsType="MandatorySingle" HorizontalScrollBarVisibility="Hidden"
+											Margin="{TemplateBinding Padding}" Template="{StaticResource ScrollViewerScrollBarlessTemplate}"
+											VerticalSnapPointsType="None" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled"
+											VerticalContentAlignment="Stretch" ZoomMode="Disabled" >
+									<PivotPanel x:Name="Panel" VerticalAlignment="Stretch" >
+										<Grid x:Name="PivotLayoutElement" >
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="Auto" />
+											</Grid.ColumnDefinitions>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="*" />
+											</Grid.RowDefinitions>
+											<Grid.RenderTransform>
+												<CompositeTransform x:Name="PivotLayoutElementTranslateTransform" />
+											</Grid.RenderTransform>
+											<ContentPresenter x:Name="LeftHeaderPresenter" ContentTemplate="{TemplateBinding LeftHeaderTemplate}"
+															Content="{TemplateBinding LeftHeader}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+											<ContentControl x:Name="HeaderClipper" Grid.Column="1" HorizontalContentAlignment="Stretch"
+															UseSystemFocusVisuals="True" >
+												<ContentControl.Clip>
+													<RectangleGeometry x:Name="HeaderClipperGeometry" />
+												</ContentControl.Clip>
+												<Grid Background="{ThemeResource PivotHeaderBackground}" >
+													<Grid.RenderTransform>
+														<CompositeTransform x:Name="HeaderOffsetTranslateTransform" />
+													</Grid.RenderTransform>
+													<PivotHeaderPanel x:Name="Header" >
+														<PivotHeaderPanel.RenderTransform>
+															<CompositeTransform x:Name="HeaderTranslateTransform" />
+														</PivotHeaderPanel.RenderTransform>
+														<PivotHeaderPanel x:Name="StaticHeader" Visibility="Collapsed" >
+															<PivotHeaderPanel.RenderTransform>
+																<CompositeTransform x:Name="StaticHeaderTranslateTransform" />
+															</PivotHeaderPanel.RenderTransform>
+														</PivotHeaderPanel>
+													</PivotHeaderPanel>
+												</Grid>
+											</ContentControl>
+											<Button x:Name="PreviousButton" Background="Transparent" Grid.Column="1" HorizontalAlignment="Left"
+													Height="36" IsTabStop="False" IsEnabled="False" Margin="{ThemeResource PivotNavButtonMargin}" Opacity="0"
+													Template="{StaticResource PreviousTemplate}" UseSystemFocusVisuals="False" VerticalAlignment="Top"
+													Width="20" />
+											<Button x:Name="NextButton" Background="Transparent" Grid.Column="1" HorizontalAlignment="Right" Height="36"
+													IsTabStop="False" IsEnabled="False" Margin="{ThemeResource PivotNavButtonMargin}" Opacity="0"
+													Template="{StaticResource NextTemplate}" UseSystemFocusVisuals="False" VerticalAlignment="Top" Width="20" />
+											<ContentPresenter x:Name="RightHeaderPresenter" ContentTemplate="{TemplateBinding RightHeaderTemplate}"
+															Content="{TemplateBinding RightHeader}" Grid.Column="2" HorizontalAlignment="Stretch"
+															VerticalAlignment="Stretch" />
+											<ItemsPresenter x:Name="PivotItemPresenter" Grid.ColumnSpan="3" Grid.Row="1" >
+												<ItemsPresenter.RenderTransform>
+													<TransformGroup>
+														<TranslateTransform x:Name="ItemsPresenterTranslateTransform" />
+														<CompositeTransform x:Name="ItemsPresenterCompositeTransform" />
+													</TransformGroup>
+												</ItemsPresenter.RenderTransform>
+											</ItemsPresenter>
+										</Grid>
+									</PivotPanel>
+								</ScrollViewer>
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+	</pages:AnimatePage.Resources>
+
+	<Grid>
+
+		<Rectangle x:Name="BackgroundRect" Fill="#FF40C1CE" Grid.RowSpan="2" Grid.ColumnSpan="3" d:IsLocked="True" />
+		<Grid x:Name="MapFrame" >
+			<xamlMapRenderers:XamlMapRenderer x:Name="MapRenderer" />
+			<Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
+				<Grid.RenderTransform>
+					<CompositeTransform />
+				</Grid.RenderTransform>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="12" />
+					<RowDefinition Height="4" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="4" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="4" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="4" />
+					<RowDefinition Height="32" />
+					<RowDefinition />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="12" />
+					<ColumnDefinition Width="180" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="150" />
+					<ColumnDefinition Width="12" />
+				</Grid.ColumnDefinitions>
+				<TextBlock x:Name="DateTextBlock" TextWrapping="Wrap" Text="{Binding Date}" Grid.Column="1" Grid.Row="2"
+							FontFamily="{StaticResource Font}" FontSize="{StaticResource FontSize}" />
+				<Grid Grid.Column="1" Grid.Row="4" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition />
+						<ColumnDefinition Width="32" />
+					</Grid.ColumnDefinitions>
+					<TextBlock x:Name="PlayerNameTextBlock" TextWrapping="Wrap" Text="Wencey Wang" FontFamily="{StaticResource Font}"
+								FontSize="{StaticResource FontSize}" />
+					<Button x:Name="ShowPlayerGridButton" Grid.ColumnSpan="3" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0"
+							VerticalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" RenderTransformOrigin="0.5,0.5"
+							Click="ShowPlayerGridButton_Click" >
+						<Button.RenderTransform>
+							<CompositeTransform />
+						</Button.RenderTransform>
+						<TextBlock Text="&#xF107;" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome"
+									FontSize="{StaticResource SmallFontSize}" TextAlignment="Center" VerticalAlignment="Center"
+									HorizontalAlignment="Center" TextLineBounds="TrimToCapHeight" />
+					</Button>
+				</Grid>
+				<Button x:Name="StockButton" HorizontalAlignment="Right" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="2"
+						Style="{StaticResource UpArrowTextBlockButtonStyle}" Content="投资" FontFamily="{StaticResource Font}"
+						FontSize="{StaticResource SmallFontSize}" />
+				<StackPanel x:Name="ControlsPanel" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left"
+							RenderTransformOrigin="0.5,0.5" Grid.Column="1" >
+					<StackPanel.RenderTransform>
+						<CompositeTransform TranslateX="-6" />
+					</StackPanel.RenderTransform>
+					<Button x:Name="MenuButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Style="{StaticResource TextBlockButtonStyle}"
+							FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" d:LayoutOverrides="LeftPosition, RightPosition"
+							Click="MenuButton_Click" >
+						<TextBlock TextWrapping="Wrap" Text="&#xF0C9;" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Margin="5"
+									FontSize="16" Width="16" TextAlignment="Center" Height="16" />
+					</Button>
+					<Button x:Name="ZoomInButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Style="{StaticResource TextBlockButtonStyle}"
+							FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Click="ZoomInButton_Click" >
+						<TextBlock TextWrapping="Wrap" Text="&#xF00E;" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Margin="5"
+									FontSize="16" Width="16" Height="16" TextAlignment="Center" />
+					</Button>
+					<Button x:Name="ZoomOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Style="{StaticResource TextBlockButtonStyle}"
+							FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" d:LayoutOverrides="Height"
+							Click="ZoomOutButton_Click" >
+						<TextBlock TextWrapping="Wrap" Text="&#xF010;" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" Margin="5"
+									FontSize="16" Width="16" Height="16" TextAlignment="Center" />
+					</Button>
+				</StackPanel>
+				<Grid x:Name="PropertyGrid" Background="#66000000" Grid.ColumnSpan="2" VerticalAlignment="Bottom"
+					Height="510" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="10" >
+					<Grid.RenderTransform>
+						<CompositeTransform />
+					</Grid.RenderTransform>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="10" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<TextBlock TextWrapping="Wrap" Text="资产列表" FontFamily="{StaticResource Font}" FontSize="16" Grid.Column="1"
+								Grid.Row="1" />
+					<ScrollViewer Grid.Row="3" Grid.ColumnSpan="2" >
+						<StackPanel />
+					</ScrollViewer>
+				</Grid>
+				<Grid x:Name="CardGrid" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="6" Background="#FFFF4D4D" Grid.RowSpan="4"
+					RenderTransformOrigin="0.5,0.5" >
+					<Grid.RenderTransform>
+						<CompositeTransform />
+					</Grid.RenderTransform>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="10" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition />
+						<ColumnDefinition Width="10" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<TextBlock TextWrapping="Wrap" Text="卡片" FontFamily="{StaticResource Font}"
+								FontSize="{StaticResource SmallFontSize}" Grid.Column="1"
+								Grid.Row="1" />
+					<TextBlock x:Name="GamePointTextBlock" Grid.Column="2" HorizontalAlignment="Right" TextWrapping="Wrap"
+								Text="点数:1000" FontFamily="{StaticResource Font}" VerticalAlignment="Center" Grid.Row="1"
+								FontSize="{StaticResource ExtraSmallFontSize}" />
+					<ScrollViewer Grid.Row="3" Grid.ColumnSpan="4" >
+						<StackPanel x:Name="CardListStackPanel" />
+					</ScrollViewer>
+				</Grid>
+				<Button x:Name="CardButton" Grid.Column="3" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Stretch"
+						Style="{StaticResource TextBlockButtonStyle}" d:LayoutOverrides="Height, TopPosition, BottomPosition"
+						Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5" Click="CardButton_Click" >
+					<Button.RenderTransform>
+						<CompositeTransform />
+					</Button.RenderTransform>
+					<Grid Background="#FFA65959" >
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition Width="1*" />
+							<ColumnDefinition Width="20" />
+						</Grid.ColumnDefinitions>
+						<TextBlock x:Name="CardButtonRotateTextBlock" Text="&#xF104;"
+									VerticalAlignment="Center" FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome"
+									FontSize="{StaticResource SmallFontSize}"
+									RenderTransformOrigin="0.5,0.5" TextLineBounds="TrimToCapHeight" Grid.Column="1"
+									d:LayoutOverrides="HorizontalAlignment" />
+					</Grid>
+				</Button>
+				<Grid x:Name="MoneyGrid" Grid.Row="10" Grid.ColumnSpan="2" >
+					<Grid.RowDefinitions>
+						<RowDefinition Height="8" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="8" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="8" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="4" />
+						<ColumnDefinition />
+						<ColumnDefinition Width="32" />
+					</Grid.ColumnDefinitions>
+					<Rectangle Grid.ColumnSpan="7" Fill="{StaticResource TransparentCranBrush}" Grid.RowSpan="3" />
+					<TextBlock x:Name="Money" Grid.Column="3" TextWrapping="Wrap" Text="$100,000,00"
+								FontFamily="{StaticResource Font}" FontSize="18.667" VerticalAlignment="Center" Grid.Row="1"
+								HorizontalAlignment="Center" />
+					<controls:MoneySymbol Grid.Column="1" Width="20" Height="20"
+										RenderTransformOrigin="0.5,0.5" Grid.Row="1" >
+						<controls:MoneySymbol.RenderTransform>
+							<CompositeTransform ScaleX="0.8" ScaleY="0.8" />
+						</controls:MoneySymbol.RenderTransform>
+					</controls:MoneySymbol>
+
+					<Button x:Name="ShowPropertyGridButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4"
+							Style="{StaticResource TextBlockButtonStyle}" Grid.ColumnSpan="3" Grid.RowSpan="3"
+							Click="ShowPropertyGridButton_Click" >
+						<TextBlock HorizontalAlignment="Center" Text="&#xF106;" VerticalAlignment="Center"
+									FontSize="{StaticResource SmallFontSize}" RenderTransformOrigin="0.45,0.6" UseLayoutRounding="False"
+									d:LayoutRounding="Auto"
+									FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" TextLineBounds="TrimToCapHeight" />
+					</Button>
+					<Button x:Name="HidePropertyGridButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="4"
+							Style="{StaticResource TextBlockButtonStyle}" Grid.ColumnSpan="3" Grid.RowSpan="3" Visibility="Collapsed"
+							RenderTransformOrigin="0.5,0.5" Click="HidePropertyGridButton_Click" >
+						<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="&#xF106;" VerticalAlignment="Center"
+									FontSize="{StaticResource SmallFontSize}" RenderTransformOrigin="0.45,0.6" UseLayoutRounding="False"
+									d:LayoutRounding="Auto"
+									FontFamily="ms-appx:/Fonts/FontAwesome.otf#FontAwesome" />
+					</Button>
+				</Grid>
+				<Button x:Name="GoButton" Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="10" VerticalAlignment="Stretch"
+						Style="{StaticResource TextBlockButtonStyle}" Grid.ColumnSpan="2" Click="GoButton_Click" >
+					<Grid Background="#FFF76666" >
+						<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Go !"
+									VerticalAlignment="Center" FontFamily="{StaticResource Font}" FontSize="{StaticResource BigFontSize}" />
+					</Grid>
+				</Button>
+				<Grid x:Name="FlagGrid" Grid.Row="8" Margin="0" HorizontalAlignment="Left" Width="64" Grid.ColumnSpan="2"
+					RenderTransformOrigin="0.5,0.5" >
+					<Grid.RenderTransform>
+						<CompositeTransform />
+					</Grid.RenderTransform>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="24" />
+						<ColumnDefinition Width="4" />
+						<ColumnDefinition Width="12" />
+					</Grid.ColumnDefinitions>
+					<Path Grid.Column="3" Data="M0,0 L0,1 L1,1 z" Fill="{StaticResource LightRedBrush}" Stretch="Fill"
+						UseLayoutRounding="False" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Bottom" />
+					<Rectangle Grid.ColumnSpan="3" Fill="{StaticResource LightRedBrush}" Stroke="Black" StrokeThickness="0" />
+					<controls:FlagSymbol x:Name="FlagSymbol" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+										Width="20" Height="20" RenderTransformOrigin="0.5,0.5" />
+				</Grid>
+				<StackPanel Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Top" Grid.Row="8" />
+
+			</Grid>
+			<Grid x:Name="MenuGrid"
+				RenderTransformOrigin="0.5,0.5" Background="{ThemeResource SystemControlAcrylicElementBrush}" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<StackPanel VerticalAlignment="Center" Grid.Column="1" Margin="0" >
+					<Button x:Name="ResumeButton" Content="恢复游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
+							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="ResumeButton_Click" FontSize="24"
+							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+							Background="{StaticResource TransparentCranBrush}"
+							MinWidth="0" MinHeight="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
+					<Button x:Name="SaveButton" Content="储存游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							FontFamily="{StaticResource Font}" FontWeight="Normal" Click="SaveButton_Click"
+							Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+							Background="{StaticResource TransparentCranBrush}"
+							MinHeight="0" MinWidth="0" FontSize="24" Margin="{StaticResource WideMargin}"
+							Style="{StaticResource RoundedRectangleButtonStyle}" />
+					<Button x:Name="DevButton" Content="开发模式" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Margin="{StaticResource WideMargin}" FontFamily="{StaticResource Font}" FontWeight="Normal"
+							Click="DevButton_Click"
+							BorderBrush="{x:Null}" Background="{StaticResource TransparentCranBrush}"
+							Padding="{StaticResource ButtonPadding}"
+							FontSize="24" MinHeight="0" MinWidth="0" Style="{StaticResource RoundedRectangleButtonStyle}" />
+					<Button x:Name="MainPageButton" Content="离开游戏" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Margin="{StaticResource WideMargin}" FontFamily="{StaticResource Font}" FontWeight="Normal"
+							Click="MainPageButton_Click"
+							MinWidth="0" MinHeight="0" FontSize="24" Padding="{StaticResource ButtonPadding}" BorderBrush="{x:Null}"
+							Background="{StaticResource TransparentCranBrush}" Style="{StaticResource RoundedRectangleButtonStyle}" />
+				</StackPanel>
+			</Grid>
+		</Grid>
+		<Grid x:Name="StockFrame" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"
+			Grid.RowSpan="2" Grid.ColumnSpan="3" RenderTransformOrigin="0.5,0.5" d:IsHidden="True" >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="28" />
+				<ColumnDefinition Width="12" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="12" />
+				<RowDefinition />
+				<RowDefinition Height="4" />
+				<RowDefinition Height="20" />
+				<RowDefinition Height="12" />
+			</Grid.RowDefinitions>
+			<!--<Pivot Title="投资" Margin="0" Style="{StaticResource PivotStyle}" Grid.ColumnSpan="2">
+				<PivotItem Margin="20,0" >
+					<PivotItem.Header>
+						<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="股票" VerticalAlignment="Top" FontFamily="{StaticResource Font}" FontSize="21.333" Margin="10,0,0,0"/>
+					</PivotItem.Header>
+					<Grid>
+						<ScrollViewer/>
+					</Grid>
+				</PivotItem>
+			</Pivot>-->
+			<Button x:Name="GameButton" HorizontalAlignment="Right" VerticalAlignment="Stretch"
+					Style="{StaticResource DownArrowTextBlockButtonStyle}" Grid.Row="5" Grid.Column="1" Content="地图"
+					FontFamily="{StaticResource Font}" FontSize="{StaticResource SmallFontSize}" Grid.ColumnSpan="2" />
+			<TextBlock Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="投资"
+						VerticalAlignment="Center" FontFamily="{StaticResource Font}" FontSize="{StaticResource LargeTitle}" />
+			<Pivot Grid.Column="1" Grid.Row="3" >
+				<Pivot.HeaderTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding}"
+									FontFamily="{StaticResource Font}" FontSize="{StaticResource ExtraSmallTitle}" />
+					</DataTemplate>
+				</Pivot.HeaderTemplate>
+				<PivotItem Header="股票" >
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<myToolKitCintrols:DataGrid myToolKitCintrols:DataGridExtensions.UseSingleSelectionAndDeselection="true" >
+							<myToolKitCintrols:DataGrid.Columns>
+								<myToolKitCintrols:DataGridTextColumn Header="代号" />
+							</myToolKitCintrols:DataGrid.Columns>
+						</myToolKitCintrols:DataGrid>
+					</Grid>
+				</PivotItem>
+				<PivotItem Header="PivotItem 1" >
+					<Grid />
+				</PivotItem>
+			</Pivot>
+		</Grid>
+	</Grid>
+</pages:AnimatePage>

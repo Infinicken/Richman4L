@@ -3,35 +3,11 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
-using System . Resources ;
 using System . Runtime . CompilerServices ;
+using System . Runtime . InteropServices ;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-
-[assembly : AssemblyTitle ( "WenceyWang.Richman4L" )]
-[assembly : AssemblyDescription ( "Richman4L的游戏逻辑" )]
-[assembly : AssemblyConfiguration ( "" )]
-[assembly : AssemblyCompany ( "Wencey Wang" )]
-[assembly : AssemblyProduct ( "Wencey Wang Richman4L" )]
-[assembly : AssemblyCopyright ( "Wencey Wang © 2016" )]
 [assembly : AssemblyTrademark ( "Richman4L" )]
-[assembly : AssemblyCulture ( "" )]
+[assembly : ComVisible ( true )]
 [assembly : CLSCompliant ( true )]
-[assembly : NeutralResourcesLanguage ( "" )]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-
-[assembly : AssemblyVersion ( "1.0.*" )]
-[assembly : AssemblyFileVersion ( "1.0.0.0" )]
-[assembly : InternalsVisibleTo ( "WenceyWang.Richman4L.UnitTests" )]
+[assembly : Guid ( "DD9D12C0-5D6D-4E78-9C4E-2486ABA32044" )]
+[assembly : InternalsVisibleTo ( "WenceyWang.Richman4L.Logics.Tests" )]

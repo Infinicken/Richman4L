@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . GameEnviroment
+namespace WenceyWang . Richman4L . Logics . GameEnviroment
 {
 
 	/// <summary>
@@ -32,7 +32,7 @@ namespace WenceyWang . Richman4L . GameEnviroment
 			Value = value ;
 		}
 
-		public override string ToString ( ) { return $"{nameof(DiceType)}: {DiceType}, {nameof(Value)}: {Value}" ; }
+		public override string ToString ( ) { return $"{DiceType}:{Value}" ; }
 
 	}
 

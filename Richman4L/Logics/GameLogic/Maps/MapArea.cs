@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	public abstract class MapArea
@@ -47,7 +47,9 @@ namespace WenceyWang . Richman4L . Maps
 
 		public override bool IsInArea ( MapPosition position )
 		{
-			return position . X >= Position . X && position . X <= Position . X + Size . Width && position . Y >= Position . Y
+			return position . X >= Position . X
+					&& position . X <= Position . X + Size . Width
+					&& position . Y >= Position . Y
 					&& position . Y <= Position . Y + Size . Height ;
 		}
 
@@ -59,7 +61,8 @@ namespace WenceyWang . Richman4L . Maps
 		public static double ChebyshevDistance ( MapObject obj1 , MapObject obj2 )
 		{
 			return
-				Math . Max ( Math . Min ( Math . Max ( Math . Abs ( obj1 . Position . X + obj1 . Size . Width
+				Math . Max ( Math . Min ( Math . Max ( Math . Abs ( obj1 . Position . X
+																	+ obj1 . Size . Width
 																	- obj2 . Position . X ) ,
 														0 ) ,
 										Math . Max ( Math . Abs ( obj1 . Position . X - ( obj2 . Position . X + obj2 . Size . Width ) ) , 0 ) ) ,

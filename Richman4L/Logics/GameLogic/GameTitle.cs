@@ -5,7 +5,9 @@ using System . Diagnostics ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L
+using JetBrains . Annotations ;
+
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public struct GameTitle
@@ -23,9 +25,15 @@ namespace WenceyWang . Richman4L
 
 		public override string ToString ( ) { return Content ; }
 
-		public static implicit operator GameTitle ( string text )
+		public static implicit operator GameTitle ( [NotNull] string text )
 		{
+			if ( text == null )
+			{
+				throw new ArgumentNullException ( nameof(text) ) ;
+			}
+
 			string [ ] temp = text . Split ( '4' ) ;
+
 			return new GameTitle ( temp . First ( ) , temp . Last ( ) ) ;
 		}
 

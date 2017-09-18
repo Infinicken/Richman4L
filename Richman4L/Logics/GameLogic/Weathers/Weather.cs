@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Logics . Calendars ;
 
-namespace WenceyWang . Richman4L . Weathers
+namespace WenceyWang . Richman4L . Logics . Weathers
 {
 
 	//Todo:完成天气模型
@@ -27,9 +27,9 @@ namespace WenceyWang . Richman4L . Weathers
 		public PrecipitationType PrecipitationType { get ; private set ; }
 
 		/// <summary>
-		///     指示阳光的强度,取值[0,1000]
+		///     指示阳光的强度
 		/// </summary>
-		public int SunshineStrength { get ; private set ; }
+		public GameValue SunshineStrength { get ; private set ; }
 
 		/// <summary>
 		///     指示降水量
@@ -92,7 +92,8 @@ namespace WenceyWang . Richman4L . Weathers
 				{
 					if ( GameRandom . Current . Next ( 2 ) == 1 ) //和煦的，南风，升温
 					{
-						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25 - 4.8
+						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25
+												- 4.8
 												+ GameRandom . Current . NextNormalDouble ( 0 , 4 , 0 , 10 ) ;
 
 						windAngle = GameRandom . Current . NextNormalDouble ( 180 , 100 , 90 , 270 ) ;
@@ -136,7 +137,8 @@ namespace WenceyWang . Richman4L . Weathers
 					}
 					else //犀利的，北风，降温
 					{
-						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25 - 4.8
+						weather . Temperature = seasonProcessNet * seasonProcessNet * 9 * 1.25
+												- 4.8
 												+ GameRandom . Current . NextNormalDouble ( 0 , 4 , - 10 , 0 ) ;
 						windAngle = GameRandom . Current . NextNormalDouble ( 0 , 100 , - 90 , 90 ) ;
 						if ( weather . Wind . Angle < 0 )
@@ -201,7 +203,7 @@ namespace WenceyWang . Richman4L . Weathers
 				}
 				default :
 				{
-					throw new NotImplementedException ( ) ;
+					throw new ArgumentOutOfRangeException ( ) ;
 				}
 			}
 

@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Newspapers
+namespace WenceyWang . Richman4L . Logics . Newspapers
 {
 
 	public class Newspaper

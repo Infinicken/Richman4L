@@ -3,10 +3,10 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Logics . Maps ;
+using WenceyWang . Richman4L . Logics . Players ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public class CashMoreThanCondition : WinningCondition

@@ -5,14 +5,14 @@ using System . Linq ;
 using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Cards ;
-using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Logics . Cards ;
+using WenceyWang . Richman4L . Logics . Maps . Roads ;
+using WenceyWang . Richman4L . Logics . Players ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
-	[MapObject ( nameof(CardStore) , nameof(CardStore) )]
+	[MapObject]
 	[Guid ( "0FFBE4CB-F194-4483-B99A-954CA4087786" )]
 	public class CardStore : NormalRoad
 	{

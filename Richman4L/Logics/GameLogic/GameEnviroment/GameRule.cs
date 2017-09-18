@@ -9,9 +9,9 @@ using System . Reflection ;
 using System . Runtime . CompilerServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . GameEnviroment
+namespace WenceyWang . Richman4L . Logics . GameEnviroment
 {
 
 	/// <summary>
@@ -27,8 +27,6 @@ namespace WenceyWang . Richman4L . GameEnviroment
 		public Dictionary <string , object> Values { get ; } = new Dictionary <string , object> ( ) ;
 
 		public Dictionary <string , string> Expressions { get ; } = new Dictionary <string , string> ( ) ;
-
-		//public Dictionary<string,Lazy<>>
 
 		public static List <GameRuleItem> GameRules { get ; } = new List <GameRuleItem> ( ) ;
 
@@ -55,8 +53,10 @@ namespace WenceyWang . Richman4L . GameEnviroment
 				if ( ! Loaded )
 				{
 					//Read All prop
-					List <PropertyInfo> properties = typeof ( Game ) . GetTypeInfo ( ) . Assembly . GetTypes ( ) .
-																		SelectMany ( type => type . GetTypeInfo ( ) . DeclaredProperties ) . ToList ( ) ;
+					List <PropertyInfo> properties = typeof ( Game ) . GetTypeInfo ( ) .
+																		Assembly . GetTypes ( ) .
+																		SelectMany ( type => type . GetTypeInfo ( ) . DeclaredProperties ) .
+																		ToList ( ) ;
 
 
 					//Select Value Item

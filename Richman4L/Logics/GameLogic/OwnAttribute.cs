@@ -3,14 +3,14 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	[AttributeUsage ( AttributeTargets . Property )]
 	public sealed class OwnAttribute : PropertySerializationAttributeBase
 	{
 
-		public override SerializationRule Rule => SerializationRule . Full ;
+		public override SerializationMode Rule => SerializationMode . Full ;
 
 
 		public OwnAttribute ( PropertyVisability visability = PropertyVisability . Everyone ) { Visability = visability ; }
@@ -21,7 +21,7 @@ namespace WenceyWang . Richman4L
 	public sealed class ReferenceAttribute : PropertySerializationAttributeBase
 	{
 
-		public override SerializationRule Rule => SerializationRule . Reference ;
+		public override SerializationMode Rule => SerializationMode . Reference ;
 
 		public ReferenceAttribute ( PropertyVisability visability = PropertyVisability . Everyone )
 		{
@@ -35,11 +35,11 @@ namespace WenceyWang . Richman4L
 
 		public PropertyVisability Visability { get ; set ; }
 
-		public abstract SerializationRule Rule { get ; }
+		public abstract SerializationMode Rule { get ; }
 
 	}
 
-	public enum SerializationRule
+	public enum SerializationMode
 	{
 
 		Full ,
@@ -58,6 +58,27 @@ namespace WenceyWang . Richman4L
 		God
 
 	}
+
+	public enum ConsoleVision
+	{
+
+		Normal ,
+
+		Owner ,
+
+		God
+
+	}
+
+	public enum PlayerVision
+	{
+
+		Normal ,
+
+		God
+
+	}
+
 
 	/// <summary>
 	///     玩家具有的权限

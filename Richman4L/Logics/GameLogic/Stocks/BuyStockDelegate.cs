@@ -3,10 +3,11 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Players ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Stocks
+using WenceyWang . Richman4L . Logics . Players ;
+
+namespace WenceyWang . Richman4L . Logics . Stocks
 {
 
 	/// <summary>

@@ -4,10 +4,10 @@ using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Weathers ;
+using WenceyWang . Richman4L . Logics . Players ;
+using WenceyWang . Richman4L . Logics . Weathers ;
 
-namespace WenceyWang . Richman4L . Calendars
+namespace WenceyWang . Richman4L . Logics . Calendars
 {
 
 	public class Calendar : GameObject

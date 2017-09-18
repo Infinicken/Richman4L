@@ -5,16 +5,17 @@ using System . Linq ;
 using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . GameEnviroment ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Logics . GameEnviroment ;
+
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	/// <summary>
 	///     空的地块
 	/// </summary>
-	[MapObject ( nameof(EmptyBlock) , nameof(EmptyBlock) )]
+	[MapObject]
 	[Guid ( "E0AB2AC4-499B-4584-95FA-77C17E35A66E" )]
 	public sealed class EmptyBlock : Block
 	{

@@ -4,86 +4,23 @@ using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Auctions ;
-using WenceyWang . Richman4L . Banks ;
-using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Cards ;
-using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Maps . Buildings ;
-using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Players . Commands ;
-using WenceyWang . Richman4L . Players . Events ;
-using WenceyWang . Richman4L . Players . Models ;
-using WenceyWang . Richman4L . Players . PayReasons ;
-using WenceyWang . Richman4L . Stocks ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Players
+using WenceyWang . Richman4L . Logics . Auctions ;
+using WenceyWang . Richman4L . Logics . Banks ;
+using WenceyWang . Richman4L . Logics . Buffs . PlayerBuffs ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Cards ;
+using WenceyWang . Richman4L . Logics . Maps ;
+using WenceyWang . Richman4L . Logics . Maps . Buildings ;
+using WenceyWang . Richman4L . Logics . Players . Commands ;
+using WenceyWang . Richman4L . Logics . Players . Events ;
+using WenceyWang . Richman4L . Logics . Players . Models ;
+using WenceyWang . Richman4L . Logics . Players . PayReasons ;
+using WenceyWang . Richman4L . Logics . Stocks ;
+
+namespace WenceyWang . Richman4L . Logics . Players
 {
-
-	public sealed class AssetTransactionAgreement
-	{
-
-		public WithAssetObject PartyA { get ; set ; }
-
-		public IAsset PartyAProvide { get ; set ; }
-
-		public WithAssetObject PartyB { get ; set ; }
-
-		public IAsset PartyBProvide { get ; set ; }
-
-
-		/// <summary>
-		///     被用于希望卖东西
-		/// </summary>
-		/// <param name="partyA"></param>
-		/// <param name="partyAProvide"></param>
-		/// <param name="partyB"></param>
-		public AssetTransactionAgreement ( WithAssetObject partyA , IAsset partyAProvide , WithAssetObject partyB )
-		{
-			PartyA = partyA ;
-			PartyAProvide = partyAProvide ;
-			PartyB = partyB ;
-		}
-
-		/// <summary>
-		///     被用于希望买东西
-		/// </summary>
-		/// <param name="partyA"></param>
-		/// <param name="partyB"></param>
-		/// <param name="partyBProvide"></param>
-		public AssetTransactionAgreement ( WithAssetObject partyA , WithAssetObject partyB , IAsset partyBProvide )
-		{
-			PartyA = partyA ;
-			PartyB = partyB ;
-			PartyBProvide = partyBProvide ;
-		}
-
-	}
-
-	/// <summary>
-	///     钱被作为资产给出
-	/// </summary>
-	public class MoneyAsset : IAsset
-	{
-
-		public long Amount { get ; }
-
-		public WithAssetObject Owner { get ; private set ; }
-
-		public long MinimumValue => Amount ;
-
-		public bool CanGive { get ; }
-
-		public void GiveTo ( WithAssetObject newOwner )
-		{
-			newOwner . ReceivePayReason ( new PayMoneyForGiveMoneyAsset ( this , Owner ) ) ;
-			Owner = newOwner ;
-		}
-
-	}
-
 
 	//Todo:玩家破产了怎么办？
 	//Todo:玩家希望退出游戏怎么办？
@@ -94,7 +31,7 @@ namespace WenceyWang . Richman4L . Players
 
 		public PlayerOnMap MapObject { get ; set ; }
 
-		[Own]
+		[Reference]
 		[CanBeNull]
 		public IUser User { get ; }
 
@@ -123,12 +60,8 @@ namespace WenceyWang . Richman4L . Players
 
 		[NotNull]
 		[ItemNotNull]
-		private Dictionary <DiceType , int> diceList { get ; } = new Dictionary <DiceType , int> ( ) ;
-
-		[NotNull]
-		[ItemNotNull]
 		[Own ( PropertyVisability . Owner )]
-		public ReadOnlyDictionary <DiceType , int> DiceList { get ; }
+		public Dictionary <DiceType , int> DiceList { get ; } = new Dictionary <DiceType , int> ( ) ;
 
 		/// <summary>
 		///     玩家的游戏点数
@@ -141,6 +74,7 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
+		[Reference ( PropertyVisability . Owner )]
 		public Dictionary <Stock , int> Stocks { get ; }
 
 
@@ -149,20 +83,22 @@ namespace WenceyWang . Richman4L . Players
 		/// </summary>
 		[NotNull]
 		[ItemNotNull]
+		[Reference]
 		public List <Area> Areas => Map . Currnet . Objects . Where ( mapObject => ( mapObject as Area ) ? . Owner == this ) .
-										Select ( mapObject => ( Area ) mapObject ) . ToList ( ) ;
+										Select ( mapObject => ( Area ) mapObject ) .
+										ToList ( ) ;
 
 		/// <summary>
 		///     玩家当前的位置
 		/// </summary>
 		[NotNull]
-		public Road Position { get ; private set ; }
+		public Block Position { get ; private set ; }
 
 		/// <summary>
 		///     玩家前一个位置（用于确定玩家的方向）
 		/// </summary>
 		[NotNull]
-		public Road PreviousPosition { get ; private set ; }
+		public Block PreviousPosition { get ; private set ; }
 
 		/// <summary>
 		///     玩家的增益效果
@@ -178,13 +114,13 @@ namespace WenceyWang . Richman4L . Players
 		/// <summary>
 		///     指示玩家能否获得收益
 		/// </summary>
-		public bool CanGetCharge => State == PlayerState . Normal && this . IsBlockGetCharge ( ) ;
+		public bool CanGetCharge => this . IsBlockGetCharge ( ) ;
 
 		/// <summary>
 		///     指示玩家当前是否能移动
 		/// </summary>
-		[Own]
-		public bool CanMove => ! HaveMoveToday && State == PlayerState . Normal && this . IsBlockMoving ( ) ;
+		[Own ( PropertyVisability . Owner )]
+		public bool CanMove => ! HaveMoveToday && this . IsBlockMoving ( ) ;
 
 		[NotNull]
 		[Own ( PropertyVisability . Owner )]
@@ -193,7 +129,7 @@ namespace WenceyWang . Richman4L . Players
 		[NotNull]
 		private List <long> moneyHistory { get ; }
 
-		[Own]
+		[Own ( PropertyVisability . Owner )]
 		public long Money
 		{
 			get => _money ;
@@ -211,7 +147,8 @@ namespace WenceyWang . Richman4L . Players
 		}
 
 		[Own]
-		public decimal PropertiesInMoney => Money + SavedMoney . Sum ( proof => proof . MoneyToGet )
+		public decimal PropertiesInMoney => Money
+											+ SavedMoney . Sum ( proof => proof . MoneyToGet )
 											- BorrowedMoney . Sum ( proof => proof . MoneyToReturn ) ;
 
 		[NotNull]
@@ -334,39 +271,7 @@ namespace WenceyWang . Richman4L . Players
 		public event EventHandler BuildBuildingEvent ;
 
 
-		public void ChangeState ( PlayerState state , int duration )
-		{
-			if ( duration < 1 )
-			{
-				throw new ArgumentOutOfRangeException ( nameof(duration) ) ;
-			}
-
-			PlayerState oldState = State ;
-			State = state ;
-			StateStartDate = Game . Current . Calendar . Today ;
-			StateDuration = duration ;
-			ChangeStateEvent ? . Invoke ( this , new PlayerChangeStateEventArgs ( oldState , State , duration ) ) ;
-		}
-
-		[CanBeNull]
-		public event EventHandler <PlayerChangeStateEventArgs> ChangeStateEvent ;
-
-		public override void StartDay ( GameDate thisDate )
-		{
-			#region Change State
-
-			if ( State != PlayerState . Normal
-				&& StateStartDate + StateDuration >= thisDate )
-			{
-				StateStartDate = thisDate ;
-				StateDuration = 0 ;
-				State = PlayerState . Normal ;
-			}
-
-			#endregion
-
-			HaveMoveToday = false ;
-		}
+		public override void StartDay ( GameDate thisDate ) { HaveMoveToday = false ; }
 
 		public override void EndToday ( ) { moneyHistory . Add ( Money ) ; }
 
@@ -416,85 +321,30 @@ namespace WenceyWang . Richman4L . Players
 
 			//Todo:Check if player can use this dice
 
-			if ( CanMove )
-			{
-				HaveMoveToday = true ;
-				ReadOnlyCollection <int> diceResult = Game . Current . GameRule . GetDice ( diceType , ( int ) moveType ) ;
-				Path route = Position . Route ( PreviousPosition , diceResult . Sum ( ) ) ;
-				foreach ( Road item in route . Route )
-				{
-					Position . Pass ( this , moveType ) ;
-					PreviousPosition = Position ;
-					Position = item ;
-				}
+			//if (CanMove)
+			//{
+			//	HaveMoveToday = true;
+			//	ReadOnlyCollection<int> diceResult = Game.Current.GameRule.GetDice(diceType, (int)moveType);
+			//	Path route = Position.Route(PreviousPosition, diceResult.Sum());
+			//	foreach (Road item in route.Route)
+			//	{
+			//		Position.Pass(this, moveType);
+			//		PreviousPosition = Position;
+			//		Position = item;
+			//	}
 
-				Position . Stay ( this , moveType ) ;
-				MoveEvent ? . Invoke ( this , new PlayerMoveEventArgs ( route , diceResult ) ) ;
-			}
-			else
-			{
-				MoveEvent ? . Invoke ( this ,
-										new PlayerMoveEventArgs ( new Path ( ) , new ReadOnlyCollection <int> ( new List <int> ( ) ) ) ) ;
-			}
+			//	Position.Stay(this, moveType);
+			//	MoveEvent?.Invoke(this, new PlayerMoveEventArgs(route, diceResult));
+			//}
+			//else
+			//{
+			//	MoveEvent?.Invoke(this,
+			//							new PlayerMoveEventArgs(new Path(), new ReadOnlyCollection<int>(new List<int>())));
+			//}
 		}
 
 		[CanBeNull]
 		public event EventHandler <PlayerMoveEventArgs> MoveEvent ;
-
-		//看起来没必要
-		///// <summary>
-		/////     购买某个区域
-		///// </summary>
-		///// <param name="toBuy">要购买的区域</param>
-		///// <returns></returns>
-		//public BuyAreaResult BuyArea ( [NotNull] Area toBuy )
-		//{
-		//	if ( toBuy == null )
-		//	{
-		//		throw new ArgumentNullException ( nameof(toBuy) ) ;
-		//	}
-
-		//	BuyAreaResult result = BuyAreaResult . Crate ( toBuy ) ;
-
-		//	if ( ! toBuy . IsBlockBuy ( ) )
-		//	{
-		//		if ( ! this . IsBlockBuyArea ( ) )
-		//		{
-		//			if ( toBuy . Owner == null )
-		//			{
-		//				if ( Money >= toBuy . Price )
-		//				{
-		//					Money -= toBuy . Price ;
-		//					result . Area = toBuy ;
-		//					toBuy . Owner = this ;
-		//					result . StatusCode = BuyAreaStatusCode . Success ;
-		//					result . CostMoney = toBuy . Price ;
-		//				}
-		//				else
-		//				{
-		//					result . StatusCode = BuyAreaStatusCode . MoneyNotEnough ;
-		//				}
-		//			}
-		//			else
-		//			{
-		//				result . StatusCode = BuyAreaStatusCode . NotBuyable ;
-		//			}
-		//		}
-		//		else
-		//		{
-		//			result . StatusCode = BuyAreaStatusCode . PlayerDebuff ;
-		//		}
-		//	}
-		//	else
-		//	{
-		//		result . StatusCode = BuyAreaStatusCode . AreaDebuff ;
-		//	}
-		//	BuyAreaEvent ? . Invoke ( this , new PlayerBuyAreaEventArgs ( result ) ) ;
-		//	return result ;
-		//}
-
-		[CanBeNull]
-		public event EventHandler <PlayerBuyAreaEventArgs> BuyAreaEvent ;
 
 		#region TakeAwayStock
 
@@ -538,29 +388,6 @@ namespace WenceyWang . Richman4L . Players
 		public event EventHandler <PlayerTakeAwayStockEventArgs> TakeAwayStockEvent ;
 
 		#endregion
-
-		#region State
-
-		/// <summary>
-		///     玩家的状态
-		/// </summary>
-		[Own]
-		public PlayerState State { get ; protected set ; }
-
-		/// <summary>
-		///     当前状态将会持续的时间
-		/// </summary>
-		[CanBeNull]
-		[Own]
-		public int StateDuration { get ; protected set ; }
-
-
-		[CanBeNull]
-		[Own]
-		public GameDate StateStartDate { get ; protected set ; }
-
-		#endregion
-
 
 		#region Get Buff
 

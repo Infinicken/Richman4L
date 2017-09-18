@@ -4,9 +4,9 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	public class MapObjectType : RegisType <MapObjectType , MapObjectAttribute , MapObject>
@@ -18,8 +18,7 @@ namespace WenceyWang . Richman4L . Maps
 		}
 
 		[PublicAPI]
-		public MapObjectType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
-			base ( entryType , name , introduction )
+		public MapObjectType ( [NotNull] Type entryType ) : base ( entryType )
 		{
 		}
 

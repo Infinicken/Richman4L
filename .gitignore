@@ -1,5 +1,4 @@
 /$tf/
-/$git/
 /BuildProcessTemplates/
 *.tfignore
 *.vssscc

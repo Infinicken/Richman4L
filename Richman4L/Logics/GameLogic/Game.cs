@@ -5,21 +5,22 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Auctions ;
-using WenceyWang . Richman4L . Banks ;
-using WenceyWang . Richman4L . Buffs ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . GameEnviroment ;
-using WenceyWang . Richman4L . Maps ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Players . Events ;
-using WenceyWang . Richman4L . Players . Models ;
-using WenceyWang . Richman4L . Resources ;
-using WenceyWang . Richman4L . Stocks ;
-using WenceyWang . Richman4L . Weathers ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L
+using WenceyWang . Richman4L . Logics . Auctions ;
+using WenceyWang . Richman4L . Logics . Banks ;
+using WenceyWang . Richman4L . Logics . Buffs ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . GameEnviroment ;
+using WenceyWang . Richman4L . Logics . Maps ;
+using WenceyWang . Richman4L . Logics . Players ;
+using WenceyWang . Richman4L . Logics . Players . Events ;
+using WenceyWang . Richman4L . Logics . Players . Models ;
+using WenceyWang . Richman4L . Logics . Resources ;
+using WenceyWang . Richman4L . Logics . Stocks ;
+using WenceyWang . Richman4L . Logics . Weathers ;
+
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public class Game : GameObject , IDisposable
@@ -31,8 +32,6 @@ namespace WenceyWang . Richman4L
 		public ReadOnlyCollection <Guid> PreviousGameId { get ; }
 
 		[Own]
-		public Guid GameId { get ; private set ; }
-
 		public GameStatus Status { get ; set ; }
 
 		[Own]
@@ -55,6 +54,7 @@ namespace WenceyWang . Richman4L
 		/// <summary>
 		///     指示游戏是否开始
 		/// </summary>
+		[Own]
 		public bool IsStarted { get ; set ; } = false ;
 
 		/// <summary>

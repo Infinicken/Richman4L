@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains ;
+using WenceyWang . Richman4L . Logics . Interoperability . Arguments . DefineDomains ;
 
-namespace WenceyWang . Richman4L . Interoperability . Arguments
+namespace WenceyWang . Richman4L . Logics . Interoperability . Arguments
 {
 
 	public class ArgumentInfo

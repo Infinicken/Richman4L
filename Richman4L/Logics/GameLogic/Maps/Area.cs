@@ -5,14 +5,15 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Buffs . AreaBuffs ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Maps . Buildings ;
-using WenceyWang . Richman4L . Maps . Roads ;
-using WenceyWang . Richman4L . Players ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Logics . Buffs . AreaBuffs ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Maps . Buildings ;
+using WenceyWang . Richman4L . Logics . Maps . Roads ;
+using WenceyWang . Richman4L . Logics . Players ;
+
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	public abstract class Area : Block , IAsset
@@ -24,7 +25,7 @@ namespace WenceyWang . Richman4L . Maps
 
 		private BlockAzimuth ? _previousMainAzimuth ;
 
-		[Own]
+		[Reference]
 		public virtual List <AreaRoad> AdjacentRoads
 		{
 			get
@@ -35,9 +36,10 @@ namespace WenceyWang . Richman4L . Maps
 					return null ;
 				}
 
-				return _adjacentRoads ?? ( _adjacentRoads =
-												_adjacentRoadsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) as AreaRoad ) .
-																	Where ( road => road != null ) . ToList ( ) ) ;
+				return _adjacentRoads
+						?? ( _adjacentRoads = _adjacentRoadsId . Select ( roadId => Map . Currnet . GetRoad ( roadId ) as AreaRoad ) .
+																Where ( road => road != null ) .
+																ToList ( ) ) ;
 			}
 		}
 

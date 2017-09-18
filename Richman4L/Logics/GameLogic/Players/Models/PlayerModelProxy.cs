@@ -4,7 +4,7 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Players . Models
+namespace WenceyWang . Richman4L . Logics . Players . Models
 {
 
 	public class PlayerModelProxy

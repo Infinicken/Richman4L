@@ -1,0 +1,9 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:WenceyWang.Richman4L.Apps.Wpf" >
+	<Thickness x:Key="ButtonPadding" >40,10</Thickness>
+	<Thickness x:Key="WideMargin" >0,40,0,0</Thickness>
+	<Thickness x:Key="ScrollViewerPadding" >40,0</Thickness>
+	<Thickness x:Key="NormalMargin" >0,10,0,0</Thickness>
+</ResourceDictionary>

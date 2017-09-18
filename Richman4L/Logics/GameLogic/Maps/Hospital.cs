@@ -5,12 +5,12 @@ using System . Linq ;
 using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . Logics . Maps . Roads ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
-	[MapObject ( nameof(Hospital) , "" )]
+	[MapObject]
 	[Guid ( "C46422D7-6112-44E4-A64A-52E4822AD633" )]
 	public class Hospital : NormalRoad
 	{

@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Weathers
+namespace WenceyWang . Richman4L . Logics . Weathers
 {
 
 	/// <summary>
@@ -37,6 +37,10 @@ namespace WenceyWang . Richman4L . Weathers
 		///     雨夹雪
 		/// </summary>
 		Sleet = Rainy | Snowy
+
+		//Todo:雾雨
+
+		//todo:
 
 	}
 

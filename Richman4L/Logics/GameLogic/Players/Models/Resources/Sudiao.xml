@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 
 <Player Name="Wencey" Model="" >
-    <SayingWhenGained>
-        <Saying Text="人类的希望!" />
-        <Saying Text="Gist!" />
-        <Saying Text=";-)" />
-        <Saying Text="然并卵" />
-    </SayingWhenGained>
-    <SayingWhenHarmed>
-        <Saying Text="人类的耻辱" />
-        <Saying Text="挺好。" />
-        <Saying Text="WTF" />
-        <Saying Text="呵呵。" />
-    </SayingWhenHarmed>
-    <SayingWhenMeet>
-        <Saying Player="Vivian" Text="..." />
-    </SayingWhenMeet>
+	<SayingWhenGained>
+		<Saying Text="人类的希望!" />
+		<Saying Text="Gist!" />
+		<Saying Text=";-)" />
+		<Saying Text="然并卵" />
+	</SayingWhenGained>
+	<SayingWhenHarmed>
+		<Saying Text="人类的耻辱" />
+		<Saying Text="挺好。" />
+		<Saying Text="WTF" />
+		<Saying Text="呵呵。" />
+	</SayingWhenHarmed>
+	<SayingWhenMeet>
+		<Saying Player="Vivian" Text="..." />
+	</SayingWhenMeet>
 </Player>

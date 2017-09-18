@@ -5,7 +5,7 @@ using System . Collections . ObjectModel ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Logics . Maps . Buildings
 {
 
 	/// <summary>

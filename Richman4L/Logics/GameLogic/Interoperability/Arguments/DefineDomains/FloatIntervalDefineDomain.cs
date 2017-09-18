@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
+namespace WenceyWang . Richman4L . Logics . Interoperability . Arguments . DefineDomains
 {
 
 	public sealed class FloatIntervalDefineDomain : ArgumentValueDefineDomain <double>

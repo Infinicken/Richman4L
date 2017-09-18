@@ -4,12 +4,13 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Buffs . StockBuffs ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Stocks . PriceController ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Stocks
+using WenceyWang . Richman4L . Logics . Buffs . StockBuffs ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Stocks . PriceController ;
+
+namespace WenceyWang . Richman4L . Logics . Stocks
 {
 
 	/// <summary>

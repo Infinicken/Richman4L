@@ -1,0 +1,25 @@
+﻿{
+	"dependencies": {
+		"AppPlugin": "*",
+		"AsyncStackTraceEx": "*",
+		"Edi.UWP.Helpers": "*",
+		"Microsoft.ApplicationInsights.WindowsApps": "*",
+		"Microsoft.NETCore.UniversalWindowsPlatform": "*",
+		"MyToolkit.Extended": "*",
+		"RateMyApp.UWP": "*",
+		"System.ComponentModel.TypeConverter": "*",
+		"System.ValueTuple": "*",
+		"Win2D.uwp": "*"
+	},
+	"frameworks": {
+		"uap10.0": {}
+	},
+	"runtimes": {
+		"win10-arm": {},
+		"win10-arm-aot": {},
+		"win10-x86": {},
+		"win10-x86-aot": {},
+		"win10-x64": {},
+		"win10-x64-aot": {}
+	}
+}

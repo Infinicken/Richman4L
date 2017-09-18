@@ -3,14 +3,14 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
-using WenceyWang . Richman4L . Buffs . RoadBuffs . Event ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . GameEnviroment ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Weathers ;
+using WenceyWang . Richman4L . Logics . Buffs . PlayerBuffs ;
+using WenceyWang . Richman4L . Logics . Buffs . RoadBuffs . Event ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . GameEnviroment ;
+using WenceyWang . Richman4L . Logics . Players ;
+using WenceyWang . Richman4L . Logics . Weathers ;
 
-namespace WenceyWang . Richman4L . Buffs . RoadBuffs
+namespace WenceyWang . Richman4L . Logics . Buffs . RoadBuffs
 {
 
 	/// <summary>
@@ -23,18 +23,18 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		///     指示狗咬经过的行人的概率的10000倍
 		/// </summary>
 		[GameRuleValue ( 3333 )]
-		public static int BiteWalkerPossibility { get ; internal set ; }
+		public static GameValue BiteWalkerPossibility { get ; internal set ; }
 
 		/// <summary>
 		///     指示在此停止的人被狗咬的概率的10000倍
 		/// </summary>
 		[GameRuleValue ( 6666 )]
-		public static int BiteStayerPossibility { get ; internal set ; }
+		public static GameValue BiteStayerPossibility { get ; internal set ; }
 
-		[GameRuleValue ( 800 )]
-		public static int HighestTolerableWindStrength { get ; set ; }
+		[GameRuleValue ( 5000 )]
+		public static GameValue HighestTolerableWindStrength { get ; set ; }
 
-		[GameRuleValue ( - 5 )]
+		[GameRuleValue ( - 10 )]
 		public static int LowestTolerableTemperature { get ; set ; }
 
 		[GameRuleValue ( 37 )]
@@ -42,7 +42,6 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 
 		[GameRuleValue ( 4 )]
 		public static int MaxLiveDuration { get ; set ; }
-
 
 		[GameRuleValue ( 1 )]
 		public static int MinLiveDuration { get ; set ; }
@@ -103,7 +102,8 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		public bool IsKilled ( Weather weather )
 		{
 			return weather . Wind . Strength >= HighestTolerableWindStrength
-					|| weather . Temperature <= LowestTolerableTemperature || weather . Temperature >= HighestTolerableTemperature ;
+					|| weather . Temperature <= LowestTolerableTemperature
+					|| weather . Temperature >= HighestTolerableTemperature ;
 		}
 
 		public void Bite ( Player player )
@@ -156,6 +156,7 @@ namespace WenceyWang . Richman4L . Buffs . RoadBuffs
 		private void Kill ( ) { Expire ( ) ; }
 
 	}
+
 
 	//todo:should rename but i am too tired and you should fix this ingore thzose spell error and naming error ,yousghoulf fix these or i eill do this after those days.
 

@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>WenceyWang.Richman4L.Apps.Console</RootNamespace>
+    <Authors>Wencey Wang</Authors>
+    <Company>Dream Recorder</Company>
+    <Product>Richman4L</Product>
+    <StartupObject>WenceyWang.Richman4L.Apps.Console.Program</StartupObject>
+    <AssemblyName>WenceyWang.Richman4L.Apps.Console</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="Fonts\graffiti.flf" />
+    <None Remove="Fonts\invita.flf" />
+    <None Remove="License\AGPL.txt" />
+    <None Remove="Richman4LConsole.csproj.vspscc" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\graffiti.flf" />
+    <EmbeddedResource Include="Fonts\invita.flf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="License\AGPL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FIGlet.Net" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Logics\GameLogic\GameLogic.csproj" />
+    <ProjectReference Include="..\..\..\Sockets\RemoteClients\RemoteClients.csproj" />
+    <ProjectReference Include="..\MapRenderers\CharacterMapRenderers\CharacterMapRenderers.csproj" />
+    <ProjectReference Include="..\MapRenderers\FoggyMapRenderers\FoggyMapRenderers.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="WenceyWang.FoggyConsole">
+      <HintPath>..\..\..\..\..\..\Repos\FoggyConsole\FoggyConsole\bin\Debug\netstandard2.0\WenceyWang.FoggyConsole.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

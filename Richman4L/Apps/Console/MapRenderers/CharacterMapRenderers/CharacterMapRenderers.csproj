@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>%24/Richman4L/Richman4L/Apps/Console/MapRenderers/CharacterMapRenderers</SccProjectName>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccAuxPath>https://wenceywang.visualstudio.com</SccAuxPath>
+    <SccLocalPath>.</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>WenceyWang.Richman4L.Apps.Console.MapRenderers</RootNamespace>
+    <AssemblyName>WenceyWang.Richman4L.Apps.Console.MapRenderers</AssemblyName>
+    <PackageId>WenceyWang.Richman4L.CharacterMapRenderers</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="CharacterMapRenderers.csproj.vspscc" />
+    <None Remove="CharacterMapRenderers.nuget.targets" />
+    <None Remove="project.lock.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Logics\GameLogic\GameLogic.csproj" />
+  </ItemGroup>
+
+
+</Project>

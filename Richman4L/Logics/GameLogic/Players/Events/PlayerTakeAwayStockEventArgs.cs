@@ -3,10 +3,11 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Stocks ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Players . Events
+using WenceyWang . Richman4L . Logics . Stocks ;
+
+namespace WenceyWang . Richman4L . Logics . Players . Events
 {
 
 	public class PlayerTakeAwayStockEventArgs : PlayerEventArgs

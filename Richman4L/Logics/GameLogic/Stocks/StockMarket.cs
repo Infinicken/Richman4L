@@ -4,13 +4,14 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Buffs . StockBuffs ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Players . PayReasons ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Stocks
+using WenceyWang . Richman4L . Logics . Buffs . StockBuffs ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Players ;
+using WenceyWang . Richman4L . Logics . Players . PayReasons ;
+
+namespace WenceyWang . Richman4L . Logics . Stocks
 {
 
 	/// <summary>
@@ -127,8 +128,9 @@ namespace WenceyWang . Richman4L . Stocks
 
 						if ( ! stock . IsBlockBuy ( ) )
 						{
-							buyVolume += BuyDelegateList [ stock ] . Where ( dele => dele . Price > minSellPrice ) .
-																	Sum ( dele => dele . Number ) ;
+							buyVolume += BuyDelegateList [ stock ] .
+								Where ( dele => dele . Price > minSellPrice ) .
+								Sum ( dele => dele . Number ) ;
 						}
 
 						foreach ( SellStockDelegate dele in sellDelegates )

@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Buffs . PlayerBuffs ;
+using WenceyWang . Richman4L . Logics . Buffs . PlayerBuffs ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Logics . Players . Events
 {
 
 	public class PlayerLostBuffEventArgs : PlayerEventArgs

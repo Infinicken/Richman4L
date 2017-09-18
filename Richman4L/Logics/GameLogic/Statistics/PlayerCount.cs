@@ -3,14 +3,15 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Logics . Players ;
 
-namespace WenceyWang . Richman4L . Statistics
+namespace WenceyWang . Richman4L . Logics . Statistics
 {
 
-	public class PlayerCount
+	public class PlayerCount : GameObject
 	{
 
+		[Reference]
 		public Player Player { get ; }
 
 		public long Count { get ; set ; }

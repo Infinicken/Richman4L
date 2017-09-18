@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+namespace WenceyWang . Richman4L . Logics . Maps . Roads
 {
 
 	/// <summary>

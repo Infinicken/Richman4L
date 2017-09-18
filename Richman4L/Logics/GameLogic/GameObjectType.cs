@@ -5,9 +5,9 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public class GameObjectType
@@ -21,11 +21,11 @@ namespace WenceyWang . Richman4L
 		/// </summary>
 		public Guid Guid => EntryType . GetTypeInfo ( ) . GUID ;
 
-		public string Name { get ; }
-
 		public Type EntryType { get ; }
 
-		protected GameObjectType ( [NotNull] Type entryType , [NotNull] XElement element )
+		public string Name => EntryType . FullName ;
+
+		public GameObjectType ( [NotNull] Type entryType , [NotNull] XElement element )
 		{
 			if ( element == null )
 			{
@@ -36,20 +36,14 @@ namespace WenceyWang . Richman4L
 
 			#region Load XML
 
-			Name = GameObject . ReadNecessaryValue <string> ( element , nameof(Name) ) ;
-
 			Introduction = GameObject . ReadNecessaryValue <string> ( element , nameof(Introduction) ) ;
 
 			#endregion
 		}
 
-		protected GameObjectType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction )
+		public GameObjectType ( [NotNull] Type entryType )
 		{
 			EntryType = entryType ?? throw new ArgumentNullException ( nameof(entryType) ) ;
-
-			Name = name ?? throw new ArgumentNullException ( nameof(name) ) ;
-
-			Introduction = introduction ?? throw new ArgumentNullException ( nameof(introduction) ) ;
 		}
 
 	}

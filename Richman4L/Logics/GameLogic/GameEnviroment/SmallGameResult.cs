@@ -5,9 +5,9 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . GameEnviroment
+namespace WenceyWang . Richman4L . Logics . GameEnviroment
 {
 
 	public class SmallGameResult

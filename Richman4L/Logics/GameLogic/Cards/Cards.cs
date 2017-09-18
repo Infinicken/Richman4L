@@ -4,10 +4,10 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 
-using WenceyWang . Richman4L . GameEnviroment ;
-using WenceyWang . Richman4L . Interoperability . Arguments ;
+using WenceyWang . Richman4L . Logics . GameEnviroment ;
+using WenceyWang . Richman4L . Logics . Interoperability . Arguments ;
 
-namespace WenceyWang . Richman4L . Cards
+namespace WenceyWang . Richman4L . Logics . Cards
 {
 
 	public abstract class StaticCard <T> : Card where T : StaticCard <T>
@@ -69,11 +69,12 @@ namespace WenceyWang . Richman4L . Cards
 					return ;
 				}
 
-				foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+				foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) .
+															Assembly . DefinedTypes .
 															Where ( type => type . GetCustomAttributes ( typeof ( CardAttribute ) , false ) . Any ( )
 																			&& typeof ( Card ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
 				{
-					RegisType ( type . AsType ( ) , type . Name , "" ) ; //Todo:resources?
+					RegisType ( type . AsType ( ) ) ; //Todo:resources?
 				}
 
 				Loaded = true ;

@@ -3,11 +3,11 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Players . PayReasons ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Players ;
+using WenceyWang . Richman4L . Logics . Players . PayReasons ;
 
-namespace WenceyWang . Richman4L . Banks
+namespace WenceyWang . Richman4L . Logics . Banks
 {
 
 	/// <summary>

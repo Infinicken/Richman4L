@@ -6,7 +6,7 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public static class ResourceHelper

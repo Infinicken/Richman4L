@@ -4,13 +4,14 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Buffs . RoadBuffs ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Statistics ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+using WenceyWang . Richman4L . Logics . Buffs . RoadBuffs ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Players ;
+using WenceyWang . Richman4L . Logics . Statistics ;
+
+namespace WenceyWang . Richman4L . Logics . Maps . Roads
 {
 
 	/// <summary>

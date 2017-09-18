@@ -5,12 +5,12 @@ using System . Linq ;
 using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Logics . Players ;
 
-namespace WenceyWang . Richman4L . Maps . Roads
+namespace WenceyWang . Richman4L . Logics . Maps . Roads
 {
 
-	[MapObject ( nameof(AreaRoad) , nameof(AreaRoad) )]
+	[MapObject]
 	[Guid ( "6B4988D8-EBD5-471A-B22D-FFA94C997ECA" )]
 	public class AreaRoad : NormalRoad
 	{

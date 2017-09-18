@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>%24/Richman4L/Richman4L/Apps/Console/MapRenderers/FoggyMapRenderers</SccProjectName>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccAuxPath>https://wenceywang.visualstudio.com</SccAuxPath>
+    <SccLocalPath>.</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>WenceyWang.Richman4L.Apps.Console.MapRenderers</RootNamespace>
+    <AssemblyName>WenceyWang.Richman4L.Apps.Console.MapRenderers.Foggy</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="FoggyMapRenderers.csproj.vspscc" />
+    <None Remove="FoggyMapRenderers.nuget.targets" />
+    <None Remove="project.lock.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Logics\GameLogic\GameLogic.csproj" />
+    <ProjectReference Include="..\CharacterMapRenderers\CharacterMapRenderers.csproj" />
+  </ItemGroup>
+
+
+</Project>

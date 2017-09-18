@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Logics . Calendars ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Logics . Maps . Buildings
 {
 
 	public class Park : Building

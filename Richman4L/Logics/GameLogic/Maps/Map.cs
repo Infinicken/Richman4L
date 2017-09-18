@@ -4,14 +4,17 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Maps . Events ;
-using WenceyWang . Richman4L . Maps . Roads ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . GameEnviroment . Renderers ;
+using WenceyWang . Richman4L . Logics . Maps . Events ;
+using WenceyWang . Richman4L . Logics . Maps . Roads ;
+
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
+	[GameObject]
 	public class Map : GameObject
 	{
 
@@ -51,9 +54,10 @@ namespace WenceyWang . Richman4L . Maps
 			get
 			{
 				return ( Block ) Objects . SingleOrDefault ( mapobject => mapobject is Block
-																		&& ( mapobject . Position . X == x || mapobject . Position . X < x
-																			&& mapobject . Position . X + mapobject . Size . Width - 1 >= x )
-																		&& ( mapobject . Position . Y == y || mapobject . Position . Y < y
+																		&& ( mapobject . Position . X == x
+																			|| mapobject . Position . X < x && mapobject . Position . X + mapobject . Size . Width - 1 >= x )
+																		&& ( mapobject . Position . Y == y
+																			|| mapobject . Position . Y < y
 																			&& mapobject . Position . Y + mapobject . Size . Height - 1 >= y ) ) ;
 			}
 		}

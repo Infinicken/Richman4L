@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Stocks
+namespace WenceyWang . Richman4L . Logics . Stocks
 {
 
 	/// <summary>
@@ -68,8 +68,12 @@ namespace WenceyWang . Richman4L . Stocks
 
 		public bool Equals ( StockPrice other )
 		{
-			return OpenPrice == other . OpenPrice && CurrentPrice == other . CurrentPrice && TodaysHigh == other . TodaysHigh
-					&& TodaysLow == other . TodaysLow && BuyVolume == other . BuyVolume && SellVolume == other . SellVolume ;
+			return OpenPrice == other . OpenPrice
+					&& CurrentPrice == other . CurrentPrice
+					&& TodaysHigh == other . TodaysHigh
+					&& TodaysLow == other . TodaysLow
+					&& BuyVolume == other . BuyVolume
+					&& SellVolume == other . SellVolume ;
 		}
 
 		public override bool Equals ( object obj )

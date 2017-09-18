@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Resources ;
+using WenceyWang . Richman4L . Logics . Resources ;
 
-namespace WenceyWang . Richman4L . GameEnviroment
+namespace WenceyWang . Richman4L . Logics . GameEnviroment
 {
 
 	[AttributeUsage ( AttributeTargets . Property )]

@@ -4,7 +4,7 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Reflection ;
 
-namespace WenceyWang . Richman4L . Security
+namespace WenceyWang . Richman4L . Logics . Security
 {
 
 	public abstract class ReliableValue <T>

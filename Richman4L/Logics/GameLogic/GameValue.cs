@@ -1,12 +1,15 @@
-using System ;
+﻿using System ;
 using System . Collections ;
 using System . Collections . Generic ;
 using System . Globalization ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
+	/// <summary>
+	///     表示可能性.
+	/// </summary>
 	public struct GameValue : IEquatable <GameValue>
 	{
 

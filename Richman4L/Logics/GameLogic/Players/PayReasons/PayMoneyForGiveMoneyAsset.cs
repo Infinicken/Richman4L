@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Players . PayReasons
+namespace WenceyWang . Richman4L . Logics . Players . PayReasons
 {
 
 	/// <summary>

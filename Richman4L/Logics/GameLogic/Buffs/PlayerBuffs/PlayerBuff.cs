@@ -3,10 +3,10 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Players ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Players ;
 
-namespace WenceyWang . Richman4L . Buffs . PlayerBuffs
+namespace WenceyWang . Richman4L . Logics . Buffs . PlayerBuffs
 {
 
 	/// <summary>

@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Stocks . Resources
+namespace WenceyWang . Richman4L . Logics . Stocks . Resources
 {
 
 	public class StockResources

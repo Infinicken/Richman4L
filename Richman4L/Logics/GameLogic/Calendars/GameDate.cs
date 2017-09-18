@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Calendars
+namespace WenceyWang . Richman4L . Logics . Calendars
 {
 
 	public struct GameDate
@@ -18,8 +18,11 @@ namespace WenceyWang . Richman4L . Calendars
 		{
 			get
 			{
-				long currentDays = Date % ( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth
-											+ Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
+				long currentDays = Date
+									% ( Game . Current . Calendar . SpringLenth
+										+ Game . Current . Calendar . SummerLenth
+										+ Game . Current . Calendar . AutumnLenth
+										+ Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return Season . Spring ;
@@ -48,8 +51,11 @@ namespace WenceyWang . Richman4L . Calendars
 		{
 			get
 			{
-				long currentDays = Date % ( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth
-											+ Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
+				long currentDays = Date
+									% ( Game . Current . Calendar . SpringLenth
+										+ Game . Current . Calendar . SummerLenth
+										+ Game . Current . Calendar . AutumnLenth
+										+ Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return currentDays ;
@@ -78,8 +84,11 @@ namespace WenceyWang . Richman4L . Calendars
 		{
 			get
 			{
-				long currentDays = Date % ( Game . Current . Calendar . SpringLenth + Game . Current . Calendar . SummerLenth
-											+ Game . Current . Calendar . AutumnLenth + Game . Current . Calendar . WinterLenth ) ;
+				long currentDays = Date
+									% ( Game . Current . Calendar . SpringLenth
+										+ Game . Current . Calendar . SummerLenth
+										+ Game . Current . Calendar . AutumnLenth
+										+ Game . Current . Calendar . WinterLenth ) ;
 				if ( ( currentDays -= Game . Current . Calendar . SpringLenth ) <= 0 )
 				{
 					return Game . Current . Calendar . SpringLenth ;

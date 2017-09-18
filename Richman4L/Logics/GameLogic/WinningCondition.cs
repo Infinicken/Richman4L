@@ -4,11 +4,12 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Players ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Players ;
+
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public abstract class WinningCondition
@@ -30,15 +31,12 @@ namespace WenceyWang . Richman4L
 		{
 		}
 
-		public WinningConditionType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
-			base ( entryType , name , introduction )
-		{
-		}
+		public WinningConditionType ( [NotNull] Type entryType ) : base ( entryType ) { }
 
 	}
 
 	[AttributeUsage ( AttributeTargets . Class )]
-	public class WinningConditionAttribute : Attribute
+	public class WinningConditionAttribute : NeedRegisAttributeBase
 	{
 
 	}

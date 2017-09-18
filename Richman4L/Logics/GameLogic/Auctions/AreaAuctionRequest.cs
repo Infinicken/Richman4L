@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L . Auctions
+namespace WenceyWang . Richman4L . Logics . Auctions
 {
 
 }

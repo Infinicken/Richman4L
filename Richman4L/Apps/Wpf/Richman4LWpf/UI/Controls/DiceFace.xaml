@@ -1,0 +1,110 @@
+﻿<local:CanvasContainer
+	x:Class="WenceyWang.Richman4L.Apps.Wpf.UI.Controls.DiceFace"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:WenceyWang.Richman4L.Apps.Wpf.UI.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	d:DesignHeight="100"
+	d:DesignWidth="100" >
+
+	<Grid Width="100" Height="100" Padding="8" >
+		<Grid d:IsHidden="True" >
+			<Ellipse Fill="#FFB40000" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="24" />
+		</Grid>
+
+		<Grid d:IsHidden="True" >
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" Grid.Column="1" />
+		</Grid>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" Grid.Column="1" />
+		</Grid>
+		<Grid d:IsHidden="True" >
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Column="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" Grid.Column="1" />
+		</Grid>
+		<Grid d:IsHidden="True" >
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Column="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" Grid.Column="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+		</Grid>
+		<Grid d:IsHidden="True" >
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="2" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Column="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="2" Grid.Column="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" Grid.Column="1" />
+			<Ellipse Fill="{StaticResource NightBlueBrush}" HorizontalAlignment="Center" Height="16" VerticalAlignment="Center"
+					Width="16" Grid.Row="1" />
+		</Grid>
+
+	</Grid>
+</local:CanvasContainer>

@@ -4,11 +4,12 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . Interoperability . Arguments ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Players . Commands
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . Interoperability . Arguments ;
+
+namespace WenceyWang . Richman4L . Logics . Players . Commands
 {
 
 	/// <summary>
@@ -56,7 +57,7 @@ namespace WenceyWang . Richman4L . Players . Commands
 	}
 
 	[AttributeUsage ( AttributeTargets . Class )]
-	public class PlayerCommandAttribute : Attribute
+	public class PlayerCommandAttribute : NeedRegisAttributeBase
 	{
 
 	}
@@ -66,10 +67,7 @@ namespace WenceyWang . Richman4L . Players . Commands
 
 		public PlayerCommandType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }
 
-		public PlayerCommandType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
-			base ( entryType , name , introduction )
-		{
-		}
+		public PlayerCommandType ( [NotNull] Type entryType ) : base ( entryType ) { }
 
 	}
 

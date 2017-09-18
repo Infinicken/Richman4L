@@ -4,9 +4,9 @@ using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . Logics . Maps . Roads ;
 
-namespace WenceyWang . Richman4L . Players . Events
+namespace WenceyWang . Richman4L . Logics . Players . Events
 {
 
 	public sealed class PlayerMoveEventArgs : PlayerEventArgs

@@ -5,14 +5,15 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Banks ;
-using WenceyWang . Richman4L . Cards ;
-using WenceyWang . Richman4L . Maps . Buildings . Events ;
-using WenceyWang . Richman4L . Players ;
-using WenceyWang . Richman4L . Players . PayReasons ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings
+using WenceyWang . Richman4L . Logics . Banks ;
+using WenceyWang . Richman4L . Logics . Cards ;
+using WenceyWang . Richman4L . Logics . Maps . Buildings . Events ;
+using WenceyWang . Richman4L . Logics . Players ;
+using WenceyWang . Richman4L . Logics . Players . PayReasons ;
+
+namespace WenceyWang . Richman4L . Logics . Maps . Buildings
 {
 
 	//Todo:完善事件
@@ -36,13 +37,13 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		public List <BuildingBuff> Buffs { get ; } //todo 
 
 		/// <summary>
-		///     指示建筑的完成度的10000倍
+		///     指示建筑的完成度
 		/// </summary>
 		[Own]
 		public GameValue CompletedDgree { get ; set ; } = 0 ;
 
 		/// <summary>
-		///     指示建筑的维护水平的10000倍
+		///     指示建筑的维护水平
 		/// </summary>
 		[Own]
 		public GameValue MaintenanceDegree { get ; set ; } = 0 ;
@@ -61,7 +62,6 @@ namespace WenceyWang . Richman4L . Maps . Buildings
 		/// </summary>
 		[Own]
 		public abstract bool IsEasyToDestroy { get ; }
-
 
 		/// <summary>
 		///     指示建筑今天所需的维持费

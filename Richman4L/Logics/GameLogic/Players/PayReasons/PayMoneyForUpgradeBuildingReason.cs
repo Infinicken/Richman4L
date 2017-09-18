@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Maps . Buildings ;
+using WenceyWang . Richman4L . Logics . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L . Players . PayReasons
+namespace WenceyWang . Richman4L . Logics . Players . PayReasons
 {
 
 	public class PayMoneyForUpgradeBuildingReason : PayMoneyReason

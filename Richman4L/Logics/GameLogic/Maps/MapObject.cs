@@ -5,9 +5,9 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	/// <summary>
@@ -78,59 +78,15 @@ namespace WenceyWang . Richman4L . Maps
 				}
 
 				//Todo:Load All internal type
-				foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) . Assembly . DefinedTypes .
+				foreach ( TypeInfo type in typeof ( Game ) . GetTypeInfo ( ) .
+															Assembly . DefinedTypes .
 															Where ( type => type . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . Any ( )
 																			&& typeof ( MapObject ) . GetTypeInfo ( ) . IsAssignableFrom ( type ) ) )
 				{
-					RegisMapObjectType ( type . AsType ( ) ) ;
+					RegisType ( type . AsType ( ) ) ; //Todo:resources?
 				}
 
 				Loaded = true ;
-			}
-		}
-
-
-		/// <summary>
-		///     注册一个MapObject类型
-		///     这个方法应当在加载程序集的时候被调用，加载的程序集应当注册所有的MapObject
-		/// </summary>
-		/// <param name="name">用于从地图资源文件中识别的名称</param>
-		/// <param name="entryType">要注册的类型类型</param>
-		/// <returns>生成的类型</returns>
-		[NotNull]
-		public static MapObjectType RegisMapObjectType ( [NotNull] Type entryType )
-		{
-			lock ( Locker )
-			{
-				#region Check Argument
-
-				if ( entryType == null )
-				{
-					throw new ArgumentNullException ( nameof(entryType) ) ;
-				}
-
-				#endregion
-
-				#region Check Attributes
-
-				MapObjectAttribute attribute =
-					entryType . GetTypeInfo ( ) . GetCustomAttributes ( typeof ( MapObjectAttribute ) , false ) . FirstOrDefault ( ) as
-						MapObjectAttribute ;
-
-				if ( attribute == null )
-				{
-					throw new ArgumentException ( $"{nameof(entryType)} should have attribute {nameof(MapObjectAttribute)}" ,
-												nameof(entryType) ) ;
-				}
-
-				#endregion
-
-				if ( TypeList . Any ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) )
-				{
-					return TypeList . Single ( type => type . Guid == entryType . GetTypeInfo ( ) . GUID ) ;
-				}
-
-				return RegisType ( entryType , attribute . Name , attribute . Introduction ) ;
 			}
 		}
 

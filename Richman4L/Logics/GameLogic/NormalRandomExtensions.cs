@@ -3,7 +3,7 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	//Todo:可能的优化？
@@ -12,7 +12,8 @@ namespace WenceyWang . Richman4L
 
 		private static double Normal ( double x , double miu , double sigma )
 		{
-			return 1.0 / Math . Sqrt ( 2 * Math . PI * sigma )
+			return 1.0
+					/ Math . Sqrt ( 2 * Math . PI * sigma )
 					* Math . Exp ( - 1 * ( x - miu ) * ( x - miu ) / ( 2 * sigma * sigma ) ) ;
 		}
 

@@ -4,10 +4,11 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Calendars ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Buffs
+using WenceyWang . Richman4L . Logics . Calendars ;
+
+namespace WenceyWang . Richman4L . Logics . Buffs
 {
 
 	public abstract class Buff : NeedRegisBase <BuffType , BuffAttribute , Buff>
@@ -52,7 +53,7 @@ namespace WenceyWang . Richman4L . Buffs
 	}
 
 	[AttributeUsage ( AttributeTargets . Class )]
-	public class BuffAttribute : Attribute
+	public class BuffAttribute : NeedRegisAttributeBase
 	{
 
 	}
@@ -62,10 +63,7 @@ namespace WenceyWang . Richman4L . Buffs
 
 		public BuffType ( [NotNull] Type entryType , [NotNull] XElement element ) : base ( entryType , element ) { }
 
-		public BuffType ( [NotNull] Type entryType , [NotNull] string name , [NotNull] string introduction ) :
-			base ( entryType , name , introduction )
-		{
-		}
+		public BuffType ( [NotNull] Type entryType ) : base ( entryType ) { }
 
 	}
 

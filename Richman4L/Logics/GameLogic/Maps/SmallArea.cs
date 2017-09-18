@@ -6,12 +6,12 @@ using System . Linq ;
 using System . Runtime . InteropServices ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Maps . Buildings ;
+using WenceyWang . Richman4L . Logics . Maps . Buildings ;
 
-namespace WenceyWang . Richman4L . Maps
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
-	[MapObject ( nameof(SmallArea) , nameof(SmallArea) )]
+	[MapObject]
 	[Guid ( "33F035E3-0DA6-41BB-BEB2-67BD4214CF31" )]
 	public class SmallArea : Area
 	{
@@ -35,9 +35,11 @@ namespace WenceyWang . Richman4L . Maps
 			{
 				if ( Building == null )
 				{
-					return _availableBuilding ?? ( _availableBuilding =
-														new ReadOnlyCollection <BuildingType> ( Building . BuildingTypes .
-																											Where ( type => type . Size == MapSize . Small ) . ToList ( ) ) ) ;
+					return _availableBuilding
+							?? ( _availableBuilding =
+									new ReadOnlyCollection <BuildingType> ( Building . BuildingTypes .
+																						Where ( type => type . Size == MapSize . Small ) .
+																						ToList ( ) ) ) ;
 				}
 
 				return new ReadOnlyCollection <BuildingType> ( new List <BuildingType> ( ) ) ;

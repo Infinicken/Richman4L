@@ -4,7 +4,7 @@ using System . Collections . Generic ;
 using System . Collections . ObjectModel ;
 using System . Linq ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
 
 	public interface IMods

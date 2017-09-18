@@ -5,14 +5,24 @@ using System . Linq ;
 using System . Reflection ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L
+namespace WenceyWang . Richman4L . Logics
 {
+
+	public abstract class NeedRegisAttributeBase : Attribute
+	{
+
+	}
+
+	public sealed class GameObjectAttribute : NeedRegisAttributeBase
+	{
+
+	}
 
 	public abstract class NeedRegisBase <TType , TAttribute , T> : GameObject
 		where TType : RegisType <TType , TAttribute , T>
-		where TAttribute : Attribute
+		where TAttribute : NeedRegisAttributeBase
 		where T : NeedRegisBase <TType , TAttribute , T>
 	{
 
@@ -49,7 +59,7 @@ namespace WenceyWang . Richman4L
 		}
 
 		[PublicAPI]
-		protected static TType RegisType ( Type entryType , [NotNull] string name , [NotNull] string introduction )
+		protected static TType RegisType ( Type entryType )
 		{
 			lock ( Locker )
 			{
@@ -58,14 +68,6 @@ namespace WenceyWang . Richman4L
 				if ( entryType == null )
 				{
 					throw new ArgumentNullException ( nameof(entryType) ) ;
-				}
-				if ( name == null )
-				{
-					throw new ArgumentNullException ( nameof(name) ) ;
-				}
-				if ( introduction == null )
-				{
-					throw new ArgumentNullException ( nameof(introduction) ) ;
 				}
 
 				if ( ! typeof ( T ) . GetTypeInfo ( ) . IsAssignableFrom ( entryType . GetTypeInfo ( ) ) )
@@ -86,7 +88,7 @@ namespace WenceyWang . Richman4L
 
 				#endregion
 
-				TType instance = ( TType ) Activator . CreateInstance ( typeof ( TType ) , entryType , name , introduction ) ;
+				TType instance = ( TType ) Activator . CreateInstance ( typeof ( TType ) , entryType ) ;
 
 				GameObject . RegisType ( instance ) ;
 

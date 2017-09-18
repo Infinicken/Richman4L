@@ -3,10 +3,11 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Players ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Interoperability . Arguments . DefineDomains
+using WenceyWang . Richman4L . Logics . Players ;
+
+namespace WenceyWang . Richman4L . Logics . Interoperability . Arguments . DefineDomains
 {
 
 	public class MoveTypeAbilityDefineDomains : ArgumentValueDefineDomain <MoveType>

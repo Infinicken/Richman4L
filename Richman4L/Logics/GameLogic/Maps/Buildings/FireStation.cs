@@ -3,11 +3,11 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . GameEnviroment ;
-using WenceyWang . Richman4L . Maps . Roads ;
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . GameEnviroment ;
+using WenceyWang . Richman4L . Logics . Maps . Roads ;
 
-namespace WenceyWang . Richman4L . Maps . Buildings
+namespace WenceyWang . Richman4L . Logics . Maps . Buildings
 {
 
 	public class FireTruck : PlayerLikeBase <Block>

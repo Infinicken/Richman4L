@@ -3,9 +3,9 @@ using System . Collections ;
 using System . Collections . Generic ;
 using System . Linq ;
 
-using WenceyWang . Richman4L . Calendars ;
+using WenceyWang . Richman4L . Logics . Calendars ;
 
-namespace WenceyWang . Richman4L . Auctions
+namespace WenceyWang . Richman4L . Logics . Auctions
 {
 
 	/// <summary>

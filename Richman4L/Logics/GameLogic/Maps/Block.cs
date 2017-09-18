@@ -4,11 +4,12 @@ using System . Collections . Generic ;
 using System . Linq ;
 using System . Xml . Linq ;
 
-using WenceyWang . Richman4L . Annotations ;
-using WenceyWang . Richman4L . Calendars ;
-using WenceyWang . Richman4L . GameEnviroment ;
+using JetBrains . Annotations ;
 
-namespace WenceyWang . Richman4L . Maps
+using WenceyWang . Richman4L . Logics . Calendars ;
+using WenceyWang . Richman4L . Logics . GameEnviroment ;
+
+namespace WenceyWang . Richman4L . Logics . Maps
 {
 
 	/// <summary>
